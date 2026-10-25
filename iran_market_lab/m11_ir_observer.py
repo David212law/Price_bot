@@ -39,8 +39,12 @@ def load_from_github(filename):
         if r.status_code == 200:
             data = r.json()
             return json.loads(base64.b64decode(data["content"]).decode("utf-8")), data["sha"]
+        elif r.status_code != 404:
+            print(f"[GitHub Load Error] Status: {r.status_code} | Response: {r.text}")
         return {}, None
-    except: return {}, None
+    except Exception as e:
+        print(f"[GitHub Load Exception] {e}")
+        return {}, None
 
 def save_to_github(filename, data, sha=None):
     try:
@@ -51,8 +55,12 @@ def save_to_github(filename, data, sha=None):
         payload = {"message": f"Update {filename}", "content": content_b64}
         if sha: payload["sha"] = sha
         r = requests.put(url, headers={"Authorization": f"token {GH_TOKEN}"}, json=payload, timeout=15)
+        if r.status_code not in [200, 201]:
+            print(f"[GitHub Save Error] Status: {r.status_code} | Response: {r.text}")
         return r.status_code in [200, 201]
-    except: return False
+    except Exception as e:
+        print(f"[GitHub Save Exception] {e}")
+        return False
 
 def load_candles(symbol):
     path = f"{DATA_DIR}/{symbol}_4h.json"
