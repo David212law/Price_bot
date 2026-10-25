@@ -126,6 +126,26 @@ def calculate_wilson_lower_bound(wins, total, z=1.96):
     den = 1 + (z**2) / total
     return (num / den) * 100
 
+def calculate_bootstrap_p_value(trade_returns, iterations=500):
+    if not trade_returns: return 1.0
+    n = len(trade_returns)
+    actual_mean = sum(trade_returns) / n
+    
+    # Null hypothesis: true mean is 0
+    centered_rets = [r - actual_mean for r in trade_returns]
+    
+    better_than_actual = 0
+    for _ in range(iterations):
+        # Bootstrap sample (with replacement)
+        sample = [random.choice(centered_rets) for _ in range(n)]
+        sim_mean = sum(sample) / n
+        
+        # We check how often the simulated mean (under null) is >= actual_mean
+        if sim_mean >= actual_mean:
+            better_than_actual += 1
+            
+    return better_than_actual / iterations
+
 def get_metrics(equity_curve, trade_returns):
     if not trade_returns: return {"ret": 0, "dd": 0, "n": 0, "pf": 0, "wilson": 0, "pval": 1.0, "calmar": 0}
     wins = sum(1 for r in trade_returns if r > 0)
@@ -142,26 +162,7 @@ def get_metrics(equity_curve, trade_returns):
     ret = ((equity_curve[-1] - INITIAL_CAPITAL) / INITIAL_CAPITAL) * 100
     calmar = ret / (max_dd * 100) if max_dd > 0 else 0
     wilson = calculate_wilson_lower_bound(wins, n)
-    
-    # --- Corrected Portfolio Monte Carlo ---
-    # Calculate periodic returns of the equity curve
-    periodic_rets = []
-    for i in range(1, len(equity_curve)):
-        if equity_curve[i-1] > 0:
-            periodic_rets.append((equity_curve[i] - equity_curve[i-1]) / equity_curve[i-1])
-            
-    actual_final = equity_curve[-1]
-    better = 0
-    temp_rets = periodic_rets[:]
-    
-    for _ in range(500):
-        random.shuffle(temp_rets)
-        sim_eq = INITIAL_CAPITAL
-        for r in temp_rets:
-            sim_eq *= (1 + r)
-        if sim_eq >= actual_final:
-            better += 1
-    pval = better / 500.0
+    pval = calculate_bootstrap_p_value(trade_returns)
     
     return {"ret": ret, "dd": max_dd*100, "n": n, "pf": pf, "wilson": wilson, "pval": pval, "calmar": calmar}
 
@@ -337,7 +338,7 @@ def evaluate_wf(data, ind, window_size):
     return profitable >= 3
 
 def main():
-    print("=== Global Strategies (M9, VSB, Grid) on Wallex USDT (Portfolio MC) ===")
+    print("=== Global Strategies (M9, VSB, Grid) on Wallex USDT (Final Fix) ===")
     print(f"Capital: {INITIAL_CAPITAL} USDT | Maker: {MAKER_FEE*100}% | Taker: {TAKER_FEE*100}%\n")
     
     data = {}
@@ -404,7 +405,7 @@ def main():
     print(f"Total Trades: {m['n']}")
     print(f"PF: {m['pf']:.2f}")
     print(f"Wilson: {m['wilson']:.2f}%")
-    print(f"Monte Carlo P-Val: {m['pval']:.3f}")
+    print(f"Monte Carlo P-Val (Bootstrap): {m['pval']:.4f}")
     print(f"Walk-Forward (3/4 windows): {'PASS' if wf_passed else 'FAIL'}")
     print(f"\nFinal Portfolio Status: {'✅ PASS' if passed else '❌ FAIL'}")
 
