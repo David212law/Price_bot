@@ -190,7 +190,6 @@ def main():
     ind = {}
     current_prices = {}
     
-    # Pre-calculate indicators for all assets
     for sym in ASSETS:
         candles = load_candles(sym)
         if not candles: continue
@@ -285,18 +284,18 @@ def main():
                     pos["levels"] = 2
                     add_val = pos["initial_val"]
                     state["capital"] -= add_val
+                    pos["invested"] += add_val
                     pos["units"] += (add_val * (1 - MAKER_FEE)) / (pos["initial"] * 0.97)
-                    pos["avg_entry"] = (pos["avg_entry"] * 1 + (pos["initial"] * 0.97)) / 2
-                    pos["initial_val"] = add_val
+                    pos["avg_entry"] = pos["invested"] / pos["units"]
                     print(f"  {sym}: Grid Level 2 added at {pos['initial']*0.97:,.2f}")
                     send_bale(f"Grid Level 2: {sym} at {pos['initial']*0.97:,.2f}")
                 elif pos["levels"] == 2 and c["l"] <= pos["initial"] * 0.94:
                     pos["levels"] = 3
                     add_val = pos["initial_val"]
                     state["capital"] -= add_val
+                    pos["invested"] += add_val
                     pos["units"] += (add_val * (1 - MAKER_FEE)) / (pos["initial"] * 0.94)
-                    pos["avg_entry"] = (pos["avg_entry"] * 2 + (pos["initial"] * 0.94)) / 3
-                    pos["initial_val"] = add_val
+                    pos["avg_entry"] = pos["invested"] / pos["units"]
                     print(f"  {sym}: Grid Level 3 added at {pos['initial']*0.94:,.2f}")
                     send_bale(f"Grid Level 3: {sym} at {pos['initial']*0.94:,.2f}")
 
@@ -311,8 +310,6 @@ def main():
                 "strategy": pos["strategy"], "pnl": round(pnl, 2), "pnl_pct": round(pnl_pct, 2)
             })
             state["positions"].remove(pos)
-            
-            # Apply cooldown
             state["cooldowns"][sym] = current_time + (COOLDOWN_PERIOD * 4 * 3600 * 1000)
             
             emoji = "🟢" if pnl > 0 else "🔴"
@@ -323,16 +320,13 @@ def main():
     for sym in ASSETS:
         if sym not in data or sym not in ind: continue
         
-        # Check if already open
         if any(p["symbol"] == sym for p in state["positions"]): continue
         
         c = data[sym][-1]
         current_time = c["t"]
         
-        # Check cooldown
         if current_time <= state["cooldowns"].get(sym, 0): continue
 
-        # Determine strategy based on regime
         if btc_adx > 25:
             strat = "VSB" if sym in ["ETHUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT", "DOGEUSDT"] else "M9"
         elif btc_adx < 20:
