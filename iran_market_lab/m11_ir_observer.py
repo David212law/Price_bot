@@ -4,15 +4,15 @@ import requests
 import base64
 from datetime import datetime, timezone
 
-# ─── Configuration (Grid-Only Mode) ───
+# ─── Configuration (Grid-Only Mode & High Liquidity Assets) ───
 INITIAL_CAPITAL_USDT = 10000.0
 MAKER_FEE = 0.0010  # 0.10%
 TAKER_FEE = 0.0013  # 0.13%
 DATA_DIR = "data_tetri"
 STATE_FILE = "iran_market_lab/m11_ir_state.json"
 
-# Only Grid-approved assets
-ASSETS = ["BTCUSDT", "BNBUSDT", "TRXUSDT", "LINKUSDT", "AVAXUSDT", "DOTUSDT"]
+# Only High-Liquidity Grid-approved assets (Removed AVAX, DOT, LINK)
+ASSETS = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "TRXUSDT"]
 ALLOC_PCT_PER_TRADE = 0.05 # 5% of equity per Grid basket
 
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
