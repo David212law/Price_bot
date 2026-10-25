@@ -35,8 +35,8 @@ def load_from_github(filename):
     except: return {}
 
 def get_local_current_price(symbol):
-    """Reads the latest price from local JSON data files."""
-    path = f"iran_market_lab/data/{symbol}_4h.json"
+    """Reads the latest price from local USDT JSON data files."""
+    path = f"iran_market_lab/data_tetri/{symbol}_4h.json"
     if not os.path.exists(path):
         return 0.0
     try:
@@ -59,20 +59,20 @@ def calculate_wilson_lower(wins, total, z=1.96):
 def analyze_strategy(name, trades):
     if not trades:
         return f"🔹 {name}: No trades yet."
-        
+
     closed = [t for t in trades if t.get("status") == "closed"]
     if not closed:
         return f"🔹 {name}: {len(trades)} open positions, no closed trades yet."
-        
+
     total = len(closed)
     wins = sum(1 for t in closed if t.get("pnl", 0) > 0 or t.get("exit_reason") == "TP" or (t.get("exit_price", 0) > t.get("entry_price", 0)))
     net_pnl = sum(t.get("pnl", 0) for t in closed)
-    
+
     win_rate = (wins / total) * 100
     wilson = calculate_wilson_lower(wins, total) * 100
-    
+
     progress = f"({total}/30 to verdict)" if name == "M9" else ""
-    
+
     return (f"🔹 {name}: n={total} {progress} | WinRate={win_rate:.1f}% | Wilson={wilson:.1f}%\n"
             f"   Total PnL: {net_pnl:.2f}")
 
@@ -83,16 +83,16 @@ def main():
 
     # ─── 1. CRYPTO SECTION ───
     report.append("🇺🇸 **Crypto (Global)**")
-    
+
     m9_data = load_from_github("paper_m9_trades.json")
     report.append(analyze_strategy("M9", m9_data.get("trades", [])))
-    
+
     ll_data = load_from_github("shadow_lead_lag_trades.json")
     report.append(analyze_strategy("Lead-Lag", ll_data.get("trades", [])))
-    
+
     vsb_data = load_from_github("vsb_signals.json")
     report.append(analyze_strategy("VSB", vsb_data.get("signals", [])))
-    
+
     m11_data = load_from_github("m11_v2_portfolio.json")
     if m11_data:
         cap = m11_data.get("capital", 10000.0)
@@ -101,65 +101,66 @@ def main():
         adx = m11_data.get("adx", 0)
         total_risk = sum(p.get("risk_amount", 0) for p in open_pos)
         roi = ((cap - 10000.0) / 10000.0) * 100
-        
+
         report.append(f"🏦 **M11-V2 Portfolio**")
         report.append(f"   Capital: ${cap:.2f} (ROI: {roi:+.2f}%)")
         report.append(f"   Regime: {regime} (ADX: {adx})")
         report.append(f"   Open Pos: {len(open_pos)} | Total Risk: ${total_risk:.2f}")
-        
+
         if roi < -5:
             alerts.append(f"⚠️ M11-V2 Drawdown Alert: ROI is {roi:.2f}%")
-            
+
         last_run = m11_data.get("last_run", "")
         if last_run:
-            last_run_dt = datetime.fromisoformat(last_run)
+            last_run_dt = datetime.fromisoformat(last_run.replace('Z', '+00:00'))
             if (datetime.now(timezone.utc) - last_run_dt).total_seconds() > 7200:
                 alerts.append("⚠️ M11-V2 has not run in the last 2 hours!")
 
     report.append("")
-    
-    # ─── 2. IRAN MARKET SECTION ───
-    report.append("🇮🇷 **Iran Market (M11-IR)**")
-    
+
+    # ─── 2. IRAN MARKET SECTION (USDT) ───
+    report.append("🇮🇷 **Iran Market (Wallex USDT)**")
+
     ir_data = load_from_github("iran_market_lab/m11_ir_state.json")
     if ir_data:
-        ir_cap = ir_data.get("capital", 0)
+        ir_cap = ir_data.get("capital", 10000.0)
         ir_positions = ir_data.get("positions", [])
-        
-        # Calculate total equity and unrealized PnL
+
         total_unrealized_pnl = 0
         pos_details = []
         invested_val = 0
-        
+
         for p in ir_positions:
             current_price = get_local_current_price(p["symbol"])
+            invested = p.get("invested", p.get("size_toman", 0)) # Fallback to old naming if present
+            
             if current_price > 0:
                 current_val = p["units"] * current_price
-                pnl = current_val - p["size_toman"]
-                pnl_pct = (pnl / p["size_toman"]) * 100
+                pnl = current_val - invested
+                pnl_pct = (pnl / invested) * 100 if invested > 0 else 0
                 total_unrealized_pnl += pnl
                 invested_val += current_val
-                pos_details.append(f"   - {p['symbol']} ({p['strategy']}): {pnl:+,.0f} T ({pnl_pct:+.1f}%)")
+                pos_details.append(f"   - {p['symbol']} ({p.get('strategy', 'N/A')}): {pnl:+,.2f} USDT ({pnl_pct:+.1f}%)")
             else:
-                invested_val += p["size_toman"]
-                pos_details.append(f"   - {p['symbol']} ({p['strategy']}): Price Not Found")
+                invested_val += invested
+                pos_details.append(f"   - {p['symbol']} ({p.get('strategy', 'N/A')}): Price Not Found")
 
         current_equity = ir_cap + invested_val
-        roi = ((current_equity - 1000000000) / 1000000000) * 100
-        
-        report.append(f"   Equity: {current_equity:,.0f} T (ROI: {roi:+.2f}%)")
-        report.append(f"   Cash: {ir_cap:,.0f} T")
-        report.append(f"   Unrealized PnL: {total_unrealized_pnl:+,.0f} T")
+        roi = ((current_equity - 10000.0) / 10000.0) * 100
+
+        report.append(f"   Equity: {current_equity:,.2f} USDT (ROI: {roi:+.2f}%)")
+        report.append(f"   Cash: {ir_cap:,.2f} USDT")
+        report.append(f"   Unrealized PnL: {total_unrealized_pnl:+,.2f} USDT")
         report.append(f"   Open Pos ({len(ir_positions)}):")
         for detail in pos_details:
             report.append(detail)
-            
+
         if roi < -5:
             alerts.append(f"⚠️ M11-IR Drawdown Alert: ROI is {roi:.2f}%")
-            
+
         last_run = ir_data.get("last_run", "")
         if last_run:
-            last_run_dt = datetime.fromisoformat(last_run)
+            last_run_dt = datetime.fromisoformat(last_run.replace('Z', '+00:00'))
             if (datetime.now(timezone.utc) - last_run_dt).total_seconds() > 7200:
                 alerts.append("⚠️ M11-IR has not run in the last 2 hours!")
     else:
@@ -167,10 +168,10 @@ def main():
 
     final_report = "\n".join(report)
     print(final_report)
-    
+
     if alerts:
         final_report += "\n\n🚨 **ALERTS:**\n" + "\n".join(alerts)
-        
+
     send_bale(final_report)
 
 if __name__ == "__main__":
