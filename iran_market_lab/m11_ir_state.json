@@ -1,0 +1,11 @@
+{
+  "capital": 10000.0,
+  "positions": [],
+  "history": [],
+  "equity_curve": [
+    10000.0,
+    10000.0
+  ],
+  "cooldowns": {},
+  "last_run": "2026-10-25T08:11:48.460605+00:00"
+}
