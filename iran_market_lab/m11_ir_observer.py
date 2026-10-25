@@ -1,35 +1,26 @@
 import json
 import os
 import requests
+import base64
 from datetime import datetime, timezone
 
 # ─── Configuration ───
-INITIAL_CAPITAL_TOMAN = 1_000_000_000
-FEE_MAKER = 0.00095  
-FEE_TAKER = 0.0020   
+INITIAL_CAPITAL_USDT = 10000.0
+MAKER_FEE = 0.0010  # 0.10%
+TAKER_FEE = 0.0013  # 0.13%
+DATA_DIR = "data_tetri"
+STATE_FILE = "iran_market_lab/m11_ir_state.json"
+COOLDOWN_PERIOD = 6  # 6 * 4h = 24 hours wait after exit
 
-# ─── Dynamic Weights based on Calmar ───
-CALMAR_SCORES = {
-    "XRPTMN": 20.71, "ETHTMN": 16.46, "ADATMN": 16.20,
-    "TRXTMN": 15.17, "DOGETMN": 12.32, "BTCTMN": 10.29,
-    "BNBTMN": 9.76, "SOLTMN": 8.80, "LINKTMN": 7.54,
-    "AVAXTMN": 5.19, "DOTTMN": 5.18
-}
-TOTAL_CALMAR = sum(CALMAR_SCORES.values())
-
-STRATEGY_MAP = {
-    "BTCTMN": "BH", "BNBTMN": "BH", "TRXTMN": "BH",
-    "ETHTMN": "Momentum", "SOLTMN": "Momentum", "XRPTMN": "Momentum",
-    "ADATMN": "Momentum", "DOGETMN": "Momentum", "LINKTMN": "Momentum", "DOTTMN": "Momentum",
-    "AVAXTMN": "Grid"
-}
-
-DATA_DIR = "data"
-STATE_FILE = "m11_ir_state.json"
-
+GH_TOKEN = os.environ.get("GH_TOKEN", "")
+GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 
+ASSETS = [
+    "BTCUSDT", "ETHUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT", 
+    "DOGEUSDT", "BNBUSDT", "TRXUSDT", "LINKUSDT", "AVAXUSDT", "DOTUSDT"
+]
 
 def send_bale(msg):
     if not BALE_TOKEN or not BALE_CHAT:
@@ -41,313 +32,387 @@ def send_bale(msg):
     except Exception as e:
         print(f"[BALE] Error: {e}")
 
+def load_from_github(filename):
+    try:
+        url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
+        r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
+        if r.status_code == 200:
+            data = r.json()
+            return json.loads(base64.b64decode(data["content"]).decode("utf-8")), data["sha"]
+        return {}, None
+    except: return {}, None
+
+def save_to_github(filename, data, sha=None):
+    try:
+        if not sha: _, sha = load_from_github(filename)
+        content = json.dumps(data, ensure_ascii=False, indent=2)
+        content_b64 = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+        url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
+        payload = {"message": f"Update {filename}", "content": content_b64}
+        if sha: payload["sha"] = sha
+        r = requests.put(url, headers={"Authorization": f"token {GH_TOKEN}"}, json=payload, timeout=15)
+        return r.status_code in [200, 201]
+    except: return False
 
 def load_candles(symbol):
     path = f"{DATA_DIR}/{symbol}_4h.json"
-    if not os.path.exists(path):
-        return None
-    with open(path, 'r') as f:
-        return json.load(f)
+    if not os.path.exists(path): return None
+    with open(path, 'r') as f: return json.load(f)
 
-def sma(values, period):
-    if len(values) < period: return None
-    return sum(values[-period:]) / period
+# ─── Indicators ───
+def calc_sma(closes, period):
+    sma = [None] * len(closes)
+    s = 0
+    for i in range(len(closes)):
+        s += closes[i]
+        if i >= period: s -= closes[i - period]
+        if i >= period - 1: sma[i] = s / period
+    return sma
 
-def std_dev(values, period, mean):
-    if len(values) < period: return None
-    window = values[-period:]
-    variance = sum((x - mean) ** 2 for x in window) / period
-    return variance ** 0.5
+def calc_ema(closes, period):
+    ema = [None] * len(closes)
+    if len(closes) < period: return ema
+    k = 2.0 / (period + 1)
+    e = sum(closes[:period]) / period
+    ema[period - 1] = e
+    for i in range(period, len(closes)):
+        e = closes[i] * k + e * (1 - k)
+        ema[i] = e
+    return ema
 
-def rsi(closes, period=14):
-    if len(closes) < period + 1: return None
-    gains, losses = [], []
-    for i in range(1, len(closes)):
+def calc_std(closes, period, sma):
+    std = [None] * len(closes)
+    for i in range(period - 1, len(closes)):
+        mean = sma[i]
+        variance = sum((x - mean) ** 2 for x in closes[i - period + 1:i + 1]) / period
+        std[i] = variance ** 0.5
+    return std
+
+def calc_rsi(closes, period=14):
+    rsi = [None] * len(closes)
+    if len(closes) < period + 1: return rsi
+    gains, losses = 0, 0
+    for i in range(1, period + 1):
         change = closes[i] - closes[i - 1]
-        gains.append(max(change, 0))
-        losses.append(max(-change, 0))
-    avg_gain = sum(gains[-period:]) / period
-    avg_loss = sum(losses[-period:]) / period
-    if avg_loss == 0: return 100.0
-    return 100 - (100 / (1 + (avg_gain / avg_loss)))
+        if change > 0: gains += change
+        else: losses += abs(change)
+    avg_gain = gains / period
+    avg_loss = losses / period
+    rsi[period] = 100 - (100 / (1 + (avg_gain / avg_loss))) if avg_loss != 0 else 100.0
+    for i in range(period + 1, len(closes)):
+        change = closes[i] - closes[i - 1]
+        gain = change if change > 0 else 0
+        loss = abs(change) if change < 0 else 0
+        avg_gain = (avg_gain * (period - 1) + gain) / period
+        avg_loss = (avg_loss * (period - 1) + loss) / period
+        rsi[i] = 100 - (100 / (1 + (avg_gain / avg_loss))) if avg_loss != 0 else 100.0
+    return rsi
 
-def atr(candles, period=14):
-    if len(candles) < period + 1: return None
+def calc_atr(candles, period=14):
+    atr = [None] * len(candles)
+    if len(candles) < period + 1: return atr
     trs = []
     for i in range(1, len(candles)):
         h, l, prev_c = candles[i]["h"], candles[i]["l"], candles[i-1]["c"]
         trs.append(max(h - l, abs(h - prev_c), abs(l - prev_c)))
-    return sum(trs[-period:]) / period
+    first_atr = sum(trs[:period]) / period
+    atr[period] = first_atr
+    for i in range(period + 1, len(candles)):
+        atr[i] = (atr[i - 1] * (period - 1) + trs[i - 1]) / period
+    return atr
 
-def adx(candles, period=14):
-    """محاسبه ADX بدون نیاز به کتابخانه خارجی"""
-    if len(candles) < period * 2: return 0.0
-    trs, plus_dm, minus_dm = [], [], []
+def calc_adx(candles, period=14):
+    adx = [0.0] * len(candles)
+    if len(candles) < period * 2: return adx
+    trs, plus_dms, minus_dms = [0], [0], [0]
     for i in range(1, len(candles)):
-        h, l, prev_c = candles[i]["h"], candles[i]["l"], candles[i-1]["c"]
-        prev_h, prev_l = candles[i-1]["h"], candles[i-1]["l"]
+        h, l, prev_h, prev_l, prev_c = candles[i]["h"], candles[i]["l"], candles[i-1]["h"], candles[i-1]["l"], candles[i-1]["c"]
         trs.append(max(h - l, abs(h - prev_c), abs(l - prev_c)))
         up = h - prev_h
         down = prev_l - l
-        plus_dm.append(up if (up > down and up > 0) else 0)
-        minus_dm.append(down if (down > up and down > 0) else 0)
-        
-    atr_val = sum(trs[-period:]) / period
-    if atr_val == 0: return 0.0
-    plus_di = 100 * (sum(plus_dm[-period:]) / period) / atr_val
-    minus_di = 100 * (sum(minus_dm[-period:]) / period) / atr_val
-    di_sum = plus_di + minus_di
-    if di_sum == 0: return 0.0
-    dx = 100 * abs(plus_di - minus_di) / di_sum
-    return dx
+        plus_dms.append(up if (up > down and up > 0) else 0)
+        minus_dms.append(down if (down > up and down > 0) else 0)
+    smooth_tr = sum(trs[1:period+1])
+    smooth_plus = sum(plus_dms[1:period+1])
+    smooth_minus = sum(minus_dms[1:period+1])
+    dxs = []
+    for i in range(period, len(candles)):
+        if i > period:
+            smooth_tr = smooth_tr - (smooth_tr / period) + trs[i]
+            smooth_plus = smooth_plus - (smooth_plus / period) + plus_dms[i]
+            smooth_minus = smooth_minus - (smooth_minus / period) + minus_dms[i]
+        if smooth_tr == 0: dx = 0
+        else:
+            di_plus = 100 * smooth_plus / smooth_tr
+            di_minus = 100 * smooth_minus / smooth_tr
+            if (di_plus + di_minus) == 0: dx = 0
+            else: dx = 100 * abs(di_plus - di_minus) / (di_plus + di_minus)
+        dxs.append(dx)
+    first_adx = sum(dxs[:period]) / period
+    adx[period * 2 - 1] = first_adx
+    for i in range(period * 2, len(candles)):
+        adx[i] = (adx[i-1] * (period - 1) + dxs[i - period]) / period
+    return adx
 
-def calculate_total_equity(state):
+def calculate_total_equity(state, current_prices):
     total = state["capital"]
     for pos in state["positions"]:
-        candles = load_candles(pos["symbol"])
-        if candles:
-            current_price = candles[-1]["c"]
-            total += pos["units"] * current_price
+        sym = pos["symbol"]
+        if sym in current_prices:
+            total += pos["units"] * current_prices[sym]
     return total
 
-def check_momentum_signal(candles):
-    if len(candles) < 60: return None
-    window = candles[-50:]
-    closes = [c["c"] for c in window]
-    current = candles[-1]
-    price = current["c"]
-    sma50 = sma(closes, 50)
-    rsi_val = rsi(closes, 14)
-    atr_val = atr(window, 14)
-    prev_20 = candles[-21:-1]
-    if len(prev_20) < 20: return None
-    hh20 = max(c["h"] for c in prev_20)
-    prev_close = candles[-2]["c"]
-    if None in (sma50, rsi_val, atr_val): return None
-    if (price > sma50 and 40 < rsi_val < 80 and
-        prev_close <= hh20 and price > hh20):
-        return "BUY"
-    return None
-
-def check_momentum_exit(candles, position):
-    if len(candles) < 60: return False
-    current = candles[-1]
-    price = current["c"]
-    window = candles[-50:]
-    closes = [c["c"] for c in window]
-    sma50 = sma(closes, 50)
-    atr_val = atr(window, 14)
-    if None in (sma50, atr_val): return False
-    if price > position.get("highest", 0):
-        position["highest"] = price
-        new_stop = price - (2.0 * atr_val)
-        if new_stop > position.get("trailing_stop", 0):
-            position["trailing_stop"] = new_stop
-    if price <= position.get("trailing_stop", 0): return True
-    if price < sma50: return True
-    return False
-
-def check_grid_signal(candles):
-    if len(candles) < 60: return None
-    window = candles[-50:]
-    closes = [c["c"] for c in window]
-    price = candles[-1]["c"]
-    mean = sma(closes, 20)
-    std = std_dev(closes, 20, mean) if mean else None
-    lower_bb = (mean - 2 * std) if (mean and std) else None
-    rsi_val = rsi(closes, 14)
-    if None in (lower_bb, rsi_val): return None
-    if price <= lower_bb and rsi_val < 35:
-        return "BUY"
-    return None
-
-def check_grid_exit(candles, position):
-    if len(candles) < 60: return (False, None)
-    current = candles[-1]
-    price = current["c"]
-    if price <= position.get("initial_entry", position["entry_price"]) * 0.90:
-        return (True, "HARD_SL")
-    avg_entry = position.get("avg_entry", position["entry_price"])
-    if price >= avg_entry * 1.02:
-        return (True, "TAKE_PROFIT")
-    return (False, None)
-
-def check_grid_avg_levels(candles, position):
-    current = candles[-1]
-    price = current["c"]
-    initial = position.get("initial_entry", position["entry_price"])
-    levels = position.get("levels", 1)
-    if levels == 1 and price <= initial * 0.97:
-        return 2
-    if levels == 2 and price <= initial * 0.94:
-        return 3
-    return levels
-
-
 def main():
-    print(f"=== M11-IR Observer (Defensive Mode) ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===\n")
+    print(f"=== M11-IR Observer (Global Strategies on Wallex USDT) ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===\n")
     
-    if os.path.exists(STATE_FILE):
-        with open(STATE_FILE, 'r') as f:
-            state = json.load(f)
-    else:
+    state, sha = load_from_github(STATE_FILE)
+    if not isinstance(state, dict) or "capital" not in state:
         state = {
-            "capital": INITIAL_CAPITAL_TOMAN,
+            "capital": INITIAL_CAPITAL_USDT,
             "positions": [],
             "history": [],
-            "equity_curve": [INITIAL_CAPITAL_TOMAN],
+            "equity_curve": [INITIAL_CAPITAL_USDT],
+            "cooldowns": {},
             "last_run": None
         }
+        
+    if "cooldowns" not in state: state["cooldowns"] = {}
+
+    data = {}
+    ind = {}
+    current_prices = {}
     
-    if "positions" not in state: state["positions"] = []
-    if "history" not in state: state["history"] = []
-    if "equity_curve" not in state: state["equity_curve"] = [INITIAL_CAPITAL_TOMAN]
-    
-    total_equity = calculate_total_equity(state)
-    print(f"Starting equity: {total_equity:,.0f} Toman\n")
-    
-    MAX_ALLOCATION_PCT = 60.0
-    
-    for symbol, score in CALMAR_SCORES.items():
-        strategy = STRATEGY_MAP[symbol]
-        weight_pct = (score / TOTAL_CALMAR) * MAX_ALLOCATION_PCT
+    # Pre-calculate indicators for all assets
+    for sym in ASSETS:
+        candles = load_candles(sym)
+        if not candles: continue
+        data[sym] = candles
+        current_prices[sym] = candles[-1]["c"]
         
-        candles = load_candles(symbol)
-        if candles is None or len(candles) < 60:
-            continue
+        closes = [x["c"] for x in candles]
+        vols = [x["v"] for x in candles]
         
-        current_price = candles[-1]["c"]
-        current_time = candles[-1]["t"]
+        sma20 = calc_sma(closes, 20)
+        std20 = calc_std(closes, 20, sma20)
+        ema20 = calc_ema(closes, 20)
+        atr14 = calc_atr(candles, 14)
+        vol_sma = calc_sma(vols, 20)
         
-        # محاسبه اندیکاتورهای مورد نیاز برای حالت دفاعی
-        closes = [c["c"] for c in candles]
-        sma50 = sma(closes, 50)
-        adx_val = adx(candles[-50:], 14)
+        upper_bb = [None] * len(closes)
+        lower_bb = [None] * len(closes)
+        upper_kc = [None] * len(closes)
+        lower_kc = [None] * len(closes)
+        squeeze = [False] * len(closes)
         
-        pos = None
-        for p in state["positions"]:
-            if p["symbol"] == symbol:
-                pos = p
-                break
-        
-        # ─── MANAGE EXISTING POSITION ───
-        if pos:
-            should_close = False
-            reason = None
-            exit_fee = FEE_TAKER
-            
-            if strategy == "Momentum":
-                if check_momentum_exit(candles, pos):
-                    should_close = True
-                    reason = "MOMENTUM_EXIT"
-            elif strategy == "BH":
-                # Defensive Mode: اگر روند نزولی قوی بود، خارج شو
-                if sma50 and adx_val > 25 and current_price < sma50:
-                    should_close = True
-                    reason = "DEFENSIVE_MODE_DOWNTREND"
-                # محافظ فاجعه (Crash)
-                elif pos["entry_price"] > 0:
-                    peak = pos.get("peak", pos["entry_price"])
-                    if current_price > peak:
-                        pos["peak"] = current_price
-                        peak = current_price
-                    if current_price <= peak * 0.40:
-                        should_close = True
-                        reason = "CATASTROPHIC_CRASH"
-            elif strategy == "Grid":
-                new_levels = check_grid_avg_levels(candles, pos)
-                if new_levels > pos.get("levels", 1):
-                    add_amount = pos.get("level_size", pos["size_toman"] / 3)
-                    net_inv = add_amount * (1 - FEE_MAKER)
-                    new_units = net_inv / current_price
-                    pos["units"] += new_units
-                    pos["size_toman"] += add_amount
-                    pos["avg_entry"] = pos["size_toman"] / pos["units"] if pos["units"] > 0 else current_price
-                    pos["levels"] = new_levels
-                    state["capital"] -= add_amount
-                    print(f"  {symbol}: Grid Level {new_levels} added")
-                    send_bale(f"Grid Level {new_levels}: {symbol} at {current_price:,.0f}")
+        for i in range(len(closes)):
+            if sma20[i] and std20[i]:
+                upper_bb[i] = sma20[i] + (2 * std20[i])
+                lower_bb[i] = sma20[i] - (2 * std20[i])
+            if ema20[i] and atr14[i]:
+                upper_kc[i] = ema20[i] + (1.5 * atr14[i])
+                lower_kc[i] = ema20[i] - (1.5 * atr14[i])
+            if all(x is not None for x in [lower_bb[i], lower_kc[i], upper_bb[i], upper_kc[i]]):
+                squeeze[i] = (lower_bb[i] > lower_kc[i]) and (upper_bb[i] < upper_kc[i])
                 
-                ex, ex_reason = check_grid_exit(candles, pos)
-                if ex:
-                    should_close = True
-                    reason = ex_reason
-                    if ex_reason == "TAKE_PROFIT":
-                        exit_fee = FEE_MAKER
-            
-            if should_close:
-                exit_value = pos["units"] * current_price * (1 - exit_fee)
-                pnl = exit_value - pos["size_toman"]
-                pnl_pct = (pnl / pos["size_toman"]) * 100
-                state["capital"] += exit_value
-                state["history"].append({
-                    "time": current_time, "action": "CLOSE", "symbol": symbol,
-                    "strategy": pos["strategy"], "pnl_toman": round(pnl, 0), "pnl_pct": round(pnl_pct, 2), "reason": reason
-                })
-                state["positions"].remove(pos)
-                emoji = "🟢" if pnl > 0 else "🔴"
-                send_bale(f"{emoji} M11-IR CLOSED\n{symbol} | {pos['strategy']}\nPnL: {pnl:+,.0f} Toman ({pnl_pct:+.2f}%)\nReason: {reason}")
-                print(f"  {symbol}: CLOSED | {reason}")
+        ind[sym] = {
+            "rsi": calc_rsi(closes, 14),
+            "atr": atr14,
+            "adx": calc_adx(candles, 14),
+            "upper_bb": upper_bb,
+            "lower_bb": lower_bb,
+            "squeeze": squeeze,
+            "vol_sma": vol_sma
+        }
+
+    if "BTCUSDT" not in ind:
+        print("BTCUSDT data missing. Aborting.")
+        return
+
+    total_equity = calculate_total_equity(state, current_prices)
+    print(f"Starting equity: {total_equity:,.2f} USDT\n")
+
+    btc_adx = ind["BTCUSDT"]["adx"][-1]
+    
+    if btc_adx > 25:
+        w_m9, w_vsb, w_grid = 0.2, 0.3, 0.5
+        regime = "TREND"
+    elif btc_adx < 20:
+        w_m9, w_vsb, w_grid = 0.5, 0.3, 0.2
+        regime = "RANGE"
+    else:
+        w_m9, w_vsb, w_grid = 0.33, 0.33, 0.34
+        regime = "NEUTRAL"
+
+    print(f"Regime: {regime} (BTC ADX: {btc_adx:.2f})\n")
+
+    # ─── 1. Manage Existing Positions ───
+    for pos in state["positions"][:]:
+        sym = pos["symbol"]
+        if sym not in data: continue
+        c = data[sym][-1]
+        current_time = c["t"]
         
-        # ─── OPEN NEW POSITION ───
+        exit_triggered = False
+        exit_fee = TAKER_FEE
+        exit_price = c["c"]
+        
+        if pos["strategy"] in ["M9", "VSB"]:
+            if c["l"] <= pos["sl"]:
+                exit_triggered = True
+                exit_price = pos["sl"]
+            elif c["h"] >= pos["tp"]:
+                exit_triggered = True
+                exit_price = pos["tp"]
+                
+        elif pos["strategy"] == "Grid":
+            if c["l"] <= pos["initial"] * 0.90:
+                exit_triggered = True
+                exit_price = pos["initial"] * 0.90
+            elif c["h"] >= pos["avg_entry"] * 1.02:
+                exit_triggered = True
+                exit_price = pos["avg_entry"] * 1.02
+                exit_fee = MAKER_FEE
+            else:
+                if pos["levels"] == 1 and c["l"] <= pos["initial"] * 0.97:
+                    pos["levels"] = 2
+                    add_val = pos["initial_val"]
+                    state["capital"] -= add_val
+                    pos["units"] += (add_val * (1 - MAKER_FEE)) / (pos["initial"] * 0.97)
+                    pos["avg_entry"] = (pos["avg_entry"] * 1 + (pos["initial"] * 0.97)) / 2
+                    pos["initial_val"] = add_val
+                    print(f"  {sym}: Grid Level 2 added at {pos['initial']*0.97:,.2f}")
+                    send_bale(f"Grid Level 2: {sym} at {pos['initial']*0.97:,.2f}")
+                elif pos["levels"] == 2 and c["l"] <= pos["initial"] * 0.94:
+                    pos["levels"] = 3
+                    add_val = pos["initial_val"]
+                    state["capital"] -= add_val
+                    pos["units"] += (add_val * (1 - MAKER_FEE)) / (pos["initial"] * 0.94)
+                    pos["avg_entry"] = (pos["avg_entry"] * 2 + (pos["initial"] * 0.94)) / 3
+                    pos["initial_val"] = add_val
+                    print(f"  {sym}: Grid Level 3 added at {pos['initial']*0.94:,.2f}")
+                    send_bale(f"Grid Level 3: {sym} at {pos['initial']*0.94:,.2f}")
+
+        if exit_triggered:
+            exit_val = pos["units"] * exit_price * (1 - exit_fee)
+            state["capital"] += exit_val
+            pnl = exit_val - pos["invested"]
+            pnl_pct = (pnl / pos["invested"]) * 100
+            
+            state["history"].append({
+                "time": current_time, "action": "CLOSE", "symbol": sym,
+                "strategy": pos["strategy"], "pnl": round(pnl, 2), "pnl_pct": round(pnl_pct, 2)
+            })
+            state["positions"].remove(pos)
+            
+            # Apply cooldown
+            state["cooldowns"][sym] = current_time + (COOLDOWN_PERIOD * 4 * 3600 * 1000)
+            
+            emoji = "🟢" if pnl > 0 else "🔴"
+            send_bale(f"{emoji} M11-IR CLOSED\n{sym} | {pos['strategy']}\nPnL: {pnl:+,.2f} USDT ({pnl_pct:+.2f}%)")
+            print(f"  {sym}: CLOSED | {pos['strategy']} | PnL={pnl:+,.2f} USDT")
+
+    # ─── 2. Open New Positions ───
+    for sym in ASSETS:
+        if sym not in data or sym not in ind: continue
+        
+        # Check if already open
+        if any(p["symbol"] == sym for p in state["positions"]): continue
+        
+        c = data[sym][-1]
+        current_time = c["t"]
+        
+        # Check cooldown
+        if current_time <= state["cooldowns"].get(sym, 0): continue
+
+        # Determine strategy based on regime
+        if btc_adx > 25:
+            strat = "VSB" if sym in ["ETHUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT", "DOGEUSDT"] else "M9"
+        elif btc_adx < 20:
+            strat = "Grid" if sym in ["BTCUSDT", "BNBUSDT", "TRXUSDT", "LINKUSDT", "AVAXUSDT", "DOTUSDT"] else "M9"
         else:
-            signal = None
-            if strategy == "Momentum":
-                signal = check_momentum_signal(candles)
-            elif strategy == "BH":
-                # در حالت B&H، فقط اگر قیمت بالای SMA50 باشد وارد شو تا گرفتار ریزش نشویم
-                if sma50 and current_price > sma50:
-                    signal = "BUY"
-            elif strategy == "Grid":
-                signal = check_grid_signal(candles)
+            strat = "M9"
+
+        if strat == "M9": alloc_pct = w_m9 / 5
+        elif strat == "VSB": alloc_pct = w_vsb / 5
+        else: alloc_pct = w_grid / 5
+
+        alloc_amt = total_equity * alloc_pct
+        if alloc_amt > state["capital"] * 0.95: alloc_amt = state["capital"] * 0.95
+        if alloc_amt < 10: continue
+
+        entry_triggered = False
+        entry_price = c["c"]
+        fee = TAKER_FEE
+        sl, tp = 0, 0
+
+        if strat == "M9":
+            lower_bb = ind[sym]["lower_bb"][-1]
+            rsi_val = ind[sym]["rsi"][-1]
+            atr_val = ind[sym]["atr"][-1]
+            if lower_bb and rsi_val and atr_val:
+                if c["c"] <= lower_bb and rsi_val < 35:
+                    entry_triggered = True
+                    sl = entry_price - (2 * atr_val)
+                    tp = entry_price + (4 * atr_val)
+
+        elif strat == "VSB":
+            squeeze = ind[sym]["squeeze"][-1]
+            vol_sma = ind[sym]["vol_sma"][-1]
+            upper_bb = ind[sym]["upper_bb"][-1]
+            atr_val = ind[sym]["atr"][-1]
+            if squeeze and vol_sma and upper_bb and atr_val:
+                if c["c"] > upper_bb and c["v"] > (1.2 * vol_sma):
+                    entry_triggered = True
+                    sl = entry_price - (2 * atr_val)
+                    tp = entry_price + (4 * atr_val)
+
+        elif strat == "Grid":
+            lower_bb = ind[sym]["lower_bb"][-1]
+            rsi_val = ind[sym]["rsi"][-1]
+            if lower_bb and rsi_val:
+                if c["c"] <= lower_bb and rsi_val < 35:
+                    entry_triggered = True
+                    fee = MAKER_FEE
+
+        if entry_triggered:
+            state["capital"] -= alloc_amt
+            units = (alloc_amt * (1 - fee)) / entry_price
             
-            if signal == "BUY":
-                target_size = total_equity * (weight_pct / 100)
-                available = state["capital"] * 0.95
-                size_toman = min(target_size, available)
-                
-                if size_toman < 1_000_000: continue
-                
-                net_inv = size_toman * (1 - FEE_MAKER)
-                units = net_inv / current_price
-                
-                new_pos = {
-                    "symbol": symbol, "strategy": strategy,
-                    "entry_price": current_price, "entry_time": current_time,
-                    "size_toman": size_toman, "units": units,
-                    "peak": current_price if strategy == "BH" else None,
-                    "highest": current_price if strategy == "Momentum" else None,
-                    "trailing_stop": current_price * 0.90 if strategy == "Momentum" else None,
-                    "initial_entry": current_price if strategy == "Grid" else None,
-                    "avg_entry": current_price if strategy == "Grid" else None,
-                    "levels": 1 if strategy == "Grid" else None,
-                    "level_size": size_toman / 3 if strategy == "Grid" else None,
-                }
-                state["positions"].append(new_pos)
-                state["capital"] -= size_toman
-                state["history"].append({
-                    "time": current_time, "action": "OPEN", "symbol": symbol,
-                    "strategy": strategy, "price": current_price, "size_toman": round(size_toman, 0), "weight_pct": round(weight_pct, 2)
-                })
-                send_bale(f"🔵 M11-IR OPENED\n{symbol} | {strategy}\nPrice: {current_price:,.0f}\nSize: {size_toman:,.0f} Toman")
-                print(f"  {symbol}: OPENED {strategy} at {current_price:,.0f} ({size_toman:,.0f} Toman | Weight: {weight_pct:.1f}%)")
-    
-    final_equity = calculate_total_equity(state)
-    state["equity_curve"].append(round(final_equity, 0))
+            new_pos = {
+                "symbol": sym, "strategy": strat,
+                "entry_price": entry_price, "entry_time": current_time,
+                "units": units, "invested": alloc_amt,
+                "sl": sl, "tp": tp,
+                "initial": entry_price, "avg_entry": entry_price,
+                "levels": 1, "initial_val": alloc_amt
+            }
+            state["positions"].append(new_pos)
+            state["history"].append({
+                "time": current_time, "action": "OPEN", "symbol": sym,
+                "strategy": strat, "price": entry_price, "invested": round(alloc_amt, 2)
+            })
+            
+            send_bale(f"🔵 M11-IR OPENED\n{sym} | {strat}\nPrice: {entry_price:,.2f}\nSize: {alloc_amt:,.2f} USDT")
+            print(f"  {sym}: OPENED {strat} at {entry_price:,.2f} ({alloc_amt:,.2f} USDT)")
+
+    # ─── 3. Finalize and Save State ───
+    total_equity = calculate_total_equity(state, current_prices)
+    state["equity_curve"].append(round(total_equity, 2))
     if len(state["equity_curve"]) > 500:
         state["equity_curve"] = state["equity_curve"][-500:]
+    
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     
-    with open(STATE_FILE, 'w') as f:
-        json.dump(state, f, indent=2)
-    
-    roi = ((final_equity - INITIAL_CAPITAL_TOMAN) / INITIAL_CAPITAL_TOMAN) * 100
-    print(f"\n=== Summary ===")
-    print(f"  Equity: {final_equity:,.0f} Toman (ROI: {roi:+.2f}%)")
-    print(f"  Cash: {state['capital']:,.0f} Toman")
-    print(f"  Open positions: {len(state['positions'])}")
-    print(f"  State saved to: {STATE_FILE}")
+    if save_to_github(STATE_FILE, state, sha):
+        print("\nState saved to GitHub successfully.")
+    else:
+        print("\nFailed to save state to GitHub.")
 
+    roi = ((total_equity - INITIAL_CAPITAL_USDT) / INITIAL_CAPITAL_USDT) * 100
+    print(f"\n=== Summary ===")
+    print(f"  Equity: {total_equity:,.2f} USDT (ROI: {roi:+.2f}%)")
+    print(f"  Cash: {state['capital']:,.2f} USDT")
+    print(f"  Open positions: {len(state['positions'])}")
 
 if __name__ == "__main__":
     main()
