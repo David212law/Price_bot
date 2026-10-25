@@ -7,19 +7,31 @@ from datetime import datetime, timezone
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
 GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
 
-def load_from_github(filename):
+def load_data(filename):
+    # 1. Try to load locally first (For Termux testing)
+    if os.path.exists(filename):
+        try:
+            with open(filename, 'r') as f:
+                return json.load(f)
+        except Exception:
+            pass
+            
+    # 2. Fallback to GitHub API (For cloud execution)
     try:
         url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
-        r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
+        headers = {"Authorization": f"token {GH_TOKEN}"} if GH_TOKEN else {}
+        r = requests.get(url, headers=headers, timeout=15)
         if r.status_code == 200:
             data = r.json()
             return json.loads(base64.b64decode(data["content"]).decode("utf-8"))
-        return {}
-    except: return {}
+    except Exception:
+        pass
+        
+    return {}
 
 def analyze_iran_m11():
     print("=== 🇮🇷 Iran Market (M11-IR Grid) Analytics ===")
-    state = load_from_github("iran_market_lab/m11_ir_state.json")
+    state = load_data("iran_market_lab/m11_ir_state.json")
     if not state:
         print("No state found.")
         return
@@ -49,7 +61,7 @@ def analyze_iran_m11():
 
 def analyze_crypto_m11_v2():
     print("\n=== 🇺🇸 Crypto Market (M11-V2) Analytics ===")
-    state = load_from_github("m11_v2_portfolio.json")
+    state = load_data("m11_v2_portfolio.json")
     if not state:
         print("No state found.")
         return
