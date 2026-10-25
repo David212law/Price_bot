@@ -143,22 +143,25 @@ def get_metrics(equity_curve, trade_returns):
     calmar = ret / (max_dd * 100) if max_dd > 0 else 0
     wilson = calculate_wilson_lower_bound(wins, n)
     
-    # --- Fixed Monte Carlo P-Value ---
-    # Test based on Trade Returns (ROI) with fixed 5% allocation per trade
-    actual_final = 1.0
-    for r in trade_returns:
-        actual_final *= (1 + r * 0.05)
-
+    # --- Corrected Portfolio Monte Carlo ---
+    # Calculate periodic returns of the equity curve
+    periodic_rets = []
+    for i in range(1, len(equity_curve)):
+        if equity_curve[i-1] > 0:
+            periodic_rets.append((equity_curve[i] - equity_curve[i-1]) / equity_curve[i-1])
+            
+    actual_final = equity_curve[-1]
     better = 0
-    temp_rets = trade_returns[:]
-    for _ in range(1000):
+    temp_rets = periodic_rets[:]
+    
+    for _ in range(500):
         random.shuffle(temp_rets)
-        sim = 1.0
+        sim_eq = INITIAL_CAPITAL
         for r in temp_rets:
-            sim *= (1 + r * 0.05)
-        if sim >= actual_final:
+            sim_eq *= (1 + r)
+        if sim_eq >= actual_final:
             better += 1
-    pval = better / 1000.0
+    pval = better / 500.0
     
     return {"ret": ret, "dd": max_dd*100, "n": n, "pf": pf, "wilson": wilson, "pval": pval, "calmar": calmar}
 
@@ -334,7 +337,7 @@ def evaluate_wf(data, ind, window_size):
     return profitable >= 3
 
 def main():
-    print("=== Global Strategies (M9, VSB, Grid) on Wallex USDT (P-Value Fixed) ===")
+    print("=== Global Strategies (M9, VSB, Grid) on Wallex USDT (Portfolio MC) ===")
     print(f"Capital: {INITIAL_CAPITAL} USDT | Maker: {MAKER_FEE*100}% | Taker: {TAKER_FEE*100}%\n")
     
     data = {}
