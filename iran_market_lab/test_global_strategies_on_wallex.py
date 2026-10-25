@@ -8,6 +8,7 @@ INITIAL_CAPITAL = 10000.0
 MAKER_FEE = 0.0010  # 0.10%
 TAKER_FEE = 0.0013  # 0.13%
 DATA_DIR = "data_tetri"
+COOLDOWN_PERIOD = 6 # 24 hours (6 * 4h) wait after exit
 
 ASSETS = [
     "BTCUSDT", "ETHUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT", 
@@ -125,7 +126,7 @@ def calculate_wilson_lower_bound(wins, total, z=1.96):
     den = 1 + (z**2) / total
     return (num / den) * 100
 
-def get_metrics(equity_curve, trade_returns):
+def get_metrics(equity_curve, trade_returns, port_returns):
     if not trade_returns: return {"ret": 0, "dd": 0, "n": 0, "pf": 0, "wilson": 0, "pval": 1.0, "calmar": 0}
     wins = sum(1 for r in trade_returns if r > 0)
     n = len(trade_returns)
@@ -142,10 +143,11 @@ def get_metrics(equity_curve, trade_returns):
     calmar = ret / (max_dd * 100) if max_dd > 0 else 0
     wilson = calculate_wilson_lower_bound(wins, n)
     
+    # Corrected Monte Carlo P-Value based on Portfolio Returns
     actual_final = 1.0
-    for r in trade_returns: actual_final *= (1 + r)
+    for r in port_returns: actual_final *= (1 + r)
     better = 0
-    temp_rets = trade_returns[:]
+    temp_rets = port_returns[:]
     for _ in range(300):
         random.shuffle(temp_rets)
         sim = 1.0
@@ -157,7 +159,9 @@ def get_metrics(equity_curve, trade_returns):
 def run_portfolio_backtest(data, ind):
     cash = INITIAL_CAPITAL
     positions = {} 
+    cooldowns = {} # sym -> next_allowed_index
     trades = []
+    port_rets = []
     equity_curve = []
     min_len = len(data["BTCUSDT"])
     
@@ -225,17 +229,21 @@ def run_portfolio_backtest(data, ind):
             if exit_triggered:
                 exit_val = pos["units"] * exit_price * (1 - exit_fee)
                 cash += exit_val
-                ret = (exit_val / pos["invested"]) - 1
-                trades.append({"ret": ret})
+                trade_ret = (exit_val / pos["invested"]) - 1
+                port_ret = (exit_val - pos["invested"]) / current_equity # % of total portfolio
+                trades.append({"ret": trade_ret})
+                port_rets.append(port_ret)
                 del positions[sym]
+                cooldowns[sym] = i + COOLDOWN_PERIOD
                 
         equity_curve.append(current_equity)
         
         for sym in ASSETS:
             if sym in positions: continue
+            if i < cooldowns.get(sym, 0): continue # Cooldown check
+            
             c = data[sym][i]
             
-            # Determine strategy based on current regime and asset suitability
             strat = None
             if btc_adx > 25:
                 strat = "VSB" if sym in ["ETHUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT", "DOGEUSDT"] else "M9"
@@ -302,14 +310,17 @@ def run_portfolio_backtest(data, ind):
                     "initial_val": alloc_amt
                 }
                 
+    # Close remaining positions
     for sym, pos in positions.items():
         exit_val = pos["units"] * data[sym][min_len-1]["c"] * (1 - TAKER_FEE)
         cash += exit_val
-        ret = (exit_val / pos["invested"]) - 1
-        trades.append({"ret": ret})
+        trade_ret = (exit_val / pos["invested"]) - 1
+        port_ret = (exit_val - pos["invested"]) / equity_curve[-1]
+        trades.append({"ret": trade_ret})
+        port_rets.append(port_ret)
         
     equity_curve.append(cash)
-    return equity_curve, [t["ret"] for t in trades]
+    return equity_curve, [t["ret"] for t in trades], port_rets
 
 def evaluate_wf(data, ind, window_size):
     profitable = 0
@@ -319,12 +330,12 @@ def evaluate_wf(data, ind, window_size):
         sub_data = {sym: data[sym][start:end] for sym in ASSETS}
         sub_ind = {sym: {k: v[start:end] for k, v in ind[sym].items()} for sym in ASSETS}
         
-        eq, _ = run_portfolio_backtest(sub_data, sub_ind)
+        eq, _, _ = run_portfolio_backtest(sub_data, sub_ind)
         if eq[-1] > eq[0]: profitable += 1
     return profitable >= 3
 
 def main():
-    print("=== Global Strategies (M9, VSB, Grid) on Wallex USDT ===")
+    print("=== Global Strategies (M9, VSB, Grid) on Wallex USDT (Fixed) ===")
     print(f"Capital: {INITIAL_CAPITAL} USDT | Maker: {MAKER_FEE*100}% | Taker: {TAKER_FEE*100}%\n")
     
     data = {}
@@ -375,8 +386,8 @@ def main():
         }
         
     print("Running backtest...")
-    eq_curve, trade_rets = run_portfolio_backtest(data, ind)
-    m = get_metrics(eq_curve, trade_rets)
+    eq_curve, trade_rets, port_rets = run_portfolio_backtest(data, ind)
+    m = get_metrics(eq_curve, trade_rets, port_rets)
     
     print("Running Walk-Forward...")
     window_size = len(data["BTCUSDT"]) // 4
