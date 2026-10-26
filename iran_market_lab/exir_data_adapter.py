@@ -2,16 +2,17 @@ import os
 import json
 import time
 import requests
+from datetime import datetime, timezone
 
-# ─── Configuration ───
-SYMBOLS = ["BTC-USDT", "ETH-USDT", "DOT-USDT", "AVAX-USDT", "LINK-USDT"]
+# ─── Configuration (Corrected Endpoint) ───
+SYMBOLS = ["btc-usdt", "eth-usdt", "dot-usdt", "avax-usdt", "link-usdt"]
 DATA_DIR = "data_exir"
 DAYS = 730 # 2 years
 RESOLUTION = "240" # 4 Hours
 
 def fetch_exir_data(symbol, days=DAYS):
     os.makedirs(DATA_DIR, exist_ok=True)
-    filepath = f"{DATA_DIR}/{symbol.replace('-', '')}_4h.json"
+    filepath = f"{DATA_DIR}/{symbol.replace('-', '').upper()}_4h.json"
     
     if os.path.exists(filepath):
         print(f"[{symbol}] Data already exists. Skipping.")
@@ -23,26 +24,29 @@ def fetch_exir_data(symbol, days=DAYS):
     candles = []
     current = start
     
-    print(f"[{symbol}] Fetching 4H data from Exir...")
+    print(f"[{symbol}] Fetching 4H data from Exir (v2 API)...")
     
     while current < now:
         to_ts = min(current + chunk, now)
-        # ─── آدرس صحیح UDF اکسیر ───
-        url = f"https://api.exir.io/v1/udf/history?symbol={symbol}&resolution={RESOLUTION}&from={current}&to={to_ts}"
+        # ─── آدرس صحیح: /v2/chart ───
+        url = f"https://api.exir.io/v2/chart?symbol={symbol}&resolution={RESOLUTION}&from={current}&to={to_ts}"
         
         try:
             r = requests.get(url, timeout=15)
             if r.status_code == 200:
                 data = r.json()
-                if data.get('s') == 'ok':
-                    for i in range(len(data['t'])):
+                if isinstance(data, list): # پاسخ یک آرایه است
+                    for c in data:
+                        # تبدیل زمان ISO به میلی‌ثانیه
+                        dt = datetime.fromisoformat(c["time"].replace("Z", "+00:00"))
+                        ts_ms = int(dt.timestamp() * 1000)
                         candles.append({
-                            "t": int(data['t'][i]) * 1000, # convert to ms
-                            "o": float(data['o'][i]),
-                            "h": float(data['h'][i]),
-                            "l": float(data['l'][i]),
-                            "c": float(data['c'][i]),
-                            "v": float(data['v'][i])
+                            "t": ts_ms,
+                            "o": float(c["open"]),
+                            "h": float(c["high"]),
+                            "l": float(c["low"]),
+                            "c": float(c["close"]),
+                            "v": float(c["volume"])
                         })
         except Exception as e:
             print(f"  Error at chunk {current}: {e}")
@@ -59,7 +63,7 @@ def fetch_exir_data(symbol, days=DAYS):
     print(f"[{symbol}] Saved {len(sorted_candles)} candles to {filepath}")
 
 def main():
-    print("=== Exir Data Adapter (Tetri Market) ===")
+    print("=== Exir Data Adapter (v2 API) ===")
     for sym in SYMBOLS:
         fetch_exir_data(sym)
     print("=== Done ===")
