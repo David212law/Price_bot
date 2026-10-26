@@ -1,0 +1,286 @@
+import json
+import os
+import math
+import random
+import requests
+import time
+import sys
+
+# ─── Configuration (Locked Parameters from D-65) ───
+INITIAL_CAPITAL = 10000.0
+SYMBOLS = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "TRXUSDT"]
+HEADERS = {"User-Agent": "Mozilla/5.0"}
+
+# ─── Pre-calculators ───
+def pre_calc_ema(closes, period):
+    ema = [None] * len(closes)
+    if len(closes) < period: return ema
+    k = 2.0 / (period + 1)
+    e = sum(closes[:period]) / period
+    ema[period - 1] = e
+    for i in range(period, len(closes)):
+        e = closes[i] * k + e * (1 - k)
+        ema[i] = e
+    return ema
+
+def pre_calc_bb(closes, period=20, std_mult=2.0):
+    upper, lower = [None]*len(closes), [None]*len(closes)
+    for i in range(period - 1, len(closes)):
+        window = closes[i-period+1:i+1]
+        sma = sum(window) / period
+        variance = sum((x - sma) ** 2 for x in window) / period
+        std = variance ** 0.5
+        upper[i] = sma + (std_mult * std)
+        lower[i] = sma - (std_mult * std)
+    return upper, lower
+
+def pre_calc_rsi(closes, period=14):
+    rsi = [None] * len(closes)
+    if len(closes) < period + 1: return rsi
+    gains, losses = 0, 0
+    for i in range(1, period + 1):
+        change = closes[i] - closes[i - 1]
+        if change > 0: gains += change
+        else: losses += abs(change)
+    avg_gain = gains / period
+    avg_loss = losses / period
+    rsi[period] = 100 - (100 / (1 + (avg_gain / avg_loss))) if avg_loss != 0 else 100.0
+    for i in range(period + 1, len(closes)):
+        change = closes[i] - closes[i - 1]
+        gain = change if change > 0 else 0
+        loss = abs(change) if change < 0 else 0
+        avg_gain = (avg_gain * (period - 1) + gain) / period
+        avg_loss = (avg_loss * (period - 1) + loss) / period
+        rsi[i] = 100 - (100 / (1 + (avg_gain / avg_loss))) if avg_loss != 0 else 100.0
+    return rsi
+
+def pre_calc_atr(candles, period=14):
+    atr = [None] * len(candles)
+    if len(candles) < period + 1: return atr
+    trs = [0] * len(candles)
+    for i in range(1, len(candles)):
+        h, l, prev_c = candles[i]["h"], candles[i]["l"], candles[i-1]["c"]
+        trs[i] = max(h - l, abs(h - prev_c), abs(l - prev_c))
+    first_atr = sum(trs[1:period+1]) / period
+    atr[period] = first_atr
+    for i in range(period + 1, len(candles)):
+        atr[i] = (atr[i - 1] * (period - 1) + trs[i]) / period
+    return atr
+
+def pre_calc_vol_sma(candles, period=20):
+    vol_sma = [None] * len(candles)
+    for i in range(period, len(candles)):
+        vol_sma[i] = sum(x["v"] for x in candles[i-period:i]) / period
+    return vol_sma
+
+# ─── Metrics ───
+def calculate_wilson_lower_bound(wins, total, z=1.96):
+    if total == 0: return 0.0
+    p = wins / total
+    num = p + (z**2) / (2 * total) - z * math.sqrt((p * (1 - p) / total) + (z**2 / (4 * total**2)))
+    den = 1 + (z**2) / total
+    return (num / den) * 100
+
+def calculate_pf(trades):
+    gp = sum(t["ret"] for t in trades if t["ret"] > 0)
+    gl = abs(sum(t["ret"] for t in trades if t["ret"] <= 0))
+    return gp / gl if gl > 0 else 99.99
+
+def block_bootstrap_p_value(equity_curve, block_size=6, iterations=500):
+    if len(equity_curve) < block_size * 2: return 1.0
+    rets = [(equity_curve[i] - equity_curve[i-1]) / equity_curve[i-1] for i in range(1, len(equity_curve)) if equity_curve[i-1] > 0]
+    actual_final = equity_curve[-1] / equity_curve[0]
+    n_blocks = len(rets) // block_size
+    better = 0
+    for _ in range(iterations):
+        sampled = []
+        for _ in range(n_blocks):
+            start_idx = random.randint(0, len(rets) - block_size)
+            sampled.extend(rets[start_idx:start_idx+block_size])
+        sim_eq = 1.0
+        for r in sampled: sim_eq *= (1 + r)
+        if sim_eq >= actual_final: better += 1
+    return better / iterations
+
+# ─── Data Loaders ───
+def fetch_binance_data(symbol):
+    candles_4h = []
+    end_time = int(time.time() * 1000)
+    while len(candles_4h) < 4380:
+        url = f"https://data-api.binance.vision/api/v3/klines?symbol={symbol}&interval=4h&limit=1000&endTime={end_time}"
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=15)
+            if r.status_code == 200:
+                data = r.json()
+                if not data: break
+                for k in data:
+                    candles_4h.append({"t": int(k[0]), "o": float(k[1]), "h": float(k[2]), "l": float(k[3]), "c": float(k[4]), "v": float(k[5])})
+                end_time = data[0][0] - 1
+            else: break
+        except: break
+        time.sleep(0.1)
+    return sorted(candles_4h, key=lambda x: x['t'])
+
+def load_wallex_data(symbol):
+    path = f"iran_market_lab/data_tetri/{symbol}_4h.json"
+    if not os.path.exists(path): return None
+    with open(path, 'r') as f:
+        return json.load(f)
+
+# ─── Backtest Engine ───
+def run_backtest(data_4h, fee):
+    cash = INITIAL_CAPITAL
+    positions = {}
+    trades = []
+    equity_curve = []
+    
+    min_len = min(len(data_4h[s]) for s in SYMBOLS)
+    for sym in SYMBOLS:
+        data_4h[sym] = data_4h[sym][-min_len:]
+        
+    # Pre-calculate indicators
+    ind = {}
+    for sym in SYMBOLS:
+        closes = [c["c"] for c in data_4h[sym]]
+        upper, lower = pre_calc_bb(closes)
+        ind[sym] = {
+            "atr": pre_calc_atr(data_4h[sym]),
+            "rsi": pre_calc_rsi(closes),
+            "lower_bb": lower,
+            "vol_sma": pre_calc_vol_sma(data_4h[sym])
+        }
+        
+    for i in range(50, min_len): 
+        current_equity = cash
+        
+        # 1. Manage Positions
+        for sym in list(positions.keys()):
+            c = data_4h[sym][i]
+            pos = positions[sym]
+            current_equity += pos["units"] * c["c"]
+            
+            if c["l"] <= pos["sl"]:
+                exit_val = pos["units"] * pos["sl"] * (1 - fee)
+                cash += exit_val
+                trades.append({"ret": (exit_val / pos["invested"]) - 1})
+                del positions[sym]
+            elif c["h"] >= pos["tp"]:
+                exit_val = pos["units"] * pos["tp"] * (1 - fee)
+                cash += exit_val
+                trades.append({"ret": (exit_val / pos["invested"]) - 1})
+                del positions[sym]
+                
+        equity_curve.append(current_equity)
+        
+        # 2. Entry Logic
+        for sym in SYMBOLS:
+            if sym in positions: continue
+            
+            c = data_4h[sym][i]
+            lower_bb = ind[sym]["lower_bb"][i]
+            rsi_val = ind[sym]["rsi"][i]
+            vol_sma = ind[sym]["vol_sma"][i]
+            atr_val = ind[sym]["atr"][i]
+            
+            if all(v is not None for v in [lower_bb, rsi_val, vol_sma, atr_val]):
+                # M13 Core Logic: Drop below BB, Oversold RSI, High Volume
+                if c["c"] < lower_bb and rsi_val < 30 and c["v"] > (1.5 * vol_sma):
+                    alloc_amt = current_equity * 0.05
+                    if alloc_amt > cash * 0.95: alloc_amt = cash * 0.95
+                    if alloc_amt < 10: continue
+                    
+                    entry_price = c["c"]
+                    sl = entry_price - (2 * atr_val)
+                    tp = entry_price + (4 * atr_val)
+                    
+                    cash -= alloc_amt
+                    units = (alloc_amt * (1 - fee)) / entry_price
+                    positions[sym] = {"units": units, "invested": alloc_amt, "sl": sl, "tp": tp}
+                    
+    for sym, pos in positions.items():
+        exit_val = pos["units"] * data_4h[sym][min_len-1]["c"] * (1 - fee)
+        cash += exit_val
+        trades.append({"ret": (exit_val / pos["invested"]) - 1})
+        
+    equity_curve.append(cash)
+    return equity_curve, trades
+
+def evaluate_wf(data_4h, fee):
+    window_size = len(data_4h["BTCUSDT"]) // 4
+    profitable = 0
+    for w in range(4):
+        start = w * window_size
+        end = start + window_size if w < 3 else len(data_4h["BTCUSDT"])
+        sub_4h = {sym: data_4h[sym][start:end] for sym in SYMBOLS}
+        
+        eq, _ = run_backtest(sub_4h, fee)
+        if eq[-1] > eq[0]: profitable += 1
+    return profitable >= 3
+
+def main():
+    market = sys.argv[1] if len(sys.argv) > 1 else "wallex"
+    fee = 0.0013 if market == "wallex" else 0.0010
+    
+    print(f"=== M13: Volume Capitulation Reversal ({market.upper()}) ===")
+    print(f"Capital: {INITIAL_CAPITAL} USDT | Taker Fee: {fee*100}%\n")
+    
+    data_4h = {}
+    for sym in SYMBOLS:
+        print(f"Loading {sym}...")
+        if market == "wallex":
+            d4 = load_wallex_data(sym)
+        else:
+            d4 = fetch_binance_data(sym)
+            
+        if d4:
+            data_4h[sym] = d4
+        else:
+            print(f"Error loading data for {sym}")
+            return
+            
+    print("Running Backtest (Optimized)...")
+    eq_curve, trades = run_backtest(data_4h, fee)
+    
+    final_eq = eq_curve[-1]
+    ret = ((final_eq - INITIAL_CAPITAL) / INITIAL_CAPITAL) * 100
+    
+    peak = eq_curve[0]
+    max_dd = 0.0
+    for val in eq_curve:
+        if val > peak: peak = val
+        dd = (peak - val) / peak
+        if dd > max_dd: max_dd = dd
+        
+    days = len(data_4h["BTCUSDT"]) * 4 / 24
+    cagr = ((final_eq / INITIAL_CAPITAL) ** (365 / days) - 1) * 100
+    calmar = cagr / (max_dd * 100) if max_dd > 0 else 0
+    
+    n = len(trades)
+    if n == 0:
+        print("No trades generated. Strategy conditions not met.")
+        return
+        
+    wins = sum(1 for t in trades if t["ret"] > 0)
+    pf = calculate_pf(trades)
+    wilson = calculate_wilson_lower_bound(wins, n)
+    pval = block_bootstrap_p_value(eq_curve)
+    
+    print("Running Walk-Forward...")
+    wf_passed = evaluate_wf(data_4h, fee)
+    
+    print("\n=== FINAL RESULTS ===")
+    print(f"Total Return: {ret:.2f}% | CAGR: {cagr:.2f}%")
+    print(f"MaxDD: {max_dd*100:.2f}% | Standard Calmar: {calmar:.2f}")
+    print(f"Trades: {n} | Win Rate: {(wins/n)*100:.2f}% | Wilson LB: {wilson:.2f}%")
+    print(f"Profit Factor: {pf:.2f} | P-Value: {pval:.4f}")
+    print(f"Walk-Forward (3/4): {'PASS' if wf_passed else 'FAIL'}")
+    
+    if market == "wallex":
+        passed = (n >= 50 and pf > 1.2 and calmar > 2.0 and max_dd < 0.30 and wf_passed)
+    else:
+        passed = (n >= 30 and pf > 1.2 and calmar > 2.0 and max_dd < 0.15 and pval < 0.05 and wf_passed)
+        
+    print(f"\nFinal Status (Gate): {'✅ PASS' if passed else '❌ FAIL'}")
+
+if __name__ == "__main__":
+    main()
