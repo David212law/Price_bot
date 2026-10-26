@@ -1,0 +1,28 @@
+name: Build Hyperliquid Data Cache
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Fetch data
+        run: python hyperliquid_data_adapter.py
+      - name: Commit and push data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data_hyperliquid/
+          git commit -m "Update Hyperliquid data cache ($(date +%Y-%m-%d))" || echo "No changes"
+          git push
