@@ -1,9 +1,9 @@
-name: Hyperliquid M36 Paper Trading
+name: Hyperliquid M11-HL Paper
 
 on:
   schedule:
-    - cron: '15 */4 * * *' # Runs every 4 hours at minute 15
-  workflow_dispatch: # Allow manual trigger
+    - cron: '15 */4 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,10 +18,10 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install requests
-      - name: Run Paper Engine
+      - name: Run M11-HL Engine
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_REPO: ${{ github.repository }}
-        run: python exchanges/hyperliquid/hyperliquid_paper_m36.py
+        run: python exchanges/hyperliquid/run_m11_hl.py
