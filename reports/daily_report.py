@@ -38,20 +38,22 @@ def main():
     report = [f"📊 **Daily Project Report** ({now})\n"]
     alerts = []
 
-    report.append("🌐 **Hyperliquid M36 (Global DEX)**")
-    hl_data = load_from_github("exchanges/hyperliquid/state/hyperliquid_m36_state.json")
+    report.append("🌐 **Hyperliquid M11-HL (Global DEX)**")
+    hl_data = load_from_github("exchanges/hyperliquid/state/m11_hl_portfolio.json")
     if hl_data:
         total_cap = hl_data.get("total_capital", 10000.0)
         roi = ((total_cap - 10000.0) / 10000.0) * 100
+        
         m31_open = len(hl_data.get("m31_pos", {}))
         m35_open = len(hl_data.get("m35_pos", {}))
+        m40_open = len(hl_data.get("m40_pos", {}))
         
         report.append(f"   Equity: ${total_cap:.2f} (ROI: {roi:+.2f}%)")
-        report.append(f"   M31 Open: {m31_open} | M35 Open: {m35_open}")
+        report.append(f"   M31: {m31_open} | M35: {m35_open} | M40: {m40_open} open positions")
         
-        if roi < -3: alerts.append(f"⚠️ M36 Drawdown Alert: ROI is {roi:.2f}%")
+        if roi < -3: alerts.append(f"⚠️ M11-HL Drawdown Alert: ROI is {roi:.2f}%")
     else:
-        report.append("🔹 M36: State not found or empty.")
+        report.append("🔹 M11-HL: State not found.")
 
     report.append("")
 
