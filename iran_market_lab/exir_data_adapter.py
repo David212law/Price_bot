@@ -2,7 +2,6 @@ import os
 import json
 import time
 import requests
-from datetime import datetime
 
 # ─── Configuration ───
 SYMBOLS = ["BTC-USDT", "ETH-USDT", "DOT-USDT", "AVAX-USDT", "LINK-USDT"]
@@ -28,7 +27,8 @@ def fetch_exir_data(symbol, days=DAYS):
     
     while current < now:
         to_ts = min(current + chunk, now)
-        url = f"https://api.exir.io/v1/chart/history?symbol={symbol}&resolution={RESOLUTION}&from={current}&to={to_ts}"
+        # ─── آدرس صحیح UDF اکسیر ───
+        url = f"https://api.exir.io/v1/udf/history?symbol={symbol}&resolution={RESOLUTION}&from={current}&to={to_ts}"
         
         try:
             r = requests.get(url, timeout=15)
