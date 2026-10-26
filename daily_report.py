@@ -35,64 +35,46 @@ def load_from_github(filename):
     except: return {}
 
 def get_local_current_price(symbol):
-    """Reads the latest price from local USDT JSON data files."""
     path = f"iran_market_lab/data_tetri/{symbol}_4h.json"
-    if not os.path.exists(path):
-        return 0.0
+    if not os.path.exists(path): return 0.0
     try:
         with open(path, 'r') as f:
             candles = json.load(f)
-            if candles:
-                return float(candles[-1]["c"])
-    except:
-        pass
+            if candles: return float(candles[-1]["c"])
+    except: pass
     return 0.0
-
-def calculate_wilson_lower(wins, total, z=1.96):
-    if total == 0: return 0
-    p = wins / total
-    denominator = 1 + z**2 / total
-    center = p + z**2 / (2 * total)
-    spread = z * math.sqrt((p * (1 - p) + z**2 / (4 * total)) / total)
-    return (center - spread) / denominator
-
-def analyze_strategy(name, trades):
-    if not trades:
-        return f"🔹 {name}: No trades yet."
-
-    closed = [t for t in trades if t.get("status") == "closed"]
-    if not closed:
-        return f"🔹 {name}: {len(trades)} open positions, no closed trades yet."
-
-    total = len(closed)
-    wins = sum(1 for t in closed if t.get("pnl", 0) > 0 or t.get("exit_reason") == "TP" or (t.get("exit_price", 0) > t.get("entry_price", 0)))
-    net_pnl = sum(t.get("pnl", 0) for t in closed)
-
-    win_rate = (wins / total) * 100
-    wilson = calculate_wilson_lower(wins, total) * 100
-
-    progress = f"({total}/30 to verdict)" if name == "M9" else ""
-
-    return (f"🔹 {name}: n={total} {progress} | WinRate={win_rate:.1f}% | Wilson={wilson:.1f}%\n"
-            f"   Total PnL: {net_pnl:.2f}")
 
 def main():
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     report = [f"📊 **Daily Project Report** ({now})\n"]
     alerts = []
 
-    # ─── 1. CRYPTO SECTION ───
-    report.append("🇺🇸 **Crypto (Global)**")
+    # ─── 1. HYPERLIQUID M36 ───
+    report.append("🌐 **Hyperliquid M36 (Global DEX)**")
+    hl_data = load_from_github("hyperliquid_m36_state.json")
+    if hl_data:
+        total_cap = hl_data.get("total_capital", 10000.0)
+        roi = ((total_cap - 10000.0) / 10000.0) * 100
+        
+        m31_open = sum(1 for s in hl_data.get("m31", {}).values() if s.get("in_pos"))
+        m35_open = len(hl_data.get("m35", {}))
+        
+        m35_history = [h for h in hl_data.get("history", []) if h.get("strat") == "M35"]
+        m35_pnl = sum(h["pnl"] for h in m35_history)
+        m35_wr = (sum(1 for h in m35_history if h["pnl"] > 0) / len(m35_history) * 100) if m35_history else 0
+        
+        report.append(f"   Equity: ${total_cap:.2f} (ROI: {roi:+.2f}%)")
+        report.append(f"   M31 Open: {m31_open} | M35 Open: {m35_open}")
+        report.append(f"   M35 Closed: {len(m35_history)} (WR: {m35_wr:.1f}% | PnL: ${m35_pnl:+.2f})")
+        
+        if roi < -5: alerts.append(f"⚠️ M36 Drawdown Alert: ROI is {roi:.2f}%")
+    else:
+        report.append("🔹 M36: State not found or empty.")
 
-    m9_data = load_from_github("paper_m9_trades.json")
-    report.append(analyze_strategy("M9", m9_data.get("trades", [])))
+    report.append("")
 
-    ll_data = load_from_github("shadow_lead_lag_trades.json")
-    report.append(analyze_strategy("Lead-Lag", ll_data.get("trades", [])))
-
-    vsb_data = load_from_github("vsb_signals.json")
-    report.append(analyze_strategy("VSB", vsb_data.get("signals", [])))
-
+    # ─── 2. CRYPTO M11-V2 ───
+    report.append("🇺🇸 **Crypto (Binance M11-V2)**")
     m11_data = load_from_github("m11_v2_portfolio.json")
     if m11_data:
         cap = m11_data.get("capital", 10000.0)
@@ -102,69 +84,45 @@ def main():
         total_risk = sum(p.get("risk_amount", 0) for p in open_pos)
         roi = ((cap - 10000.0) / 10000.0) * 100
 
-        report.append(f"🏦 **M11-V2 Portfolio**")
-        report.append(f"   Capital: ${cap:.2f} (ROI: {roi:+.2f}%)")
+        report.append(f"   Equity: ${cap:.2f} (ROI: {roi:+.2f}%)")
         report.append(f"   Regime: {regime} (ADX: {adx})")
-        report.append(f"   Open Pos: {len(open_pos)} | Total Risk: ${total_risk:.2f}")
+        report.append(f"   Open Pos: {len(open_pos)} | Risk: ${total_risk:.2f}")
 
-        if roi < -5:
-            alerts.append(f"⚠️ M11-V2 Drawdown Alert: ROI is {roi:.2f}%")
-
-        last_run = m11_data.get("last_run", "")
-        if last_run:
-            last_run_dt = datetime.fromisoformat(last_run.replace('Z', '+00:00'))
-            if (datetime.now(timezone.utc) - last_run_dt).total_seconds() > 7200:
-                alerts.append("⚠️ M11-V2 has not run in the last 2 hours!")
+        if roi < -5: alerts.append(f"⚠️ M11-V2 Drawdown Alert: ROI is {roi:.2f}%")
+    else:
+        report.append("🔹 M11-V2: State not found.")
 
     report.append("")
 
-    # ─── 2. IRAN MARKET SECTION (USDT) ───
-    report.append("🇮🇷 **Iran Market (Wallex USDT)**")
-
+    # ─── 3. IRAN M11-IR ───
+    report.append("🇮🇷 **Iran Market (Wallex M11-IR)**")
     ir_data = load_from_github("iran_market_lab/m11_ir_state.json")
     if ir_data:
         ir_cap = ir_data.get("capital", 10000.0)
         ir_positions = ir_data.get("positions", [])
 
         total_unrealized_pnl = 0
-        pos_details = []
         invested_val = 0
 
         for p in ir_positions:
             current_price = get_local_current_price(p["symbol"])
-            invested = p.get("invested", p.get("size_toman", 0)) # Fallback to old naming if present
-            
+            invested = p.get("invested", 0)
             if current_price > 0:
                 current_val = p["units"] * current_price
-                pnl = current_val - invested
-                pnl_pct = (pnl / invested) * 100 if invested > 0 else 0
-                total_unrealized_pnl += pnl
+                total_unrealized_pnl += (current_val - invested)
                 invested_val += current_val
-                pos_details.append(f"   - {p['symbol']} ({p.get('strategy', 'N/A')}): {pnl:+,.2f} USDT ({pnl_pct:+.1f}%)")
             else:
                 invested_val += invested
-                pos_details.append(f"   - {p['symbol']} ({p.get('strategy', 'N/A')}): Price Not Found")
 
         current_equity = ir_cap + invested_val
         roi = ((current_equity - 10000.0) / 10000.0) * 100
 
         report.append(f"   Equity: {current_equity:,.2f} USDT (ROI: {roi:+.2f}%)")
-        report.append(f"   Cash: {ir_cap:,.2f} USDT")
-        report.append(f"   Unrealized PnL: {total_unrealized_pnl:+,.2f} USDT")
-        report.append(f"   Open Pos ({len(ir_positions)}):")
-        for detail in pos_details:
-            report.append(detail)
+        report.append(f"   Open Pos: {len(ir_positions)} | Unrealized PnL: {total_unrealized_pnl:+,.2f} USDT")
 
-        if roi < -5:
-            alerts.append(f"⚠️ M11-IR Drawdown Alert: ROI is {roi:.2f}%")
-
-        last_run = ir_data.get("last_run", "")
-        if last_run:
-            last_run_dt = datetime.fromisoformat(last_run.replace('Z', '+00:00'))
-            if (datetime.now(timezone.utc) - last_run_dt).total_seconds() > 7200:
-                alerts.append("⚠️ M11-IR has not run in the last 2 hours!")
+        if roi < -5: alerts.append(f"⚠️ M11-IR Drawdown Alert: ROI is {roi:.2f}%")
     else:
-        report.append("🔹 M11-IR: State file not found or empty.")
+        report.append("🔹 M11-IR: State not found.")
 
     final_report = "\n".join(report)
     print(final_report)
