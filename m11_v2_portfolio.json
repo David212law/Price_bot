@@ -1,5 +1,5 @@
 {
-  "capital": 9856.611089193444,
+  "capital": 9840.463033273256,
   "open_positions": [
     {
       "strategy": "GRID",
@@ -45,23 +45,10 @@
       "adx_at_entry": 18.37,
       "initial_entry": 0.9794,
       "levels": 3
-    },
-    {
-      "strategy": "M9",
-      "symbol": "SUIUSDT",
-      "entry_time": 1792858964291,
-      "entry_price": 0.9217,
-      "sl": 0.9023428571428571,
-      "tp": 0.9604142857142857,
-      "risk_amount": 14.743972709495857,
-      "allocated_capital": 702.0416053460985,
-      "signal_id": "M9_SUIUSDT_1792858964291",
-      "regime_at_entry": "RANGE",
-      "adx_at_entry": 18.69
     }
   ],
   "history": [],
-  "last_run": "2026-10-26T08:28:34.317572+00:00",
+  "last_run": "2026-10-26T09:24:23.177167+00:00",
   "regime": "RANGE",
   "adx": 19.53,
   "rejected_signals": [],
@@ -100,7 +87,14 @@
       "symbol": "ETHUSDT",
       "exit_price": 2359.0885714285714,
       "pnl": 27.2959
+    },
+    {
+      "time": "2026-10-26T09:24:21.343115+00:00",
+      "strategy": "M9",
+      "symbol": "SUIUSDT",
+      "exit_price": 0.9023428571428571,
+      "pnl": -16.1481
     }
   ],
-  "total_portfolio_risk": 74.75
+  "total_portfolio_risk": 60.01
 }
