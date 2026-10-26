@@ -3,7 +3,7 @@ import json
 import time
 import requests
 
-SYMBOLS = ["BTCTMN", "ETHTMN", "XRPTMN", "BNBTMN"]
+SYMBOLS = ["DOTTMN", "AVAXTMN", "LINKTMN"]
 DATA_DIR = "data_tmn"
 DAYS = 730 # 2 years
 
@@ -56,7 +56,7 @@ def fetch_wallex_tmn(symbol):
     print(f"[{symbol}] Saved {len(sorted_candles)} candles to {filepath}")
 
 def main():
-    print("=== Wallex TMN Data Adapter ===")
+    print("=== Wallex TMN Data Adapter (Winners) ===")
     for sym in SYMBOLS:
         fetch_wallex_tmn(sym)
     print("=== Done ===")
