@@ -49,8 +49,8 @@ def save_to_github(filename, data, sha=None):
     except: return False
 
 def fetch_hyperliquid_data(symbol, limit=100):
+    """Fetch data and convert strings to floats."""
     now_ms = int(time.time() * 1000)
-    # Fetch enough data for indicators
     start_ms = now_ms - (limit * 4 * 3600 * 1000)
     url = "https://api.hyperliquid.xyz/info"
     payload = {
@@ -60,7 +60,19 @@ def fetch_hyperliquid_data(symbol, limit=100):
     try:
         r = requests.post(url, json=payload, timeout=15)
         if r.status_code == 200:
-            return r.json()
+            raw_data = r.json()
+            # ─── FIX: Convert strings to floats ───
+            candles = []
+            for c in raw_data:
+                candles.append({
+                    "t": int(c["t"]),
+                    "o": float(c["o"]),
+                    "h": float(c["h"]),
+                    "l": float(c["l"]),
+                    "c": float(c["c"]),
+                    "v": float(c["v"])
+                })
+            return candles
     except: pass
     return []
 
@@ -125,7 +137,7 @@ def main():
             exit_triggered = True
             exit_price = pos["tp"]
             reason = "TP"
-            exit_fee = MAKER_FEE # Assume TP was a limit order
+            exit_fee = MAKER_FEE
             
         if exit_triggered:
             exit_val = pos["units"] * exit_price * (1 - exit_fee)
@@ -162,7 +174,7 @@ def main():
             sl = current_price - (2 * atr)
             tp = current_price + (4 * atr)
             
-            alloc_amt = state["capital"] * 0.05 # 5% risk
+            alloc_amt = state["capital"] * 0.05
             if alloc_amt > state["capital"] * 0.95: alloc_amt = state["capital"] * 0.95
             if alloc_amt < 10: continue
             
@@ -187,7 +199,8 @@ def main():
 
     # 3. Save State
     if save_to_github(STATE_FILE, state, sha):
-        print(f"\nState saved. Equity: {state['capital'] + sum(p['invested'] for p in state['positions']):,.2f} USDT | Open Pos: {len(state['positions'])}")
+        total_equity = state["capital"] + sum(p["invested"] for p in state["positions"])
+        print(f"\nState saved. Equity: {total_equity:,.2f} USDT | Open Pos: {len(state['positions'])}")
     else:
         print("\nFailed to save state.")
 
