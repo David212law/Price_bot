@@ -20,11 +20,11 @@ GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 
-STATE_FILE = "m11_v2_portfolio.json"
-M9_FILE = "paper_m9_trades.json"
-LL_FILE = "shadow_lead_lag_trades.json"
-VSB_FILE = "vsb_signals.json"
-GRID_FILE = "grid_signals.json"
+STATE_FILE = "exchanges/binance/state/m11_v2_portfolio.json"
+M9_FILE = "exchanges/binance/state/paper_m9_trades.json"
+LL_FILE = "exchanges/binance/state/shadow_lead_lag_trades.json"
+VSB_FILE = "exchanges/binance/state/vsb_signals.json"
+GRID_FILE = "exchanges/binance/state/grid_signals.json"
 
 INITIAL_CAPITAL = 10000.0
 MAX_ASSET_RISK_PCT = 0.01       # 1% max risk per asset direction (D-88)

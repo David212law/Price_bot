@@ -22,4 +22,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_REPO: ${{ github.repository }}
-        run: python analytics_engine.py
+        run: python reports/analytics_engine.py

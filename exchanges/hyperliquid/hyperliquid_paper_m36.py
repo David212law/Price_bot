@@ -12,7 +12,7 @@ GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 
-STATE_FILE = "hyperliquid_m36_state.json"
+STATE_FILE = "exchanges/hyperliquid/state/hyperliquid_m36_state.json"
 INITIAL_CAPITAL = 10000.0
 
 # Fee Structure

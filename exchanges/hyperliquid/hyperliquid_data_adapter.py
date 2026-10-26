@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 
 # ─── Configuration ───
 SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "AVAX"]
-DATA_DIR = "data_hyperliquid"
+DATA_DIR = "data/hyperliquid"
 DAYS = 730
 
 def fetch_ohlcv(symbol, interval, days=DAYS):

@@ -25,7 +25,7 @@ def load_data(filename):
 
 def analyze_m36_hyperliquid():
     print("=== 🌐 Hyperliquid M36 (Global DEX) Deep Analytics ===")
-    state = load_data("m11_hl_portfolio.json") # به‌روزرسانی به فایل جدید تخصیص‌دهنده
+    state = load_data("exchanges/hyperliquid/state/hyperliquid_m36_state.json")
     if not state:
         print("No state found.")
         return
@@ -33,7 +33,6 @@ def analyze_m36_hyperliquid():
     total_cap = state.get("total_capital", 10000.0)
     m31_cap = state.get("m31_capital", 6000.0)
     m35_cap = state.get("m35_capital", 4000.0)
-    
     roi = ((total_cap - 10000.0) / 10000.0) * 100
     
     m31_open = len(state.get("m31_pos", {}))
@@ -54,7 +53,7 @@ def analyze_m36_hyperliquid():
 
 def analyze_crypto_m11_v2():
     print("\n=== 🇺🇸 Crypto Market (M11-V2) Deep Analytics ===")
-    state = load_data("m11_v2_portfolio.json")
+    state = load_data("exchanges/binance/state/m11_v2_portfolio.json")
     if not state:
         print("No state found.")
         return

@@ -1,4 +1,4 @@
-import os, json, base64, requests, math
+import os, json, base64, requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from datetime import datetime, timezone
@@ -39,7 +39,7 @@ def main():
     alerts = []
 
     report.append("🌐 **Hyperliquid M36 (Global DEX)**")
-    hl_data = load_from_github("m11_hl_portfolio.json")
+    hl_data = load_from_github("exchanges/hyperliquid/state/hyperliquid_m36_state.json")
     if hl_data:
         total_cap = hl_data.get("total_capital", 10000.0)
         roi = ((total_cap - 10000.0) / 10000.0) * 100
@@ -56,7 +56,7 @@ def main():
     report.append("")
 
     report.append("🇺🇸 **Crypto (Binance M11-V2)**")
-    m11_data = load_from_github("m11_v2_portfolio.json")
+    m11_data = load_from_github("exchanges/binance/state/m11_v2_portfolio.json")
     if m11_data:
         cap = m11_data.get("capital", 10000.0)
         open_pos = m11_data.get("open_positions", [])

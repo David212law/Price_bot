@@ -17,7 +17,7 @@ session = get_session()
 
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
 GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
-STATE_FILE = "grid_signals.json"
+STATE_FILE = "exchanges/binance/state/grid_signals.json"
 SYMBOLS = ['ETHUSDT', 'SOLUSDT', 'SUIUSDT']
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 

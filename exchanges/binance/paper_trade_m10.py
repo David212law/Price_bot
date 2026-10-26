@@ -19,7 +19,7 @@ GH_TOKEN = os.environ.get("GH_TOKEN", "")
 GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
-STATE_FILE = "paper_m10_trades.json"
+STATE_FILE = "exchanges/binance/state/paper_m10_trades.json"
 INITIAL_CAPITAL = 1000000000.0
 TOTAL_FEE = 0.6
 

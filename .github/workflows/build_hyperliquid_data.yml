@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
       - name: Fetch data
-        run: python hyperliquid_data_adapter.py
+        run: python exchanges/hyperliquid/hyperliquid_data_adapter.py
       - name: Commit and push data
         run: |
           git config user.name "github-actions[bot]"

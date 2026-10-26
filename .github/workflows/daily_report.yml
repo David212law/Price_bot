@@ -24,4 +24,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-        run: python daily_report.py
+        run: python reports/daily_report.py
