@@ -3,7 +3,6 @@ import os
 import base64
 import requests
 import time
-import math
 from datetime import datetime, timezone
 
 # ─── Configuration ───
@@ -15,26 +14,23 @@ BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 STATE_FILE = "hyperliquid_m36_state.json"
 INITIAL_CAPITAL = 10000.0
 
-# Fee Structure
 TAKER_FEE = 0.0005
 MAKER_FEE = 0.0002
 
-# M31 Config
 M31_CAPITAL_PCT = 0.60
 M31_LEVERAGE = 6
 M31_SMA_PERIODS = 12
 M31_ENTRY_THRESHOLD = 0.00005
 M31_EXIT_THRESHOLD = 0.00001
-M31_COOLDOWN = 3  # hours
+M31_COOLDOWN = 3
 SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "AVAX"]
 
-# M35 Config
 M35_CAPITAL_PCT = 0.40
 EMA_FAST = 50
 EMA_SLOW = 200
 ATR_PERIOD = 14
 ATR_MULTIPLIER = 3.0
-M35_RISK_PER_TRADE = 0.20  # 20% of M35 cash
+M35_RISK_PER_TRADE = 0.20
 
 # ─── Helpers ───
 def send_bale(msg):
@@ -65,7 +61,6 @@ def save_to_github(filename, data, sha=None):
         return r.status_code in [200, 201]
     except: return False
 
-# ─── Data Fetching ───
 def fetch_ohlcv(symbol, interval="1d", limit=300):
     now_ms = int(time.time() * 1000)
     start_ms = now_ms - (limit * 24 * 3600 * 1000)
@@ -81,7 +76,7 @@ def fetch_ohlcv(symbol, interval="1d", limit=300):
 
 def fetch_funding(symbol, limit=50):
     now_ms = int(time.time() * 1000)
-    start_ms = now_ms - (limit * 3600 * 1000) # limit in hours
+    start_ms = now_ms - (limit * 3600 * 1000)
     url = "https://api.hyperliquid.xyz/info"
     payload = {"type": "fundingHistory", "coin": symbol, "startTime": start_ms, "endTime": now_ms}
     try:
@@ -91,7 +86,6 @@ def fetch_funding(symbol, limit=50):
     except: pass
     return []
 
-# ─── Indicators ───
 def calc_ema(closes, period):
     ema = [None] * len(closes)
     if len(closes) < period: return ema
@@ -121,17 +115,17 @@ def main():
     print(f"=== M36 Hyperliquid Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
-    if not isinstance(state, dict) or "total_capital" not in state:
+    
+    # FIX D-114: Start with clean separate capital buckets
+    if not isinstance(state, dict) or "m31_capital" not in state:
         state = {
+            "m31_capital": INITIAL_CAPITAL * M31_CAPITAL_PCT,
+            "m35_capital": INITIAL_CAPITAL * M35_CAPITAL_PCT,
             "total_capital": INITIAL_CAPITAL,
-            "m31": {sym: {"in_pos": False, "funding": 0.0, "fees": 0.0, "last_exit": 0, "hist": []} for sym in SYMBOLS},
-            "m35": {}, # sym -> pos
+            "m31": {sym: {"in_pos": False, "funding": 0.0, "fees": 0.0, "last_exit": 0, "hist": [], "last_processed_time": 0} for sym in SYMBOLS},
+            "m35": {},
             "history": []
         }
-        
-    # Calculate current M31 and M35 equity for sizing
-    m31_equity = state["total_capital"] * M31_CAPITAL_PCT
-    m35_equity = state["total_capital"] * M35_CAPITAL_PCT
 
     # ─── 1. M31 Logic (Funding Arb) ───
     for sym in SYMBOLS:
@@ -139,8 +133,6 @@ def main():
         if not funding_records: continue
         
         st = state["m31"][sym]
-        
-        # Process funding since last run
         last_processed = st.get("last_processed_time", 0)
         new_records = [r for r in funding_records if r["t"] > last_processed]
         
@@ -151,28 +143,34 @@ def main():
             avg_rate = sum(st["hist"]) / len(st["hist"])
             
             if st["in_pos"]:
-                if rate > 0:
-                    earned = (m31_equity / len(SYMBOLS)) * rate * M31_LEVERAGE
-                    st["funding"] += earned
+                # FIX D-115: Unconditional funding addition (negative rates subtract)
+                earned = (state["m31_capital"] / len(SYMBOLS)) * rate * M31_LEVERAGE
+                st["funding"] += earned
+                state["m31_capital"] += earned
+                
                 if avg_rate < M31_EXIT_THRESHOLD:
-                    cost = (m31_equity / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
+                    cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
                     st["fees"] += cost
+                    state["m31_capital"] -= cost
                     st["in_pos"] = False
                     st["last_exit"] = rec["t"]
-                    send_bale(f"🟡 M31 CLOSED (Funding Drop)\n{sym} | Funding: {st['funding']:.2f}")
+                    send_bale(f"🟡 M31 CLOSED\n{sym} | Funding: {st['funding']:.2f}")
             else:
                 time_since_exit = (rec["t"] - st["last_exit"]) / (3600 * 1000)
                 if avg_rate > M31_ENTRY_THRESHOLD and rate > 0 and time_since_exit >= M31_COOLDOWN:
-                    cost = (m31_equity / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
+                    cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
                     st["fees"] += cost
+                    state["m31_capital"] -= cost
                     st["in_pos"] = True
-                    send_bale(f"🟢 M31 OPENED (Funding High)\n{sym} | Avg Rate: {avg_rate*100:.4f}%")
-        
+                    send_bale(f"🟢 M31 OPENED\n{sym} | Avg Rate: {avg_rate*100:.4f}%")
+                    
         if new_records:
             st["last_processed_time"] = new_records[-1]["t"]
 
     # ─── 2. M35 Logic (EMA 1D) ───
     for sym in SYMBOLS:
+        side = None # FIX D-116: Reset side for every symbol loop
+        
         candles = fetch_ohlcv(sym, "1d", 300)
         if len(candles) < EMA_SLOW + 2: continue
         
@@ -181,7 +179,6 @@ def main():
         ema_slow = calc_ema(closes, EMA_SLOW)
         atr = calc_atr(candles, ATR_PERIOD)
         
-        # We use the last CLOSED candle for signals (index -2)
         idx = len(candles) - 2 
         prev_idx = idx - 1
         
@@ -194,23 +191,24 @@ def main():
         
         pos = state["m35"].get(sym)
         
-        # Manage existing position
         if pos:
             exit_triggered = False
+            exit_price = current_price
+            
             if pos["side"] == "LONG":
                 new_stop = candles[idx]["h"] - (ATR_MULTIPLIER * atr_val)
                 if new_stop > pos["stop"]: pos["stop"] = new_stop
                 if candles[idx]["l"] <= pos["stop"]:
                     exit_triggered, exit_price = True, pos["stop"]
                 elif ef < es:
-                    exit_triggered, exit_price = True, current_price
+                    exit_triggered = True
             elif pos["side"] == "SHORT":
                 new_stop = candles[idx]["l"] + (ATR_MULTIPLIER * atr_val)
                 if new_stop < pos["stop"]: pos["stop"] = new_stop
                 if candles[idx]["h"] >= pos["stop"]:
                     exit_triggered, exit_price = True, pos["stop"]
                 elif ef > es:
-                    exit_triggered, exit_price = True, current_price
+                    exit_triggered = True
                     
             if exit_triggered:
                 if pos["side"] == "LONG":
@@ -218,49 +216,35 @@ def main():
                 else:
                     ret = (pos["entry_price"] * (1 - TAKER_FEE) - exit_price * (1 + TAKER_FEE)) / (pos["entry_price"] * (1 + TAKER_FEE))
                 
+                # FIX D-117: Return principal + PnL to M35 capital
                 pnl = pos["invested"] * ret
-                m35_equity += pnl
+                state["m35_capital"] += pos["invested"] + pnl
+                
                 state["history"].append({"time": datetime.now(timezone.utc).isoformat(), "strat": "M35", "symbol": sym, "side": pos["side"], "ret": ret, "pnl": pnl})
                 del state["m35"][sym]
                 send_bale(f"🔵 M35 CLOSED ({pos['side']})\n{sym} | PnL: {pnl:+.2f} USDT ({ret*100:+.2f}%)")
                 
-        # Check for new entry
-        elif ef > es and ef_prev <= es_prev: # Golden Cross
+        # Entry
+        elif ef > es and ef_prev <= es_prev:
             side = "LONG"
-        elif ef < es and ef_prev >= es_prev: # Death Cross
+        elif ef < es and ef_prev >= es_prev:
             side = "SHORT"
-        else:
-            side = None
             
         if side and sym not in state["m35"]:
-            entry_price = current_price
-            alloc_amt = m35_equity * M35_RISK_PER_TRADE
+            alloc_amt = state["m35_capital"] * M35_RISK_PER_TRADE
             if alloc_amt > 10:
-                m35_equity -= alloc_amt
-                stop = entry_price - (ATR_MULTIPLIER * atr_val) if side == "LONG" else entry_price + (ATR_MULTIPLIER * atr_val)
-                state["m35"][sym] = {"side": side, "entry_price": entry_price, "invested": alloc_amt, "stop": stop}
-                send_bale(f"🔵 M35 OPENED ({side})\n{sym} at {entry_price:,.2f}\nSize: {alloc_amt:.2f} USDT")
+                state["m35_capital"] -= alloc_amt # Deduct principal on entry
+                stop = current_price - (ATR_MULTIPLIER * atr_val) if side == "LONG" else current_price + (ATR_MULTIPLIER * atr_val)
+                state["m35"][sym] = {"side": side, "entry_price": current_price, "invested": alloc_amt, "stop": stop}
+                send_bale(f"🔵 M35 OPENED ({side})\n{sym} at {current_price:,.2f}\nSize: {alloc_amt:.2f} USDT")
 
-    # ─── 3. Update Total Capital ───
-    # Calculate true equity: M31 (funding - fees) + M35 (realized + open pos value)
-    m31_final = (state["total_capital"] * M31_CAPITAL_PCT) + sum(st["funding"] - st["fees"] for st in state["m31"].values())
-    
-    m35_realized_cash = (state["total_capital"] * M35_CAPITAL_PCT)
-    # We need to track M35 cash accurately. For simplicity, we just sum the PnL from history.
-    m35_pnl = sum(h["pnl"] for h in state["history"] if h["strat"] == "M35")
-    m35_open_value = sum(p["invested"] for p in state["m35"].values())
-    m35_final = (state["total_capital"] * M35_CAPITAL_PCT) + m35_pnl
-    
-    state["total_capital"] = m31_final + m35_final
+    # ─── 3. Final State Update ───
+    state["total_capital"] = state["m31_capital"] + state["m35_capital"]
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     
-    # ─── 4. Save ───
     if save_to_github(STATE_FILE, state, sha):
-        print(f"✅ State saved. Total Equity: {state['total_capital']:.2f} USDT")
-        print(f"   M31 Equity: {m31_final:.2f} | M35 Equity: {m35_final:.2f}")
-        print(f"   M35 Open Positions: {len(state['m35'])}")
-    else:
-        print("❌ Failed to save state.")
+        print(f"✅ State saved. Equity: {state['total_capital']:.2f} USDT")
+        print(f"   M31 Capital: {state['m31_capital']:.2f} | M35 Capital: {state['m35_capital']:.2f}")
 
 if __name__ == "__main__":
     main()
