@@ -14,4 +14,4 @@ jobs:
       - name: Install dependencies
         run: pip install requests
       - name: Run Test
-        run: python exchanges/vertex/test_vertex_api.py
+        run: python exchanges/vertex/fetch_vertex_data.py
