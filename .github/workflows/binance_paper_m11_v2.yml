@@ -1,16 +1,15 @@
-name: Paper Trade M9
+name: Binance M11-V2 Paper
 
 on:
   schedule:
-    - cron: '0 */4 * * *'
+    - cron: '5 * * * *' # اجرا در دقیقه 5 هر ساعت
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
+permissions:
+  contents: write
 
 jobs:
-  run:
+  run-engine:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,10 +17,11 @@ jobs:
         with:
           python-version: '3.10'
       - name: Install dependencies
-        run: pip install requests
-      - name: Run Script
+        run: pip install requests pandas numpy
+      - name: Run M11-V2 Engine
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-        run: python exchanges/binance/paper_trade_m9.py
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python exchanges/binance/run_m11_v2.py
