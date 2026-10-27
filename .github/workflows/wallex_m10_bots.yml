@@ -1,16 +1,15 @@
-name: Paper Trade M10 Dividend
+name: Wallex M10 Bots
 
 on:
   schedule:
-    - cron: '20 */4 * * *'
+    - cron: '0 0 * * *' # اجرا روزانه ساعت 00:00 UTC
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
+permissions:
+  contents: write
 
 jobs:
-  run:
+  run-wallex-bots:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,9 +18,10 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install requests
-      - name: Run Script
+      - name: Run Bots
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-        run: python exchanges/binance/paper_m10_dividend.py
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python exchanges/wallex/run_wallex_m10.py
