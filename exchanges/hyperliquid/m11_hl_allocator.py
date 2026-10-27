@@ -3,8 +3,9 @@ from datetime import datetime, timezone
 
 INITIAL_CAPITAL = 10000.0
 M31_PCT = 0.50
-M35_PCT = 0.30
+M35_PCT = 0.20
 M40_PCT = 0.20
+M41_PCT = 0.10 # تخصیص جدید برای Diversifier
 M31_LEVERAGE = 6
 MAKER_FEE = 0.0002
 TAKER_FEE = 0.0005
@@ -23,24 +24,31 @@ def fetch_funding(symbol):
     except: pass
     return 0.0
 
+def load_json(path):
+    if os.path.exists(path):
+        with open(path, 'r') as f: return json.load(f)
+    return {"signals": []}
+
 def main():
     if os.path.exists(STATE_FILE):
+        if "m41_capital" not in state: state["m41_capital"] = INITIAL_CAPITAL * M41_PCT
+        if "m41_pos" not in state: state["m41_pos"] = {}
         with open(STATE_FILE, 'r') as f: state = json.load(f)
     else:
         state = {
             "total_capital": INITIAL_CAPITAL,
-            "m31_capital": INITIAL_CAPITAL * M31_PCT, "m35_capital": INITIAL_CAPITAL * M35_PCT, "m40_capital": INITIAL_CAPITAL * M40_PCT,
-            "m31_pos": {}, "m35_pos": {}, "m40_pos": {}, "history": []
+            "m31_capital": INITIAL_CAPITAL * M31_PCT, "m35_capital": INITIAL_CAPITAL * M35_PCT, 
+            "m40_capital": INITIAL_CAPITAL * M40_PCT, "m41_capital": INITIAL_CAPITAL * M41_PCT,
+            "m31_pos": {}, "m35_pos": {}, "m40_pos": {}, "m41_pos": {}, "history": []
         }
 
-    # 1. M31 Accrual
+    # 1. M31 Accrual & Signals (بدون تغییر)
     for sym in list(state["m31_pos"].keys()):
         rate = fetch_funding(sym)
         earned = (state["m31_capital"] / len(SYMBOLS)) * rate * M31_LEVERAGE
         state["m31_capital"] += earned
 
-    # 2. Process M31 Signals
-    m31_sigs = json.load(open("exchanges/hyperliquid/state/m31_signals.json")).get("signals", []) if os.path.exists("exchanges/hyperliquid/state/m31_signals.json") else []
+    m31_sigs = load_json("exchanges/hyperliquid/state/m31_signals.json").get("signals", [])
     for sig in m31_sigs:
         if sig["action"] == "OPEN" and sig["symbol"] not in state["m31_pos"]:
             cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
@@ -51,8 +59,8 @@ def main():
             state["m31_capital"] -= cost
             del state["m31_pos"][sig["symbol"]]
 
-    # 3. Process M35 Signals
-    m35_sigs = json.load(open("exchanges/hyperliquid/state/m35_signals.json")).get("signals", []) if os.path.exists("exchanges/hyperliquid/state/m35_signals.json") else []
+    # 2. M35 Signals
+    m35_sigs = load_json("exchanges/hyperliquid/state/m35_signals.json").get("signals", [])
     for sig in m35_sigs:
         if sig["action"] in ["OPEN_LONG", "OPEN_SHORT"] and sig["symbol"] not in state["m35_pos"]:
             alloc = state["m35_capital"] * 0.20
@@ -60,8 +68,8 @@ def main():
                 state["m35_capital"] -= alloc
                 state["m35_pos"][sig["symbol"]] = {"side": "LONG" if sig["action"]=="OPEN_LONG" else "SHORT", "entry": sig["price"], "invested": alloc, "stop": sig["price"] - (3*sig["atr"]) if sig["action"]=="OPEN_LONG" else sig["price"] + (3*sig["atr"])}
 
-    # 4. Process M40 Signals
-    m40_sigs = json.load(open("exchanges/hyperliquid/state/m40_signals.json")).get("signals", []) if os.path.exists("exchanges/hyperliquid/state/m40_signals.json") else []
+    # 3. M40 Signals
+    m40_sigs = load_json("exchanges/hyperliquid/state/m40_signals.json").get("signals", [])
     for sig in m40_sigs:
         if sig["action"] in ["OPEN_LONG", "OPEN_SHORT"] and sig["symbol"] not in state["m40_pos"]:
             if len(state["m40_pos"]) < 3:
@@ -70,16 +78,23 @@ def main():
                     state["m40_capital"] -= alloc
                     state["m40_pos"][sig["symbol"]] = {"side": "LONG" if sig["action"]=="OPEN_LONG" else "SHORT", "entry": sig["price"], "invested": alloc, "tp": sig["tp"], "sl": sig["sl"]}
 
-    # Calculate Actual Total Equity (Free Cash + Invested Capital)
-    m40_invested = sum(p["invested"] for p in state["m40_pos"].values())
-    m35_invested = sum(p["invested"] for p in state["m35_pos"].values())
-    total_equity = state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + m40_invested + m35_invested
+    # 4. M41 Signals (Diversifier)
+    m41_sigs = load_json("exchanges/hyperliquid/state/m41_signals.json").get("signals", [])
+    for sig in m41_sigs:
+        if sig["action"] in ["OPEN_LONG", "OPEN_SHORT"] and sig["symbol"] not in state["m41_pos"]:
+            # برای M41 از ریسک 0.5% استفاده می‌کنیم (طبق پیش‌ثبت نام)
+            alloc = state["m41_capital"] * 0.05 # 5% از سرمایه M41
+            if alloc > 10 and state["m41_capital"] > alloc:
+                state["m41_capital"] -= alloc
+                state["m41_pos"][sig["symbol"]] = {"side": "LONG" if sig["action"]=="OPEN_LONG" else "SHORT", "entry": sig["price"], "invested": alloc, "tp": sig["tp"], "sl": sig["sl"]}
 
+    # 5. محاسبه سرمایه کل
+    total_invested = sum(p["invested"] for pos in [state["m35_pos"], state["m40_pos"], state["m41_pos"]] for p in pos.values())
+    total_equity = state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + state["m41_capital"] + total_invested
     state["total_capital"] = total_equity
+    
     with open(STATE_FILE, 'w') as f: json.dump(state, f, indent=2)
     print(f"Allocator Updated. Total Equity: ${state['total_capital']:.2f}")
-    print(f"  M31 Cash: ${state['m31_capital']:.2f} | Pos: {len(state['m31_pos'])}")
-    print(f"  M35 Cash: ${state['m35_capital']:.2f} | Pos: {len(state['m35_pos'])}")
-    print(f"  M40 Cash: ${state['m40_capital']:.2f} | Pos: {len(state['m40_pos'])}")
+    print(f"  M31: ${state['m31_capital']:.2f} | M35: ${state['m35_capital']:.2f} | M40: ${state['m40_capital']:.2f} | M41: ${state['m41_capital']:.2f}")
 
 if __name__ == "__main__": main()

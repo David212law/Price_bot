@@ -1,3 +1,10 @@
 {
-  "signals": []
+  "signals": [
+    {
+      "symbol": "XRP",
+      "action": "OPEN_SHORT",
+      "price": 1.3088,
+      "atr": 0.054392857142857166
+    }
+  ]
 }
