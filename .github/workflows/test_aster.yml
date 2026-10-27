@@ -1,4 +1,4 @@
-name: Test Vertex API
+name: Test Aster API
 
 on:
   workflow_dispatch:
@@ -14,4 +14,4 @@ jobs:
       - name: Install dependencies
         run: pip install requests
       - name: Run Test
-        run: python exchanges/vertex/fetch_vertex_data.py
+        run: python exchanges/aster/test_aster_api.py
