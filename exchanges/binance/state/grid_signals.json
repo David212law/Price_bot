@@ -10,10 +10,10 @@
       "total_invested": 666.6666666666666,
       "total_units": 0.2843510597921566,
       "avg_entry": 2344.519718526668,
-      "status": "open",
-      "exit_time": null,
-      "exit_price": null,
-      "exit_reason": null
+      "status": "closed",
+      "exit_time": 1793059200000,
+      "exit_price": 2314.88,
+      "exit_reason": "REGIME_CHANGE"
     },
     {
       "id": "1792684800000_SOLUSDT",
@@ -25,10 +25,10 @@
       "total_invested": 666.6666666666666,
       "total_units": 6.547044256630972,
       "avg_entry": 101.82712084028664,
-      "status": "open",
-      "exit_time": null,
-      "exit_price": null,
-      "exit_reason": null
+      "status": "closed",
+      "exit_time": 1793059200000,
+      "exit_price": 100.17,
+      "exit_reason": "REGIME_CHANGE"
     },
     {
       "id": "1792684800000_SUIUSDT",
@@ -40,10 +40,10 @@
       "total_invested": 1000.0,
       "total_units": 1054.3834027494133,
       "avg_entry": 0.9484216058337005,
-      "status": "open",
-      "exit_time": null,
-      "exit_price": null,
-      "exit_reason": null
+      "status": "closed",
+      "exit_time": 1793059200000,
+      "exit_price": 0.9099,
+      "exit_reason": "REGIME_CHANGE"
     }
   ]
 }
