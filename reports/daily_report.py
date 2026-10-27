@@ -47,9 +47,10 @@ def main():
         m31_open = len(hl_data.get("m31_pos", {}))
         m35_open = len(hl_data.get("m35_pos", {}))
         m40_open = len(hl_data.get("m40_pos", {}))
+        m41_open = len(hl_data.get("m41_pos", {}))
         
         report.append(f"   Equity: ${total_cap:.2f} (ROI: {roi:+.2f}%)")
-        report.append(f"   M31: {m31_open} | M35: {m35_open} | M40: {m40_open} open positions")
+        report.append(f"   Open Pos: M31={m31_open} | M35={m35_open} | M40={m40_open} | M41={m41_open}")
         
         if roi < -3: alerts.append(f"⚠️ M11-HL Drawdown Alert: ROI is {roi:.2f}%")
     else:
