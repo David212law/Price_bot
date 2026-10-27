@@ -44,6 +44,51 @@
       "exit_time": 1793059200000,
       "exit_price": 0.9099,
       "exit_reason": "REGIME_CHANGE"
+    },
+    {
+      "id": "1793116800000_ETHUSDT",
+      "symbol": "ETHUSDT",
+      "entry_time": 1793116800000,
+      "initial_entry": 2347.98,
+      "levels": 1,
+      "amount_per_level": 333.3333333333333,
+      "total_invested": 333.3333333333333,
+      "total_units": 0.1419660019818454,
+      "avg_entry": 2347.98,
+      "status": "open",
+      "exit_time": null,
+      "exit_price": null,
+      "exit_reason": null
+    },
+    {
+      "id": "1793116800000_SOLUSDT",
+      "symbol": "SOLUSDT",
+      "entry_time": 1793116800000,
+      "initial_entry": 101.16,
+      "levels": 1,
+      "amount_per_level": 333.3333333333333,
+      "total_invested": 333.3333333333333,
+      "total_units": 3.295110056675893,
+      "avg_entry": 101.16,
+      "status": "open",
+      "exit_time": null,
+      "exit_price": null,
+      "exit_reason": null
+    },
+    {
+      "id": "1793116800000_SUIUSDT",
+      "symbol": "SUIUSDT",
+      "entry_time": 1793116800000,
+      "initial_entry": 0.927,
+      "levels": 1,
+      "amount_per_level": 333.3333333333333,
+      "total_invested": 333.3333333333333,
+      "total_units": 359.5828838547285,
+      "avg_entry": 0.927,
+      "status": "open",
+      "exit_time": null,
+      "exit_price": null,
+      "exit_reason": null
     }
   ]
 }
