@@ -2,8 +2,12 @@ name: Wallex M10 Bots
 
 on:
   schedule:
-    - cron: '0 0 * * *' # اجرا روزانه ساعت 00:00 UTC
+    - cron: '0 1 * * *' # اجرا روزانه ساعت 01:00 UTC (یک ساعت بعد از Midnight)
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false # اجرای قبلی را قطع نکن، اجازه بده تمام شود
 
 permissions:
   contents: write
