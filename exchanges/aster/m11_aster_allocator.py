@@ -160,7 +160,7 @@ def main():
     
     state, sha = load_from_github(STATE_FILE)
     # اصلاح کلیدهای وضعیت برای رفع باگ سرمایه
-    if not isinstance(state, dict) or "cash" not in state:
+    if not isinstance(state, dict) or "m31_capital" not in state:
         state = {
             "total_equity": INITIAL_CAPITAL,
             "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
