@@ -215,6 +215,7 @@ def main():
 
     # ── Check Exits ──
     for sym, pos in list(state["a8_positions"].items()):
+        if sym not in data_4h or sym not in current_prices: continue
         c = data_4h[sym][-1]
         exited = False
         exit_price = c["c"]
@@ -236,6 +237,7 @@ def main():
             send_bale(f"🔵 A8 CLOSED ({reason}) | {sym} | PnL: {pnl:+.2f}")
 
     for sym, pos in list(state["a20_positions"].items()):
+        if sym not in data_4h or sym not in current_prices: continue
         c = data_4h[sym][-1]
         st_dir = calc_supertrend(data_4h[sym])[1][-1]
         exited = False
@@ -268,6 +270,7 @@ def main():
     for sym in SYMBOLS:
         # A8 Entry
         if sym not in state["a8_positions"] and len(state["a8_positions"]) < 3:
+            if sym not in data_4h: continue
             c = data_4h[sym][-1]
             closes = [x["c"] for x in data_4h[sym]]
             _, bb_l = calc_bb(closes, 20, 2.0)
@@ -289,6 +292,7 @@ def main():
 
         # A20 Entry
         if sym not in state["a20_positions"] and len(state["a20_positions"]) < 3:
+            if sym not in data_4h: continue
             st, st_dir = calc_supertrend(data_4h[sym])
             if st[-1] is not None and st_dir[-1] != st_dir[-2]:
                 side = "LONG" if st_dir[-1] == 1 else "SHORT"
