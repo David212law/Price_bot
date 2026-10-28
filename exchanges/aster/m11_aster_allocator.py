@@ -195,7 +195,7 @@ def main():
         if f_time > state["m31_last_funding_time"].get(sym, 0):
             if f_rate > 0:
                 income = m31_alloc * M31_LEVERAGE * f_rate
-                state["cash"] += income
+                state["m31_capital"] += income
                 state["m31_last_funding_time"][sym] = f_time
                 print(f"[M31] {sym} Funding received: {income:.4f} USDT (Rate: {f_rate*100:.4f}%)")
                 send_bale(f"🟢 M31 Funding | {sym} | +{income:.4f} USDT")
