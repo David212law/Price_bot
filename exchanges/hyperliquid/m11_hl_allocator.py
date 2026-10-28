@@ -31,9 +31,9 @@ def load_json(path):
 
 def main():
     if os.path.exists(STATE_FILE):
+        with open(STATE_FILE, 'r') as f: state = json.load(f)
         if "m41_capital" not in state: state["m41_capital"] = INITIAL_CAPITAL * M41_PCT
         if "m41_pos" not in state: state["m41_pos"] = {}
-        with open(STATE_FILE, 'r') as f: state = json.load(f)
     else:
         state = {
             "total_capital": INITIAL_CAPITAL,
