@@ -39,7 +39,8 @@ def send_bale(msg):
     if not BALE_TOKEN or not BALE_CHAT: return
     url = f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage"
     try: requests.post(url, json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
-    except: pass
+    except Exception as e:
+        print(f"Bale Error: {e}")
 
 def load_from_github(filename):
     try:
@@ -162,7 +163,9 @@ def main():
     if not isinstance(state, dict) or "cash" not in state:
         state = {
             "total_equity": INITIAL_CAPITAL,
-            "cash": INITIAL_CAPITAL,
+            "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
+            "a8_capital": INITIAL_CAPITAL * A8_ALLOC,
+            "a20_capital": INITIAL_CAPITAL * A20_ALLOC,
             "m31_last_funding_time": {sym: 0 for sym in SYMBOLS},
             "a8_positions": {},
             "a20_positions": {},
@@ -186,7 +189,7 @@ def main():
         return
 
     # ── M31 Funding Logic ──
-    m31_alloc = state["cash"] * M31_ALLOC
+    m31_alloc = state["m31_capital"]
     for sym in SYMBOLS:
         f_time, f_rate = fetch_latest_funding(sym)
         if f_time > state["m31_last_funding_time"].get(sym, 0):
@@ -230,7 +233,7 @@ def main():
         if exited:
             exit_val = pos["units"] * exit_price * (1 - TAKER_FEE)
             pnl = exit_val - pos["invested"]
-            state["cash"] += exit_val
+            state["a8_capital"] += exit_val
             state["history"].append({"time": c["t"], "strat": "A8", "sym": sym, "pnl": pnl})
             del state["a8_positions"][sym]
             print(f"[A8] {sym} CLOSED ({reason}) | PnL: {pnl:+.2f}")
@@ -260,7 +263,7 @@ def main():
             else:
                 ret = (pos["entry_price"] * (1 - TAKER_FEE) - exit_price * (1 + TAKER_FEE)) / (pos["entry_price"] * (1 + TAKER_FEE))
             pnl = pos["invested"] * ret
-            state["cash"] += (pos["invested"] + pnl)
+            state["a20_capital"] += (pos["invested"] + pnl)
             state["history"].append({"time": c["t"], "strat": "A20", "sym": sym, "pnl": pnl})
             del state["a20_positions"][sym]
             print(f"[A20] {sym} CLOSED ({reason}) | PnL: {pnl:+.2f}")
@@ -280,8 +283,8 @@ def main():
             if None not in [bb_l[-1], rsi[-1], ema_1d[-1]]:
                 if c["c"] > ema_1d[-1] and c["c"] <= bb_l[-1] and rsi[-1] < 35:
                     alloc = a8_equity * A8_RISK
-                    if alloc > 10 and state["cash"] >= alloc:
-                        state["cash"] -= alloc
+                    if alloc > 10 and state["a8_capital"] >= alloc:
+                        state["a8_capital"] -= alloc
                         units = (alloc * (1 - MAKER_FEE)) / c["c"]
                         state["a8_positions"][sym] = {
                             "initial": c["c"], "avg": c["c"], "units": units, 
@@ -303,8 +306,8 @@ def main():
                 
                 if risk_per_unit > 0:
                     alloc = min((risk_amount / risk_per_unit) * c["c"], a20_equity * A20_MAX_ALLOC)
-                    if alloc > 10 and state["cash"] >= alloc:
-                        state["cash"] -= alloc
+                    if alloc > 10 and state["a8_capital"] >= alloc:
+                        state["a20_capital"] -= alloc
                         units = alloc / c["c"]
                         state["a20_positions"][sym] = {
                             "side": side, "entry_price": c["c"], 
