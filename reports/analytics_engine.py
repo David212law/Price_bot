@@ -44,7 +44,6 @@ def analyze_m11_hl_hyperliquid():
     print(f"  [M41 Volatility Breakout] Cash: ${m41_cap:.2f} | Open: {len(state.get('m41_pos', {}))}")
 
 def analyze_aster_m11_aster():
-    # بخش جدید برای Aster
     print("\n=== 🌟 Aster (M11-Aster Portfolio) Deep Analytics ===")
     state = load_data("exchanges/aster/state/m11_aster_paper_state.json")
     if not state:
@@ -52,25 +51,25 @@ def analyze_aster_m11_aster():
         return
 
     total_eq = state.get("total_equity", 10000.0)
-    cash = state.get("cash", 10000.0)
-    a8_pos = state.get("a8_positions", {})
-    a20_pos = state.get("a20_positions", {})
-    history = state.get("history", [])
+    m31_cap = state.get("m31_capital", 5000.0)
+    a8_cap = state.get("a8_capital", 2500.0)
+    a20_cap = state.get("a20_capital", 2500.0)
     
     roi = ((total_eq - 10000.0) / 10000.0) * 100
     print(f"Total Equity: ${total_eq:.2f} (ROI: {roi:+.2f}%)")
-    print(f"Cash Available: ${cash:.2f}")
-    print(f"A8 (Grid) Open: {len(a8_pos)}")
-    print(f"A20 (SuperTrend) Open: {len(a20_pos)}")
-    
+    print(f"\n  [M31 Funding] Cash: ${m31_cap:.2f}")
+    print(f"  [A8 Grid] Cash: ${a8_cap:.2f} | Open: {len(state.get('a8_positions', {}))}")
+    print(f"  [A20 SuperTrend] Cash: ${a20_cap:.2f} | Open: {len(state.get('a20_positions', {}))}")
+
+    history = state.get("history", [])
     if history:
         net_pnl = sum(h.get("pnl", 0) for h in history)
-        print(f"Closed Trades: {len(history)} | Realized PnL: ${net_pnl:+.2f}")
+        print(f"\n  Closed Trades: {len(history)} | Realized PnL: ${net_pnl:+.2f}")
 
 def main():
     print(f"=== Project Deep Analytics Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===\n")
     analyze_m11_hl_hyperliquid()
-    analyze_aster_m11_aster() # فراخوانی تابع جدید
+    analyze_aster_m11_aster()
 
 if __name__ == "__main__":
     main()

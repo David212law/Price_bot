@@ -44,7 +44,6 @@ def main():
     if hl_data:
         total_cap = hl_data.get("total_capital", 10000.0)
         roi = ((total_cap - 10000.0) / 10000.0) * 100
-
         m31_open = len(hl_data.get("m31_pos", {}))
         m35_open = len(hl_data.get("m35_pos", {}))
         m40_open = len(hl_data.get("m40_pos", {}))
@@ -59,7 +58,7 @@ def main():
 
     report.append("")
 
-    # ─── Aster M11-Aster (بخش جدید اضافه شده) ───
+    # ─── Aster M11-Aster ───
     report.append("🌟 **Aster (M11-Aster Portfolio)**")
     aster_data = load_from_github("exchanges/aster/state/m11_aster_paper_state.json")
     if aster_data:
@@ -75,8 +74,6 @@ def main():
         if roi < -3: alerts.append(f"⚠️ Aster Drawdown Alert: ROI is {roi:.2f}%")
     else:
         report.append("🔹 Aster: State not found.")
-
-    report.append("")
 
     final_report = "\n".join(report)
     print(final_report)
