@@ -1,6 +1,8 @@
 {
   "total_equity": 10016.8498,
-  "cash": 10016.8498,
+  "m31_capital": 5016.8498,
+  "a8_capital": 2500.0,
+  "a20_capital": 2500.0,
   "m31_last_funding_time": {
     "BTCUSDT": 1793174400001,
     "ETHUSDT": 1793174400001,
