@@ -82,7 +82,6 @@ def fetch_latest_funding(symbol):
     except: pass
     return 0, 0.0
 
-# Indicators
 def calc_ema(closes, period):
     ema = [None] * len(closes)
     if len(closes) < period: return ema
@@ -159,10 +158,11 @@ def main():
     print(f"=== M11-Aster Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
-    if not isinstance(state, dict) or "total_equity" not in state:
+    # اصلاح کلیدهای وضعیت برای رفع باگ سرمایه
+    if not isinstance(state, dict) or "cash" not in state:
         state = {
             "total_equity": INITIAL_CAPITAL,
-            "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
+            "cash": INITIAL_CAPITAL,
             "m31_last_funding_time": {sym: 0 for sym in SYMBOLS},
             "a8_positions": {},
             "a20_positions": {},
@@ -186,24 +186,22 @@ def main():
         return
 
     # ── M31 Funding Logic ──
+    m31_alloc = state["cash"] * M31_ALLOC
     for sym in SYMBOLS:
         f_time, f_rate = fetch_latest_funding(sym)
         if f_time > state["m31_last_funding_time"].get(sym, 0):
-            # New funding received
             if f_rate > 0:
-                income = state["m31_capital"] * M31_LEVERAGE * f_rate
-                state["m31_capital"] += income
+                income = m31_alloc * M31_LEVERAGE * f_rate
+                state["cash"] += income
                 state["m31_last_funding_time"][sym] = f_time
                 print(f"[M31] {sym} Funding received: {income:.4f} USDT (Rate: {f_rate*100:.4f}%)")
                 send_bale(f"🟢 M31 Funding | {sym} | +{income:.4f} USDT")
 
     # ── Calculate current equity ──
-    equity = state["m31_capital"]
+    equity = state["cash"]
     
-    # A8 current value
     for sym, pos in list(state["a8_positions"].items()):
         equity += pos["units"] * current_prices[sym]
-    # A20 current value
     for sym, pos in list(state["a20_positions"].items()):
         if pos["side"] == "LONG":
             equity += pos["units"] * current_prices[sym]
@@ -231,7 +229,7 @@ def main():
         if exited:
             exit_val = pos["units"] * exit_price * (1 - TAKER_FEE)
             pnl = exit_val - pos["invested"]
-            state["m31_capital"] += exit_val # Return to general pool
+            state["cash"] += exit_val
             state["history"].append({"time": c["t"], "strat": "A8", "sym": sym, "pnl": pnl})
             del state["a8_positions"][sym]
             print(f"[A8] {sym} CLOSED ({reason}) | PnL: {pnl:+.2f}")
@@ -260,7 +258,7 @@ def main():
             else:
                 ret = (pos["entry_price"] * (1 - TAKER_FEE) - exit_price * (1 + TAKER_FEE)) / (pos["entry_price"] * (1 + TAKER_FEE))
             pnl = pos["invested"] * ret
-            state["m31_capital"] += (pos["invested"] + pnl)
+            state["cash"] += (pos["invested"] + pnl)
             state["history"].append({"time": c["t"], "strat": "A20", "sym": sym, "pnl": pnl})
             del state["a20_positions"][sym]
             print(f"[A20] {sym} CLOSED ({reason}) | PnL: {pnl:+.2f}")
@@ -268,7 +266,7 @@ def main():
 
     # ── Check Entries ──
     for sym in SYMBOLS:
-        # A8 Entry (Grid)
+        # A8 Entry
         if sym not in state["a8_positions"] and len(state["a8_positions"]) < 3:
             c = data_4h[sym][-1]
             closes = [x["c"] for x in data_4h[sym]]
@@ -279,8 +277,8 @@ def main():
             if None not in [bb_l[-1], rsi[-1], ema_1d[-1]]:
                 if c["c"] > ema_1d[-1] and c["c"] <= bb_l[-1] and rsi[-1] < 35:
                     alloc = a8_equity * A8_RISK
-                    if alloc > 10 and state["m31_capital"] >= alloc:
-                        state["m31_capital"] -= alloc
+                    if alloc > 10 and state["cash"] >= alloc:
+                        state["cash"] -= alloc
                         units = (alloc * (1 - MAKER_FEE)) / c["c"]
                         state["a8_positions"][sym] = {
                             "initial": c["c"], "avg": c["c"], "units": units, 
@@ -289,7 +287,7 @@ def main():
                         print(f"[A8] {sym} OPENED at {c['c']:.2f}")
                         send_bale(f"🟢 A8 OPENED | {sym} at {c['c']:.2f}")
 
-        # A20 Entry (SuperTrend)
+        # A20 Entry
         if sym not in state["a20_positions"] and len(state["a20_positions"]) < 3:
             st, st_dir = calc_supertrend(data_4h[sym])
             if st[-1] is not None and st_dir[-1] != st_dir[-2]:
@@ -301,8 +299,8 @@ def main():
                 
                 if risk_per_unit > 0:
                     alloc = min((risk_amount / risk_per_unit) * c["c"], a20_equity * A20_MAX_ALLOC)
-                    if alloc > 10 and state["m31_capital"] >= alloc:
-                        state["m31_capital"] -= alloc
+                    if alloc > 10 and state["cash"] >= alloc:
+                        state["cash"] -= alloc
                         units = alloc / c["c"]
                         state["a20_positions"][sym] = {
                             "side": side, "entry_price": c["c"], 
