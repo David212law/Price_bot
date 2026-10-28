@@ -67,28 +67,9 @@ def analyze_aster_m11_aster():
         net_pnl = sum(h.get("pnl", 0) for h in history)
         print(f"Closed Trades: {len(history)} | Realized PnL: ${net_pnl:+.2f}")
 
-def analyze_crypto_m11_v2():
-    print("\n=== 🇺🇸 Crypto Market (M11-V2) Deep Analytics ===")
-    state = load_data("exchanges/binance/state/m11_v2_portfolio.json")
-    if not state:
-        print("No state found.")
-        return
-
-    print(f"Current Regime: {state.get('regime', 'UNKNOWN')} (ADX: {state.get('adx', 0)})")
-    print(f"Open Positions: {len(state.get('open_positions', []))}")
-    print(f"Total Portfolio Risk: ${state.get('total_portfolio_risk', 0):.2f}")
-
-    recon = state.get("reconciliation_history", [])
-    if recon:
-        wins = [t for t in recon if t["pnl"] > 0]
-        wr = (len(wins) / len(recon)) * 100
-        net_pnl = sum(t["pnl"] for t in recon)
-        print(f"Reconciled Trades: {len(recon)} (WR: {wr:.1f}%) | Net PnL: ${net_pnl:+.2f}")
-
 def main():
     print(f"=== Project Deep Analytics Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===\n")
     analyze_m11_hl_hyperliquid()
-    analyze_crypto_m11_v2()
     analyze_aster_m11_aster() # فراخوانی تابع جدید
 
 if __name__ == "__main__":

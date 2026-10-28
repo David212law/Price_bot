@@ -78,23 +78,6 @@ def main():
 
     report.append("")
 
-    # ─── Binance M11-V2 ───
-    report.append("🇺🇸 **Crypto (Binance M11-V2)**")
-    m11_data = load_from_github("exchanges/binance/state/m11_v2_portfolio.json")
-    if m11_data:
-        cap = m11_data.get("capital", 10000.0)
-        open_pos = m11_data.get("open_positions", [])
-        regime = m11_data.get("regime", "UNKNOWN")
-        total_risk = sum(p.get("risk_amount", 0) for p in open_pos)
-        roi = ((cap - 10000.0) / 10000.0) * 100
-
-        report.append(f"   Equity: ${cap:.2f} (ROI: {roi:+.2f}%)")
-        report.append(f"   Regime: {regime} | Open Pos: {len(open_pos)} | Risk: ${total_risk:.2f}")
-
-        if roi < -5: alerts.append(f"⚠️ M11-V2 Drawdown Alert: ROI is {roi:.2f}%")
-    else:
-        report.append("🔹 M11-V2: State not found.")
-
     final_report = "\n".join(report)
     print(final_report)
 
