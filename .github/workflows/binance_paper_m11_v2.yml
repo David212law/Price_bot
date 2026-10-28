@@ -2,7 +2,7 @@ name: Binance M11-V2 Paper
 
 on:
   schedule:
-    - cron: '5 * * * *' # اجرا در دقیقه 5 هر ساعت
+    - cron: '20 * * * *' # اجرا در دقیقه 5 هر ساعت
   workflow_dispatch:
 
 permissions:
@@ -25,3 +25,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: python exchanges/binance/run_m11_v2.py
+concurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true

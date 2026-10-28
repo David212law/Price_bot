@@ -2,7 +2,7 @@ name: Hyperliquid M11-HL Paper
 
 on:
   schedule:
-    - cron: '15 */4 * * *'
+    - cron: '5 */4 * * *'
   workflow_dispatch:
 
 permissions:
@@ -25,3 +25,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: python exchanges/hyperliquid/run_m11_hl.py
+concurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true
