@@ -201,7 +201,7 @@ def main():
                 send_bale(f"🟢 M31 Funding | {sym} | +{income:.4f} USDT")
 
     # ── Calculate current equity ──
-    equity = state["cash"]
+    equity = state["m31_capital"] + state["a8_capital"] + state["a20_capital"]
     
     for sym, pos in list(state["a8_positions"].items()):
         equity += pos["units"] * current_prices[sym]
