@@ -1,15 +1,19 @@
-name: Binance M11-V2 Paper
+name: Binance M11-V2 Paper Allocator
 
 on:
   schedule:
-    - cron: '20 * * * *' # اجرا در دقیقه 5 هر ساعت
+    - cron: '20 * * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  run-engine:
+  run-binance:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,12 +21,11 @@ jobs:
         with:
           python-version: '3.10'
       - name: Install dependencies
-        run: pip install requests pandas numpy
-      - name: Run M11-V2 Engine
+        run: pip install requests
+      - name: Run M11-V2 Allocator
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_REPO: ${{ github.repository }}
-        run: python exchanges/binance/run_m11_v2.py
-concurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true
+        run: python exchanges/binance/m11_v2_paper_allocator.py
