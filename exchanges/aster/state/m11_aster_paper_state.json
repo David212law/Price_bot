@@ -1,0 +1,15 @@
+{
+  "total_equity": 5016.873366866517,
+  "m31_capital": 5016.873366866517,
+  "m31_last_funding_time": {
+    "BTCUSDT": 1793174400001,
+    "ETHUSDT": 1793174400001,
+    "SOLUSDT": 1793174400001,
+    "BNBUSDT": 1793174400001,
+    "XRPUSDT": 1793174400001,
+    "AVAXUSDT": 1793174400001
+  },
+  "a8_positions": {},
+  "a20_positions": {},
+  "history": []
+}
