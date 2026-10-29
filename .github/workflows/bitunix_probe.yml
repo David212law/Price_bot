@@ -1,7 +1,7 @@
-name: Lighter Connectivity Probe
+name: Bitunix Connectivity Probe
 
 on:
-  workflow_dispatch: # فقط دستی اجرا می‌شود
+  workflow_dispatch:
 
 jobs:
   run-probe:
@@ -14,4 +14,4 @@ jobs:
       - name: Install dependencies
         run: pip install requests
       - name: Run Probe
-        run: python exchanges/lighter/probe_api.py
+        run: python exchanges/bitunix/probe_api.py
