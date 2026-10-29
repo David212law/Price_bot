@@ -15,7 +15,6 @@ def test_kucoin_spot_klines():
             data = r.json().get("data", [])
             print(f"  ✅ Received {len(data)} candles.")
             if data:
-                # KuCoin returns data in format: [time, open, close, high, low, volume, turnover]
                 latest = data[0]
                 dt = datetime.fromtimestamp(int(latest[0]), tz=timezone.utc).strftime('%Y-%m-%d %H:%M')
                 print(f"  Latest Candle: {dt} | Close: {latest[2]}")
@@ -27,7 +26,7 @@ def test_kucoin_spot_klines():
 def test_kucoin_futures_klines():
     print("--- KuCoin Futures Klines (XBTUSDTM, 4H) ---")
     now_ms = int(time.time() * 1000)
-    start_ms = now_ms - (10 * 4 * 60 * 60 * 1000) # 10 کندل
+    start_ms = now_ms - (10 * 4 * 60 * 60 * 1000)
     url = f"https://api-futures.kucoin.com/api/v1/kline/query?symbol=XBTUSDTM&granularity=240&from={start_ms}&to={now_ms}"
     try:
         r = requests.get(url, headers=HEADERS, timeout=15)
@@ -44,18 +43,19 @@ def test_kucoin_futures_klines():
         print(f"  Exception: {e}")
 
 def test_kucoin_funding():
-    print("--- KuCoin Futures Funding Rate (XBTUSDTM) ---")
-    url = "https://api-futures.kucoin.com/api/v1/contract/funding-rates?symbol=XBTUSDTM&from=0"
+    print("--- KuCoin Futures Current Funding Rate (XBTUSDTM) ---")
+    # اصلاح اندپوینت: استفاده از /api/v1/funding-rate/{symbol}/current طبق مستندات
+    url = "https://api-futures.kucoin.com/api/v1/funding-rate/XBTUSDTM/current"
     try:
         r = requests.get(url, headers=HEADERS, timeout=15)
         if r.status_code == 200:
-            data = r.json().get("data", [])
-            print(f"  ✅ Received {len(data)} funding records.")
+            data = r.json().get("data", {})
             if data:
-                latest = data[-1]
-                print(f"  Latest Funding: Rate={latest.get('fundingRate')} | Time={latest.get('fundingTime')}")
+                print(f"  ✅ SUCCESS!")
+                print(f"  Current Funding Rate: {float(data.get('value', 0)) * 100:.4f}%")
+                print(f"  Granularity: {data.get('granularity')} ms ({data.get('granularity')/3600000} hours)")
         else:
-            print(f"  ❌ Failed: {r.status_code}")
+            print(f"  ❌ Failed: {r.status_code} | Response: {r.text[:200]}")
     except Exception as e:
         print(f"  Exception: {e}")
 
