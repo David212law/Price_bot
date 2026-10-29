@@ -36,7 +36,9 @@ TAKER_FEE = 0.00035
 MAKER_FEE = 0.0001
 
 def send_bale(msg):
-    if not BALE_TOKEN or not BALE_CHAT: return
+    if not BALE_TOKEN or not BALE_CHAT: 
+        print(f"[BALE] Skipped: {msg[:80]}")
+        return
     url = f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage"
     try: requests.post(url, json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
     except Exception as e:
@@ -62,6 +64,7 @@ def save_to_github(filename, data, sha=None):
         if sha: payload["sha"] = sha
         r = requests.put(url, headers={"Authorization": f"token {GH_TOKEN}"}, json=payload, timeout=15)
         if r.status_code not in [200, 201]:
+            print(f"[GitHub Save Error] Status: {r.status_code}")
             send_bale(f"⚠️ STATE SAVE FAILED for {filename}: {r.status_code}")
         return r.status_code in [200, 201]
     except: return False
@@ -186,9 +189,9 @@ def main():
             data_1d[sym] = k1
             current_prices[sym] = k4[-1]["c"]
 
-    if len(data_4h) < len(SYMBOLS):
-        print("Missing data for some symbols. Aborting.")
-        return
+    if len(data_4h) < len(SYMBOLS): 
+        print(f"⚠️ Data missing. Proceeding with {len(data_4h)} symbols.")
+        send_bale(f"⚠️ Aster Data missing. Proceeding with {len(data_4h)} symbols.")
 
     # ── M31 Funding Logic ──
     m31_alloc = state["m31_capital"]
