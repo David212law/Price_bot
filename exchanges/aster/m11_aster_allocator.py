@@ -160,7 +160,20 @@ def calc_supertrend(candles, period=10, multiplier=3.0):
             st[i] = min(upperband, st[i-1]) if direction[i-1] == -1 else upperband
     return st, direction
 
+
+def fetch_funding_interval(symbol):
+    url = f"https://fapi.asterdex.com/fapi/v1/fundingInfo?symbol={symbol}"
+    try:
+        r = requests.get(url, timeout=15)
+        if r.status_code == 200:
+            data = r.json()
+            if data:
+                return int(data[0].get("fundingIntervalHours", 8))
+    except: pass
+    return 8 # پیش‌فرض
+
 def main():
+
     print(f"=== M11-Aster Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
