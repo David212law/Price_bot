@@ -1,4 +1,4 @@
-name: Bitunix Connectivity Probe
+name: Multi-Exchange Connectivity Probe
 
 on:
   workflow_dispatch:
@@ -14,4 +14,4 @@ jobs:
       - name: Install dependencies
         run: pip install requests
       - name: Run Probe
-        run: python exchanges/bitunix/probe_api.py
+        run: python exchanges/multi_probe/probe.py
