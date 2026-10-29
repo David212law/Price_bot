@@ -9,25 +9,32 @@ def probe_endpoint(name, url):
         latency = (time.time() - start_time) * 1000
         print(f"  [Status: {r.status_code}] Latency: {latency:.0f}ms")
         if r.status_code == 200:
-            # فقط چند کاراکتر اول پاسخ را چاپ می‌کنیم تا از حجم لاگ جلوگیری شود
-            print(f"  Response: {r.text[:150]}...")
+            print(f"  Response (truncated): {r.text[:80]}...")
         else:
-            print(f"  Blocked/Error Response: {r.text[:150]}")
+            print(f"  Blocked/Error Response: {r.text[:100]}")
+    except requests.exceptions.ConnectionError as ce:
+        if "NameResolutionError" in str(ce) or "Failed to resolve" in str(ce):
+            print(f"  [DNS Error] Failed to resolve hostname.")
+        else:
+            print(f"  [Connection Error] {str(ce)[:100]}")
     except Exception as e:
-        print(f"  [Failed] Exception: {e}")
+        print(f"  [Failed] Exception: {str(e)[:100]}")
     print("-" * 50)
 
 def main():
-    print("=== Lighter API Connectivity Probe (GitHub Actions) ===")
+    print("=== Broad DEX Connectivity Probe ===")
     print(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}")
     print("=" * 50)
     
-    # لیست اندپوینت‌های عمومی برای تست (بر اساس مستندات عمومی DEXها)
     endpoints = [
-        ("Base Info", "https://api.lighter.xyz/api/v1/info"),
-        ("Markets", "https://api.lighter.xyz/api/v1/markets"),
-        ("Klines (BTC)", "https://api.lighter.xyz/api/v1/klines?symbol=BTC-USD&interval=4h&limit=5"),
-        ("Funding Rates", "https://api.lighter.xyz/api/v1/funding-rates?symbol=BTC-USD")
+        # شاهد (برای اطمینان از صحت شبکه)
+        ("Hyperliquid (Control)", "https://api.hyperliquid.xyz/info"),
+        
+        # کاندیداهای جدید
+        ("Paradex API", "https://api.prod.paradex.trade/v1/markets"),
+        ("dYdX Indexer API", "https://indexer.dydx.trade/v4/markets"),
+        ("Aevo API", "https://api.aevo.xyz/markets"),
+        ("Drift Data API", "https://data.api.drift.trade/stats/markets")
     ]
     
     for name, url in endpoints:
