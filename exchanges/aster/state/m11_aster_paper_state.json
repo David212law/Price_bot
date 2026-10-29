@@ -1,17 +1,40 @@
 {
-  "total_equity": 10062.223686138788,
-  "m31_capital": 5062.223686138788,
-  "a8_capital": 2500.0,
-  "a20_capital": 2500.0,
+  "total_equity": 10083.676985142753,
+  "m31_capital": 5083.676985142752,
+  "a8_capital": 2474.7908075371433,
+  "a20_capital": 1995.8161507428622,
   "m31_last_funding_time": {
-    "BTCUSDT": 1793260800001,
-    "ETHUSDT": 1793260800001,
-    "SOLUSDT": 1793260800001,
-    "BNBUSDT": 1793232000000,
-    "XRPUSDT": 1793260800001,
-    "AVAXUSDT": 1793260800001
+    "BTCUSDT": 1793289600000,
+    "ETHUSDT": 1793289600000,
+    "SOLUSDT": 1793289600000,
+    "BNBUSDT": 1793289600000,
+    "XRPUSDT": 1793289600000,
+    "AVAXUSDT": 1793289600000
   },
-  "a8_positions": {},
-  "a20_positions": {},
+  "a8_positions": {
+    "BNBUSDT": {
+      "initial": 698.23,
+      "avg": 698.23,
+      "units": 0.03610081426408289,
+      "invested": 25.209192462856883,
+      "entry_idx": 299
+    }
+  },
+  "a20_positions": {
+    "BNBUSDT": {
+      "side": "SHORT",
+      "entry_price": 698.23,
+      "units": 0.36104424706553545,
+      "invested": 252.09192462856882,
+      "sl": 761.1918962533334
+    },
+    "XRPUSDT": {
+      "side": "SHORT",
+      "entry_price": 1.2394,
+      "units": 203.39835777680233,
+      "invested": 252.09192462856882,
+      "sl": 1.3297103950244156
+    }
+  },
   "history": []
 }
