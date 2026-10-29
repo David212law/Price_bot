@@ -16,7 +16,7 @@ def get_session():
 session = get_session()
 
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
-GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
+GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 STATE_FILE = "exchanges/binance/state/paper_m10_trades.json"
@@ -48,6 +48,8 @@ def save_to_github(filename, data, sha=None):
         payload = {"message": f"Update {filename}", "content": content_b64}
         if sha: payload["sha"] = sha
         r = session.put(url, headers={"Authorization": f"token {GH_TOKEN}"}, json=payload, timeout=15)
+        if r.status_code not in [200, 201]:
+            send_bale(f"⚠️ STATE SAVE FAILED for {filename}: {r.status_code}")
         return r.status_code in [200, 201]
     except: return False
 

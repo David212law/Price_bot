@@ -5,7 +5,7 @@ import requests
 from datetime import datetime, timezone
 
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
-GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
+GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
 
 def load_data(filename):
     if os.path.exists(filename):

@@ -13,7 +13,7 @@ def get_session():
 
 session = get_session()
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
-GH_REPO = os.environ.get("GH_REPO", "Ali212law/Price_bot")
+GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 
