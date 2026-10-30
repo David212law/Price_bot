@@ -1,10 +1,10 @@
 import json
 import os
 import math
-import random
 from datetime import datetime, timezone
 from strategies.indicators import calc_ema, calc_atr
 
+# ─── اندیکاتورها ───
 def calc_bb(closes, period, std_mult):
     upper, lower = [None]*len(closes), [None]*len(closes)
     for i in range(period - 1, len(closes)):
@@ -60,6 +60,7 @@ def load_data(exchange, symbol):
         data = json.load(f)
         return data.get("candles", data) if isinstance(data, dict) else data
 
+# ─── استراتژی‌ها (با ثبت زمان) ───
 def strategy_m35(candles, fast=50, slow=200, fee_multiplier=1.0):
     closes = [c["c"] for c in candles]
     ema_f, ema_s = calc_ema(closes, fast), calc_ema(closes, slow)
@@ -83,7 +84,7 @@ def strategy_m35(candles, fast=50, slow=200, fee_multiplier=1.0):
                 elif ema_f[i] > ema_s[i]: exit_price = candles[i]["c"]
             if exit_price:
                 gross_ret = (exit_price - in_pos["entry"]) / in_pos["entry"] if in_pos["side"] == "LONG" else (in_pos["entry"] - exit_price) / in_pos["entry"]
-                trades.append({"ret": gross_ret - (base_fee * 2)})
+                trades.append({"t": candles[i]["t"], "ret": gross_ret - (base_fee * 2)})
                 in_pos = None
     return trades
 
@@ -100,8 +101,8 @@ def strategy_a8(candles, fee_multiplier=1.0):
             if candles[i]["c"] > ema_200[i] and candles[i]["c"] <= bb_l[i] and rsi[i] < 35:
                 in_pos = {"entry": candles[i]["c"], "sl": candles[i]["c"] * 0.90, "tp": candles[i]["c"] * 1.02}
         else:
-            if candles[i]["l"] <= in_pos["sl"]: trades.append({"ret": -0.10 - (base_fee*2)}); in_pos = None
-            elif candles[i]["h"] >= in_pos["tp"]: trades.append({"ret": 0.02 - (base_fee*2)}); in_pos = None
+            if candles[i]["l"] <= in_pos["sl"]: trades.append({"t": candles[i]["t"], "ret": -0.10 - (base_fee*2)}); in_pos = None
+            elif candles[i]["h"] >= in_pos["tp"]: trades.append({"t": candles[i]["t"], "ret": 0.02 - (base_fee*2)}); in_pos = None
     return trades
 
 def strategy_a20(candles, fee_multiplier=1.0):
@@ -123,11 +124,10 @@ def strategy_a20(candles, fee_multiplier=1.0):
                 if candles[i]["h"] >= in_pos["sl"] or direction[i] == 1: exit_price = candles[i]["c"]
             if exit_price:
                 gross_ret = (exit_price - in_pos["entry"]) / in_pos["entry"] if in_pos["side"] == "LONG" else (in_pos["entry"] - exit_price) / in_pos["entry"]
-                trades.append({"ret": gross_ret - (base_fee*2)})
+                trades.append({"t": candles[i]["t"], "ret": gross_ret - (base_fee*2)})
                 in_pos = None
     return trades
 
-# استراتژی M40 (Trend Pullback)
 def strategy_m40(candles, fee_multiplier=1.0):
     closes = [c["c"] for c in candles]
     ema_200 = calc_ema(closes, 200)
@@ -152,10 +152,11 @@ def strategy_m40(candles, fee_multiplier=1.0):
                 elif candles[i]["l"] <= in_pos["tp"]: exit_price = in_pos["tp"]
             if exit_price:
                 gross_ret = (exit_price - in_pos["entry"]) / in_pos["entry"] if in_pos["side"] == "LONG" else (in_pos["entry"] - exit_price) / in_pos["entry"]
-                trades.append({"ret": gross_ret - (base_fee*2)})
+                trades.append({"t": candles[i]["t"], "ret": gross_ret - (base_fee*2)})
                 in_pos = None
     return trades
 
+# ─── محاسبه متریک‌ها ───
 def calculate_metrics(trades, initial_capital=10000):
     if not trades: return {"status": "NO_TRADES", "n": 0}
     n = len(trades)
@@ -163,18 +164,14 @@ def calculate_metrics(trades, initial_capital=10000):
     gross_profit = sum(t["ret"] for t in trades if t["ret"] > 0)
     gross_loss = abs(sum(t["ret"] for t in trades if t["ret"] <= 0))
     pf = gross_profit / gross_loss if gross_loss > 0 else 99.99
-    sorted_rets = sorted([t["ret"] for t in trades])
-    cvar_5_idx = max(1, int(len(sorted_rets) * 0.05))
-    cvar = sum(sorted_rets[:cvar_5_idx]) / cvar_5_idx
+    
     equity, peak, max_dd = initial_capital, initial_capital, 0
-    tuw = 0; max_tuw = 0
     for t in trades:
         equity += equity * t["ret"] * 0.01
-        if equity > peak: peak = equity; tuw = 0
-        else: tuw += 1; max_tuw = max(max_tuw, tuw)
+        if equity > peak: peak = equity
         dd = (peak - equity) / peak
         if dd > max_dd: max_dd = dd
-    return {"status": "OK", "n": n, "win_rate": round((wins/n)*100, 2), "pf": round(pf, 2), "max_dd": round(max_dd*100, 2), "cvar_5": round(cvar * 100, 2), "max_tuw_trades": max_tuw}
+    return {"status": "OK", "n": n, "win_rate": round((wins/n)*100, 2), "pf": round(pf, 2), "max_dd": round(max_dd*100, 2)}
 
 def log_trial(exchange, strategy, metrics, fee_multiplier, phase="IS"):
     ledger_path = "research_lab/logs/trial_ledger.json"

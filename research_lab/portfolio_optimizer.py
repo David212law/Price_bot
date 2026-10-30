@@ -3,61 +3,85 @@ print("⚠️ WARNING: FOR SIMULATION ONLY. DO NOT USE IN LIVE (D-174).")
 import json
 import os
 import numpy as np
+from collections import defaultdict
+from strategies.core_engine import strategy_m35, strategy_a8, strategy_a20, strategy_m40, load_data
 from research_lab.bale_notifier import send_bale
 
-LEDGER_PATH = "research_lab/logs/trial_ledger.json"
-
-def calculate_correlation_matrix():
-    print("=== 🧠 Portfolio Architect: Correlation Matrix ===")
+def calculate_real_correlation():
+    print("=== 🧠 Portfolio Architect: Real Correlation Matrix ===")
+    exchange = "kucoin"
+    symbols = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
     
-    # برای شبیه‌سازی همبستگی، از داده‌های شبیه‌سازی شده استفاده می‌کنیم
-    # (در محیط واقعی، باید بازدهی روزانه هر استراتژی از ledger خوانده شود)
-    strategies = ["M35_EMA(20,200)", "A8_Grid", "A20_SuperTrend", "M40_Pullback"]
-    
-    # شبیه‌سازی بازدهی روزانه (برای نمایش کارکرد)
-    np.random.seed(42)
-    returns = {
-        "M35_EMA(20,200)": np.random.normal(0.001, 0.02, 100),
-        "A8_Grid": np.random.normal(0.0005, 0.01, 100),
-        "A20_SuperTrend": np.random.normal(0.0008, 0.025, 100),
-        "M40_Pullback": np.random.normal(0.0006, 0.015, 100)
+    strategies = {
+        "M35": strategy_m35, 
+        "A8": strategy_a8, 
+        "A20": strategy_a20, 
+        "M40": strategy_m40
     }
     
-    # محاسبه ماتریس همبستگی
-    df = np.array([returns[s] for s in strategies])
-    corr_matrix = np.corrcoef(df)
+    # دیکشنری برای ذخیره بازدهی روزانه هر استراتژی
+    daily_returns = {name: defaultdict(float) for name in strategies}
     
-    print("\n📊 Correlation Matrix:")
-    print(f"{'':20}", end="")
-    for s in strategies:
-        print(f"{s[:10]:>12}", end="")
+    for name, func in strategies.items():
+        for sym in symbols:
+            candles = load_data(exchange, sym)
+            if not candles: continue
+            trades = func(candles)
+            for t in trades:
+                # تبدیل timestamp (میلی‌ثانیه) به روز (تقسیم بر 86,400,000)
+                day = t["t"] // (24 * 60 * 60 * 1000)
+                # فرض تخصیص مساوی: هر معامله ۱٪ ریسک دارد
+                daily_returns[name][day] += t["ret"] * 0.01 
+                
+    # پیدا کردن تمام روزهای مشترک
+    all_days = set()
+    for name in strategies:
+        all_days.update(daily_returns[name].keys())
+    sorted_days = sorted(list(all_days))
+    
+    if not sorted_days:
+        print("❌ No trades found.")
+        return
+        
+    # ساخت آرایه‌های بازدهی
+    returns_arrays = {}
+    for name in strategies:
+        arr = np.array([daily_returns[name].get(day, 0.0) for day in sorted_days])
+        returns_arrays[name] = arr
+        
+    # محاسبه ماتریس همبستگی
+    strat_names = list(strategies.keys())
+    matrix_data = np.array([returns_arrays[name] for name in strat_names])
+    corr_matrix = np.corrcoef(matrix_data)
+    
+    print("\n📊 Real Correlation Matrix (Based on KuCoin Data):")
+    print(f"{'':15}", end="")
+    for s in strat_names:
+        print(f"{s:>10}", end="")
     print()
     
-    for i, s1 in enumerate(strategies):
-        print(f"{s1[:20]:20}", end="")
-        for j in range(len(strategies)):
-            print(f"{corr_matrix[i][j]:>12.2f}", end="")
+    for i, s1 in enumerate(strat_names):
+        print(f"{s1:15}", end="")
+        for j in range(len(strat_names)):
+            print(f"{corr_matrix[i][j]:>10.2f}", end="")
         print()
         
-    # شناسایی استراتژی‌های مکمل (همبستگی < 0.3)
+    # شناسایی مکمل‌ها
     print("\n🔍 Complementary Analysis:")
-    complementary_found = False
-    for i in range(len(strategies)):
-        for j in range(i+1, len(strategies)):
+    for i in range(len(strat_names)):
+        for j in range(i+1, len(strat_names)):
             corr = corr_matrix[i][j]
             if corr < 0.3:
-                print(f"  ✅ {strategies[i]} & {strategies[j]}: Correlation={corr:.2f} (Complementary)")
-                complementary_found = True
+                print(f"  ✅ {strat_names[i]} & {strat_names[j]}: Corr={corr:.2f} (Complementary)")
             elif corr > 0.7:
-                print(f"  ⚠️ {strategies[i]} & {strategies[j]}: Correlation={corr:.2f} (Highly Correlated - avoid both)")
-                
-    if complementary_found:
-        send_bale("🧠 Portfolio Architect: Complementary pairs found! Check logs.")
+                print(f"  ⚠️ {strat_names[i]} & {strat_names[j]}: Corr={corr:.2f} (Highly Correlated)")
+
+    send_bale("🧠 Portfolio Architect: Real correlation matrix calculated.")
     
     # ذخیره گزارش
     os.makedirs("research_lab/logs", exist_ok=True)
-    with open("research_lab/logs/correlation_matrix.json", "w") as f:
-        json.dump({"strategies": strategies, "matrix": corr_matrix.tolist()}, f, indent=2)
+    with open("research_lab/logs/real_correlation_matrix.json", "w") as f:
+        json.dump({"strategies": strat_names, "matrix": corr_matrix.tolist()}, f, indent=2)
 
 if __name__ == "__main__":
-    calculate_correlation_matrix()
+    calculate_real_correlation()
