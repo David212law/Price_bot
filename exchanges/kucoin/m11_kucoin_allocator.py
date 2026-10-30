@@ -15,7 +15,7 @@ INITIAL_CAPITAL = 10000.0
 
 # Allocations
 M31_ALLOC = 0.50
-M35_ALLOC = 0.50 # فعال‌سازی M35
+M35_ALLOC = 0.20 # D-163: Reduced to Diversifier level
 
 # M31 Config
 M31_LEVERAGE = 6
