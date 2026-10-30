@@ -14,7 +14,14 @@ EXCHANGES = {
     "kucoin": "exchanges/kucoin/state/m11_kucoin_paper_state.json"
 }
 
-def load_from_github(path):
+def load_state(path):
+    # 1. تلاش برای خواندن از فایل محلی (چون actions/checkout فایل را دارد)
+    if os.path.exists(path):
+        try:
+            with open(path, "r") as f:
+                return json.load(f)
+        except: pass
+    # 2. اگر نبود، از API گیت‌هاب بخوان
     try:
         url = f"https://api.github.com/repos/{GH_REPO}/contents/{path}"
         r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
@@ -36,7 +43,7 @@ def metrics(history, days=30):
 def main():
     report = [f"⚖️ **Auto-Rebalancer ({MODE} mode)**\n"]
     for name, path in EXCHANGES.items():
-        st = load_from_github(path)
+        st = load_state(path)
         if not st:
             report.append(f"🌐 {name.upper()}: State not found")
             continue
