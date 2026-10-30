@@ -1,6 +1,11 @@
 [
   {
     "symbol": "AVAXUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1793318400000
+  },
+  {
+    "symbol": "AVAXUSDTM",
     "fundingRate": 7.8e-05,
     "timepoint": 1793289600000
   },
@@ -493,10 +498,5 @@
     "symbol": "AVAXUSDTM",
     "fundingRate": -3e-05,
     "timepoint": 1790467200000
-  },
-  {
-    "symbol": "AVAXUSDTM",
-    "fundingRate": 0.0001,
-    "timepoint": 1790438400000
   }
 ]

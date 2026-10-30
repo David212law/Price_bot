@@ -1,6 +1,11 @@
 [
   {
     "symbol": "SOLUSDTM",
+    "fundingRate": 4.6e-05,
+    "timepoint": 1793318400000
+  },
+  {
+    "symbol": "SOLUSDTM",
     "fundingRate": 8.9e-05,
     "timepoint": 1793289600000
   },
@@ -493,10 +498,5 @@
     "symbol": "SOLUSDTM",
     "fundingRate": 4.9e-05,
     "timepoint": 1790467200000
-  },
-  {
-    "symbol": "SOLUSDTM",
-    "fundingRate": 7.2e-05,
-    "timepoint": 1790438400000
   }
 ]

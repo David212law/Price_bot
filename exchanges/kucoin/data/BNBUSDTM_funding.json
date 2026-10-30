@@ -1,6 +1,11 @@
 [
   {
     "symbol": "BNBUSDTM",
+    "fundingRate": -0.000254,
+    "timepoint": 1793318400000
+  },
+  {
+    "symbol": "BNBUSDTM",
     "fundingRate": 0.0001,
     "timepoint": 1793289600000
   },
@@ -493,10 +498,5 @@
     "symbol": "BNBUSDTM",
     "fundingRate": 6.7e-05,
     "timepoint": 1790467200000
-  },
-  {
-    "symbol": "BNBUSDTM",
-    "fundingRate": 0.0001,
-    "timepoint": 1790438400000
   }
 ]
