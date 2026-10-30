@@ -140,29 +140,28 @@ def load_active_weights(exchange):
 
 
 def check_config_drift(state):
-    """اگر active_weights تغییر کرده، capital را بازتوزیع کن"""
-    current_m31 = state.get("m31_capital", 0)
-    current_a20 = state.get("a20_capital", 0)
-    current_m40 = state.get("m40_capital", 0)
-    current_cash = state.get("cash_capital", 0)
-    total = current_m31 + current_a20 + current_m40 + current_cash
+    """اگر total capital از INITIAL_CAPITAL منحرف شد، state را بازسازی کن"""
+    if not state or "m31_capital" not in state:
+        return state
     
-    if total < 100:
-        return state  # initial state, no drift
+    current_total = (state.get("m31_capital", 0) + state.get("a20_capital", 0) + 
+                     state.get("m40_capital", 0) + state.get("cash_capital", 0))
     
-    desired_m31 = total * M31_ALLOC
-    desired_a20 = total * A20_ALLOC
-    desired_m40 = total * M40_ALLOC
-    desired_cash = total * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC)
+    # اگر total خیلی از INITIAL_CAPITAL فاصله دارد، state قدیمی/ناسازگار است
+    if current_total < 100 or abs(current_total - INITIAL_CAPITAL) > 500:
+        print(f"[RESET] State inconsistent (total=${current_total:.0f}, expected=${INITIAL_CAPITAL:.0f}). Re-initializing.")
+        return {}  # force re-init
     
-    drift = abs(current_m31 - desired_m31) + abs(current_a20 - desired_a20) + abs(current_m40 - desired_m40)
+    # بررسی drift نسبی (اگر total درست است، ولی توزیع اشتباه)
+    desired_m31 = current_total * M31_ALLOC
+    drift = abs(state.get("m31_capital", 0) - desired_m31)
     
-    if drift > 100:  # بیش از $100 اختلاف
-        print(f"[DRIFT] Rebalancing: M31 {current_m31:.0f}→{desired_m31:.0f}, A20 {current_a20:.0f}→{desired_a20:.0f}, M40 {current_m40:.0f}→{desired_m40:.0f}")
+    if drift > 500:
+        print(f"[DRIFT] M31 rebalance: {state['m31_capital']:.0f} → {desired_m31:.0f}")
         state["m31_capital"] = desired_m31
-        state["a20_capital"] = desired_a20
-        state["m40_capital"] = desired_m40
-        state["cash_capital"] = desired_cash
+        state["a20_capital"] = current_total * A20_ALLOC
+        state["m40_capital"] = current_total * M40_ALLOC
+        state["cash_capital"] = current_total * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC)
     
     return state
 
