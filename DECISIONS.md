@@ -1182,3 +1182,6 @@ SOL در ۳/۴ پنجره مثبت بود. تست E1 (4H DIP) به دلیل n پ
 
 ## D-2026-10-30-228 — CLEANUP: حذف فایل‌های اضافی
 وضعیت: قفل | فایل‌های زیر به دلیل همپوشانی با research_lab و تکراری بودن حذف می‌شوند: sync.sh، backtest_a8.py، backtest_a20.py، backtest_m31.py، backtest_m35.py، fetch_full_funding.py و ۶ فایل `*_funding_full.json`. فایل‌های اصلی `*_funding.json` حفظ می‌شوند.
+
+## D-2026-10-30-229 — UNIVERSAL-RESEARCH: گسترش به همه استراتژی‌ها و صرافی‌ها
+وضعیت: قفل | auto_discovery و hrp_optimizer برای پوشش همه صرافی‌ها (HL, Aster, KuCoin) و همه استراتژی‌ها (M31, M35, M40, M41, A8, A20) گسترش می‌یابند. این اهداف اولیه کشف و ترکیب را کامل می‌کند.

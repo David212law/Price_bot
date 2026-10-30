@@ -8,14 +8,24 @@ from strategies.core_engine import strategy_m35, strategy_a8, strategy_a20, stra
 from research_lab.bale_notifier import send_bale
 from research_lab.portfolio_optimizer import calc_correlation, calc_variance
 
+EXCHANGES = {
+    "kucoin": ["XBTUSDTM","ETHUSDTM","SOLUSDTM","BNBUSDTM","XRPUSDTM","AVAXUSDTM"],
+    "aster": ["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT","XRPUSDT","AVAXUSDT"],
+    "hyperliquid": ["BTC","ETH","SOL","BNB","XRP","AVAX"]
+}
+
 def calculate_hrp():
-    print("=== 🧠 HRP Optimizer (Pure Python, D-201/202/203) ===")
-    exchange = "kucoin"
-    symbols = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
+    print("=== 🧠 HRP Optimizer (Universal, All Exchanges) ===")
+    for exchange, symbols in EXCHANGES.items():
+        print(f"\n═══ {exchange.upper()} ═══")
+        _calculate_hrp_for(exchange, symbols)
+
+def _calculate_hrp_for(exchange, symbols):
+    print(f"Processing {exchange}...")
     
     # ۱. بررسی مجوز استراتژی‌ها
     import json
-    eligibility_file = "research_lab/logs/kucoin_eligibility.json"
+    eligibility_file = f"research_lab/logs/{exchange}_eligibility.json"
     eligible_names = []
     if os.path.exists(eligibility_file):
         with open(eligibility_file, "r") as f:
