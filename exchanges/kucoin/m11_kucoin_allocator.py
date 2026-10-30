@@ -138,10 +138,40 @@ def load_active_weights(exchange):
     except:
         return None
 
+
+def check_config_drift(state):
+    """اگر active_weights تغییر کرده، capital را بازتوزیع کن"""
+    current_m31 = state.get("m31_capital", 0)
+    current_a20 = state.get("a20_capital", 0)
+    current_m40 = state.get("m40_capital", 0)
+    current_cash = state.get("cash_capital", 0)
+    total = current_m31 + current_a20 + current_m40 + current_cash
+    
+    if total < 100:
+        return state  # initial state, no drift
+    
+    desired_m31 = total * M31_ALLOC
+    desired_a20 = total * A20_ALLOC
+    desired_m40 = total * M40_ALLOC
+    desired_cash = total * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC)
+    
+    drift = abs(current_m31 - desired_m31) + abs(current_a20 - desired_a20) + abs(current_m40 - desired_m40)
+    
+    if drift > 100:  # بیش از $100 اختلاف
+        print(f"[DRIFT] Rebalancing: M31 {current_m31:.0f}→{desired_m31:.0f}, A20 {current_a20:.0f}→{desired_a20:.0f}, M40 {current_m40:.0f}→{desired_m40:.0f}")
+        state["m31_capital"] = desired_m31
+        state["a20_capital"] = desired_a20
+        state["m40_capital"] = desired_m40
+        state["cash_capital"] = desired_cash
+    
+    return state
+
+
 def main():
     print(f"=== M11-KuCoin Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
+    state = check_config_drift(state)
     if not isinstance(state, dict) or "m31_capital" not in state:
         state = {
             "total_equity": INITIAL_CAPITAL,
