@@ -156,8 +156,11 @@ def main():
     # ── M31 Funding ──
     for sym in SYMBOLS:
         rate, tp = fetch_funding_rate(sym)
-        if tp == 0: continue
         st = state["m31_pos"].get(sym, {"in_pos": False, "hist": [], "last_exit": 0, "last_processed": 0})
+        if tp == 0:
+            # API failed, but still register the symbol
+            state["m31_pos"][sym] = st
+            continue
         st["hist"].append(rate)
         if len(st["hist"]) > SMA_PERIODS: st["hist"].pop(0)
         avg = sum(st["hist"]) / len(st["hist"])
