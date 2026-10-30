@@ -50,5 +50,57 @@
       "cvar_5": -5.93,
       "max_tuw_trades": 8
     }
+  },
+  {
+    "timestamp": "2026-10-30T12:43:01.087368+00:00",
+    "strategy": "M35_EMA(20,100)",
+    "metrics": {
+      "status": "OK",
+      "n": 61,
+      "win_rate": 22.95,
+      "pf": 0.56,
+      "max_dd": 0.83,
+      "cvar_5": -6.56,
+      "max_tuw_trades": 48
+    }
+  },
+  {
+    "timestamp": "2026-10-30T12:43:01.113318+00:00",
+    "strategy": "M35_EMA(20,200)",
+    "metrics": {
+      "status": "OK",
+      "n": 35,
+      "win_rate": 28.57,
+      "pf": 1.38,
+      "max_dd": 0.27,
+      "cvar_5": -6.91,
+      "max_tuw_trades": 21
+    }
+  },
+  {
+    "timestamp": "2026-10-30T12:43:01.140698+00:00",
+    "strategy": "M35_EMA(50,100)",
+    "metrics": {
+      "status": "OK",
+      "n": 41,
+      "win_rate": 26.83,
+      "pf": 1.08,
+      "max_dd": 0.43,
+      "cvar_5": -7.1,
+      "max_tuw_trades": 17
+    }
+  },
+  {
+    "timestamp": "2026-10-30T12:43:01.166534+00:00",
+    "strategy": "M35_EMA(50,200)",
+    "metrics": {
+      "status": "OK",
+      "n": 33,
+      "win_rate": 21.21,
+      "pf": 1.06,
+      "max_dd": 0.52,
+      "cvar_5": -6.78,
+      "max_tuw_trades": 23
+    }
   }
 ]
