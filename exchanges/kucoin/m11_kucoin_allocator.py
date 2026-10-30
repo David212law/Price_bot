@@ -148,6 +148,7 @@ def main():
             "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
             "a20_capital": INITIAL_CAPITAL * A20_ALLOC,
             "m40_capital": INITIAL_CAPITAL * M40_ALLOC,
+            "cash_capital": INITIAL_CAPITAL * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC),
             "m31_pos": {}, "a20_pos": {}, "m40_pos": {},
             "history": []
         }
@@ -245,7 +246,7 @@ def main():
                     send_bale(f"🟢 M40 OPENED {side} | {sym} @ {k[-1]['c']}")
 
     # ── Equity ──
-    state["total_equity"] = state["m31_capital"] + state["a20_capital"] + state["m40_capital"]
+    state["total_equity"] = state["m31_capital"] + state["a20_capital"] + state["m40_capital"] + state.get("cash_capital", 0)
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     
     if save_to_github(STATE_FILE, state, sha):
