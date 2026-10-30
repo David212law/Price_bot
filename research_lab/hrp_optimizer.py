@@ -4,71 +4,16 @@ import json
 import os
 import math
 from collections import defaultdict
-from strategies.core_engine import strategy_a8, strategy_a20, strategy_m40, load_data
+from strategies.core_engine import strategy_m35, strategy_a8, strategy_a20, strategy_m40, load_data
 from research_lab.bale_notifier import send_bale
 from research_lab.portfolio_optimizer import calc_correlation, calc_variance
-
-def capped_normalize(weights, cap, floor=0.05, max_iter=100):
-    """
-    نرمال‌سازی وزن‌ها با رعایت سقف و کف (Iterative Capping).
-    مجموع نهایی دقیقاً 1.0 (۱۰۰٪) خواهد بود.
-    """
-    weights = dict(weights)
-    names = list(weights.keys())
-    
-    for iteration in range(max_iter):
-        # گام ۱: نرمال‌سازی به مجموع ۱
-        total = sum(weights.values())
-        if total <= 0:
-            break
-        weights = {n: weights[n] / total for n in names}
-        
-        # گام ۲: بررسی همگرایی
-        if all(floor - 1e-9 <= weights[n] <= cap + 1e-9 for n in names):
-            break
-        
-        # گام ۳: بریدن وزن‌های بالای سقف
-        excess = 0
-        for n in names:
-            if weights[n] > cap:
-                excess += weights[n] - cap
-                weights[n] = cap
-        
-        # گام ۴: توزیع مازاد بین وزن‌های زیر سقف
-        if excess > 0:
-            uncapped = [n for n in names if weights[n] < cap - 1e-9]
-            uncapped_sum = sum(weights[n] for n in uncapped)
-            if uncapped_sum > 1e-9:
-                for n in uncapped:
-                    weights[n] += excess * (weights[n] / uncapped_sum)
-        
-        # گام ۵: بالا آوردن وزن‌های زیر کف
-        deficit = 0
-        for n in names:
-            if weights[n] < floor:
-                deficit += floor - weights[n]
-                weights[n] = floor
-        
-        if deficit > 0:
-            above_floor = [n for n in names if weights[n] > floor + 1e-9]
-            above_sum = sum(weights[n] - floor for n in above_floor)
-            if above_sum > 1e-9:
-                for n in above_floor:
-                    weights[n] -= deficit * ((weights[n] - floor) / above_sum)
-    
-    # گام ۶: نرمال‌سازی نهایی
-    total = sum(weights.values())
-    if total > 0:
-        weights = {n: round(weights[n] / total, 4) for n in names}
-    
-    return weights
 
 def calculate_hrp():
     print("=== 🧠 HRP Optimizer (Pure Python, D-201/202/203) ===")
     exchange = "kucoin"
     symbols = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
     
-    # ۱. بررسی مجوز استراتژی‌ها (D-210: فقط سوددهی در OOS)
+    # ۱. بررسی مجوز استراتژی‌ها
     import json
     eligibility_file = "research_lab/logs/kucoin_eligibility.json"
     eligible_names = []
@@ -85,16 +30,26 @@ def calculate_hrp():
     all_strategies = {"M35": strategy_m35, "A8": strategy_a8, "A20": strategy_a20, "M40": strategy_m40}
     active_strategies = {k: v for k, v in all_strategies.items() if k in eligible_names}
     
-    if len(active_strategies) < 2:
-        print("❌ Need at least 2 eligible strategies. Aborting HRP.")
+    # ─── مدیریت تک‌استراتژی (D-214) ───
+    if len(active_strategies) == 0:
+        print("❌ No eligible strategies. Aborting HRP.")
         return
+    elif len(active_strategies) == 1:
+        single = list(active_strategies.keys())[0]
+        print(f"\n⚠️ Only 1 eligible strategy: {single}. Assigning 100% weight.")
+        weights = {single: 1.0}
+        report_msg = f"📋 **HRP Allocation (Single Strategy)**\n\n• {single}: 100.0%\n\n⚠️ Only one eligible strategy in KuCoin."
+        send_bale(report_msg)
         
-    N = len(active_strategies)
+        os.makedirs("research_lab/logs", exist_ok=True)
+        with open("research_lab/logs/hrp_allocation.json", "w") as f:
+            json.dump({"weights": weights, "single_strategy": True}, f, indent=2)
+        return
     
-    # محاسبه سقف داینامیک (D-201)
-    cap = max(0.30, 1.0/N + 0.05) if N >= 3 else 0.30
-    # برای N=3: cap = 0.383 → گرد به 0.40 برای خوانایی
-    if N == 3: cap = 0.30  # D-205: Reverted to 30%
+    # ─── ادامه HRP برای ۲ یا بیشتر ───
+    N = len(active_strategies)
+    cap = max(0.30, 1.0/N + 0.05) if N >= 3 else 0.50 
+    if N == 3: cap = 0.30
     print(f"ℹ️ Active strategies: {N} | Cap: {cap*100:.0f}% | Floor: 5%")
     
     monthly_returns = {name: defaultdict(float) for name in active_strategies}
@@ -168,33 +123,20 @@ def calculate_hrp():
     for name, w in pre_cap.items():
         print(f"  {name}: {w*100:.1f}%")
     
-    # اعمال نرمال‌سازی با سقف و کف
+    # نرمال‌سازی با سقف و کف
     weights = capped_normalize(pre_cap, cap=cap, floor=0.05)
     
-    # اعمال سقف اختصاصی A8 = 25% (D-204)
-    if "A8" in weights and weights["A8"] > 0.25:
-        excess_a8 = weights["A8"] - 0.25
-        weights["A8"] = 0.25
-        # توزیع مازاد بین بقیه
-        others = [n for n in weights if n != "A8"]
-        others_sum = sum(weights[n] for n in others)
-        if others_sum > 1e-9:
-            for n in others:
-                weights[n] += excess_a8 * (weights[n] / others_sum)
-        weights = {n: round(w, 4) for n, w in weights.items()}
-
-    # بررسی Binding بودن سقف (D-203)
     cap_binding = any(w >= cap - 1e-4 for w in weights.values())
     
     print(f"\n🏆 Post-Cap HRP Weights (Cap={cap*100:.0f}%):")
-    report_msg = f"📋 **HRP Allocation (Cap={cap*100:.0f}%, D-201)**\n\n"
+    report_msg = f"📋 **HRP Allocation (Cap={cap*100:.0f}%)**\n\n"
     for name, w in weights.items():
         print(f"  {name}: {w*100:.1f}%")
         report_msg += f"• {name}: {round(w*100, 1)}%\n"
     
     if cap_binding:
-        print(f"\n⚠️ Cap is BINDING: HRP would have concentrated more (see Pre-Cap above).")
-        report_msg += f"\n⚠️ Cap binding: HRP preferred higher concentration.\n"
+        print(f"\n⚠️ Cap is BINDING: HRP would have concentrated more.")
+        report_msg += f"\n⚠️ Cap binding.\n"
     
     total_check = sum(weights.values())
     print(f"\n✅ Sum check: {total_check*100:.1f}% (must be 100.0%)")
@@ -205,6 +147,42 @@ def calculate_hrp():
     os.makedirs("research_lab/logs", exist_ok=True)
     with open("research_lab/logs/hrp_allocation.json", "w") as f:
         json.dump({"weights": weights, "cap": cap, "pre_cap": pre_cap, "cap_binding": cap_binding}, f, indent=2)
+
+# تابع نرمال‌سازی (همانند قبل)
+def capped_normalize(weights, cap, floor=0.05, max_iter=100):
+    weights = dict(weights)
+    names = list(weights.keys())
+    for iteration in range(max_iter):
+        total = sum(weights.values())
+        if total <= 0: break
+        weights = {n: weights[n] / total for n in names}
+        if all(floor - 1e-9 <= weights[n] <= cap + 1e-9 for n in names): break
+        excess = 0
+        for n in names:
+            if weights[n] > cap:
+                excess += weights[n] - cap
+                weights[n] = cap
+        if excess > 0:
+            uncapped = [n for n in names if weights[n] < cap - 1e-9]
+            uncapped_sum = sum(weights[n] for n in uncapped)
+            if uncapped_sum > 1e-9:
+                for n in uncapped:
+                    weights[n] += excess * (weights[n] / uncapped_sum)
+        deficit = 0
+        for n in names:
+            if weights[n] < floor:
+                deficit += floor - weights[n]
+                weights[n] = floor
+        if deficit > 0:
+            above_floor = [n for n in names if weights[n] > floor + 1e-9]
+            above_sum = sum(weights[n] - floor for n in above_floor)
+            if above_sum > 1e-9:
+                for n in above_floor:
+                    weights[n] -= deficit * ((weights[n] - floor) / above_sum)
+    total = sum(weights.values())
+    if total > 0:
+        weights = {n: round(weights[n] / total, 4) for n in names}
+    return weights
 
 if __name__ == "__main__":
     calculate_hrp()
