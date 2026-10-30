@@ -1,118 +1,140 @@
-from strategies.indicators import calc_ema, calc_atr
 import json
 import os
 import math
 import random
 from datetime import datetime, timezone
+from strategies.indicators import calc_ema, calc_atr
+
+# ─── توابع کمکی ───
+def calc_bb(closes, period, std_mult):
+    upper, lower = [None]*len(closes), [None]*len(closes)
+    for i in range(period - 1, len(closes)):
+        window = closes[i-period+1:i+1]
+        sma = sum(window) / period
+        variance = sum((x - sma) ** 2 for x in window) / period
+        std = variance ** 0.5
+        upper[i] = sma + (std_mult * std)
+        lower[i] = sma - (std_mult * std)
+    return upper, lower
+
+def calc_rsi(closes, period=14):
+    rsi = [None] * len(closes)
+    if len(closes) < period + 1: return rsi
+    gains, losses = 0, 0
+    for i in range(1, period + 1):
+        change = closes[i] - closes[i - 1]
+        if change > 0: gains += change
+        else: losses += abs(change)
+    avg_gain, avg_loss = gains / period, losses / period
+    rsi[period] = 100 - (100 / (1 + (avg_gain / avg_loss))) if avg_loss != 0 else 100.0
+    for i in range(period + 1, len(closes)):
+        change = closes[i] - closes[i - 1]
+        gain, loss = (change if change > 0 else 0), (abs(change) if change < 0 else 0)
+        avg_gain = (avg_gain * (period - 1) + gain) / period
+        avg_loss = (avg_loss * (period - 1) + loss) / period
+        rsi[i] = 100 - (100 / (1 + (avg_gain / avg_loss))) if avg_loss != 0 else 100.0
+    return rsi
+
+def calc_supertrend(candles, period=10, multiplier=3.0):
+    atr = calc_atr(candles, period)
+    st, direction = [None]*len(candles), [1]*len(candles)
+    for i in range(period, len(candles)):
+        if atr[i] is None: continue
+        hl2 = (candles[i]["h"] + candles[i]["l"]) / 2
+        upperband, lowerband = hl2 + (multiplier * atr[i]), hl2 - (multiplier * atr[i])
+        if i == period: st[i], direction[i] = upperband, 1; continue
+        if candles[i]["c"] > st[i-1]:
+            direction[i] = 1
+            st[i] = max(lowerband, st[i-1]) if direction[i-1] == 1 else lowerband
+        else:
+            direction[i] = -1
+            st[i] = min(upperband, st[i-1]) if direction[i-1] == -1 else upperband
+    return st, direction
 
 def load_data(exchange, symbol):
-    if exchange == "kucoin":
-        path = f"exchanges/kucoin/data/{symbol}_4h.json"
-    elif exchange == "aster":
-        path = f"data/aster/{symbol}_4h.json"
-    else:
-        return None
-    
+    if exchange == "kucoin": path = f"exchanges/kucoin/data/{symbol}_4h.json"
+    elif exchange == "aster": path = f"data/aster/{symbol}_4h.json"
+    else: return None
     if not os.path.exists(path): return None
     with open(path, 'r') as f: 
         data = json.load(f)
-        # Aster format is a list, KuCoin is a dict with 'candles'
-        if isinstance(data, dict) and "candles" in data: return data["candles"]
-        return data
-
-# ─── اندیکاتورهای مشترک ───
-    k = 2.0 / (period + 1)
-    e = sum(closes[:period]) / period
-    ema[period - 1] = e
-    for i in range(period, len(closes)):
-        e = closes[i] * k + e * (1 - k)
-        ema[i] = e
-    return ema
-
-    trs = [0] * len(candles)
-    for i in range(1, len(candles)):
-        trs[i] = max(candles[i]["h"] - candles[i]["l"], abs(candles[i]["h"] - candles[i-1]["c"]), abs(candles[i]["l"] - candles[i-1]["c"]))
-    atr[period] = sum(trs[1:period+1]) / period
-    for i in range(period + 1, len(candles)):
-        atr[i] = (atr[i - 1] * (period - 1) + trs[i]) / period
-    return atr
+        return data.get("candles", data) if isinstance(data, dict) else data
 
 # ─── استراتژی‌ها ───
 def strategy_m35(candles):
-    """EMA Crossover 50/200"""
     closes = [c["c"] for c in candles]
-    ema_fast = calc_ema(closes, 50)
-    ema_slow = calc_ema(closes, 200)
+    ema_f, ema_s = calc_ema(closes, 50), calc_ema(closes, 200)
     atr = calc_atr(candles, 14)
-    
-    trades = []
-    in_pos = None
-    
+    trades, in_pos = [], None
     for i in range(200, len(candles)):
-        if None in [ema_fast[i], ema_slow[i], atr[i-1]]: continue
-        
+        if None in [ema_f[i], ema_s[i], atr[i-1]]: continue
         if not in_pos:
-            if ema_fast[i] > ema_slow[i] and ema_fast[i-1] <= ema_slow[i-1]:
+            if ema_f[i] > ema_s[i] and ema_f[i-1] <= ema_s[i-1]:
                 in_pos = {"side": "LONG", "entry": candles[i]["c"], "sl": candles[i]["c"] - (3*atr[i-1])}
-            elif ema_fast[i] < ema_slow[i] and ema_fast[i-1] >= ema_slow[i-1]:
+            elif ema_f[i] < ema_s[i] and ema_f[i-1] >= ema_s[i-1]:
                 in_pos = {"side": "SHORT", "entry": candles[i]["c"], "sl": candles[i]["c"] + (3*atr[i-1])}
         else:
             exit_price = None
-            reason = ""
             if in_pos["side"] == "LONG":
-                if candles[i]["l"] <= in_pos["sl"]: exit_price, reason = in_pos["sl"], "SL"
-                elif ema_fast[i] < ema_slow[i]: exit_price, reason = candles[i]["c"], "CROSS"
+                if candles[i]["l"] <= in_pos["sl"]: exit_price = in_pos["sl"]
+                elif ema_f[i] < ema_s[i]: exit_price = candles[i]["c"]
             else:
-                if candles[i]["h"] >= in_pos["sl"]: exit_price, reason = in_pos["sl"], "SL"
-                elif ema_fast[i] > ema_slow[i]: exit_price, reason = candles[i]["c"], "CROSS"
-                
+                if candles[i]["h"] >= in_pos["sl"]: exit_price = in_pos["sl"]
+                elif ema_f[i] > ema_s[i]: exit_price = candles[i]["c"]
             if exit_price:
                 ret = (exit_price - in_pos["entry"]) / in_pos["entry"] if in_pos["side"] == "LONG" else (in_pos["entry"] - exit_price) / in_pos["entry"]
-                trades.append({"ret": ret, "reason": reason})
+                trades.append({"ret": ret})
+                in_pos = None
+    return trades
+
+def strategy_a8(candles):
+    closes = [c["c"] for c in candles]
+    bb_u, bb_l = calc_bb(closes, 20, 2.0)
+    rsi = calc_rsi(closes, 14)
+    ema_200 = calc_ema(closes, 200)
+    trades, in_pos = [], None
+    for i in range(200, len(candles)):
+        if None in [bb_l[i], rsi[i], ema_200[i]]: continue
+        if not in_pos:
+            if candles[i]["c"] > ema_200[i] and candles[i]["c"] <= bb_l[i] and rsi[i] < 35:
+                in_pos = {"entry": candles[i]["c"], "sl": candles[i]["c"] * 0.90, "tp": candles[i]["c"] * 1.02}
+        else:
+            if candles[i]["l"] <= in_pos["sl"]: trades.append({"ret": -0.10}); in_pos = None
+            elif candles[i]["h"] >= in_pos["tp"]: trades.append({"ret": 0.02}); in_pos = None
+    return trades
+
+def strategy_a20(candles):
+    st, direction = calc_supertrend(candles, 10, 3.0)
+    trades, in_pos = [], None
+    for i in range(14, len(candles)):
+        if st[i-1] is None: continue
+        if not in_pos:
+            if direction[i] == 1 and direction[i-1] == -1:
+                in_pos = {"side": "LONG", "entry": candles[i]["c"], "sl": st[i-1]}
+            elif direction[i] == -1 and direction[i-1] == 1:
+                in_pos = {"side": "SHORT", "entry": candles[i]["c"], "sl": st[i-1]}
+        else:
+            exit_price = None
+            if in_pos["side"] == "LONG":
+                if candles[i]["l"] <= in_pos["sl"] or direction[i] == -1: exit_price = candles[i]["c"]
+            else:
+                if candles[i]["h"] >= in_pos["sl"] or direction[i] == 1: exit_price = candles[i]["c"]
+            if exit_price:
+                ret = (exit_price - in_pos["entry"]) / in_pos["entry"] if in_pos["side"] == "LONG" else (in_pos["entry"] - exit_price) / in_pos["entry"]
+                trades.append({"ret": ret})
                 in_pos = None
     return trades
 
 def calculate_metrics(trades, initial_capital=10000):
-    if not trades: return {"error": "No trades"}
+    if not trades: return {"status": "NO_TRADES", "n": 0}
     wins = sum(1 for t in trades if t["ret"] > 0)
     gp = sum(t["ret"] for t in trades if t["ret"] > 0)
     gl = abs(sum(t["ret"] for t in trades if t["ret"] <= 0))
     pf = gp / gl if gl > 0 else 99.99
-    
-    equity = initial_capital
-    peak = initial_capital
-    max_dd = 0
+    equity, peak, max_dd = initial_capital, initial_capital, 0
     for t in trades:
-        equity += equity * t["ret"] * 0.01 # 1% risk per trade
+        equity += equity * t["ret"] * 0.01
         if equity > peak: peak = equity
         dd = (peak - equity) / peak
         if dd > max_dd: max_dd = dd
-        
-    return {
-        "trades": len(trades),
-        "win_rate": round((wins / len(trades)) * 100, 2),
-        "pf": round(pf, 2),
-        "max_dd": round(max_dd * 100, 2),
-        "return": round(((equity - initial_capital)/initial_capital)*100, 2)
-    }
-
-def run(exchange, strategy_name):
-    SYMBOLS = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"] if exchange == "kucoin" else ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT", "AVAXUSDT"]
-    
-    all_trades = []
-    for sym in SYMBOLS:
-        candles = load_data(exchange, sym)
-        if not candles: continue
-        
-        if strategy_name == "M35":
-            trades = strategy_m35(candles)
-            all_trades.extend(trades)
-            
-    metrics = calculate_metrics(all_trades)
-    print(f"=== Backtest Results: {strategy_name} on {exchange.upper()} ===")
-    print(json.dumps(metrics, indent=2))
-    
-    # ذخیره نتیجه
-    os.makedirs("reports/backtest_results", exist_ok=True)
-    with open(f"reports/backtest_results/{exchange}_{strategy_name}.json", "w") as f:
-        json.dump(metrics, f)
+    return {"status": "OK", "n": len(trades), "win_rate": round((wins/len(trades))*100, 2), "pf": round(pf, 2), "max_dd": round(max_dd*100, 2), "return": round(((equity-initial_capital)/initial_capital)*100, 2)}
