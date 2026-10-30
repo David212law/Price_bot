@@ -75,7 +75,7 @@ def calculate_hrp():
     # محاسبه سقف داینامیک (D-201)
     cap = max(0.30, 1.0/N + 0.05) if N >= 3 else 0.30
     # برای N=3: cap = 0.383 → گرد به 0.40 برای خوانایی
-    if N == 3: cap = 0.40
+    if N == 3: cap = 0.30  # D-205: Reverted to 30%
     print(f"ℹ️ Active strategies: {N} | Cap: {cap*100:.0f}% | Floor: 5%")
     
     monthly_returns = {name: defaultdict(float) for name in active_strategies}
@@ -152,6 +152,18 @@ def calculate_hrp():
     # اعمال نرمال‌سازی با سقف و کف
     weights = capped_normalize(pre_cap, cap=cap, floor=0.05)
     
+    # اعمال سقف اختصاصی A8 = 25% (D-204)
+    if "A8" in weights and weights["A8"] > 0.25:
+        excess_a8 = weights["A8"] - 0.25
+        weights["A8"] = 0.25
+        # توزیع مازاد بین بقیه
+        others = [n for n in weights if n != "A8"]
+        others_sum = sum(weights[n] for n in others)
+        if others_sum > 1e-9:
+            for n in others:
+                weights[n] += excess_a8 * (weights[n] / others_sum)
+        weights = {n: round(w, 4) for n, w in weights.items()}
+
     # بررسی Binding بودن سقف (D-203)
     cap_binding = any(w >= cap - 1e-4 for w in weights.values())
     
