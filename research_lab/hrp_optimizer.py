@@ -1,9 +1,10 @@
+import sys
 print("⚠️ WARNING: FOR SIMULATION ONLY. DO NOT USE IN LIVE.")
 import json
 import os
 import math
 from collections import defaultdict
-from strategies.core_engine import strategy_m35, strategy_a8, strategy_a20, strategy_m40, load_data
+from strategies.core_engine import strategy_a8, strategy_a20, strategy_m40, load_data
 from research_lab.bale_notifier import send_bale
 from research_lab.portfolio_optimizer import calc_correlation, calc_variance
 
@@ -12,10 +13,11 @@ def calculate_hrp():
     exchange = "kucoin"
     symbols = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
     
-    strategies = {"M35": strategy_m35, "A8": strategy_a8, "A20": strategy_a20, "M40": strategy_m40}
-    monthly_returns = {name: defaultdict(float) for name in strategies}
+    # ۱. فقط استراتژی‌های فعال (M35 حذف شد، M31 جداگانه مدیریت می‌شود)
+    active_strategies = {"A8": strategy_a8, "A20": strategy_a20, "M40": strategy_m40}
+    monthly_returns = {name: defaultdict(float) for name in active_strategies}
     
-    for name, func in strategies.items():
+    for name, func in active_strategies.items():
         for sym in symbols:
             candles = load_data(exchange, sym)
             if not candles: continue
@@ -25,7 +27,7 @@ def calculate_hrp():
                 monthly_returns[name][month] += t["ret"] * 0.01 
                 
     all_months = set()
-    for name in strategies:
+    for name in active_strategies:
         all_months.update(monthly_returns[name].keys())
     sorted_months = sorted(list(all_months))
     
@@ -33,10 +35,10 @@ def calculate_hrp():
         print("❌ Not enough data.")
         return
         
-    strat_names = list(strategies.keys())
+    strat_names = list(active_strategies.keys())
     returns_arrays = {name: [monthly_returns[name].get(m, 0.0) for m in sorted_months] for name in strat_names}
     
-    # ۱. ماتریس همبستگی
+    # ۲. ماتریس همبستگی
     corr_matrix = []
     for s1 in strat_names:
         row = []
@@ -44,10 +46,19 @@ def calculate_hrp():
             row.append(calc_correlation(returns_arrays[s1], returns_arrays[s2]))
         corr_matrix.append(row)
         
-    # ۲. ماتریس فاصله
+    print("\n📊 Real Correlation Matrix (Full Disclosure - D-197):")
+    print(f"{'':10}", end="")
+    for s in strat_names:
+        print(f"{s:>10}", end="")
+    print()
+    for i, s1 in enumerate(strat_names):
+        print(f"{s1:10}", end="")
+        for j in range(len(strat_names)):
+            print(f"{corr_matrix[i][j]:>10.2f}", end="")
+        print()
+
+    # ۳. ماتریس فاصله و خوشه‌بندی
     dist_matrix = [[math.sqrt(max(0, 0.5 * (1 - corr))) for corr in row] for row in corr_matrix]
-    
-    # ۳. خوشه‌بندی (Single-Linkage ساده)
     clusters = [[i] for i in range(len(strat_names))]
     while len(clusters) > 1:
         min_dist = float('inf')
@@ -63,7 +74,7 @@ def calculate_hrp():
             clusters[i].extend(clusters[j])
             clusters.pop(j)
             
-    # ۴. تخصیص ریسک برابر درون خوشه‌ها
+    # ۴. تخصیص اولیه (Pre-Cap)
     weights = {}
     for cluster in clusters:
         variances = [calc_variance(returns_arrays[strat_names[idx]]) for idx in cluster]
@@ -71,24 +82,34 @@ def calculate_hrp():
         total = sum(inv_vars)
         for idx, iv in zip(cluster, inv_vars):
             weights[strat_names[idx]] = iv / total / len(clusters)
+
+    # ذخیره وزن‌های Pre-Cap برای نمایش
+    pre_cap_weights = weights.copy()
+
+    # ۵. اعمال سقف و کف (D-190)
+    for name in weights:
+        weights[name] = max(0.05, min(0.30, weights[name]))
     
-    # ۵. اعمال سقف و کف (D-190) با حفظ مجموع ۱۰۰٪ (Iterative Normalization)
-    for _ in range(10): # حلقه برای تثبیت وزن‌ها
+    # ۶. نرمال‌سازی تکراری (D-199)
+    for _ in range(10):
         total_w = sum(weights.values())
         for name in weights:
             weights[name] = weights[name] / total_w
             if weights[name] > 0.30: weights[name] = 0.30
             if weights[name] < 0.05: weights[name] = 0.05
             
-    # اصلاح دقیق سقف ۳۰٪ با گرد کردن به ۳ رقم اعشار
+    # ۷. نرمال‌سازی نهایی برای دقیقاً ۱۰۰٪
     total_w = sum(weights.values())
     for name in weights:
-        weights[name] = round((weights[name] / total_w), 3)
-        if weights[name] > 0.300: weights[name] = 0.300
+        weights[name] = round(weights[name] / total_w, 4)
         
-    # گزارش
-    print("\n🏆 HRP Optimized Weights:")
-    report_msg = "📋 **HRP Portfolio Allocation**\n\n"
+    # ─── گزارش نهایی ───
+    print("\n🔍 Pre-Cap Weights (D-195):")
+    for name, w in pre_cap_weights.items():
+        print(f"  {name}: {w*100:.1f}%")
+        
+    print("\n🏆 Post-Cap HRP Weights (Directional Bucket - 50% of Total):")
+    report_msg = "📋 **HRP Allocation (50% Directional Bucket)**\n\n"
     for name, w in weights.items():
         print(f"  {name}: {w*100:.1f}%")
         report_msg += f"• {name}: {round(w*100, 1)}%\n"
