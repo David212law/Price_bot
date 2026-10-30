@@ -130,6 +130,19 @@ def main():
     print(f"=== M11-KuCoin Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
+    
+    # پاکسازی: اگر فایل State قدیمی ناقص بود، کلیدهای جدید اضافه شوند
+    if isinstance(state, dict) and "m31_capital" in state:
+        if "a20_pos" not in state: state["a20_pos"] = {}
+        if "m40_pos" not in state: state["m40_pos"] = {}
+        if "a20_capital" not in state: state["a20_capital"] = state.get("total_equity", 10000) * A20_ALLOC
+        if "m40_capital" not in state: state["m40_capital"] = state.get("total_equity", 10000) * M40_ALLOC
+        if "m35_pos" in state: del state["m35_pos"]
+        if "m35_capital" in state:
+            # انتقال M35 قدیمی به M40 جدید
+            old_m35 = state.pop("m35_capital", 0)
+            state["m40_capital"] = state.get("m40_capital", 0) + old_m35
+    
     if not isinstance(state, dict) or "m31_capital" not in state:
         state = {
             "total_equity": INITIAL_CAPITAL,
