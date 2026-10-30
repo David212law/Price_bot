@@ -1,25 +1,17 @@
 {
-  "total_equity": 10083.676985142753,
-  "m31_capital": 5083.676985142752,
-  "a8_capital": 2474.7908075371433,
+  "total_equity": 10082.423991029735,
+  "m31_capital": 5093.622792470024,
+  "a8_capital": 2500.4926137298853,
   "a20_capital": 1995.8161507428622,
   "m31_last_funding_time": {
-    "BTCUSDT": 1793289600000,
+    "BTCUSDT": 1793318400002,
     "ETHUSDT": 1793289600000,
-    "SOLUSDT": 1793289600000,
+    "SOLUSDT": 1793318400002,
     "BNBUSDT": 1793289600000,
-    "XRPUSDT": 1793289600000,
-    "AVAXUSDT": 1793289600000
+    "XRPUSDT": 1793318400002,
+    "AVAXUSDT": 1793318400002
   },
-  "a8_positions": {
-    "BNBUSDT": {
-      "initial": 698.23,
-      "avg": 698.23,
-      "units": 0.03610081426408289,
-      "invested": 25.209192462856883,
-      "entry_idx": 299
-    }
-  },
+  "a8_positions": {},
   "a20_positions": {
     "BNBUSDT": {
       "side": "SHORT",
@@ -36,5 +28,12 @@
       "sl": 1.3297103950244156
     }
   },
-  "history": []
+  "history": [
+    {
+      "time": 1793332800000,
+      "strat": "A8",
+      "sym": "BNBUSDT",
+      "pnl": 0.49261372988485874
+    }
+  ]
 }
