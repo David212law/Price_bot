@@ -1,3 +1,5 @@
+import sys
+print("⚠️ WARNING: FOR SIMULATION ONLY. DO NOT USE IN LIVE (D-174).")
 import sys, os
 sys.path.append(os.getcwd())
 import json
