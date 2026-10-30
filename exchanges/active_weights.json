@@ -1,5 +1,5 @@
 {
-  "hyperliquid": {"M31": 1.0},
-  "aster": {"M31": 1.0},
-  "kucoin": {"M31": 1.0}
+  "hyperliquid": {"M31": 0.80},
+  "aster": {"M31": 0.40},
+  "kucoin": {"M31": 0.60}
 }
