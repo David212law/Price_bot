@@ -11,3 +11,4 @@ Thumbs.db
 # Env & Logs
 .env
 *.log
+research_lab/logs/
