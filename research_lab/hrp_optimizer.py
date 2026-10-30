@@ -80,17 +80,18 @@ def calculate_hrp():
             if weights[name] > 0.30: weights[name] = 0.30
             if weights[name] < 0.05: weights[name] = 0.05
             
-    # نرمال‌سازی نهایی برای رفع خطای اعشار
+    # اصلاح دقیق سقف ۳۰٪ با گرد کردن به ۳ رقم اعشار
     total_w = sum(weights.values())
     for name in weights:
-        weights[name] = round(weights[name] / total_w, 4)
+        weights[name] = round((weights[name] / total_w), 3)
+        if weights[name] > 0.300: weights[name] = 0.300
         
     # گزارش
     print("\n🏆 HRP Optimized Weights:")
     report_msg = "📋 **HRP Portfolio Allocation**\n\n"
     for name, w in weights.items():
         print(f"  {name}: {w*100:.1f}%")
-        report_msg += f"• {name}: {w*100:.1f}%\n"
+        report_msg += f"• {name}: {round(w*100, 1)}%\n"
     
     send_bale(report_msg)
     
