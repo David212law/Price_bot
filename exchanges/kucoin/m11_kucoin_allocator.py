@@ -15,7 +15,7 @@ INITIAL_CAPITAL = 10000.0
 
 # Allocations
 M31_ALLOC = 0.50
-CASH_ALLOC = 0.50 # برای استراتژی‌های آینده
+M35_ALLOC = 0.50 # فعال‌سازی M35
 
 # M31 Config
 M31_LEVERAGE = 6
@@ -85,7 +85,32 @@ def fetch_current_price(symbol):
     except: pass
     return 0.0
 
+
+def calc_ema_local(closes, period):
+    ema = [None] * len(closes)
+    if len(closes) < period: return ema
+    k = 2.0 / (period + 1)
+    e = sum(closes[:period]) / period
+    ema[period - 1] = e
+    for i in range(period, len(closes)):
+        e = closes[i] * k + e * (1 - k)
+        ema[i] = e
+    return ema
+
+def fetch_klines_4h(symbol):
+    now_ms = int(time.time() * 1000)
+    start_ms = now_ms - (50 * 4 * 60 * 60 * 1000) # 50 کندل برای warmup
+    url = f"https://api-futures.kucoin.com/api/v1/kline/query?symbol={symbol}&granularity=240&from={start_ms}&to={now_ms}"
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=15)
+        if r.status_code == 200:
+            data = r.json().get("data", [])
+            return [{"t": c[0], "o": c[1], "h": c[2], "l": c[3], "c": c[4]} for c in data]
+    except: pass
+    return []
+
 def main():
+
 
     print(f"=== M11-KuCoin Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
@@ -94,7 +119,7 @@ def main():
         state = {
             "total_equity": INITIAL_CAPITAL,
             "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
-            "cash_capital": INITIAL_CAPITAL * CASH_ALLOC,
+            "m35_capital": INITIAL_CAPITAL * M35_ALLOC,
             "m31_pos": {},
             "history": []
         }
@@ -150,8 +175,54 @@ def main():
                     
         state["m31_pos"][sym] = st
 
+
+    # ── M35 Logic (EMA Crossover) ──
+    for sym in SYMBOLS:
+        candles = fetch_klines_4h(sym)
+        if len(candles) < 200: continue
+        
+        closes = [c["c"] for c in candles]
+        ema_f = calc_ema_local(closes, 50)
+        ema_s = calc_ema_local(closes, 200)
+        
+        if None in [ema_f[-1], ema_s[-1], ema_f[-2], ema_s[-2]]: continue
+        
+        # وضعیت پوزیشن M35
+        if "m35_pos" not in state: state["m35_pos"] = {}
+        pos = state["m35_pos"].get(sym)
+        
+        # بررسی خروج
+        if pos:
+            exit_triggered = False
+            if pos["side"] == "LONG" and ema_f[-1] < ema_s[-1] and ema_f[-2] >= ema_s[-2]:
+                exit_triggered = True
+            elif pos["side"] == "SHORT" and ema_f[-1] > ema_s[-1] and ema_f[-2] <= ema_s[-2]:
+                exit_triggered = True
+                
+            if exit_triggered:
+                pnl_pct = (closes[-1] - pos["entry"]) / pos["entry"] if pos["side"] == "LONG" else (pos["entry"] - closes[-1]) / pos["entry"]
+                pnl = pos["invested"] * pnl_pct
+                state["m35_capital"] += (pos["invested"] + pnl)
+                del state["m35_pos"][sym]
+                send_bale(f"🟢 M35 KuCoin CLOSED | {sym} | PnL: {pnl:+.2f}")
+                
+        # بررسی ورود
+        elif len(state.get("m35_pos", {})) < 3:
+            side = None
+            if ema_f[-1] > ema_s[-1] and ema_f[-2] <= ema_s[-2]: side = "LONG"
+            elif ema_f[-1] < ema_s[-1] and ema_f[-2] >= ema_s[-2]: side = "SHORT"
+            
+            if side:
+                alloc = state["m35_capital"] * 0.10 # 10% از سرمایه M35
+                if alloc > 10 and state["m35_capital"] >= alloc:
+                    state["m35_capital"] -= alloc
+                    if "m35_pos" not in state: state["m35_pos"] = {}
+                    state["m35_pos"][sym] = {"side": side, "entry": closes[-1], "invested": alloc}
+                    send_bale(f"🟢 M35 KuCoin OPENED {side} | {sym} at {closes[-1]}")
+
     # ── Calculate Equity ──
-    state["total_equity"] = state["m31_capital"] + state["cash_capital"]
+    state["total_equity"] = state["m31_capital"] + state.get("m35_capital", 0)
+
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     
     if save_to_github(STATE_FILE, state, sha):
