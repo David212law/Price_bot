@@ -1,7 +1,7 @@
 name: Auto-Research & Optimize
 
 on:
-  workflow_dispatch: # فقط دستی اجرا می‌شود تا بودجه را کنترل کنیم
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,9 +17,9 @@ jobs:
       - name: Install dependencies
         run: pip install requests
       - name: Run Auto-Discovery
-        run: python research_lab/auto_discovery.py
+        run: python -m research_lab.auto_discovery
       - name: Run Portfolio Optimizer
-        run: python research_lab/portfolio_optimizer.py
+        run: python -m research_lab.portfolio_optimizer
       - name: Commit Results
         run: |
           git config --global user.name 'github-actions[bot]'

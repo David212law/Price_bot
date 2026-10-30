@@ -1,3 +1,5 @@
+import sys, os
+sys.path.append(os.getcwd())
 import json
 import itertools
 from strategies.core_engine import strategy_m35, load_data, calculate_metrics
