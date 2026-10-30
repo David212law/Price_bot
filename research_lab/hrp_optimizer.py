@@ -2,13 +2,14 @@ import sys
 print("⚠️ WARNING: FOR SIMULATION ONLY. DO NOT USE IN LIVE.")
 import json
 import os
-import numpy as np
+import math
 from collections import defaultdict
 from strategies.core_engine import strategy_m35, strategy_a8, strategy_a20, strategy_m40, load_data
 from research_lab.bale_notifier import send_bale
+from research_lab.portfolio_optimizer import calc_correlation, calc_variance
 
 def calculate_hrp():
-    print("=== 🧠 HRP Optimizer (Hierarchical Risk Parity) ===")
+    print("=== 🧠 HRP Optimizer (Pure Python) ===")
     exchange = "kucoin"
     symbols = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
     
@@ -33,17 +34,21 @@ def calculate_hrp():
         print("❌ Not enough data.")
         return
         
-    returns_arrays = {name: np.array([monthly_returns[name].get(m, 0.0) for m in sorted_months]) for name in strategies}
     strat_names = list(strategies.keys())
-    matrix_data = np.array([returns_arrays[name] for name in strat_names])
-    corr_matrix = np.nan_to_num(np.corrcoef(matrix_data))
+    returns_arrays = {name: [monthly_returns[name].get(m, 0.0) for m in sorted_months] for name in strat_names}
     
-    # ─── HRP ساده‌شده (با خوشه‌بندی بر اساس همبستگی) ───
-    # ۱. ساخت ماتریس فاصله (Distance)
-    dist_matrix = np.sqrt(0.5 * (1 - corr_matrix))
-    np.fill_diagonal(dist_matrix, 0)
+    # ۱. ماتریس همبستگی
+    corr_matrix = []
+    for s1 in strat_names:
+        row = []
+        for s2 in strat_names:
+            row.append(calc_correlation(returns_arrays[s1], returns_arrays[s2]))
+        corr_matrix.append(row)
+        
+    # ۲. ماتریس فاصله
+    dist_matrix = [[math.sqrt(0.5 * (1 - corr)) for corr in row] for row in corr_matrix]
     
-    # ۲. خوشه‌بندی سلسله‌مراتبی ساده (Single-Linkage)
+    # ۳. خوشه‌بندی (Single-Linkage ساده)
     clusters = [[i] for i in range(len(strat_names))]
     while len(clusters) > 1:
         min_dist = float('inf')
@@ -59,21 +64,20 @@ def calculate_hrp():
             clusters[i].extend(clusters[j])
             clusters.pop(j)
             
-    # ۳. تخصیص Risk Parity درون هر خوشه
+    # ۴. تخصیص ریسک برابر درون خوشه‌ها
     weights = {}
     for cluster in clusters:
-        # واریانس هر استراتژی
-        variances = [np.var(returns_arrays[strat_names[idx]]) for idx in cluster]
+        variances = [calc_variance(returns_arrays[strat_names[idx]]) for idx in cluster]
         inv_vars = [1.0 / (v + 1e-8) for v in variances]
         total = sum(inv_vars)
         for idx, iv in zip(cluster, inv_vars):
             weights[strat_names[idx]] = iv / total / len(clusters)
     
-    # ۴. اعمال سقف و کف (D-190)
+    # ۵. اعمال سقف و کف (D-190)
     for name in weights:
         weights[name] = max(0.05, min(0.30, weights[name]))
     
-    # نرمال‌سازی نهایی
+    # نرمال‌سازی
     total_w = sum(weights.values())
     for name in weights:
         weights[name] = round(weights[name] / total_w, 4)
