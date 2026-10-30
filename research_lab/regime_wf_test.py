@@ -85,6 +85,7 @@ def main():
     EXCHANGES = {
         "aster": ["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT","XRPUSDT","AVAXUSDT"],
         "hyperliquid": ["BTC","ETH","SOL","BNB","XRP","AVAX"],
+        "kucoin": ["XBTUSDTM","ETHUSDTM","SOLUSDTM","BNBUSDTM","XRPUSDTM","AVAXUSDTM"],
     }
     STRATEGIES = {
         "A20": strategy_a20,

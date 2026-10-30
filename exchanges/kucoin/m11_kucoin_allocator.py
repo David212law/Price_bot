@@ -13,7 +13,7 @@ BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 STATE_FILE = "exchanges/kucoin/state/m11_kucoin_paper_state.json"
 INITIAL_CAPITAL = 10000.0
 
-M31_ALLOC = 0.60  # D-313  # D-306: 100%
+M31_ALLOC = 0.70  # FORCED
 A20_ALLOC = 0.0  # D-306  # D-282: Revoked due to Embargo-WF
 M40_ALLOC = 0.0  # D-306  # D-282: Reallocate from A20
 M31_LEVERAGE = 3  # D-310
