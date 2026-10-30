@@ -1,0 +1,5477 @@
+[
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000113,
+    "timepoint": 1761840000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.4e-05,
+    "timepoint": 1761868800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.4e-05,
+    "timepoint": 1761897600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1761926400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1761955200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1761984000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.3e-05,
+    "timepoint": 1762012800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.3e-05,
+    "timepoint": 1762041600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.8e-05,
+    "timepoint": 1762070400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.3e-05,
+    "timepoint": 1762099200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000104,
+    "timepoint": 1762128000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.9e-05,
+    "timepoint": 1762156800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.5e-05,
+    "timepoint": 1762185600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1762214400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1762243200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.9e-05,
+    "timepoint": 1762272000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000119,
+    "timepoint": 1762300800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.8e-05,
+    "timepoint": 1762329600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.1e-05,
+    "timepoint": 1762358400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1762387200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1762416000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1762444800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3e-05,
+    "timepoint": 1762473600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.8e-05,
+    "timepoint": 1762502400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1762531200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-05,
+    "timepoint": 1762560000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1762588800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1762617600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.5e-05,
+    "timepoint": 1762646400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-06,
+    "timepoint": 1762675200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000108,
+    "timepoint": 1762704000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1762732800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.7e-05,
+    "timepoint": 1762761600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.3e-05,
+    "timepoint": 1762790400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.3e-05,
+    "timepoint": 1762819200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.8e-05,
+    "timepoint": 1762848000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1762876800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.6e-05,
+    "timepoint": 1762905600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.5e-05,
+    "timepoint": 1762934400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1762963200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-05,
+    "timepoint": 1762992000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1763020800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.9e-05,
+    "timepoint": 1763049600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000182,
+    "timepoint": 1763078400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000162,
+    "timepoint": 1763107200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000105,
+    "timepoint": 1763136000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000157,
+    "timepoint": 1763164800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000111,
+    "timepoint": 1763193600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.7e-05,
+    "timepoint": 1763222400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1763251200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.9e-05,
+    "timepoint": 1763280000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.8e-05,
+    "timepoint": 1763308800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.4e-05,
+    "timepoint": 1763337600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-05,
+    "timepoint": 1763366400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.7e-05,
+    "timepoint": 1763395200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000121,
+    "timepoint": 1763424000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000104,
+    "timepoint": 1763452800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.3e-05,
+    "timepoint": 1763481600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.1e-05,
+    "timepoint": 1763510400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1763539200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.7e-05,
+    "timepoint": 1763568000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.5e-05,
+    "timepoint": 1763596800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.1e-05,
+    "timepoint": 1763625600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.5e-05,
+    "timepoint": 1763654400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.5e-05,
+    "timepoint": 1763683200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.6e-05,
+    "timepoint": 1763712000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.9e-05,
+    "timepoint": 1763740800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1763769600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1763798400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.3e-05,
+    "timepoint": 1763827200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-06,
+    "timepoint": 1763856000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1763884800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1763913600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1763942400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1763971200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1764000000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.7e-05,
+    "timepoint": 1764028800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1764057600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1764086400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.4e-05,
+    "timepoint": 1764115200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.8e-05,
+    "timepoint": 1764144000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-05,
+    "timepoint": 1764172800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.6e-05,
+    "timepoint": 1764201600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000105,
+    "timepoint": 1764230400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.7e-05,
+    "timepoint": 1764259200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1764288000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.6e-05,
+    "timepoint": 1764316800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.6e-05,
+    "timepoint": 1764345600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1764374400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-06,
+    "timepoint": 1764403200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.6e-05,
+    "timepoint": 1764432000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1764460800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1764489600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-05,
+    "timepoint": 1764518400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1764547200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.3e-05,
+    "timepoint": 1764576000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.1e-05,
+    "timepoint": 1764604800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-05,
+    "timepoint": 1764633600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0,
+    "timepoint": 1764662400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.3e-05,
+    "timepoint": 1764691200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.5e-05,
+    "timepoint": 1764720000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.7e-05,
+    "timepoint": 1764748800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-05,
+    "timepoint": 1764777600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-05,
+    "timepoint": 1764806400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.9e-05,
+    "timepoint": 1764835200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.7e-05,
+    "timepoint": 1764864000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.4e-05,
+    "timepoint": 1764892800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.2e-05,
+    "timepoint": 1764921600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.4e-05,
+    "timepoint": 1764950400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1764979200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1765008000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1765036800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.8e-05,
+    "timepoint": 1765065600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1765094400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.3e-05,
+    "timepoint": 1765123200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1765152000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1765180800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-06,
+    "timepoint": 1765209600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-06,
+    "timepoint": 1765238400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1765267200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1765296000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.2e-05,
+    "timepoint": 1765324800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.3e-05,
+    "timepoint": 1765353600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-05,
+    "timepoint": 1765382400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7e-06,
+    "timepoint": 1765411200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-06,
+    "timepoint": 1765440000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.8e-05,
+    "timepoint": 1765468800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.8e-05,
+    "timepoint": 1765497600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1765526400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.9e-05,
+    "timepoint": 1765555200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-05,
+    "timepoint": 1765584000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8e-06,
+    "timepoint": 1765612800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1765641600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000129,
+    "timepoint": 1765670400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1765699200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.6e-05,
+    "timepoint": 1765728000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1765756800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.2e-05,
+    "timepoint": 1765785600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1765814400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.6e-05,
+    "timepoint": 1765843200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.9e-05,
+    "timepoint": 1765872000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.3e-05,
+    "timepoint": 1765900800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1765929600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.5e-05,
+    "timepoint": 1765958400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.5e-05,
+    "timepoint": 1765987200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1766016000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.6e-05,
+    "timepoint": 1766044800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.8e-05,
+    "timepoint": 1766073600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.7e-05,
+    "timepoint": 1766102400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.8e-05,
+    "timepoint": 1766131200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1766160000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-06,
+    "timepoint": 1766188800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1766217600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-05,
+    "timepoint": 1766246400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1766275200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1766304000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1766332800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1766361600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.2e-05,
+    "timepoint": 1766390400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.9e-05,
+    "timepoint": 1766419200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1766448000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1766476800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.1e-05,
+    "timepoint": 1766505600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.6e-05,
+    "timepoint": 1766534400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-06,
+    "timepoint": 1766563200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.6e-05,
+    "timepoint": 1766592000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.3e-05,
+    "timepoint": 1766620800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-06,
+    "timepoint": 1766649600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1766678400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1766707200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.5e-05,
+    "timepoint": 1766736000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1766764800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1766793600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3e-06,
+    "timepoint": 1766822400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1766851200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1766880000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1766908800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-06,
+    "timepoint": 1766937600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1766966400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.6e-05,
+    "timepoint": 1766995200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.8e-05,
+    "timepoint": 1767024000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.4e-05,
+    "timepoint": 1767052800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.8e-05,
+    "timepoint": 1767081600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.3e-05,
+    "timepoint": 1767110400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.7e-05,
+    "timepoint": 1767139200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.1e-05,
+    "timepoint": 1767168000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.6e-05,
+    "timepoint": 1767196800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000127,
+    "timepoint": 1767225600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.6e-05,
+    "timepoint": 1767254400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1767283200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1767312000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.8e-05,
+    "timepoint": 1767340800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.9e-05,
+    "timepoint": 1767369600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000139,
+    "timepoint": 1767398400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.5e-05,
+    "timepoint": 1767427200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-05,
+    "timepoint": 1767456000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.6e-05,
+    "timepoint": 1767484800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.8e-05,
+    "timepoint": 1767513600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-05,
+    "timepoint": 1767542400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1767571200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.9e-05,
+    "timepoint": 1767600000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1767628800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.00015,
+    "timepoint": 1767657600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1767686400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.7e-05,
+    "timepoint": 1767715200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000113,
+    "timepoint": 1767744000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000115,
+    "timepoint": 1767772800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000104,
+    "timepoint": 1767801600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000123,
+    "timepoint": 1767830400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1767859200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000105,
+    "timepoint": 1767888000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.7e-05,
+    "timepoint": 1767916800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1767945600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.5e-05,
+    "timepoint": 1767974400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.8e-05,
+    "timepoint": 1768003200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.8e-05,
+    "timepoint": 1768032000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.6e-05,
+    "timepoint": 1768060800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.3e-05,
+    "timepoint": 1768089600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.8e-05,
+    "timepoint": 1768118400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.6e-05,
+    "timepoint": 1768147200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.4e-05,
+    "timepoint": 1768176000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.7e-05,
+    "timepoint": 1768204800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000115,
+    "timepoint": 1768233600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.8e-05,
+    "timepoint": 1768262400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1768291200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.3e-05,
+    "timepoint": 1768320000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000185,
+    "timepoint": 1768348800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.8e-05,
+    "timepoint": 1768377600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1768406400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000281,
+    "timepoint": 1768435200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.5e-05,
+    "timepoint": 1768464000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.1e-05,
+    "timepoint": 1768492800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1768521600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.5e-05,
+    "timepoint": 1768550400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.8e-05,
+    "timepoint": 1768579200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1768608000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1768636800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.6e-05,
+    "timepoint": 1768665600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.3e-05,
+    "timepoint": 1768694400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.8e-05,
+    "timepoint": 1768723200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1768752000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.8e-05,
+    "timepoint": 1768780800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1768809600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.4e-05,
+    "timepoint": 1768838400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.8e-05,
+    "timepoint": 1768867200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.2e-05,
+    "timepoint": 1768896000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.8e-05,
+    "timepoint": 1768924800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000121,
+    "timepoint": 1768953600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.1e-05,
+    "timepoint": 1768982400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.2e-05,
+    "timepoint": 1769011200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1769040000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.3e-05,
+    "timepoint": 1769068800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.4e-05,
+    "timepoint": 1769097600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.6e-05,
+    "timepoint": 1769126400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1769155200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.8e-05,
+    "timepoint": 1769184000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8e-06,
+    "timepoint": 1769212800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.1e-05,
+    "timepoint": 1769241600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.8e-05,
+    "timepoint": 1769270400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1769299200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.2e-05,
+    "timepoint": 1769328000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000136,
+    "timepoint": 1769356800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1769385600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.4e-05,
+    "timepoint": 1769414400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1769443200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.5e-05,
+    "timepoint": 1769472000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-05,
+    "timepoint": 1769500800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1769529600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.5e-05,
+    "timepoint": 1769558400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-06,
+    "timepoint": 1769587200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.4e-05,
+    "timepoint": 1769616000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.3e-05,
+    "timepoint": 1769644800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1769673600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.9e-05,
+    "timepoint": 1769702400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000126,
+    "timepoint": 1769731200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.6e-05,
+    "timepoint": 1769760000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1769788800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.7e-05,
+    "timepoint": 1769817600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.9e-05,
+    "timepoint": 1769846400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.4e-05,
+    "timepoint": 1769875200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.2e-05,
+    "timepoint": 1769904000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0,
+    "timepoint": 1769932800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1769961600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1769990400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1770019200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.9e-05,
+    "timepoint": 1770048000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.6e-05,
+    "timepoint": 1770076800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.4e-05,
+    "timepoint": 1770105600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1770134400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1770163200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8e-06,
+    "timepoint": 1770192000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0,
+    "timepoint": 1770220800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.3e-05,
+    "timepoint": 1770249600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1770278400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1770307200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.4e-05,
+    "timepoint": 1770336000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.1e-05,
+    "timepoint": 1770364800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.3e-05,
+    "timepoint": 1770393600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000178,
+    "timepoint": 1770422400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.6e-05,
+    "timepoint": 1770451200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.8e-05,
+    "timepoint": 1770480000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.3e-05,
+    "timepoint": 1770508800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.7e-05,
+    "timepoint": 1770537600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.7e-05,
+    "timepoint": 1770566400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.8e-05,
+    "timepoint": 1770595200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.4e-05,
+    "timepoint": 1770624000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.2e-05,
+    "timepoint": 1770652800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.8e-05,
+    "timepoint": 1770681600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.5e-05,
+    "timepoint": 1770710400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.6e-05,
+    "timepoint": 1770739200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1770768000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.4e-05,
+    "timepoint": 1770796800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.4e-05,
+    "timepoint": 1770825600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1770854400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1770883200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.3e-05,
+    "timepoint": 1770912000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.5e-05,
+    "timepoint": 1770940800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1770969600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.5e-05,
+    "timepoint": 1770998400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000102,
+    "timepoint": 1771027200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4e-05,
+    "timepoint": 1771056000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1771084800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1771113600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.8e-05,
+    "timepoint": 1771142400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-05,
+    "timepoint": 1771171200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.9e-05,
+    "timepoint": 1771200000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1771228800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.6e-05,
+    "timepoint": 1771257600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.1e-05,
+    "timepoint": 1771286400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-06,
+    "timepoint": 1771315200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.2e-05,
+    "timepoint": 1771344000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-06,
+    "timepoint": 1771372800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.5e-05,
+    "timepoint": 1771401600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1771430400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1771459200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1771488000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.7e-05,
+    "timepoint": 1771516800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1771545600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1771574400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1771603200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.4e-05,
+    "timepoint": 1771632000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.2e-05,
+    "timepoint": 1771660800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.5e-05,
+    "timepoint": 1771689600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7.8e-05,
+    "timepoint": 1771718400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.9e-05,
+    "timepoint": 1771747200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.2e-05,
+    "timepoint": 1771776000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.2e-05,
+    "timepoint": 1771804800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8e-06,
+    "timepoint": 1771833600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.8e-05,
+    "timepoint": 1771862400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1771891200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3e-06,
+    "timepoint": 1771920000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1771948800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000183,
+    "timepoint": 1771977600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1772006400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.4e-05,
+    "timepoint": 1772035200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.9e-05,
+    "timepoint": 1772064000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.5e-05,
+    "timepoint": 1772092800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.7e-05,
+    "timepoint": 1772121600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-05,
+    "timepoint": 1772150400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.8e-05,
+    "timepoint": 1772179200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.6e-05,
+    "timepoint": 1772208000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.2e-05,
+    "timepoint": 1772236800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.8e-05,
+    "timepoint": 1772265600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.0001,
+    "timepoint": 1772294400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.3e-05,
+    "timepoint": 1772323200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1772352000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.4e-05,
+    "timepoint": 1772380800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.4e-05,
+    "timepoint": 1772409600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.1e-05,
+    "timepoint": 1772438400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.1e-05,
+    "timepoint": 1772467200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000104,
+    "timepoint": 1772496000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8e-06,
+    "timepoint": 1772524800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.9e-05,
+    "timepoint": 1772553600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7.5e-05,
+    "timepoint": 1772582400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.6e-05,
+    "timepoint": 1772611200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.9e-05,
+    "timepoint": 1772640000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000317,
+    "timepoint": 1772668800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000212,
+    "timepoint": 1772697600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.8e-05,
+    "timepoint": 1772726400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1772755200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-06,
+    "timepoint": 1772784000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1772812800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1772841600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.1e-05,
+    "timepoint": 1772870400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-05,
+    "timepoint": 1772899200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1772928000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.3e-05,
+    "timepoint": 1772956800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.4e-05,
+    "timepoint": 1772985600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.3e-05,
+    "timepoint": 1773014400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.9e-05,
+    "timepoint": 1773043200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.9e-05,
+    "timepoint": 1773072000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.9e-05,
+    "timepoint": 1773100800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.1e-05,
+    "timepoint": 1773129600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-05,
+    "timepoint": 1773158400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.3e-05,
+    "timepoint": 1773187200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-05,
+    "timepoint": 1773216000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.5e-05,
+    "timepoint": 1773244800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000112,
+    "timepoint": 1773273600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1773302400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-05,
+    "timepoint": 1773331200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.00011,
+    "timepoint": 1773360000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.7e-05,
+    "timepoint": 1773388800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000105,
+    "timepoint": 1773417600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1773446400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0,
+    "timepoint": 1773475200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.2e-05,
+    "timepoint": 1773504000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.2e-05,
+    "timepoint": 1773532800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.5e-05,
+    "timepoint": 1773561600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.6e-05,
+    "timepoint": 1773590400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.1e-05,
+    "timepoint": 1773619200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1773648000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.4e-05,
+    "timepoint": 1773676800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.2e-05,
+    "timepoint": 1773705600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.9e-05,
+    "timepoint": 1773734400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1773763200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.8e-05,
+    "timepoint": 1773792000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.8e-05,
+    "timepoint": 1773820800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1773849600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.7e-05,
+    "timepoint": 1773878400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1773907200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.9e-05,
+    "timepoint": 1773936000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1773964800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.7e-05,
+    "timepoint": 1773993600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.2e-05,
+    "timepoint": 1774022400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1774051200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.3e-05,
+    "timepoint": 1774080000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.8e-05,
+    "timepoint": 1774108800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.9e-05,
+    "timepoint": 1774137600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1774166400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.6e-05,
+    "timepoint": 1774195200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4e-06,
+    "timepoint": 1774224000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1774252800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-06,
+    "timepoint": 1774281600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1774310400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.1e-05,
+    "timepoint": 1774339200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-06,
+    "timepoint": 1774368000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.7e-05,
+    "timepoint": 1774396800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.1e-05,
+    "timepoint": 1774425600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.8e-05,
+    "timepoint": 1774454400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.5e-05,
+    "timepoint": 1774483200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4e-05,
+    "timepoint": 1774512000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1774540800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000102,
+    "timepoint": 1774569600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.5e-05,
+    "timepoint": 1774598400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.6e-05,
+    "timepoint": 1774627200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000126,
+    "timepoint": 1774656000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7e-06,
+    "timepoint": 1774684800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.1e-05,
+    "timepoint": 1774713600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-05,
+    "timepoint": 1774742400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.2e-05,
+    "timepoint": 1774771200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000106,
+    "timepoint": 1774800000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.4e-05,
+    "timepoint": 1774828800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-06,
+    "timepoint": 1774857600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.8e-05,
+    "timepoint": 1774886400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-05,
+    "timepoint": 1774915200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1774944000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-06,
+    "timepoint": 1774972800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000182,
+    "timepoint": 1775001600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000163,
+    "timepoint": 1775030400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000122,
+    "timepoint": 1775059200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7.4e-05,
+    "timepoint": 1775088000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1775116800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.4e-05,
+    "timepoint": 1775145600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000112,
+    "timepoint": 1775174400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1775203200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.9e-05,
+    "timepoint": 1775232000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7.4e-05,
+    "timepoint": 1775260800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.4e-05,
+    "timepoint": 1775289600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000121,
+    "timepoint": 1775318400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000238,
+    "timepoint": 1775347200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000231,
+    "timepoint": 1775376000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000159,
+    "timepoint": 1775404800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000131,
+    "timepoint": 1775433600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000193,
+    "timepoint": 1775462400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000177,
+    "timepoint": 1775491200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000268,
+    "timepoint": 1775520000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.7e-05,
+    "timepoint": 1775548800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.6e-05,
+    "timepoint": 1775577600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1775606400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1775635200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1775664000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000129,
+    "timepoint": 1775692800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1775721600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-05,
+    "timepoint": 1775750400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000143,
+    "timepoint": 1775779200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.5e-05,
+    "timepoint": 1775808000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.9e-05,
+    "timepoint": 1775836800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000269,
+    "timepoint": 1775865600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.7e-05,
+    "timepoint": 1775894400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1775923200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.9e-05,
+    "timepoint": 1775952000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.5e-05,
+    "timepoint": 1775980800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.5e-05,
+    "timepoint": 1776009600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-06,
+    "timepoint": 1776038400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-06,
+    "timepoint": 1776067200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.1e-05,
+    "timepoint": 1776096000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000315,
+    "timepoint": 1776124800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000147,
+    "timepoint": 1776153600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000261,
+    "timepoint": 1776182400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000287,
+    "timepoint": 1776211200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.3e-05,
+    "timepoint": 1776240000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.5e-05,
+    "timepoint": 1776268800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-05,
+    "timepoint": 1776297600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.7e-05,
+    "timepoint": 1776326400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1776355200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.2e-05,
+    "timepoint": 1776384000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.9e-05,
+    "timepoint": 1776412800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000221,
+    "timepoint": 1776441600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000172,
+    "timepoint": 1776470400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.6e-05,
+    "timepoint": 1776499200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-05,
+    "timepoint": 1776528000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.7e-05,
+    "timepoint": 1776556800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.6e-05,
+    "timepoint": 1776585600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1776614400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.1e-05,
+    "timepoint": 1776643200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.4e-05,
+    "timepoint": 1776672000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.1e-05,
+    "timepoint": 1776700800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000125,
+    "timepoint": 1776729600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.5e-05,
+    "timepoint": 1776758400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.6e-05,
+    "timepoint": 1776787200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.1e-05,
+    "timepoint": 1776816000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.2e-05,
+    "timepoint": 1776844800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000174,
+    "timepoint": 1776873600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000184,
+    "timepoint": 1776902400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1776931200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.5e-05,
+    "timepoint": 1776960000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000128,
+    "timepoint": 1776988800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.3e-05,
+    "timepoint": 1777017600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.2e-05,
+    "timepoint": 1777046400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.8e-05,
+    "timepoint": 1777075200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.2e-05,
+    "timepoint": 1777104000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.1e-05,
+    "timepoint": 1777132800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4e-06,
+    "timepoint": 1777161600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.4e-05,
+    "timepoint": 1777190400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.3e-05,
+    "timepoint": 1777219200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.4e-05,
+    "timepoint": 1777248000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.4e-05,
+    "timepoint": 1777276800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.9e-05,
+    "timepoint": 1777305600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-05,
+    "timepoint": 1777334400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.7e-05,
+    "timepoint": 1777363200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1777392000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.1e-05,
+    "timepoint": 1777420800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.5e-05,
+    "timepoint": 1777449600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.6e-05,
+    "timepoint": 1777478400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000111,
+    "timepoint": 1777507200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.3e-05,
+    "timepoint": 1777536000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.4e-05,
+    "timepoint": 1777564800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.3e-05,
+    "timepoint": 1777593600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-05,
+    "timepoint": 1777622400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.00013,
+    "timepoint": 1777651200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000177,
+    "timepoint": 1777680000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.0001,
+    "timepoint": 1777708800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7.4e-05,
+    "timepoint": 1777737600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000113,
+    "timepoint": 1777766400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.1e-05,
+    "timepoint": 1777795200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.8e-05,
+    "timepoint": 1777824000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000151,
+    "timepoint": 1777852800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.9e-05,
+    "timepoint": 1777881600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.7e-05,
+    "timepoint": 1777910400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000135,
+    "timepoint": 1777939200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.8e-05,
+    "timepoint": 1777968000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-05,
+    "timepoint": 1777996800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000138,
+    "timepoint": 1778025600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.9e-05,
+    "timepoint": 1778054400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-05,
+    "timepoint": 1778083200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.6e-05,
+    "timepoint": 1778112000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8e-06,
+    "timepoint": 1778140800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.6e-05,
+    "timepoint": 1778169600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1778198400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.2e-05,
+    "timepoint": 1778227200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.5e-05,
+    "timepoint": 1778256000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.4e-05,
+    "timepoint": 1778284800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.1e-05,
+    "timepoint": 1778313600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-05,
+    "timepoint": 1778342400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -8.5e-05,
+    "timepoint": 1778371200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-05,
+    "timepoint": 1778400000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-06,
+    "timepoint": 1778428800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.00012,
+    "timepoint": 1778457600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1778486400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1778515200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000128,
+    "timepoint": 1778544000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.1e-05,
+    "timepoint": 1778572800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1778601600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1778630400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.5e-05,
+    "timepoint": 1778659200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1778688000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000191,
+    "timepoint": 1778716800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.8e-05,
+    "timepoint": 1778745600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1778774400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000249,
+    "timepoint": 1778803200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7e-05,
+    "timepoint": 1778832000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1778860800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.9e-05,
+    "timepoint": 1778889600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.4e-05,
+    "timepoint": 1778918400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000103,
+    "timepoint": 1778947200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000133,
+    "timepoint": 1778976000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1779004800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1779033600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.7e-05,
+    "timepoint": 1779062400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.3e-05,
+    "timepoint": 1779091200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000158,
+    "timepoint": 1779120000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1779148800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.5e-05,
+    "timepoint": 1779177600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.5e-05,
+    "timepoint": 1779206400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.8e-05,
+    "timepoint": 1779235200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1779264000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4e-06,
+    "timepoint": 1779292800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1779321600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1779350400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1779379200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.1e-05,
+    "timepoint": 1779408000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.8e-05,
+    "timepoint": 1779436800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.5e-05,
+    "timepoint": 1779465600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.1e-05,
+    "timepoint": 1779494400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.5e-05,
+    "timepoint": 1779523200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1779552000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1779580800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.1e-05,
+    "timepoint": 1779609600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.1e-05,
+    "timepoint": 1779638400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1779667200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1779696000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.5e-05,
+    "timepoint": 1779724800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-06,
+    "timepoint": 1779753600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1779782400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.2e-05,
+    "timepoint": 1779811200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.1e-05,
+    "timepoint": 1779840000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1779868800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.2e-05,
+    "timepoint": 1779897600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1779926400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.1e-05,
+    "timepoint": 1779955200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.9e-05,
+    "timepoint": 1779984000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000116,
+    "timepoint": 1780012800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000125,
+    "timepoint": 1780041600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.3e-05,
+    "timepoint": 1780070400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1780099200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.6e-05,
+    "timepoint": 1780128000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.5e-05,
+    "timepoint": 1780156800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.6e-05,
+    "timepoint": 1780185600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.6e-05,
+    "timepoint": 1780214400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000103,
+    "timepoint": 1780243200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000112,
+    "timepoint": 1780272000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.7e-05,
+    "timepoint": 1780300800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000149,
+    "timepoint": 1780329600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000112,
+    "timepoint": 1780358400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000107,
+    "timepoint": 1780387200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.6e-05,
+    "timepoint": 1780416000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.5e-05,
+    "timepoint": 1780444800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1780473600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.9e-05,
+    "timepoint": 1780502400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.5e-05,
+    "timepoint": 1780531200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1780560000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1780588800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1780617600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1780646400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1780675200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1780704000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3e-06,
+    "timepoint": 1780732800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.1e-05,
+    "timepoint": 1780761600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1780790400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.4e-05,
+    "timepoint": 1780819200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1780848000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.6e-05,
+    "timepoint": 1780876800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1780905600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-06,
+    "timepoint": 1780934400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1780963200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1780992000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.1e-05,
+    "timepoint": 1781020800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.3e-05,
+    "timepoint": 1781049600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.1e-05,
+    "timepoint": 1781078400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.6e-05,
+    "timepoint": 1781107200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1781136000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.5e-05,
+    "timepoint": 1781164800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.3e-05,
+    "timepoint": 1781193600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1781222400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1781251200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.5e-05,
+    "timepoint": 1781280000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.8e-05,
+    "timepoint": 1781308800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1781337600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1781366400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.9e-05,
+    "timepoint": 1781395200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-06,
+    "timepoint": 1781424000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1781452800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1781481600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.5e-05,
+    "timepoint": 1781510400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7.8e-05,
+    "timepoint": 1781539200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000178,
+    "timepoint": 1781568000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000159,
+    "timepoint": 1781596800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.7e-05,
+    "timepoint": 1781625600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1781654400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.2e-05,
+    "timepoint": 1781683200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4e-06,
+    "timepoint": 1781712000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.3e-05,
+    "timepoint": 1781740800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.8e-05,
+    "timepoint": 1781769600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1781798400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1781827200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1781856000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.4e-05,
+    "timepoint": 1781884800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1781913600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.1e-05,
+    "timepoint": 1781942400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1781971200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.9e-05,
+    "timepoint": 1782000000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.2e-05,
+    "timepoint": 1782028800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-05,
+    "timepoint": 1782057600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.4e-05,
+    "timepoint": 1782086400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1782115200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1782144000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1782172800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1782201600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.1e-05,
+    "timepoint": 1782230400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.6e-05,
+    "timepoint": 1782259200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1782288000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1782316800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1782345600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.6e-05,
+    "timepoint": 1782374400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1782403200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1782432000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.9e-05,
+    "timepoint": 1782460800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1782489600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1782518400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1782547200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.6e-05,
+    "timepoint": 1782576000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1782604800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.1e-05,
+    "timepoint": 1782633600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1782662400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.7e-05,
+    "timepoint": 1782691200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.4e-05,
+    "timepoint": 1782720000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1782748800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1782777600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1782806400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.5e-05,
+    "timepoint": 1782835200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.9e-05,
+    "timepoint": 1782864000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.9e-05,
+    "timepoint": 1782892800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.1e-05,
+    "timepoint": 1782921600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.8e-05,
+    "timepoint": 1782950400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.3e-05,
+    "timepoint": 1782979200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1783008000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000121,
+    "timepoint": 1783036800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000162,
+    "timepoint": 1783065600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1783094400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2e-06,
+    "timepoint": 1783123200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.7e-05,
+    "timepoint": 1783152000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.1e-05,
+    "timepoint": 1783180800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1783209600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1783238400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1783267200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1783296000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.1e-05,
+    "timepoint": 1783324800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.00011,
+    "timepoint": 1783353600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.5e-05,
+    "timepoint": 1783382400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.000116,
+    "timepoint": 1783411200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.5e-05,
+    "timepoint": 1783440000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1783468800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1783497600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1783526400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.1e-05,
+    "timepoint": 1783555200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1783584000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1783612800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1783641600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.3e-05,
+    "timepoint": 1783670400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.3e-05,
+    "timepoint": 1783699200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.2e-05,
+    "timepoint": 1783728000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.6e-05,
+    "timepoint": 1783756800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.1e-05,
+    "timepoint": 1783785600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1783814400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.1e-05,
+    "timepoint": 1783843200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.7e-05,
+    "timepoint": 1783872000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1783900800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.8e-05,
+    "timepoint": 1783929600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1783958400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1783987200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784016000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784044800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1784073600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784102400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784131200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784160000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784188800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784217600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784246400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784275200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784304000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784332800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784361600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.9e-05,
+    "timepoint": 1784390400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000129,
+    "timepoint": 1784419200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -4.7e-05,
+    "timepoint": 1784448000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9.2e-05,
+    "timepoint": 1784476800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.00014,
+    "timepoint": 1784505600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000121,
+    "timepoint": 1784534400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1784563200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.00025,
+    "timepoint": 1784592000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000227,
+    "timepoint": 1784620800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000335,
+    "timepoint": 1784649600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000215,
+    "timepoint": 1784678400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000199,
+    "timepoint": 1784707200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6.9e-05,
+    "timepoint": 1784736000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000204,
+    "timepoint": 1784764800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.00012,
+    "timepoint": 1784793600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1784822400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.9e-05,
+    "timepoint": 1784851200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.5e-05,
+    "timepoint": 1784880000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1784908800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.4e-05,
+    "timepoint": 1784937600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.3e-05,
+    "timepoint": 1784966400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1784995200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1785024000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.4e-05,
+    "timepoint": 1785052800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1785081600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785110400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785139200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.8e-05,
+    "timepoint": 1785168000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1785196800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785225600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785254400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.6e-05,
+    "timepoint": 1785283200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.4e-05,
+    "timepoint": 1785312000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.1e-05,
+    "timepoint": 1785340800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785369600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785398400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.8e-05,
+    "timepoint": 1785427200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.6e-05,
+    "timepoint": 1785456000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785484800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785513600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.8e-05,
+    "timepoint": 1785542400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.1e-05,
+    "timepoint": 1785571200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.6e-05,
+    "timepoint": 1785600000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.7e-05,
+    "timepoint": 1785628800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.7e-05,
+    "timepoint": 1785657600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1785686400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.8e-05,
+    "timepoint": 1785715200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.3e-05,
+    "timepoint": 1785744000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.4e-05,
+    "timepoint": 1785772800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.2e-05,
+    "timepoint": 1785801600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.3e-05,
+    "timepoint": 1785830400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1785859200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -9e-06,
+    "timepoint": 1785888000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1785916800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.9e-05,
+    "timepoint": 1785945600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-06,
+    "timepoint": 1785974400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.9e-05,
+    "timepoint": 1786003200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.4e-05,
+    "timepoint": 1786032000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.4e-05,
+    "timepoint": 1786060800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.5e-05,
+    "timepoint": 1786089600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1786118400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3e-06,
+    "timepoint": 1786147200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1786176000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1786204800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1786233600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.8e-05,
+    "timepoint": 1786262400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7e-06,
+    "timepoint": 1786291200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.7e-05,
+    "timepoint": 1786320000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.4e-05,
+    "timepoint": 1786348800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.7e-05,
+    "timepoint": 1786377600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786406400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786435200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.4e-05,
+    "timepoint": 1786464000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786492800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.3e-05,
+    "timepoint": 1786521600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786550400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786579200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.4e-05,
+    "timepoint": 1786608000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.9e-05,
+    "timepoint": 1786636800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786665600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786694400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786723200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1786752000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-05,
+    "timepoint": 1786780800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.9e-05,
+    "timepoint": 1786809600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1786838400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1786867200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.6e-05,
+    "timepoint": 1786896000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1786924800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1786953600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.4e-05,
+    "timepoint": 1786982400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -7e-05,
+    "timepoint": 1787011200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.2e-05,
+    "timepoint": 1787040000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.1e-05,
+    "timepoint": 1787068800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1787097600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.5e-05,
+    "timepoint": 1787126400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.5e-05,
+    "timepoint": 1787155200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.1e-05,
+    "timepoint": 1787184000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.9e-05,
+    "timepoint": 1787212800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000102,
+    "timepoint": 1787241600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -0.000102,
+    "timepoint": 1787270400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.3e-05,
+    "timepoint": 1787299200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787328000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787356800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787385600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787414400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787443200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787472000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787500800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787529600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787558400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787587200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1787616000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787644800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.2e-05,
+    "timepoint": 1787673600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1787702400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.9e-05,
+    "timepoint": 1787731200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.3e-05,
+    "timepoint": 1787760000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.2e-05,
+    "timepoint": 1787788800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1787817600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-06,
+    "timepoint": 1787846400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.2e-05,
+    "timepoint": 1787875200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.2e-05,
+    "timepoint": 1787904000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.3e-05,
+    "timepoint": 1787932800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1787961600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.4e-05,
+    "timepoint": 1787990400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.2e-05,
+    "timepoint": 1788019200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.2e-05,
+    "timepoint": 1788048000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.1e-05,
+    "timepoint": 1788076800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.4e-05,
+    "timepoint": 1788105600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.7e-05,
+    "timepoint": 1788134400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1788163200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1788192000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1788220800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1788249600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1788278400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.6e-05,
+    "timepoint": 1788307200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1788336000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.9e-05,
+    "timepoint": 1788364800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.9e-05,
+    "timepoint": 1788393600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.4e-05,
+    "timepoint": 1788422400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1788451200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.6e-05,
+    "timepoint": 1788480000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1788508800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.1e-05,
+    "timepoint": 1788537600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.7e-05,
+    "timepoint": 1788566400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1788595200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-05,
+    "timepoint": 1788624000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.4e-05,
+    "timepoint": 1788652800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1788681600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3e-05,
+    "timepoint": 1788710400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-05,
+    "timepoint": 1788739200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1788768000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0,
+    "timepoint": 1788796800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1788825600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1788854400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.4e-05,
+    "timepoint": 1788883200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1788912000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.4e-05,
+    "timepoint": 1788940800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.7e-05,
+    "timepoint": 1788969600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1788998400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1789027200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1789056000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.2e-05,
+    "timepoint": 1789084800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1789113600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1789142400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.5e-05,
+    "timepoint": 1789171200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1789200000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.3e-05,
+    "timepoint": 1789228800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1789257600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-06,
+    "timepoint": 1789286400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.5e-05,
+    "timepoint": 1789315200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.2e-05,
+    "timepoint": 1789344000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.4e-05,
+    "timepoint": 1789372800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1789401600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.2e-05,
+    "timepoint": 1789430400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.6e-05,
+    "timepoint": 1789459200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.6e-05,
+    "timepoint": 1789488000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.4e-05,
+    "timepoint": 1789516800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.4e-05,
+    "timepoint": 1789545600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1789574400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.1e-05,
+    "timepoint": 1789603200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.4e-05,
+    "timepoint": 1789632000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.3e-05,
+    "timepoint": 1789660800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1789689600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.4e-05,
+    "timepoint": 1789718400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.8e-05,
+    "timepoint": 1789747200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.9e-05,
+    "timepoint": 1789776000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.8e-05,
+    "timepoint": 1789804800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-05,
+    "timepoint": 1789833600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1789862400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.1e-05,
+    "timepoint": 1789891200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.1e-05,
+    "timepoint": 1789920000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.2e-05,
+    "timepoint": 1789948800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.5e-05,
+    "timepoint": 1789977600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1790006400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1790035200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0,
+    "timepoint": 1790064000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.9e-05,
+    "timepoint": 1790092800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.2e-05,
+    "timepoint": 1790121600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1790150400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.8e-05,
+    "timepoint": 1790179200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0,
+    "timepoint": 1790208000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1790236800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1790265600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9e-06,
+    "timepoint": 1790294400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.6e-05,
+    "timepoint": 1790323200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.9e-05,
+    "timepoint": 1790352000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.8e-05,
+    "timepoint": 1790380800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5e-06,
+    "timepoint": 1790409600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1.4e-05,
+    "timepoint": 1790438400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.2e-05,
+    "timepoint": 1790467200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-06,
+    "timepoint": 1790496000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5e-06,
+    "timepoint": 1790524800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -1e-06,
+    "timepoint": 1790553600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -2.2e-05,
+    "timepoint": 1790582400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.5e-05,
+    "timepoint": 1790611200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.7e-05,
+    "timepoint": 1790640000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1790668800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.6e-05,
+    "timepoint": 1790697600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.8e-05,
+    "timepoint": 1790726400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1790755200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1790784000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.2e-05,
+    "timepoint": 1790812800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3e-05,
+    "timepoint": 1790841600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1790870400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -3.4e-05,
+    "timepoint": 1790899200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1790928000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.4e-05,
+    "timepoint": 1790956800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.3e-05,
+    "timepoint": 1790985600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2e-05,
+    "timepoint": 1791014400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.6e-05,
+    "timepoint": 1791043200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -6e-06,
+    "timepoint": 1791072000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.6e-05,
+    "timepoint": 1791100800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-06,
+    "timepoint": 1791129600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-06,
+    "timepoint": 1791158400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.4e-05,
+    "timepoint": 1791187200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.3e-05,
+    "timepoint": 1791216000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1791244800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-05,
+    "timepoint": 1791273600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.1e-05,
+    "timepoint": 1791302400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1791331200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.1e-05,
+    "timepoint": 1791360000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.5e-05,
+    "timepoint": 1791388800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1791417600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.7e-05,
+    "timepoint": 1791446400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1791475200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.4e-05,
+    "timepoint": 1791504000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1791532800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1791561600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.2e-05,
+    "timepoint": 1791590400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1791619200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6e-05,
+    "timepoint": 1791648000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.3e-05,
+    "timepoint": 1791676800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1e-06,
+    "timepoint": 1791705600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1791734400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1791763200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.1e-05,
+    "timepoint": 1791792000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.7e-05,
+    "timepoint": 1791820800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.7e-05,
+    "timepoint": 1791849600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.2e-05,
+    "timepoint": 1791878400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1791907200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 2.1e-05,
+    "timepoint": 1791936000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.3e-05,
+    "timepoint": 1791964800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.2e-05,
+    "timepoint": 1791993600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792022400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792051200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.4e-05,
+    "timepoint": 1792080000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.7e-05,
+    "timepoint": 1792108800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.9e-05,
+    "timepoint": 1792137600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8e-05,
+    "timepoint": 1792166400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792195200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.2e-05,
+    "timepoint": 1792224000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 7.2e-05,
+    "timepoint": 1792252800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.2e-05,
+    "timepoint": 1792281600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.5e-05,
+    "timepoint": 1792310400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.5e-05,
+    "timepoint": 1792339200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792368000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 1.6e-05,
+    "timepoint": 1792396800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 9.8e-05,
+    "timepoint": 1792425600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792454400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.6e-05,
+    "timepoint": 1792483200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.1e-05,
+    "timepoint": 1792512000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.5e-05,
+    "timepoint": 1792540800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.4e-05,
+    "timepoint": 1792569600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3e-06,
+    "timepoint": 1792598400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": -5.5e-05,
+    "timepoint": 1792627200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792656000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792684800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792713600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792742400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792771200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.6e-05,
+    "timepoint": 1792800000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1792828800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792857600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.4e-05,
+    "timepoint": 1792886400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.4e-05,
+    "timepoint": 1792915200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1792944000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 5.4e-05,
+    "timepoint": 1792972800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1793001600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1793030400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1793059200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1793088000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1793116800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 3.9e-05,
+    "timepoint": 1793145600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4e-05,
+    "timepoint": 1793174400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.6e-05,
+    "timepoint": 1793203200000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 4.8e-05,
+    "timepoint": 1793232000000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 8.9e-05,
+    "timepoint": 1793260800000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1793289600000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 0.0001,
+    "timepoint": 1793318400000
+  },
+  {
+    "symbol": "XBTUSDTM",
+    "fundingRate": 6.6e-05,
+    "timepoint": 1793347200000
+  }
+]
