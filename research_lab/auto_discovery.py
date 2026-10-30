@@ -7,7 +7,7 @@ from research_lab.budget_manager import check_budget, log_test
 
 def run_auto_discovery():
     print("=== 🤖 Auto-Discovery Engine Started ===")
-    symbols = ["XBTUSDTM", "ETHUSDTM", "BNBUSDTM"]
+    symbols = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
     
     # تولید پارامترهای مختلف برای M35 (Grid Search محدود)
     fast_emas = [20, 50]
