@@ -31,8 +31,16 @@ def metrics(history, days=30):
     wins = sum(1 for h in recent if h.get("pnl", 0) > 0)
     gp = sum(h.get("pnl", 0) for h in recent if h.get("pnl", 0) > 0)
     gl = abs(sum(h.get("pnl", 0) for h in recent if h.get("pnl", 0) <= 0))
-    pf = (gp/gl) if gl > 0 else ((99.99 if gp > 0 else 0) if len(recent) >= 3 else "N/A")
-    return {"n": len(recent), "wr": round(wins/len(recent)*100, 1), "pf": round(pf, 2), "pnl": round(gp-gl, 2)}
+    
+    # فیکس باگ: PF می‌تواند رشته باشد
+    if gl > 0:
+        pf = round(gp/gl, 2)
+    elif gp > 0:
+        pf = "N/A" if len(recent) < 3 else 99.99
+    else:
+        pf = 0
+    
+    return {"n": len(recent), "wr": round(wins/len(recent)*100, 1), "pf": pf, "pnl": round(gp-gl, 2)}
 
 def main():
     report = ["📊 **Performance Monitor (30-day rolling)**\n"]
@@ -56,8 +64,12 @@ def main():
         report.append(f"   Open Positions: {open_count}")
         
         if m:
-            warn = " ⚠️ PF<1.0" if m["pf"] < 1.0 and m["n"] >= 10 else ""
-            report.append(f"   Closed 30d: n={m['n']} | WR={m['wr']}% | PF={m['pf']} | PnL=${m['pnl']}{warn}")
+            # هندل کردن pf رشته‌ای
+            pf_val = m["pf"]
+            warn = ""
+            if isinstance(pf_val, (int, float)) and pf_val < 1.0 and m["n"] >= 10:
+                warn = " ⚠️ PF<1.0"
+            report.append(f"   Closed 30d: n={m['n']} | WR={m['wr']}% | PF={pf_val} | PnL=${m['pnl']}{warn}")
         else:
             report.append(f"   Closed 30d: No trades closed in last 30 days")
             
