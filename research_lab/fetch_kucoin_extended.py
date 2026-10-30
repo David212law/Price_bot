@@ -25,7 +25,7 @@ def fetch_full_history(symbol, years_back=3):
     """دریافت تاریخچه کامل با batch 400 کندلی و تایید"""
     end_ms = int(time.time() * 1000)
     start_target_ms = end_ms - (years_back * 365 * 24 * 3600 * 1000)
-    batch_ms = 400 * 4 * 3600 * 1000  # 400 کندل × 4 ساعت
+    batch_ms = 200 * 4 * 3600 * 1000  # دقیقاً 200 کندل
     
     all_candles = []
     current_to = end_ms
