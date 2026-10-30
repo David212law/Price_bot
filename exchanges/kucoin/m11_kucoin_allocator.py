@@ -115,7 +115,7 @@ def main():
     print(f"=== M11-KuCoin Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
-    if not isinstance(state, dict) or "m31_capital" not in state:
+    if not isinstance(state, dict) or "m35_capital" not in state:
         state = {
             "total_equity": INITIAL_CAPITAL,
             "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
