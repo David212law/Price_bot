@@ -1,0 +1,31 @@
+name: M11-KuCoin Paper Engine
+
+on:
+  schedule:
+    - cron: '30 */8 * * *' # اجرا هر ۸ ساعت (هماهنگ با دوره فاندینگ)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-kucoin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run KuCoin Engine
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python exchanges/kucoin/m11_kucoin_allocator.py
