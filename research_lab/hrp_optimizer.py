@@ -1,4 +1,3 @@
-import sys
 print("⚠️ WARNING: FOR SIMULATION ONLY. DO NOT USE IN LIVE.")
 import json
 import os
@@ -46,7 +45,7 @@ def calculate_hrp():
         corr_matrix.append(row)
         
     # ۲. ماتریس فاصله
-    dist_matrix = [[math.sqrt(0.5 * (1 - corr)) for corr in row] for row in corr_matrix]
+    dist_matrix = [[math.sqrt(max(0, 0.5 * (1 - corr))) for corr in row] for row in corr_matrix]
     
     # ۳. خوشه‌بندی (Single-Linkage ساده)
     clusters = [[i] for i in range(len(strat_names))]
