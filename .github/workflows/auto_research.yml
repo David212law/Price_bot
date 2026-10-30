@@ -27,7 +27,31 @@ jobs:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
         run: python -m research_lab.portfolio_optimizer
-      - name: Upload Logs as Artifact
+      - name: 📊 Print Summary
+        if: always()
+        run: |
+          echo "════════════════════════════════════"
+          echo "📊 FINAL SUMMARY"
+          echo "════════════════════════════════════"
+          python3 -c "
+          import json, os
+          p = 'research_lab/logs/trial_ledger.json'
+          if os.path.exists(p):
+              with open(p) as f: led = json.load(f)
+              print(f'Total trials logged: {len(led)}')
+              print('')
+              print(f'{\"EXCHANGE\":12} | {\"STRATEGY\":20} | {\"PF\":>6} | {\"n\":>4} | STATUS')
+              print('-' * 70)
+              for e in led[-25:]:
+                  m = e.get('metrics', {})
+                  pf = m.get('pf', 0); n = m.get('n', 0)
+                  status = 'CANDIDATE' if pf > 1.2 and n >= 30 else 'rejected'
+                  print(f\"{e.get('exchange','?'):12} | {e.get('strategy','?'):20} | {pf:6.2f} | {n:4} | {status}\")
+          else:
+              print('Trial ledger not found.')
+          "
+          echo "════════════════════════════════════"
+      - name: Upload Logs
         uses: actions/upload-artifact@v4
         if: always()
         with:
