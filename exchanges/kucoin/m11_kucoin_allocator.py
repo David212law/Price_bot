@@ -13,19 +13,14 @@ BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 STATE_FILE = "exchanges/kucoin/state/m11_kucoin_paper_state.json"
 INITIAL_CAPITAL = 10000.0
 
-# Allocations (D-218)
-M31_ALLOC = 0.50  # Funding
-A20_ALLOC = 0.113  # SuperTrend (50% of directional bucket)
-M40_ALLOC = 0.387  # Pullback (50% of directional bucket)
-
-# M31 Params
+M31_ALLOC = 0.50
+A20_ALLOC = 0.113
+M40_ALLOC = 0.387
 M31_LEVERAGE = 6
 SMA_PERIODS = 12
 ENTRY_THRESHOLD = 0.00005
 EXIT_THRESHOLD = 0.00001
 COOLDOWN_HOURS = 24
-
-# Trading Fees
 TAKER_FEE = 0.0006
 MAKER_FEE = 0.0002
 
@@ -126,7 +121,6 @@ def calc_rsi(closes, period=14):
         rsi[i] = 100 - 100/(1+ag/al) if al else 100
     return rsi
 
-
 def _log_close(state, sym, strat, pnl_val):
     if "history" not in state: state["history"] = []
     state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
@@ -135,19 +129,6 @@ def main():
     print(f"=== M11-KuCoin Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
-    
-    # پاکسازی: اگر فایل State قدیمی ناقص بود، کلیدهای جدید اضافه شوند
-    if isinstance(state, dict) and "m31_capital" in state:
-        if "a20_pos" not in state: state["a20_pos"] = {}
-        if "m40_pos" not in state: state["m40_pos"] = {}
-        if "a20_capital" not in state: state["a20_capital"] = state.get("total_equity", 10000) * A20_ALLOC
-        if "m40_capital" not in state: state["m40_capital"] = state.get("total_equity", 10000) * M40_ALLOC
-        if "m35_pos" in state: del state["m35_pos"]
-        if "m35_capital" in state:
-            # انتقال M35 قدیمی به M40 جدید
-            old_m35 = state.pop("m35_capital", 0)
-            state["m40_capital"] = state.get("m40_capital", 0) + old_m35
-    
     if not isinstance(state, dict) or "m31_capital" not in state:
         state = {
             "total_equity": INITIAL_CAPITAL,
@@ -157,15 +138,16 @@ def main():
             "m31_pos": {}, "a20_pos": {}, "m40_pos": {},
             "history": []
         }
+    if "history" not in state: state["history"] = []
 
     # ── M31 Funding ──
     for sym in SYMBOLS:
         rate, tp = fetch_funding_rate(sym)
         st = state["m31_pos"].get(sym, {"in_pos": False, "hist": [], "last_exit": 0, "last_processed": 0})
         if tp == 0:
-            # API failed, but still register the symbol
             state["m31_pos"][sym] = st
             continue
+            
         st["hist"].append(rate)
         if len(st["hist"]) > SMA_PERIODS: st["hist"].pop(0)
         avg = sum(st["hist"]) / len(st["hist"])
@@ -178,8 +160,10 @@ def main():
                 if avg < EXIT_THRESHOLD:
                     cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
                     state["m31_capital"] -= cost
-                    st["in_pos"] = False; st["last_exit"] = tp
-                    send_bale(f"🔴 M31 CLOSED | {sym}")
+                    st["in_pos"] = False
+                    st["last_exit"] = tp
+                    _log_close(state, sym, "M31", income - cost)
+                    send_bale(f"🔴 M31 CLOSED | {sym} | PnL: {income-cost:+.4f}")
             elif avg > ENTRY_THRESHOLD and rate > 0 and (tp - st["last_exit"])/(3600*1000) >= COOLDOWN_HOURS:
                 cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
                 state["m31_capital"] -= cost
@@ -201,7 +185,7 @@ def main():
             if exit_:
                 pnl = pos["invested"] * ((k[-1]["c"]-pos["entry"])/pos["entry"] if pos["side"]=="LONG" else (pos["entry"]-k[-1]["c"])/pos["entry"])
                 state["a20_capital"] += pos["invested"] + pnl
-                                _log_close(state, sym, "A20", locals().get("pnl", 0))
+                _log_close(state, sym, "A20", pnl)
                 del state["a20_pos"][sym]
                 send_bale(f"🔵 A20 CLOSED | {sym} | PnL: {pnl:+.2f}")
         elif len(state["a20_pos"]) < 3:
@@ -231,7 +215,7 @@ def main():
                 exit_p = pos["sl"] if (pos["side"]=="LONG" and k[-1]["l"]<=pos["sl"]) or (pos["side"]=="SHORT" and k[-1]["h"]>=pos["sl"]) else pos["tp"]
                 pnl = pos["invested"] * ((exit_p-pos["entry"])/pos["entry"] if pos["side"]=="LONG" else (pos["entry"]-exit_p)/pos["entry"])
                 state["m40_capital"] += pos["invested"] + pnl
-                                _log_close(state, sym, "M40", locals().get("pnl", 0))
+                _log_close(state, sym, "M40", pnl)
                 del state["m40_pos"][sym]
                 send_bale(f"🔵 M40 CLOSED | {sym} | PnL: {pnl:+.2f}")
         elif len(state["m40_pos"]) < 3:
