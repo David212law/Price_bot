@@ -20,7 +20,7 @@ def calculate_hrp():
     if os.path.exists(eligibility_file):
         with open(eligibility_file, "r") as f:
             elig = json.load(f)
-            eligible_names = [k for k, v in elig.items() if v["status"] == "ELIGIBLE"]
+            eligible_names = [k for k, v in elig.items() if v["status"] in ["PRIMARY", "DIVERSIFIER"]]
     else:
         print("⚠️ Eligibility file not found. Run kucoin_validator first.")
         return
@@ -30,20 +30,18 @@ def calculate_hrp():
     all_strategies = {"M35": strategy_m35, "A8": strategy_a8, "A20": strategy_a20, "M40": strategy_m40}
     active_strategies = {k: v for k, v in all_strategies.items() if k in eligible_names}
     
-    # ─── مدیریت تک‌استراتژی (D-214) ───
+    # ─── مدیریت تک‌استراتژی (فقط اگر واقعاً یک Diversifier هم نباشد) ───
     if len(active_strategies) == 0:
         print("❌ No eligible strategies. Aborting HRP.")
         return
     elif len(active_strategies) == 1:
         single = list(active_strategies.keys())[0]
-        print(f"\n⚠️ Only 1 eligible strategy: {single}. Assigning 100% weight.")
+        print(f"\n⚠️ Only 1 eligible strategy: {single}. Assigning 100% weight (last resort).")
         weights = {single: 1.0}
-        report_msg = f"📋 **HRP Allocation (Single Strategy)**\n\n• {single}: 100.0%\n\n⚠️ Only one eligible strategy in KuCoin."
-        send_bale(report_msg)
-        
+        send_bale(f"📋 Only 1 strategy ({single}) survived D-88 filter. 100% assigned.")
         os.makedirs("research_lab/logs", exist_ok=True)
         with open("research_lab/logs/hrp_allocation.json", "w") as f:
-            json.dump({"weights": weights, "single_strategy": True}, f, indent=2)
+            json.dump({"weights": weights}, f, indent=2)
         return
     
     # ─── ادامه HRP برای ۲ یا بیشتر ───
@@ -124,7 +122,22 @@ def calculate_hrp():
         print(f"  {name}: {w*100:.1f}%")
     
     # نرمال‌سازی با سقف و کف
-    weights = capped_normalize(pre_cap, cap=cap, floor=0.05)
+    weights = capped_normalize(pre_cap, cap=0.30, floor=0.05)
+    
+    # اعمال سقف ۲۵٪ برای Diversifiers (D-88)
+    for name in weights:
+        if name in elig and elig[name]["status"] == "DIVERSIFIER" and weights[name] > 0.25:
+            excess = weights[name] - 0.25
+            weights[name] = 0.25
+            # توزیع به PRIMARY ها
+            primaries = [k for k in weights if k in elig and elig[k]["status"] == "PRIMARY"]
+            if primaries:
+                for p in primaries:
+                    weights[p] += excess / len(primaries)
+    
+    # نرمال‌سازی نهایی
+    total = sum(weights.values())
+    weights = {n: round(w / total, 4) for n, w in weights.items()}
     
     cap_binding = any(w >= cap - 1e-4 for w in weights.values())
     
