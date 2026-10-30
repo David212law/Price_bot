@@ -1,3 +1,8 @@
+# PROJECT-ROOT-INJECT (D-356 fix)
+import os as _os, sys as _sys
+_project_root = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+if _project_root not in _sys.path: _sys.path.insert(0, _project_root)
+
 import json, os, requests, time
 from datetime import datetime, timezone
 
