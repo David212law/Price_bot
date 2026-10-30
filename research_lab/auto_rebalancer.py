@@ -49,8 +49,8 @@ def main():
             continue
         history = st.get("history", [])
         m = metrics(history)
-        if not m or m["n"] < 10:
-            report.append(f"🌐 {name.upper()}: Insufficient data (n<10) — no action")
+        if not m or m["n"] < 30:
+            report.append(f"🌐 {name.upper()}: Insufficient data (n<30) — no action")
             continue
         report.append(f"🌐 {name.upper()}: 30d PF={m['pf']} n={m['n']}")
         if m["pf"] < MIN_PF_TO_KEEP:
