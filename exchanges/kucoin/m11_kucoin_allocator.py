@@ -126,6 +126,11 @@ def calc_rsi(closes, period=14):
         rsi[i] = 100 - 100/(1+ag/al) if al else 100
     return rsi
 
+
+def _log_close(state, sym, strat, pnl_val):
+    if "history" not in state: state["history"] = []
+    state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
+
 def main():
     print(f"=== M11-KuCoin Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
@@ -196,6 +201,7 @@ def main():
             if exit_:
                 pnl = pos["invested"] * ((k[-1]["c"]-pos["entry"])/pos["entry"] if pos["side"]=="LONG" else (pos["entry"]-k[-1]["c"])/pos["entry"])
                 state["a20_capital"] += pos["invested"] + pnl
+                                _log_close(state, sym, "A20", locals().get("pnl", 0))
                 del state["a20_pos"][sym]
                 send_bale(f"🔵 A20 CLOSED | {sym} | PnL: {pnl:+.2f}")
         elif len(state["a20_pos"]) < 3:
@@ -225,6 +231,7 @@ def main():
                 exit_p = pos["sl"] if (pos["side"]=="LONG" and k[-1]["l"]<=pos["sl"]) or (pos["side"]=="SHORT" and k[-1]["h"]>=pos["sl"]) else pos["tp"]
                 pnl = pos["invested"] * ((exit_p-pos["entry"])/pos["entry"] if pos["side"]=="LONG" else (pos["entry"]-exit_p)/pos["entry"])
                 state["m40_capital"] += pos["invested"] + pnl
+                                _log_close(state, sym, "M40", locals().get("pnl", 0))
                 del state["m40_pos"][sym]
                 send_bale(f"🔵 M40 CLOSED | {sym} | PnL: {pnl:+.2f}")
         elif len(state["m40_pos"]) < 3:

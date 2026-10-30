@@ -29,6 +29,11 @@ def load_json(path):
         with open(path, 'r') as f: return json.load(f)
     return {"signals": []}
 
+
+def _log_close(state, sym, strat, pnl_val):
+    if "history" not in state: state["history"] = []
+    state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
+
 def main():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, 'r') as f: state = json.load(f)
