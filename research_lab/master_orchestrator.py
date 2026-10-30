@@ -80,7 +80,7 @@ def analyze_exchange(ex, syms):
     survivors = [r for i, r in enumerate(results) if passed[i]]
     
     if len(survivors) < 2:
-        survivors = [r for r in results if r["pf"] > 1.0 and r["p"] < 0.5]
+        survivors = [r for r in results if r["pf"] > 1.3 and r["p"] < 0.40]
     
     if len(survivors) < 2:
         return {"status": "NO_WINNER", "survivors": [s["name"] for s in survivors]}
@@ -112,7 +112,10 @@ def current_weights(ex):
     except: return None
 
 def main():
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    # پاک کردن پیشنهاد قبلی
+    if os.path.exists("exchanges/proposed_weights.json"):
+        os.remove("exchanges/proposed_weights.json")
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     print(f"=== 🤖 Master Orchestrator ({now}) ===")
     print(f"Mode: {MODE}\n")
     
