@@ -1,0 +1,29 @@
+name: Auto-Research & Optimize
+
+on:
+  workflow_dispatch: # فقط دستی اجرا می‌شود تا بودجه را کنترل کنیم
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run Auto-Discovery
+        run: python research_lab/auto_discovery.py
+      - name: Run Portfolio Optimizer
+        run: python research_lab/portfolio_optimizer.py
+      - name: Commit Results
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add research_lab/logs/
+          git commit -m "Auto-Research results and Portfolio Optimization" || echo "No changes"
+          git push
