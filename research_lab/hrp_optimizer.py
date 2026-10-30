@@ -72,11 +72,15 @@ def calculate_hrp():
         for idx, iv in zip(cluster, inv_vars):
             weights[strat_names[idx]] = iv / total / len(clusters)
     
-    # ۵. اعمال سقف و کف (D-190)
-    for name in weights:
-        weights[name] = max(0.05, min(0.30, weights[name]))
-    
-    # نرمال‌سازی
+    # ۵. اعمال سقف و کف (D-190) با حفظ مجموع ۱۰۰٪ (Iterative Normalization)
+    for _ in range(10): # حلقه برای تثبیت وزن‌ها
+        total_w = sum(weights.values())
+        for name in weights:
+            weights[name] = weights[name] / total_w
+            if weights[name] > 0.30: weights[name] = 0.30
+            if weights[name] < 0.05: weights[name] = 0.05
+            
+    # نرمال‌سازی نهایی برای رفع خطای اعشار
     total_w = sum(weights.values())
     for name in weights:
         weights[name] = round(weights[name] / total_w, 4)
