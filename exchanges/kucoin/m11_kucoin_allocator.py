@@ -14,8 +14,8 @@ STATE_FILE = "exchanges/kucoin/state/m11_kucoin_paper_state.json"
 INITIAL_CAPITAL = 10000.0
 
 M31_ALLOC = 0.50
-A20_ALLOC = 0.113
-M40_ALLOC = 0.387
+A20_ALLOC = 0.0  # D-282: Revoked due to Embargo-WF
+M40_ALLOC = 0.5  # D-282: Reallocate from A20
 M31_LEVERAGE = 6
 SMA_PERIODS = 12
 ENTRY_THRESHOLD = 0.00005
