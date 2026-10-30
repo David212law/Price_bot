@@ -1,0 +1,38 @@
+name: Master Orchestrator (Daily)
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  orchestrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install
+        run: pip install requests
+      - name: Run Master Orchestrator
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python -m research_lab.master_orchestrator
+      - name: Commit if ACTIVE
+        run: |
+          if [ -f exchanges/proposed_weights.json ]; then
+            echo "SEMI mode: proposal saved (not applied)"
+          elif [ -f exchanges/active_weights.json ]; then
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git add exchanges/active_weights.json
+            git commit -m "Auto: Master Orchestrator updated weights" || echo "no changes"
+            git push
+          fi
