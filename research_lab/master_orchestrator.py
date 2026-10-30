@@ -7,7 +7,7 @@ from strategies.core_engine import (strategy_m35, strategy_a20, strategy_m40,
     load_data, calculate_metrics)
 from research_lab.bale_notifier import send_bale
 
-MODE = "SEMI"
+MODE = "ACTIVE"  # D-307
 WEIGHT_CHANGE_THRESHOLD = 0.20
 WEIGHTS_FILE = "exchanges/active_weights.json"
 

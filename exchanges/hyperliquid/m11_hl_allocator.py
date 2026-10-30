@@ -2,10 +2,10 @@ import json, os, requests, time
 from datetime import datetime, timezone
 
 INITIAL_CAPITAL = 10000.0
-M31_PCT = 0.50
-M35_PCT = 0.0  # D-286
-M40_PCT = 0.50  # D-286
-M41_PCT = 0.0  # D-286 # تخصیص جدید برای Diversifier
+M31_PCT = 1.0  # D-306: 100%
+M35_PCT = 0.0  # D-306  # D-286
+M40_PCT = 0.0  # D-306  # D-286
+M41_PCT = 0.0  # D-306  # D-286 # تخصیص جدید برای Diversifier
 M31_LEVERAGE = 6
 MAKER_FEE = 0.0002
 TAKER_FEE = 0.0005
