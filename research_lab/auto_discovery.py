@@ -47,7 +47,7 @@ def run_auto_discovery():
             for sym in symbols:
                 cd = load_data(exchange, sym)
                 if not cd: continue
-                split_idx = int(len(cd) * 0.6)
+                split_idx = int(len(cd) * 0.8)  # D-234: Train+Val
                 try:
                     trades = func(cd[:split_idx], **params) if params else func(cd[:split_idx])
                     all_trades.extend(trades)
