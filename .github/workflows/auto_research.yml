@@ -18,6 +18,8 @@ jobs:
         run: pip install requests
       - name: Run Auto-Discovery
         run: python -m research_lab.auto_discovery
+      - name: Validate Winner (OOS & Stress)
+        run: python -m research_lab.validate_winner
       - name: Run Portfolio Optimizer
         run: python -m research_lab.portfolio_optimizer
       - name: Commit Results
@@ -25,5 +27,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add research_lab/logs/
-          git commit -m "Auto-Research results and Portfolio Optimization" || echo "No changes"
+          git commit -m "Auto-Research results, Validation, and Portfolio Optimization" || echo "No changes"
           git push
