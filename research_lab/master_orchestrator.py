@@ -1,4 +1,4 @@
-import sys, os, json, random, math, subprocess
+import sys, os, json, random
 from datetime import datetime, timezone
 sys.path.append(os.getcwd())
 from strategies.core_engine import (strategy_m35, strategy_a20, strategy_m40,
@@ -7,16 +7,20 @@ from strategies.core_engine import (strategy_m35, strategy_a20, strategy_m40,
     load_data, calculate_metrics)
 from research_lab.bale_notifier import send_bale
 
-MODE = "SEMI"  # SEMI (پیشنهاد + تایید دستی) یا ACTIVE (خودکار)
+MODE = "SEMI"
 WEIGHT_CHANGE_THRESHOLD = 0.20
 WEIGHTS_FILE = "exchanges/active_weights.json"
 
 VARIANTS = {
     "M35_20_100": lambda c: strategy_m35(c, fast=20, slow=100),
     "M35_50_200": lambda c: strategy_m35(c, fast=50, slow=200),
-    "A20": strategy_a20, "M40": strategy_m40, "A8": strategy_a8,
-    "M50": strategy_m50_regime_bh, "M51": strategy_m51_extreme_rev,
-    "M52": strategy_m52_xsect_momentum, "M53": strategy_m53_vol_breakout,
+    "A20": strategy_a20,
+    "M40": strategy_m40,
+    "A8": strategy_a8,
+    "M50": strategy_m50_regime_bh,
+    "M51": strategy_m51_extreme_rev,
+    "M52": strategy_m52_xsect_momentum,
+    "M53": strategy_m53_vol_breakout,
 }
 EXCHANGES = {
     "kucoin": ["XBTUSDTM","ETHUSDTM","SOLUSDTM","BNBUSDTM","XRPUSDTM","AVAXUSDTM"],
@@ -79,20 +83,18 @@ def analyze_exchange(ex, syms):
     passed = holm([r["p"] for r in results])
     survivors = [r for i, r in enumerate(results) if passed[i]]
     
+    # Fallback سخت‌گیرانه: P<0.40 و PF>1.3
     if len(survivors) < 2:
         survivors = [r for r in results if r["pf"] > 1.3 and r["p"] < 0.40]
     
     if len(survivors) < 2:
         return {"status": "NO_WINNER", "survivors": [s["name"] for s in survivors]}
     
-    # HRP با Inverse Variance
     weights = {}
     for r in survivors:
-        # واریانس معکوس بر اساس PF به عنوان proxy
         weights[r["name"]] = r["pf"] / max(r["n"] ** 0.5, 1)
     total = sum(weights.values())
     weights = {k: v/total for k, v in weights.items()}
-    # سقف 50%
     for _ in range(20):
         total = sum(weights.values())
         weights = {k: v/total for k, v in weights.items()}
@@ -102,27 +104,20 @@ def analyze_exchange(ex, syms):
     total = sum(weights.values())
     weights = {k: round(v/total, 4) for k, v in weights.items()}
     
-    return {"status": "OK", "weights": weights, "survivors_detail": survivors}
-
-def current_weights(ex):
-    if not os.path.exists(WEIGHTS_FILE): return None
-    try:
-        with open(WEIGHTS_FILE) as f:
-            return json.load(f).get(ex, None)
-    except: return None
+    return {"status": "OK", "weights": weights}
 
 def main():
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    print(f"=== 🤖 Master Orchestrator ({now}) ===")
+    print(f"Mode: {MODE}\n")
+    
     # پاک کردن پیشنهاد قبلی
     if os.path.exists("exchanges/proposed_weights.json"):
         os.remove("exchanges/proposed_weights.json")
-        now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    print(f"=== 🤖 Master Orchestrator ({now}) ===")
-    print(f"Mode: {MODE}\n")
     
     proposals = {}
     report_lines = [f"🤖 **Master Orchestrator** ({now})\n"]
     
-    # خواندن weights فعلی
     current_all = {}
     if os.path.exists(WEIGHTS_FILE):
         try:
@@ -140,12 +135,10 @@ def main():
             continue
         
         new_weights = analysis["weights"]
-        # اضافه کردن M31 (فاندینگ) با تخصیص ثابت
         new_weights_final = {"M31": 0.50}
         for k, v in new_weights.items():
             new_weights_final[k] = round(v * 0.50, 4)
         
-        # مقایسه با فعلی
         cur = current_all.get(ex, {})
         max_diff = 0
         for k in set(new_weights_final.keys()) | set(cur.keys()):
@@ -164,7 +157,6 @@ def main():
         else:
             report_lines.append(f"\n🌐 **{ex.upper()}**: ✅ ترکیب فعلی تایید شد")
     
-    # اعمال یا پیشنهاد
     if proposals:
         if MODE == "ACTIVE":
             with open(WEIGHTS_FILE, "w") as f:
@@ -172,12 +164,10 @@ def main():
             report_lines.append(f"\n✅ **اعمال شد** (MODE=ACTIVE)")
             print("✅ Weights applied (ACTIVE mode)")
         else:
-            # ذخیره پیشنهاد برای تایید دستی
             with open("exchanges/proposed_weights.json", "w") as f:
                 json.dump(proposals, f, indent=2)
-            report_lines.append(f"\n⏸️ **SEMI mode**: فایل `proposed_weights.json` ساخته شد.")
-            report_lines.append(f"برای اعمال، دستور زیر را اجرا کنید:")
-            report_lines.append(f"`mv exchanges/proposed_weights.json exchanges/active_weights.json && git commit -am 'Apply weights' && git push`")
+            report_lines.append(f"\n⏸️ **SEMI mode**: پیشنهاد در `proposed_weights.json` ذخیره شد.")
+            report_lines.append(f"برای اعمال: `mv exchanges/proposed_weights.json exchanges/active_weights.json && git commit -am 'Apply' && git push`")
             print("⏸️ Proposal saved to proposed_weights.json")
     
     report_lines.append(f"\n⚙️ Mode: {MODE}")
