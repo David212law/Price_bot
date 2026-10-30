@@ -1519,3 +1519,30 @@ M31 تنها استراتژی با لبه آماری اثبات‌شده در ک
 
 ## D-2026-10-31-355 — BACKTEST-VS-RUNTIME-LABELING: تفکیک بک‌تست و runtime
 وضعیت: قفل | در گزارش‌های Bale، P-Value بک‌تست از confidence runtime جداگانه برچسب‌گذاری شوند.
+
+## D-2026-10-31-348 — RUNTIME-REGIME-P0: تعلیق M62/M40
+وضعیت: قفل | M62 و M40 به ۰٪ تخصیص تا زمان پیاده‌سازی runtime regime. پرتفوی موقت: M31=70% + Cash=30%.
+
+## D-2026-10-31-349 — PROTOCOL-MEASUREMENT: تصریح پروتکل ۶۰ روزه
+وضعیت: قفل | پروتکل M62 باید فقط معاملات در TREND را بشمارد. بدون runtime regime، پروتکل معتبر نیست.
+
+## D-2026-10-31-350 — M62-RELABEL: تغییر نام M62
+وضعیت: قفل | M62 فعلی (Price Momentum) به M62_PriceMomentum. M62 قبلی به M62_FundingMomentum.
+
+## D-2026-10-31-351 — KILLSWITCH-MAXDD-P0: تصحیح آستانه
+وضعیت: قفل | آستانه Kill Switch از 15% به 25% (MaxDD واقعی 18.3%).
+
+## D-2026-10-31-352 — ASTER-SHARPE-P0: Audit Sharpe
+وضعیت: قفل | Aster به 20% کاهش تا زمان Audit رسمی Sharpe=8.51.
+
+## D-2026-10-31-353 — M40-ZERO-ALLOCATION
+وضعیت: قفل | M40 با اعتماد 40% کافی نیست. تخصیص 0%.
+
+## D-2026-10-31-354 — CONFIDENCE-LABELING
+وضعیت: قفل | درصدهای اعتماد تخمینی هستند، نه رسمی.
+
+## D-2026-10-31-355 — BACKTEST-VS-RUNTIME
+وضعیت: قفل | P-Value بک‌تست از confidence runtime جدا در گزارش‌ها.
+
+## D-2026-10-31-356 — RUNTIME-REGIME-IMPLEMENTED: پیاده‌سازی runtime
+وضعیت: قفل | regime_detector.py ساخته شد. Master Orchestrator و allocatorها اکنون در runtime رژیم را تشخیص می‌دهند. M62 فقط در TREND فعال می‌شود.

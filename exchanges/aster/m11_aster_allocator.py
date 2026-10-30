@@ -186,6 +186,16 @@ def load_active_weights(exchange):
         return None
 
 def main():
+    # RUNTIME-REGIME-CHECK (D-356)
+    try:
+        from research_lab.regime_detector import get_current_regime, should_activate_strategy
+        _regime, _adx = get_current_regime()
+        print(f"[REGIME] {_regime} (ADX={_adx:.2f})")
+        globals()['_CURRENT_REGIME'] = _regime
+    except Exception as _e:
+        print(f"[REGIME] detection failed: {_e}")
+        globals()['_CURRENT_REGIME'] = 'UNKNOWN'
+
 
     print(f"=== M11-Aster Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     

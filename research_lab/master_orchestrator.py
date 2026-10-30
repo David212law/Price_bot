@@ -6,6 +6,7 @@ from strategies.core_engine import (strategy_m35, strategy_a20, strategy_m40,
     strategy_m52_xsect_momentum, strategy_m53_vol_breakout,
     load_data, calculate_metrics)
 from research_lab.bale_notifier import send_bale
+from research_lab.regime_detector import get_current_regime, should_activate_strategy
 
 MODE = "ACTIVE"  # D-307
 WEIGHT_CHANGE_THRESHOLD = 0.20
@@ -107,6 +108,10 @@ def analyze_exchange(ex, syms):
     return {"status": "OK", "weights": weights}
 
 def main():
+    # RUNTIME-REGIME (D-356)
+    current_regime, current_adx = get_current_regime()
+    print(f"[REGIME] Market: {current_regime} (ADX={current_adx:.2f})")
+
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     print(f"=== 🤖 Master Orchestrator ({now}) ===")
     print(f"Mode: {MODE}\n")
