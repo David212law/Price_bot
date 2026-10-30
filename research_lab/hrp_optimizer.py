@@ -68,8 +68,27 @@ def calculate_hrp():
     exchange = "kucoin"
     symbols = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
     
-    # ۱. فقط استراتژی‌های فعال در باکت جهت‌دار
-    active_strategies = {"A8": strategy_a8, "A20": strategy_a20, "M40": strategy_m40}
+    # ۱. بررسی مجوز استراتژی‌ها (D-210: فقط سوددهی در OOS)
+    import json
+    eligibility_file = "research_lab/logs/kucoin_eligibility.json"
+    eligible_names = []
+    if os.path.exists(eligibility_file):
+        with open(eligibility_file, "r") as f:
+            elig = json.load(f)
+            eligible_names = [k for k, v in elig.items() if v["status"] == "ELIGIBLE"]
+    else:
+        print("⚠️ Eligibility file not found. Run kucoin_validator first.")
+        return
+    
+    print(f"✅ Eligible strategies (PF>1.2, n>=30): {eligible_names}")
+    
+    all_strategies = {"M35": strategy_m35, "A8": strategy_a8, "A20": strategy_a20, "M40": strategy_m40}
+    active_strategies = {k: v for k, v in all_strategies.items() if k in eligible_names}
+    
+    if len(active_strategies) < 2:
+        print("❌ Need at least 2 eligible strategies. Aborting HRP.")
+        return
+        
     N = len(active_strategies)
     
     # محاسبه سقف داینامیک (D-201)
