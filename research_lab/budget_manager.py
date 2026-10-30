@@ -6,6 +6,9 @@ LEDGER_PATH = "research_lab/logs/trial_ledger.json"
 MONTHLY_BUDGET = 20
 
 def load_ledger():
+    # اطمینان از وجود پوشه
+    os.makedirs(os.path.dirname(LEDGER_PATH), exist_ok=True)
+    
     if not os.path.exists(LEDGER_PATH):
         return []
     with open(LEDGER_PATH, "r") as f:
@@ -24,6 +27,9 @@ def check_budget():
     return True
 
 def log_test(strategy, metrics):
+    # اطمینان از وجود پوشه پیش از نوشتن
+    os.makedirs(os.path.dirname(LEDGER_PATH), exist_ok=True)
+    
     ledger = load_ledger()
     ledger.append({
         "timestamp": datetime.now(timezone.utc).isoformat(),
