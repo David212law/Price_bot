@@ -304,3 +304,66 @@ def calc_sma_vol(vols, period):
         if i >= period: s -= vols[i - period]
         if i >= period - 1: sma[i] = s / period
     return sma
+
+# ═══════════ استراتژی‌های ساختاری (D-314+) ═══════════
+
+def strategy_m60_liq_reversal(candles, fee_multiplier=1.0):
+    """M60: Post-Liquidation Reversal - حرکت 5%+ در 4h، برگشت"""
+    if len(candles) < 20: return []
+    trades, in_pos = [], None
+    base_fee = 0.0006 * fee_multiplier
+    for i in range(6, len(candles)):
+        if in_pos:
+            hours_in = (candles[i]["t"] - in_pos["entry_t"]) / (3600*1000)
+            if hours_in >= 6:
+                ret = (candles[i]["c"] - in_pos["entry"]) / in_pos["entry"]
+                if in_pos["side"] == "SHORT": ret = -ret
+                trades.append({"t": candles[i]["t"], "ret": ret - 2*base_fee})
+                in_pos = None
+            elif in_pos["side"] == "LONG" and candles[i]["l"] <= in_pos["sl"]:
+                trades.append({"t": candles[i]["t"], "ret": -0.03 - 2*base_fee})
+                in_pos = None
+            elif in_pos["side"] == "SHORT" and candles[i]["h"] >= in_pos["sl"]:
+                trades.append({"t": candles[i]["t"], "ret": -0.03 - 2*base_fee})
+                in_pos = None
+            elif in_pos["side"] == "LONG" and candles[i]["c"] >= in_pos["tp"]:
+                ret = (in_pos["tp"] - in_pos["entry"]) / in_pos["entry"]
+                trades.append({"t": candles[i]["t"], "ret": ret - 2*base_fee})
+                in_pos = None
+            elif in_pos["side"] == "SHORT" and candles[i]["c"] <= in_pos["tp"]:
+                ret = (in_pos["entry"] - in_pos["tp"]) / in_pos["entry"]
+                trades.append({"t": candles[i]["t"], "ret": ret - 2*base_fee})
+                in_pos = None
+        else:
+            # حرکت 4h
+            move = (candles[i]["c"] - candles[i-6]["c"]) / candles[i-6]["c"]
+            if move < -0.05:  # ریزش شارپ → Long (برگشت)
+                tp = candles[i]["c"] + 0.5 * (candles[i]["c"] - candles[i-6]["c"]) * (-1)
+                in_pos = {"side": "LONG", "entry": candles[i]["c"], "sl": candles[i]["c"]*0.97, "tp": tp, "entry_t": candles[i]["t"]}
+            elif move > 0.05:  # رشد شارپ → Short (برگشت)
+                tp = candles[i]["c"] - 0.5 * (candles[i]["c"] - candles[i-6]["c"])
+                in_pos = {"side": "SHORT", "entry": candles[i]["c"], "sl": candles[i]["c"]*1.03, "tp": tp, "entry_t": candles[i]["t"]}
+    return trades
+
+def strategy_m62_funding_momentum(candles, fee_multiplier=1.0):
+    """M62: Funding Rate Momentum - simplified proxy via closes momentum"""
+    # (نکته: پیاده‌سازی ساده‌شده - نیازمند داده فاندینگ خارج از candles است)
+    if len(candles) < 50: return []
+    closes = [c["c"] for c in candles]
+    trades, in_pos = [], None
+    base_fee = 0.0006 * fee_multiplier
+    for i in range(12, len(candles)):
+        short_mom = (closes[i-1] - closes[i-6]) / closes[i-6]
+        long_mom = (closes[i-6] - closes[i-12]) / closes[i-12]
+        if in_pos:
+            if (i - in_pos["idx"]) >= 12:
+                ret = (closes[i] - in_pos["entry"]) / in_pos["entry"]
+                if in_pos["side"] == "SHORT": ret = -ret
+                trades.append({"t": candles[i]["t"], "ret": ret - 2*base_fee})
+                in_pos = None
+        else:
+            if short_mom > 0.03 and short_mom > long_mom:
+                in_pos = {"side": "LONG", "entry": closes[i], "idx": i}
+            elif short_mom < -0.03 and short_mom < long_mom:
+                in_pos = {"side": "SHORT", "entry": closes[i], "idx": i}
+    return trades
