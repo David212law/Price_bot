@@ -12,13 +12,10 @@ EXCHANGES = {
 }
 
 def load_state(path):
-    # 1. تلاش برای خواندن از فایل محلی (چون actions/checkout فایل را دارد)
     if os.path.exists(path):
         try:
-            with open(path, "r") as f:
-                return json.load(f)
+            with open(path, "r") as f: return json.load(f)
         except: pass
-    # 2. اگر نبود، از API گیت‌هاب بخوان
     try:
         url = f"https://api.github.com/repos/{GH_REPO}/contents/{path}"
         r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
@@ -44,15 +41,26 @@ def main():
         if not st:
             report.append(f"🔹 {name}: State not found")
             continue
+        
         equity = st.get("total_equity", st.get("total_capital", 0))
         history = st.get("history", [])
         m = metrics(history)
+        
+        # شمارش پوزیشن‌های باز
+        open_count = 0
+        for k in ["m31_pos", "m35_pos", "m40_pos", "m41_pos", "a8_positions", "a20_pos", "a20_positions", "m40_positions"]:
+            if k in st:
+                open_count += len(st[k])
+                
         report.append(f"🌐 **{name.upper()}** — Equity: ${equity:.2f}")
+        report.append(f"   Open Positions: {open_count}")
+        
         if m:
             warn = " ⚠️ PF<1.0" if m["pf"] < 1.0 and m["n"] >= 10 else ""
-            report.append(f"   30d: n={m['n']} | WR={m['wr']}% | PF={m['pf']} | PnL=${m['pnl']}{warn}")
+            report.append(f"   Closed 30d: n={m['n']} | WR={m['wr']}% | PF={m['pf']} | PnL=${m['pnl']}{warn}")
         else:
-            report.append(f"   No trades in last 30 days")
+            report.append(f"   Closed 30d: No trades closed in last 30 days")
+            
     msg = "\n".join(report)
     print(msg)
     send_bale(msg)
