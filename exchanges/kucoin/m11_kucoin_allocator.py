@@ -182,7 +182,7 @@ def main():
         if len(candles) < 200: continue
         
         closes = [c["c"] for c in candles]
-        ema_f = calc_ema_local(closes, 50)
+        ema_f = calc_ema_local(closes, 20)
         ema_s = calc_ema_local(closes, 200)
         
         if None in [ema_f[-1], ema_s[-1], ema_f[-2], ema_s[-2]]: continue
