@@ -15,8 +15,8 @@ INITIAL_CAPITAL = 10000.0
 
 # Allocations (D-218)
 M31_ALLOC = 0.50  # Funding
-A20_ALLOC = 0.25  # SuperTrend (50% of directional bucket)
-M40_ALLOC = 0.25  # Pullback (50% of directional bucket)
+A20_ALLOC = 0.113  # SuperTrend (50% of directional bucket)
+M40_ALLOC = 0.387  # Pullback (50% of directional bucket)
 
 # M31 Params
 M31_LEVERAGE = 6
