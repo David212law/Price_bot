@@ -2,7 +2,7 @@ import os, json
 from research_lab.bale_notifier import send_bale
 
 MODE = "ADVISORY"  # تغییر به "ACTIVE" فقط پس از ۲ هفته داده پایدار
-MAX_DD_THRESHOLD = 0.15
+MAX_DD_THRESHOLD = 0.25
 CONSECUTIVE_LOSS_DAYS = 7
 
 EXCHANGES = {
