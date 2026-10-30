@@ -75,7 +75,18 @@ def fetch_funding_rate(symbol):
     except: pass
     return 0.0, 0
 
+
+def fetch_current_price(symbol):
+    url = f"https://api-futures.kucoin.com/api/v1/ticker?symbol={symbol}"
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=15)
+        if r.status_code == 200:
+            return float(r.json()["data"]["price"])
+    except: pass
+    return 0.0
+
 def main():
+
     print(f"=== M11-KuCoin Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     state, sha = load_from_github(STATE_FILE)
@@ -105,6 +116,17 @@ def main():
             st["last_processed"] = timepoint
             
             if st["in_pos"]:
+                # بررسی Stop-Loss (D-160)
+                current_price = fetch_current_price(sym)
+                if current_price > 0 and current_price > st.get("entry_price", float('inf')) * 1.05:
+                    cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
+                    st["fees"] += cost
+                    state["m31_capital"] -= cost
+                    st["in_pos"] = False
+                    st["last_exit"] = timepoint
+                    send_bale(f"🛑 M31 KuCoin STOP-LOSS HIT | {sym} | Price Jumped 5%!")
+                    continue
+
                 earned = (state["m31_capital"] / len(SYMBOLS)) * M31_LEVERAGE * rate
                 st["funding_earned"] += earned
                 state["m31_capital"] += earned
@@ -123,7 +145,8 @@ def main():
                     st["fees"] += cost
                     state["m31_capital"] -= cost
                     st["in_pos"] = True
-                    send_bale(f"🟢 M31 KuCoin OPENED | {sym} | Avg Rate: {avg_rate*100:.4f}%")
+                    st["entry_price"] = fetch_current_price(sym)
+                    send_bale(f"🟢 M31 KuCoin OPENED | {sym} | Avg Rate: {avg_rate*100:.4f}% | Entry: {st['entry_price']}")
                     
         state["m31_pos"][sym] = st
 
