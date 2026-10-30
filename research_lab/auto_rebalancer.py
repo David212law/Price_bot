@@ -1,10 +1,12 @@
-import os, json
+import os, json, base64, requests
 from datetime import datetime, timezone
 from research_lab.bale_notifier import send_bale
 
-MODE = "ADVISORY"  # تغییر به "ACTIVE" فقط با تایید AI3
+MODE = "ADVISORY"
 MIN_PF_TO_KEEP = 1.0
-MAX_WEIGHT_CHANGE_PCT = 10  # حداکثر تغییر هر بار
+MAX_WEIGHT_CHANGE_PCT = 10
+GH_TOKEN = os.environ.get("GH_TOKEN", "")
+GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
 
 EXCHANGES = {
     "hyperliquid": "exchanges/hyperliquid/state/m11_hl_portfolio.json",
@@ -12,11 +14,14 @@ EXCHANGES = {
     "kucoin": "exchanges/kucoin/state/m11_kucoin_paper_state.json"
 }
 
-def load(path):
-    if not os.path.exists(path): return None
+def load_from_github(path):
     try:
-        with open(path) as f: return json.load(f)
-    except: return None
+        url = f"https://api.github.com/repos/{GH_REPO}/contents/{path}"
+        r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
+        if r.status_code == 200:
+            return json.loads(base64.b64decode(r.json()["content"]).decode("utf-8"))
+    except: pass
+    return None
 
 def metrics(history, days=30):
     cutoff = (datetime.now(timezone.utc).timestamp() - days*86400) * 1000
@@ -25,14 +30,16 @@ def metrics(history, days=30):
     wins = sum(1 for h in recent if h.get("pnl", 0) > 0)
     gp = sum(h.get("pnl", 0) for h in recent if h.get("pnl", 0) > 0)
     gl = abs(sum(h.get("pnl", 0) for h in recent if h.get("pnl", 0) <= 0))
-    pf = gp/gl if gl > 0 else 0
+    pf = (gp/gl) if gl > 0 else (99.99 if gp > 0 else 0)
     return {"n": len(recent), "pf": round(pf, 2)}
 
 def main():
     report = [f"⚖️ **Auto-Rebalancer ({MODE} mode)**\n"]
     for name, path in EXCHANGES.items():
-        st = load(path)
-        if not st: continue
+        st = load_from_github(path)
+        if not st:
+            report.append(f"🌐 {name.upper()}: State not found")
+            continue
         history = st.get("history", [])
         m = metrics(history)
         if not m or m["n"] < 10:

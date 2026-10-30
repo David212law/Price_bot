@@ -2,8 +2,11 @@ name: Auto-Orchestrator (Daily)
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # هر روز ساعت 8 UTC
+    - cron: '0 8 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   orchestrate:
@@ -19,6 +22,8 @@ jobs:
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: python -m research_lab.performance_monitor
       - name: Kill Switch
         env:
@@ -29,4 +34,6 @@ jobs:
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: python -m research_lab.auto_rebalancer
