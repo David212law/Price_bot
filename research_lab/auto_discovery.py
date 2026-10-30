@@ -30,7 +30,7 @@ def run_auto_discovery():
         log_test(strat_name, metrics)
         
         if metrics.get("pf", 0) > 1.2 and metrics.get("n", 0) >= 30:
-            send_bale(f"🎯 New Winner Found: {strat_name}\nPF: {metrics['pf']} | n: {metrics['n']}")
+            send_bale(f"🎯 Candidate for Preregistration: {strat_name}\nPF: {metrics['pf']} | n: {metrics['n']}")
 
 if __name__ == "__main__":
     run_auto_discovery()

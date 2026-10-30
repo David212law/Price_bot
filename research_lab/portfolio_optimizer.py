@@ -38,7 +38,7 @@ def calculate_optimizer():
         weights[strat] = round(weights[strat] / total_inv_risk, 4)
         
     # گزارش نهایی
-    report_msg = "🏆 **Auto-Research Results**\n\n"
+    report_msg = "📋 **Auto-Research Candidate Report**\n\n"
     for strat, w in weights.items():
         report_msg += f"• {strat}: {w*100:.1f}% (MaxDD: {valid_strats[strat]['max_dd']}%)\n"
         

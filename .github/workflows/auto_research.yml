@@ -2,7 +2,7 @@ name: Auto-Research & Optimize
 
 on:
   schedule:
-    - cron: '0 0 1,15 * *' # اجرا در روزهای ۱ و ۱۵ هر ماه
+    - cron: '0 0 1 * *' # اجرا در روزهای ۱ و ۱۵ هر ماه
   workflow_dispatch:
 
 permissions:
