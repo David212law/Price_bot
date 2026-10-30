@@ -58,8 +58,13 @@ def run_auto_discovery():
             metrics = calculate_metrics(all_trades)
             log_test(test_name, metrics, exchange=exchange)
             
-            if metrics.get("pf",0) > 1.2 and metrics.get("n",0) >= 30:
-                send_bale(f"🎯 Candidate: {test_name} on {exchange}\nPF={metrics['pf']} n={metrics['n']}")
+            # نمایش نتایج
+            pf = metrics.get("pf", 0)
+            n = metrics.get("n", 0)
+            print(f"    → PF={pf:.2f} | n={n} | Status: {'🎯 CANDIDATE' if pf>1.2 and n>=30 else '❌ rejected'}")
+            
+            if pf > 1.2 and n >= 30:
+                send_bale(f"🎯 Candidate: {test_name} on {exchange}\nPF={pf} n={n}")
 
 if __name__ == "__main__":
     run_auto_discovery()

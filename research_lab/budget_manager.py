@@ -2,7 +2,7 @@ import json, os
 from datetime import datetime, timezone
 
 LEDGER_PATH = "research_lab/logs/trial_ledger.json"
-MONTHLY_BUDGET = 20
+MONTHLY_BUDGET = 30
 
 def load_ledger():
     os.makedirs(os.path.dirname(LEDGER_PATH), exist_ok=True)
