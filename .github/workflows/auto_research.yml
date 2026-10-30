@@ -2,11 +2,8 @@ name: Auto-Research & Optimize
 
 on:
   schedule:
-    - cron: '0 0 1 * *' # اجرا ماهی یک‌بار
+    - cron: '0 0 1 * *'
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   research:
@@ -25,15 +22,15 @@ jobs:
         run: python -m research_lab.auto_discovery
       - name: Validate Winner
         run: python -m research_lab.validate_winner
-      - name: Run Portfolio Architect (Correlation)
+      - name: Run Portfolio Optimizer
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
         run: python -m research_lab.portfolio_optimizer
-      - name: Commit Results
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add research_lab/logs/
-          git commit -m "Automated: Research, Validation, and Portfolio Architecture" || echo "No changes"
-          git push
+      - name: Upload Logs as Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: research-logs
+          path: research_lab/logs/
+          retention-days: 30
