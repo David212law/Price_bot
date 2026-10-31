@@ -220,11 +220,19 @@ def main():
             "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
             "a8_capital": INITIAL_CAPITAL * A8_ALLOC,
             "a20_capital": INITIAL_CAPITAL * A20_ALLOC,
+            "cash_capital": INITIAL_CAPITAL * (1.0 - M31_ALLOC - A8_ALLOC - A20_ALLOC),
             "m31_last_funding_time": {sym: 0 for sym in SYMBOLS},
             "a8_positions": {},
             "a20_positions": {},
             "history": []
         }
+
+    # MIGRATE: backfill cash_capital for existing state (D-389f)
+    if "cash_capital" not in state:
+        _inv = sum(p.get("invested",0) for pos in [state.get("a8_positions",{}),state.get("a20_positions",{})] for p in pos.values())
+        _alloc = state.get("m31_capital",0)+state.get("a8_capital",0)+state.get("a20_capital",0)
+        state["cash_capital"] = max(0, INITIAL_CAPITAL - _alloc - _inv)
+        print(f"[MIGRATE] cash_capital initialized: ${state['cash_capital']:.2f}")
 
     data_4h = {}
     data_1d = {}
@@ -255,7 +263,7 @@ def main():
                 send_bale(f"🟢 M31 Funding | {sym} | +{income:.4f} USDT")
 
     # ── Calculate current equity ──
-    equity = state["m31_capital"] + state["a8_capital"] + state["a20_capital"]
+    equity = state["m31_capital"] + state["a8_capital"] + state["a20_capital"] + state.get("cash_capital", 0)
     
     for sym, pos in list(state["a8_positions"].items()):
         equity += pos["units"] * current_prices[sym]
