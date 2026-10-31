@@ -4,8 +4,8 @@ SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "AVAX"]
 STATE_FILE = "exchanges/hyperliquid/state/m31_generator_state.json"
 SIGNAL_FILE = "exchanges/hyperliquid/state/m31_signals.json"
 M31_SMA_PERIODS = 12
-M31_ENTRY_THRESHOLD = 0.00005
-M31_EXIT_THRESHOLD = 0.00001
+M31_ENTRY_THRESHOLD = 0.00001   # D-390: reduced from 5 bps to 1 bps for Paper data collection
+M31_EXIT_THRESHOLD = 0.000005   # D-390: reduced from 1 bps to 0.5 bps
 M31_COOLDOWN = 3
 
 def fetch_funding(symbol):
