@@ -2,7 +2,7 @@ name: M11-KuCoin Paper Engine
 
 on:
   schedule:
-    - cron: '30 */8 * * *' # اجرا هر ۸ ساعت (هماهنگ با دوره فاندینگ)
+    - cron: '30 */8 * * *'
   workflow_dispatch:
 
 permissions:
@@ -29,3 +29,12 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: python exchanges/kucoin/m11_kucoin_allocator.py
+      - name: Commit state to repo (D-389)
+        if: always()
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add exchanges/kucoin/state/ || echo "no state dir"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto: Update KuCoin state [skip ci]" || echo "no changes to commit"
+          git pull --rebase origin main || true
+          git push || echo "push failed"
