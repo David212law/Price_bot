@@ -1,0 +1,32 @@
+{
+  "hyperliquid": {
+    "M31_vs_cash": {
+      "T_spa": 0.00021384,
+      "p_value": 0.0,
+      "n": 538,
+      "n_candidates": 1,
+      "verdict": "STRONG PASS (p=0.0000)",
+      "bench_mean_ann": 0.0
+    }
+  },
+  "aster": {
+    "M31_vs_cash": {
+      "T_spa": 8.639e-05,
+      "p_value": 0.083,
+      "n": 464,
+      "n_candidates": 1,
+      "verdict": "WEAK (p=0.0830)",
+      "bench_mean_ann": 0.0
+    }
+  },
+  "kucoin": {
+    "M31_vs_cash": {
+      "T_spa": 0.00029707,
+      "p_value": 0.0,
+      "n": 1096,
+      "n_candidates": 1,
+      "verdict": "STRONG PASS (p=0.0000)",
+      "bench_mean_ann": 0.0
+    }
+  }
+}

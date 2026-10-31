@@ -1,0 +1,38 @@
+name: Auto Research v2 (Weekly)
+
+on:
+  schedule:
+    - cron: '0 6 * * 0'  # Sunday 6 UTC (one hour before old unified_master)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install
+        run: pip install requests
+      - name: Screening
+        run: python -m research_lab.screening
+      - name: Validation
+        run: python -m research_lab.validation_v2
+      - name: Orchestrator
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+        run: python -m research_lab.unified_master_v2
+      - name: Commit results
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add research_lab/logs/screening_results.json research_lab/logs/validation_results.json exchanges/proposed_weights.json || echo "no artifacts"
+          git diff --quiet && git diff --staged --quiet || git commit -m "auto: weekly research v2 [skip ci]" || echo "no changes"
+          git pull --rebase origin main || true
+          git push || echo "push failed"

@@ -1680,3 +1680,21 @@ Cash: 26%
 
 ## D-2026-10-31-388 — AUDIT-COMPLETE: بسته شدن P0
 وضعیت: قفل | سه P0 اصلی تسویه شدند: D-77 (KuCoin)، Trade Unit، Aster Audit. Runtime Regime و Reality Check باقی‌مانده‌ها در P1 (Reality Check) و P2 (Paper ۶ ماه) تسویه می‌شوند.
+
+## D-2026-11-01-397 — KELTNER-REV-CONFIRMED: لبه دوم رسمی
+وضعیت: قفل | KELTNER_REV (Keltner Reversion، period=20، mult=2.0) به عنوان دومین لبه تأییدشده پروژه شناخته شد.
+
+**شواهد آماری:**
+- HL: n=441، PF=2.10، WR=43.8٪، Mean=+0.64٪، Sharpe~3.96
+- Aster: n=519، PF=1.94، WR=42.6٪، Mean=+0.58٪، Sharpe~3.59
+- Fee Stress 2x: HL PF=1.80، Aster PF=1.66 (هر دو PASS)
+- SPA p=0.0000 (HL)، p=0.0020 (Aster)
+- DSR=1.0000 (هر دو)
+- همبستگی با M31: -0.090 (Diversifier عالی، < 0.3)
+
+**تخصیص پیشنهادی:**
+- HL: M31=50٪ + KELTNER=20٪ + Cash=30٪
+- Aster: M31=0٪ (Audit Hold) + KELTNER=15٪ + Cash=85٪
+- KuCoin: M31=30٪ + Cash=70٪ (KELTNER در KuCoin به‌دلیل n<15 رد شد)
+
+**پیش‌نیاز فعال‌سازی:** اجرای Paper با signal generation و مقایسه با backtest پس از ۴۸ ساعت.
