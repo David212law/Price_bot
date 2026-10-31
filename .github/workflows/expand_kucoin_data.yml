@@ -19,7 +19,7 @@ jobs:
         run: pip install requests
       - name: Fetch All 6 Symbols
         run: |
-          for sym in ETHUSDTM SOLUSDTM BNBUSDTM XRPUSDTM AVAXUSDTM; do
+          for sym in XBTUSDTM ETHUSDTM SOLUSDTM BNBUSDTM XRPUSDTM AVAXUSDTM; do
             echo "════════════════════════════════════"
             echo "Fetching $sym..."
             echo "════════════════════════════════════"
