@@ -1,5 +1,5 @@
 {
-  "total_capital": 7000.0,
+  "total_capital": 10000.0,
   "m31_capital": 6500.0,
   "m35_capital": 0.0,
   "m40_capital": 364.5,
@@ -30,5 +30,6 @@
     }
   },
   "m41_pos": {},
-  "history": []
+  "history": [],
+  "cash_capital": 3000.0
 }
