@@ -63,6 +63,15 @@ def main():
         print(f"[REGIME] detection failed: {_e}")
         globals()['_CURRENT_REGIME'] = 'UNKNOWN'
 
+    # LOAD ACTIVE WEIGHTS (D-389: before state init)
+    _w = load_active_weights("hyperliquid")
+    if _w:
+        globals()["M31_PCT"] = _w.get("M31", globals()["M31_PCT"])
+        globals()["M35_PCT"] = _w.get("M35", globals()["M35_PCT"])
+        globals()["M40_PCT"] = _w.get("M40", globals()["M40_PCT"])
+        globals()["M41_PCT"] = _w.get("M41", globals()["M41_PCT"])
+        print(f"[CONFIG] HL: M31={globals()['M31_PCT']*100:.0f}%, M35={globals()['M35_PCT']*100:.0f}%, M40={globals()['M40_PCT']*100:.0f}%, M41={globals()['M41_PCT']*100:.0f}%")
+
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, 'r') as f: state = json.load(f)
         if "m41_capital" not in state: state["m41_capital"] = INITIAL_CAPITAL * M41_PCT
@@ -130,13 +139,5 @@ def main():
     print(f"Allocator Updated. Total Equity: ${state['total_capital']:.2f}")
     print(f"  M31: ${state['m31_capital']:.2f} | M35: ${state['m35_capital']:.2f} | M40: ${state['m40_capital']:.2f} | M41: ${state['m41_capital']:.2f}")
 
-    _w = load_active_weights("hyperliquid")
-    if _w:
-        globals()["M31_ALLOC"] = _w.get("M31", globals().get("M31_ALLOC", 0.5))
-        globals()["M35_ALLOC"] = _w.get("M35", globals().get("M35_ALLOC", 0.0))
-        globals()["M40_ALLOC"] = _w.get("M40", globals().get("M40_ALLOC", 0.0))
-        globals()["M41_ALLOC"] = _w.get("M41", globals().get("M41_ALLOC", 0.0))
-        globals()["A20_ALLOC"] = _w.get("A20", globals().get("A20_ALLOC", 0.0))
-        globals()["A8_ALLOC"] = _w.get("A8", globals().get("A8_ALLOC", 0.0))
-        print(f"[CONFIG] Loaded weights from active_weights.json for hyperliquid")
+    # (active_weights loaded at start of main - D-389)
 if __name__ == "__main__": main()

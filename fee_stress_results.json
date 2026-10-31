@@ -1,0 +1,88 @@
+{
+  "hyperliquid": {
+    "exchange": "hyperliquid",
+    "n_days": 538,
+    "n_trades": 34,
+    "per_sym_trades": {
+      "BTC": 7,
+      "ETH": 5,
+      "SOL": 5,
+      "BNB": 5,
+      "XRP": 6,
+      "AVAX": 6
+    },
+    "per_symbol_pct": 11.67,
+    "base_sharpe": 11.851,
+    "stress_levels": [
+      {
+        "multiplier": 1.5,
+        "sharpe": 11.688,
+        "ann_ret_pct": 7.7,
+        "daily_drag_pct": 0.0003,
+        "annual_drag_pct": 0.11,
+        "verdict": "PASS"
+      },
+      {
+        "multiplier": 2.0,
+        "sharpe": 11.525,
+        "ann_ret_pct": 7.59,
+        "daily_drag_pct": 0.0006,
+        "annual_drag_pct": 0.22,
+        "verdict": "PASS"
+      },
+      {
+        "multiplier": 3.0,
+        "sharpe": 11.198,
+        "ann_ret_pct": 7.37,
+        "daily_drag_pct": 0.0012,
+        "annual_drag_pct": 0.43,
+        "verdict": "PASS"
+      }
+    ]
+  },
+  "aster": {
+    "exchange": "aster",
+    "n_days": 464,
+    "n_trades": 41,
+    "per_sym_trades": {
+      "BTCUSDT": 7,
+      "ETHUSDT": 7,
+      "SOLUSDT": 6,
+      "BNBUSDT": 4,
+      "XRPUSDT": 7,
+      "AVAXUSDT": 10
+    },
+    "per_symbol_pct": 11.67,
+    "base_sharpe": 3.261,
+    "stress_levels": [
+      {
+        "multiplier": 1.5,
+        "sharpe": 3.105,
+        "ann_ret_pct": 3.0,
+        "daily_drag_pct": 0.0004,
+        "annual_drag_pct": 0.15,
+        "verdict": "PASS"
+      },
+      {
+        "multiplier": 2.0,
+        "sharpe": 2.949,
+        "ann_ret_pct": 2.85,
+        "daily_drag_pct": 0.0008,
+        "annual_drag_pct": 0.3,
+        "verdict": "PASS"
+      },
+      {
+        "multiplier": 3.0,
+        "sharpe": 2.638,
+        "ann_ret_pct": 2.55,
+        "daily_drag_pct": 0.0016,
+        "annual_drag_pct": 0.6,
+        "verdict": "PASS"
+      }
+    ]
+  },
+  "kucoin": {
+    "error": "insufficient days",
+    "n_days": 0
+  }
+}

@@ -184,6 +184,14 @@ def main():
 
     print(f"=== M11-KuCoin Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
+    # LOAD ACTIVE WEIGHTS (D-389: before state init)
+    _w = load_active_weights("kucoin")
+    if _w:
+        globals()["M31_ALLOC"] = _w.get("M31", globals()["M31_ALLOC"])
+        globals()["A20_ALLOC"] = _w.get("A20", globals()["A20_ALLOC"])
+        globals()["M40_ALLOC"] = _w.get("M40", globals()["M40_ALLOC"])
+        print(f"[CONFIG] KuCoin: M31={globals()['M31_ALLOC']*100:.0f}%, A20={globals()['A20_ALLOC']*100:.0f}%, M40={globals()['M40_ALLOC']*100:.0f}%")
+
     state, sha = load_from_github(STATE_FILE)
     state = check_config_drift(state)
     if not isinstance(state, dict) or "m31_capital" not in state:
@@ -298,14 +306,6 @@ def main():
         print(f"✅ Equity: {state['total_equity']:.2f} USDT | ROI: {roi:+.2f}%")
         print(f"   M31: ${state['m31_capital']:.2f} | A20: ${state['a20_capital']:.2f} | M40: ${state['m40_capital']:.2f}")
 
-    _w = load_active_weights("kucoin")
-    if _w:
-        globals()["M31_ALLOC"] = _w.get("M31", globals().get("M31_ALLOC", 0.5))
-        globals()["M35_ALLOC"] = _w.get("M35", globals().get("M35_ALLOC", 0.0))
-        globals()["M40_ALLOC"] = _w.get("M40", globals().get("M40_ALLOC", 0.0))
-        globals()["M41_ALLOC"] = _w.get("M41", globals().get("M41_ALLOC", 0.0))
-        globals()["A20_ALLOC"] = _w.get("A20", globals().get("A20_ALLOC", 0.0))
-        globals()["A8_ALLOC"] = _w.get("A8", globals().get("A8_ALLOC", 0.0))
-        print(f"[CONFIG] Loaded weights from active_weights.json for kucoin")
+    # (active_weights loaded at start of main - D-389)
 if __name__ == "__main__":
     main()

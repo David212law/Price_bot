@@ -204,6 +204,14 @@ def main():
 
     print(f"=== M11-Aster Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
+    # LOAD ACTIVE WEIGHTS (D-389: before state init)
+    _w = load_active_weights("aster")
+    if _w:
+        globals()["M31_ALLOC"] = _w.get("M31", globals()["M31_ALLOC"])
+        globals()["A8_ALLOC"] = _w.get("A8", globals()["A8_ALLOC"])
+        globals()["A20_ALLOC"] = _w.get("A20", globals()["A20_ALLOC"])
+        print(f"[CONFIG] Aster: M31={globals()['M31_ALLOC']*100:.0f}%, A8={globals()['A8_ALLOC']*100:.0f}%, A20={globals()['A20_ALLOC']*100:.0f}%")
+
     state, sha = load_from_github(STATE_FILE)
     # اصلاح کلیدهای وضعیت برای رفع باگ سرمایه
     if not isinstance(state, dict) or "m31_capital" not in state:
@@ -240,7 +248,7 @@ def main():
         f_time, f_rate = fetch_latest_funding(sym)
         if f_time > state["m31_last_funding_time"].get(sym, 0):
             if f_rate > 0:
-                income = m31_alloc * M31_LEVERAGE * f_rate
+                income = (m31_alloc / len(SYMBOLS)) * M31_LEVERAGE * f_rate
                 state["m31_capital"] += income
                 state["m31_last_funding_time"][sym] = f_time
                 print(f"[M31] {sym} Funding received: {income:.4f} USDT (Rate: {f_rate*100:.4f}%)")
@@ -352,7 +360,7 @@ def main():
                 
                 if risk_per_unit > 0:
                     alloc = min((risk_amount / risk_per_unit) * c["c"], a20_equity * A20_MAX_ALLOC)
-                    if alloc > 10 and state["a8_capital"] >= alloc:
+                    if alloc > 10 and state["a20_capital"] >= alloc:
                         state["a20_capital"] -= alloc
                         units = alloc / c["c"]
                         state["a20_positions"][sym] = {
@@ -366,14 +374,6 @@ def main():
         roi = ((state["total_equity"] - INITIAL_CAPITAL) / INITIAL_CAPITAL) * 100
         print(f"✅ State saved. Equity: {state['total_equity']:.2f} USDT (ROI: {roi:+.2f}%)")
 
-    _w = load_active_weights("aster")
-    if _w:
-        globals()["M31_ALLOC"] = _w.get("M31", globals().get("M31_ALLOC", 0.5))
-        globals()["M35_ALLOC"] = _w.get("M35", globals().get("M35_ALLOC", 0.0))
-        globals()["M40_ALLOC"] = _w.get("M40", globals().get("M40_ALLOC", 0.0))
-        globals()["M41_ALLOC"] = _w.get("M41", globals().get("M41_ALLOC", 0.0))
-        globals()["A20_ALLOC"] = _w.get("A20", globals().get("A20_ALLOC", 0.0))
-        globals()["A8_ALLOC"] = _w.get("A8", globals().get("A8_ALLOC", 0.0))
-        print(f"[CONFIG] Loaded weights from active_weights.json for aster")
+    # (active_weights loaded at start of main - D-389)
 if __name__ == "__main__":
     main()
