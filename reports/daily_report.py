@@ -63,7 +63,7 @@ def main():
     aster_data = load_from_github("exchanges/aster/state/m11_aster_paper_state.json")
     if aster_data:
         eq = aster_data.get("total_equity", 10000.0)
-        cash = aster_data.get("cash", 10000.0)
+        cash = aster_data.get("cash_capital", aster_data.get("cash", 10000.0))
         a8_pos = len(aster_data.get("a8_positions", {}))
         a20_pos = len(aster_data.get("a20_positions", {}))
         roi = ((eq - 10000.0) / 10000.0) * 100
@@ -74,6 +74,23 @@ def main():
         if roi < -3: alerts.append(f"⚠️ Aster Drawdown Alert: ROI is {roi:.2f}%")
     else:
         report.append("🔹 Aster: State not found.")
+
+    report.append("")
+
+    # ─── KuCoin M11-KuCoin ───
+    report.append("🔷 **KuCoin (M11-KuCoin)**")
+    kc_data = load_from_github("exchanges/kucoin/state/m11_kucoin_paper_state.json")
+    if kc_data:
+        eq = kc_data.get("total_equity", 10000.0)
+        cash = kc_data.get("cash_capital", 0.0)
+        m31_active = sum(1 for p in kc_data.get("m31_pos", {}).values() if p.get("in_pos"))
+        m31_total = len(kc_data.get("m31_pos", {}))
+        roi = ((eq - 10000.0) / 10000.0) * 100
+        report.append(f"   Equity: ${eq:.2f} (ROI: {roi:+.2f}%)")
+        report.append(f"   Cash: ${cash:.2f} | M31: {m31_active}/{m31_total} active")
+        if roi < -3: alerts.append(f"⚠️ KuCoin Drawdown Alert: ROI is {roi:.2f}%")
+    else:
+        report.append("🔹 KuCoin: State not found.")
 
     final_report = "\n".join(report)
     print(final_report)
