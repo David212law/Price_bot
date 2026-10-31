@@ -1625,3 +1625,49 @@ Cash: 26%
 - regime_analysis.py (superseded by regime_core)
 - regime_wf_test.py (superseded by unified_master)
 حفظ ۱۳ فایل ضروری: regime_core, regime_detector, unified_master, master_orchestrator, kill_switch, performance_monitor, auto_rebalancer, auto_discovery, validate_winner, portfolio_optimizer, hrp_optimizer, bale_notifier, budget_manager.
+
+## D-2026-10-31-372 — TERMINOLOGY-FIX: تغییر عنوان M31
+وضعیت: قفل | عنوان «لبه قطعی» برای M31 به «کاندیدای قوی، در انتظار Paper» تغییر می‌یابد. در تمام گزارش‌های Bale، Documentation و DECISIONS، این عنوان جدید استفاده می‌شود. «لبه قطعی» فقط پس از Paper چندرژیمی (n≥۳۰ هر پا-رژیم) قابل ادعاست.
+
+## D-2026-10-31-373 — TRADE-UNIT-DEFINITION: تعریف رسمی واحد نمونه
+وضعیت: قفل | تعریف رسمی: هر پوزیشن بسته یا هر روز تقویمی دارای اکسپوژر = یک Trade Unit. تا بازشماری هر سه صرافی با واحد واحد، تمام آمارهای n (HL=73536، Aster=6000، KuCoin=6570) PROVISIONAL هستند و مقایسه بین‌صرافی ممنوع است.
+
+## D-2026-10-31-374 — ASTER-SHARPE-AUDIT: Audit رسمی
+وضعیت: قفل | Aster Sharpe=8.51 تا Audit رسمی در وضعیت Audit Hold است. تخصیص M31 = 0%، فقط M62=10%. Audit باید شامل: منبع داده، دوره، فرمت فاندینگ، تعریف n، بازمحاسبه با fundingIntervalHours واقعی، تایید کارمزد Maker/Taker.
+
+## D-2026-10-31-375 — KUCOIN-PAPER-ONLY: M31-KuCoin برای Paper
+وضعیت: قفل | M31-KuCoin به دلیل Directional بودن (D-153) و نبود Hedge، فقط در Paper با ۳۰٪ مجاز است. در Live، تخصیص = 0% تا پیاده‌سازی Hedge دلتا-نوترال. D-77 (تعیین تکلیف KuCoin) ظرف ۴۸ ساعت تسویه شود.
+
+## D-2026-10-31-376 — M62-PREREG: پیش‌ثبت‌نام سخت‌گیرانه
+وضعیت: قفل | M62 با سقف ۱۰٪ فقط در TREND مجاز است. پیش‌ثبت‌نام کامل (شرط رژیمی از-قبل-ثبت، آستانه‌های ADX، پارامترها) الزامی است. عدد «۶۰-۷۰٪ اعتماد» حذف می‌شود (بی‌پشتوانه). Out-of-Time واقعی (Paper) شرط Live است.
+
+## D-2026-10-31-377 — M40-HL-WARNING: هشدار n
+وضعیت: قفل | M40 سقف ۵٪ فقط HL-RANGE. هشدار صریح: n=۶۵ در بک‌تست کم است و RANGE زنده کم‌تکرار — رسیدن به n≥۵۰ زنده ممکن است بیش از یک سال طول بکشد. تصمیم صریح ادامه/انصراف با این واقعیت گرفته شود.
+
+## D-2026-10-31-378 — KILL-SWITCH-MULTI-LAYER: چندلایه
+وضعیت: قفل | Kill Switch چندلایه: (۱) DD پا-سطح ۱۵٪ + DD کل ۲۵٪؛ (۲) حداکثر ۸ باخت متوالی؛ (۳) N دوره فاندینگ مخالف جهت پوزیشن = خروج؛ (۴) Wilson واقعی زیر کران پایین بک‌تست = توقف؛ (۵) قطعی دیتا > ۲ کندل = توقف؛ (۶) fail-safe رژیم‌یاب به Cash؛ (۷) فقدان امکان هج = شروع نکردن. ران آتش‌نشانی الزامی در Paper قبل از Live.
+
+## D-2026-10-31-379 — LIVE-GATE: شرط نهایی Live
+وضعیت: قفل | Live فقط پس از: ۶ ماه Paper پیوسته یا n≥۳۰ هر پا-رژیم (هر کدام دیرتر) + پوشش یک چرخه TREND (ADX>25) و یک چرخه RANGE (ADX<20) + Out-of-Time دست‌نخورده + شروع با نصف وزن Paper + نردبان ۵→۲۰→۱۰۰٪. Live در حال حاضر غیرفعال.
+
+## D-2026-10-31-380 — M31-PRIORITY: تقویت M31
+وضعیت: قفل | اولویت مطلق: تقویت عملیاتی M31 (timing ورود، هزینه هج، کارمزد Maker/Taker، Catch-up فاندینگ). هیچ استراتژی جدیدی تا تکمیل تقویت M31 طراحی نمی‌شود.
+
+## D-2026-10-31-381 — REALITY-CHECK-SPA: تصحیح چندگانه پیشرفته
+وضعیت: قفل | قبل از ادعای «بهترین از ۵۴ ترکیب»، Reality Check/SPA (Hansen/White) اجرا شود. Deflated Sharpe جایگزین Sharpe خام در جداول شود. p<0.0001 باید با B≥۹,۹۹۹ گزارش شود.
+
+## D-2026-10-31-382 — FEE-STRESS-2X: تست کارمزد دوبرابری
+وضعیت: قفل | پیش از Live، Fee Stress با کارمزد دوبرابر (Maker و Taker) و هزینه هج اجرا شود. اگر P<0.05 حفظ شد، Live مجاز. در غیر این صورت، وزن‌ها کاهش یابند.
+
+## D-2026-10-31-383 — D77-SETTLE: تسویه D-77
+وضعیت: قفل | مهلت D-77 (تعیین تکلیف KuCoin) ظرف ۴۸ ساعت تسویه شود. اگر تنزل به Data-Feed: M31-KuCoin صفر (حتی در Paper). اگر اصلاح رسمی D-68: تصریح شرایط اجرا و Hedge. ادغام DECISIONS.md در یک نسخه مرجع واحد الزامی است.
+
+## D-2026-10-31-384 — PROVISIONAL-LABELING: برچسب نتایج
+وضعیت: قفل | تمام P-Valueها، Sharpeها و nها تا تکمیل Audit + Trade Unit + Reality Check برچسب PROVISIONAL دارند. در گزارش‌های Bale با پیشوند [P] نمایش داده شوند.
+
+## D-2026-10-31-385 — STATUS-CURRENT: وضعیت فعلی
+وضعیت: قفل | پرتفوی فعلی در وضعیت PROVISIONAL-SIMULATION است (نه Allocation نهایی):
+- HL: M31=65%, M62=10%, M40=5%, Cash=20%
+- Aster: M62=10%, Cash=90%
+- KuCoin: M31=30% (Paper only), M62=10%, Cash=60%
+حکم نهایی پس از Paper چندرژیمی (D-379).
