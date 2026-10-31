@@ -26,7 +26,7 @@ def extract_rates(data):
                 try: rate = float(r[key]); break
                 except: pass
         t = 0
-        for key in ["time","t","fundingTime","timestamp","created_at"]:
+        for key in ["time","t","fundingTime","timestamp","created_at","timepoint"]:
             if key in r:
                 t = normalize_ms(r[key])
                 if t > 0: break
