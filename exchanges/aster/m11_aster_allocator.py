@@ -275,6 +275,10 @@ def main():
             equity += pos["invested"] + (pos["invested"] * pnl_pct)
             
     state["total_equity"] = equity
+    # D-392: track peak equity for Kill Switch
+    _cur = state["total_equity"]
+    state["peak_equity"] = max(state.get("peak_equity", _cur), _cur)
+
     a8_equity = equity * A8_ALLOC
     a20_equity = equity * A20_ALLOC
 

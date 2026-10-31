@@ -140,6 +140,10 @@ def main():
     total_equity = (state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + state["m41_capital"]
                     + state.get("cash_capital", 0) + total_invested)
     state["total_capital"] = total_equity
+    # D-392: track peak equity for Kill Switch
+    _cur = state["total_capital"]
+    state["peak_equity"] = max(state.get("peak_equity", _cur), _cur)
+
     
     with open(STATE_FILE, 'w') as f: json.dump(state, f, indent=2)
     print(f"Allocator Updated. Total Equity: ${state['total_capital']:.2f}")

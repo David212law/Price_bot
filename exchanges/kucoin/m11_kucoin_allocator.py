@@ -324,6 +324,10 @@ def main():
 
     # ── Equity ──
     state["total_equity"] = state["m31_capital"] + state["a20_capital"] + state["m40_capital"] + state.get("cash_capital", 0)
+    # D-392: track peak equity for Kill Switch
+    _cur = state["total_equity"]
+    state["peak_equity"] = max(state.get("peak_equity", _cur), _cur)
+
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     
     if save_to_github(STATE_FILE, state, sha):
