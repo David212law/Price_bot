@@ -12,3 +12,7 @@ Thumbs.db
 .env
 *.log
 research_lab/logs/
+
+# Diagnostic output files
+regime_core_results.txt
+*.log
