@@ -1613,3 +1613,15 @@ M31 همیشه فعال، M62 فقط TREND، M40 فقط RANGE (فقط HL).
 - KuCoin: M31=30%, M62=10%, Cash=60%
 کل سرمایه در معرض ریسک فعال: 74% (M31: 46%, M62: 26%, M40: 2%)
 Cash: 26%
+
+## D-2026-10-31-371 — CLEANUP-DIAGNOSTIC-FILES
+وضعیت: قفل | حذف ۸ فایل تشخیصی که توسط regime_core و unified_master جایگزین شدند:
+- correlation_m31_m62.py (یک‌بار مصرف)
+- fetch_kucoin_extended.py (داده دریافت شد)
+- full_pipeline.py (superseded by unified_master)
+- m31_economic_metrics.py (تست انجام شد)
+- pooled_range_test.py (تست انجام شد)
+- quick_revalidate.py (تست انجام شد)
+- regime_analysis.py (superseded by regime_core)
+- regime_wf_test.py (superseded by unified_master)
+حفظ ۱۳ فایل ضروری: regime_core, regime_detector, unified_master, master_orchestrator, kill_switch, performance_monitor, auto_rebalancer, auto_discovery, validate_winner, portfolio_optimizer, hrp_optimizer, bale_notifier, budget_manager.
