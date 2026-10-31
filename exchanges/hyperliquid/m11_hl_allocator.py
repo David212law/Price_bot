@@ -76,6 +76,11 @@ def main():
         with open(STATE_FILE, 'r') as f: state = json.load(f)
         if "m41_capital" not in state: state["m41_capital"] = INITIAL_CAPITAL * M41_PCT
         if "m41_pos" not in state: state["m41_pos"] = {}
+        if "cash_capital" not in state:
+            _inv = sum(p.get("invested",0) for pos in [state.get("m35_pos",{}),state.get("m40_pos",{}),state.get("m41_pos",{})] for p in pos.values())
+            _alloc = state.get("m31_capital",0)+state.get("m35_capital",0)+state.get("m40_capital",0)+state.get("m41_capital",0)
+            state["cash_capital"] = max(0, INITIAL_CAPITAL - _alloc - _inv)
+            print(f"[MIGRATE] cash_capital initialized: ${state['cash_capital']:.2f}")
     else:
         state = {
             "total_capital": INITIAL_CAPITAL,
@@ -132,12 +137,13 @@ def main():
 
     # 5. محاسبه سرمایه کل
     total_invested = sum(p["invested"] for pos in [state["m35_pos"], state["m40_pos"], state["m41_pos"]] for p in pos.values())
-    total_equity = state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + state["m41_capital"] + total_invested
+    total_equity = (state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + state["m41_capital"]
+                    + state.get("cash_capital", 0) + total_invested)
     state["total_capital"] = total_equity
     
     with open(STATE_FILE, 'w') as f: json.dump(state, f, indent=2)
     print(f"Allocator Updated. Total Equity: ${state['total_capital']:.2f}")
-    print(f"  M31: ${state['m31_capital']:.2f} | M35: ${state['m35_capital']:.2f} | M40: ${state['m40_capital']:.2f} | M41: ${state['m41_capital']:.2f}")
+    print(f"  M31: ${state['m31_capital']:.2f} | M35: ${state['m35_capital']:.2f} | M40: ${state['m40_capital']:.2f} | M41: ${state['m41_capital']:.2f} | Cash: ${state.get('cash_capital', 0):.2f}")
 
     # (active_weights loaded at start of main - D-389)
 if __name__ == "__main__": main()
