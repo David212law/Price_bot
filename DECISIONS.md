@@ -1587,3 +1587,29 @@ regime_core.py ابزار را یکدست کرد و نتایج معتبرند.
 - Aster: M31=60% + M62=10% (TREND) + Cash=30%
 - KuCoin: M31=60% + M62=10% (TREND) + Cash=30%
 M31 همیشه فعال، M62 فقط TREND، M40 فقط RANGE (فقط HL).
+
+## D-2026-10-31-364 — M31-KUCOIN-DIRECTIONAL-FINAL
+وضعیت: قفل | D-153 (Directional بدون Hedge) همچنان معتبر است. تخصیص M31-KuCoin از 60% به 30% کاهش می‌یابد. Cash=60%. علت: ریسک جهت‌دار کنترل‌نشده در رالی صعودی BTC. Stop-Loss 5% (D-160) تنها محافظ است. تا زمانی که Hedge رسمی پیاده نشود، 30% سقف مطلق است.
+
+## D-2026-10-31-365 — ASTER-SHARPE-AUDIT-HOLD
+وضعیت: قفل | Sharpe=8.51 Aster تا Audit رسمی قابل استناد نیست. تخصیص M31 به 0% کاهش می‌یابد. فقط M62=10% (TREND) باقی می‌ماند. اگر Audit نشان داد Sharpe واقعی است، بازگشت تدریجی.
+
+## D-2026-10-31-366 — N-UNIT-DISCLOSURE
+وضعیت: قفل | تفاوت n بین HL (73536)، Aster (6000)، KuCoin (6570) ناشی از تعریف متفاوت Trade Unit است: HL=هر رویداد فاندینگ در هر کندل، Aster=رویداد فاندینگ تجمیعی، KuCoin=نسخه اصلاح‌شده. مقایسه مستقیم Sharpe بین صرافی‌ها نامعتبر است تا Audit.
+
+## D-2026-10-31-367 — M62-RANGE-HANDLING
+وضعیت: قفل | در RANGE/NEUTRAL، تخصیص 10% M62 به Cash منتقل می‌شود. Capital Pool: Cash افزایش می‌یابد. ربات از regime_core برای تشخیص استفاده می‌کند.
+
+## D-2026-10-31-368 — ASTER-CASH-PURPOSE
+وضعیت: قفل | Cash Buffer Aster = 90% (به‌دلیل Audit Hold) + 10% M62 (TREND) = 100%. هدف: حفاظت تا رفع ابهام Sharpe.
+
+## D-2026-10-31-369 — REGIME-RUNTIME-FORMAL-VALIDATION
+وضعیت: قفل | Runtime Regime Detection در Actions با [REGIME] TREND (ADX=27.30) و [REGIME] TREND (ADX=34.28) تایید عملی شد. DESIGN: ADX(14) روی 60 کندل 4h، آستانه 25/20.
+
+## D-2026-10-31-370 — FINAL-PORTFOLIO-HONEST
+وضعیت: قفل | پرتفوی نهایی محافظه‌کارانه:
+- HL: M31=65%, M62=10%, M40=5%, Cash=20%
+- Aster: M62=10%, Cash=90%
+- KuCoin: M31=30%, M62=10%, Cash=60%
+کل سرمایه در معرض ریسک فعال: 74% (M31: 46%, M62: 26%, M40: 2%)
+Cash: 26%
