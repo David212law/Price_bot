@@ -4,7 +4,6 @@ _project_root = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.absp
 if _project_root not in _sys.path: _sys.path.insert(0, _project_root)
 
 import json, os, requests, time
-from strategies.library.volatility import strat_keltner_reversion
 from datetime import datetime, timezone
 
 INITIAL_CAPITAL = 10000.0
@@ -12,7 +11,6 @@ M31_PCT = 0.80  # D-313  # D-306: 100%
 M35_PCT = 0.0  # D-306  # D-286
 M40_PCT = 0.0  # D-306  # D-286
 M41_PCT = 0.0  # D-306  # D-286 # تخصیص جدید برای Diversifier
-KELTNER_PCT = 0.20  # D-397
 M31_LEVERAGE = 3  # D-310
 MAKER_FEE = 0.0002
 TAKER_FEE = 0.0005
@@ -86,10 +84,9 @@ def main():
     else:
         state = {
             "total_capital": INITIAL_CAPITAL,
-            "m31_capital": INITIAL_CAPITAL * M31_PCT, "m35_capital": INITIAL_CAPITAL * M35_PCT,
-            "keltner_capital": INITIAL_CAPITAL * KELTNER_PCT, 
+            "m31_capital": INITIAL_CAPITAL * M31_PCT, "m35_capital": INITIAL_CAPITAL * M35_PCT, 
             "m40_capital": INITIAL_CAPITAL * M40_PCT, "m41_capital": INITIAL_CAPITAL * M41_PCT,
-            "m31_pos": {}, "m35_pos": {}, "m40_pos": {}, "m41_pos": {}, "keltner_pos": {}, "history": []
+            "m31_pos": {}, "m35_pos": {}, "m40_pos": {}, "m41_pos": {}, "history": []
         }
 
     # 1. M31 Accrual & Signals (بدون تغییر)
@@ -138,36 +135,9 @@ def main():
                 state["m41_capital"] -= alloc
                 state["m41_pos"][sig["symbol"]] = {"side": "LONG" if sig["action"]=="OPEN_LONG" else "SHORT", "entry": sig["price"], "invested": alloc, "tp": sig["tp"], "sl": sig["sl"]}
 
-    # KELTNER Signal Processing (D-397)
-    if KELTNER_PCT > 0:
-        if "keltner_capital" not in state: state["keltner_capital"] = INITIAL_CAPITAL * KELTNER_PCT
-        if "keltner_pos" not in state: state["keltner_pos"] = {}
-        for sym in SYMBOLS:
-            try:
-                from strategies.core_engine import load_data
-                candles = load_data("hyperliquid", sym)
-                if not candles or len(candles) < 30: continue
-                recent = candles[-50:]
-                try: trades = strat_keltner_reversion(recent, period=20, mult=2.0)
-                except: continue
-                has_open = sym in state.get("keltner_pos", {})
-                # Check if there's a recent signal to enter
-                if trades and not has_open:
-                    # Simple: enter if last candle had recent trade signal (within last 3 candles)
-                    last_trade = trades[-1]
-                    if last_trade["t"] >= recent[-3]["t"]:
-                        side = "LONG" if last_trade["ret"] > 0 else "SHORT"
-                        alloc = state["keltner_capital"] * 0.15
-                        if alloc > 10 and state["keltner_capital"] >= alloc:
-                            state["keltner_capital"] -= alloc
-                            state.setdefault("keltner_pos", {})[sym] = {"side": side, "invested": alloc, "t": last_trade["t"]}
-                            print(f"[KELTNER] {sym} OPENED {side} @ market")
-            except Exception as e:
-                print(f"[KELTNER] {sym} err: {e}")
-
     # 5. محاسبه سرمایه کل
     total_invested = sum(p["invested"] for pos in [state["m35_pos"], state["m40_pos"], state["m41_pos"]] for p in pos.values())
-    total_equity = (state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + state["m41_capital"] + state.get("keltner_capital", 0)
+    total_equity = (state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + state["m41_capital"]
                     + state.get("cash_capital", 0) + total_invested)
     state["total_capital"] = total_equity
     # D-392: track peak equity for Kill Switch
