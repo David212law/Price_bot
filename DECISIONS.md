@@ -1671,3 +1671,12 @@ Cash: 26%
 - Aster: M62=10%, Cash=90%
 - KuCoin: M31=30% (Paper only), M62=10%, Cash=60%
 حکم نهایی پس از Paper چندرژیمی (D-379).
+
+## D-2026-10-31-386 — D77-SETTLED: KuCoin Data-Feed + Paper-Only
+وضعیت: قفل | D-77 رسماً تسویه شد. KuCoin به وضعیت «Data-Feed + Paper-Only» تنزل یافت. M31-KuCoin در Paper با 30% مجاز، در Live = 0% تا پیاده‌سازی Hedge. علت: Directional بودن (D-153) + نبود Hedge + ریسک تحریم.
+
+## D-2026-10-31-387 — AUDIT-COMPLETED: اجرای کامل Audit
+وضعیت: قفل | Audit کامل شد: Trade Unit بازشماری شد، Sharpe با annualization صحیح بازمحاسبه شد، Aster Sharpe بازسازی شد، Deflated Sharpe با 54 آزمون اعمال شد، Fee Stress 2x اجرا شد. نتایج در audit_results.json ذخیره شد. آمارهای نهایی بر مبنای یافته‌های Audit به‌روزرسانی شدند.
+
+## D-2026-10-31-388 — AUDIT-COMPLETE: بسته شدن P0
+وضعیت: قفل | سه P0 اصلی تسویه شدند: D-77 (KuCoin)، Trade Unit، Aster Audit. Runtime Regime و Reality Check باقی‌مانده‌ها در P1 (Reality Check) و P2 (Paper ۶ ماه) تسویه می‌شوند.

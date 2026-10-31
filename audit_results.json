@@ -1,0 +1,39 @@
+{
+  "trade_units": {
+    "hyperliquid": {
+      "raw": 73536,
+      "days": 538,
+      "symbols": 6
+    },
+    "aster": {
+      "raw": 6000,
+      "days": 464,
+      "symbols": 6
+    },
+    "kucoin": {
+      "raw": 0,
+      "days": 0,
+      "symbols": 6
+    }
+  },
+  "sharpe": {
+    "hyperliquid": {
+      "n": 538,
+      "mean_d_pct": 0.0214,
+      "std_d_pct": 0.0345,
+      "ann_ret_pct": 7.8,
+      "ann_vol_pct": 0.66,
+      "sharpe": 11.851
+    },
+    "aster": {
+      "n": 464,
+      "mean_d_pct": 0.0086,
+      "std_d_pct": 0.0506,
+      "ann_ret_pct": 3.15,
+      "ann_vol_pct": 0.97,
+      "sharpe": 3.261
+    },
+    "kucoin": null
+  },
+  "timestamp": "2026-10-31"
+}
