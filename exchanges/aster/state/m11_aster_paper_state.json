@@ -1,5 +1,5 @@
 {
-  "total_equity": 0.0,
+  "total_equity": 10000.0,
   "m31_capital": 0.0,
   "a8_capital": 0.0,
   "a20_capital": 0.0,
@@ -13,5 +13,6 @@
   },
   "a8_positions": {},
   "a20_positions": {},
-  "history": []
+  "history": [],
+  "cash_capital": 10000.0
 }
