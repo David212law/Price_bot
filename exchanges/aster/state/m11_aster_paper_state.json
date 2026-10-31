@@ -14,5 +14,6 @@
   "a8_positions": {},
   "a20_positions": {},
   "history": [],
-  "cash_capital": 10000.0
+  "cash_capital": 10000.0,
+  "peak_equity": 10000.0
 }
