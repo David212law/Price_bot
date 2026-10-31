@@ -55,16 +55,22 @@ def main():
             print(f"  {ex:<12}: Raw={d['sharpe_raw']:>5.3f} | E_max={d['E_max_null']:>5.3f} | DSR={d['DSR']:>5.4f} → {d['verdict']}")
     print()
 
-    print("## 5. Fee Stress 2x")
-    for ex, syms in SYMBOLS.items():
-        daily = portfolio_daily_returns(ex, syms)
-        base = [r for _, r in daily]
-        b_sr = calc_sharpe(base)
-        stressed = [r - 0.0004 for r in base]
-        s_sr = calc_sharpe(stressed)
-        if b_sr and s_sr:
-            delta = (s_sr["sharpe"] - b_sr["sharpe"]) / b_sr["sharpe"] * 100
-            print(f"  {ex:<12}: Base={b_sr['sharpe']:.3f} → 2xFee={s_sr['sharpe']:.3f} (Δ={delta:+.1f}%)")
+    print("## 5. Fee Stress (D-394b: proportional to trade frequency, NOT daily constant)")
+    # D-394b: همان باگ fee_stress_fixed — اینجا هم اصلاح
+    try:
+        from research_lab.fee_stress_fixed import run_fee_stress, SYMBOLS as FS_SYMBOLS
+        for ex, syms in FS_SYMBOLS.items():
+            r = run_fee_stress(ex, syms)
+            if "error" in r:
+                print(f"  {ex:<12}: {r['error']} (n_days={r['n_days']})")
+                continue
+            base_sh = r['base_sharpe']
+            for s in r['stress_levels']:
+                if s['multiplier'] == 2.0:
+                    delta = (s['sharpe'] - base_sh) / base_sh * 100 if base_sh else 0
+                    print(f"  {ex:<12}: Base={base_sh:.3f} → 2xFee={s['sharpe']:.3f} (Δ={delta:+.1f}%) [{s['verdict']}]")
+    except ImportError as e:
+        print(f"  Fee stress unavailable: {e}")
     print()
 
     results = {"trade_units": tu, "sharpe": sr, "timestamp": "2026-10-31"}

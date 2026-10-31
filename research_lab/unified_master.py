@@ -1,3 +1,13 @@
+"""D-394: DISABLED — Needs rewrite.
+Issues:
+- Uses M62_FundingMomentum (rejected) instead of M62_PriceMomentum
+- build_portfolio uses 1/PF (INVERSE — wrong direction)
+- Overwrites active_weights.json without approval
+- Duplicates bootstrap/holm (violates Single Source of Truth)
+"""
+import sys
+sys.exit("unified_master.py is DISABLED (D-394). See docstring.")
+
 """
 Unified Research Master — یکپارچه‌سازی کامل چرخه تشخیص + ترکیب
 اجرا: هفتگی. خروجی: پرتفوی بهینه به‌روزرسانی‌شده.
