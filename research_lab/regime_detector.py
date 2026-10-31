@@ -1,10 +1,10 @@
-"""Runtime Regime Detector — wrapper روی regime_core"""
+"""Runtime Regime Detector — KuCoin primary, Hyperliquid fallback."""
 import time, requests
 from research_lab.regime_core import detect_regime, calc_adx, should_activate_strategy
 
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
-def fetch_btc_candles():
+def _fetch_kucoin():
     now_ms = int(time.time() * 1000)
     start_ms = now_ms - (100 * 4 * 3600 * 1000)
     try:
@@ -20,8 +20,35 @@ def fetch_btc_candles():
     except: pass
     return []
 
+def _fetch_hyperliquid():
+    now_ms = int(time.time() * 1000)
+    start_ms = now_ms - (100 * 4 * 3600 * 1000)
+    try:
+        r = requests.post(
+            "https://api.hyperliquid.xyz/info",
+            json={"type": "candleSnapshot",
+                  "req": {"coin": "BTC", "interval": "4h",
+                          "startTime": start_ms, "endTime": now_ms}},
+            timeout=15
+        )
+        if r.status_code == 200:
+            data = r.json()
+            # HL candle: {"t":..., "T":..., "s":"BTC", "i":"4h", "o":"...", "c":"...", "h":"...", "l":"...", "v":"..."}
+            return [{"t": int(c["t"]), "o": float(c["o"]), "h": float(c["h"]),
+                     "l": float(c["l"]), "c": float(c["c"]), "v": float(c["v"])} for c in data]
+    except: pass
+    return []
+
+def fetch_btc_candles():
+    """Try KuCoin first, then Hyperliquid. Returns [] if both fail."""
+    c = _fetch_kucoin()
+    if c and len(c) >= 30:
+        return c
+    c = _fetch_hyperliquid()
+    return c if c else []
+
 def get_current_regime():
-    """رژیم فعلی بازار — با استفاده از regime_core"""
+    """Current market regime — KuCoin primary, HL fallback."""
     candles = fetch_btc_candles()
     if not candles or len(candles) < 30:
         return "UNKNOWN", 0.0

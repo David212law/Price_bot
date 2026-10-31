@@ -72,14 +72,21 @@ def check_funding_direction(st):
                     flipped_count += 1
     return flipped_count
 
-def check_data_freshness(st):
+def check_data_freshness(st, path=None):
+    """Check state file age. Uses last_run field if present, else file mtime."""
     last_run = st.get("last_run", "")
-    if not last_run: return True  # unknown, assume stale
-    try:
-        t = datetime.fromisoformat(last_run.replace("Z", "+00:00"))
-        hours_old = (datetime.now(timezone.utc) - t).total_seconds() / 3600
+    if last_run:
+        try:
+            t = datetime.fromisoformat(last_run.replace("Z", "+00:00"))
+            hours_old = (datetime.now(timezone.utc) - t).total_seconds() / 3600
+            return hours_old > DATA_STALE_HOURS
+        except: pass
+    # Fallback: file mtime
+    if path and os.path.exists(path):
+        mtime = datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)
+        hours_old = (datetime.now(timezone.utc) - mtime).total_seconds() / 3600
         return hours_old > DATA_STALE_HOURS
-    except: return True
+    return True
 
 def check_wilson(st):
     """Approx: rolling WR in last 20 trades vs backtest baseline"""
@@ -117,7 +124,7 @@ def main():
             alerts.append(f"⚠️ {ex.upper()}: {flipped} positions with flipped funding")
 
         # Layer 4: Data freshness
-        if check_data_freshness(st):
+        if check_data_freshness(st, path):
             alerts.append(f"⚠️ {ex.upper()}: Data stale > {DATA_STALE_HOURS}h")
 
         # Layer 5: Wilson breach
