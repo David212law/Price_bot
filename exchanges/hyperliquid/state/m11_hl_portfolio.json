@@ -1,6 +1,6 @@
 {
-  "total_capital": 9994.80155979201,
-  "m31_capital": 6494.801559792009,
+  "total_capital": 9994.15197409104,
+  "m31_capital": 6494.15197409104,
   "m35_capital": 0.0,
   "m40_capital": 364.5,
   "m41_capital": 0.0,
@@ -16,6 +16,9 @@
     },
     "AVAX": {
       "entry_time": 1793469600040
+    },
+    "ETH": {
+      "entry_time": 1793473200048
     }
   },
   "m35_pos": {},
@@ -44,5 +47,6 @@
   },
   "m41_pos": {},
   "history": [],
-  "cash_capital": 3000.0
+  "cash_capital": 3000.0,
+  "peak_equity": 9994.15197409104
 }

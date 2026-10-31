@@ -16,13 +16,12 @@
       1.25e-05,
       1.25e-05
     ],
-    "last_processed_time": 1793469600040
+    "last_processed_time": 1793473200048
   },
   "ETH": {
-    "in_pos": false,
+    "in_pos": true,
     "last_exit": 0,
     "hist": [
-      5.719e-07,
       1.6442e-06,
       2.7697e-06,
       8.2581e-06,
@@ -33,9 +32,10 @@
       1.25e-05,
       1.25e-05,
       1.25e-05,
+      1.25e-05,
       1.25e-05
     ],
-    "last_processed_time": 1793469600040
+    "last_processed_time": 1793473200048
   },
   "SOL": {
     "in_pos": true,
@@ -54,13 +54,12 @@
       1.25e-05,
       1.25e-05
     ],
-    "last_processed_time": 1793469600040
+    "last_processed_time": 1793473200048
   },
   "BNB": {
     "in_pos": false,
     "last_exit": 0,
     "hist": [
-      3.5687e-06,
       -6.9889e-06,
       -9.7822e-06,
       -2.39971e-05,
@@ -71,9 +70,10 @@
       8.6225e-06,
       -1.3005e-06,
       -1.7892e-06,
-      7.3516e-06
+      7.3516e-06,
+      1.25e-05
     ],
-    "last_processed_time": 1793469600040
+    "last_processed_time": 1793473200048
   },
   "XRP": {
     "in_pos": true,
@@ -92,7 +92,7 @@
       1.25e-05,
       1.25e-05
     ],
-    "last_processed_time": 1793469600040
+    "last_processed_time": 1793473200048
   },
   "AVAX": {
     "in_pos": true,
@@ -111,6 +111,6 @@
       1.25e-05,
       1.25e-05
     ],
-    "last_processed_time": 1793469600040
+    "last_processed_time": 1793473200048
   }
 }
