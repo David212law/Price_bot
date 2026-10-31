@@ -57,8 +57,17 @@ def main():
         # شمارش پوزیشن‌های باز
         open_count = 0
         for k in ["m31_pos", "m35_pos", "m40_pos", "m41_pos", "a8_positions", "a20_pos", "a20_positions", "m40_positions"]:
-            if k in st:
-                open_count += len(st[k])
+            if k not in st: continue
+            positions = st[k]
+            if isinstance(positions, dict):
+                for pos in positions.values():
+                    # اگر in_pos دارد، فقط فعال‌ها را بشمار
+                    if isinstance(pos, dict) and 'in_pos' in pos:
+                        if pos['in_pos']: open_count += 1
+                    else:
+                        open_count += 1
+            elif isinstance(positions, list):
+                open_count += len(positions)
                 
         report.append(f"🌐 **{name.upper()}** — Equity: ${equity:.2f}")
         report.append(f"   Open Positions: {open_count}")
