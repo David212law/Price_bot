@@ -13,6 +13,7 @@ from strategies.core_engine import (
     load_data, calc_atr
 )
 from research_lab.bale_notifier import send_bale
+from research_lab.regime_core import calc_adx, detect_regime, bootstrap_p, holm_bonferroni
 
 # ─── Config ───
 ALPHA = 0.05
@@ -36,44 +37,7 @@ STRATEGIES = {
     "M62": strategy_m62_funding_momentum,
 }
 
-# ─── Regime Detection ───
-def calc_adx(candles, period=14):
-    if len(candles) < period * 2: return None
-    trs, pdms, mdms = [], [], []
-    for i in range(1, len(candles)):
-        h,l,ph,pl,pc = candles[i]["h"],candles[i]["l"],candles[i-1]["h"],candles[i-1]["l"],candles[i-1]["c"]
-        trs.append(max(h-l, abs(h-pc), abs(l-pc)))
-        up, dn = h-ph, pl-l
-        pdms.append(up if (up>dn and up>0) else 0)
-        mdms.append(dn if (dn>up and dn>0) else 0)
-    if len(trs) < period: return None
-    atr = sum(trs[:period])/period
-    ps, ms = sum(pdms[:period]), sum(mdms[:period])
-    dxs = []
-    for i in range(period, len(trs)):
-        atr = (atr*(period-1)+trs[i])/period
-        ps = ps - ps/period + pdms[i]
-        ms = ms - ms/period + mdms[i]
-        if atr == 0: dx = 0
-        else:
-            pdi = 100*ps/(atr*period); mdi = 100*ms/(atr*period)
-            dx = 100*abs(pdi-mdi)/(pdi+mdi) if (pdi+mdi) > 0 else 0
-        dxs.append(dx)
-    if len(dxs) < period: return None
-    adx = sum(dxs[:period])/period
-    for i in range(period, len(dxs)):
-        adx = (adx*(period-1)+dxs[i])/period
-    return adx
-
-def detect_regime(candles, i):
-    if i < 50: return "UNKNOWN"
-    window = candles[max(0, i-60):i+1]
-    adx = calc_adx(window, 14)
-    if adx is None: return "UNKNOWN"
-    if adx > 25: return "TREND"
-    if adx < 20: return "RANGE"
-    return "NEUTRAL"
-
+# ─── Regime Detection (از regime_core) ───
 # ─── Strategy Testing in Regime ───
 def collect_regime_trades(exchange, symbols, strat_func, target_regime):
     rets = []
