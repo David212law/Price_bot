@@ -1,10 +1,23 @@
 {
-  "total_capital": 10000.0,
-  "m31_capital": 6500.0,
+  "total_capital": 9994.80155979201,
+  "m31_capital": 6494.801559792009,
   "m35_capital": 0.0,
   "m40_capital": 364.5,
   "m41_capital": 0.0,
-  "m31_pos": {},
+  "m31_pos": {
+    "BTC": {
+      "entry_time": 1793469600040
+    },
+    "SOL": {
+      "entry_time": 1793469600040
+    },
+    "XRP": {
+      "entry_time": 1793469600040
+    },
+    "AVAX": {
+      "entry_time": 1793469600040
+    }
+  },
   "m35_pos": {},
   "m40_pos": {
     "BTC": {
