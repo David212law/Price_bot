@@ -1546,3 +1546,21 @@ M31 تنها استراتژی با لبه آماری اثبات‌شده در ک
 
 ## D-2026-10-31-356 — RUNTIME-REGIME-IMPLEMENTED: پیاده‌سازی runtime
 وضعیت: قفل | regime_detector.py ساخته شد. Master Orchestrator و allocatorها اکنون در runtime رژیم را تشخیص می‌دهند. M62 فقط در TREND فعال می‌شود.
+
+## D-2026-10-31-357 — M31-KUCOIN-CLASSIFICATION: تصریح وضعیت
+وضعیت: قفل | M31-KuCoin طبق D-153 همچنان Directional Funding Harvest است (بدون Hedge). Stop-Loss 5% طبق D-160 فعال است. برای پذیرش صریح ریسک جهت‌دار، تخصیص KuCoin از 70% به 50% کاهش می‌یابد. Cash=50%.
+
+## D-2026-10-31-358 — ASTER-SHARPE-FINAL-AUDIT: Audit نهایی
+وضعیت: قفل | Sharpe=8.51 Aster تا انجام Audit رسمی (منبع، دوره، n) قابل استناد نیست. تخصیص Aster به 0% منتقل می‌شود. Cash=100% تا شفاف‌سازی.
+
+## D-2026-10-31-359 — M62-PROTOCOL-EXTENSION: اصلاح پروتکل
+وضعیت: قفل | اگر پس از 60 روز Paper، n<50 باشد، پروتکل به‌طور خودکار تا رسیدن به n≥50 یا 180 روز تمدید می‌شود (هر کدام اول). آستانه پذیرش: PF>1.3. برای رد: PF<1.0 با n≥20.
+
+## D-2026-10-31-360 — ASTER-CASH-PURPOSE: هدف Cash
+وضعیت: قفل | Cash 100% در Aster تا رفع D-358، به‌عنوان «حفظ سرمایه در انتظار Audit» است، نه تخصیص دائمی.
+
+## D-2026-10-31-361 — N-UNIT-DEFINITION: افشای واحد شمارش
+وضعیت: قفل | اختلاف n بین HL/Aster/KuCoin نشان‌دهنده تفاوت در تعریف Trade Unit است. تا افشای دقیق، مقایسه مستقیم PF/Sharpe بین صرافی‌ها با احتیاط انجام می‌شود.
+
+## D-2026-10-31-362 — REGIME-RUNTIME-VALIDATION: اعتبارسنجی runtime
+وضعیت: قفل | Runtime Regime فعال شده است. پیش از اتکای کامل، تست شبیه‌سازی regime flip و ثبت DESIGN.md الزامی است.
