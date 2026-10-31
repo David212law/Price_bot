@@ -63,7 +63,7 @@ def fetch_funding_rate(symbol):
         r = requests.get(f"https://api-futures.kucoin.com/api/v1/funding-rate/{symbol}/current", headers=HEADERS, timeout=15)
         if r.status_code == 200:
             d = r.json().get("data", {})
-            return float(d.get("value", 0)), d.get("timepoint", 0)
+            return float(d.get("value", 0)), d.get("timePoint", d.get("fundingTime", 0))
     except: pass
     return 0.0, 0
 
@@ -128,6 +128,12 @@ def calc_rsi(closes, period=14):
 
 def _log_close(state, sym, strat, pnl_val):
     if "history" not in state: state["history"] = []
+
+    # D-390d: warmup hist from data if empty (all symbols)
+    if not isinstance(state.get("m31_pos"), dict):
+        state["m31_pos"] = {}
+    for _sym in SYMBOLS:
+        _warmup_hist_from_data(_sym, state)
     state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
 
 
@@ -170,6 +176,25 @@ def check_config_drift(state):
     
     return state
 
+
+def _warmup_hist_from_data(sym, state):
+    """D-390d: Load historical funding to warm up SMA (first run only)."""
+    try:
+        import json as _j
+        p = f"exchanges/kucoin/data/{sym}_funding.json"
+        import os as _o
+        if not _o.path.exists(p): return
+        d = _j.load(open(p))
+        if not isinstance(d, list) or not d: return
+        # آخرین 12 رکورد
+        recent = d[:12] if len(d) >= 12 else d
+        st = state["m31_pos"].get(sym, {"in_pos": False, "hist": [], "last_exit": 0, "last_processed": 0})
+        if len(st.get("hist", [])) < 12:
+            st["hist"] = [float(r["fundingRate"]) for r in recent if "fundingRate" in r]
+            state["m31_pos"][sym] = st
+            print(f"[WARMUP] {sym}: hist={len(st['hist'])} rec from data")
+    except Exception as e:
+        print(f"[WARMUP] {sym} err: {e}")
 
 def main():
     # RUNTIME-REGIME-CHECK (D-356)
