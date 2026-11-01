@@ -1,12 +1,14 @@
 {
   "hyperliquid": {
     "TREND": {
-      "M31": 0.65,
-      "CASH": 0.35
+      "M31": 0.5,
+      "KELTNER_REV_AVAX": 0.5,
+      "CASH": 0.0
     },
     "RANGE": {
-      "M31": 0.65,
-      "CASH": 0.35
+      "M31": 0.5,
+      "KELTNER_REV_AVAX": 0.5,
+      "CASH": 0.0
     },
     "NEUTRAL": {
       "M31": 0.65,
@@ -15,26 +17,31 @@
   },
   "aster": {
     "TREND": {
-      "KELTNER_REV_AVAXUSDT": 1.0,
-      "CASH": 0
+      "M31": 0.5,
+      "KELTNER_REV_AVAXUSDT": 0.5,
+      "CASH": 0.0
     },
     "RANGE": {
       "M31": 0.4,
       "CASH": 0.6
     },
     "NEUTRAL": {
-      "M31": 0.4,
-      "CASH": 0.6
+      "M31": 0.5,
+      "KELTNER_REV_AVAXUSDT": 0.5,
+      "CASH": 0.0
     }
   },
   "kucoin": {
     "TREND": {
-      "M31": 0.3,
-      "CASH": 0.7
+      "M31": 0.5,
+      "ROC_XRPUSDTM": 0.25,
+      "KELTNER_REV_ETHUSDTM": 0.25,
+      "CASH": 0.0
     },
     "RANGE": {
-      "M31": 0.3,
-      "CASH": 0.7
+      "M31": 0.5,
+      "KELTNER_REV_ETHUSDTM": 0.5,
+      "CASH": 0.0
     },
     "NEUTRAL": {
       "M31": 0.3,

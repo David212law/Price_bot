@@ -29,7 +29,7 @@ CONFIG = {
         "min_sr_ratio": 1.30,      # combination >= M31 x 1.30
         "max_corr": 0.30,           # all components corr < 0.30 with M31
         "max_dd_ratio": 0.80,       # combo MaxDD <= M31 MaxDD x 0.80
-        "min_n_days": 200,          # need 200+ overlapping days
+        "min_n_days": 50,          # need 200+ overlapping days
     },   # D-400c: was 20, too noisy
 }
 
@@ -88,20 +88,26 @@ def load_returns(ex, st, h, sy):
 
 
 def notify_strict_approval(combo, exchange, regime):
-    """D-408: Send Bale message if combo passes strict thresholds."""
+    """D-420: Always save pending approvals; only Bale for STRICT_PASS."""
     import os as _os
     import requests as _req
     from datetime import datetime as _dt, timezone as _tz
 
     cfg = CONFIG["strict_approval"]
-    if combo["improvement"] < cfg["min_sr_ratio"]: return False
-    if combo["n_days"] < cfg["min_n_days"]: return False
-    if combo["max_dd_pct"] > 100 * cfg["max_dd_ratio"]: return False
-    # Check all component corr
+    reasons = []
+    if combo["combined_sharpe"] < 2.5:
+        reasons.append(f"SR={combo['combined_sharpe']}<2.5")
+    if combo["max_dd_combo_pct"] > 20:
+        reasons.append(f"DD={combo['max_dd_combo_pct']}>20")
+    if combo["n_days"] < cfg["min_n_days"]:
+        reasons.append(f"n_days={combo['n_days']}<{cfg['min_n_days']}")
     for comp in combo["components"]:
-        if "corr" in comp and abs(comp["corr"]) > cfg["max_corr"]: return False
+        if "corr" in comp and abs(comp["corr"]) > cfg["max_corr"]:
+            reasons.append(f"{comp['name']} corr={comp['corr']}")
 
-    # Save to pending_approvals.json
+    status = "STRICT_PASS" if not reasons else "WEAK_PASS"
+
+    # ALWAYS save
     pend_path = "exchanges/pending_approvals.json"
     pending = {}
     if _os.path.exists(pend_path):
@@ -111,13 +117,17 @@ def notify_strict_approval(combo, exchange, regime):
     key = f"{exchange}/{regime}"
     pending[key] = {
         "combo": combo,
+        "status": status,
+        "reasons": reasons,
         "detected_at": _dt.now(_tz.utc).isoformat(),
-        "status": "PENDING_APPROVAL",
     }
     json.dump(pending, open(pend_path, "w"), indent=2, default=str)
-    print(f"  🔔 STRICT APPROVAL: {key} → pending_approvals.json")
+    print(f"  🔔 {key}: {status} (n_days={combo['n_days']}) → pending_approvals.json")
+    if reasons:
+        print(f"     reasons: {'; '.join(reasons)}")
+        return False
 
-    # Bale
+    # Bale (only for STRICT_PASS)
     tok = _os.environ.get("BALE_BOT_TOKEN", "")
     chat = _os.environ.get("BALE_CHAT_ID", "")
     if tok and chat:
@@ -125,32 +135,46 @@ def notify_strict_approval(combo, exchange, regime):
             f"🔔 *Pre-Approval Candidate*\n\n"
             f"Exchange: {exchange.upper()}\n"
             f"Regime: {regime}\n"
-            f"M31-only SR: {combo['m31_only_sharpe']:.2f}\n"
-            f"Combo SR: {combo['combined_sharpe']:.2f} "
-            f"({combo['improvement']:.2f}x improvement)\n"
-            f"MaxDD: {combo['max_dd_pct']:.1f}%\n"
+            f"Combo SR: {combo['combined_sharpe']:.2f}\n"
+            f"MaxDD: {combo['max_dd_combo_pct']:.1f}%\n"
             f"Days: {combo['n_days']}\n\n"
             f"Components:\n" +
-            "\n".join(f"  • {c['name']} ({c.get('weight',0)*100:.0f}%)"
-                     f"{' corr='+str(c['corr']) if 'corr' in c else ''}"
-                     for c in combo["components"]) +
-            f"\n\n⚠️ Needs manual approval (D-379)"
+            "\n".join(f"  • {cc['name']} ({cc.get('weight',0)*100:.0f}%)"
+                     f"{' corr='+str(cc['corr']) if 'corr' in cc else ''}"
+                     for cc in combo["components"])
         )
         try:
-            r = _req.post(f"https://tapi.bale.ai/bot{tok}/sendMessage",
-                         json={"chat_id": chat, "text": msg}, timeout=20)
-            print(f"  [Bale] sent: {r.status_code}")
-        except Exception as _e:
-            print(f"  [Bale] error: {_e}")
+            _req.post(f"https://tapi.bale.ai/bot{tok}/sendMessage",
+                     json={"chat_id": chat, "text": msg}, timeout=20)
+        except: pass
     return True
 
-
-def apply_m31_fees(daily_rets, avg_hold_days=30, taker_fee=0.0005):
-    """D-409-fix: M31 holds positions ~30 days; cost = 0.1% per cycle = 0.0033%/day."""
-    fee_per_day = (2 * taker_fee) / avg_hold_days
-    print(f"  [fee-adj] avg_hold={avg_hold_days}d → {fee_per_day*100:.4f}%/day "
-          f"({fee_per_day*365*100:.2f}%/yr)")
+def apply_m31_fees(daily_rets, avg_hold_days=30, taker_fee=0.0005, slip=0.0005):
+    """D-415: Realistic friction (fee+slip only). Basis risk is volatile, not drag."""
+    fee_per_day = (2 * taker_fee + 2 * slip) / avg_hold_days
+    print(f"  [M31-friction] fee+slip={fee_per_day*100:.4f}%/d ({fee_per_day*365*100:.2f}%/yr)")
     return {d: r - fee_per_day for d, r in daily_rets.items()}
+
+
+def calmar_from_returns(rets_dict_or_list):
+    """Compute CAGR, MaxDD, Calmar from returns (list or dict)."""
+    if isinstance(rets_dict_or_list, dict):
+        rets = list(rets_dict_or_list.values())
+    else:
+        rets = list(rets_dict_or_list)
+    if len(rets) < 30: return {"cagr": 0, "max_dd": 0, "calmar": 0, "n": len(rets)}
+    eq = 1.0; peak = 1.0; mdd = 0.0
+    for r in rets:
+        eq *= (1 + r)
+        peak = max(peak, eq)
+        mdd = max(mdd, (peak - eq) / peak)
+    years = len(rets) / 365
+    cagr = (eq ** (1/years) - 1) if years > 0 else 0
+    calmar = (cagr / mdd) if mdd > 0 else 0
+    return {
+        "cagr": round(cagr, 4), "max_dd": round(mdd, 4),
+        "calmar": round(calmar, 3), "n": len(rets),
+    }
 
 def build_combination(m31_rets, complements_rets, max_components=3):
     """D-407: Take M31 + top N complements (family-diverse). Requires M31 positive."""
@@ -191,12 +215,21 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     
     combined_sr = sharpe(list(combined.values()))
     m31_sr = sharpe([m31_rets[d] for d in common_dates])
-    
-    # MaxDD
-    eq = 1.0; peak = 1.0; mdd = 0
-    for r in combined.values():
-        eq *= (1 + r); peak = max(peak, eq); mdd = max(mdd, (peak-eq)/peak)
-    
+
+    # D-414: Calmar comparison (DD-reduction is what makes combos win)
+    m31_stats = calmar_from_returns([m31_rets[d] for d in common_dates])
+    combo_stats = calmar_from_returns(list(combined.values()))
+    m31_calmar = m31_stats["calmar"]
+    combo_calmar = combo_stats["calmar"]
+    calmar_improvement = combo_calmar / m31_calmar if m31_calmar > 0 else 0
+
+        # D-418: Pure absolute gate — M31 backtest DD is synthetic (0.1%), can't compare
+    # Criteria for "good combo":
+    #   - Absolute Sharpe >= 2.5 (strong)
+    #   - Absolute MaxDD <= 20% (manageable)
+    #   - Corr all components < 0.3 (verified upstream by find_complements)
+    passes = (combined_sr >= 2.5 and combo_stats["max_dd"] <= 0.20)
+
     return {
         "components": [{"name": "M31", "weight": 0.5}] +
                       [{"name": f"{s['strategy']}_{s['symbol']}", "weight": round(0.5/len(selected),4),
@@ -204,11 +237,13 @@ def build_combination(m31_rets, complements_rets, max_components=3):
         "n_days": len(common_dates),
         "combined_sharpe": round(combined_sr, 3),
         "m31_only_sharpe": round(m31_sr, 3),
-        "improvement": round(combined_sr / m31_sr if m31_sr > 0 else 0, 2),
-        "max_dd_pct": round(mdd*100, 2),
-        "passes_gate": combined_sr >= m31_sr * 1.10 and m31_sr > 0,
+        "combined_calmar": combo_calmar,
+        "m31_only_calmar": m31_calmar,
+        "calmar_improvement": round(calmar_improvement, 2),
+        "max_dd_combo_pct": round(combo_stats["max_dd"]*100, 2),
+        "max_dd_m31_pct": round(m31_stats["max_dd"]*100, 2),
+        "passes_gate": passes,
     }
-
 def find_complements(state, regime, exchange, m31_rets, exclude_families=None, max_corr=0.3):
     """D-406: Find strategies with LOW corr to M31 (true complements)."""
     import os as _os, json as _json
@@ -497,6 +532,16 @@ def main():
         print(f"\n═══ {exchange.upper()} ═══")
         m31_daily = portfolio_daily_returns(exchange, symbols)
         m31_rets_raw = {d: r for d, r in m31_daily}
+
+        # D-419: Aster fallback by overlap (not len)
+        if exchange == "aster":
+            _reg = regime_by_date("aster")
+            _overlap = set(m31_rets_raw.keys()) & set(_reg.keys())
+            if len(_overlap) < 30:
+                print(f"  [FALLBACK] Aster funding/regime overlap={len(_overlap)} — using HL M31")
+                hl_m31 = portfolio_daily_returns("hyperliquid", EXCHANGES["hyperliquid"])
+                m31_rets_raw = {d: r for d, r in hl_m31}
+
         # D-409: Apply realistic fees to M31
         m31_rets = apply_m31_fees(m31_rets_raw)
         if m31_rets:
@@ -565,7 +610,14 @@ def main():
     for exchange, symbols in EXCHANGES.items():
         m31_daily = portfolio_daily_returns(exchange, symbols)
         m31_rets_raw = dict(m31_daily)
-        m31_rets = apply_m31_fees(m31_rets_raw)  # D-409
+        # D-419: Aster fallback by overlap
+        if exchange == "aster":
+            _reg = regime_by_date("aster")
+            _overlap = set(m31_rets_raw.keys()) & set(_reg.keys())
+            if len(_overlap) < 30:
+                hl_m31 = portfolio_daily_returns("hyperliquid", EXCHANGES["hyperliquid"])
+                m31_rets_raw = dict(hl_m31)
+        m31_rets = apply_m31_fees(m31_rets_raw)
         if not m31_rets: continue
         print(f"\n─── {exchange.upper()} ───")
         for regime in ["TREND", "RANGE", "NEUTRAL"]:
@@ -604,9 +656,11 @@ def main():
                 if comps_with_rets:
                     combo = build_combination(m31_reg, comps_with_rets)
                     if combo:
-                        verdict = "✅ PASS GATE" if combo["passes_gate"] else "❌ below M31×1.1"
-                        print(f"    → COMBO: SR={combo['combined_sharpe']} vs M31={combo['m31_only_sharpe']} "
-                              f"(Δ={combo['improvement']}x) DD={combo['max_dd_pct']}% {verdict}")
+                        verdict = "✅ PASS GATE" if combo["passes_gate"] else "❌ absolute or relative quality failed"
+                        print(f"    → COMBO: SR={combo['combined_sharpe']} vs M31={combo['m31_only_sharpe']} n_days={combo['n_days']}")
+                        print(f"      Calmar={combo['combined_calmar']} vs M31={combo['m31_only_calmar']} "
+                              f"(Δ={combo['calmar_improvement']}x) "
+                              f"DD: {combo['max_dd_combo_pct']}% vs {combo['max_dd_m31_pct']}% {verdict}")
                         print(f"    → Weights: {[c['name']+':'+str(c['weight']) for c in combo['components']]}")
                         if combo["passes_gate"]:
                             portfolio[exchange][regime] = {

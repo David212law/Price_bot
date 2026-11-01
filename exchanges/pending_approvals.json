@@ -1,0 +1,184 @@
+{
+  "hyperliquid/TREND": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_AVAX",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": -0.085
+        }
+      ],
+      "n_days": 107,
+      "combined_sharpe": 2.823,
+      "m31_only_sharpe": 9.63,
+      "combined_calmar": 8.578,
+      "m31_only_calmar": 26.663,
+      "calmar_improvement": 0.32,
+      "max_dd_combo_pct": 12.76,
+      "max_dd_m31_pct": 0.37,
+      "passes_gate": true
+    },
+    "status": "STRICT_PASS",
+    "reasons": [],
+    "detected_at": "2026-11-01T11:58:58.086607+00:00"
+  },
+  "hyperliquid/RANGE": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_AVAX",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": 0.199
+        }
+      ],
+      "n_days": 31,
+      "combined_sharpe": 3.316,
+      "m31_only_sharpe": 11.112,
+      "combined_calmar": 42.055,
+      "m31_only_calmar": 113.259,
+      "calmar_improvement": 0.37,
+      "max_dd_combo_pct": 4.52,
+      "max_dd_m31_pct": 0.07,
+      "passes_gate": true
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "n_days=31<50"
+    ],
+    "detected_at": "2026-11-01T11:58:58.112964+00:00"
+  },
+  "aster/TREND": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_AVAXUSDT",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": 0.163
+        }
+      ],
+      "n_days": 91,
+      "combined_sharpe": 3.925,
+      "m31_only_sharpe": 10.381,
+      "combined_calmar": 13.623,
+      "m31_only_calmar": 32.781,
+      "calmar_improvement": 0.42,
+      "max_dd_combo_pct": 12.55,
+      "max_dd_m31_pct": 0.34,
+      "passes_gate": true
+    },
+    "status": "STRICT_PASS",
+    "reasons": [],
+    "detected_at": "2026-11-01T11:59:03.075890+00:00"
+  },
+  "aster/NEUTRAL": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_AVAXUSDT",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": 0.116
+        }
+      ],
+      "n_days": 34,
+      "combined_sharpe": 2.738,
+      "m31_only_sharpe": 8.394,
+      "combined_calmar": 19.272,
+      "m31_only_calmar": 45.512,
+      "calmar_improvement": 0.42,
+      "max_dd_combo_pct": 5.02,
+      "max_dd_m31_pct": 0.13,
+      "passes_gate": true
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "n_days=34<50"
+    ],
+    "detected_at": "2026-11-01T11:59:03.143511+00:00"
+  },
+  "kucoin/TREND": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "ROC_XRPUSDTM",
+          "weight": 0.25,
+          "family": "MOMENTUM",
+          "corr": -0.017
+        },
+        {
+          "name": "KELTNER_REV_ETHUSDTM",
+          "weight": 0.25,
+          "family": "MR",
+          "corr": -0.145
+        }
+      ],
+      "n_days": 32,
+      "combined_sharpe": 4.366,
+      "m31_only_sharpe": 8.164,
+      "combined_calmar": 135.985,
+      "m31_only_calmar": 151.816,
+      "calmar_improvement": 0.9,
+      "max_dd_combo_pct": 12.39,
+      "max_dd_m31_pct": 0.1,
+      "passes_gate": true
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "n_days=32<50"
+    ],
+    "detected_at": "2026-11-01T11:59:04.520557+00:00"
+  },
+  "kucoin/RANGE": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_ETHUSDTM",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": -0.056
+        }
+      ],
+      "n_days": 42,
+      "combined_sharpe": 3.497,
+      "m31_only_sharpe": 13.557,
+      "combined_calmar": 24.016,
+      "m31_only_calmar": 659.157,
+      "calmar_improvement": 0.04,
+      "max_dd_combo_pct": 4.37,
+      "max_dd_m31_pct": 0.03,
+      "passes_gate": true
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "n_days=42<50"
+    ],
+    "detected_at": "2026-11-01T11:59:04.562925+00:00"
+  }
+}
