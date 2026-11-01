@@ -470,7 +470,8 @@ def build_combination(m31_rets, complements_rets, max_components=3):
         "passes_gate": passes,
         "combo_tests": combo_tests,
     }
-def find_complements(state, regime, exchange, m31_rets, exclude_families=None, max_corr=0.3):
+def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
+                     max_corr=0.3, m31_weaknesses=None):
     """D-406: Find strategies with LOW corr to M31 (true complements)."""
     import os as _os, json as _json
     if exclude_families is None:
@@ -516,14 +517,31 @@ def find_complements(state, regime, exchange, m31_rets, exclude_families=None, m
 
         if corr > max_corr: continue  # not a complement
 
+        # D-441b: weakness coverage scoring
+        coverage = 0
+        if m31_weaknesses:
+            try:
+                from research_lab.strategy_signature import signature_for_entry, covers_weakness
+                sig = signature_for_entry(v)
+                coverage = sum(1 for w in m31_weaknesses if covers_weakness(sig, w))
+            except Exception:
+                coverage = 0
+
         complements.append({
             "strategy": st, "family": fam, "symbol": v["symbol"],
             "n": m["n"], "pf": m["pf"], "sr_daily": m["sharpe_daily"],
             "corr_m31": round(corr, 3),
             "ann_sr_validation": val.get("sharpe_ann", 0),
             "quartiles_pass": val.get("quartiles_pass", 0),
+            "m31_weakness_coverage": coverage,
         })
-    complements.sort(key=lambda x: (-x["ann_sr_validation"], abs(x["corr_m31"])))
+
+    # Sort: primary by coverage desc, secondary by sharpe desc, tertiary by |corr| asc
+    complements.sort(key=lambda x: (
+        -x.get("m31_weakness_coverage", 0),
+        -x["ann_sr_validation"],
+        abs(x["corr_m31"])
+    ))
     return complements
 
 def filter_candidates(state, regime, exchange):
@@ -845,18 +863,36 @@ def main():
                 m31_rets_raw = dict(hl_m31)
         m31_rets = apply_m31_fees(m31_rets_raw)
         if not m31_rets: continue
+
+        # D-441b: M31 signature & weaknesses (global per exchange)
+        try:
+            from research_lab.strategy_signature import signature_for_m31, find_m31_weaknesses
+            m31_sig = signature_for_m31(exchange, m31_rets)
+            m31_weaknesses = find_m31_weaknesses(m31_sig)
+        except Exception as _e:
+            print(f"  [WARN] signature failed: {_e}")
+            m31_sig = None
+            m31_weaknesses = []
+
         print(f"\n─── {exchange.upper()} ───")
+        if m31_weaknesses:
+            print(f"  🎯 M31 weaknesses ({len(m31_weaknesses)}): {m31_weaknesses}")
         for regime in ["TREND", "RANGE", "NEUTRAL"]:
             reg_by_date = regime_by_date(exchange)
             m31_reg = {d: r for d, r in m31_rets.items() if reg_by_date.get(d) == regime}
             if len(m31_reg) < 20: continue
-            comps = find_complements(state, regime, exchange, m31_reg)
+            comps = find_complements(state, regime, exchange, m31_reg,
+                                      m31_weaknesses=m31_weaknesses)
             if comps:
+                n_w = len(m31_weaknesses) if m31_weaknesses else 0
                 print(f"  [{regime}] {len(comps)} complements found:")
                 for comp in comps[:5]:
+                    cov = comp.get("m31_weakness_coverage", 0)
+                    cov_str = f" covers={cov}/{n_w}" if n_w else ""
                     print(f"    {comp['strategy']:20s} [{comp['family']:10s}] "
                           f"SR_val={comp['ann_sr_validation']:5.2f} "
-                          f"corr={comp['corr_m31']:+.2f} q={comp['quartiles_pass']}/4")
+                          f"corr={comp['corr_m31']:+.2f} q={comp['quartiles_pass']}/4"
+                          f"{cov_str}")
                 
                 # D-407: Try to BUILD a real combination
                 comps_with_rets = []
