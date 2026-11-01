@@ -232,6 +232,13 @@ def main():
     
     # LOAD ACTIVE WEIGHTS (D-389: before state init)
     _current_regime = globals().get('_CURRENT_REGIME', 'UNKNOWN')
+
+    # D-436: Aster COMBO only for RANGE/NEUTRAL — skip entirely in TREND
+    if _current_regime == "TREND":
+        print(f"[SKIP] Aster COMBO: TREND regime (Keltner is mean-reversion)")
+        import sys as _sys
+        _sys.exit(0)
+
     _w = load_active_weights("aster", regime=_current_regime)
     _keltner_pct = 0.0
     # D-435: Keltner فقط در RANGE/NEUTRAL (mean-reversion)
