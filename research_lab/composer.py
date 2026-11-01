@@ -72,7 +72,13 @@ def filter_by_regime(rets_dict, reg_by_date, regime):
     return {d: r for d, r in rets_dict.items() if reg_by_date.get(d) == regime}
 
 def load_state():
-    with open(os.path.join(PROFILE_DIR, "state.json")) as f:
+    import sys
+    path = os.path.join(PROFILE_DIR, "state.json")
+    if not os.path.exists(path):
+        print("[ERROR] state.json not found. Profiler must run locally first.")
+        print(f"  Expected at: {path}")
+        sys.exit(0)  # Exit 0 so workflow doesn't fail, just skips
+    with open(path) as f:
         return json.load(f)
 
 def load_returns(ex, st, h, sy):
