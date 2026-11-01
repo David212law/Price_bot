@@ -23,7 +23,14 @@ CONFIG = {
     "exclude_families": ["FUNDING_M31"],
     "blacklist": ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"],
     "m31_cap": {"hyperliquid": 0.65, "aster": 0.40, "kucoin": 0.30},
-    "min_overlap_days": 60,   # D-400c: was 20, too noisy
+    "min_overlap_days": 60,
+    # D-408: Strict thresholds for auto-suggesting to Bale
+    "strict_approval": {
+        "min_sr_ratio": 1.30,      # combination >= M31 x 1.30
+        "max_corr": 0.30,           # all components corr < 0.30 with M31
+        "max_dd_ratio": 0.80,       # combo MaxDD <= M31 MaxDD x 0.80
+        "min_n_days": 200,          # need 200+ overlapping days
+    },   # D-400c: was 20, too noisy
 }
 
 FAMILY = {}
@@ -72,6 +79,64 @@ def load_returns(ex, st, h, sy):
     p = os.path.join(RETURNS_DIR, ex, f"{st}_{h}_{sy}.json")
     return json.load(open(p)) if os.path.exists(p) else {}
 
+
+
+def notify_strict_approval(combo, exchange, regime):
+    """D-408: Send Bale message if combo passes strict thresholds."""
+    import os as _os
+    import requests as _req
+    from datetime import datetime as _dt, timezone as _tz
+
+    cfg = CONFIG["strict_approval"]
+    if combo["improvement"] < cfg["min_sr_ratio"]: return False
+    if combo["n_days"] < cfg["min_n_days"]: return False
+    if combo["max_dd_pct"] > 100 * cfg["max_dd_ratio"]: return False
+    # Check all component corr
+    for comp in combo["components"]:
+        if "corr" in comp and abs(comp["corr"]) > cfg["max_corr"]: return False
+
+    # Save to pending_approvals.json
+    pend_path = "exchanges/pending_approvals.json"
+    pending = {}
+    if _os.path.exists(pend_path):
+        try: pending = json.load(open(pend_path))
+        except: pending = {}
+
+    key = f"{exchange}/{regime}"
+    pending[key] = {
+        "combo": combo,
+        "detected_at": _dt.now(_tz.utc).isoformat(),
+        "status": "PENDING_APPROVAL",
+    }
+    json.dump(pending, open(pend_path, "w"), indent=2, default=str)
+    print(f"  🔔 STRICT APPROVAL: {key} → pending_approvals.json")
+
+    # Bale
+    tok = _os.environ.get("BALE_BOT_TOKEN", "")
+    chat = _os.environ.get("BALE_CHAT_ID", "")
+    if tok and chat:
+        msg = (
+            f"🔔 *Pre-Approval Candidate*\n\n"
+            f"Exchange: {exchange.upper()}\n"
+            f"Regime: {regime}\n"
+            f"M31-only SR: {combo['m31_only_sharpe']:.2f}\n"
+            f"Combo SR: {combo['combined_sharpe']:.2f} "
+            f"({combo['improvement']:.2f}x improvement)\n"
+            f"MaxDD: {combo['max_dd_pct']:.1f}%\n"
+            f"Days: {combo['n_days']}\n\n"
+            f"Components:\n" +
+            "\n".join(f"  • {c['name']} ({c.get('weight',0)*100:.0f}%)"
+                     f"{' corr='+str(c['corr']) if 'corr' in c else ''}"
+                     for c in combo["components"]) +
+            f"\n\n⚠️ Needs manual approval (D-379)"
+        )
+        try:
+            r = _req.post(f"https://tapi.bale.ai/bot{tok}/sendMessage",
+                         json={"chat_id": chat, "text": msg}, timeout=20)
+            print(f"  [Bale] sent: {r.status_code}")
+        except Exception as _e:
+            print(f"  [Bale] error: {_e}")
+    return True
 
 def build_combination(m31_rets, complements_rets, max_components=3):
     """D-407: Take M31 + top N complements (family-diverse), return weights+metrics."""
@@ -523,6 +588,11 @@ def main():
                                 c["name"]: c["weight"] for c in combo["components"]
                             }
                             portfolio[exchange][regime]["CASH"] = 0.0
+                            # D-408: Check strict thresholds → notify + save
+                            try:
+                                notify_strict_approval(combo, exchange, regime)
+                            except Exception as _e:
+                                print(f"  [notify err] {_e}")
                 report_lines.append(f"\n### {exchange.upper()}/{regime} complements:\n" +
                     "\n".join(f"- {c['strategy']} corr={c['corr_m31']} SR={c['ann_sr_validation']}" for c in comps[:5]))
 
