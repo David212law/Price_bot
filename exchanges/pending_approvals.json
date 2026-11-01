@@ -7,25 +7,25 @@
           "weight": 0.5
         },
         {
-          "name": "KELTNER_REV_AVAX",
+          "name": "KELTNER_REV_ETH",
           "weight": 0.5,
           "family": "MR",
-          "corr": -0.085
+          "corr": -0.177
         }
       ],
-      "n_days": 107,
-      "combined_sharpe": 2.823,
-      "m31_only_sharpe": 9.63,
-      "combined_calmar": 8.578,
-      "m31_only_calmar": 26.663,
-      "calmar_improvement": 0.32,
-      "max_dd_combo_pct": 12.76,
-      "max_dd_m31_pct": 0.37,
+      "n_days": 120,
+      "combined_sharpe": 5.251,
+      "m31_only_sharpe": 9.952,
+      "combined_calmar": 50.528,
+      "m31_only_calmar": 26.217,
+      "calmar_improvement": 1.93,
+      "max_dd_combo_pct": 4.21,
+      "max_dd_m31_pct": 0.38,
       "passes_gate": true
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-01T14:55:20.473888+00:00"
+    "detected_at": "2026-11-01T18:06:25.970816+00:00"
   },
   "hyperliquid/RANGE": {
     "combo": {
@@ -71,19 +71,19 @@
           "corr": 0.163
         }
       ],
-      "n_days": 91,
-      "combined_sharpe": 3.925,
-      "m31_only_sharpe": 10.381,
-      "combined_calmar": 13.623,
-      "m31_only_calmar": 32.781,
-      "calmar_improvement": 0.42,
-      "max_dd_combo_pct": 12.55,
-      "max_dd_m31_pct": 0.34,
+      "n_days": 121,
+      "combined_sharpe": 5.747,
+      "m31_only_sharpe": 9.712,
+      "combined_calmar": 24.552,
+      "m31_only_calmar": 24.645,
+      "calmar_improvement": 1.0,
+      "max_dd_combo_pct": 13.09,
+      "max_dd_m31_pct": 0.38,
       "passes_gate": true
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-01T14:55:25.427241+00:00"
+    "detected_at": "2026-11-01T18:06:30.905400+00:00"
   },
   "aster/NEUTRAL": {
     "combo": {
@@ -99,21 +99,21 @@
           "corr": 0.116
         }
       ],
-      "n_days": 34,
-      "combined_sharpe": 2.738,
-      "m31_only_sharpe": 8.394,
-      "combined_calmar": 19.272,
-      "m31_only_calmar": 45.512,
-      "calmar_improvement": 0.42,
-      "max_dd_combo_pct": 5.02,
-      "max_dd_m31_pct": 0.13,
+      "n_days": 47,
+      "combined_sharpe": 4.924,
+      "m31_only_sharpe": 9.681,
+      "combined_calmar": 39.101,
+      "m31_only_calmar": 53.076,
+      "calmar_improvement": 0.74,
+      "max_dd_combo_pct": 4.8,
+      "max_dd_m31_pct": 0.12,
       "passes_gate": true
     },
     "status": "WEAK_PASS",
     "reasons": [
-      "n_days=34<50"
+      "n_days=47<50"
     ],
-    "detected_at": "2026-11-01T14:55:25.496428+00:00"
+    "detected_at": "2026-11-01T18:06:30.974620+00:00"
   },
   "kucoin/TREND": {
     "combo": {
@@ -123,16 +123,16 @@
           "weight": 0.5
         },
         {
-          "name": "ROC_XRPUSDTM",
-          "weight": 0.25,
-          "family": "MOMENTUM",
-          "corr": -0.017
-        },
-        {
           "name": "KELTNER_REV_ETHUSDTM",
           "weight": 0.25,
           "family": "MR",
           "corr": -0.145
+        },
+        {
+          "name": "ROC_XRPUSDTM",
+          "weight": 0.25,
+          "family": "MOMENTUM",
+          "corr": 0.026
         }
       ],
       "n_days": 32,
@@ -149,7 +149,7 @@
     "reasons": [
       "n_days=32<50"
     ],
-    "detected_at": "2026-11-01T14:55:26.863057+00:00"
+    "detected_at": "2026-11-01T18:06:32.329419+00:00"
   },
   "kucoin/RANGE": {
     "combo": {
@@ -179,6 +179,96 @@
     "reasons": [
       "n_days=42<50"
     ],
-    "detected_at": "2026-11-01T14:55:26.906285+00:00"
+    "detected_at": "2026-11-01T18:06:32.374093+00:00"
+  },
+  "hyperliquid/NEUTRAL": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_ETH",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": 0.045
+        }
+      ],
+      "n_days": 30,
+      "combined_sharpe": 7.944,
+      "m31_only_sharpe": 5.707,
+      "combined_calmar": 158.685,
+      "m31_only_calmar": 24.1,
+      "calmar_improvement": 6.58,
+      "max_dd_combo_pct": 2.93,
+      "max_dd_m31_pct": 0.18,
+      "passes_gate": true
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "n_days=30<50"
+    ],
+    "detected_at": "2026-11-01T18:06:26.014195+00:00"
+  },
+  "aster/RANGE": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_AVAXUSDT",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": 0.067
+        }
+      ],
+      "n_days": 41,
+      "combined_sharpe": 7.771,
+      "m31_only_sharpe": 13.853,
+      "combined_calmar": 268.878,
+      "m31_only_calmar": 148.091,
+      "calmar_improvement": 1.82,
+      "max_dd_combo_pct": 2.55,
+      "max_dd_m31_pct": 0.07,
+      "passes_gate": true
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "n_days=41<50"
+    ],
+    "detected_at": "2026-11-01T18:06:30.935608+00:00"
+  },
+  "kucoin/NEUTRAL": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.5
+        },
+        {
+          "name": "KELTNER_REV_ETHUSDTM",
+          "weight": 0.5,
+          "family": "MR",
+          "corr": -0.049
+        }
+      ],
+      "n_days": 48,
+      "combined_sharpe": 7.665,
+      "m31_only_sharpe": 12.002,
+      "combined_calmar": 171.2,
+      "m31_only_calmar": 448.36,
+      "calmar_improvement": 0.38,
+      "max_dd_combo_pct": 2.66,
+      "max_dd_m31_pct": 0.05,
+      "passes_gate": true
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "n_days=48<50"
+    ],
+    "detected_at": "2026-11-01T18:06:32.413936+00:00"
   }
 }
