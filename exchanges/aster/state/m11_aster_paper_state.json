@@ -4,11 +4,11 @@
   "a8_capital": 0.0,
   "a20_capital": 0.0,
   "m31_last_funding_time": {
-    "BTCUSDT": 1793462400000,
+    "BTCUSDT": 1793491200000,
     "ETHUSDT": 0,
-    "SOLUSDT": 1793462400000,
+    "SOLUSDT": 1793491200000,
     "BNBUSDT": 0,
-    "XRPUSDT": 1793462400000,
+    "XRPUSDT": 1793491200000,
     "AVAXUSDT": 1793433600000
   },
   "a8_positions": {},
@@ -16,5 +16,5 @@
   "history": [],
   "cash_capital": 10000.0,
   "peak_equity": 10000.0,
-  "last_run": "2026-10-31T23:18:13.512682+00:00"
+  "last_run": "2026-11-01T05:50:18.841174+00:00"
 }
