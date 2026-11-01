@@ -241,7 +241,7 @@ def main():
             "a20_capital": INITIAL_CAPITAL * A20_ALLOC,
             "keltner_capital": INITIAL_CAPITAL * _keltner_pct,
             "keltner_pos": {},
-            "cash_capital": INITIAL_CAPITAL * (1.0 - M31_ALLOC - A8_ALLOC - A20_ALLOC),
+            "cash_capital": INITIAL_CAPITAL * (1.0 - M31_ALLOC - A8_ALLOC - A20_ALLOC - _keltner_pct),
             "m31_last_funding_time": {sym: 0 for sym in SYMBOLS},
             "a8_positions": {},
             "a20_positions": {},
