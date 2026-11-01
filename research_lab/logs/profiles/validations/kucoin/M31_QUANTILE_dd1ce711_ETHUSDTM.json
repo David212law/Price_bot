@@ -21,6 +21,24 @@
       79.637,
       35.313
     ],
-    "quartiles_pass": 3
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 228,
+      "total_ret_pct": 5.99,
+      "cagr_pct": 9.75,
+      "max_dd_pct": 0.38,
+      "calmar": 25.42
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
   }
 }

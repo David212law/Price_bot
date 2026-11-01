@@ -139,11 +139,13 @@ def strat_nr_breakout(candles, nr_period=7, entry_period=20, fee_multiplier=1.0)
         if not ranges: continue
         cur_range = candles[i]["h"] - candles[i]["l"]
         is_nr = cur_range == min(ranges)
-        if not pos and is_nr:
-            if candles[i+1]["c"] > up[i-1] if i+1 < len(candles) else False:
-                pos = {"side":"LONG","entry":candles[i+1]["c"],"sl":lo[i-1],"tp":up[i-1]+3*at[i-1]}
-            elif i+1 < len(candles) and candles[i+1]["c"] < lo[i-1]:
-                pos = {"side":"SHORT","entry":candles[i+1]["c"],"sl":up[i-1],"tp":lo[i-1]-3*at[i-1]}
+        if not pos and is_nr and i+1 < len(candles):
+            # D-429: Fix look-ahead — place order at close of i, fill at OPEN of i+1
+            next_open = candles[i+1]["o"]
+            if next_open > up[i-1]:
+                pos = {"side":"LONG","entry":next_open,"sl":lo[i-1],"tp":up[i-1]+3*at[i-1]}
+            elif next_open < lo[i-1]:
+                pos = {"side":"SHORT","entry":next_open,"sl":up[i-1],"tp":lo[i-1]-3*at[i-1]}
         elif pos:
             ex = None
             if pos["side"]=="LONG":

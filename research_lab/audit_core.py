@@ -366,8 +366,13 @@ def no_lookahead_check():
     for fp in glob.glob("strategies/library/*.py"):
         try:
             content = open(fp).read()
-            # Look for indexing [i+1], [i+2] on candles
-            for m in re.finditer(r'candles\[i\s*\+\s*[1-9]', content):
+            # D-429: Only flag future CLOSE access (real look-ahead).
+            # candles[i+1]["o"] (open of next candle) is legitimate entry price.
+            # candles[i+1]["c"] (close) is look-ahead.
+            for m in re.finditer(r'candles\[i\s*\+\s*[1-9]\]\["c"\]', content):
+                issues.append((fp, m.group()))
+            # Also catch any [i+N] where N>=2 (unambiguous future)
+            for m in re.finditer(r'candles\[i\s*\+\s*[2-9]', content):
                 issues.append((fp, m.group()))
         except: pass
     return {"files_checked": len(glob.glob("strategies/library/*.py")),

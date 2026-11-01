@@ -21,6 +21,55 @@
       0.018,
       0.551
     ],
-    "quartiles_pass": 1
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 55,
+      "total_ret_pct": -29.21,
+      "cagr_pct": -89.9,
+      "max_dd_pct": 29.81,
+      "calmar": -3.015
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 172,
+        "pf": 0.805,
+        "sharpe_ann": -1.132
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 172,
+        "pf": 0.709,
+        "sharpe_ann": -1.84
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.706,
+        "best_variant_sharpe": 0.325,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "tenkan",
+            "val": 8,
+            "sharpe_ann": 0.021
+          },
+          {
+            "param": "tenkan",
+            "val": 9,
+            "sharpe_ann": -0.659
+          },
+          {
+            "param": "kijun",
+            "val": 23,
+            "sharpe_ann": 0.325
+          },
+          {
+            "param": "kijun",
+            "val": 28,
+            "sharpe_ann": -0.762
+          }
+        ]
+      }
+    }
   }
 }

@@ -13,6 +13,49 @@
       1.604,
       1.801
     ],
-    "quartiles_pass": 3
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 70,
+        "pf": 1.032,
+        "sharpe_ann": 0.269
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 70,
+        "pf": 0.977,
+        "sharpe_ann": -0.197
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.027,
+        "best_variant_sharpe": 0.479,
+        "ratio": 0.466,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 18,
+            "sharpe_ann": 0.11
+          },
+          {
+            "param": "period",
+            "val": 22,
+            "sharpe_ann": 0.442
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.479
+          },
+          {
+            "param": "threshold",
+            "val": 0.02,
+            "sharpe_ann": -0.932
+          }
+        ]
+      }
+    }
   }
 }
