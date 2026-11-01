@@ -6,21 +6,65 @@
     "notes": "HL regime-aware M31=65%. Aster cash-only (Route B candidate KELTNER_REV awaits manual approval per D-379). KuCoin M31=30%."
   },
   "hyperliquid": {
-    "TREND":   {"M31": 0.65, "CASH": 0.35},
-    "RANGE":   {"M31": 0.65, "CASH": 0.35},
-    "NEUTRAL": {"M31": 0.65, "CASH": 0.35},
-    "UNKNOWN": {"M31": 0.65, "CASH": 0.35}
+    "TREND": {
+      "M31": 0.65,
+      "CASH": 0.35
+    },
+    "RANGE": {
+      "M31": 0.65,
+      "CASH": 0.35
+    },
+    "NEUTRAL": {
+      "M31": 0.65,
+      "CASH": 0.35
+    },
+    "UNKNOWN": {
+      "M31": 0.65,
+      "CASH": 0.35
+    }
   },
   "aster": {
-    "TREND":   {"CASH": 1.0},
-    "RANGE":   {"CASH": 1.0},
-    "NEUTRAL": {"CASH": 1.0},
-    "UNKNOWN": {"CASH": 1.0}
+    "TREND": {
+      "M31": 0.4,
+      "A8": 0.0,
+      "A20": 0.0,
+      "CASH": 0.6
+    },
+    "RANGE": {
+      "M31": 0.4,
+      "A8": 0.0,
+      "A20": 0.0,
+      "CASH": 0.6
+    },
+    "NEUTRAL": {
+      "M31": 0.4,
+      "A8": 0.0,
+      "A20": 0.0,
+      "CASH": 0.6
+    },
+    "UNKNOWN": {
+      "M31": 0.4,
+      "A8": 0.0,
+      "A20": 0.0,
+      "CASH": 0.6
+    }
   },
   "kucoin": {
-    "TREND":   {"M31": 0.30, "CASH": 0.70},
-    "RANGE":   {"M31": 0.30, "CASH": 0.70},
-    "NEUTRAL": {"M31": 0.30, "CASH": 0.70},
-    "UNKNOWN": {"M31": 0.30, "CASH": 0.70}
+    "TREND": {
+      "M31": 0.3,
+      "CASH": 0.7
+    },
+    "RANGE": {
+      "M31": 0.3,
+      "CASH": 0.7
+    },
+    "NEUTRAL": {
+      "M31": 0.3,
+      "CASH": 0.7
+    },
+    "UNKNOWN": {
+      "M31": 0.3,
+      "CASH": 0.7
+    }
   }
 }

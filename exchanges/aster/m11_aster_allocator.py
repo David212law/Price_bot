@@ -178,7 +178,8 @@ def fetch_funding_interval(symbol):
     return 8 # پیش‌فرض
 
 
-def load_active_weights(exchange):
+def load_active_weights(exchange, regime=None):
+    """D-401b: regime-aware. Backward-compatible."""
     import json, os
     path = "exchanges/active_weights.json"
     if not os.path.exists(path):
@@ -186,8 +187,20 @@ def load_active_weights(exchange):
     try:
         with open(path) as f:
             data = json.load(f)
-            return data.get(exchange, None)
-    except:
+        ex_data = data.get(exchange, {})
+        if not ex_data:
+            return None
+        regime_keys = {"TREND","RANGE","NEUTRAL","UNKNOWN"}
+        if any(k in regime_keys for k in ex_data.keys()):
+            if regime and regime in ex_data:
+                return ex_data[regime]
+            for fb in ("UNKNOWN","TREND"):
+                if fb in ex_data:
+                    return ex_data[fb]
+            return None
+        return ex_data
+    except Exception as _e:
+        print(f"[WEIGHTS] load error: {_e}")
         return None
 
 def main():
@@ -205,7 +218,8 @@ def main():
     print(f"=== M11-Aster Paper Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
     
     # LOAD ACTIVE WEIGHTS (D-389: before state init)
-    _w = load_active_weights("aster")
+    _current_regime = globals().get('_CURRENT_REGIME', 'UNKNOWN')
+    _w = load_active_weights("aster", regime=_current_regime)
     if _w:
         globals()["M31_ALLOC"] = _w.get("M31", globals()["M31_ALLOC"])
         globals()["A8_ALLOC"] = _w.get("A8", globals()["A8_ALLOC"])
