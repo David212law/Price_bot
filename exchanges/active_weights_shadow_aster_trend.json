@@ -1,0 +1,8 @@
+{
+  "aster": {
+    "TREND":   {"M31": 0.50, "KELTNER_REV_AVAXUSDT": 0.50},
+    "RANGE":   {"CASH": 1.0},
+    "NEUTRAL": {"CASH": 1.0},
+    "UNKNOWN": {"CASH": 1.0}
+  }
+}
