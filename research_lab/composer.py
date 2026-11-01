@@ -22,7 +22,7 @@ CONFIG = {
     "max_corr": 0.4, "min_improvement": 1.10, "max_components": 3,
     "exclude_families": ["FUNDING_M31"],
     "blacklist": ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"],
-    "m31_cap": {"hyperliquid": 0.65, "aster": 0.0, "kucoin": 0.30},
+    "m31_cap": {"hyperliquid": 0.65, "aster": 0.40, "kucoin": 0.30},
     "min_overlap_days": 60,   # D-400c: was 20, too noisy
 }
 
@@ -72,6 +72,116 @@ def load_returns(ex, st, h, sy):
     p = os.path.join(RETURNS_DIR, ex, f"{st}_{h}_{sy}.json")
     return json.load(open(p)) if os.path.exists(p) else {}
 
+
+def build_combination(m31_rets, complements_rets, max_components=3):
+    """D-407: Take M31 + top N complements (family-diverse), return weights+metrics."""
+    if not m31_rets or not complements_rets:
+        return None
+    
+    # Family diversity: max 1 per family
+    selected = []
+    seen_families = set()
+    for comp in complements_rets:
+        if comp["family"] in seen_families: continue
+        seen_families.add(comp["family"])
+        selected.append(comp)
+        if len(selected) >= max_components - 1:  # -1 for M31
+            break
+    
+    if not selected:
+        return None
+    
+    # Build weights: M31 + each selected complement (equal weight to complements)
+    all_rets = [m31_rets] + [s["rets"] for s in selected]
+    common_dates = set(m31_rets.keys())
+    for r in all_rets[1:]:
+        common_dates &= set(r.keys())
+    common_dates = sorted(common_dates)
+    if len(common_dates) < 30:
+        return None
+    
+    # Equal weights: M31 gets 50%, rest split 50%
+    weights = [0.5] + [0.5/len(selected)] * len(selected)
+    combined = {}
+    for d in common_dates:
+        combined[d] = sum(w * r[d] for w, r in zip(weights, all_rets))
+    
+    combined_sr = sharpe(list(combined.values()))
+    m31_sr = sharpe([m31_rets[d] for d in common_dates])
+    
+    # MaxDD
+    eq = 1.0; peak = 1.0; mdd = 0
+    for r in combined.values():
+        eq *= (1 + r); peak = max(peak, eq); mdd = max(mdd, (peak-eq)/peak)
+    
+    return {
+        "components": [{"name": "M31", "weight": 0.5}] +
+                      [{"name": f"{s['strategy']}_{s['symbol']}", "weight": round(0.5/len(selected),4),
+                        "family": s["family"], "corr": s["corr_m31"]} for s in selected],
+        "n_days": len(common_dates),
+        "combined_sharpe": round(combined_sr, 3),
+        "m31_only_sharpe": round(m31_sr, 3),
+        "improvement": round(combined_sr / m31_sr if m31_sr > 0 else 0, 2),
+        "max_dd_pct": round(mdd*100, 2),
+        "passes_gate": combined_sr >= m31_sr * 1.10,
+    }
+
+def find_complements(state, regime, exchange, m31_rets, exclude_families=None, max_corr=0.3):
+    """D-406: Find strategies with LOW corr to M31 (true complements)."""
+    import os as _os, json as _json
+    if exclude_families is None:
+        exclude_families = {"FUNDING_M31"}
+
+    complements = []
+    for key, v in state["done"].items():
+        if not isinstance(v, dict): continue
+        if v["exchange"] != exchange: continue
+        st = v["strategy"]
+        fam = FAMILY.get(st, "OTHER")
+        if fam in exclude_families: continue
+
+        m = v["metrics_by_regime"].get(regime)
+        if not m or not m["sufficient"] or m["n"] < CONFIG["min_n"]: continue
+        val = v.get("validation")
+        if not val: continue
+        if val.get("quartiles_pass", 0) < CONFIG["min_q_pass"]: continue
+
+        # Stress check
+        stress = val.get("stress", {})
+        if stress:
+            if stress.get("fee_2x", {}).get("pf", 0) < 1.2: continue
+            if stress.get("param_robustness", {}).get("verdict") == "FRAGILE": continue
+
+        try: h = key.split(":")[2]
+        except: continue
+
+        rets_path = _os.path.join(RETURNS_DIR, exchange, f"{st}_{h}_{v['symbol']}.json")
+        if not _os.path.exists(rets_path): continue
+        rets = _json.load(open(rets_path))
+
+        # Compute corr with M31
+        common = sorted(set(rets.keys()) & set(m31_rets.keys()))
+        if len(common) < 20: continue
+        va = [m31_rets[d] for d in common]
+        vb = [rets[d] for d in common]
+        ma = sum(va)/len(va); mb = sum(vb)/len(vb)
+        cov = sum((va[i]-ma)*(vb[i]-mb) for i in range(len(va)))
+        sa = math.sqrt(sum((v-ma)**2 for v in va))
+        sb = math.sqrt(sum((v-mb)**2 for v in vb))
+        corr = cov/(sa*sb) if sa > 0 and sb > 0 else 1.0
+
+        if corr > max_corr: continue  # not a complement
+
+        complements.append({
+            "strategy": st, "family": fam, "symbol": v["symbol"],
+            "n": m["n"], "pf": m["pf"], "sr_daily": m["sharpe_daily"],
+            "corr_m31": round(corr, 3),
+            "ann_sr_validation": val.get("sharpe_ann", 0),
+            "quartiles_pass": val.get("quartiles_pass", 0),
+        })
+    complements.sort(key=lambda x: (-x["ann_sr_validation"], abs(x["corr_m31"])))
+    return complements
+
 def filter_candidates(state, regime, exchange):
     out = []
     for key, v in state["done"].items():
@@ -86,6 +196,22 @@ def filter_candidates(state, regime, exchange):
         val = v.get("validation")
         if not val or val.get("quartiles_pass",0) < CONFIG["min_q_pass"]: continue
         if val.get("sharpe_ann",0) <= CONFIG["min_ann_sr"]: continue
+
+        # D-407: Full validation gates (Calmar + stress)
+        stress = val.get("stress", {})
+        if stress:
+            fee = stress.get("fee_2x", {})
+            if fee.get("pf", 0) and fee["pf"] < 1.2: continue
+            slip = stress.get("slippage_1.5x", {})
+            if slip.get("sharpe_ann", 1) < 0: continue
+            rob = stress.get("param_robustness", {})
+            if rob.get("verdict") == "FRAGILE": continue
+
+        # D-407: Calmar gate
+        calmar_data = val.get("calmar", {})
+        if calmar_data:
+            if calmar_data.get("max_dd_pct", 0) > 60: continue
+
         try:
             h = key.split(":")[2]
         except: continue
@@ -342,6 +468,63 @@ def main():
             report_lines.append(f"\n### {regime}\n- route={route}, SR={w.get('sharpe_ann')}, "
                                 f"n_days={w.get('n_days')}\n- components: "
                                 f"{[c['name'] for c in comps]}\n- weights: {weights}")
+
+    # D-406: Complement search per exchange/regime
+    print("\n" + "="*70)
+    print("  COMPLEMENTARY STRATEGIES (corr<0.3 with M31)")
+    print("="*70)
+    for exchange, symbols in EXCHANGES.items():
+        m31_daily = portfolio_daily_returns(exchange, symbols)
+        m31_rets = dict(m31_daily)
+        if not m31_rets: continue
+        print(f"\n─── {exchange.upper()} ───")
+        for regime in ["TREND", "RANGE", "NEUTRAL"]:
+            reg_by_date = regime_by_date(exchange)
+            m31_reg = {d: r for d, r in m31_rets.items() if reg_by_date.get(d) == regime}
+            if len(m31_reg) < 20: continue
+            comps = find_complements(state, regime, exchange, m31_reg)
+            if comps:
+                print(f"  [{regime}] {len(comps)} complements found:")
+                for comp in comps[:5]:
+                    print(f"    {comp['strategy']:20s} [{comp['family']:10s}] "
+                          f"SR_val={comp['ann_sr_validation']:5.2f} "
+                          f"corr={comp['corr_m31']:+.2f} q={comp['quartiles_pass']}/4")
+                
+                # D-407: Try to BUILD a real combination
+                comps_with_rets = []
+                for comp in comps:
+                    rets_path = os.path.join(RETURNS_DIR, exchange,
+                                             f"{comp['strategy']}_{comp['hash']}_{comp['symbol']}.json") \
+                                if 'hash' in comp else None
+                    # find via state
+                    for k, v in state["done"].items():
+                        if isinstance(v, dict) and v["strategy"] == comp["strategy"] \
+                           and v["symbol"] == comp["symbol"] and v["exchange"] == exchange:
+                            try:
+                                h = k.split(":")[2]
+                                rp = os.path.join(RETURNS_DIR, exchange, f"{comp['strategy']}_{h}_{comp['symbol']}.json")
+                                if os.path.exists(rp):
+                                    r = json.load(open(rp))
+                                    reg_filtered = {d: x for d, x in r.items() if reg_by_date.get(d) == regime}
+                                    if len(reg_filtered) >= 30:
+                                        comps_with_rets.append({**comp, "rets": reg_filtered})
+                            except: pass
+                            break
+                
+                if comps_with_rets:
+                    combo = build_combination(m31_reg, comps_with_rets)
+                    if combo:
+                        verdict = "✅ PASS GATE" if combo["passes_gate"] else "❌ below M31×1.1"
+                        print(f"    → COMBO: SR={combo['combined_sharpe']} vs M31={combo['m31_only_sharpe']} "
+                              f"(Δ={combo['improvement']}x) DD={combo['max_dd_pct']}% {verdict}")
+                        print(f"    → Weights: {[c['name']+':'+str(c['weight']) for c in combo['components']]}")
+                        if combo["passes_gate"]:
+                            portfolio[exchange][regime] = {
+                                c["name"]: c["weight"] for c in combo["components"]
+                            }
+                            portfolio[exchange][regime]["CASH"] = 0.0
+                report_lines.append(f"\n### {exchange.upper()}/{regime} complements:\n" +
+                    "\n".join(f"- {c['strategy']} corr={c['corr_m31']} SR={c['ann_sr_validation']}" for c in comps[:5]))
 
     os.makedirs(os.path.dirname(OUT_FILE), exist_ok=True)
     with open(OUT_FILE, "w") as f:

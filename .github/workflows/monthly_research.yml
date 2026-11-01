@@ -1,0 +1,65 @@
+name: Monthly Auto-Research
+
+on:
+  schedule:
+    - cron: '0 3 1 * *'  # 1st of month, 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run profiler (incremental)
+        env:
+          PYTHONUNBUFFERED: '1'
+        run: |
+          python -u -m research_lab.profiler 2>&1 | tee profiler.log
+          echo "════ PROFILE SUMMARY ════"
+          tail -30 profiler.log
+
+      - name: Run composer
+        run: |
+          python -m research_lab.composer 2>&1 | tee composer.log
+          echo "════ COMPOSER SUMMARY ════"
+          tail -50 composer.log
+
+      - name: Send Bale report
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+        run: |
+          python -c "
+import os, requests
+from datetime import datetime, timezone
+log = open('composer.log').read()
+idx = log.find('COMPLEMENTARY STRATEGIES')
+report = log[idx:idx+2500] if idx > 0 else log[-2000:]
+msg = f'📊 Monthly Research ({datetime.now(timezone.utc).strftime(\"%Y-%m-%d\")})\n\n' + report
+tok, chat = os.environ.get('BALE_BOT_TOKEN'), os.environ.get('BALE_CHAT_ID')
+if tok and chat:
+    r = requests.post(f'https://tapi.bale.ai/bot{tok}/sendMessage',
+                     json={'chat_id': chat, 'text': msg[:4000]}, timeout=20)
+    print(f'Sent: {r.status_code}')
+"
+
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add research_lab/logs/ exchanges/portfolio_by_regime.json 2>/dev/null || true
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto: Monthly research $(date -u +%Y-%m-%d) [skip ci]"
+          git push || echo "push failed"

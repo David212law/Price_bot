@@ -306,3 +306,69 @@ if __name__ == "__main__":
     print("\n" + "=" * 60)
     print("  ✅ Self-test complete")
     print("=" * 60)
+
+# ═══════════════ D-405: Calmar + MaxDD ═══════════════
+def calmar_maxdd(daily_rets):
+    """Calmar ratio + max drawdown from daily returns."""
+    n = len(daily_rets)
+    if n < 20: return None
+    eq = 1.0; peak = 1.0; max_dd = 0.0
+    for r in daily_rets:
+        eq *= (1 + r)
+        peak = max(peak, eq)
+        max_dd = max(max_dd, (peak - eq) / peak)
+    total_ret = eq - 1
+    years = n / 365
+    cagr = (eq ** (1/years) - 1) if years > 0 else 0
+    calmar = (cagr / max_dd) if max_dd > 0 else 0
+    return {
+        "n": n, "total_ret_pct": round(total_ret*100, 2),
+        "cagr_pct": round(cagr*100, 2),
+        "max_dd_pct": round(max_dd*100, 2),
+        "calmar": round(calmar, 3),
+    }
+
+# ═══════════════ D-405: Correlation Stability ═══════════════
+def correlation_stability(rets_a, rets_b, n_windows=4):
+    """Split into windows, compute corr per window. Low std = stable."""
+    common = sorted(set(rets_a.keys()) & set(rets_b.keys()))
+    if len(common) < 40: return None
+    w_size = len(common) // n_windows
+    corrs = []
+    for i in range(n_windows):
+        chunk = common[i*w_size:(i+1)*w_size]
+        if len(chunk) < 10: continue
+        va = [rets_a[d] for d in chunk]
+        vb = [rets_b[d] for d in chunk]
+        ma = sum(va)/len(va); mb = sum(vb)/len(vb)
+        ca = sum((va[j]-ma)*(vb[j]-mb) for j in range(len(va)))
+        sa = math.sqrt(sum((v-ma)**2 for v in va))
+        sb = math.sqrt(sum((v-mb)**2 for v in vb))
+        if sa > 0 and sb > 0:
+            corrs.append(ca/(sa*sb))
+    if len(corrs) < 2: return None
+    mean = sum(corrs)/len(corrs)
+    var = sum((c-mean)**2 for c in corrs)/(len(corrs)-1)
+    std = math.sqrt(var)
+    return {
+        "n_windows": len(corrs),
+        "corr_per_window": [round(c, 3) for c in corrs],
+        "mean": round(mean, 3),
+        "std": round(std, 3),
+        "stability": "STABLE" if std < 0.25 else "UNSTABLE",
+    }
+
+# ═══════════════ D-405: Look-ahead bias check ═══════════════
+def no_lookahead_check():
+    """Static check: verify strategies only use past candles (i-1, i-2)."""
+    import re, glob
+    issues = []
+    for fp in glob.glob("strategies/library/*.py"):
+        try:
+            content = open(fp).read()
+            # Look for indexing [i+1], [i+2] on candles
+            for m in re.finditer(r'candles\[i\s*\+\s*[1-9]', content):
+                issues.append((fp, m.group()))
+        except: pass
+    return {"files_checked": len(glob.glob("strategies/library/*.py")),
+            "issues": issues, "verdict": "PASS" if not issues else "FAIL"}

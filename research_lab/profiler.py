@@ -8,8 +8,9 @@ sys.path.append(os.getcwd())
 
 from strategies.library.registry import list_strategies, get_strategy, expand_param_grid
 from strategies.core_engine import load_data, calculate_metrics
-from research_lab.audit_core import load_funding, sharpe_bootstrap_ci
+from research_lab.audit_core import load_funding, sharpe_bootstrap_ci, calmar_maxdd
 from research_lab.regime_core import calc_adx
+from research_lab import stress_tests
 
 EXCHANGES = {
     "hyperliquid": ["BTC","ETH","SOL","BNB","XRP","AVAX"],
@@ -148,11 +149,15 @@ def validate_test(func, params, kind, candles_full, funding_full):
         q_pfs.append(qw/ql if ql > 0 else (99.99 if qw > 0 else 0))
     q_pass = sum(1 for p in q_pfs if p >= 1.0)
     ci = sharpe_bootstrap_ci(rets, ppy=365)
+    # D-406: Calmar / MaxDD
+    calmar = calmar_maxdd(rets) or {}
+
     return {
         "n": n, "pf": round(pf,3), "wr": round(wr,1),
         "sharpe_daily": round(sd,4), "sharpe_ann": round(sd*math.sqrt(365),3),
         "bootstrap_ci": ci,
         "quartile_pf": [round(p,3) for p in q_pfs], "quartiles_pass": q_pass,
+        "calmar": calmar,
     }
 
 def _save_state(state):
@@ -245,6 +250,15 @@ def main():
                                 val = validate_test(func, params, kind, candles,
                                                     fund_full if kind=="funding" else None)
                                 if val:
+                                    # D-405: Stress tests
+                                    try:
+                                        stress = stress_tests.run_all(
+                                            name, params, ex, [sym],
+                                            val.get("sharpe_ann", 0)
+                                        )
+                                        val["stress"] = stress
+                                    except Exception as _e:
+                                        print(f"  [stress err] {name}: {_e}")
                                     entry["validation"] = val
                                     entry["status"] = "validated"
                                     validated += 1
