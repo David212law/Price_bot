@@ -177,6 +177,132 @@ def calmar_from_returns(rets_dict_or_list):
         "calmar": round(calmar, 3), "n": len(rets),
     }
 
+
+# ═══════════════════════════════════════════════════════════════
+# D-439: COMBO-SPECIFIC TESTS
+# ═══════════════════════════════════════════════════════════════
+
+def test_component_dropout(components_data, weights, base_sharpe):
+    """Remove each component; if Sharpe barely drops → redundant; if dies → over-reliant."""
+    issues = []
+    n = len(components_data)
+    if n < 2:
+        return {"pass": True, "detail": "single component — N/A"}
+    for i in range(n):
+        subset_rets = [components_data[j] for j in range(n) if j != i]
+        subset_w = [weights[j] for j in range(n) if j != i]
+        # normalize
+        total_w = sum(subset_w)
+        if total_w <= 0: continue
+        subset_w = [w / total_w for w in subset_w]
+        # combined
+        dates = set(subset_rets[0].keys())
+        for r in subset_rets[1:]:
+            dates &= set(r.keys())
+        if len(dates) < 20: continue
+        combined = {d: sum(w * r[d] for w, r in zip(subset_w, subset_rets)) for d in dates}
+        sr_without = sharpe(list(combined.values()))
+        drop_pct = (base_sharpe - sr_without) / base_sharpe if base_sharpe > 0 else 0
+        if drop_pct < 0.05:
+            issues.append(f"comp{i}: redundant (drop={drop_pct*100:.1f}%)")
+        if sr_without < base_sharpe * 0.4:
+            issues.append(f"comp{i}: over-reliant (without SR={sr_without:.2f})")
+    return {"pass": len([x for x in issues if 'over-reliant' in x]) == 0,
+            "issues": issues, "n_components": n}
+
+
+def test_weight_robustness(components_data, base_weights, base_sharpe, delta=0.20):
+    """Perturb weights ±20%; if combo collapses → overfit weights."""
+    n = len(components_data)
+    if n < 2:
+        return {"pass": True, "detail": "single component"}
+    # Two perturbations: shift toward component 0, and toward last
+    results = []
+    for shift in (-delta, +delta):
+        new_w = list(base_weights)
+        new_w[0] += shift
+        new_w[-1] -= shift
+        # fix negatives
+        if any(w < 0 for w in new_w):
+            continue
+        total = sum(new_w)
+        new_w = [w / total for w in new_w]
+        dates = set(components_data[0].keys())
+        for r in components_data[1:]:
+            dates &= set(r.keys())
+        if len(dates) < 20: continue
+        combined = {d: sum(w * r[d] for w, r in zip(new_w, components_data)) for d in dates}
+        sr_perturbed = sharpe(list(combined.values()))
+        results.append(sr_perturbed / base_sharpe if base_sharpe > 0 else 0)
+    if not results:
+        return {"pass": True, "detail": "no valid perturbation"}
+    worst = min(results)
+    return {"pass": worst >= 0.7, "worst_ratio": round(worst, 3),
+            "note": "FAIL if ratio<0.7 (overfit weights)"}
+
+
+def test_combo_vs_best_component(components_data, base_weights,
+                                  combo_oos_sharpe, comp_oos_sharpes):
+    """Combo OOS Sharpe must beat best single component OOS Sharpe."""
+    if not comp_oos_sharpes:
+        return {"pass": True, "detail": "no OOS data"}
+    best_comp = max(comp_oos_sharpes)
+    if best_comp <= 0:
+        return {"pass": True, "detail": "all components negative OOS"}
+    ratio = combo_oos_sharpe / best_comp
+    return {"pass": ratio >= 1.0,
+            "ratio": round(ratio, 3),
+            "best_comp_oos": round(best_comp, 3),
+            "combo_oos": round(combo_oos_sharpe, 3),
+            "note": "FAIL if combo doesn't beat best component in OOS"}
+
+
+def test_diversification_ratio(components_data, weights):
+    """DR = sum(w*sigma_i) / sigma_combo. DR > 1.05 = real diversification."""
+    if len(components_data) < 2:
+        return {"pass": True, "detail": "single component"}
+    dates = set(components_data[0].keys())
+    for r in components_data[1:]:
+        dates &= set(r.keys())
+    if len(dates) < 20:
+        return {"pass": True, "detail": "insufficient overlap"}
+    # per-component daily vol
+    sigmas = []
+    for r in components_data:
+        vals = [r[d] for d in dates]
+        m = sum(vals) / len(vals)
+        v = sum((x - m) ** 2 for x in vals) / (len(vals) - 1) if len(vals) > 1 else 0
+        sigmas.append(math.sqrt(v))
+    # combined
+    combined = [sum(w * r[d] for w, r in zip(weights, components_data)) for d in dates]
+    m = sum(combined) / len(combined)
+    v = sum((x - m) ** 2 for x in combined) / (len(combined) - 1) if len(combined) > 1 else 0
+    sigma_combo = math.sqrt(v)
+    if sigma_combo <= 0:
+        return {"pass": False, "note": "combo zero-vol"}
+    weighted_vol = sum(w * s for w, s in zip(weights, sigmas))
+    dr = weighted_vol / sigma_combo if sigma_combo > 0 else 0
+    return {"pass": dr >= 1.05, "dr": round(dr, 3),
+            "note": "FAIL if DR<1.05 (no diversification)"}
+
+
+def test_regime_conditional(combo_rets, m31_rets_same_regime, regime):
+    """Combo Sharpe in target regime must beat M31-only in same regime."""
+    dates = set(combo_rets.keys()) & set(m31_rets_same_regime.keys())
+    if len(dates) < 20:
+        return {"pass": True, "detail": f"insufficient overlap in {regime}"}
+    combo_vals = [combo_rets[d] for d in dates]
+    m31_vals = [m31_rets_same_regime[d] for d in dates]
+    combo_sr = sharpe(combo_vals)
+    m31_sr = sharpe(m31_vals)
+    ratio = combo_sr / m31_sr if m31_sr > 0 else 0
+    return {"pass": combo_sr >= m31_sr,
+            "combo_sr": round(combo_sr, 3),
+            "m31_sr": round(m31_sr, 3),
+            "ratio": round(ratio, 3),
+            "regime": regime}
+
+
 def build_combination(m31_rets, complements_rets, max_components=3):
     """D-407: Take M31 + top N complements (family-diverse). Requires M31 positive."""
     if not m31_rets: return None
@@ -256,6 +382,56 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     passes_calmar = calmar_val >= 0.5
     passes = passes_sharpe and passes_dd and passes_calmar
 
+
+    # ═══════ D-439: 5 combo-specific tests ═══════
+    components_data = [m31_rets] + [s["rets"] for s in selected]
+    all_w = [0.5] + [0.5/len(selected)] * len(selected)
+
+    # 1. Component Dropout
+    dropout = test_component_dropout(components_data, all_w, combined_sr)
+
+    # 2. Weight Robustness
+    weight_rob = test_weight_robustness(components_data, all_w, combined_sr)
+
+    # 3. Combo vs Best Component (use validation annSR as OOS proxy)
+    comp_oos = []
+    for s in selected:
+        val_sr = s.get("ann_sr_validation", 0)
+        if val_sr: comp_oos.append(val_sr)
+    oos_test = test_combo_vs_best_component(
+        components_data, all_w, combined_sr * math.sqrt(365), comp_oos)
+
+    # 4. Diversification Ratio
+    dr_test = test_diversification_ratio(components_data, all_w)
+
+    # 5. Regime-Conditional
+    regime_test = test_regime_conditional(combined, m31_rets, "regime")
+
+    # ── Combine all gates ──
+    combo_tests = {
+        "component_dropout": dropout,
+        "weight_robustness": weight_rob,
+        "combo_vs_best_comp": oos_test,
+        "diversification": dr_test,
+        "regime_conditional": regime_test,
+    }
+    all_combos_pass = all(t.get("pass", True) for t in combo_tests.values())
+    passes = passes and all_combos_pass
+
+    # Print detail
+    print(f"    ┌─ D-439 combo tests:")
+    print(f"    │ Dropout: {'✅' if dropout['pass'] else '❌'} "
+          f"({len(dropout.get('issues', []))} issues)")
+    print(f"    │ Weight-rob: {'✅' if weight_rob['pass'] else '❌'} "
+          f"(worst={weight_rob.get('worst_ratio', '?')})")
+    print(f"    │ vs-Best-OOS: {'✅' if oos_test['pass'] else '❌'} "
+          f"(ratio={oos_test.get('ratio', '?')})")
+    print(f"    │ Diversification: {'✅' if dr_test['pass'] else '❌'} "
+          f"(DR={dr_test.get('dr', '?')})")
+    print(f"    │ Regime-cond: {'✅' if regime_test['pass'] else '❌'} "
+          f"({regime_test.get('regime', '?')})")
+    print(f"    └─ Overall: {'✅ PASS' if all_combos_pass else '❌ FAIL'}")
+
     return {
         "components": [{"name": "M31", "weight": 0.5}] +
                       [{"name": f"{s['strategy']}_{s['symbol']}", "weight": round(0.5/len(selected),4),
@@ -269,6 +445,7 @@ def build_combination(m31_rets, complements_rets, max_components=3):
         "max_dd_combo_pct": round(combo_stats["max_dd"]*100, 2),
         "max_dd_m31_pct": round(m31_stats["max_dd"]*100, 2),
         "passes_gate": passes,
+        "combo_tests": combo_tests,
     }
 def find_complements(state, regime, exchange, m31_rets, exclude_families=None, max_corr=0.3):
     """D-406: Find strategies with LOW corr to M31 (true complements)."""
