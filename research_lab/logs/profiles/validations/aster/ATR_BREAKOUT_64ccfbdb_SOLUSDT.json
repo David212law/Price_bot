@@ -1,0 +1,68 @@
+{
+  "key": "aster:ATR_BREAKOUT:64ccfbdb:SOLUSDT",
+  "validation": {
+    "n": 36,
+    "pf": 0.472,
+    "wr": 22.2,
+    "sharpe_daily": -0.3563,
+    "sharpe_ann": -6.807,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3563,
+      "sharpe_annualized": -6.807,
+      "ci_low_annualized": -16.741,
+      "ci_high_annualized": -0.295,
+      "significant": false,
+      "n_obs": 36,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.235,
+      0.856,
+      0.881,
+      0.215
+    ],
+    "quartiles_pass": 0,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 124,
+        "pf": 1.29,
+        "sharpe_ann": 2.161
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 124,
+        "pf": 1.215,
+        "sharpe_ann": 1.66
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.807,
+        "best_variant_sharpe": 2.513,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 12,
+            "sharpe_ann": 2.218
+          },
+          {
+            "param": "period",
+            "val": 15,
+            "sharpe_ann": 2.513
+          },
+          {
+            "param": "mult",
+            "val": 0.9,
+            "sharpe_ann": 1.94
+          },
+          {
+            "param": "mult",
+            "val": 1.1,
+            "sharpe_ann": 1.224
+          }
+        ]
+      }
+    }
+  }
+}

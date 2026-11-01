@@ -1,0 +1,18 @@
+{
+  "key": "aster:RSI_REVERSAL:c7f0db3e:XRPUSDT",
+  "validation": {
+    "n": 26,
+    "pf": 1.476,
+    "wr": 53.8,
+    "sharpe_daily": 0.1755,
+    "sharpe_ann": 3.352,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.883,
+      1.98,
+      2.927,
+      0.643
+    ],
+    "quartiles_pass": 3
+  }
+}

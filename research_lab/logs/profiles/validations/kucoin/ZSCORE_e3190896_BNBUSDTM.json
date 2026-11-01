@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ZSCORE:e3190896:BNBUSDTM",
+  "validation": {
+    "n": 40,
+    "pf": 0.688,
+    "wr": 32.5,
+    "sharpe_daily": -0.1675,
+    "sharpe_ann": -3.2,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1675,
+      "sharpe_annualized": -3.2,
+      "ci_low_annualized": -10.745,
+      "ci_high_annualized": 2.697,
+      "significant": false,
+      "n_obs": 40,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.423,
+      1.357,
+      0.297,
+      1.026
+    ],
+    "quartiles_pass": 2
+  }
+}

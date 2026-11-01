@@ -1,0 +1,26 @@
+{
+  "key": "aster:KELTNER_REV:80e7c85f:BNBUSDT",
+  "validation": {
+    "n": 151,
+    "pf": 1.779,
+    "wr": 44.4,
+    "sharpe_daily": 0.2283,
+    "sharpe_ann": 4.362,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2283,
+      "sharpe_annualized": 4.362,
+      "ci_low_annualized": 1.552,
+      "ci_high_annualized": 7.177,
+      "significant": true,
+      "n_obs": 151,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.238,
+      1.878,
+      2.705,
+      1.589
+    ],
+    "quartiles_pass": 4
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:DONCHIAN:62821610:AVAX",
+  "validation": {
+    "n": 12,
+    "pf": 0.81,
+    "wr": 25.0,
+    "sharpe_daily": -0.0827,
+    "sharpe_ann": -1.58,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.299,
+      0.0,
+      3.577
+    ],
+    "quartiles_pass": 2
+  }
+}

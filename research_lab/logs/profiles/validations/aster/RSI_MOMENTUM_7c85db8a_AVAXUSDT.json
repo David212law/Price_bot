@@ -1,0 +1,68 @@
+{
+  "key": "aster:RSI_MOMENTUM:7c85db8a:AVAXUSDT",
+  "validation": {
+    "n": 43,
+    "pf": 0.367,
+    "wr": 18.6,
+    "sharpe_daily": -0.483,
+    "sharpe_ann": -9.228,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.483,
+      "sharpe_annualized": -9.228,
+      "ci_low_annualized": -19.848,
+      "ci_high_annualized": -2.656,
+      "significant": false,
+      "n_obs": 43,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.497,
+      0.65,
+      0.207,
+      0.209
+    ],
+    "quartiles_pass": 0,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 135,
+        "pf": 1.383,
+        "sharpe_ann": 2.744
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 135,
+        "pf": 1.302,
+        "sharpe_ann": 2.251
+      },
+      "param_robustness": {
+        "baseline_sharpe": -9.228,
+        "best_variant_sharpe": 3.42,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 12,
+            "sharpe_ann": 2.248
+          },
+          {
+            "param": "period",
+            "val": 15,
+            "sharpe_ann": 3.42
+          },
+          {
+            "param": "threshold",
+            "val": 58,
+            "sharpe_ann": 1.824
+          },
+          {
+            "param": "threshold",
+            "val": 71,
+            "sharpe_ann": -3.281
+          }
+        ]
+      }
+    }
+  }
+}

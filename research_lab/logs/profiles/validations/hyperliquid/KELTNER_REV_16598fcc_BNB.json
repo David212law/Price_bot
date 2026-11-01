@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:KELTNER_REV:16598fcc:BNB",
+  "validation": {
+    "n": 77,
+    "pf": 1.856,
+    "wr": 48.1,
+    "sharpe_daily": 0.2386,
+    "sharpe_ann": 4.558,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2386,
+      "sharpe_annualized": 4.558,
+      "ci_low_annualized": 0.016,
+      "ci_high_annualized": 8.223,
+      "significant": true,
+      "n_obs": 77,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.763,
+      1.366,
+      2.895,
+      2.056
+    ],
+    "quartiles_pass": 4
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_EMA:2a5ae47a:XRPUSDTM",
+  "validation": {
+    "n": 247,
+    "pf": 12.747,
+    "wr": 85.4,
+    "sharpe_daily": 1.0382,
+    "sharpe_ann": 19.835,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.0382,
+      "sharpe_annualized": 19.835,
+      "ci_low_annualized": 16.883,
+      "ci_high_annualized": 23.413,
+      "significant": true,
+      "n_obs": 247,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      5.108,
+      12.372,
+      55.096,
+      19.816
+    ],
+    "quartiles_pass": 4
+  }
+}

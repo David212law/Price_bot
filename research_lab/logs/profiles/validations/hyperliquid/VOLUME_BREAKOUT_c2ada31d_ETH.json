@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:VOLUME_BREAKOUT:c2ada31d:ETH",
+  "validation": {
+    "n": 21,
+    "pf": 1.392,
+    "wr": 47.6,
+    "sharpe_daily": 0.1544,
+    "sharpe_ann": 2.949,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.904,
+      4.494,
+      2.853,
+      0.221
+    ],
+    "quartiles_pass": 2
+  }
+}

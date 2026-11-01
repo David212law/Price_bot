@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ATR_BREAKOUT:64ccfbdb:SOL",
+  "validation": {
+    "n": 29,
+    "pf": 0.692,
+    "wr": 31.0,
+    "sharpe_daily": -0.1733,
+    "sharpe_ann": -3.311,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.568,
+      1.232,
+      0.497,
+      0.532
+    ],
+    "quartiles_pass": 1
+  }
+}

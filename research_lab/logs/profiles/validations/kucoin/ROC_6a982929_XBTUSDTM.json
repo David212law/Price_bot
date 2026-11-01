@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ROC:6a982929:XBTUSDTM",
+  "validation": {
+    "n": 27,
+    "pf": 1.092,
+    "wr": 37.0,
+    "sharpe_daily": 0.038,
+    "sharpe_ann": 0.726,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.301,
+      1.229,
+      1.18,
+      1.542
+    ],
+    "quartiles_pass": 3
+  }
+}

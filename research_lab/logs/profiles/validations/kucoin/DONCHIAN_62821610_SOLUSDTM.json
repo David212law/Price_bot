@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:DONCHIAN:62821610:SOLUSDTM",
+  "validation": {
+    "n": 19,
+    "pf": 1.124,
+    "wr": 36.8,
+    "sharpe_daily": 0.0414,
+    "sharpe_ann": 0.79,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.806,
+      0.0,
+      1.188,
+      2.156
+    ],
+    "quartiles_pass": 3
+  }
+}

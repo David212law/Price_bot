@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ZSCORE:e1506227:ETHUSDTM",
+  "validation": {
+    "n": 51,
+    "pf": 0.921,
+    "wr": 45.1,
+    "sharpe_daily": -0.0364,
+    "sharpe_ann": -0.696,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0364,
+      "sharpe_annualized": -0.696,
+      "ci_low_annualized": -5.934,
+      "ci_high_annualized": 4.464,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.051,
+      0.687,
+      0.851,
+      1.138
+    ],
+    "quartiles_pass": 2
+  }
+}

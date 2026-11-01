@@ -1,0 +1,18 @@
+{
+  "key": "aster:EMA_CROSS:d4dbabab:AVAXUSDT",
+  "validation": {
+    "n": 21,
+    "pf": 0.657,
+    "wr": 14.3,
+    "sharpe_daily": -0.1299,
+    "sharpe_ann": -2.482,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.105,
+      0.0,
+      0.0,
+      2.25
+    ],
+    "quartiles_pass": 1
+  }
+}

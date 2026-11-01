@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:EMA_CROSS:d4dbabab:ETHUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 1.05,
+    "wr": 29.4,
+    "sharpe_daily": 0.0168,
+    "sharpe_ann": 0.321,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.181,
+      0.429,
+      0.0,
+      7.963
+    ],
+    "quartiles_pass": 1
+  }
+}

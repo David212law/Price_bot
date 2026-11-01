@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ATR_BREAKOUT:ce4527dd:AVAXUSDTM",
+  "validation": {
+    "n": 27,
+    "pf": 0.574,
+    "wr": 22.2,
+    "sharpe_daily": -0.2543,
+    "sharpe_ann": -4.858,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.509,
+      0.427,
+      0.0,
+      0.478
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MFI:f484acce:ETHUSDTM",
+  "validation": {
+    "n": 59,
+    "pf": 0.876,
+    "wr": 39.0,
+    "sharpe_daily": -0.0602,
+    "sharpe_ann": -1.15,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0602,
+      "sharpe_annualized": -1.15,
+      "ci_low_annualized": -6.63,
+      "ci_high_annualized": 3.789,
+      "significant": false,
+      "n_obs": 59,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.437,
+      1.34,
+      1.105,
+      0.816
+    ],
+    "quartiles_pass": 2
+  }
+}

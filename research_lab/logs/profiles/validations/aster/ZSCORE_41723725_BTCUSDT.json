@@ -1,0 +1,26 @@
+{
+  "key": "aster:ZSCORE:41723725:BTCUSDT",
+  "validation": {
+    "n": 95,
+    "pf": 1.183,
+    "wr": 54.7,
+    "sharpe_daily": 0.0749,
+    "sharpe_ann": 1.432,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0749,
+      "sharpe_annualized": 1.432,
+      "ci_low_annualized": -1.999,
+      "ci_high_annualized": 5.245,
+      "significant": false,
+      "n_obs": 95,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.878,
+      0.773,
+      1.056,
+      1.103
+    ],
+    "quartiles_pass": 3
+  }
+}

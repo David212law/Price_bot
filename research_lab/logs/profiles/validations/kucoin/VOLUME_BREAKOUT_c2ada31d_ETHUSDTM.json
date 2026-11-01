@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VOLUME_BREAKOUT:c2ada31d:ETHUSDTM",
+  "validation": {
+    "n": 42,
+    "pf": 1.064,
+    "wr": 38.1,
+    "sharpe_daily": 0.0276,
+    "sharpe_ann": 0.527,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0276,
+      "sharpe_annualized": 0.527,
+      "ci_low_annualized": -5.802,
+      "ci_high_annualized": 6.238,
+      "significant": false,
+      "n_obs": 42,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.55,
+      1.068,
+      1.21,
+      0.537
+    ],
+    "quartiles_pass": 3
+  }
+}

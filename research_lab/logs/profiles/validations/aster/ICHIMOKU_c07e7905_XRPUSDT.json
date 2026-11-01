@@ -1,0 +1,26 @@
+{
+  "key": "aster:ICHIMOKU:c07e7905:XRPUSDT",
+  "validation": {
+    "n": 66,
+    "pf": 0.816,
+    "wr": 34.8,
+    "sharpe_daily": -0.0695,
+    "sharpe_ann": -1.328,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0695,
+      "sharpe_annualized": -1.328,
+      "ci_low_annualized": -6.772,
+      "ci_high_annualized": 2.975,
+      "significant": false,
+      "n_obs": 66,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.193,
+      2.181,
+      0.678,
+      0.727
+    ],
+    "quartiles_pass": 1
+  }
+}

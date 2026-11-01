@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:BOLLINGER:b5d5d745:BNB",
+  "validation": {
+    "n": 27,
+    "pf": 0.609,
+    "wr": 29.6,
+    "sharpe_daily": -0.2207,
+    "sharpe_ann": -4.217,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.609,
+      0.598,
+      0.18,
+      0.862
+    ],
+    "quartiles_pass": 0
+  }
+}

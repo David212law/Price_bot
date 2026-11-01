@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:RSI_REVERSAL:c7f0db3e:XRP",
+  "validation": {
+    "n": 22,
+    "pf": 1.389,
+    "wr": 54.5,
+    "sharpe_daily": 0.1465,
+    "sharpe_ann": 2.798,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      4.614,
+      1.056,
+      5.727,
+      0.508
+    ],
+    "quartiles_pass": 3
+  }
+}

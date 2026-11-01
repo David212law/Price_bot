@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:TRIPLE_EMA:bc8e009b:XRPUSDTM",
+  "validation": {
+    "n": 93,
+    "pf": 0.797,
+    "wr": 23.7,
+    "sharpe_daily": -0.0632,
+    "sharpe_ann": -1.208,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0632,
+      "sharpe_annualized": -1.208,
+      "ci_low_annualized": -7.731,
+      "ci_high_annualized": 2.215,
+      "significant": false,
+      "n_obs": 93,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.795,
+      0.389,
+      0.791,
+      1.062
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:RSI_MOMENTUM:8047a485:BNB",
+  "validation": {
+    "n": 44,
+    "pf": 0.598,
+    "wr": 27.3,
+    "sharpe_daily": -0.2425,
+    "sharpe_ann": -4.633,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2425,
+      "sharpe_annualized": -4.633,
+      "ci_low_annualized": -12.147,
+      "ci_high_annualized": 1.166,
+      "significant": false,
+      "n_obs": 44,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.986,
+      0.304,
+      0.372,
+      0.913
+    ],
+    "quartiles_pass": 0
+  }
+}

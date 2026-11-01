@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_QUANTILE:96f9e084:BNBUSDTM",
+  "validation": {
+    "n": 143,
+    "pf": 5.74,
+    "wr": 62.2,
+    "sharpe_daily": 0.5438,
+    "sharpe_ann": 10.39,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.5438,
+      "sharpe_annualized": 10.39,
+      "ci_low_annualized": 8.338,
+      "ci_high_annualized": 13.038,
+      "significant": true,
+      "n_obs": 143,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      8.442,
+      0.563,
+      4.718,
+      26.091
+    ],
+    "quartiles_pass": 3
+  }
+}

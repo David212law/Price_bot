@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:VOLUME_BREAKOUT:e91f6399:XBTUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 1.222,
+    "wr": 41.7,
+    "sharpe_daily": 0.092,
+    "sharpe_ann": 1.758,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.461,
+      1.88,
+      0.762,
+      0.952
+    ],
+    "quartiles_pass": 2
+  }
+}

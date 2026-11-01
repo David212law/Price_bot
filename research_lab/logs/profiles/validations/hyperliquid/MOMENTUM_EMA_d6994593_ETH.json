@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:MOMENTUM_EMA:d6994593:ETH",
+  "validation": {
+    "n": 18,
+    "pf": 1.115,
+    "wr": 38.9,
+    "sharpe_daily": 0.0494,
+    "sharpe_ann": 0.943,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.423,
+      1.485,
+      0.791,
+      0.913
+    ],
+    "quartiles_pass": 2
+  }
+}

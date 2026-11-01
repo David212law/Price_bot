@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MOMENTUM_SMA:4f9e39c4:AVAXUSDTM",
+  "validation": {
+    "n": 62,
+    "pf": 1.166,
+    "wr": 37.1,
+    "sharpe_daily": 0.0689,
+    "sharpe_ann": 1.316,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0689,
+      "sharpe_annualized": 1.316,
+      "ci_low_annualized": -3.877,
+      "ci_high_annualized": 6.129,
+      "significant": false,
+      "n_obs": 62,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.145,
+      0.617,
+      0.615,
+      1.678
+    ],
+    "quartiles_pass": 2
+  }
+}

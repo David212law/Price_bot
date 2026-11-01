@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:MOMENTUM_EMA:9f436de0:AVAXUSDTM",
+  "validation": {
+    "n": 26,
+    "pf": 1.083,
+    "wr": 38.5,
+    "sharpe_daily": 0.0361,
+    "sharpe_ann": 0.689,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.726,
+      0.69,
+      0.353,
+      1.689
+    ],
+    "quartiles_pass": 2
+  }
+}

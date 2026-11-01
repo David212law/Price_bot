@@ -1,0 +1,18 @@
+{
+  "key": "aster:RSI_REVERSAL:771cd643:BNBUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 1.383,
+    "wr": 47.4,
+    "sharpe_daily": 0.1442,
+    "sharpe_ann": 2.755,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      99.99,
+      1.825,
+      0.506,
+      0.572
+    ],
+    "quartiles_pass": 2
+  }
+}

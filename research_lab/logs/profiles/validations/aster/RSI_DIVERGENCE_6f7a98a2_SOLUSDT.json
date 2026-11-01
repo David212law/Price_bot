@@ -1,0 +1,18 @@
+{
+  "key": "aster:RSI_DIVERGENCE:6f7a98a2:SOLUSDT",
+  "validation": {
+    "n": 10,
+    "pf": 0.16,
+    "wr": 10.0,
+    "sharpe_daily": -0.9062,
+    "sharpe_ann": -17.312,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.0,
+      0.529
+    ],
+    "quartiles_pass": 0
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:VOLUME_BREAKOUT:c2ada31d:BNB",
+  "validation": {
+    "n": 23,
+    "pf": 0.559,
+    "wr": 30.4,
+    "sharpe_daily": -0.2731,
+    "sharpe_ann": -5.217,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.326,
+      2.728,
+      0.267,
+      0.422
+    ],
+    "quartiles_pass": 1
+  }
+}

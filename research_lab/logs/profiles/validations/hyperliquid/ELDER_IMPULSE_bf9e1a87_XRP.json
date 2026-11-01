@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ELDER_IMPULSE:bf9e1a87:XRP",
+  "validation": {
+    "n": 52,
+    "pf": 0.948,
+    "wr": 36.5,
+    "sharpe_daily": -0.0242,
+    "sharpe_ann": -0.463,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0242,
+      "sharpe_annualized": -0.463,
+      "ci_low_annualized": -5.721,
+      "ci_high_annualized": 4.986,
+      "significant": false,
+      "n_obs": 52,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.859,
+      1.152,
+      1.809,
+      0.521
+    ],
+    "quartiles_pass": 2
+  }
+}

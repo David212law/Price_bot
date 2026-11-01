@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:VWAP:eb466c21:ETH",
+  "validation": {
+    "n": 99,
+    "pf": 1.05,
+    "wr": 60.6,
+    "sharpe_daily": 0.0215,
+    "sharpe_ann": 0.411,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0215,
+      "sharpe_annualized": 0.411,
+      "ci_low_annualized": -3.577,
+      "ci_high_annualized": 3.889,
+      "significant": false,
+      "n_obs": 99,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.688,
+      0.702,
+      1.359,
+      0.882
+    ],
+    "quartiles_pass": 2
+  }
+}

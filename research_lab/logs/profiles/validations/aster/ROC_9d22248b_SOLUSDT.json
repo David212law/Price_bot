@@ -1,0 +1,60 @@
+{
+  "key": "aster:ROC:9d22248b:SOLUSDT",
+  "validation": {
+    "n": 21,
+    "pf": 1.627,
+    "wr": 47.6,
+    "sharpe_daily": 0.2223,
+    "sharpe_ann": 4.246,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.979,
+      0.49,
+      2.06,
+      4.36
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 94,
+        "pf": 1.0,
+        "sharpe_ann": 0.003
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 94,
+        "pf": 0.967,
+        "sharpe_ann": -0.281
+      },
+      "param_robustness": {
+        "baseline_sharpe": 4.246,
+        "best_variant_sharpe": 3.764,
+        "ratio": 0.886,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "period",
+            "val": 4,
+            "sharpe_ann": 3.764
+          },
+          {
+            "param": "period",
+            "val": 5,
+            "sharpe_ann": 0.193
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.193
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.193
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:MFI:71f6d963:ETHUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 0.513,
+    "wr": 29.2,
+    "sharpe_daily": -0.3004,
+    "sharpe_ann": -5.739,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.458,
+      0.244,
+      0.993,
+      0.533
+    ],
+    "quartiles_pass": 0
+  }
+}

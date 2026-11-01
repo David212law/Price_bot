@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:SUPERTREND:3baccf59:XRP",
+  "validation": {
+    "n": 48,
+    "pf": 1.448,
+    "wr": 8.3,
+    "sharpe_daily": 0.0631,
+    "sharpe_ann": 1.205,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0631,
+      "sharpe_annualized": 1.205,
+      "ci_low_annualized": -12.304,
+      "ci_high_annualized": 4.691,
+      "significant": false,
+      "n_obs": 48,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.5,
+      0.577,
+      5.158,
+      0.735
+    ],
+    "quartiles_pass": 1
+  }
+}

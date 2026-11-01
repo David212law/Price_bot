@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VWAP:7d53f3e2:SOLUSDTM",
+  "validation": {
+    "n": 93,
+    "pf": 0.708,
+    "wr": 40.9,
+    "sharpe_daily": -0.1412,
+    "sharpe_ann": -2.698,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1412,
+      "sharpe_annualized": -2.698,
+      "ci_low_annualized": -7.841,
+      "ci_high_annualized": 1.221,
+      "significant": false,
+      "n_obs": 93,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.77,
+      1.089,
+      0.877,
+      0.324
+    ],
+    "quartiles_pass": 1
+  }
+}

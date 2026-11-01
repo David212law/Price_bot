@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ICHIMOKU:c07e7905:XRPUSDTM",
+  "validation": {
+    "n": 80,
+    "pf": 1.302,
+    "wr": 37.5,
+    "sharpe_daily": 0.0778,
+    "sharpe_ann": 1.487,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0778,
+      "sharpe_annualized": 1.487,
+      "ci_low_annualized": -3.179,
+      "ci_high_annualized": 4.746,
+      "significant": false,
+      "n_obs": 80,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.994,
+      0.558,
+      1.646,
+      0.824
+    ],
+    "quartiles_pass": 2
+  }
+}

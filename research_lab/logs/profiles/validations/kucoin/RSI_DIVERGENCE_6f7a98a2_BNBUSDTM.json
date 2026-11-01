@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:RSI_DIVERGENCE:6f7a98a2:BNBUSDTM",
+  "validation": {
+    "n": 11,
+    "pf": 0.804,
+    "wr": 45.5,
+    "sharpe_daily": -0.1014,
+    "sharpe_ann": -1.938,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.482,
+      99.99,
+      0.713
+    ],
+    "quartiles_pass": 2
+  }
+}

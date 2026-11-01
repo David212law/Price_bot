@@ -1,0 +1,26 @@
+{
+  "key": "aster:PSAR:c9a1b247:BNBUSDT",
+  "validation": {
+    "n": 111,
+    "pf": 1.139,
+    "wr": 40.5,
+    "sharpe_daily": 0.0444,
+    "sharpe_ann": 0.847,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0444,
+      "sharpe_annualized": 0.847,
+      "ci_low_annualized": -3.116,
+      "ci_high_annualized": 4.102,
+      "significant": false,
+      "n_obs": 111,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.977,
+      2.861,
+      0.73,
+      0.795
+    ],
+    "quartiles_pass": 1
+  }
+}

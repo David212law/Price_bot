@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:RSI_MOMENTUM:2d51a021:AVAX",
+  "validation": {
+    "n": 40,
+    "pf": 0.398,
+    "wr": 17.5,
+    "sharpe_daily": -0.4231,
+    "sharpe_ann": -8.084,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.4231,
+      "sharpe_annualized": -8.084,
+      "ci_low_annualized": -22.452,
+      "ci_high_annualized": -1.768,
+      "significant": false,
+      "n_obs": 40,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.0,
+      1.558,
+      0.147,
+      0.382
+    ],
+    "quartiles_pass": 1
+  }
+}

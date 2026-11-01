@@ -1,0 +1,18 @@
+{
+  "key": "aster:PRICE_SMA:74a989e2:BNBUSDT",
+  "validation": {
+    "n": 26,
+    "pf": 1.399,
+    "wr": 7.7,
+    "sharpe_daily": 0.0594,
+    "sharpe_ann": 1.135,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.612,
+      0.0,
+      4.605
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ATR_BREAKOUT:ce4527dd:SOLUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 1.009,
+    "wr": 35.3,
+    "sharpe_daily": 0.004,
+    "sharpe_ann": 0.077,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.707,
+      1.11,
+      1.715,
+      0.23
+    ],
+    "quartiles_pass": 3
+  }
+}

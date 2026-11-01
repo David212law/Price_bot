@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_REVERSAL:c7f0db3e:XRPUSDTM",
+  "validation": {
+    "n": 39,
+    "pf": 1.121,
+    "wr": 43.6,
+    "sharpe_daily": 0.0502,
+    "sharpe_ann": 0.959,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0502,
+      "sharpe_annualized": 0.959,
+      "ci_low_annualized": -5.396,
+      "ci_high_annualized": 6.761,
+      "significant": false,
+      "n_obs": 39,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.214,
+      1.782,
+      2.289,
+      1.156
+    ],
+    "quartiles_pass": 3
+  }
+}

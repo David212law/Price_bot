@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:BOLLINGER:f0442d80:BTC",
+  "validation": {
+    "n": 29,
+    "pf": 1.831,
+    "wr": 55.2,
+    "sharpe_daily": 0.2755,
+    "sharpe_ann": 5.263,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.361,
+      0.638,
+      1.166,
+      4.151
+    ],
+    "quartiles_pass": 3
+  }
+}

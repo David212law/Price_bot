@@ -1,0 +1,68 @@
+{
+  "key": "aster:VWAP:5cd5a671:XRPUSDT",
+  "validation": {
+    "n": 98,
+    "pf": 1.023,
+    "wr": 50.0,
+    "sharpe_daily": 0.0102,
+    "sharpe_ann": 0.194,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0102,
+      "sharpe_annualized": 0.194,
+      "ci_low_annualized": -3.682,
+      "ci_high_annualized": 3.681,
+      "significant": false,
+      "n_obs": 98,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.467,
+      1.144,
+      0.557,
+      1.132
+    ],
+    "quartiles_pass": 3,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 354,
+        "pf": 0.89,
+        "sharpe_ann": -0.954
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 354,
+        "pf": 0.824,
+        "sharpe_ann": -1.583
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.194,
+        "best_variant_sharpe": -0.316,
+        "ratio": -1.629,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 18,
+            "sharpe_ann": -0.46
+          },
+          {
+            "param": "period",
+            "val": 22,
+            "sharpe_ann": -0.316
+          },
+          {
+            "param": "deviation",
+            "val": 0.02,
+            "sharpe_ann": -0.535
+          },
+          {
+            "param": "deviation",
+            "val": 0.02,
+            "sharpe_ann": -0.535
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:VOLUME_BREAKOUT:e91f6399:SOLUSDTM",
+  "validation": {
+    "n": 22,
+    "pf": 0.99,
+    "wr": 40.9,
+    "sharpe_daily": -0.0046,
+    "sharpe_ann": -0.087,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.868,
+      2.272,
+      1.515,
+      0.371
+    ],
+    "quartiles_pass": 2
+  }
+}

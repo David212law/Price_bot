@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ZSCORE:def60a83:XBTUSDTM",
+  "validation": {
+    "n": 104,
+    "pf": 1.076,
+    "wr": 50.0,
+    "sharpe_daily": 0.0302,
+    "sharpe_ann": 0.576,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0302,
+      "sharpe_annualized": 0.576,
+      "ci_low_annualized": -3.689,
+      "ci_high_annualized": 4.047,
+      "significant": false,
+      "n_obs": 104,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.082,
+      0.94,
+      1.325,
+      1.001
+    ],
+    "quartiles_pass": 3
+  }
+}

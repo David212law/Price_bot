@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MFI:a9b717f5:BNBUSDTM",
+  "validation": {
+    "n": 34,
+    "pf": 0.82,
+    "wr": 38.2,
+    "sharpe_daily": -0.0907,
+    "sharpe_ann": -1.732,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0907,
+      "sharpe_annualized": -1.732,
+      "ci_low_annualized": -9.564,
+      "ci_high_annualized": 4.616,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.683,
+      0.879,
+      0.879,
+      0.904
+    ],
+    "quartiles_pass": 0
+  }
+}

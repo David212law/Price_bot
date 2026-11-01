@@ -1,0 +1,26 @@
+{
+  "key": "aster:SUPERTREND:11fdb3f9:ETHUSDT",
+  "validation": {
+    "n": 50,
+    "pf": 0.467,
+    "wr": 10.0,
+    "sharpe_daily": -0.2395,
+    "sharpe_ann": -4.576,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2395,
+      "sharpe_annualized": -4.576,
+      "ci_low_annualized": -16.296,
+      "ci_high_annualized": 1.08,
+      "significant": false,
+      "n_obs": 50,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.848,
+      0.0,
+      0.443,
+      0.556
+    ],
+    "quartiles_pass": 0
+  }
+}

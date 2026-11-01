@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:RSI_REVERSAL:c7f0db3e:AVAX",
+  "validation": {
+    "n": 17,
+    "pf": 1.024,
+    "wr": 47.1,
+    "sharpe_daily": 0.0109,
+    "sharpe_ann": 0.208,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.5,
+      0.254,
+      4.327,
+      1.431
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ATR_BREAKOUT:ce4527dd:AVAX",
+  "validation": {
+    "n": 17,
+    "pf": 0.354,
+    "wr": 17.6,
+    "sharpe_daily": -0.4884,
+    "sharpe_ann": -9.331,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.493,
+      0.937
+    ],
+    "quartiles_pass": 0
+  }
+}

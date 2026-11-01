@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:SUPERTREND:999352e0:XRP",
+  "validation": {
+    "n": 16,
+    "pf": 1.955,
+    "wr": 12.5,
+    "sharpe_daily": 0.1357,
+    "sharpe_ann": 2.593,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.984,
+      3.858,
+      0.0
+    ],
+    "quartiles_pass": 1
+  }
+}

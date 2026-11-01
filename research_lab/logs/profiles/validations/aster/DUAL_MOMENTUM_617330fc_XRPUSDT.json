@@ -1,0 +1,18 @@
+{
+  "key": "aster:DUAL_MOMENTUM:617330fc:XRPUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 0.592,
+    "wr": 21.1,
+    "sharpe_daily": -0.1663,
+    "sharpe_ann": -3.177,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.112,
+      1.091,
+      0.0,
+      0.749
+    ],
+    "quartiles_pass": 1
+  }
+}

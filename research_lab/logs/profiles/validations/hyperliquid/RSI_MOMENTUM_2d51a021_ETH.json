@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:RSI_MOMENTUM:2d51a021:ETH",
+  "validation": {
+    "n": 37,
+    "pf": 0.74,
+    "wr": 32.4,
+    "sharpe_daily": -0.1408,
+    "sharpe_ann": -2.69,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1408,
+      "sharpe_annualized": -2.69,
+      "ci_low_annualized": -10.337,
+      "ci_high_annualized": 3.82,
+      "significant": false,
+      "n_obs": 37,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.575,
+      0.681,
+      0.097,
+      0.896
+    ],
+    "quartiles_pass": 1
+  }
+}

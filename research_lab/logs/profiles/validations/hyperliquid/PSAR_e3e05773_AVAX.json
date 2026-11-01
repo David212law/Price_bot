@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PSAR:e3e05773:AVAX",
+  "validation": {
+    "n": 70,
+    "pf": 0.599,
+    "wr": 25.7,
+    "sharpe_daily": -0.1607,
+    "sharpe_ann": -3.07,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1607,
+      "sharpe_annualized": -3.07,
+      "ci_low_annualized": -12.197,
+      "ci_high_annualized": 1.432,
+      "significant": false,
+      "n_obs": 70,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.139,
+      0.549,
+      0.223,
+      1.694
+    ],
+    "quartiles_pass": 1
+  }
+}

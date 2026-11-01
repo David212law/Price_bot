@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:f484acce:AVAX",
+  "validation": {
+    "n": 30,
+    "pf": 0.971,
+    "wr": 43.3,
+    "sharpe_daily": -0.0135,
+    "sharpe_ann": -0.257,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0135,
+      "sharpe_annualized": -0.257,
+      "ci_low_annualized": -8.411,
+      "ci_high_annualized": 6.59,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.018,
+      0.465,
+      3.638,
+      0.53
+    ],
+    "quartiles_pass": 2
+  }
+}

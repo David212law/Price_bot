@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:EMA_CROSS:2d892784:BNBUSDTM",
+  "validation": {
+    "n": 13,
+    "pf": 2.02,
+    "wr": 30.8,
+    "sharpe_daily": 0.1882,
+    "sharpe_ann": 3.596,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      4.467,
+      1.931,
+      1.24,
+      0.0
+    ],
+    "quartiles_pass": 3
+  }
+}

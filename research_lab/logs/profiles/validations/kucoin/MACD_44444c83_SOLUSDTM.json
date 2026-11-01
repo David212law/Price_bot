@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MACD:44444c83:SOLUSDTM",
+  "validation": {
+    "n": 78,
+    "pf": 0.691,
+    "wr": 29.5,
+    "sharpe_daily": -0.1267,
+    "sharpe_ann": -2.421,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1267,
+      "sharpe_annualized": -2.421,
+      "ci_low_annualized": -8.92,
+      "ci_high_annualized": 1.43,
+      "significant": false,
+      "n_obs": 78,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.363,
+      0.522,
+      1.128,
+      1.132
+    ],
+    "quartiles_pass": 2
+  }
+}

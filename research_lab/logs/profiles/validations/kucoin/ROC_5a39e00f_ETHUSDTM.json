@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ROC:5a39e00f:ETHUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 0.76,
+    "wr": 29.2,
+    "sharpe_daily": -0.1168,
+    "sharpe_ann": -2.231,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.292,
+      1.211,
+      0.0,
+      1.643
+    ],
+    "quartiles_pass": 2
+  }
+}

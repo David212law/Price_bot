@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:BOLLINGER:3d3d39a5:XBTUSDTM",
+  "validation": {
+    "n": 97,
+    "pf": 1.045,
+    "wr": 51.5,
+    "sharpe_daily": 0.0195,
+    "sharpe_ann": 0.373,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0195,
+      "sharpe_annualized": 0.373,
+      "ci_low_annualized": -3.444,
+      "ci_high_annualized": 4.032,
+      "significant": false,
+      "n_obs": 97,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.469,
+      1.718,
+      1.217,
+      1.074
+    ],
+    "quartiles_pass": 3
+  }
+}

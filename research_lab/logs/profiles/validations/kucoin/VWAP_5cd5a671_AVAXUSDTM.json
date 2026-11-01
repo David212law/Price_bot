@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VWAP:5cd5a671:AVAXUSDTM",
+  "validation": {
+    "n": 149,
+    "pf": 1.247,
+    "wr": 60.4,
+    "sharpe_daily": 0.099,
+    "sharpe_ann": 1.891,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.099,
+      "sharpe_annualized": 1.891,
+      "ci_low_annualized": -1.267,
+      "ci_high_annualized": 4.76,
+      "significant": false,
+      "n_obs": 149,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.873,
+      1.83,
+      1.178,
+      1.305
+    ],
+    "quartiles_pass": 3
+  }
+}

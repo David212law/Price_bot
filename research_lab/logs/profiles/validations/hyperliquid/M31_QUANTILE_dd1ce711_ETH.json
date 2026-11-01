@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:M31_QUANTILE:dd1ce711:ETH",
+  "validation": {
+    "n": 139,
+    "pf": 3805.996,
+    "wr": 97.8,
+    "sharpe_daily": 1.6157,
+    "sharpe_ann": 30.868,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.6157,
+      "sharpe_annualized": 30.868,
+      "ci_low_annualized": 26.926,
+      "ci_high_annualized": 35.636,
+      "significant": true,
+      "n_obs": 139,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2147.634,
+      4530.177,
+      99.99,
+      2377.809
+    ],
+    "quartiles_pass": 4
+  }
+}

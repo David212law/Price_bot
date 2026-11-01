@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:RSI_REVERSAL:e9364174:BNBUSDTM",
+  "validation": {
+    "n": 25,
+    "pf": 0.666,
+    "wr": 36.0,
+    "sharpe_daily": -0.1813,
+    "sharpe_ann": -3.463,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.287,
+      0.301,
+      2.329,
+      0.516
+    ],
+    "quartiles_pass": 1
+  }
+}

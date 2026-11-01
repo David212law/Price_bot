@@ -1,0 +1,37 @@
+{
+  "key": "aster:M31_THRESHOLD:08399452:BTCUSDT",
+  "validation": {
+    "n": 96,
+    "pf": 47.388,
+    "wr": 90.6,
+    "sharpe_daily": 1.6738,
+    "sharpe_ann": 31.977,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.6738,
+      "sharpe_annualized": 31.977,
+      "ci_low_annualized": 25.723,
+      "ci_high_annualized": 40.816,
+      "significant": true,
+      "n_obs": 96,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      130.232,
+      58.632,
+      10.395,
+      354.574
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

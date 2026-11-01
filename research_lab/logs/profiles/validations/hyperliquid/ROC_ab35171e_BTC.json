@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ROC:ab35171e:BTC",
+  "validation": {
+    "n": 16,
+    "pf": 1.415,
+    "wr": 43.8,
+    "sharpe_daily": 0.1595,
+    "sharpe_ann": 3.047,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.709,
+      1.582,
+      1.758,
+      0.71
+    ],
+    "quartiles_pass": 3
+  }
+}

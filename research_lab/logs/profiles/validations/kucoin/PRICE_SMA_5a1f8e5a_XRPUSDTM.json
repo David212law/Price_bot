@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PRICE_SMA:5a1f8e5a:XRPUSDTM",
+  "validation": {
+    "n": 129,
+    "pf": 0.69,
+    "wr": 14.7,
+    "sharpe_daily": -0.0733,
+    "sharpe_ann": -1.401,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0733,
+      "sharpe_annualized": -1.401,
+      "ci_low_annualized": -10.701,
+      "ci_high_annualized": 1.542,
+      "significant": false,
+      "n_obs": 129,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.53,
+      0.27,
+      0.28,
+      1.467
+    ],
+    "quartiles_pass": 1
+  }
+}

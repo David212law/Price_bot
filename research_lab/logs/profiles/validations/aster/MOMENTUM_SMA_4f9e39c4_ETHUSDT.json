@@ -1,0 +1,68 @@
+{
+  "key": "aster:MOMENTUM_SMA:4f9e39c4:ETHUSDT",
+  "validation": {
+    "n": 40,
+    "pf": 1.25,
+    "wr": 42.5,
+    "sharpe_daily": 0.1027,
+    "sharpe_ann": 1.962,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1027,
+      "sharpe_annualized": 1.962,
+      "ci_low_annualized": -3.771,
+      "ci_high_annualized": 7.408,
+      "significant": false,
+      "n_obs": 40,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.752,
+      1.542,
+      2.181,
+      1.097
+    ],
+    "quartiles_pass": 3,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 181,
+        "pf": 1.148,
+        "sharpe_ann": 1.19
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 181,
+        "pf": 1.081,
+        "sharpe_ann": 0.673
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.962,
+        "best_variant_sharpe": 1.535,
+        "ratio": 0.782,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "period",
+            "val": 36,
+            "sharpe_ann": 0.645
+          },
+          {
+            "param": "period",
+            "val": 44,
+            "sharpe_ann": 1.099
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 1.535
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 1.535
+          }
+        ]
+      }
+    }
+  }
+}

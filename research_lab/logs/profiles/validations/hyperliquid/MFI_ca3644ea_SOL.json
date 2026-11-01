@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:ca3644ea:SOL",
+  "validation": {
+    "n": 35,
+    "pf": 1.474,
+    "wr": 51.4,
+    "sharpe_daily": 0.1792,
+    "sharpe_ann": 3.424,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1792,
+      "sharpe_annualized": 3.424,
+      "ci_low_annualized": -2.847,
+      "ci_high_annualized": 9.967,
+      "significant": false,
+      "n_obs": 35,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.966,
+      3.683,
+      2.74,
+      0.713
+    ],
+    "quartiles_pass": 2
+  }
+}

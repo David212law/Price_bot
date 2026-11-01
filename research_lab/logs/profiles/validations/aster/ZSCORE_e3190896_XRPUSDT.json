@@ -1,0 +1,26 @@
+{
+  "key": "aster:ZSCORE:e3190896:XRPUSDT",
+  "validation": {
+    "n": 39,
+    "pf": 0.813,
+    "wr": 35.9,
+    "sharpe_daily": -0.0956,
+    "sharpe_ann": -1.825,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0956,
+      "sharpe_annualized": -1.825,
+      "ci_low_annualized": -9.402,
+      "ci_high_annualized": 3.974,
+      "significant": false,
+      "n_obs": 39,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.816,
+      1.985,
+      0.336,
+      0.644
+    ],
+    "quartiles_pass": 1
+  }
+}

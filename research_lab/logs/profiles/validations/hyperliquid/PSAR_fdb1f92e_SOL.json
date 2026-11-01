@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PSAR:fdb1f92e:SOL",
+  "validation": {
+    "n": 62,
+    "pf": 1.277,
+    "wr": 38.7,
+    "sharpe_daily": 0.0785,
+    "sharpe_ann": 1.499,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0785,
+      "sharpe_annualized": 1.499,
+      "ci_low_annualized": -4.142,
+      "ci_high_annualized": 5.466,
+      "significant": false,
+      "n_obs": 62,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.804,
+      2.608,
+      1.22,
+      0.956
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PSAR:3c75dead:SOLUSDTM",
+  "validation": {
+    "n": 161,
+    "pf": 0.904,
+    "wr": 36.6,
+    "sharpe_daily": -0.0347,
+    "sharpe_ann": -0.662,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0347,
+      "sharpe_annualized": -0.662,
+      "ci_low_annualized": -4.108,
+      "ci_high_annualized": 2.065,
+      "significant": false,
+      "n_obs": 161,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.058,
+      0.527,
+      1.349,
+      0.808
+    ],
+    "quartiles_pass": 2
+  }
+}

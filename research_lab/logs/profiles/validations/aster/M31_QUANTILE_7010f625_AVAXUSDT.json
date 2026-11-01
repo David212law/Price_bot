@@ -1,0 +1,29 @@
+{
+  "key": "aster:M31_QUANTILE:7010f625:AVAXUSDT",
+  "validation": {
+    "n": 18,
+    "pf": 0.982,
+    "wr": 55.6,
+    "sharpe_daily": -0.0071,
+    "sharpe_ann": -0.136,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.025,
+      99.99,
+      0.887,
+      0.783
+    ],
+    "quartiles_pass": 1,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

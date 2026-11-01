@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:PRICE_MOMENTUM:dc8ac7a2:BNB",
+  "validation": {
+    "n": 23,
+    "pf": 0.338,
+    "wr": 17.4,
+    "sharpe_daily": -0.5148,
+    "sharpe_ann": -9.836,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.316,
+      0.444,
+      0.331,
+      0.294
+    ],
+    "quartiles_pass": 0
+  }
+}

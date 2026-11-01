@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:KELTNER_REV:16598fcc:AVAX",
+  "validation": {
+    "n": 66,
+    "pf": 4.525,
+    "wr": 56.1,
+    "sharpe_daily": 0.5587,
+    "sharpe_ann": 10.673,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.5587,
+      "sharpe_annualized": 10.673,
+      "ci_low_annualized": 6.388,
+      "ci_high_annualized": 15.342,
+      "significant": true,
+      "n_obs": 66,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.45,
+      2.796,
+      5.964,
+      24.692
+    ],
+    "quartiles_pass": 4
+  }
+}

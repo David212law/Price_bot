@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MOMENTUM_SMA:04134b48:BNB",
+  "validation": {
+    "n": 44,
+    "pf": 0.893,
+    "wr": 34.1,
+    "sharpe_daily": -0.0513,
+    "sharpe_ann": -0.98,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0513,
+      "sharpe_annualized": -0.98,
+      "ci_low_annualized": -7.682,
+      "ci_high_annualized": 4.109,
+      "significant": false,
+      "n_obs": 44,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.005,
+      0.598,
+      1.876,
+      0.321
+    ],
+    "quartiles_pass": 2
+  }
+}

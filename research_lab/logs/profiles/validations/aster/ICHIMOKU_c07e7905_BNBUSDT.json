@@ -1,0 +1,26 @@
+{
+  "key": "aster:ICHIMOKU:c07e7905:BNBUSDT",
+  "validation": {
+    "n": 60,
+    "pf": 1.057,
+    "wr": 41.7,
+    "sharpe_daily": 0.0188,
+    "sharpe_ann": 0.36,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0188,
+      "sharpe_annualized": 0.36,
+      "ci_low_annualized": -5.811,
+      "ci_high_annualized": 4.485,
+      "significant": false,
+      "n_obs": 60,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.497,
+      0.538,
+      1.203,
+      3.486
+    ],
+    "quartiles_pass": 2
+  }
+}

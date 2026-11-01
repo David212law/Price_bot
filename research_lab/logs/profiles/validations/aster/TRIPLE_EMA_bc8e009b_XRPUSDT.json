@@ -1,0 +1,26 @@
+{
+  "key": "aster:TRIPLE_EMA:bc8e009b:XRPUSDT",
+  "validation": {
+    "n": 75,
+    "pf": 0.677,
+    "wr": 21.3,
+    "sharpe_daily": -0.1059,
+    "sharpe_ann": -2.023,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1059,
+      "sharpe_annualized": -2.023,
+      "ci_low_annualized": -10.753,
+      "ci_high_annualized": 1.891,
+      "significant": false,
+      "n_obs": 75,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.23,
+      0.943,
+      0.475,
+      1.058
+    ],
+    "quartiles_pass": 1
+  }
+}

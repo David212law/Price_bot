@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:PRICE_MOMENTUM:61adde47:XRPUSDTM",
+  "validation": {
+    "n": 26,
+    "pf": 1.198,
+    "wr": 46.2,
+    "sharpe_daily": 0.0826,
+    "sharpe_ann": 1.578,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.06,
+      0.646,
+      4.711,
+      0.671
+    ],
+    "quartiles_pass": 2
+  }
+}

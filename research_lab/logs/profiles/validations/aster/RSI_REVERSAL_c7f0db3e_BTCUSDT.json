@@ -1,0 +1,26 @@
+{
+  "key": "aster:RSI_REVERSAL:c7f0db3e:BTCUSDT",
+  "validation": {
+    "n": 32,
+    "pf": 1.104,
+    "wr": 40.6,
+    "sharpe_daily": 0.0453,
+    "sharpe_ann": 0.865,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0453,
+      "sharpe_annualized": 0.865,
+      "ci_low_annualized": -6.491,
+      "ci_high_annualized": 7.66,
+      "significant": false,
+      "n_obs": 32,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.123,
+      0.889,
+      1.08,
+      1.356
+    ],
+    "quartiles_pass": 3
+  }
+}

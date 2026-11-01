@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:TRIPLE_EMA:0947aca2:SOL",
+  "validation": {
+    "n": 53,
+    "pf": 1.576,
+    "wr": 28.3,
+    "sharpe_daily": 0.1089,
+    "sharpe_ann": 2.08,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1089,
+      "sharpe_annualized": 2.08,
+      "ci_low_annualized": -4.894,
+      "ci_high_annualized": 5.572,
+      "significant": false,
+      "n_obs": 53,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.282,
+      1.184,
+      1.623,
+      3.641
+    ],
+    "quartiles_pass": 3
+  }
+}

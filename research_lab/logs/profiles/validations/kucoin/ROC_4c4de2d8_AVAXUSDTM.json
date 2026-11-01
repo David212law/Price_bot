@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ROC:4c4de2d8:AVAXUSDTM",
+  "validation": {
+    "n": 26,
+    "pf": 1.08,
+    "wr": 34.6,
+    "sharpe_daily": 0.0345,
+    "sharpe_ann": 0.658,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.689,
+      0.454,
+      0.354,
+      1.682
+    ],
+    "quartiles_pass": 2
+  }
+}

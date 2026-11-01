@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:DONCHIAN:48b59485:XRP",
+  "validation": {
+    "n": 47,
+    "pf": 0.657,
+    "wr": 25.5,
+    "sharpe_daily": -0.1292,
+    "sharpe_ann": -2.468,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1292,
+      "sharpe_annualized": -2.468,
+      "ci_low_annualized": -15.415,
+      "ci_high_annualized": 2.481,
+      "significant": false,
+      "n_obs": 47,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.2,
+      1.024,
+      1.806,
+      0.241
+    ],
+    "quartiles_pass": 2
+  }
+}

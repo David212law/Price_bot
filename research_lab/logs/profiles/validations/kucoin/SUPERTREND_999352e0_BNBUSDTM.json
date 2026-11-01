@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:SUPERTREND:999352e0:BNBUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 1.854,
+    "wr": 12.5,
+    "sharpe_daily": 0.1069,
+    "sharpe_ann": 2.043,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      17.408,
+      0.0,
+      0.0,
+      0.51
+    ],
+    "quartiles_pass": 1
+  }
+}

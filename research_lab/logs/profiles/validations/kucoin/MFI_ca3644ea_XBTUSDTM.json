@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MFI:ca3644ea:XBTUSDTM",
+  "validation": {
+    "n": 47,
+    "pf": 0.856,
+    "wr": 36.2,
+    "sharpe_daily": -0.0702,
+    "sharpe_ann": -1.341,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0702,
+      "sharpe_annualized": -1.341,
+      "ci_low_annualized": -7.244,
+      "ci_high_annualized": 3.899,
+      "significant": false,
+      "n_obs": 47,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.997,
+      1.357,
+      0.666,
+      0.549
+    ],
+    "quartiles_pass": 1
+  }
+}

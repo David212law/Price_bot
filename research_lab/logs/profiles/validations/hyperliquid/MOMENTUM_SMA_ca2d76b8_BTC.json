@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MOMENTUM_SMA:ca2d76b8:BTC",
+  "validation": {
+    "n": 54,
+    "pf": 0.601,
+    "wr": 24.1,
+    "sharpe_daily": -0.2355,
+    "sharpe_ann": -4.5,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2355,
+      "sharpe_annualized": -4.5,
+      "ci_low_annualized": -12.292,
+      "ci_high_annualized": 0.854,
+      "significant": false,
+      "n_obs": 54,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.577,
+      1.057,
+      0.081,
+      0.776
+    ],
+    "quartiles_pass": 1
+  }
+}

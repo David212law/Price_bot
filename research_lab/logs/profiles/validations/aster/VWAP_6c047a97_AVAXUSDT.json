@@ -1,0 +1,63 @@
+{
+  "key": "aster:VWAP:6c047a97:AVAXUSDT",
+  "validation": {
+    "n": 142,
+    "pf": 1.19,
+    "wr": 65.5,
+    "sharpe_daily": 0.0657,
+    "sharpe_ann": 1.255,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0657,
+      "sharpe_annualized": 1.255,
+      "ci_low_annualized": -1.949,
+      "ci_high_annualized": 4.306,
+      "significant": false,
+      "n_obs": 142,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.165,
+      0.661,
+      1.644,
+      1.41
+    ],
+    "quartiles_pass": 3,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 373,
+        "pf": 0.962,
+        "sharpe_ann": -0.29
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 373,
+        "pf": 0.888,
+        "sharpe_ann": -0.877
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.255,
+        "best_variant_sharpe": 0.246,
+        "ratio": 0.196,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 45,
+            "sharpe_ann": 0.147
+          },
+          {
+            "param": "period",
+            "val": 55,
+            "sharpe_ann": -0.335
+          },
+          {
+            "param": "deviation",
+            "val": 0.01,
+            "sharpe_ann": 0.246
+          }
+        ]
+      }
+    }
+  }
+}

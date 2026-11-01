@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:DONCHIAN:6af88d9e:SOL",
+  "validation": {
+    "n": 21,
+    "pf": 1.692,
+    "wr": 47.6,
+    "sharpe_daily": 0.1663,
+    "sharpe_ann": 3.177,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.686,
+      0.989,
+      2.133,
+      2.95
+    ],
+    "quartiles_pass": 2
+  }
+}

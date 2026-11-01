@@ -1,0 +1,18 @@
+{
+  "key": "aster:EMA_CROSS:27a4ba26:ETHUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 0.644,
+    "wr": 15.8,
+    "sharpe_daily": -0.1321,
+    "sharpe_ann": -2.523,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      6.729,
+      0.176
+    ],
+    "quartiles_pass": 1
+  }
+}

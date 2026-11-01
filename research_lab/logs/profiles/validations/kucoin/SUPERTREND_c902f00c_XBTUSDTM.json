@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:SUPERTREND:c902f00c:XBTUSDTM",
+  "validation": {
+    "n": 23,
+    "pf": 0.439,
+    "wr": 8.7,
+    "sharpe_daily": -0.2688,
+    "sharpe_ann": -5.135,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.896,
+      0.0,
+      0.0,
+      1.309
+    ],
+    "quartiles_pass": 2
+  }
+}

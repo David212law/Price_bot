@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:DUAL_MOMENTUM:617330fc:BTC",
+  "validation": {
+    "n": 13,
+    "pf": 2.184,
+    "wr": 38.5,
+    "sharpe_daily": 0.243,
+    "sharpe_ann": 4.642,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      99.99,
+      0.0,
+      3.636,
+      0.068
+    ],
+    "quartiles_pass": 2
+  }
+}

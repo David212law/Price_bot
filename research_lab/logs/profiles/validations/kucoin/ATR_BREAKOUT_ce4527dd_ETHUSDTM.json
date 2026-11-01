@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ATR_BREAKOUT:ce4527dd:ETHUSDTM",
+  "validation": {
+    "n": 20,
+    "pf": 0.796,
+    "wr": 30.0,
+    "sharpe_daily": -0.101,
+    "sharpe_ann": -1.929,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.055,
+      0.0,
+      2.577,
+      0.344
+    ],
+    "quartiles_pass": 2
+  }
+}

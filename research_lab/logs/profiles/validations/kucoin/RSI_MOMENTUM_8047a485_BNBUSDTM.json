@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_MOMENTUM:8047a485:BNBUSDTM",
+  "validation": {
+    "n": 63,
+    "pf": 0.712,
+    "wr": 30.2,
+    "sharpe_daily": -0.1592,
+    "sharpe_ann": -3.041,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1592,
+      "sharpe_annualized": -3.041,
+      "ci_low_annualized": -8.985,
+      "ci_high_annualized": 1.673,
+      "significant": false,
+      "n_obs": 63,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.52,
+      1.341,
+      0.563,
+      0.639
+    ],
+    "quartiles_pass": 1
+  }
+}

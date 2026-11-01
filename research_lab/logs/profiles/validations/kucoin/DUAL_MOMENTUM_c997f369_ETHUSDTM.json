@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:DUAL_MOMENTUM:c997f369:ETHUSDTM",
+  "validation": {
+    "n": 52,
+    "pf": 0.919,
+    "wr": 21.2,
+    "sharpe_daily": -0.0261,
+    "sharpe_ann": -0.499,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0261,
+      "sharpe_annualized": -0.499,
+      "ci_low_annualized": -9.42,
+      "ci_high_annualized": 4.152,
+      "significant": false,
+      "n_obs": 52,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.587,
+      0.316,
+      1.433,
+      0.74
+    ],
+    "quartiles_pass": 2
+  }
+}

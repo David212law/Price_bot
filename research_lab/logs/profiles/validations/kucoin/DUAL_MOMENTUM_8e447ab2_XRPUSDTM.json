@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:DUAL_MOMENTUM:8e447ab2:XRPUSDTM",
+  "validation": {
+    "n": 40,
+    "pf": 0.653,
+    "wr": 27.5,
+    "sharpe_daily": -0.1506,
+    "sharpe_ann": -2.877,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1506,
+      "sharpe_annualized": -2.877,
+      "ci_low_annualized": -12.637,
+      "ci_high_annualized": 2.837,
+      "significant": false,
+      "n_obs": 40,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.754,
+      0.686,
+      1.113,
+      0.313
+    ],
+    "quartiles_pass": 1
+  }
+}

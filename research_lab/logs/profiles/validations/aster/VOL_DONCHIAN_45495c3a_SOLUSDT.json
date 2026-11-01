@@ -1,0 +1,68 @@
+{
+  "key": "aster:VOL_DONCHIAN:45495c3a:SOLUSDT",
+  "validation": {
+    "n": 31,
+    "pf": 1.023,
+    "wr": 64.5,
+    "sharpe_daily": 0.0103,
+    "sharpe_ann": 0.196,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0103,
+      "sharpe_annualized": 0.196,
+      "ci_low_annualized": -6.712,
+      "ci_high_annualized": 8.401,
+      "significant": false,
+      "n_obs": 31,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.376,
+      1.271,
+      1.469,
+      1.569
+    ],
+    "quartiles_pass": 3,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 110,
+        "pf": 0.873,
+        "sharpe_ann": -1.089
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 110,
+        "pf": 0.831,
+        "sharpe_ann": -1.472
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.196,
+        "best_variant_sharpe": 0.411,
+        "ratio": 2.097,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "period",
+            "val": 18,
+            "sharpe_ann": -0.653
+          },
+          {
+            "param": "period",
+            "val": 22,
+            "sharpe_ann": 0.411
+          },
+          {
+            "param": "atr_mult",
+            "val": 0.9,
+            "sharpe_ann": -0.833
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.1,
+            "sharpe_ann": -0.833
+          }
+        ]
+      }
+    }
+  }
+}

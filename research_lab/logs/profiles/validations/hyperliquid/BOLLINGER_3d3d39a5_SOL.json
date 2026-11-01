@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:BOLLINGER:3d3d39a5:SOL",
+  "validation": {
+    "n": 54,
+    "pf": 0.793,
+    "wr": 44.4,
+    "sharpe_daily": -0.1076,
+    "sharpe_ann": -2.056,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1076,
+      "sharpe_annualized": -2.056,
+      "ci_low_annualized": -8.429,
+      "ci_high_annualized": 3.088,
+      "significant": false,
+      "n_obs": 54,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.52,
+      0.423,
+      0.769,
+      0.903
+    ],
+    "quartiles_pass": 1
+  }
+}

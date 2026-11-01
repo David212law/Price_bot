@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:MEAN_REV_SMA:b573c8df:BNB",
+  "validation": {
+    "n": 26,
+    "pf": 1.045,
+    "wr": 34.6,
+    "sharpe_daily": 0.0174,
+    "sharpe_ann": 0.333,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.232,
+      1.047,
+      0.699,
+      1.317
+    ],
+    "quartiles_pass": 3
+  }
+}

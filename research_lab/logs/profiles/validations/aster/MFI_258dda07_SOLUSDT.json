@@ -1,0 +1,70 @@
+{
+  "key": "aster:MFI:258dda07:SOLUSDT",
+  "validation": {
+    "n": 22,
+    "pf": 1.04,
+    "wr": 40.9,
+    "sharpe_daily": 0.0176,
+    "sharpe_ann": 0.336,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.98,
+      1.389,
+      3.363,
+      0.348
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 92,
+        "pf": 1.089,
+        "sharpe_ann": 0.734
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 92,
+        "pf": 1.027,
+        "sharpe_ann": 0.231
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.336,
+        "best_variant_sharpe": 1.56,
+        "ratio": 4.643,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "period",
+            "val": 12,
+            "sharpe_ann": -1.466
+          },
+          {
+            "param": "period",
+            "val": 15,
+            "sharpe_ann": -0.033
+          },
+          {
+            "param": "low",
+            "val": 13,
+            "sharpe_ann": -0.909
+          },
+          {
+            "param": "low",
+            "val": 16,
+            "sharpe_ann": 1.56
+          },
+          {
+            "param": "high",
+            "val": 76,
+            "sharpe_ann": 1.235
+          },
+          {
+            "param": "high",
+            "val": 93,
+            "sharpe_ann": -0.034
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "aster:SUPERTREND:6ea4c093:SOLUSDT",
+  "validation": {
+    "n": 31,
+    "pf": 1.875,
+    "wr": 12.9,
+    "sharpe_daily": 0.1237,
+    "sharpe_ann": 2.364,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1237,
+      "sharpe_annualized": 2.364,
+      "ci_low_annualized": -14.006,
+      "ci_high_annualized": 6.317,
+      "significant": false,
+      "n_obs": 31,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.383,
+      0.452,
+      0.0,
+      9.069
+    ],
+    "quartiles_pass": 1
+  }
+}

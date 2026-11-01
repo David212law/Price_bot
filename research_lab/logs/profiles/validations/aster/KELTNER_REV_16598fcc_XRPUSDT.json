@@ -1,0 +1,26 @@
+{
+  "key": "aster:KELTNER_REV:16598fcc:XRPUSDT",
+  "validation": {
+    "n": 84,
+    "pf": 1.837,
+    "wr": 38.1,
+    "sharpe_daily": 0.2225,
+    "sharpe_ann": 4.251,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2225,
+      "sharpe_annualized": 4.251,
+      "ci_low_annualized": 0.114,
+      "ci_high_annualized": 7.732,
+      "significant": true,
+      "n_obs": 84,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.848,
+      0.942,
+      6.232,
+      0.667
+    ],
+    "quartiles_pass": 2
+  }
+}

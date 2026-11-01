@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:SUPERTREND:6ea4c093:XBTUSDTM",
+  "validation": {
+    "n": 47,
+    "pf": 1.492,
+    "wr": 12.8,
+    "sharpe_daily": 0.0753,
+    "sharpe_ann": 1.439,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0753,
+      "sharpe_annualized": 1.439,
+      "ci_low_annualized": -14.261,
+      "ci_high_annualized": 5.162,
+      "significant": false,
+      "n_obs": 47,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.917,
+      0.0,
+      0.0,
+      3.372
+    ],
+    "quartiles_pass": 2
+  }
+}

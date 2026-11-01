@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:OBV:c1321249:BTC",
+  "validation": {
+    "n": 12,
+    "pf": 1.003,
+    "wr": 33.3,
+    "sharpe_daily": 0.0012,
+    "sharpe_ann": 0.023,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.997,
+      0.0,
+      1.157,
+      0.736
+    ],
+    "quartiles_pass": 2
+  }
+}

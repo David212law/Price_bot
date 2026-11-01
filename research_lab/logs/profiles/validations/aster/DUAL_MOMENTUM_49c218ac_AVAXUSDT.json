@@ -1,0 +1,26 @@
+{
+  "key": "aster:DUAL_MOMENTUM:49c218ac:AVAXUSDT",
+  "validation": {
+    "n": 35,
+    "pf": 0.575,
+    "wr": 14.3,
+    "sharpe_daily": -0.1759,
+    "sharpe_ann": -3.36,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1759,
+      "sharpe_annualized": -3.36,
+      "ci_low_annualized": -32.474,
+      "ci_high_annualized": 2.293,
+      "significant": false,
+      "n_obs": 35,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.031,
+      1.237,
+      0.004,
+      0.976
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MEAN_REV_SMA:7e4862c4:BNBUSDTM",
+  "validation": {
+    "n": 30,
+    "pf": 0.648,
+    "wr": 33.3,
+    "sharpe_daily": -0.1772,
+    "sharpe_ann": -3.385,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1772,
+      "sharpe_annualized": -3.385,
+      "ci_low_annualized": -13.816,
+      "ci_high_annualized": 3.271,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.711,
+      0.347,
+      0.482,
+      1.543
+    ],
+    "quartiles_pass": 1
+  }
+}

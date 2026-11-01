@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:RSI_REVERSAL:e9364174:XBTUSDTM",
+  "validation": {
+    "n": 25,
+    "pf": 1.222,
+    "wr": 44.0,
+    "sharpe_daily": 0.0876,
+    "sharpe_ann": 1.674,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.572,
+      0.851,
+      3.19,
+      0.646
+    ],
+    "quartiles_pass": 2
+  }
+}

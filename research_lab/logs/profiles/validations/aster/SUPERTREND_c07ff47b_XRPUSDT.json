@@ -1,0 +1,18 @@
+{
+  "key": "aster:SUPERTREND:c07ff47b:XRPUSDT",
+  "validation": {
+    "n": 20,
+    "pf": 1.376,
+    "wr": 10.0,
+    "sharpe_daily": 0.0753,
+    "sharpe_ann": 1.438,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      4.52,
+      5.319,
+      0.0
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ZSCORE:def60a83:BNB",
+  "validation": {
+    "n": 49,
+    "pf": 1.147,
+    "wr": 46.9,
+    "sharpe_daily": 0.0574,
+    "sharpe_ann": 1.098,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0574,
+      "sharpe_annualized": 1.098,
+      "ci_low_annualized": -4.543,
+      "ci_high_annualized": 6.199,
+      "significant": false,
+      "n_obs": 49,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.461,
+      0.811,
+      1.12,
+      1.262
+    ],
+    "quartiles_pass": 3
+  }
+}

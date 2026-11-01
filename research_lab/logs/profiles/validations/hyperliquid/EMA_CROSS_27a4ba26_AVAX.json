@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:EMA_CROSS:27a4ba26:AVAX",
+  "validation": {
+    "n": 26,
+    "pf": 0.543,
+    "wr": 11.5,
+    "sharpe_daily": -0.1888,
+    "sharpe_ann": -3.607,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.212,
+      0.0,
+      1.693
+    ],
+    "quartiles_pass": 1
+  }
+}

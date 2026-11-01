@@ -1,0 +1,18 @@
+{
+  "key": "aster:DONCHIAN:6af88d9e:ETHUSDT",
+  "validation": {
+    "n": 23,
+    "pf": 1.14,
+    "wr": 39.1,
+    "sharpe_daily": 0.044,
+    "sharpe_ann": 0.84,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.621,
+      1.216,
+      0.758,
+      1.684
+    ],
+    "quartiles_pass": 2
+  }
+}

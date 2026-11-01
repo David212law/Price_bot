@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ELDER_IMPULSE:bf9e1a87:ETHUSDTM",
+  "validation": {
+    "n": 69,
+    "pf": 1.246,
+    "wr": 40.6,
+    "sharpe_daily": 0.0967,
+    "sharpe_ann": 1.847,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0967,
+      "sharpe_annualized": 1.847,
+      "ci_low_annualized": -3.13,
+      "ci_high_annualized": 6.335,
+      "significant": false,
+      "n_obs": 69,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.031,
+      0.476,
+      1.515,
+      1.538
+    ],
+    "quartiles_pass": 3
+  }
+}

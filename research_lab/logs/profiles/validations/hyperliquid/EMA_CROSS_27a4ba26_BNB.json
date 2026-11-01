@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:EMA_CROSS:27a4ba26:BNB",
+  "validation": {
+    "n": 24,
+    "pf": 0.413,
+    "wr": 16.7,
+    "sharpe_daily": -0.3868,
+    "sharpe_ann": -7.39,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.287,
+      1.136,
+      0.0,
+      0.289
+    ],
+    "quartiles_pass": 1
+  }
+}

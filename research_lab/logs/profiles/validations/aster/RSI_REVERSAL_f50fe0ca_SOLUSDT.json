@@ -1,0 +1,18 @@
+{
+  "key": "aster:RSI_REVERSAL:f50fe0ca:SOLUSDT",
+  "validation": {
+    "n": 16,
+    "pf": 1.183,
+    "wr": 43.8,
+    "sharpe_daily": 0.0771,
+    "sharpe_ann": 1.473,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      6.641,
+      0.713,
+      1.058,
+      0.662
+    ],
+    "quartiles_pass": 2
+  }
+}

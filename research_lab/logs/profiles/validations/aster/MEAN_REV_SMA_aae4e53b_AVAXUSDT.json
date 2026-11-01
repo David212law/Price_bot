@@ -1,0 +1,68 @@
+{
+  "key": "aster:MEAN_REV_SMA:aae4e53b:AVAXUSDT",
+  "validation": {
+    "n": 57,
+    "pf": 1.023,
+    "wr": 49.1,
+    "sharpe_daily": 0.0108,
+    "sharpe_ann": 0.206,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0108,
+      "sharpe_annualized": 0.206,
+      "ci_low_annualized": -4.769,
+      "ci_high_annualized": 5.032,
+      "significant": false,
+      "n_obs": 57,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.068,
+      3.204,
+      0.598,
+      0.748
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 229,
+        "pf": 0.932,
+        "sharpe_ann": -0.57
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 229,
+        "pf": 0.88,
+        "sharpe_ann": -1.036
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.206,
+        "best_variant_sharpe": -0.112,
+        "ratio": -0.544,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 45,
+            "sharpe_ann": -0.37
+          },
+          {
+            "param": "period",
+            "val": 55,
+            "sharpe_ann": -0.112
+          },
+          {
+            "param": "deviation",
+            "val": 0.03,
+            "sharpe_ann": -0.26
+          },
+          {
+            "param": "deviation",
+            "val": 0.03,
+            "sharpe_ann": -0.26
+          }
+        ]
+      }
+    }
+  }
+}

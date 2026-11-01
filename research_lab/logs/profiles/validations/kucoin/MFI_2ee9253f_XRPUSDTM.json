@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MFI:2ee9253f:XRPUSDTM",
+  "validation": {
+    "n": 42,
+    "pf": 1.113,
+    "wr": 38.1,
+    "sharpe_daily": 0.0468,
+    "sharpe_ann": 0.894,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0468,
+      "sharpe_annualized": 0.894,
+      "ci_low_annualized": -5.834,
+      "ci_high_annualized": 6.392,
+      "significant": false,
+      "n_obs": 42,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.15,
+      6.948,
+      1.188,
+      0.722
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:VWAP:5cd5a671:BTC",
+  "validation": {
+    "n": 51,
+    "pf": 1.149,
+    "wr": 52.9,
+    "sharpe_daily": 0.066,
+    "sharpe_ann": 1.261,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.066,
+      "sharpe_annualized": 1.261,
+      "ci_low_annualized": -4.024,
+      "ci_high_annualized": 6.753,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.484,
+      0.63,
+      1.612,
+      1.193
+    ],
+    "quartiles_pass": 3
+  }
+}

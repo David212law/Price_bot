@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:PRICE_MOMENTUM:069655fb:XRP",
+  "validation": {
+    "n": 22,
+    "pf": 0.936,
+    "wr": 36.4,
+    "sharpe_daily": -0.029,
+    "sharpe_ann": -0.555,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.322,
+      1.11,
+      1.297,
+      1.014
+    ],
+    "quartiles_pass": 3
+  }
+}

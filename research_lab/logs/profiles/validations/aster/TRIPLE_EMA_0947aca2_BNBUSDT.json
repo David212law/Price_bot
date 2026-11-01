@@ -1,0 +1,26 @@
+{
+  "key": "aster:TRIPLE_EMA:0947aca2:BNBUSDT",
+  "validation": {
+    "n": 80,
+    "pf": 0.619,
+    "wr": 23.8,
+    "sharpe_daily": -0.1587,
+    "sharpe_ann": -3.033,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1587,
+      "sharpe_annualized": -3.033,
+      "ci_low_annualized": -9.697,
+      "ci_high_annualized": 0.945,
+      "significant": false,
+      "n_obs": 80,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.599,
+      0.333,
+      1.194,
+      0.58
+    ],
+    "quartiles_pass": 1
+  }
+}

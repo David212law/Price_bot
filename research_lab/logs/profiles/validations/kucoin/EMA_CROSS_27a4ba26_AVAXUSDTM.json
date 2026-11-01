@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:EMA_CROSS:27a4ba26:AVAXUSDTM",
+  "validation": {
+    "n": 37,
+    "pf": 0.388,
+    "wr": 13.5,
+    "sharpe_daily": -0.3034,
+    "sharpe_ann": -5.796,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3034,
+      "sharpe_annualized": -5.796,
+      "ci_low_annualized": -31.287,
+      "ci_high_annualized": 0.539,
+      "significant": false,
+      "n_obs": 37,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.079,
+      0.0,
+      0.143,
+      1.266
+    ],
+    "quartiles_pass": 1
+  }
+}

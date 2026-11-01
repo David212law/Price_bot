@@ -1,0 +1,78 @@
+{
+  "key": "aster:MFI:f484acce:ETHUSDT",
+  "validation": {
+    "n": 44,
+    "pf": 0.897,
+    "wr": 38.6,
+    "sharpe_daily": -0.0501,
+    "sharpe_ann": -0.957,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0501,
+      "sharpe_annualized": -0.957,
+      "ci_low_annualized": -7.751,
+      "ci_high_annualized": 4.171,
+      "significant": false,
+      "n_obs": 44,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.724,
+      0.27,
+      1.268,
+      0.637
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 148,
+        "pf": 0.853,
+        "sharpe_ann": -1.411
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 148,
+        "pf": 0.793,
+        "sharpe_ann": -2.067
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.957,
+        "best_variant_sharpe": -0.273,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 12,
+            "sharpe_ann": -0.907
+          },
+          {
+            "param": "period",
+            "val": 15,
+            "sharpe_ann": -1.338
+          },
+          {
+            "param": "low",
+            "val": 22,
+            "sharpe_ann": -0.967
+          },
+          {
+            "param": "low",
+            "val": 27,
+            "sharpe_ann": -0.273
+          },
+          {
+            "param": "high",
+            "val": 67,
+            "sharpe_ann": -0.987
+          },
+          {
+            "param": "high",
+            "val": 82,
+            "sharpe_ann": -1.488
+          }
+        ]
+      }
+    }
+  }
+}

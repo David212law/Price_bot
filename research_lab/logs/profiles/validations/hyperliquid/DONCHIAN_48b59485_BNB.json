@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:DONCHIAN:48b59485:BNB",
+  "validation": {
+    "n": 45,
+    "pf": 0.84,
+    "wr": 31.1,
+    "sharpe_daily": -0.0651,
+    "sharpe_ann": -1.244,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0651,
+      "sharpe_annualized": -1.244,
+      "ci_low_annualized": -10.45,
+      "ci_high_annualized": 4.04,
+      "significant": false,
+      "n_obs": 45,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.036,
+      0.785,
+      0.776,
+      0.81
+    ],
+    "quartiles_pass": 1
+  }
+}

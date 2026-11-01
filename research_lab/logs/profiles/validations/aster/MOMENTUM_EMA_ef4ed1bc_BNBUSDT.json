@@ -1,0 +1,60 @@
+{
+  "key": "aster:MOMENTUM_EMA:ef4ed1bc:BNBUSDT",
+  "validation": {
+    "n": 18,
+    "pf": 0.631,
+    "wr": 27.8,
+    "sharpe_daily": -0.2093,
+    "sharpe_ann": -3.998,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.501,
+      0.0,
+      2.266,
+      0.729
+    ],
+    "quartiles_pass": 1,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 78,
+        "pf": 0.986,
+        "sharpe_ann": -0.12
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 78,
+        "pf": 0.937,
+        "sharpe_ann": -0.546
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.998,
+        "best_variant_sharpe": 0.437,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fast",
+            "val": 18,
+            "sharpe_ann": -0.061
+          },
+          {
+            "param": "fast",
+            "val": 22,
+            "sharpe_ann": 0.186
+          },
+          {
+            "param": "slow",
+            "val": 45,
+            "sharpe_ann": 0.437
+          },
+          {
+            "param": "slow",
+            "val": 55,
+            "sharpe_ann": 0.355
+          }
+        ]
+      }
+    }
+  }
+}

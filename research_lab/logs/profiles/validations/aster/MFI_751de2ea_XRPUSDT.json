@@ -1,0 +1,70 @@
+{
+  "key": "aster:MFI:751de2ea:XRPUSDT",
+  "validation": {
+    "n": 29,
+    "pf": 1.13,
+    "wr": 44.8,
+    "sharpe_daily": 0.054,
+    "sharpe_ann": 1.032,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.181,
+      0.886,
+      0.488,
+      2.442
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 105,
+        "pf": 1.198,
+        "sharpe_ann": 1.478
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 105,
+        "pf": 1.133,
+        "sharpe_ann": 1.03
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.032,
+        "best_variant_sharpe": 2.85,
+        "ratio": 2.762,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "period",
+            "val": 12,
+            "sharpe_ann": 2.85
+          },
+          {
+            "param": "period",
+            "val": 15,
+            "sharpe_ann": 0.722
+          },
+          {
+            "param": "low",
+            "val": 13,
+            "sharpe_ann": 2.398
+          },
+          {
+            "param": "low",
+            "val": 16,
+            "sharpe_ann": 2.189
+          },
+          {
+            "param": "high",
+            "val": 67,
+            "sharpe_ann": 2.393
+          },
+          {
+            "param": "high",
+            "val": 82,
+            "sharpe_ann": 0.319
+          }
+        ]
+      }
+    }
+  }
+}

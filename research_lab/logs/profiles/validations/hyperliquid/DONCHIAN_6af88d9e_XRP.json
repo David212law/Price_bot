@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:DONCHIAN:6af88d9e:XRP",
+  "validation": {
+    "n": 24,
+    "pf": 0.658,
+    "wr": 41.7,
+    "sharpe_daily": -0.1471,
+    "sharpe_ann": -2.809,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.412,
+      0.885,
+      1.162,
+      0.261
+    ],
+    "quartiles_pass": 1
+  }
+}

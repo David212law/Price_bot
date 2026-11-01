@@ -1,0 +1,18 @@
+{
+  "key": "aster:EMA_CROSS:2d892784:BTCUSDT",
+  "validation": {
+    "n": 12,
+    "pf": 0.461,
+    "wr": 8.3,
+    "sharpe_daily": -0.2689,
+    "sharpe_ann": -5.138,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.48,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "quartiles_pass": 1
+  }
+}

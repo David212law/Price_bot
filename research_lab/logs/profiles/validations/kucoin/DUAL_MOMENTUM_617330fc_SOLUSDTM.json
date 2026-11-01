@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:DUAL_MOMENTUM:617330fc:SOLUSDTM",
+  "validation": {
+    "n": 27,
+    "pf": 0.954,
+    "wr": 25.9,
+    "sharpe_daily": -0.0151,
+    "sharpe_ann": -0.289,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.682,
+      0.074,
+      0.603,
+      1.49
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:VWAP:5cd5a671:BNB",
+  "validation": {
+    "n": 56,
+    "pf": 0.848,
+    "wr": 46.4,
+    "sharpe_daily": -0.0765,
+    "sharpe_ann": -1.462,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0765,
+      "sharpe_annualized": -1.462,
+      "ci_low_annualized": -6.844,
+      "ci_high_annualized": 4.162,
+      "significant": false,
+      "n_obs": 56,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.012,
+      1.007,
+      0.37,
+      1.114
+    ],
+    "quartiles_pass": 3
+  }
+}

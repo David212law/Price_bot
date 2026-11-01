@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MOMENTUM_SMA:16c4a8ae:ETHUSDTM",
+  "validation": {
+    "n": 58,
+    "pf": 1.311,
+    "wr": 43.1,
+    "sharpe_daily": 0.1198,
+    "sharpe_ann": 2.289,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1198,
+      "sharpe_annualized": 2.289,
+      "ci_low_annualized": -2.583,
+      "ci_high_annualized": 7.12,
+      "significant": false,
+      "n_obs": 58,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      3.256,
+      0.226,
+      1.712,
+      1.781
+    ],
+    "quartiles_pass": 3
+  }
+}

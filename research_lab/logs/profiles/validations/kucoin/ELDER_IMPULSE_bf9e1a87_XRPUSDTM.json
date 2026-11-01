@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ELDER_IMPULSE:bf9e1a87:XRPUSDTM",
+  "validation": {
+    "n": 84,
+    "pf": 0.966,
+    "wr": 36.9,
+    "sharpe_daily": -0.0154,
+    "sharpe_ann": -0.294,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0154,
+      "sharpe_annualized": -0.294,
+      "ci_low_annualized": -4.814,
+      "ci_high_annualized": 3.694,
+      "significant": false,
+      "n_obs": 84,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.177,
+      0.868,
+      0.892,
+      0.879
+    ],
+    "quartiles_pass": 1
+  }
+}

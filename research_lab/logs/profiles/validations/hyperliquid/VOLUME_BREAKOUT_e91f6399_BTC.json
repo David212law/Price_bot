@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:VOLUME_BREAKOUT:e91f6399:BTC",
+  "validation": {
+    "n": 14,
+    "pf": 1.252,
+    "wr": 42.9,
+    "sharpe_daily": 0.1035,
+    "sharpe_ann": 1.977,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.945,
+      2.225,
+      3.412,
+      0.388
+    ],
+    "quartiles_pass": 2
+  }
+}

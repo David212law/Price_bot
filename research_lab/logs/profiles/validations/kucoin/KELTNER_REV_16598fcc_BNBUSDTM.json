@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:KELTNER_REV:16598fcc:BNBUSDTM",
+  "validation": {
+    "n": 118,
+    "pf": 1.66,
+    "wr": 46.6,
+    "sharpe_daily": 0.1976,
+    "sharpe_ann": 3.775,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1976,
+      "sharpe_annualized": 3.775,
+      "ci_low_annualized": 0.517,
+      "ci_high_annualized": 7.027,
+      "significant": true,
+      "n_obs": 118,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.366,
+      1.84,
+      1.286,
+      2.29
+    ],
+    "quartiles_pass": 4
+  }
+}

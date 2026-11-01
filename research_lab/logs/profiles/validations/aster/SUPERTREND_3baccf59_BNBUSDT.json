@@ -1,0 +1,26 @@
+{
+  "key": "aster:SUPERTREND:3baccf59:BNBUSDT",
+  "validation": {
+    "n": 57,
+    "pf": 1.202,
+    "wr": 14.0,
+    "sharpe_daily": 0.0486,
+    "sharpe_ann": 0.928,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0486,
+      "sharpe_annualized": 0.928,
+      "ci_low_annualized": -7.323,
+      "ci_high_annualized": 4.69,
+      "significant": false,
+      "n_obs": 57,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.789,
+      1.284,
+      1.738,
+      1.06
+    ],
+    "quartiles_pass": 3
+  }
+}

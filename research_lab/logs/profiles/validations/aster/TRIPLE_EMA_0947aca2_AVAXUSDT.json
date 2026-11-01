@@ -1,0 +1,26 @@
+{
+  "key": "aster:TRIPLE_EMA:0947aca2:AVAXUSDT",
+  "validation": {
+    "n": 104,
+    "pf": 0.468,
+    "wr": 17.3,
+    "sharpe_daily": -0.1993,
+    "sharpe_ann": -3.809,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1993,
+      "sharpe_annualized": -3.809,
+      "ci_low_annualized": -15.216,
+      "ci_high_annualized": 0.261,
+      "significant": false,
+      "n_obs": 104,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.053,
+      0.929,
+      0.018,
+      0.871
+    ],
+    "quartiles_pass": 0
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:M31_QUANTILE:f288b8cc:BNB",
+  "validation": {
+    "n": 72,
+    "pf": 326.119,
+    "wr": 94.4,
+    "sharpe_daily": 1.2618,
+    "sharpe_ann": 24.107,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.2618,
+      "sharpe_annualized": 24.107,
+      "ci_low_annualized": 19.829,
+      "ci_high_annualized": 30.526,
+      "significant": true,
+      "n_obs": 72,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      74.941,
+      99.99,
+      99.99,
+      99.99
+    ],
+    "quartiles_pass": 4
+  }
+}

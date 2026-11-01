@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PSAR:c9a1b247:XRPUSDTM",
+  "validation": {
+    "n": 152,
+    "pf": 0.941,
+    "wr": 39.5,
+    "sharpe_daily": -0.0174,
+    "sharpe_ann": -0.332,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0174,
+      "sharpe_annualized": -0.332,
+      "ci_low_annualized": -4.848,
+      "ci_high_annualized": 2.401,
+      "significant": false,
+      "n_obs": 152,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.995,
+      0.495,
+      1.448,
+      1.035
+    ],
+    "quartiles_pass": 2
+  }
+}

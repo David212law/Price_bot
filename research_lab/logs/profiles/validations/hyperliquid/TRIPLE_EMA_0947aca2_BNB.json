@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:TRIPLE_EMA:0947aca2:BNB",
+  "validation": {
+    "n": 78,
+    "pf": 0.628,
+    "wr": 23.1,
+    "sharpe_daily": -0.1503,
+    "sharpe_ann": -2.871,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1503,
+      "sharpe_annualized": -2.871,
+      "ci_low_annualized": -9.685,
+      "ci_high_annualized": 1.306,
+      "significant": false,
+      "n_obs": 78,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.418,
+      0.409,
+      1.163,
+      0.684
+    ],
+    "quartiles_pass": 1
+  }
+}

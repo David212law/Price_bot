@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MOMENTUM_SMA:e2cc4ac5:AVAX",
+  "validation": {
+    "n": 39,
+    "pf": 1.043,
+    "wr": 38.5,
+    "sharpe_daily": 0.0192,
+    "sharpe_ann": 0.366,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0192,
+      "sharpe_annualized": 0.366,
+      "ci_low_annualized": -5.995,
+      "ci_high_annualized": 5.939,
+      "significant": false,
+      "n_obs": 39,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.581,
+      1.596,
+      1.879,
+      0.789
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:PRICE_SMA:5b113f68:SOL",
+  "validation": {
+    "n": 25,
+    "pf": 1.928,
+    "wr": 24.0,
+    "sharpe_daily": 0.1419,
+    "sharpe_ann": 2.712,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.253,
+      0.272,
+      0.665,
+      7.145
+    ],
+    "quartiles_pass": 1
+  }
+}

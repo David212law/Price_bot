@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PSAR:e3e05773:XRP",
+  "validation": {
+    "n": 73,
+    "pf": 0.806,
+    "wr": 26.0,
+    "sharpe_daily": -0.0601,
+    "sharpe_ann": -1.149,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0601,
+      "sharpe_annualized": -1.149,
+      "ci_low_annualized": -8.355,
+      "ci_high_annualized": 2.58,
+      "significant": false,
+      "n_obs": 73,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.376,
+      0.941,
+      0.652,
+      1.004
+    ],
+    "quartiles_pass": 1
+  }
+}

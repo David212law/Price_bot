@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MOMENTUM_EMA:a2b1971a:XRPUSDTM",
+  "validation": {
+    "n": 32,
+    "pf": 1.01,
+    "wr": 40.6,
+    "sharpe_daily": 0.0045,
+    "sharpe_ann": 0.086,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0045,
+      "sharpe_annualized": 0.086,
+      "ci_low_annualized": -7.188,
+      "ci_high_annualized": 6.782,
+      "significant": false,
+      "n_obs": 32,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.702,
+      0.294,
+      1.695,
+      1.309
+    ],
+    "quartiles_pass": 3
+  }
+}

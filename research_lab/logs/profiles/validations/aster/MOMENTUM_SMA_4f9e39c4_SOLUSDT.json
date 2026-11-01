@@ -1,0 +1,68 @@
+{
+  "key": "aster:MOMENTUM_SMA:4f9e39c4:SOLUSDT",
+  "validation": {
+    "n": 51,
+    "pf": 1.362,
+    "wr": 43.1,
+    "sharpe_daily": 0.1422,
+    "sharpe_ann": 2.716,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1422,
+      "sharpe_annualized": 2.716,
+      "ci_low_annualized": -2.754,
+      "ci_high_annualized": 7.712,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.84,
+      0.869,
+      4.883,
+      1.225
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 219,
+        "pf": 1.067,
+        "sharpe_ann": 0.564
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 219,
+        "pf": 1.013,
+        "sharpe_ann": 0.11
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.716,
+        "best_variant_sharpe": 1.258,
+        "ratio": 0.463,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 36,
+            "sharpe_ann": 1.145
+          },
+          {
+            "param": "period",
+            "val": 44,
+            "sharpe_ann": 1.258
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.866
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.866
+          }
+        ]
+      }
+    }
+  }
+}

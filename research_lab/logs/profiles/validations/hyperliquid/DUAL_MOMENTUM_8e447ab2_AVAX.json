@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:DUAL_MOMENTUM:8e447ab2:AVAX",
+  "validation": {
+    "n": 27,
+    "pf": 0.665,
+    "wr": 14.8,
+    "sharpe_daily": -0.1317,
+    "sharpe_ann": -2.516,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      3.013,
+      0.0,
+      1.05
+    ],
+    "quartiles_pass": 2
+  }
+}

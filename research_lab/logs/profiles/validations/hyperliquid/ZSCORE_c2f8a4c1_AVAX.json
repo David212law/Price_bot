@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ZSCORE:c2f8a4c1:AVAX",
+  "validation": {
+    "n": 62,
+    "pf": 1.828,
+    "wr": 62.9,
+    "sharpe_daily": 0.2744,
+    "sharpe_ann": 5.242,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2744,
+      "sharpe_annualized": 5.242,
+      "ci_low_annualized": 0.592,
+      "ci_high_annualized": 10.669,
+      "significant": true,
+      "n_obs": 62,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      4.168,
+      0.622,
+      3.067,
+      1.798
+    ],
+    "quartiles_pass": 3
+  }
+}

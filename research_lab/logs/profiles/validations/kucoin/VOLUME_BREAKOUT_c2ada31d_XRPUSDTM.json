@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VOLUME_BREAKOUT:c2ada31d:XRPUSDTM",
+  "validation": {
+    "n": 51,
+    "pf": 0.9,
+    "wr": 35.3,
+    "sharpe_daily": -0.0475,
+    "sharpe_ann": -0.908,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0475,
+      "sharpe_annualized": -0.908,
+      "ci_low_annualized": -6.55,
+      "ci_high_annualized": 4.344,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.772,
+      0.49,
+      0.784,
+      0.717
+    ],
+    "quartiles_pass": 1
+  }
+}

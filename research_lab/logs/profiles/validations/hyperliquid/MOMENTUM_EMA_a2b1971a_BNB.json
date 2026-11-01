@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:MOMENTUM_EMA:a2b1971a:BNB",
+  "validation": {
+    "n": 23,
+    "pf": 0.976,
+    "wr": 30.4,
+    "sharpe_daily": -0.0102,
+    "sharpe_ann": -0.194,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.339,
+      1.892,
+      0.922,
+      0.886
+    ],
+    "quartiles_pass": 1
+  }
+}

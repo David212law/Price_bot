@@ -1,0 +1,26 @@
+{
+  "key": "aster:PRICE_SMA:5a1f8e5a:BTCUSDT",
+  "validation": {
+    "n": 78,
+    "pf": 1.012,
+    "wr": 21.8,
+    "sharpe_daily": 0.0033,
+    "sharpe_ann": 0.063,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0033,
+      "sharpe_annualized": 0.063,
+      "ci_low_annualized": -6.808,
+      "ci_high_annualized": 3.406,
+      "significant": false,
+      "n_obs": 78,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.355,
+      0.306,
+      1.866,
+      0.765
+    ],
+    "quartiles_pass": 2
+  }
+}

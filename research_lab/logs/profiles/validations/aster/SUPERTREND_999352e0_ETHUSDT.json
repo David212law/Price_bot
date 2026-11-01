@@ -1,0 +1,18 @@
+{
+  "key": "aster:SUPERTREND:999352e0:ETHUSDT",
+  "validation": {
+    "n": 17,
+    "pf": 2.119,
+    "wr": 17.6,
+    "sharpe_daily": 0.1756,
+    "sharpe_ann": 3.355,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      10.559,
+      0.847
+    ],
+    "quartiles_pass": 1
+  }
+}

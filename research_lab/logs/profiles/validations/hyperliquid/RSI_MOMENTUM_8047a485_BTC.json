@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:RSI_MOMENTUM:8047a485:BTC",
+  "validation": {
+    "n": 31,
+    "pf": 0.348,
+    "wr": 19.4,
+    "sharpe_daily": -0.5135,
+    "sharpe_ann": -9.81,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.5135,
+      "sharpe_annualized": -9.81,
+      "ci_low_annualized": -24.739,
+      "ci_high_annualized": -2.434,
+      "significant": false,
+      "n_obs": 31,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.271,
+      0.647,
+      0.545,
+      0.096
+    ],
+    "quartiles_pass": 0
+  }
+}

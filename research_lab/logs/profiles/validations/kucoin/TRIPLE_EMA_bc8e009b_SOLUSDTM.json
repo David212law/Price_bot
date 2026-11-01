@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:TRIPLE_EMA:bc8e009b:SOLUSDTM",
+  "validation": {
+    "n": 89,
+    "pf": 1.366,
+    "wr": 34.8,
+    "sharpe_daily": 0.0751,
+    "sharpe_ann": 1.434,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0751,
+      "sharpe_annualized": 1.434,
+      "ci_low_annualized": -4.839,
+      "ci_high_annualized": 4.37,
+      "significant": false,
+      "n_obs": 89,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.61,
+      0.171,
+      1.715,
+      2.386
+    ],
+    "quartiles_pass": 3
+  }
+}

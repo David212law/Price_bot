@@ -1,0 +1,18 @@
+{
+  "key": "aster:DUAL_MOMENTUM:49c218ac:BTCUSDT",
+  "validation": {
+    "n": 23,
+    "pf": 1.451,
+    "wr": 26.1,
+    "sharpe_daily": 0.1155,
+    "sharpe_ann": 2.207,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      19.269,
+      0.0,
+      1.289
+    ],
+    "quartiles_pass": 2
+  }
+}

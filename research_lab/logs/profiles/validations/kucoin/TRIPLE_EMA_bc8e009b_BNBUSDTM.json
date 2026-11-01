@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:TRIPLE_EMA:bc8e009b:BNBUSDTM",
+  "validation": {
+    "n": 92,
+    "pf": 0.851,
+    "wr": 28.3,
+    "sharpe_daily": -0.0428,
+    "sharpe_ann": -0.817,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0428,
+      "sharpe_annualized": -0.817,
+      "ci_low_annualized": -8.401,
+      "ci_high_annualized": 2.384,
+      "significant": false,
+      "n_obs": 92,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.499,
+      0.548,
+      0.816,
+      0.571
+    ],
+    "quartiles_pass": 1
+  }
+}

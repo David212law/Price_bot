@@ -1,0 +1,26 @@
+{
+  "key": "aster:KELTNER_REV:16598fcc:SOLUSDT",
+  "validation": {
+    "n": 83,
+    "pf": 1.539,
+    "wr": 41.0,
+    "sharpe_daily": 0.1625,
+    "sharpe_ann": 3.105,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1625,
+      "sharpe_annualized": 3.105,
+      "ci_low_annualized": -1.124,
+      "ci_high_annualized": 6.528,
+      "significant": false,
+      "n_obs": 83,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.594,
+      0.709,
+      2.768,
+      1.162
+    ],
+    "quartiles_pass": 3
+  }
+}

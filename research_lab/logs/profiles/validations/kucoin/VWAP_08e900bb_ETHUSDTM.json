@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VWAP:08e900bb:ETHUSDTM",
+  "validation": {
+    "n": 84,
+    "pf": 1.053,
+    "wr": 45.2,
+    "sharpe_daily": 0.0209,
+    "sharpe_ann": 0.399,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0209,
+      "sharpe_annualized": 0.399,
+      "ci_low_annualized": -4.192,
+      "ci_high_annualized": 4.162,
+      "significant": false,
+      "n_obs": 84,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.987,
+      2.175,
+      0.667,
+      0.976
+    ],
+    "quartiles_pass": 1
+  }
+}

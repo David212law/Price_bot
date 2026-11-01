@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:DUAL_MOMENTUM:617330fc:XBTUSDTM",
+  "validation": {
+    "n": 22,
+    "pf": 1.588,
+    "wr": 31.8,
+    "sharpe_daily": 0.1483,
+    "sharpe_ann": 2.834,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.204,
+      1.817,
+      5.187,
+      1.089
+    ],
+    "quartiles_pass": 4
+  }
+}

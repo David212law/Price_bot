@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:DUAL_MOMENTUM:49c218ac:ETH",
+  "validation": {
+    "n": 19,
+    "pf": 2.223,
+    "wr": 31.6,
+    "sharpe_daily": 0.2203,
+    "sharpe_ann": 4.209,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.218,
+      3.735,
+      2.524,
+      2.731
+    ],
+    "quartiles_pass": 3
+  }
+}

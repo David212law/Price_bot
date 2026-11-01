@@ -1,0 +1,29 @@
+{
+  "key": "aster:M31_QUANTILE:7010f625:XRPUSDT",
+  "validation": {
+    "n": 27,
+    "pf": 1.499,
+    "wr": 48.1,
+    "sharpe_daily": 0.1605,
+    "sharpe_ann": 3.067,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.225,
+      1.328,
+      2.163,
+      1.413
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "key": "aster:M31_MOMENTUM:c1d2d7ed:SOLUSDT",
+  "validation": {
+    "n": 41,
+    "pf": 8.982,
+    "wr": 73.2,
+    "sharpe_daily": 0.9304,
+    "sharpe_ann": 17.775,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.9304,
+      "sharpe_annualized": 17.775,
+      "ci_low_annualized": 11.316,
+      "ci_high_annualized": 27.247,
+      "significant": true,
+      "n_obs": 41,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.797,
+      2.249,
+      99.99,
+      99.99
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

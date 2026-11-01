@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:OBV:c1321249:XRPUSDTM",
+  "validation": {
+    "n": 22,
+    "pf": 1.036,
+    "wr": 36.4,
+    "sharpe_daily": 0.015,
+    "sharpe_ann": 0.286,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.139,
+      0.454,
+      1.47,
+      1.025
+    ],
+    "quartiles_pass": 3
+  }
+}

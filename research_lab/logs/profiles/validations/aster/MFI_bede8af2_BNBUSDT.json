@@ -1,0 +1,78 @@
+{
+  "key": "aster:MFI:bede8af2:BNBUSDT",
+  "validation": {
+    "n": 35,
+    "pf": 0.801,
+    "wr": 37.1,
+    "sharpe_daily": -0.1034,
+    "sharpe_ann": -1.975,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1034,
+      "sharpe_annualized": -1.975,
+      "ci_low_annualized": -9.306,
+      "ci_high_annualized": 4.593,
+      "significant": false,
+      "n_obs": 35,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.472,
+      0.984,
+      0.2,
+      1.642
+    ],
+    "quartiles_pass": 1,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 118,
+        "pf": 0.843,
+        "sharpe_ann": -1.433
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 118,
+        "pf": 0.768,
+        "sharpe_ann": -2.243
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.975,
+        "best_variant_sharpe": 0.834,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 12,
+            "sharpe_ann": -0.279
+          },
+          {
+            "param": "period",
+            "val": 15,
+            "sharpe_ann": 0.834
+          },
+          {
+            "param": "low",
+            "val": 18,
+            "sharpe_ann": 0.155
+          },
+          {
+            "param": "low",
+            "val": 22,
+            "sharpe_ann": 0.246
+          },
+          {
+            "param": "high",
+            "val": 72,
+            "sharpe_ann": -1.423
+          },
+          {
+            "param": "high",
+            "val": 88,
+            "sharpe_ann": -3.655
+          }
+        ]
+      }
+    }
+  }
+}

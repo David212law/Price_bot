@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:EMA_CROSS:27a4ba26:XRP",
+  "validation": {
+    "n": 20,
+    "pf": 0.846,
+    "wr": 20.0,
+    "sharpe_daily": -0.0496,
+    "sharpe_ann": -0.948,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.072,
+      5.239,
+      0.298,
+      0.499
+    ],
+    "quartiles_pass": 1
+  }
+}

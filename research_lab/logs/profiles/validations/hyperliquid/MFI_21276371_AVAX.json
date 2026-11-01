@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:MFI:21276371:AVAX",
+  "validation": {
+    "n": 20,
+    "pf": 0.641,
+    "wr": 35.0,
+    "sharpe_daily": -0.2103,
+    "sharpe_ann": -4.017,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.287,
+      1.099,
+      1.512,
+      0.337
+    ],
+    "quartiles_pass": 2
+  }
+}

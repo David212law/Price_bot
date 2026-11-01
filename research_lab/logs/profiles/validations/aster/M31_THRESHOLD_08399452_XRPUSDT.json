@@ -1,0 +1,37 @@
+{
+  "key": "aster:M31_THRESHOLD:08399452:XRPUSDT",
+  "validation": {
+    "n": 82,
+    "pf": 5.897,
+    "wr": 72.0,
+    "sharpe_daily": 0.7504,
+    "sharpe_ann": 14.336,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.7504,
+      "sharpe_annualized": 14.336,
+      "ci_low_annualized": 9.624,
+      "ci_high_annualized": 19.565,
+      "significant": true,
+      "n_obs": 82,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      99.99,
+      14.684,
+      1.516,
+      1.307
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

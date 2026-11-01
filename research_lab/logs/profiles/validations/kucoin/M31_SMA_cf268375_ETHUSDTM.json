@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_SMA:cf268375:ETHUSDTM",
+  "validation": {
+    "n": 194,
+    "pf": 16.886,
+    "wr": 88.7,
+    "sharpe_daily": 1.1863,
+    "sharpe_ann": 22.664,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.1863,
+      "sharpe_annualized": 22.664,
+      "ci_low_annualized": 19.099,
+      "ci_high_annualized": 26.968,
+      "significant": true,
+      "n_obs": 194,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      5.375,
+      24.377,
+      99.99,
+      21.611
+    ],
+    "quartiles_pass": 4
+  }
+}

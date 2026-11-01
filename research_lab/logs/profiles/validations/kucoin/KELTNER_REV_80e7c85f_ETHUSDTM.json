@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:KELTNER_REV:80e7c85f:ETHUSDTM",
+  "validation": {
+    "n": 196,
+    "pf": 2.124,
+    "wr": 48.0,
+    "sharpe_daily": 0.2616,
+    "sharpe_ann": 4.998,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2616,
+      "sharpe_annualized": 4.998,
+      "ci_low_annualized": 2.583,
+      "ci_high_annualized": 7.196,
+      "significant": true,
+      "n_obs": 196,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.223,
+      2.116,
+      1.361,
+      2.925
+    ],
+    "quartiles_pass": 4
+  }
+}

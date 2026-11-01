@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_MOMENTUM:2d51a021:XBTUSDTM",
+  "validation": {
+    "n": 55,
+    "pf": 0.803,
+    "wr": 30.9,
+    "sharpe_daily": -0.0981,
+    "sharpe_ann": -1.874,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0981,
+      "sharpe_annualized": -1.874,
+      "ci_low_annualized": -7.481,
+      "ci_high_annualized": 3.035,
+      "significant": false,
+      "n_obs": 55,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.198,
+      1.221,
+      0.772,
+      0.207
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:PRICE_SMA:5b113f68:BTC",
+  "validation": {
+    "n": 27,
+    "pf": 0.878,
+    "wr": 14.8,
+    "sharpe_daily": -0.0289,
+    "sharpe_ann": -0.552,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.624,
+      0.612,
+      0.0,
+      0.125
+    ],
+    "quartiles_pass": 1
+  }
+}

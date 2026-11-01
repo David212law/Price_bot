@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_THRESHOLD:5ccd9f70:BNBUSDTM",
+  "validation": {
+    "n": 232,
+    "pf": 13.104,
+    "wr": 75.4,
+    "sharpe_daily": 0.9351,
+    "sharpe_ann": 17.865,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.9351,
+      "sharpe_annualized": 17.865,
+      "ci_low_annualized": 15.157,
+      "ci_high_annualized": 21.203,
+      "significant": true,
+      "n_obs": 232,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      4.349,
+      11.274,
+      44.903,
+      17.434
+    ],
+    "quartiles_pass": 4
+  }
+}

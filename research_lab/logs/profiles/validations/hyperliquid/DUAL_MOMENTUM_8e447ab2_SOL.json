@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:DUAL_MOMENTUM:8e447ab2:SOL",
+  "validation": {
+    "n": 17,
+    "pf": 2.65,
+    "wr": 41.2,
+    "sharpe_daily": 0.2585,
+    "sharpe_ann": 4.938,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.189,
+      6.504,
+      0.936,
+      4.679
+    ],
+    "quartiles_pass": 2
+  }
+}

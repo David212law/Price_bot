@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:RSI_REVERSAL:c7f0db3e:BNB",
+  "validation": {
+    "n": 23,
+    "pf": 1.008,
+    "wr": 39.1,
+    "sharpe_daily": 0.0034,
+    "sharpe_ann": 0.064,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.092,
+      2.067,
+      0.351,
+      0.799
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "aster:ZSCORE:def60a83:ETHUSDT",
+  "validation": {
+    "n": 69,
+    "pf": 1.129,
+    "wr": 49.3,
+    "sharpe_daily": 0.0525,
+    "sharpe_ann": 1.002,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0525,
+      "sharpe_annualized": 1.002,
+      "ci_low_annualized": -3.637,
+      "ci_high_annualized": 5.295,
+      "significant": false,
+      "n_obs": 69,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.439,
+      0.63,
+      1.678,
+      0.787
+    ],
+    "quartiles_pass": 2
+  }
+}

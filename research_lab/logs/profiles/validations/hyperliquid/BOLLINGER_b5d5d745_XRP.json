@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:BOLLINGER:b5d5d745:XRP",
+  "validation": {
+    "n": 33,
+    "pf": 0.834,
+    "wr": 36.4,
+    "sharpe_daily": -0.0828,
+    "sharpe_ann": -1.583,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0828,
+      "sharpe_annualized": -1.583,
+      "ci_low_annualized": -8.842,
+      "ci_high_annualized": 4.881,
+      "significant": false,
+      "n_obs": 33,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.636,
+      0.406,
+      0.493,
+      0.917
+    ],
+    "quartiles_pass": 1
+  }
+}

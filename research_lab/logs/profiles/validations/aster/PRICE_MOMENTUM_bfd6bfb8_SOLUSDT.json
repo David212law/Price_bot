@@ -1,0 +1,60 @@
+{
+  "key": "aster:PRICE_MOMENTUM:bfd6bfb8:SOLUSDT",
+  "validation": {
+    "n": 21,
+    "pf": 1.281,
+    "wr": 38.1,
+    "sharpe_daily": 0.1082,
+    "sharpe_ann": 2.067,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.641,
+      0.359,
+      0.959,
+      4.36
+    ],
+    "quartiles_pass": 1,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 91,
+        "pf": 1.06,
+        "sharpe_ann": 0.505
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 91,
+        "pf": 1.024,
+        "sharpe_ann": 0.211
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.067,
+        "best_variant_sharpe": 0.912,
+        "ratio": 0.441,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 45,
+            "sharpe_ann": 0.696
+          },
+          {
+            "param": "period",
+            "val": 55,
+            "sharpe_ann": 0.477
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.738
+          },
+          {
+            "param": "threshold",
+            "val": 0.02,
+            "sharpe_ann": 0.912
+          }
+        ]
+      }
+    }
+  }
+}

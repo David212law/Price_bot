@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VWAP:7d53f3e2:XRPUSDTM",
+  "validation": {
+    "n": 137,
+    "pf": 1.096,
+    "wr": 50.4,
+    "sharpe_daily": 0.0333,
+    "sharpe_ann": 0.636,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0333,
+      "sharpe_annualized": 0.636,
+      "ci_low_annualized": -3.172,
+      "ci_high_annualized": 3.471,
+      "significant": false,
+      "n_obs": 137,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.254,
+      1.664,
+      0.964,
+      0.782
+    ],
+    "quartiles_pass": 2
+  }
+}

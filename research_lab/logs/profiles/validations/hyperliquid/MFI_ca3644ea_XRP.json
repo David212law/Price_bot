@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:ca3644ea:XRP",
+  "validation": {
+    "n": 34,
+    "pf": 0.873,
+    "wr": 41.2,
+    "sharpe_daily": -0.0608,
+    "sharpe_ann": -1.161,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0608,
+      "sharpe_annualized": -1.161,
+      "ci_low_annualized": -8.392,
+      "ci_high_annualized": 5.534,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.894,
+      1.194,
+      1.6,
+      0.396
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ROC:c6657b22:BTC",
+  "validation": {
+    "n": 17,
+    "pf": 1.231,
+    "wr": 41.2,
+    "sharpe_daily": 0.096,
+    "sharpe_ann": 1.834,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.674,
+      0.0,
+      3.597,
+      1.258
+    ],
+    "quartiles_pass": 3
+  }
+}

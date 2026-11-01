@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ICHIMOKU:c07e7905:ETH",
+  "validation": {
+    "n": 55,
+    "pf": 0.519,
+    "wr": 18.2,
+    "sharpe_daily": -0.194,
+    "sharpe_ann": -3.706,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.194,
+      "sharpe_annualized": -3.706,
+      "ci_low_annualized": -19.309,
+      "ci_high_annualized": 1.313,
+      "significant": false,
+      "n_obs": 55,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.037,
+      1.724,
+      0.018,
+      0.551
+    ],
+    "quartiles_pass": 1
+  }
+}

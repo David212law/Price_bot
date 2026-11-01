@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:DUAL_MOMENTUM:617330fc:BNBUSDTM",
+  "validation": {
+    "n": 26,
+    "pf": 0.926,
+    "wr": 23.1,
+    "sharpe_daily": -0.0223,
+    "sharpe_ann": -0.427,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.796,
+      0.658,
+      0.16,
+      1.257
+    ],
+    "quartiles_pass": 2
+  }
+}

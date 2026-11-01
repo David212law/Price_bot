@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PSAR:fdb1f92e:SOLUSDTM",
+  "validation": {
+    "n": 93,
+    "pf": 0.983,
+    "wr": 34.4,
+    "sharpe_daily": -0.0054,
+    "sharpe_ann": -0.104,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0054,
+      "sharpe_annualized": -0.104,
+      "ci_low_annualized": -5.053,
+      "ci_high_annualized": 3.385,
+      "significant": false,
+      "n_obs": 93,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.768,
+      0.58,
+      2.454,
+      0.932
+    ],
+    "quartiles_pass": 1
+  }
+}

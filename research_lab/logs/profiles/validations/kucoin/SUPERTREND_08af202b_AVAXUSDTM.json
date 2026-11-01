@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:SUPERTREND:08af202b:AVAXUSDTM",
+  "validation": {
+    "n": 40,
+    "pf": 1.555,
+    "wr": 10.0,
+    "sharpe_daily": 0.0833,
+    "sharpe_ann": 1.592,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0833,
+      "sharpe_annualized": 1.592,
+      "ci_low_annualized": -19.331,
+      "ci_high_annualized": 5.741,
+      "significant": false,
+      "n_obs": 40,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.752,
+      0.038,
+      0.0,
+      4.947
+    ],
+    "quartiles_pass": 2
+  }
+}

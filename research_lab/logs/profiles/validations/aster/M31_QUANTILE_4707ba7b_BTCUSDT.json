@@ -1,0 +1,29 @@
+{
+  "key": "aster:M31_QUANTILE:4707ba7b:BTCUSDT",
+  "validation": {
+    "n": 18,
+    "pf": 22.322,
+    "wr": 77.8,
+    "sharpe_daily": 1.1473,
+    "sharpe_ann": 21.919,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      17.145,
+      16.938,
+      10.954,
+      86.996
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

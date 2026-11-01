@@ -1,0 +1,26 @@
+{
+  "key": "aster:BOLLINGER:3d3d39a5:XRPUSDT",
+  "validation": {
+    "n": 69,
+    "pf": 0.827,
+    "wr": 42.0,
+    "sharpe_daily": -0.0859,
+    "sharpe_ann": -1.642,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0859,
+      "sharpe_annualized": -1.642,
+      "ci_low_annualized": -6.657,
+      "ci_high_annualized": 2.76,
+      "significant": false,
+      "n_obs": 69,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.391,
+      1.244,
+      0.37,
+      0.627
+    ],
+    "quartiles_pass": 2
+  }
+}

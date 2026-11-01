@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_MOMENTUM:2d51a021:AVAXUSDTM",
+  "validation": {
+    "n": 60,
+    "pf": 0.665,
+    "wr": 25.0,
+    "sharpe_daily": -0.1845,
+    "sharpe_ann": -3.525,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1845,
+      "sharpe_annualized": -3.525,
+      "ci_low_annualized": -9.384,
+      "ci_high_annualized": 1.375,
+      "significant": false,
+      "n_obs": 60,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.091,
+      0.33,
+      1.083,
+      0.398
+    ],
+    "quartiles_pass": 2
+  }
+}

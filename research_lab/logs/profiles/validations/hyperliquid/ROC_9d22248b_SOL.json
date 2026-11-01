@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ROC:9d22248b:SOL",
+  "validation": {
+    "n": 13,
+    "pf": 2.237,
+    "wr": 53.8,
+    "sharpe_daily": 0.3631,
+    "sharpe_ann": 6.936,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.947,
+      2.372,
+      1.261,
+      6.596
+    ],
+    "quartiles_pass": 3
+  }
+}

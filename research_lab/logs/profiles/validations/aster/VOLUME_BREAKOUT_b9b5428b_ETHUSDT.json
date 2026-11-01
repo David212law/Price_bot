@@ -1,0 +1,60 @@
+{
+  "key": "aster:VOLUME_BREAKOUT:b9b5428b:ETHUSDT",
+  "validation": {
+    "n": 26,
+    "pf": 1.546,
+    "wr": 46.2,
+    "sharpe_daily": 0.2003,
+    "sharpe_ann": 3.827,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.045,
+      1.315,
+      2.925,
+      0.833
+    ],
+    "quartiles_pass": 3,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 94,
+        "pf": 1.241,
+        "sharpe_ann": 1.897
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 94,
+        "pf": 1.183,
+        "sharpe_ann": 1.483
+      },
+      "param_robustness": {
+        "baseline_sharpe": 3.827,
+        "best_variant_sharpe": 1.553,
+        "ratio": 0.406,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "vol_period",
+            "val": 18,
+            "sharpe_ann": 1.468
+          },
+          {
+            "param": "vol_period",
+            "val": 22,
+            "sharpe_ann": 0.983
+          },
+          {
+            "param": "mult",
+            "val": 1.8,
+            "sharpe_ann": 0.741
+          },
+          {
+            "param": "mult",
+            "val": 2.2,
+            "sharpe_ann": 1.553
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:DONCHIAN:6af88d9e:XBTUSDTM",
+  "validation": {
+    "n": 32,
+    "pf": 1.064,
+    "wr": 34.4,
+    "sharpe_daily": 0.0214,
+    "sharpe_ann": 0.409,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0214,
+      "sharpe_annualized": 0.409,
+      "ci_low_annualized": -8.761,
+      "ci_high_annualized": 5.92,
+      "significant": false,
+      "n_obs": 32,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.276,
+      0.482,
+      3.905,
+      0.121
+    ],
+    "quartiles_pass": 2
+  }
+}

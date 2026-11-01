@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ROC:55a445a5:AVAX",
+  "validation": {
+    "n": 14,
+    "pf": 0.647,
+    "wr": 28.6,
+    "sharpe_daily": -0.1972,
+    "sharpe_ann": -3.768,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.678,
+      0.846,
+      0.851
+    ],
+    "quartiles_pass": 0
+  }
+}

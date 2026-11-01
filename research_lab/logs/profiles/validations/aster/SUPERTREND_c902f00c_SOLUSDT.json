@@ -1,0 +1,18 @@
+{
+  "key": "aster:SUPERTREND:c902f00c:SOLUSDT",
+  "validation": {
+    "n": 20,
+    "pf": 0.524,
+    "wr": 5.0,
+    "sharpe_daily": -0.1775,
+    "sharpe_ann": -3.391,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.0,
+      4.995
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:RSI_REVERSAL:c7f0db3e:BTC",
+  "validation": {
+    "n": 26,
+    "pf": 1.011,
+    "wr": 38.5,
+    "sharpe_daily": 0.0048,
+    "sharpe_ann": 0.093,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.851,
+      1.943,
+      0.727,
+      0.855
+    ],
+    "quartiles_pass": 1
+  }
+}

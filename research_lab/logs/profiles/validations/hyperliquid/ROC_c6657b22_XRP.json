@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ROC:c6657b22:XRP",
+  "validation": {
+    "n": 23,
+    "pf": 1.185,
+    "wr": 39.1,
+    "sharpe_daily": 0.0743,
+    "sharpe_ann": 1.419,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.332,
+      1.446,
+      0.551,
+      2.05
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:KELTNER_REV:80e7c85f:AVAXUSDTM",
+  "validation": {
+    "n": 182,
+    "pf": 1.652,
+    "wr": 44.5,
+    "sharpe_daily": 0.1945,
+    "sharpe_ann": 3.716,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1945,
+      "sharpe_annualized": 3.716,
+      "ci_low_annualized": 1.048,
+      "ci_high_annualized": 6.129,
+      "significant": true,
+      "n_obs": 182,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.808,
+      1.341,
+      1.673,
+      3.025
+    ],
+    "quartiles_pass": 3
+  }
+}

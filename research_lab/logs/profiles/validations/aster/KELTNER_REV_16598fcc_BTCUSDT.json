@@ -1,0 +1,26 @@
+{
+  "key": "aster:KELTNER_REV:16598fcc:BTCUSDT",
+  "validation": {
+    "n": 88,
+    "pf": 1.45,
+    "wr": 37.5,
+    "sharpe_daily": 0.1423,
+    "sharpe_ann": 2.719,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1423,
+      "sharpe_annualized": 2.719,
+      "ci_low_annualized": -1.165,
+      "ci_high_annualized": 6.091,
+      "significant": false,
+      "n_obs": 88,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.803,
+      0.797,
+      3.306,
+      1.628
+    ],
+    "quartiles_pass": 2
+  }
+}

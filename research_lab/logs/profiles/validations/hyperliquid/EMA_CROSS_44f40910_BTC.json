@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:EMA_CROSS:44f40910:BTC",
+  "validation": {
+    "n": 11,
+    "pf": 3.94,
+    "wr": 54.5,
+    "sharpe_daily": 0.4078,
+    "sharpe_ann": 7.792,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      99.99,
+      4.878,
+      0.477,
+      3.362
+    ],
+    "quartiles_pass": 3
+  }
+}

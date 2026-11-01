@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MACD:44444c83:BNBUSDTM",
+  "validation": {
+    "n": 84,
+    "pf": 0.901,
+    "wr": 34.5,
+    "sharpe_daily": -0.037,
+    "sharpe_ann": -0.706,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.037,
+      "sharpe_annualized": -0.706,
+      "ci_low_annualized": -6.356,
+      "ci_high_annualized": 3.039,
+      "significant": false,
+      "n_obs": 84,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.287,
+      0.461,
+      0.86,
+      1.163
+    ],
+    "quartiles_pass": 2
+  }
+}

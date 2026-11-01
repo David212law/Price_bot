@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:TRIPLE_EMA:0947aca2:BTC",
+  "validation": {
+    "n": 54,
+    "pf": 0.925,
+    "wr": 24.1,
+    "sharpe_daily": -0.0193,
+    "sharpe_ann": -0.369,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0193,
+      "sharpe_annualized": -0.369,
+      "ci_low_annualized": -16.019,
+      "ci_high_annualized": 3.566,
+      "significant": false,
+      "n_obs": 54,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.345,
+      1.608,
+      0.042,
+      1.456
+    ],
+    "quartiles_pass": 2
+  }
+}

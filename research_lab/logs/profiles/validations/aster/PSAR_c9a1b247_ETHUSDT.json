@@ -1,0 +1,26 @@
+{
+  "key": "aster:PSAR:c9a1b247:ETHUSDT",
+  "validation": {
+    "n": 111,
+    "pf": 0.888,
+    "wr": 36.0,
+    "sharpe_daily": -0.0379,
+    "sharpe_ann": -0.724,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0379,
+      "sharpe_annualized": -0.724,
+      "ci_low_annualized": -5.752,
+      "ci_high_annualized": 2.712,
+      "significant": false,
+      "n_obs": 111,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.543,
+      1.147,
+      0.933,
+      1.013
+    ],
+    "quartiles_pass": 2
+  }
+}

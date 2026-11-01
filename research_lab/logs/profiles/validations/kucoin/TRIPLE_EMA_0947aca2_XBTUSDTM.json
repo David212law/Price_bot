@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:TRIPLE_EMA:0947aca2:XBTUSDTM",
+  "validation": {
+    "n": 87,
+    "pf": 1.026,
+    "wr": 27.6,
+    "sharpe_daily": 0.0062,
+    "sharpe_ann": 0.119,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0062,
+      "sharpe_annualized": 0.119,
+      "ci_low_annualized": -8.692,
+      "ci_high_annualized": 3.157,
+      "significant": false,
+      "n_obs": 87,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.373,
+      0.722,
+      0.939,
+      1.003
+    ],
+    "quartiles_pass": 2
+  }
+}

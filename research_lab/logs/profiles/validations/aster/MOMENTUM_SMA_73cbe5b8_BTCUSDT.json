@@ -1,0 +1,68 @@
+{
+  "key": "aster:MOMENTUM_SMA:73cbe5b8:BTCUSDT",
+  "validation": {
+    "n": 70,
+    "pf": 0.679,
+    "wr": 27.1,
+    "sharpe_daily": -0.1791,
+    "sharpe_ann": -3.422,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1791,
+      "sharpe_annualized": -3.422,
+      "ci_low_annualized": -9.485,
+      "ci_high_annualized": 1.031,
+      "significant": false,
+      "n_obs": 70,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.711,
+      0.982,
+      0.356,
+      0.715
+    ],
+    "quartiles_pass": 0,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 208,
+        "pf": 0.963,
+        "sharpe_ann": -0.323
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 208,
+        "pf": 0.878,
+        "sharpe_ann": -1.137
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.422,
+        "best_variant_sharpe": 0.346,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 18,
+            "sharpe_ann": 0.346
+          },
+          {
+            "param": "period",
+            "val": 22,
+            "sharpe_ann": -0.622
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.22
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.22
+          }
+        ]
+      }
+    }
+  }
+}

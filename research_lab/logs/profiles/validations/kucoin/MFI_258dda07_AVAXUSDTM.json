@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:MFI:258dda07:AVAXUSDTM",
+  "validation": {
+    "n": 18,
+    "pf": 0.294,
+    "wr": 16.7,
+    "sharpe_daily": -0.5847,
+    "sharpe_ann": -11.171,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.462,
+      0.0,
+      0.476,
+      0.355
+    ],
+    "quartiles_pass": 0
+  }
+}

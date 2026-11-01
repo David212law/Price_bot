@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ATR_BREAKOUT:64ccfbdb:XRPUSDTM",
+  "validation": {
+    "n": 58,
+    "pf": 1.185,
+    "wr": 37.9,
+    "sharpe_daily": 0.0734,
+    "sharpe_ann": 1.403,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0734,
+      "sharpe_annualized": 1.403,
+      "ci_low_annualized": -3.895,
+      "ci_high_annualized": 6.047,
+      "significant": false,
+      "n_obs": 58,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.34,
+      1.352,
+      0.547,
+      0.865
+    ],
+    "quartiles_pass": 2
+  }
+}

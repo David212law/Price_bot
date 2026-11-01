@@ -1,0 +1,18 @@
+{
+  "key": "aster:BOLLINGER:b5d5d745:BTCUSDT",
+  "validation": {
+    "n": 28,
+    "pf": 1.685,
+    "wr": 53.6,
+    "sharpe_daily": 0.2391,
+    "sharpe_ann": 4.568,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.472,
+      0.719,
+      1.179,
+      6.572
+    ],
+    "quartiles_pass": 3
+  }
+}

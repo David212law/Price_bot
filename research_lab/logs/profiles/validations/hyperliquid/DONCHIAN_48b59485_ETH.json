@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:DONCHIAN:48b59485:ETH",
+  "validation": {
+    "n": 43,
+    "pf": 0.795,
+    "wr": 23.3,
+    "sharpe_daily": -0.0716,
+    "sharpe_ann": -1.368,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0716,
+      "sharpe_annualized": -1.368,
+      "ci_low_annualized": -16.763,
+      "ci_high_annualized": 3.652,
+      "significant": false,
+      "n_obs": 43,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.102,
+      2.398,
+      1.699,
+      0.221
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:a9b717f5:ETH",
+  "validation": {
+    "n": 35,
+    "pf": 0.725,
+    "wr": 34.3,
+    "sharpe_daily": -0.1478,
+    "sharpe_ann": -2.824,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1478,
+      "sharpe_annualized": -2.824,
+      "ci_low_annualized": -11.105,
+      "ci_high_annualized": 3.444,
+      "significant": false,
+      "n_obs": 35,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.505,
+      1.049,
+      0.636,
+      0.712
+    ],
+    "quartiles_pass": 1
+  }
+}

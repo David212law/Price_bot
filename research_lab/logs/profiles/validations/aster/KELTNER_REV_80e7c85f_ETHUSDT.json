@@ -1,0 +1,26 @@
+{
+  "key": "aster:KELTNER_REV:80e7c85f:ETHUSDT",
+  "validation": {
+    "n": 145,
+    "pf": 2.253,
+    "wr": 51.0,
+    "sharpe_daily": 0.2856,
+    "sharpe_ann": 5.456,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2856,
+      "sharpe_annualized": 5.456,
+      "ci_low_annualized": 2.711,
+      "ci_high_annualized": 8.064,
+      "significant": true,
+      "n_obs": 145,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.351,
+      3.023,
+      3.0,
+      2.146
+    ],
+    "quartiles_pass": 4
+  }
+}

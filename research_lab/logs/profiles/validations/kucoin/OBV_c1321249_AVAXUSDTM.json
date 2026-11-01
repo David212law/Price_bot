@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:OBV:c1321249:AVAXUSDTM",
+  "validation": {
+    "n": 20,
+    "pf": 1.556,
+    "wr": 40.0,
+    "sharpe_daily": 0.1915,
+    "sharpe_ann": 3.658,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.513,
+      2.939,
+      0.535,
+      1.784
+    ],
+    "quartiles_pass": 3
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "key": "aster:PRICE_MOMENTUM:069655fb:ETHUSDT",
+  "validation": {
+    "n": 24,
+    "pf": 0.934,
+    "wr": 33.3,
+    "sharpe_daily": -0.0308,
+    "sharpe_ann": -0.588,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.535,
+      1.542,
+      0.422,
+      1.584
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 102,
+        "pf": 0.91,
+        "sharpe_ann": -0.812
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 102,
+        "pf": 0.874,
+        "sharpe_ann": -1.169
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.588,
+        "best_variant_sharpe": 0.303,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 18,
+            "sharpe_ann": -0.757
+          },
+          {
+            "param": "period",
+            "val": 22,
+            "sharpe_ann": 0.234
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.303
+          },
+          {
+            "param": "threshold",
+            "val": 0.02,
+            "sharpe_ann": -0.65
+          }
+        ]
+      }
+    }
+  }
+}

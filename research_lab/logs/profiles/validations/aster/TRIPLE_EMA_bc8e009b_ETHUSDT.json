@@ -1,0 +1,26 @@
+{
+  "key": "aster:TRIPLE_EMA:bc8e009b:ETHUSDT",
+  "validation": {
+    "n": 80,
+    "pf": 0.63,
+    "wr": 16.2,
+    "sharpe_daily": -0.1285,
+    "sharpe_ann": -2.455,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1285,
+      "sharpe_annualized": -2.455,
+      "ci_low_annualized": -14.106,
+      "ci_high_annualized": 1.662,
+      "significant": false,
+      "n_obs": 80,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.35,
+      0.882,
+      1.114,
+      0.189
+    ],
+    "quartiles_pass": 1
+  }
+}

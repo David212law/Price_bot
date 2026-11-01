@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PRICE_SMA:b098eb8e:ETH",
+  "validation": {
+    "n": 49,
+    "pf": 1.177,
+    "wr": 12.2,
+    "sharpe_daily": 0.0385,
+    "sharpe_ann": 0.736,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0385,
+      "sharpe_annualized": 0.736,
+      "ci_low_annualized": -11.537,
+      "ci_high_annualized": 4.572,
+      "significant": false,
+      "n_obs": 49,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.83,
+      1.551,
+      2.064,
+      0.512
+    ],
+    "quartiles_pass": 2
+  }
+}

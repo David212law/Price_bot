@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:a9b717f5:SOL",
+  "validation": {
+    "n": 34,
+    "pf": 1.171,
+    "wr": 47.1,
+    "sharpe_daily": 0.0732,
+    "sharpe_ann": 1.398,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0732,
+      "sharpe_annualized": 1.398,
+      "ci_low_annualized": -5.626,
+      "ci_high_annualized": 7.741,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.485,
+      1.474,
+      6.508,
+      0.634
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:751de2ea:SOL",
+  "validation": {
+    "n": 34,
+    "pf": 1.364,
+    "wr": 50.0,
+    "sharpe_daily": 0.1433,
+    "sharpe_ann": 2.738,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1433,
+      "sharpe_annualized": 2.738,
+      "ci_low_annualized": -3.362,
+      "ci_high_annualized": 9.405,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.955,
+      1.654,
+      2.937,
+      0.854
+    ],
+    "quartiles_pass": 2
+  }
+}

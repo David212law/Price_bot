@@ -1,0 +1,18 @@
+{
+  "key": "aster:SUPERTREND:c07ff47b:AVAXUSDT",
+  "validation": {
+    "n": 25,
+    "pf": 0.673,
+    "wr": 4.0,
+    "sharpe_daily": -0.0883,
+    "sharpe_ann": -1.686,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.0,
+      3.074
+    ],
+    "quartiles_pass": 1
+  }
+}

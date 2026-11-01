@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:KELTNER_REV:16598fcc:XBTUSDTM",
+  "validation": {
+    "n": 123,
+    "pf": 1.544,
+    "wr": 37.4,
+    "sharpe_daily": 0.154,
+    "sharpe_ann": 2.941,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.154,
+      "sharpe_annualized": 2.941,
+      "ci_low_annualized": -0.159,
+      "ci_high_annualized": 5.605,
+      "significant": false,
+      "n_obs": 123,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.39,
+      1.729,
+      1.424,
+      3.243
+    ],
+    "quartiles_pass": 3
+  }
+}

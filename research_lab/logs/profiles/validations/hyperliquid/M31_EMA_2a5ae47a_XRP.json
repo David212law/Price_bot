@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:M31_EMA:2a5ae47a:XRP",
+  "validation": {
+    "n": 89,
+    "pf": 421.008,
+    "wr": 96.6,
+    "sharpe_daily": 1.8368,
+    "sharpe_ann": 35.092,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.8368,
+      "sharpe_annualized": 35.092,
+      "ci_low_annualized": 29.598,
+      "ci_high_annualized": 43.121,
+      "significant": true,
+      "n_obs": 89,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      431.74,
+      312.148,
+      232.772,
+      99.99
+    ],
+    "quartiles_pass": 4
+  }
+}

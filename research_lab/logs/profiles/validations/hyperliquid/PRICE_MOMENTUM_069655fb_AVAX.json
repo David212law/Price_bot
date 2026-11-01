@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:PRICE_MOMENTUM:069655fb:AVAX",
+  "validation": {
+    "n": 16,
+    "pf": 0.674,
+    "wr": 25.0,
+    "sharpe_daily": -0.1741,
+    "sharpe_ann": -3.326,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.299,
+      1.953,
+      0.0
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:SUPERTREND:999352e0:SOLUSDTM",
+  "validation": {
+    "n": 27,
+    "pf": 0.534,
+    "wr": 7.4,
+    "sharpe_daily": -0.1949,
+    "sharpe_ann": -3.723,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.752,
+      0.0,
+      0.0,
+      1.672
+    ],
+    "quartiles_pass": 1
+  }
+}

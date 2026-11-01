@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MACD:44444c83:BTC",
+  "validation": {
+    "n": 47,
+    "pf": 1.303,
+    "wr": 36.2,
+    "sharpe_daily": 0.0675,
+    "sharpe_ann": 1.289,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0675,
+      "sharpe_annualized": 1.289,
+      "ci_low_annualized": -7.396,
+      "ci_high_annualized": 4.956,
+      "significant": false,
+      "n_obs": 47,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.437,
+      0.784,
+      0.72,
+      3.489
+    ],
+    "quartiles_pass": 1
+  }
+}

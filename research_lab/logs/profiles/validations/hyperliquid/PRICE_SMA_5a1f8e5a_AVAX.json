@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PRICE_SMA:5a1f8e5a:AVAX",
+  "validation": {
+    "n": 98,
+    "pf": 0.454,
+    "wr": 13.3,
+    "sharpe_daily": -0.2347,
+    "sharpe_ann": -4.483,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2347,
+      "sharpe_annualized": -4.483,
+      "ci_low_annualized": -13.082,
+      "ci_high_annualized": -0.547,
+      "significant": false,
+      "n_obs": 98,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.164,
+      1.062,
+      0.025,
+      0.468
+    ],
+    "quartiles_pass": 1
+  }
+}

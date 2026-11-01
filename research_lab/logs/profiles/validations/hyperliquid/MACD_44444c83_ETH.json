@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MACD:44444c83:ETH",
+  "validation": {
+    "n": 51,
+    "pf": 0.895,
+    "wr": 21.6,
+    "sharpe_daily": -0.0317,
+    "sharpe_ann": -0.606,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0317,
+      "sharpe_annualized": -0.606,
+      "ci_low_annualized": -11.683,
+      "ci_high_annualized": 3.613,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.319,
+      0.91,
+      2.054,
+      0.492
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:EMA_CROSS:44f40910:XBTUSDTM",
+  "validation": {
+    "n": 18,
+    "pf": 2.667,
+    "wr": 33.3,
+    "sharpe_daily": 0.2653,
+    "sharpe_ann": 5.069,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      5.573,
+      3.259,
+      2.453
+    ],
+    "quartiles_pass": 3
+  }
+}

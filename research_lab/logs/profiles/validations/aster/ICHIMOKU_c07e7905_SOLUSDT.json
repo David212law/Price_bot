@@ -1,0 +1,26 @@
+{
+  "key": "aster:ICHIMOKU:c07e7905:SOLUSDT",
+  "validation": {
+    "n": 67,
+    "pf": 0.929,
+    "wr": 22.4,
+    "sharpe_daily": -0.0181,
+    "sharpe_ann": -0.346,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0181,
+      "sharpe_annualized": -0.346,
+      "ci_low_annualized": -9.201,
+      "ci_high_annualized": 3.229,
+      "significant": false,
+      "n_obs": 67,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.249,
+      0.186,
+      0.905,
+      3.747
+    ],
+    "quartiles_pass": 1
+  }
+}

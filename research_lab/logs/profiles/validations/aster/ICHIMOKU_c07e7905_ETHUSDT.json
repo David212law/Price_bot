@@ -1,0 +1,26 @@
+{
+  "key": "aster:ICHIMOKU:c07e7905:ETHUSDT",
+  "validation": {
+    "n": 63,
+    "pf": 0.432,
+    "wr": 19.0,
+    "sharpe_daily": -0.2565,
+    "sharpe_ann": -4.901,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2565,
+      "sharpe_annualized": -4.901,
+      "ci_low_annualized": -16.669,
+      "ci_high_annualized": 0.185,
+      "significant": false,
+      "n_obs": 63,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.054,
+      0.901,
+      0.456,
+      0.534
+    ],
+    "quartiles_pass": 0
+  }
+}

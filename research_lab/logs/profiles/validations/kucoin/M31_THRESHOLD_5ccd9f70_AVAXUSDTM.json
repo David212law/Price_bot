@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_THRESHOLD:5ccd9f70:AVAXUSDTM",
+  "validation": {
+    "n": 224,
+    "pf": 6.854,
+    "wr": 69.2,
+    "sharpe_daily": 0.6074,
+    "sharpe_ann": 11.604,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.6074,
+      "sharpe_annualized": 11.604,
+      "ci_low_annualized": 9.702,
+      "ci_high_annualized": 13.769,
+      "significant": true,
+      "n_obs": 224,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.73,
+      11.777,
+      9.193,
+      11.955
+    ],
+    "quartiles_pass": 4
+  }
+}

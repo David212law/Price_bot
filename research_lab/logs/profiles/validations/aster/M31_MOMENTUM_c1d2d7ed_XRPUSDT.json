@@ -1,0 +1,37 @@
+{
+  "key": "aster:M31_MOMENTUM:c1d2d7ed:XRPUSDT",
+  "validation": {
+    "n": 72,
+    "pf": 6.221,
+    "wr": 70.8,
+    "sharpe_daily": 0.7882,
+    "sharpe_ann": 15.058,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.7882,
+      "sharpe_annualized": 15.058,
+      "ci_low_annualized": 10.063,
+      "ci_high_annualized": 21.001,
+      "significant": true,
+      "n_obs": 72,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      99.99,
+      13.178,
+      1.991,
+      1.256
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

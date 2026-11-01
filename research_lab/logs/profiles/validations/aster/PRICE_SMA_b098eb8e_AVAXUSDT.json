@@ -1,0 +1,26 @@
+{
+  "key": "aster:PRICE_SMA:b098eb8e:AVAXUSDT",
+  "validation": {
+    "n": 67,
+    "pf": 0.633,
+    "wr": 14.9,
+    "sharpe_daily": -0.1019,
+    "sharpe_ann": -1.947,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1019,
+      "sharpe_annualized": -1.947,
+      "ci_low_annualized": -15.615,
+      "ci_high_annualized": 2.096,
+      "significant": false,
+      "n_obs": 67,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.201,
+      0.12,
+      0.234,
+      1.705
+    ],
+    "quartiles_pass": 1
+  }
+}

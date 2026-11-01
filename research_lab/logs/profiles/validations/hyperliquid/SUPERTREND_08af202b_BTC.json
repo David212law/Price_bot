@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:SUPERTREND:08af202b:BTC",
+  "validation": {
+    "n": 27,
+    "pf": 3.058,
+    "wr": 18.5,
+    "sharpe_daily": 0.2031,
+    "sharpe_ann": 3.881,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.254,
+      4.912,
+      0.0,
+      6.145
+    ],
+    "quartiles_pass": 2
+  }
+}

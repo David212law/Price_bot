@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:SUPERTREND:999352e0:ETHUSDTM",
+  "validation": {
+    "n": 22,
+    "pf": 1.818,
+    "wr": 13.6,
+    "sharpe_daily": 0.1322,
+    "sharpe_ann": 2.526,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.0,
+      9.02
+    ],
+    "quartiles_pass": 1
+  }
+}

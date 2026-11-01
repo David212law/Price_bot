@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:SUPERTREND:3baccf59:AVAXUSDTM",
+  "validation": {
+    "n": 66,
+    "pf": 0.986,
+    "wr": 12.1,
+    "sharpe_daily": -0.0031,
+    "sharpe_ann": -0.059,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0031,
+      "sharpe_annualized": -0.059,
+      "ci_low_annualized": -12.476,
+      "ci_high_annualized": 3.483,
+      "significant": false,
+      "n_obs": 66,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.437,
+      1.948,
+      0.0,
+      0.255
+    ],
+    "quartiles_pass": 2
+  }
+}

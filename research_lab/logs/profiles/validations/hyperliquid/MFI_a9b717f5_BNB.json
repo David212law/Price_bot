@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:a9b717f5:BNB",
+  "validation": {
+    "n": 37,
+    "pf": 1.186,
+    "wr": 40.5,
+    "sharpe_daily": 0.0768,
+    "sharpe_ann": 1.468,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0768,
+      "sharpe_annualized": 1.468,
+      "ci_low_annualized": -5.089,
+      "ci_high_annualized": 7.38,
+      "significant": false,
+      "n_obs": 37,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.77,
+      1.672,
+      0.982,
+      1.338
+    ],
+    "quartiles_pass": 2
+  }
+}

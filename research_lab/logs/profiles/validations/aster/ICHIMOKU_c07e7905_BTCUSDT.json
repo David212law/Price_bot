@@ -1,0 +1,26 @@
+{
+  "key": "aster:ICHIMOKU:c07e7905:BTCUSDT",
+  "validation": {
+    "n": 57,
+    "pf": 0.632,
+    "wr": 31.6,
+    "sharpe_daily": -0.1477,
+    "sharpe_ann": -2.822,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1477,
+      "sharpe_annualized": -2.822,
+      "ci_low_annualized": -13.05,
+      "ci_high_annualized": 2.03,
+      "significant": false,
+      "n_obs": 57,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.207,
+      2.173,
+      0.1,
+      0.736
+    ],
+    "quartiles_pass": 1
+  }
+}

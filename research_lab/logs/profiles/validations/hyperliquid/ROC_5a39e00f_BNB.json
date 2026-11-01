@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ROC:5a39e00f:BNB",
+  "validation": {
+    "n": 20,
+    "pf": 0.921,
+    "wr": 30.0,
+    "sharpe_daily": -0.0355,
+    "sharpe_ann": -0.678,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.282,
+      1.566,
+      1.107,
+      0.0
+    ],
+    "quartiles_pass": 3
+  }
+}

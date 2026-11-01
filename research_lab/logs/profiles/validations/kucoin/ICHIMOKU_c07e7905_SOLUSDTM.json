@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ICHIMOKU:c07e7905:SOLUSDTM",
+  "validation": {
+    "n": 83,
+    "pf": 1.014,
+    "wr": 20.5,
+    "sharpe_daily": 0.0036,
+    "sharpe_ann": 0.068,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0036,
+      "sharpe_annualized": 0.068,
+      "ci_low_annualized": -7.096,
+      "ci_high_annualized": 3.45,
+      "significant": false,
+      "n_obs": 83,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.859,
+      0.394,
+      0.485,
+      4.106
+    ],
+    "quartiles_pass": 1
+  }
+}

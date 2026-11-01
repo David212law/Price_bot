@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_QUANTILE:7010f625:SOLUSDTM",
+  "validation": {
+    "n": 126,
+    "pf": 4.281,
+    "wr": 65.9,
+    "sharpe_daily": 0.5447,
+    "sharpe_ann": 10.406,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.5447,
+      "sharpe_annualized": 10.406,
+      "ci_low_annualized": 6.908,
+      "ci_high_annualized": 14.509,
+      "significant": true,
+      "n_obs": 126,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.686,
+      1.498,
+      12.668,
+      37.747
+    ],
+    "quartiles_pass": 4
+  }
+}

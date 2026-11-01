@@ -1,0 +1,37 @@
+{
+  "key": "aster:M31_EMA:078447f0:BTCUSDT",
+  "validation": {
+    "n": 98,
+    "pf": 19.267,
+    "wr": 86.7,
+    "sharpe_daily": 1.4593,
+    "sharpe_ann": 27.88,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.4593,
+      "sharpe_annualized": 27.88,
+      "ci_low_annualized": 20.651,
+      "ci_high_annualized": 38.146,
+      "significant": true,
+      "n_obs": 98,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1436.619,
+      22.344,
+      6.711,
+      13.613
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

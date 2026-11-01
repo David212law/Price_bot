@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_MOMENTUM:7c85db8a:ETHUSDTM",
+  "validation": {
+    "n": 48,
+    "pf": 1.108,
+    "wr": 35.4,
+    "sharpe_daily": 0.0437,
+    "sharpe_ann": 0.835,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0437,
+      "sharpe_annualized": 0.835,
+      "ci_low_annualized": -5.142,
+      "ci_high_annualized": 5.886,
+      "significant": false,
+      "n_obs": 48,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.455,
+      0.456,
+      1.888,
+      1.025
+    ],
+    "quartiles_pass": 3
+  }
+}

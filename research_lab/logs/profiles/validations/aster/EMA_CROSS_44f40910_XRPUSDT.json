@@ -1,0 +1,18 @@
+{
+  "key": "aster:EMA_CROSS:44f40910:XRPUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 0.197,
+    "wr": 26.3,
+    "sharpe_daily": -0.6795,
+    "sharpe_ann": -12.981,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.29,
+      0.199,
+      0.329,
+      0.137
+    ],
+    "quartiles_pass": 0
+  }
+}

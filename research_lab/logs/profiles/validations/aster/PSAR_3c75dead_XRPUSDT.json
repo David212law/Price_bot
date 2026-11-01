@@ -1,0 +1,26 @@
+{
+  "key": "aster:PSAR:3c75dead:XRPUSDT",
+  "validation": {
+    "n": 137,
+    "pf": 0.865,
+    "wr": 35.0,
+    "sharpe_daily": -0.0365,
+    "sharpe_ann": -0.698,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0365,
+      "sharpe_annualized": -0.698,
+      "ci_low_annualized": -6.445,
+      "ci_high_annualized": 2.006,
+      "significant": false,
+      "n_obs": 137,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.657,
+      1.085,
+      0.801,
+      0.937
+    ],
+    "quartiles_pass": 1
+  }
+}

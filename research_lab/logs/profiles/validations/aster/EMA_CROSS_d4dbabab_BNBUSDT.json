@@ -1,0 +1,18 @@
+{
+  "key": "aster:EMA_CROSS:d4dbabab:BNBUSDT",
+  "validation": {
+    "n": 22,
+    "pf": 0.354,
+    "wr": 18.2,
+    "sharpe_daily": -0.4689,
+    "sharpe_ann": -8.959,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.8,
+      0.254,
+      0.78,
+      0.0
+    ],
+    "quartiles_pass": 0
+  }
+}

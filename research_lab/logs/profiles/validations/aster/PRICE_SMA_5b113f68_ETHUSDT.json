@@ -1,0 +1,18 @@
+{
+  "key": "aster:PRICE_SMA:5b113f68:ETHUSDT",
+  "validation": {
+    "n": 24,
+    "pf": 1.87,
+    "wr": 20.8,
+    "sharpe_daily": 0.169,
+    "sharpe_ann": 3.229,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.032,
+      0.0,
+      6.76,
+      0.97
+    ],
+    "quartiles_pass": 2
+  }
+}

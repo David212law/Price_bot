@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:KELTNER_REV:16598fcc:XRPUSDTM",
+  "validation": {
+    "n": 118,
+    "pf": 1.964,
+    "wr": 43.2,
+    "sharpe_daily": 0.238,
+    "sharpe_ann": 4.547,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.238,
+      "sharpe_annualized": 4.547,
+      "ci_low_annualized": 1.661,
+      "ci_high_annualized": 7.392,
+      "significant": true,
+      "n_obs": 118,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.966,
+      4.811,
+      0.798,
+      2.414
+    ],
+    "quartiles_pass": 2
+  }
+}

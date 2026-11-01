@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:M31_MOMENTUM:e15cd75e:AVAX",
+  "validation": {
+    "n": 149,
+    "pf": 230.897,
+    "wr": 89.9,
+    "sharpe_daily": 1.5363,
+    "sharpe_ann": 29.352,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.5363,
+      "sharpe_annualized": 29.352,
+      "ci_low_annualized": 25.652,
+      "ci_high_annualized": 34.223,
+      "significant": true,
+      "n_obs": 149,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      10345.95,
+      177.738,
+      164.237,
+      135.485
+    ],
+    "quartiles_pass": 4
+  }
+}

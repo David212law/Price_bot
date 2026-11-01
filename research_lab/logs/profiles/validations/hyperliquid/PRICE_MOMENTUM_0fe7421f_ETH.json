@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:PRICE_MOMENTUM:0fe7421f:ETH",
+  "validation": {
+    "n": 23,
+    "pf": 0.939,
+    "wr": 34.8,
+    "sharpe_daily": -0.0289,
+    "sharpe_ann": -0.553,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.513,
+      1.417,
+      0.39,
+      1.79
+    ],
+    "quartiles_pass": 2
+  }
+}

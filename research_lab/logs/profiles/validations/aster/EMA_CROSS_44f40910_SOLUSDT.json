@@ -1,0 +1,18 @@
+{
+  "key": "aster:EMA_CROSS:44f40910:SOLUSDT",
+  "validation": {
+    "n": 11,
+    "pf": 3.85,
+    "wr": 45.5,
+    "sharpe_daily": 0.4041,
+    "sharpe_ann": 7.721,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.618,
+      3.184,
+      15.273
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:DONCHIAN:6af88d9e:AVAXUSDTM",
+  "validation": {
+    "n": 30,
+    "pf": 0.761,
+    "wr": 36.7,
+    "sharpe_daily": -0.1,
+    "sharpe_ann": -1.91,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1,
+      "sharpe_annualized": -1.91,
+      "ci_low_annualized": -15.153,
+      "ci_high_annualized": 4.079,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.003,
+      0.019,
+      1.222,
+      0.917
+    ],
+    "quartiles_pass": 2
+  }
+}

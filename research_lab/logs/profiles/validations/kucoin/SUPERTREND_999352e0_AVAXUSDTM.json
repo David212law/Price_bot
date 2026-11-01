@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:SUPERTREND:999352e0:AVAXUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 1.313,
+    "wr": 8.3,
+    "sharpe_daily": 0.0648,
+    "sharpe_ann": 1.238,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      3.205,
+      2.421
+    ],
+    "quartiles_pass": 2
+  }
+}

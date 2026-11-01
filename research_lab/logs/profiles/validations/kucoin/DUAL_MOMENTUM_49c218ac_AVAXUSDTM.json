@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:DUAL_MOMENTUM:49c218ac:AVAXUSDTM",
+  "validation": {
+    "n": 46,
+    "pf": 0.655,
+    "wr": 10.9,
+    "sharpe_daily": -0.1313,
+    "sharpe_ann": -2.508,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1313,
+      "sharpe_annualized": -2.508,
+      "ci_low_annualized": -22.434,
+      "ci_high_annualized": 2.771,
+      "significant": false,
+      "n_obs": 46,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.915,
+      0.0,
+      1.027,
+      0.904
+    ],
+    "quartiles_pass": 1
+  }
+}

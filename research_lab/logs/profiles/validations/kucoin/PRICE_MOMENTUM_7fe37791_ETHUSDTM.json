@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:PRICE_MOMENTUM:7fe37791:ETHUSDTM",
+  "validation": {
+    "n": 26,
+    "pf": 0.915,
+    "wr": 38.5,
+    "sharpe_daily": -0.0398,
+    "sharpe_ann": -0.761,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.894,
+      0.433,
+      0.695,
+      1.466
+    ],
+    "quartiles_pass": 2
+  }
+}

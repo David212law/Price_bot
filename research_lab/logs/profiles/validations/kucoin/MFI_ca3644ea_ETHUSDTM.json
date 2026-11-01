@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MFI:ca3644ea:ETHUSDTM",
+  "validation": {
+    "n": 50,
+    "pf": 0.762,
+    "wr": 36.0,
+    "sharpe_daily": -0.1247,
+    "sharpe_ann": -2.383,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1247,
+      "sharpe_annualized": -2.383,
+      "ci_low_annualized": -8.21,
+      "ci_high_annualized": 2.924,
+      "significant": false,
+      "n_obs": 50,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.618,
+      0.968,
+      0.837,
+      0.626
+    ],
+    "quartiles_pass": 0
+  }
+}

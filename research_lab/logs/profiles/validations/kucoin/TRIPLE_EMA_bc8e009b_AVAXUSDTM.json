@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:TRIPLE_EMA:bc8e009b:AVAXUSDTM",
+  "validation": {
+    "n": 109,
+    "pf": 0.563,
+    "wr": 16.5,
+    "sharpe_daily": -0.1731,
+    "sharpe_ann": -3.308,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1731,
+      "sharpe_annualized": -3.308,
+      "ci_low_annualized": -10.648,
+      "ci_high_annualized": 0.409,
+      "significant": false,
+      "n_obs": 109,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.771,
+      0.129,
+      0.558,
+      0.814
+    ],
+    "quartiles_pass": 0
+  }
+}

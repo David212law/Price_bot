@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ELDER_IMPULSE:bf9e1a87:BTC",
+  "validation": {
+    "n": 51,
+    "pf": 1.018,
+    "wr": 35.3,
+    "sharpe_daily": 0.0083,
+    "sharpe_ann": 0.158,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0083,
+      "sharpe_annualized": 0.158,
+      "ci_low_annualized": -5.413,
+      "ci_high_annualized": 5.003,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.199,
+      0.944,
+      1.274,
+      0.789
+    ],
+    "quartiles_pass": 2
+  }
+}

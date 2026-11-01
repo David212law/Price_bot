@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MOMENTUM_SMA:68c79e14:ETH",
+  "validation": {
+    "n": 45,
+    "pf": 1.372,
+    "wr": 42.2,
+    "sharpe_daily": 0.1444,
+    "sharpe_ann": 2.759,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1444,
+      "sharpe_annualized": 2.759,
+      "ci_low_annualized": -3.148,
+      "ci_high_annualized": 8.239,
+      "significant": false,
+      "n_obs": 45,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.624,
+      1.415,
+      0.721,
+      1.706
+    ],
+    "quartiles_pass": 3
+  }
+}

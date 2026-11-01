@@ -1,0 +1,26 @@
+{
+  "key": "aster:MACD:44444c83:ETHUSDT",
+  "validation": {
+    "n": 58,
+    "pf": 0.654,
+    "wr": 31.0,
+    "sharpe_daily": -0.1474,
+    "sharpe_ann": -2.816,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1474,
+      "sharpe_annualized": -2.816,
+      "ci_low_annualized": -11.47,
+      "ci_high_annualized": 2.041,
+      "significant": false,
+      "n_obs": 58,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.339,
+      1.998,
+      0.138,
+      0.717
+    ],
+    "quartiles_pass": 1
+  }
+}

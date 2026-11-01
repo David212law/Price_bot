@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MOMENTUM_SMA:ee35929c:XRP",
+  "validation": {
+    "n": 58,
+    "pf": 0.859,
+    "wr": 32.8,
+    "sharpe_daily": -0.0682,
+    "sharpe_ann": -1.304,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0682,
+      "sharpe_annualized": -1.304,
+      "ci_low_annualized": -6.349,
+      "ci_high_annualized": 3.778,
+      "significant": false,
+      "n_obs": 58,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.441,
+      0.798,
+      1.108,
+      1.034
+    ],
+    "quartiles_pass": 2
+  }
+}

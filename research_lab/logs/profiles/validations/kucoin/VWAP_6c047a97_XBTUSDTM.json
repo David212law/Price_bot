@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VWAP:6c047a97:XBTUSDTM",
+  "validation": {
+    "n": 105,
+    "pf": 0.876,
+    "wr": 50.5,
+    "sharpe_daily": -0.0515,
+    "sharpe_ann": -0.984,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0515,
+      "sharpe_annualized": -0.984,
+      "ci_low_annualized": -5.352,
+      "ci_high_annualized": 2.669,
+      "significant": false,
+      "n_obs": 105,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.758,
+      0.76,
+      0.659,
+      0.93
+    ],
+    "quartiles_pass": 1
+  }
+}

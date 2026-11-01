@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_QUANTILE:dd1ce711:AVAXUSDTM",
+  "validation": {
+    "n": 169,
+    "pf": 7.071,
+    "wr": 65.7,
+    "sharpe_daily": 0.6005,
+    "sharpe_ann": 11.472,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.6005,
+      "sharpe_annualized": 11.472,
+      "ci_low_annualized": 9.235,
+      "ci_high_annualized": 13.948,
+      "significant": true,
+      "n_obs": 169,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.568,
+      8.339,
+      7.898,
+      22.609
+    ],
+    "quartiles_pass": 4
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PSAR:3c75dead:BTC",
+  "validation": {
+    "n": 122,
+    "pf": 0.602,
+    "wr": 31.1,
+    "sharpe_daily": -0.1781,
+    "sharpe_ann": -3.403,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1781,
+      "sharpe_annualized": -3.403,
+      "ci_low_annualized": -8.584,
+      "ci_high_annualized": 0.061,
+      "significant": false,
+      "n_obs": 122,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.424,
+      1.131,
+      0.647,
+      0.297
+    ],
+    "quartiles_pass": 1
+  }
+}

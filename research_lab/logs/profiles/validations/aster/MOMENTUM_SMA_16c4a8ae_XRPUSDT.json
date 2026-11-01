@@ -1,0 +1,63 @@
+{
+  "key": "aster:MOMENTUM_SMA:16c4a8ae:XRPUSDT",
+  "validation": {
+    "n": 67,
+    "pf": 0.787,
+    "wr": 31.3,
+    "sharpe_daily": -0.1087,
+    "sharpe_ann": -2.076,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1087,
+      "sharpe_annualized": -2.076,
+      "ci_low_annualized": -7.27,
+      "ci_high_annualized": 2.496,
+      "significant": false,
+      "n_obs": 67,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.449,
+      0.993,
+      0.274,
+      1.493
+    ],
+    "quartiles_pass": 1,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 201,
+        "pf": 0.978,
+        "sharpe_ann": -0.18
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 201,
+        "pf": 0.929,
+        "sharpe_ann": -0.595
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.076,
+        "best_variant_sharpe": 0.15,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 36,
+            "sharpe_ann": -0.714
+          },
+          {
+            "param": "period",
+            "val": 44,
+            "sharpe_ann": 0.15
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 0.053
+          }
+        ]
+      }
+    }
+  }
+}

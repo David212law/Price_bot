@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:MOMENTUM_EMA:a2b1971a:BNBUSDTM",
+  "validation": {
+    "n": 21,
+    "pf": 1.974,
+    "wr": 52.4,
+    "sharpe_daily": 0.2949,
+    "sharpe_ann": 5.634,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.843,
+      1.544,
+      2.545,
+      1.837
+    ],
+    "quartiles_pass": 4
+  }
+}

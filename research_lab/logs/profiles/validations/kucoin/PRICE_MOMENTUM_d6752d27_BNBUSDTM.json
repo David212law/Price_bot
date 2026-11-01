@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:PRICE_MOMENTUM:d6752d27:BNBUSDTM",
+  "validation": {
+    "n": 22,
+    "pf": 1.07,
+    "wr": 36.4,
+    "sharpe_daily": 0.0295,
+    "sharpe_ann": 0.564,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.471,
+      1.368,
+      2.165,
+      0.595
+    ],
+    "quartiles_pass": 2
+  }
+}

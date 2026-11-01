@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:VOL_DONCHIAN:45495c3a:XRPUSDTM",
+  "validation": {
+    "n": 41,
+    "pf": 0.499,
+    "wr": 56.1,
+    "sharpe_daily": -0.2492,
+    "sharpe_ann": -4.761,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2492,
+      "sharpe_annualized": -4.761,
+      "ci_low_annualized": -9.551,
+      "ci_high_annualized": 0.401,
+      "significant": false,
+      "n_obs": 41,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.423,
+      0.717,
+      0.399,
+      0.548
+    ],
+    "quartiles_pass": 0
+  }
+}

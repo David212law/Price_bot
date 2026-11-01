@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:EMA_CROSS:44f40910:ETH",
+  "validation": {
+    "n": 15,
+    "pf": 1.354,
+    "wr": 20.0,
+    "sharpe_daily": 0.0986,
+    "sharpe_ann": 1.884,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.964,
+      3.367,
+      0.0,
+      1.458
+    ],
+    "quartiles_pass": 2
+  }
+}

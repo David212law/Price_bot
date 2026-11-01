@@ -1,0 +1,26 @@
+{
+  "key": "aster:PSAR:fdb1f92e:SOLUSDT",
+  "validation": {
+    "n": 71,
+    "pf": 1.277,
+    "wr": 42.3,
+    "sharpe_daily": 0.0781,
+    "sharpe_ann": 1.491,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0781,
+      "sharpe_annualized": 1.491,
+      "ci_low_annualized": -3.975,
+      "ci_high_annualized": 5.297,
+      "significant": false,
+      "n_obs": 71,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.544,
+      3.168,
+      2.205,
+      0.661
+    ],
+    "quartiles_pass": 2
+  }
+}

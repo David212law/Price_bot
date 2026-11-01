@@ -1,0 +1,18 @@
+{
+  "key": "aster:DUAL_MOMENTUM:8e447ab2:SOLUSDT",
+  "validation": {
+    "n": 20,
+    "pf": 2.101,
+    "wr": 45.0,
+    "sharpe_daily": 0.2096,
+    "sharpe_ann": 4.005,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.199,
+      27.488,
+      0.709,
+      4.696
+    ],
+    "quartiles_pass": 2
+  }
+}

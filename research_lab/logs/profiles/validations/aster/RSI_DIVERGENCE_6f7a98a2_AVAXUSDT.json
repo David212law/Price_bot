@@ -1,0 +1,18 @@
+{
+  "key": "aster:RSI_DIVERGENCE:6f7a98a2:AVAXUSDT",
+  "validation": {
+    "n": 13,
+    "pf": 0.772,
+    "wr": 30.8,
+    "sharpe_daily": -0.1129,
+    "sharpe_ann": -2.156,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.488,
+      1.266,
+      1.969
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:SUPERTREND:8e13ec99:XRPUSDTM",
+  "validation": {
+    "n": 40,
+    "pf": 1.186,
+    "wr": 12.5,
+    "sharpe_daily": 0.0398,
+    "sharpe_ann": 0.761,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0398,
+      "sharpe_annualized": 0.761,
+      "ci_low_annualized": -11.46,
+      "ci_high_annualized": 5.143,
+      "significant": false,
+      "n_obs": 40,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.088,
+      0.773,
+      0.746,
+      1.679
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PSAR:3c75dead:ETH",
+  "validation": {
+    "n": 109,
+    "pf": 0.677,
+    "wr": 32.1,
+    "sharpe_daily": -0.1279,
+    "sharpe_ann": -2.443,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1279,
+      "sharpe_annualized": -2.443,
+      "ci_low_annualized": -8.115,
+      "ci_high_annualized": 1.027,
+      "significant": false,
+      "n_obs": 109,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.203,
+      1.505,
+      1.622,
+      0.291
+    ],
+    "quartiles_pass": 2
+  }
+}

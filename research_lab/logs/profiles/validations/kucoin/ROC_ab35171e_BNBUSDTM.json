@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ROC:ab35171e:BNBUSDTM",
+  "validation": {
+    "n": 13,
+    "pf": 1.102,
+    "wr": 38.5,
+    "sharpe_daily": 0.0428,
+    "sharpe_ann": 0.818,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.891,
+      0.863,
+      2.162,
+      0.774
+    ],
+    "quartiles_pass": 1
+  }
+}

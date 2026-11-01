@@ -1,0 +1,18 @@
+{
+  "key": "aster:RSI_REVERSAL:c7f0db3e:AVAXUSDT",
+  "validation": {
+    "n": 24,
+    "pf": 1.127,
+    "wr": 45.8,
+    "sharpe_daily": 0.055,
+    "sharpe_ann": 1.052,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.81,
+      0.188,
+      2.779,
+      0.782
+    ],
+    "quartiles_pass": 2
+  }
+}

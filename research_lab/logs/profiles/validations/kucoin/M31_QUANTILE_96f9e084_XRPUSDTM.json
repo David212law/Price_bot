@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_QUANTILE:96f9e084:XRPUSDTM",
+  "validation": {
+    "n": 219,
+    "pf": 12.593,
+    "wr": 77.2,
+    "sharpe_daily": 0.9341,
+    "sharpe_ann": 17.847,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.9341,
+      "sharpe_annualized": 17.847,
+      "ci_low_annualized": 15.294,
+      "ci_high_annualized": 20.928,
+      "significant": true,
+      "n_obs": 219,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      4.443,
+      6.036,
+      234.792,
+      50.222
+    ],
+    "quartiles_pass": 4
+  }
+}

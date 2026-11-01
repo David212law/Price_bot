@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ATR_BREAKOUT:64ccfbdb:BTC",
+  "validation": {
+    "n": 37,
+    "pf": 0.677,
+    "wr": 29.7,
+    "sharpe_daily": -0.1815,
+    "sharpe_ann": -3.468,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1815,
+      "sharpe_annualized": -3.468,
+      "ci_low_annualized": -11.256,
+      "ci_high_annualized": 2.769,
+      "significant": false,
+      "n_obs": 37,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.477,
+      1.105,
+      0.734,
+      0.435
+    ],
+    "quartiles_pass": 1
+  }
+}

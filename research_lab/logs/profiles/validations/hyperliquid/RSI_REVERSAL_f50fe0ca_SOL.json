@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:RSI_REVERSAL:f50fe0ca:SOL",
+  "validation": {
+    "n": 14,
+    "pf": 0.829,
+    "wr": 35.7,
+    "sharpe_daily": -0.0839,
+    "sharpe_ann": -1.603,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      2.525,
+      1.563,
+      0.447
+    ],
+    "quartiles_pass": 2
+  }
+}

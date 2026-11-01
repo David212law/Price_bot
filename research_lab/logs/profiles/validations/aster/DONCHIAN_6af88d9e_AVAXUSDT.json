@@ -1,0 +1,26 @@
+{
+  "key": "aster:DONCHIAN:6af88d9e:AVAXUSDT",
+  "validation": {
+    "n": 31,
+    "pf": 0.43,
+    "wr": 22.6,
+    "sharpe_daily": -0.3123,
+    "sharpe_ann": -5.966,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3123,
+      "sharpe_annualized": -5.966,
+      "ci_low_annualized": -29.402,
+      "ci_high_annualized": 1.133,
+      "significant": false,
+      "n_obs": 31,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.013,
+      1.548,
+      0.0,
+      0.777
+    ],
+    "quartiles_pass": 1
+  }
+}

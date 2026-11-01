@@ -1,0 +1,18 @@
+{
+  "key": "aster:DUAL_MOMENTUM:617330fc:BNBUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 0.679,
+    "wr": 31.6,
+    "sharpe_daily": -0.1201,
+    "sharpe_ann": -2.294,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.817,
+      0.144,
+      0.178,
+      1.808
+    ],
+    "quartiles_pass": 2
+  }
+}

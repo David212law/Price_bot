@@ -1,0 +1,68 @@
+{
+  "key": "aster:MEAN_REV_SMA:aae4e53b:SOLUSDT",
+  "validation": {
+    "n": 52,
+    "pf": 0.788,
+    "wr": 32.7,
+    "sharpe_daily": -0.1038,
+    "sharpe_ann": -1.983,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1038,
+      "sharpe_annualized": -1.983,
+      "ci_low_annualized": -8.969,
+      "ci_high_annualized": 3.163,
+      "significant": false,
+      "n_obs": 52,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.838,
+      1.066,
+      0.793,
+      0.134
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 171,
+        "pf": 0.834,
+        "sharpe_ann": -1.432
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 171,
+        "pf": 0.79,
+        "sharpe_ann": -1.875
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.983,
+        "best_variant_sharpe": -1.102,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 45,
+            "sharpe_ann": -1.402
+          },
+          {
+            "param": "period",
+            "val": 55,
+            "sharpe_ann": -1.102
+          },
+          {
+            "param": "deviation",
+            "val": 0.03,
+            "sharpe_ann": -1.136
+          },
+          {
+            "param": "deviation",
+            "val": 0.03,
+            "sharpe_ann": -1.136
+          }
+        ]
+      }
+    }
+  }
+}

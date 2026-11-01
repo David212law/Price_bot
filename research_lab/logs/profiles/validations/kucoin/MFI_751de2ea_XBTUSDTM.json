@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MFI:751de2ea:XBTUSDTM",
+  "validation": {
+    "n": 43,
+    "pf": 0.891,
+    "wr": 37.2,
+    "sharpe_daily": -0.0522,
+    "sharpe_ann": -0.997,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0522,
+      "sharpe_annualized": -0.997,
+      "ci_low_annualized": -7.223,
+      "ci_high_annualized": 4.514,
+      "significant": false,
+      "n_obs": 43,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.1,
+      1.16,
+      0.745,
+      0.611
+    ],
+    "quartiles_pass": 2
+  }
+}

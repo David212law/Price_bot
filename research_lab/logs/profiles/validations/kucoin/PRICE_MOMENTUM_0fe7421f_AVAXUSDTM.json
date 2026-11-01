@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:PRICE_MOMENTUM:0fe7421f:AVAXUSDTM",
+  "validation": {
+    "n": 28,
+    "pf": 0.972,
+    "wr": 32.1,
+    "sharpe_daily": -0.0127,
+    "sharpe_ann": -0.242,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.364,
+      0.372,
+      0.895,
+      1.257
+    ],
+    "quartiles_pass": 2
+  }
+}

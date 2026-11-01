@@ -1,0 +1,18 @@
+{
+  "key": "aster:DONCHIAN:6af88d9e:SOLUSDT",
+  "validation": {
+    "n": 26,
+    "pf": 0.903,
+    "wr": 34.6,
+    "sharpe_daily": -0.0347,
+    "sharpe_ann": -0.664,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      2.568,
+      0.411,
+      2.647
+    ],
+    "quartiles_pass": 2
+  }
+}

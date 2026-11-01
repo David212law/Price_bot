@@ -1,0 +1,26 @@
+{
+  "key": "aster:DONCHIAN:48b59485:BNBUSDT",
+  "validation": {
+    "n": 50,
+    "pf": 0.909,
+    "wr": 34.0,
+    "sharpe_daily": -0.0354,
+    "sharpe_ann": -0.676,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0354,
+      "sharpe_annualized": -0.676,
+      "ci_low_annualized": -7.769,
+      "ci_high_annualized": 4.433,
+      "significant": false,
+      "n_obs": 50,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.56,
+      1.356,
+      0.231,
+      1.859
+    ],
+    "quartiles_pass": 2
+  }
+}

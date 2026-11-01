@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:ROC:2f3e28bc:XRPUSDTM",
+  "validation": {
+    "n": 11,
+    "pf": 1.968,
+    "wr": 54.5,
+    "sharpe_daily": 0.2968,
+    "sharpe_ann": 5.671,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.041,
+      1.889,
+      1.65,
+      2.045
+    ],
+    "quartiles_pass": 4
+  }
+}

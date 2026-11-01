@@ -1,0 +1,26 @@
+{
+  "key": "aster:PSAR:e3e05773:BTCUSDT",
+  "validation": {
+    "n": 79,
+    "pf": 0.842,
+    "wr": 30.4,
+    "sharpe_daily": -0.0583,
+    "sharpe_ann": -1.113,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0583,
+      "sharpe_annualized": -1.113,
+      "ci_low_annualized": -7.598,
+      "ci_high_annualized": 3.016,
+      "significant": false,
+      "n_obs": 79,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.883,
+      1.241,
+      0.304,
+      1.106
+    ],
+    "quartiles_pass": 2
+  }
+}

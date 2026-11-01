@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:PRICE_MOMENTUM:7fe37791:XBTUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 1.417,
+    "wr": 45.8,
+    "sharpe_daily": 0.1527,
+    "sharpe_ann": 2.917,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.187,
+      0.463,
+      2.737,
+      2.296
+    ],
+    "quartiles_pass": 3
+  }
+}

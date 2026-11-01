@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:M31_QUANTILE:d94dcc57:BTC",
+  "validation": {
+    "n": 102,
+    "pf": 328.365,
+    "wr": 92.2,
+    "sharpe_daily": 1.2813,
+    "sharpe_ann": 24.48,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.2813,
+      "sharpe_annualized": 24.48,
+      "ci_low_annualized": 21.201,
+      "ci_high_annualized": 28.376,
+      "significant": true,
+      "n_obs": 102,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      30.173,
+      2130.493,
+      99.99,
+      99.99
+    ],
+    "quartiles_pass": 4
+  }
+}

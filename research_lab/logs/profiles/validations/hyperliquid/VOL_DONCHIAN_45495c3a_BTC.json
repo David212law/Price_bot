@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:VOL_DONCHIAN:45495c3a:BTC",
+  "validation": {
+    "n": 17,
+    "pf": 0.853,
+    "wr": 64.7,
+    "sharpe_daily": -0.0554,
+    "sharpe_ann": -1.058,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      99.99,
+      0.204,
+      99.99,
+      0.176
+    ],
+    "quartiles_pass": 2
+  }
+}

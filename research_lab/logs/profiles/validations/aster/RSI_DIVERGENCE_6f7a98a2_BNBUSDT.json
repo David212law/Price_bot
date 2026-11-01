@@ -1,0 +1,18 @@
+{
+  "key": "aster:RSI_DIVERGENCE:6f7a98a2:BNBUSDT",
+  "validation": {
+    "n": 12,
+    "pf": 0.734,
+    "wr": 41.7,
+    "sharpe_daily": -0.1436,
+    "sharpe_ann": -2.744,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.623,
+      0.598,
+      0.247,
+      2.39
+    ],
+    "quartiles_pass": 1
+  }
+}

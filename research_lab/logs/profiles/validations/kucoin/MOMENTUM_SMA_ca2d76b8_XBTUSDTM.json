@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MOMENTUM_SMA:ca2d76b8:XBTUSDTM",
+  "validation": {
+    "n": 73,
+    "pf": 0.818,
+    "wr": 30.1,
+    "sharpe_daily": -0.0889,
+    "sharpe_ann": -1.697,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0889,
+      "sharpe_annualized": -1.697,
+      "ci_low_annualized": -6.898,
+      "ci_high_annualized": 2.478,
+      "significant": false,
+      "n_obs": 73,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.112,
+      0.955,
+      0.385,
+      0.872
+    ],
+    "quartiles_pass": 1
+  }
+}

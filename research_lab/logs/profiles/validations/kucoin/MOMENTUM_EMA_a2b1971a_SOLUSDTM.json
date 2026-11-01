@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MOMENTUM_EMA:a2b1971a:SOLUSDTM",
+  "validation": {
+    "n": 30,
+    "pf": 1.297,
+    "wr": 43.3,
+    "sharpe_daily": 0.1177,
+    "sharpe_ann": 2.248,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1177,
+      "sharpe_annualized": 2.248,
+      "ci_low_annualized": -5.368,
+      "ci_high_annualized": 9.554,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.273,
+      0.0,
+      1.963,
+      4.148
+    ],
+    "quartiles_pass": 3
+  }
+}

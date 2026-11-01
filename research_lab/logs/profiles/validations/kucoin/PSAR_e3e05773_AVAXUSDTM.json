@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PSAR:e3e05773:AVAXUSDTM",
+  "validation": {
+    "n": 108,
+    "pf": 0.621,
+    "wr": 32.4,
+    "sharpe_daily": -0.1624,
+    "sharpe_ann": -3.102,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1624,
+      "sharpe_annualized": -3.102,
+      "ci_low_annualized": -8.637,
+      "ci_high_annualized": 0.625,
+      "significant": false,
+      "n_obs": 108,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.696,
+      0.6,
+      0.176,
+      1.04
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_QUANTILE:d94dcc57:ETHUSDTM",
+  "validation": {
+    "n": 199,
+    "pf": 8.296,
+    "wr": 71.4,
+    "sharpe_daily": 0.8034,
+    "sharpe_ann": 15.35,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.8034,
+      "sharpe_annualized": 15.35,
+      "ci_low_annualized": 12.579,
+      "ci_high_annualized": 18.744,
+      "significant": true,
+      "n_obs": 199,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.799,
+      9.911,
+      122.593,
+      27.973
+    ],
+    "quartiles_pass": 3
+  }
+}

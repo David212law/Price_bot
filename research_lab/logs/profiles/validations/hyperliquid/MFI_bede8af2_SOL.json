@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:MFI:bede8af2:SOL",
+  "validation": {
+    "n": 28,
+    "pf": 1.484,
+    "wr": 53.6,
+    "sharpe_daily": 0.1807,
+    "sharpe_ann": 3.453,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.979,
+      2.339,
+      99.99,
+      0.301
+    ],
+    "quartiles_pass": 2
+  }
+}

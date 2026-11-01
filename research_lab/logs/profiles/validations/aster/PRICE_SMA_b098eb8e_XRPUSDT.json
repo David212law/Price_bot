@@ -1,0 +1,26 @@
+{
+  "key": "aster:PRICE_SMA:b098eb8e:XRPUSDT",
+  "validation": {
+    "n": 50,
+    "pf": 1.059,
+    "wr": 16.0,
+    "sharpe_daily": 0.0108,
+    "sharpe_ann": 0.206,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0108,
+      "sharpe_annualized": 0.206,
+      "ci_low_annualized": -12.702,
+      "ci_high_annualized": 3.805,
+      "significant": false,
+      "n_obs": 50,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.472,
+      0.177,
+      0.283,
+      2.22
+    ],
+    "quartiles_pass": 1
+  }
+}

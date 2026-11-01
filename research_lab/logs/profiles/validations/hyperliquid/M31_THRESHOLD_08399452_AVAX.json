@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:M31_THRESHOLD:08399452:AVAX",
+  "validation": {
+    "n": 12,
+    "pf": 99.99,
+    "wr": 100.0,
+    "sharpe_daily": 3.1086,
+    "sharpe_ann": 59.389,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      99.99,
+      99.99,
+      99.99,
+      99.99
+    ],
+    "quartiles_pass": 4
+  }
+}

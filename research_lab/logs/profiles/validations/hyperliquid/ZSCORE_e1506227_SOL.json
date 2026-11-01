@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ZSCORE:e1506227:SOL",
+  "validation": {
+    "n": 32,
+    "pf": 0.893,
+    "wr": 43.8,
+    "sharpe_daily": -0.0508,
+    "sharpe_ann": -0.97,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0508,
+      "sharpe_annualized": -0.97,
+      "ci_low_annualized": -8.4,
+      "ci_high_annualized": 6.022,
+      "significant": false,
+      "n_obs": 32,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.8,
+      0.494,
+      1.336,
+      1.203
+    ],
+    "quartiles_pass": 2
+  }
+}

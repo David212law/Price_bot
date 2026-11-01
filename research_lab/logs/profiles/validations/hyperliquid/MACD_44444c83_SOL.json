@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MACD:44444c83:SOL",
+  "validation": {
+    "n": 52,
+    "pf": 0.907,
+    "wr": 28.8,
+    "sharpe_daily": -0.0307,
+    "sharpe_ann": -0.586,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0307,
+      "sharpe_annualized": -0.586,
+      "ci_low_annualized": -9.614,
+      "ci_high_annualized": 3.594,
+      "significant": false,
+      "n_obs": 52,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.337,
+      1.683,
+      1.726,
+      0.433
+    ],
+    "quartiles_pass": 2
+  }
+}

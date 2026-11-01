@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PRICE_MOMENTUM:0fe7421f:SOLUSDTM",
+  "validation": {
+    "n": 32,
+    "pf": 1.584,
+    "wr": 46.9,
+    "sharpe_daily": 0.2107,
+    "sharpe_ann": 4.025,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2107,
+      "sharpe_annualized": 4.025,
+      "ci_low_annualized": -2.473,
+      "ci_high_annualized": 11.024,
+      "significant": false,
+      "n_obs": 32,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.926,
+      1.206,
+      1.03,
+      6.707
+    ],
+    "quartiles_pass": 3
+  }
+}

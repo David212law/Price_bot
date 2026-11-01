@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MEAN_REV_SMA:abd4dd41:ETHUSDTM",
+  "validation": {
+    "n": 36,
+    "pf": 0.527,
+    "wr": 25.0,
+    "sharpe_daily": -0.2614,
+    "sharpe_ann": -4.995,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2614,
+      "sharpe_annualized": -4.995,
+      "ci_low_annualized": -17.084,
+      "ci_high_annualized": 1.239,
+      "significant": false,
+      "n_obs": 36,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.129,
+      0.0,
+      0.754,
+      1.2
+    ],
+    "quartiles_pass": 2
+  }
+}

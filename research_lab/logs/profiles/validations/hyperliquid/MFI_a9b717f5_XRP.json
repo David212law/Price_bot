@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:a9b717f5:XRP",
+  "validation": {
+    "n": 30,
+    "pf": 1.421,
+    "wr": 50.0,
+    "sharpe_daily": 0.1558,
+    "sharpe_ann": 2.976,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1558,
+      "sharpe_annualized": 2.976,
+      "ci_low_annualized": -3.277,
+      "ci_high_annualized": 10.924,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      3.296,
+      2.858,
+      0.728,
+      0.796
+    ],
+    "quartiles_pass": 2
+  }
+}

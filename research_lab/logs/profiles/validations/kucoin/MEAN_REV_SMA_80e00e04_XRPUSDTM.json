@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:MEAN_REV_SMA:80e00e04:XRPUSDTM",
+  "validation": {
+    "n": 28,
+    "pf": 0.514,
+    "wr": 21.4,
+    "sharpe_daily": -0.2787,
+    "sharpe_ann": -5.324,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.349,
+      0.0,
+      1.427,
+      0.225
+    ],
+    "quartiles_pass": 2
+  }
+}

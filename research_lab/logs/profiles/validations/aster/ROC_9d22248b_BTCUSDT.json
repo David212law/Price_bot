@@ -1,0 +1,68 @@
+{
+  "key": "aster:ROC:9d22248b:BTCUSDT",
+  "validation": {
+    "n": 30,
+    "pf": 0.887,
+    "wr": 33.3,
+    "sharpe_daily": -0.0546,
+    "sharpe_ann": -1.044,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0546,
+      "sharpe_annualized": -1.044,
+      "ci_low_annualized": -9.009,
+      "ci_high_annualized": 5.263,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.586,
+      1.189,
+      0.674,
+      1.294
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 89,
+        "pf": 1.177,
+        "sharpe_ann": 1.358
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 89,
+        "pf": 1.112,
+        "sharpe_ann": 0.895
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.044,
+        "best_variant_sharpe": 1.666,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 4,
+            "sharpe_ann": -0.417
+          },
+          {
+            "param": "period",
+            "val": 5,
+            "sharpe_ann": 1.666
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 1.666
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": 1.666
+          }
+        ]
+      }
+    }
+  }
+}

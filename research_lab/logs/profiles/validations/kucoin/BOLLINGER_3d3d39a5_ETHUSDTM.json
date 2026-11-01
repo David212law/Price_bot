@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:BOLLINGER:3d3d39a5:ETHUSDTM",
+  "validation": {
+    "n": 85,
+    "pf": 1.178,
+    "wr": 52.9,
+    "sharpe_daily": 0.0692,
+    "sharpe_ann": 1.322,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0692,
+      "sharpe_annualized": 1.322,
+      "ci_low_annualized": -3.147,
+      "ci_high_annualized": 5.228,
+      "significant": false,
+      "n_obs": 85,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.688,
+      1.843,
+      1.237,
+      1.122
+    ],
+    "quartiles_pass": 3
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PSAR:3c75dead:XBTUSDTM",
+  "validation": {
+    "n": 173,
+    "pf": 0.718,
+    "wr": 34.1,
+    "sharpe_daily": -0.1197,
+    "sharpe_ann": -2.286,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1197,
+      "sharpe_annualized": -2.286,
+      "ci_low_annualized": -5.911,
+      "ci_high_annualized": 0.368,
+      "significant": false,
+      "n_obs": 173,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.2,
+      0.609,
+      0.75,
+      0.412
+    ],
+    "quartiles_pass": 1
+  }
+}

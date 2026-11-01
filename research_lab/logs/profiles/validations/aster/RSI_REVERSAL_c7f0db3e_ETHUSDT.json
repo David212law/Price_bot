@@ -1,0 +1,26 @@
+{
+  "key": "aster:RSI_REVERSAL:c7f0db3e:ETHUSDT",
+  "validation": {
+    "n": 32,
+    "pf": 1.239,
+    "wr": 43.8,
+    "sharpe_daily": 0.099,
+    "sharpe_ann": 1.891,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.099,
+      "sharpe_annualized": 1.891,
+      "ci_low_annualized": -5.667,
+      "ci_high_annualized": 8.412,
+      "significant": false,
+      "n_obs": 32,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      3.018,
+      0.525,
+      0.978,
+      1.221
+    ],
+    "quartiles_pass": 2
+  }
+}

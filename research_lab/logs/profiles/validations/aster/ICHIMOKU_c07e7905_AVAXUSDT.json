@@ -1,0 +1,26 @@
+{
+  "key": "aster:ICHIMOKU:c07e7905:AVAXUSDT",
+  "validation": {
+    "n": 66,
+    "pf": 0.441,
+    "wr": 22.7,
+    "sharpe_daily": -0.2052,
+    "sharpe_ann": -3.92,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2052,
+      "sharpe_annualized": -3.92,
+      "ci_low_annualized": -18.637,
+      "ci_high_annualized": 0.911,
+      "significant": false,
+      "n_obs": 66,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.07,
+      0.71,
+      0.064,
+      1.481
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:KELTNER_REV:80e7c85f:BNBUSDTM",
+  "validation": {
+    "n": 200,
+    "pf": 1.746,
+    "wr": 46.0,
+    "sharpe_daily": 0.2156,
+    "sharpe_ann": 4.119,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2156,
+      "sharpe_annualized": 4.119,
+      "ci_low_annualized": 1.563,
+      "ci_high_annualized": 6.379,
+      "significant": true,
+      "n_obs": 200,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.886,
+      1.17,
+      2.465,
+      1.713
+    ],
+    "quartiles_pass": 4
+  }
+}

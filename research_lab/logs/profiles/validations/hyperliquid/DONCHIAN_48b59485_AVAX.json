@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:DONCHIAN:48b59485:AVAX",
+  "validation": {
+    "n": 40,
+    "pf": 0.495,
+    "wr": 17.5,
+    "sharpe_daily": -0.2464,
+    "sharpe_ann": -4.707,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2464,
+      "sharpe_annualized": -4.707,
+      "ci_low_annualized": -20.296,
+      "ci_high_annualized": 0.84,
+      "significant": false,
+      "n_obs": 40,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.044,
+      1.068,
+      0.215,
+      0.727
+    ],
+    "quartiles_pass": 1
+  }
+}

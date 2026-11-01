@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:M31_QUANTILE:96f9e084:SOL",
+  "validation": {
+    "n": 135,
+    "pf": 339.218,
+    "wr": 94.8,
+    "sharpe_daily": 1.1957,
+    "sharpe_ann": 22.844,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.1957,
+      "sharpe_annualized": 22.844,
+      "ci_low_annualized": 20.313,
+      "ci_high_annualized": 25.889,
+      "significant": true,
+      "n_obs": 135,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      117.507,
+      127.265,
+      5481.135,
+      99.99
+    ],
+    "quartiles_pass": 4
+  }
+}

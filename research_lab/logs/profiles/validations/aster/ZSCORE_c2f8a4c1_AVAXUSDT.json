@@ -1,0 +1,26 @@
+{
+  "key": "aster:ZSCORE:c2f8a4c1:AVAXUSDT",
+  "validation": {
+    "n": 71,
+    "pf": 1.81,
+    "wr": 60.6,
+    "sharpe_daily": 0.2701,
+    "sharpe_ann": 5.161,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2701,
+      "sharpe_annualized": 5.161,
+      "ci_low_annualized": 0.909,
+      "ci_high_annualized": 10.065,
+      "significant": true,
+      "n_obs": 71,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      6.64,
+      0.74,
+      1.181,
+      1.913
+    ],
+    "quartiles_pass": 3
+  }
+}

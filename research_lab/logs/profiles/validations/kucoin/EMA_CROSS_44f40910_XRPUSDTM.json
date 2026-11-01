@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:EMA_CROSS:44f40910:XRPUSDTM",
+  "validation": {
+    "n": 23,
+    "pf": 0.818,
+    "wr": 30.4,
+    "sharpe_daily": -0.0709,
+    "sharpe_ann": -1.355,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.499,
+      2.149,
+      0.54,
+      0.12
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ROC:55a445a5:ETH",
+  "validation": {
+    "n": 20,
+    "pf": 0.92,
+    "wr": 35.0,
+    "sharpe_daily": -0.0381,
+    "sharpe_ann": -0.728,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.965,
+      1.077,
+      0.0,
+      2.128
+    ],
+    "quartiles_pass": 2
+  }
+}

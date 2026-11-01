@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ZSCORE:def60a83:ETH",
+  "validation": {
+    "n": 58,
+    "pf": 1.117,
+    "wr": 50.0,
+    "sharpe_daily": 0.0471,
+    "sharpe_ann": 0.899,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0471,
+      "sharpe_annualized": 0.899,
+      "ci_low_annualized": -4.516,
+      "ci_high_annualized": 5.67,
+      "significant": false,
+      "n_obs": 58,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.674,
+      0.928,
+      1.316,
+      0.662
+    ],
+    "quartiles_pass": 2
+  }
+}

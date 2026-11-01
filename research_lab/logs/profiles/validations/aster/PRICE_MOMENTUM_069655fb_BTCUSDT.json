@@ -1,0 +1,60 @@
+{
+  "key": "aster:PRICE_MOMENTUM:069655fb:BTCUSDT",
+  "validation": {
+    "n": 24,
+    "pf": 0.693,
+    "wr": 25.0,
+    "sharpe_daily": -0.1631,
+    "sharpe_ann": -3.117,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.677,
+      1.735,
+      1.353
+    ],
+    "quartiles_pass": 2,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 84,
+        "pf": 0.983,
+        "sharpe_ann": -0.149
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 84,
+        "pf": 0.931,
+        "sharpe_ann": -0.615
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.117,
+        "best_variant_sharpe": 0.754,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 18,
+            "sharpe_ann": 0.754
+          },
+          {
+            "param": "period",
+            "val": 22,
+            "sharpe_ann": 0.128
+          },
+          {
+            "param": "threshold",
+            "val": 0.01,
+            "sharpe_ann": -0.092
+          },
+          {
+            "param": "threshold",
+            "val": 0.02,
+            "sharpe_ann": 0.136
+          }
+        ]
+      }
+    }
+  }
+}

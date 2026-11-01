@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:VOL_DONCHIAN:8616f7d9:AVAXUSDTM",
+  "validation": {
+    "n": 22,
+    "pf": 1.49,
+    "wr": 77.3,
+    "sharpe_daily": 0.1649,
+    "sharpe_ann": 3.151,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.287,
+      1.961,
+      0.656,
+      99.99
+    ],
+    "quartiles_pass": 2
+  }
+}

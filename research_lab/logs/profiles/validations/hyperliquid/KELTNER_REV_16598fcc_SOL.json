@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:KELTNER_REV:16598fcc:SOL",
+  "validation": {
+    "n": 75,
+    "pf": 1.378,
+    "wr": 40.0,
+    "sharpe_daily": 0.124,
+    "sharpe_ann": 2.369,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.124,
+      "sharpe_annualized": 2.369,
+      "ci_low_annualized": -1.972,
+      "ci_high_annualized": 6.176,
+      "significant": false,
+      "n_obs": 75,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.477,
+      1.188,
+      4.365,
+      0.848
+    ],
+    "quartiles_pass": 2
+  }
+}

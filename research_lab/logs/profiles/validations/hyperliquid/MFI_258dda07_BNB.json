@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:MFI:258dda07:BNB",
+  "validation": {
+    "n": 21,
+    "pf": 1.049,
+    "wr": 38.1,
+    "sharpe_daily": 0.0208,
+    "sharpe_ann": 0.398,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.403,
+      1.424,
+      0.266,
+      3.016
+    ],
+    "quartiles_pass": 2
+  }
+}

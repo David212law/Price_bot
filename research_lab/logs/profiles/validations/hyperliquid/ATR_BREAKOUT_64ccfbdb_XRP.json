@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ATR_BREAKOUT:64ccfbdb:XRP",
+  "validation": {
+    "n": 37,
+    "pf": 0.623,
+    "wr": 27.0,
+    "sharpe_daily": -0.2172,
+    "sharpe_ann": -4.15,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2172,
+      "sharpe_annualized": -4.15,
+      "ci_low_annualized": -13.482,
+      "ci_high_annualized": 1.917,
+      "significant": false,
+      "n_obs": 37,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.458,
+      0.583,
+      1.995,
+      0.357
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:BB_SQUEEZE:27b3d05a:XBTUSDTM",
+  "validation": {
+    "n": 15,
+    "pf": 0.729,
+    "wr": 26.7,
+    "sharpe_daily": -0.1346,
+    "sharpe_ann": -2.571,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.279,
+      1.241,
+      0.0,
+      0.344
+    ],
+    "quartiles_pass": 2
+  }
+}

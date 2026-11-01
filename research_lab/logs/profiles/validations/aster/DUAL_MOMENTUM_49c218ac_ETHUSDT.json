@@ -1,0 +1,18 @@
+{
+  "key": "aster:DUAL_MOMENTUM:49c218ac:ETHUSDT",
+  "validation": {
+    "n": 26,
+    "pf": 1.291,
+    "wr": 26.9,
+    "sharpe_daily": 0.0805,
+    "sharpe_ann": 1.537,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.106,
+      0.489,
+      5.451,
+      2.187
+    ],
+    "quartiles_pass": 2
+  }
+}

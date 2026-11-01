@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ELDER_IMPULSE:bf9e1a87:SOL",
+  "validation": {
+    "n": 46,
+    "pf": 1.43,
+    "wr": 43.5,
+    "sharpe_daily": 0.1618,
+    "sharpe_ann": 3.091,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1618,
+      "sharpe_annualized": 3.091,
+      "ci_low_annualized": -2.551,
+      "ci_high_annualized": 8.288,
+      "significant": false,
+      "n_obs": 46,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      3.487,
+      0.442,
+      3.935,
+      0.794
+    ],
+    "quartiles_pass": 2
+  }
+}

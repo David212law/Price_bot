@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_REVERSAL:c7f0db3e:SOLUSDTM",
+  "validation": {
+    "n": 30,
+    "pf": 0.502,
+    "wr": 26.7,
+    "sharpe_daily": -0.3127,
+    "sharpe_ann": -5.974,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3127,
+      "sharpe_annualized": -5.974,
+      "ci_low_annualized": -15.849,
+      "ci_high_annualized": 0.915,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.0,
+      0.133,
+      4.21,
+      0.422
+    ],
+    "quartiles_pass": 1
+  }
+}

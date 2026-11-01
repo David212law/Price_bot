@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:SUPERTREND:08af202b:AVAX",
+  "validation": {
+    "n": 24,
+    "pf": 1.544,
+    "wr": 8.3,
+    "sharpe_daily": 0.0842,
+    "sharpe_ann": 1.609,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.0,
+      10.523
+    ],
+    "quartiles_pass": 1
+  }
+}

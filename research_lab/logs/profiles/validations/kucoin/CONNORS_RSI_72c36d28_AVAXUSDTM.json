@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:CONNORS_RSI:72c36d28:AVAXUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 0.614,
+    "wr": 29.2,
+    "sharpe_daily": -0.2247,
+    "sharpe_ann": -4.293,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.284,
+      0.0,
+      0.513,
+      2.382
+    ],
+    "quartiles_pass": 1
+  }
+}

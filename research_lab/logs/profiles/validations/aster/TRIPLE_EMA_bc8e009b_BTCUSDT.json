@@ -1,0 +1,26 @@
+{
+  "key": "aster:TRIPLE_EMA:bc8e009b:BTCUSDT",
+  "validation": {
+    "n": 62,
+    "pf": 0.966,
+    "wr": 24.2,
+    "sharpe_daily": -0.0093,
+    "sharpe_ann": -0.177,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0093,
+      "sharpe_annualized": -0.177,
+      "ci_low_annualized": -11.047,
+      "ci_high_annualized": 3.475,
+      "significant": false,
+      "n_obs": 62,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.661,
+      1.137,
+      0.456,
+      1.439
+    ],
+    "quartiles_pass": 2
+  }
+}

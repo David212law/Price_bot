@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ICHIMOKU:c07e7905:BNB",
+  "validation": {
+    "n": 53,
+    "pf": 1.132,
+    "wr": 35.8,
+    "sharpe_daily": 0.0378,
+    "sharpe_ann": 0.722,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0378,
+      "sharpe_annualized": 0.722,
+      "ci_low_annualized": -6.91,
+      "ci_high_annualized": 5.001,
+      "significant": false,
+      "n_obs": 53,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.585,
+      0.55,
+      1.791,
+      1.994
+    ],
+    "quartiles_pass": 2
+  }
+}

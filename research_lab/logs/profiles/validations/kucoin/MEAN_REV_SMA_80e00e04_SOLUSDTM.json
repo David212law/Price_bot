@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MEAN_REV_SMA:80e00e04:SOLUSDTM",
+  "validation": {
+    "n": 37,
+    "pf": 0.505,
+    "wr": 18.9,
+    "sharpe_daily": -0.2652,
+    "sharpe_ann": -5.066,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2652,
+      "sharpe_annualized": -5.066,
+      "ci_low_annualized": -18.504,
+      "ci_high_annualized": 1.125,
+      "significant": false,
+      "n_obs": 37,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.59,
+      0.0,
+      3.062,
+      0.299
+    ],
+    "quartiles_pass": 1
+  }
+}

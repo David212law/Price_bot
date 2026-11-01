@@ -1,0 +1,18 @@
+{
+  "key": "aster:SUPERTREND:c902f00c:BTCUSDT",
+  "validation": {
+    "n": 17,
+    "pf": 2.012,
+    "wr": 17.6,
+    "sharpe_daily": 0.1457,
+    "sharpe_ann": 2.784,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.299,
+      6.743,
+      0.0,
+      2.052
+    ],
+    "quartiles_pass": 2
+  }
+}

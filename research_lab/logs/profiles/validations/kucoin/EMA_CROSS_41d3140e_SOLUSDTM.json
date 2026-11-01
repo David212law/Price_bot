@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:EMA_CROSS:41d3140e:SOLUSDTM",
+  "validation": {
+    "n": 15,
+    "pf": 0.899,
+    "wr": 33.3,
+    "sharpe_daily": -0.0333,
+    "sharpe_ann": -0.635,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.289,
+      0.0,
+      0.014,
+      3.062
+    ],
+    "quartiles_pass": 1
+  }
+}

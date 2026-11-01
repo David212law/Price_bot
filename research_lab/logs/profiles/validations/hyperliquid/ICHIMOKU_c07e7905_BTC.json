@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:ICHIMOKU:c07e7905:BTC",
+  "validation": {
+    "n": 53,
+    "pf": 1.264,
+    "wr": 32.1,
+    "sharpe_daily": 0.0548,
+    "sharpe_ann": 1.046,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0548,
+      "sharpe_annualized": 1.046,
+      "ci_low_annualized": -9.689,
+      "ci_high_annualized": 4.289,
+      "significant": false,
+      "n_obs": 53,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.51,
+      1.871,
+      1.555,
+      0.82
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PSAR:c9a1b247:ETH",
+  "validation": {
+    "n": 101,
+    "pf": 0.842,
+    "wr": 36.6,
+    "sharpe_daily": -0.0533,
+    "sharpe_ann": -1.019,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0533,
+      "sharpe_annualized": -1.019,
+      "ci_low_annualized": -6.862,
+      "ci_high_annualized": 2.27,
+      "significant": false,
+      "n_obs": 101,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.181,
+      2.353,
+      1.352,
+      0.455
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:KELTNER_REV:80e7c85f:ETH",
+  "validation": {
+    "n": 128,
+    "pf": 2.229,
+    "wr": 49.2,
+    "sharpe_daily": 0.2816,
+    "sharpe_ann": 5.379,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2816,
+      "sharpe_annualized": 5.379,
+      "ci_low_annualized": 2.624,
+      "ci_high_annualized": 8.308,
+      "significant": true,
+      "n_obs": 128,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.185,
+      1.631,
+      4.622,
+      1.105
+    ],
+    "quartiles_pass": 4
+  }
+}

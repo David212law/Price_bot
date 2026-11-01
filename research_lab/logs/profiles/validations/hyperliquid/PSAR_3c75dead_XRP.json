@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:PSAR:3c75dead:XRP",
+  "validation": {
+    "n": 117,
+    "pf": 0.773,
+    "wr": 30.8,
+    "sharpe_daily": -0.0627,
+    "sharpe_ann": -1.198,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0627,
+      "sharpe_annualized": -1.198,
+      "ci_low_annualized": -8.094,
+      "ci_high_annualized": 1.658,
+      "significant": false,
+      "n_obs": 117,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.261,
+      0.844,
+      3.051,
+      0.293
+    ],
+    "quartiles_pass": 1
+  }
+}

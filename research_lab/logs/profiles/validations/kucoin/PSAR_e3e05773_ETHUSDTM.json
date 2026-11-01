@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PSAR:e3e05773:ETHUSDTM",
+  "validation": {
+    "n": 93,
+    "pf": 0.745,
+    "wr": 29.0,
+    "sharpe_daily": -0.1032,
+    "sharpe_ann": -1.972,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1032,
+      "sharpe_annualized": -1.972,
+      "ci_low_annualized": -7.838,
+      "ci_high_annualized": 1.794,
+      "significant": false,
+      "n_obs": 93,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.015,
+      0.373,
+      1.049,
+      0.564
+    ],
+    "quartiles_pass": 2
+  }
+}

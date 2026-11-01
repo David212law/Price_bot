@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:VOLUME_BREAKOUT:e91f6399:AVAX",
+  "validation": {
+    "n": 12,
+    "pf": 2.08,
+    "wr": 58.3,
+    "sharpe_daily": 0.3298,
+    "sharpe_ann": 6.302,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      4.239,
+      3.683,
+      0.539,
+      2.869
+    ],
+    "quartiles_pass": 3
+  }
+}

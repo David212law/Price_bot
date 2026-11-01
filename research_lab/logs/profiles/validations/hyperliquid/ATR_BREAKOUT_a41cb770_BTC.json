@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ATR_BREAKOUT:a41cb770:BTC",
+  "validation": {
+    "n": 16,
+    "pf": 0.733,
+    "wr": 31.2,
+    "sharpe_daily": -0.1429,
+    "sharpe_ann": -2.729,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.131,
+      0.0,
+      0.366,
+      2.04
+    ],
+    "quartiles_pass": 2
+  }
+}

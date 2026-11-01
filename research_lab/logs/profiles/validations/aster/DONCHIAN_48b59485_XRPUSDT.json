@@ -1,0 +1,26 @@
+{
+  "key": "aster:DONCHIAN:48b59485:XRPUSDT",
+  "validation": {
+    "n": 52,
+    "pf": 0.594,
+    "wr": 25.0,
+    "sharpe_daily": -0.1724,
+    "sharpe_ann": -3.294,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1724,
+      "sharpe_annualized": -3.294,
+      "ci_low_annualized": -14.03,
+      "ci_high_annualized": 1.754,
+      "significant": false,
+      "n_obs": 52,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.28,
+      1.019,
+      1.29,
+      0.277
+    ],
+    "quartiles_pass": 2
+  }
+}

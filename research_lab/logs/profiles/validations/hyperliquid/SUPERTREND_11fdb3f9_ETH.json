@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:SUPERTREND:11fdb3f9:ETH",
+  "validation": {
+    "n": 45,
+    "pf": 0.378,
+    "wr": 6.7,
+    "sharpe_daily": -0.3081,
+    "sharpe_ann": -5.886,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3081,
+      "sharpe_annualized": -5.886,
+      "ci_low_annualized": -22.204,
+      "ci_high_annualized": -0.108,
+      "significant": false,
+      "n_obs": 45,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.43,
+      0.442,
+      0.0,
+      0.568
+    ],
+    "quartiles_pass": 0
+  }
+}

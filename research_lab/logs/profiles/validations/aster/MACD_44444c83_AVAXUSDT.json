@@ -1,0 +1,26 @@
+{
+  "key": "aster:MACD:44444c83:AVAXUSDT",
+  "validation": {
+    "n": 72,
+    "pf": 0.642,
+    "wr": 18.1,
+    "sharpe_daily": -0.1131,
+    "sharpe_ann": -2.16,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1131,
+      "sharpe_annualized": -2.16,
+      "ci_low_annualized": -16.801,
+      "ci_high_annualized": 2.126,
+      "significant": false,
+      "n_obs": 72,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.26,
+      0.176,
+      0.11,
+      1.978
+    ],
+    "quartiles_pass": 1
+  }
+}

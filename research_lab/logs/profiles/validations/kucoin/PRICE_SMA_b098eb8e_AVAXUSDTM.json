@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:PRICE_SMA:b098eb8e:AVAXUSDTM",
+  "validation": {
+    "n": 79,
+    "pf": 0.634,
+    "wr": 13.9,
+    "sharpe_daily": -0.1071,
+    "sharpe_ann": -2.045,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1071,
+      "sharpe_annualized": -2.045,
+      "ci_low_annualized": -14.318,
+      "ci_high_annualized": 1.573,
+      "significant": false,
+      "n_obs": 79,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.389,
+      0.262,
+      0.252,
+      1.339
+    ],
+    "quartiles_pass": 1
+  }
+}

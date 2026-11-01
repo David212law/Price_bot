@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:TRIPLE_EMA:bc8e009b:AVAX",
+  "validation": {
+    "n": 81,
+    "pf": 0.48,
+    "wr": 13.6,
+    "sharpe_daily": -0.2157,
+    "sharpe_ann": -4.121,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2157,
+      "sharpe_annualized": -4.121,
+      "ci_low_annualized": -17.679,
+      "ci_high_annualized": 0.302,
+      "significant": false,
+      "n_obs": 81,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.0,
+      0.991,
+      0.004,
+      0.968
+    ],
+    "quartiles_pass": 0
+  }
+}

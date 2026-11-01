@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:TRIPLE_EMA:0947aca2:XRP",
+  "validation": {
+    "n": 66,
+    "pf": 0.681,
+    "wr": 18.2,
+    "sharpe_daily": -0.0997,
+    "sharpe_ann": -1.905,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0997,
+      "sharpe_annualized": -1.905,
+      "ci_low_annualized": -11.505,
+      "ci_high_annualized": 2.266,
+      "significant": false,
+      "n_obs": 66,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.049,
+      0.988,
+      2.738,
+      0.361
+    ],
+    "quartiles_pass": 1
+  }
+}

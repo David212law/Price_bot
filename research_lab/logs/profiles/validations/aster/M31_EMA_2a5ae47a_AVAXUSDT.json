@@ -1,0 +1,37 @@
+{
+  "key": "aster:M31_EMA:2a5ae47a:AVAXUSDT",
+  "validation": {
+    "n": 36,
+    "pf": 4.634,
+    "wr": 75.0,
+    "sharpe_daily": 0.7253,
+    "sharpe_ann": 13.857,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.7253,
+      "sharpe_annualized": 13.857,
+      "ci_low_annualized": 6.939,
+      "ci_high_annualized": 25.357,
+      "significant": true,
+      "n_obs": 36,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      21.115,
+      3.531,
+      54.438,
+      1.086
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

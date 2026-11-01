@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:BOLLINGER:3d3d39a5:ETH",
+  "validation": {
+    "n": 62,
+    "pf": 1.489,
+    "wr": 59.7,
+    "sharpe_daily": 0.1715,
+    "sharpe_ann": 3.277,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1715,
+      "sharpe_annualized": 3.277,
+      "ci_low_annualized": -1.552,
+      "ci_high_annualized": 8.431,
+      "significant": false,
+      "n_obs": 62,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.096,
+      1.039,
+      1.562,
+      1.64
+    ],
+    "quartiles_pass": 4
+  }
+}

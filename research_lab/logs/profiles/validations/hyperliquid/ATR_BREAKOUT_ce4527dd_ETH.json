@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:ATR_BREAKOUT:ce4527dd:ETH",
+  "validation": {
+    "n": 12,
+    "pf": 0.462,
+    "wr": 25.0,
+    "sharpe_daily": -0.3661,
+    "sharpe_ann": -6.995,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.055,
+      0.486,
+      0.727
+    ],
+    "quartiles_pass": 1
+  }
+}

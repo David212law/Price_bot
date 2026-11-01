@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:bede8af2:BTC",
+  "validation": {
+    "n": 30,
+    "pf": 0.485,
+    "wr": 23.3,
+    "sharpe_daily": -0.3276,
+    "sharpe_ann": -6.258,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3276,
+      "sharpe_annualized": -6.258,
+      "ci_low_annualized": -18.878,
+      "ci_high_annualized": 0.776,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.0,
+      1.24,
+      0.458,
+      0.511
+    ],
+    "quartiles_pass": 1
+  }
+}

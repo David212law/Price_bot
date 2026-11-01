@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MOMENTUM_SMA:68c79e14:SOL",
+  "validation": {
+    "n": 45,
+    "pf": 1.343,
+    "wr": 42.2,
+    "sharpe_daily": 0.1337,
+    "sharpe_ann": 2.554,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1337,
+      "sharpe_annualized": 2.554,
+      "ci_low_annualized": -3.018,
+      "ci_high_annualized": 8.113,
+      "significant": false,
+      "n_obs": 45,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.611,
+      1.37,
+      3.88,
+      0.964
+    ],
+    "quartiles_pass": 2
+  }
+}

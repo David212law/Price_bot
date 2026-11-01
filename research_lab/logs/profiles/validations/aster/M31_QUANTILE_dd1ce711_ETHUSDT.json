@@ -1,0 +1,37 @@
+{
+  "key": "aster:M31_QUANTILE:dd1ce711:ETHUSDT",
+  "validation": {
+    "n": 39,
+    "pf": 11.689,
+    "wr": 82.1,
+    "sharpe_daily": 0.999,
+    "sharpe_ann": 19.085,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.999,
+      "sharpe_annualized": 19.085,
+      "ci_low_annualized": 12.073,
+      "ci_high_annualized": 27.854,
+      "significant": true,
+      "n_obs": 39,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      3.415,
+      3.823,
+      99.99,
+      99.99
+    ],
+    "quartiles_pass": 4,
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

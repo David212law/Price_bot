@@ -1,0 +1,26 @@
+{
+  "key": "aster:PRICE_SMA:5a1f8e5a:SOLUSDT",
+  "validation": {
+    "n": 92,
+    "pf": 0.973,
+    "wr": 18.5,
+    "sharpe_daily": -0.007,
+    "sharpe_ann": -0.134,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.007,
+      "sharpe_annualized": -0.134,
+      "ci_low_annualized": -7.236,
+      "ci_high_annualized": 2.853,
+      "significant": false,
+      "n_obs": 92,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.476,
+      1.589,
+      1.53,
+      0.615
+    ],
+    "quartiles_pass": 2
+  }
+}

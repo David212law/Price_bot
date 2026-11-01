@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:ca3644ea:BNB",
+  "validation": {
+    "n": 35,
+    "pf": 0.714,
+    "wr": 34.3,
+    "sharpe_daily": -0.156,
+    "sharpe_ann": -2.981,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.156,
+      "sharpe_annualized": -2.981,
+      "ci_low_annualized": -10.359,
+      "ci_high_annualized": 2.868,
+      "significant": false,
+      "n_obs": 35,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.2,
+      0.733,
+      0.758,
+      1.223
+    ],
+    "quartiles_pass": 1
+  }
+}

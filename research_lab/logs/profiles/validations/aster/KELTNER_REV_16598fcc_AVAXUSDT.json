@@ -1,0 +1,26 @@
+{
+  "key": "aster:KELTNER_REV:16598fcc:AVAXUSDT",
+  "validation": {
+    "n": 89,
+    "pf": 3.132,
+    "wr": 53.9,
+    "sharpe_daily": 0.4348,
+    "sharpe_ann": 8.308,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.4348,
+      "sharpe_annualized": 8.308,
+      "ci_low_annualized": 4.891,
+      "ci_high_annualized": 12.256,
+      "significant": true,
+      "n_obs": 89,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      3.11,
+      0.979,
+      5.71,
+      5.74
+    ],
+    "quartiles_pass": 3
+  }
+}

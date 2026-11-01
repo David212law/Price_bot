@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:DUAL_MOMENTUM:8e447ab2:BNBUSDTM",
+  "validation": {
+    "n": 47,
+    "pf": 0.736,
+    "wr": 25.5,
+    "sharpe_daily": -0.0938,
+    "sharpe_ann": -1.793,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0938,
+      "sharpe_annualized": -1.793,
+      "ci_low_annualized": -10.855,
+      "ci_high_annualized": 2.911,
+      "significant": false,
+      "n_obs": 47,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.935,
+      0.198,
+      0.198,
+      0.988
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:OBV:c1321249:BNBUSDTM",
+  "validation": {
+    "n": 27,
+    "pf": 0.567,
+    "wr": 22.2,
+    "sharpe_daily": -0.2442,
+    "sharpe_ann": -4.666,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.596,
+      0.287,
+      0.755,
+      0.622
+    ],
+    "quartiles_pass": 0
+  }
+}

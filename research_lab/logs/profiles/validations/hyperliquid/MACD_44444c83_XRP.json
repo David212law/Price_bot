@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MACD:44444c83:XRP",
+  "validation": {
+    "n": 57,
+    "pf": 0.953,
+    "wr": 29.8,
+    "sharpe_daily": -0.0168,
+    "sharpe_ann": -0.321,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0168,
+      "sharpe_annualized": -0.321,
+      "ci_low_annualized": -7.433,
+      "ci_high_annualized": 4.007,
+      "significant": false,
+      "n_obs": 57,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.401,
+      3.02,
+      0.525,
+      0.602
+    ],
+    "quartiles_pass": 1
+  }
+}

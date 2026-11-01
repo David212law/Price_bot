@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:DONCHIAN:6af88d9e:XRPUSDTM",
+  "validation": {
+    "n": 34,
+    "pf": 0.764,
+    "wr": 35.3,
+    "sharpe_daily": -0.0923,
+    "sharpe_ann": -1.764,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0923,
+      "sharpe_annualized": -1.764,
+      "ci_low_annualized": -12.788,
+      "ci_high_annualized": 4.254,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.027,
+      0.517,
+      2.323,
+      0.14
+    ],
+    "quartiles_pass": 2
+  }
+}

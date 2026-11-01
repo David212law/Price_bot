@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:TRIPLE_EMA:0947aca2:ETHUSDTM",
+  "validation": {
+    "n": 108,
+    "pf": 0.661,
+    "wr": 22.2,
+    "sharpe_daily": -0.1131,
+    "sharpe_ann": -2.161,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1131,
+      "sharpe_annualized": -2.161,
+      "ci_low_annualized": -10.105,
+      "ci_high_annualized": 1.41,
+      "significant": false,
+      "n_obs": 108,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.738,
+      0.371,
+      0.741,
+      0.729
+    ],
+    "quartiles_pass": 0
+  }
+}

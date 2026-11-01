@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MACD:44444c83:AVAX",
+  "validation": {
+    "n": 61,
+    "pf": 0.716,
+    "wr": 16.4,
+    "sharpe_daily": -0.0786,
+    "sharpe_ann": -1.501,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0786,
+      "sharpe_annualized": -1.501,
+      "ci_low_annualized": -20.029,
+      "ci_high_annualized": 2.553,
+      "significant": false,
+      "n_obs": 61,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.191,
+      0.106,
+      0.79,
+      1.757
+    ],
+    "quartiles_pass": 1
+  }
+}

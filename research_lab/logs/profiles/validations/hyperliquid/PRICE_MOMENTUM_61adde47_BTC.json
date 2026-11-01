@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:PRICE_MOMENTUM:61adde47:BTC",
+  "validation": {
+    "n": 21,
+    "pf": 1.114,
+    "wr": 38.1,
+    "sharpe_daily": 0.0494,
+    "sharpe_ann": 0.943,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.246,
+      3.42,
+      0.0,
+      1.801
+    ],
+    "quartiles_pass": 3
+  }
+}

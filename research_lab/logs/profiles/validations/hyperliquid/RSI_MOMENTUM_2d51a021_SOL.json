@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:RSI_MOMENTUM:2d51a021:SOL",
+  "validation": {
+    "n": 38,
+    "pf": 0.837,
+    "wr": 31.6,
+    "sharpe_daily": -0.0821,
+    "sharpe_ann": -1.568,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0821,
+      "sharpe_annualized": -1.568,
+      "ci_low_annualized": -9.149,
+      "ci_high_annualized": 4.388,
+      "significant": false,
+      "n_obs": 38,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.317,
+      1.368,
+      0.59,
+      1.32
+    ],
+    "quartiles_pass": 2
+  }
+}

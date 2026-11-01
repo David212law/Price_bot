@@ -1,0 +1,60 @@
+{
+  "key": "aster:ROC:ab35171e:AVAXUSDT",
+  "validation": {
+    "n": 21,
+    "pf": 0.728,
+    "wr": 28.6,
+    "sharpe_daily": -0.1445,
+    "sharpe_ann": -2.76,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.406,
+      2.557,
+      0.71
+    ],
+    "quartiles_pass": 1,
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 107,
+        "pf": 1.248,
+        "sharpe_ann": 1.84
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 107,
+        "pf": 1.208,
+        "sharpe_ann": 1.578
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.76,
+        "best_variant_sharpe": 2.015,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 4,
+            "sharpe_ann": 1.257
+          },
+          {
+            "param": "period",
+            "val": 5,
+            "sharpe_ann": 2.015
+          },
+          {
+            "param": "threshold",
+            "val": 0.03,
+            "sharpe_ann": 2.015
+          },
+          {
+            "param": "threshold",
+            "val": 0.03,
+            "sharpe_ann": 2.015
+          }
+        ]
+      }
+    }
+  }
+}

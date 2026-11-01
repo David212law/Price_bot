@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:DUAL_MOMENTUM:49c218ac:BNB",
+  "validation": {
+    "n": 32,
+    "pf": 0.535,
+    "wr": 15.6,
+    "sharpe_daily": -0.1873,
+    "sharpe_ann": -3.578,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1873,
+      "sharpe_annualized": -3.578,
+      "ci_low_annualized": -21.916,
+      "ci_high_annualized": 2.756,
+      "significant": false,
+      "n_obs": 32,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.174,
+      0.38,
+      1.596,
+      0.051
+    ],
+    "quartiles_pass": 1
+  }
+}

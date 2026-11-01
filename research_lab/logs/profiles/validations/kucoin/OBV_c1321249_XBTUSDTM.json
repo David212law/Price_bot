@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:OBV:c1321249:XBTUSDTM",
+  "validation": {
+    "n": 23,
+    "pf": 1.004,
+    "wr": 34.8,
+    "sharpe_daily": 0.0018,
+    "sharpe_ann": 0.034,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.018,
+      0.475,
+      3.228,
+      0.712
+    ],
+    "quartiles_pass": 2
+  }
+}

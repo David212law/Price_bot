@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:MFI:ca3644ea:BTC",
+  "validation": {
+    "n": 34,
+    "pf": 0.841,
+    "wr": 35.3,
+    "sharpe_daily": -0.0787,
+    "sharpe_ann": -1.504,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0787,
+      "sharpe_annualized": -1.504,
+      "ci_low_annualized": -9.378,
+      "ci_high_annualized": 4.871,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.539,
+      1.042,
+      0.824,
+      0.96
+    ],
+    "quartiles_pass": 1
+  }
+}

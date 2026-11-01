@@ -1,0 +1,18 @@
+{
+  "key": "hyperliquid:SUPERTREND:08af202b:BNB",
+  "validation": {
+    "n": 29,
+    "pf": 0.611,
+    "wr": 10.3,
+    "sharpe_daily": -0.1535,
+    "sharpe_ann": -2.933,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.341,
+      1.242,
+      0.0,
+      0.661
+    ],
+    "quartiles_pass": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:MEAN_REV_SMA:abd4dd41:XBTUSDTM",
+  "validation": {
+    "n": 44,
+    "pf": 0.723,
+    "wr": 25.0,
+    "sharpe_daily": -0.1217,
+    "sharpe_ann": -2.324,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1217,
+      "sharpe_annualized": -2.324,
+      "ci_low_annualized": -12.143,
+      "ci_high_annualized": 3.165,
+      "significant": false,
+      "n_obs": 44,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.994,
+      0.511,
+      0.373,
+      0.816
+    ],
+    "quartiles_pass": 1
+  }
+}

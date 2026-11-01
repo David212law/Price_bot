@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_MOMENTUM:2d51a021:SOLUSDTM",
+  "validation": {
+    "n": 54,
+    "pf": 0.879,
+    "wr": 35.2,
+    "sharpe_daily": -0.0599,
+    "sharpe_ann": -1.144,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0599,
+      "sharpe_annualized": -1.144,
+      "ci_low_annualized": -6.981,
+      "ci_high_annualized": 3.951,
+      "significant": false,
+      "n_obs": 54,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.631,
+      0.54,
+      1.076,
+      1.533
+    ],
+    "quartiles_pass": 2
+  }
+}

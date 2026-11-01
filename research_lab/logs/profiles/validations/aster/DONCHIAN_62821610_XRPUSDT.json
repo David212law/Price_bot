@@ -1,0 +1,18 @@
+{
+  "key": "aster:DONCHIAN:62821610:XRPUSDT",
+  "validation": {
+    "n": 18,
+    "pf": 0.343,
+    "wr": 22.2,
+    "sharpe_daily": -0.4022,
+    "sharpe_ann": -7.683,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.015,
+      0.36,
+      6.771,
+      0.0
+    ],
+    "quartiles_pass": 1
+  }
+}

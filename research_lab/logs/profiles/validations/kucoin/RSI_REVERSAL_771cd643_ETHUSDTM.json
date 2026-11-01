@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:RSI_REVERSAL:771cd643:ETHUSDTM",
+  "validation": {
+    "n": 37,
+    "pf": 1.101,
+    "wr": 40.5,
+    "sharpe_daily": 0.042,
+    "sharpe_ann": 0.802,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.042,
+      "sharpe_annualized": 0.802,
+      "ci_low_annualized": -5.547,
+      "ci_high_annualized": 6.612,
+      "significant": false,
+      "n_obs": 37,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.386,
+      1.6,
+      0.783,
+      0.757
+    ],
+    "quartiles_pass": 2
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ROC:55a445a5:SOLUSDTM",
+  "validation": {
+    "n": 31,
+    "pf": 1.04,
+    "wr": 38.7,
+    "sharpe_daily": 0.0176,
+    "sharpe_ann": 0.336,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0176,
+      "sharpe_annualized": 0.336,
+      "ci_low_annualized": -7.27,
+      "ci_high_annualized": 7.017,
+      "significant": false,
+      "n_obs": 31,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.748,
+      0.0,
+      2.338,
+      1.705
+    ],
+    "quartiles_pass": 3
+  }
+}

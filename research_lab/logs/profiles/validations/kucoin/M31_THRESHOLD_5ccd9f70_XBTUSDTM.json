@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:M31_THRESHOLD:5ccd9f70:XBTUSDTM",
+  "validation": {
+    "n": 177,
+    "pf": 19.327,
+    "wr": 81.9,
+    "sharpe_daily": 1.0807,
+    "sharpe_ann": 20.647,
+    "bootstrap_ci": {
+      "sharpe_per_period": 1.0807,
+      "sharpe_annualized": 20.647,
+      "ci_low_annualized": 17.33,
+      "ci_high_annualized": 24.698,
+      "significant": true,
+      "n_obs": 177,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      9.313,
+      14.052,
+      20.183,
+      194.853
+    ],
+    "quartiles_pass": 4
+  }
+}

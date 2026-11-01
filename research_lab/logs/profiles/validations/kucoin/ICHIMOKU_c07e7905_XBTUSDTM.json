@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ICHIMOKU:c07e7905:XBTUSDTM",
+  "validation": {
+    "n": 76,
+    "pf": 1.044,
+    "wr": 30.3,
+    "sharpe_daily": 0.0108,
+    "sharpe_ann": 0.207,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0108,
+      "sharpe_annualized": 0.207,
+      "ci_low_annualized": -8.856,
+      "ci_high_annualized": 3.537,
+      "significant": false,
+      "n_obs": 76,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.043,
+      0.272,
+      1.145,
+      2.034
+    ],
+    "quartiles_pass": 3
+  }
+}

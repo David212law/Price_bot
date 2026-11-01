@@ -1,0 +1,26 @@
+{
+  "key": "hyperliquid:VWAP:5d749660:SOL",
+  "validation": {
+    "n": 145,
+    "pf": 0.951,
+    "wr": 65.5,
+    "sharpe_daily": -0.0208,
+    "sharpe_ann": -0.398,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0208,
+      "sharpe_annualized": -0.398,
+      "ci_low_annualized": -3.31,
+      "ci_high_annualized": 2.812,
+      "significant": false,
+      "n_obs": 145,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      2.629,
+      0.652,
+      0.751,
+      1.028
+    ],
+    "quartiles_pass": 2
+  }
+}

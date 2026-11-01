@@ -1,0 +1,18 @@
+{
+  "key": "kucoin:VOL_DONCHIAN:45495c3a:XBTUSDTM",
+  "validation": {
+    "n": 25,
+    "pf": 0.407,
+    "wr": 52.0,
+    "sharpe_daily": -0.3003,
+    "sharpe_ann": -5.738,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.384,
+      0.393,
+      1.191,
+      0.244
+    ],
+    "quartiles_pass": 1
+  }
+}

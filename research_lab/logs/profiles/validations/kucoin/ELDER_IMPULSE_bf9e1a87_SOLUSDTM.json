@@ -1,0 +1,26 @@
+{
+  "key": "kucoin:ELDER_IMPULSE:bf9e1a87:SOLUSDTM",
+  "validation": {
+    "n": 66,
+    "pf": 1.403,
+    "wr": 43.9,
+    "sharpe_daily": 0.1506,
+    "sharpe_ann": 2.877,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1506,
+      "sharpe_annualized": 2.877,
+      "ci_low_annualized": -1.876,
+      "ci_high_annualized": 7.866,
+      "significant": false,
+      "n_obs": 66,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.287,
+      1.681,
+      1.118,
+      1.527
+    ],
+    "quartiles_pass": 4
+  }
+}
