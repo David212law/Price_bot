@@ -212,17 +212,19 @@ def test_component_dropout(components_data, weights, base_sharpe):
 
 
 def test_weight_robustness(components_data, base_weights, base_sharpe, delta=0.20):
-    """Perturb weights ±20%; if combo collapses → overfit weights."""
+    """D-440: Perturb weights. For asymmetric weights use relative shift."""
     n = len(components_data)
     if n < 2:
         return {"pass": True, "detail": "single component"}
-    # Two perturbations: shift toward component 0, and toward last
+    # Relative shift: 50% of the smallest weight
+    smallest = min(base_weights)
+    shift = smallest * 0.5 if smallest < 0.20 else delta
     results = []
-    for shift in (-delta, +delta):
+    for sgn in (-1, +1):
         new_w = list(base_weights)
-        new_w[0] += shift
-        new_w[-1] -= shift
-        # fix negatives
+        # shift between first (M31) and last
+        new_w[0] += sgn * shift
+        new_w[-1] -= sgn * shift
         if any(w < 0 for w in new_w):
             continue
         total = sum(new_w)
@@ -303,6 +305,25 @@ def test_regime_conditional(combo_rets, m31_rets_same_regime, regime):
             "regime": regime}
 
 
+
+def _compute_risk_parity_weights(rets_list, dates):
+    """D-440: Inverse-vol weights. Low-vol assets get higher weight."""
+    if not rets_list: return []
+    if len(rets_list) == 1: return [1.0]
+    vols = []
+    for r in rets_list:
+        vals = [r[d] for d in dates if d in r]
+        if len(vals) < 2:
+            vols.append(1.0); continue
+        m = sum(vals) / len(vals)
+        v = sum((x - m) ** 2 for x in vals) / (len(vals) - 1)
+        sigma = math.sqrt(v) if v > 0 else 1e-6
+        vols.append(max(sigma, 1e-6))
+    inv_vols = [1.0 / v for v in vols]
+    total = sum(inv_vols)
+    return [iv / total for iv in inv_vols]
+
+
 def build_combination(m31_rets, complements_rets, max_components=3):
     """D-407: Take M31 + top N complements (family-diverse). Requires M31 positive."""
     if not m31_rets: return None
@@ -354,8 +375,8 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     if len(common_dates) < 30:
         return None
     
-    # Equal weights: M31 gets 50%, rest split 50%
-    weights = [0.5] + [0.5/len(selected)] * len(selected)
+    # D-440: Risk-parity weights (inverse-vol)
+    weights = _compute_risk_parity_weights(all_rets, common_dates)
     combined = {}
     for d in common_dates:
         combined[d] = sum(w * r[d] for w, r in zip(weights, all_rets))
@@ -385,7 +406,7 @@ def build_combination(m31_rets, complements_rets, max_components=3):
 
     # ═══════ D-439: 5 combo-specific tests ═══════
     components_data = [m31_rets] + [s["rets"] for s in selected]
-    all_w = [0.5] + [0.5/len(selected)] * len(selected)
+    all_w = weights  # D-440: use risk-parity for combo tests too
 
     # 1. Component Dropout
     dropout = test_component_dropout(components_data, all_w, combined_sr)
@@ -433,9 +454,11 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     print(f"    └─ Overall: {'✅ PASS' if all_combos_pass else '❌ FAIL'}")
 
     return {
-        "components": [{"name": "M31", "weight": 0.5}] +
-                      [{"name": f"{s['strategy']}_{s['symbol']}", "weight": round(0.5/len(selected),4),
-                        "family": s["family"], "corr": s["corr_m31"]} for s in selected],
+        "components": [{"name": "M31", "weight": round(weights[0], 4)}] +
+                      [{"name": f"{s['strategy']}_{s['symbol']}",
+                        "weight": round(weights[i+1], 4),
+                        "family": s["family"], "corr": s["corr_m31"]}
+                       for i, s in enumerate(selected)],
         "n_days": len(common_dates),
         "combined_sharpe": round(combined_sr, 3),
         "m31_only_sharpe": round(m31_sr, 3),
