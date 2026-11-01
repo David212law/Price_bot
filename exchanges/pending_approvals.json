@@ -83,7 +83,7 @@
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-01T18:06:30.905400+00:00"
+    "detected_at": "2026-11-01T19:26:26.446405+00:00"
   },
   "aster/NEUTRAL": {
     "combo": {
@@ -113,7 +113,7 @@
     "reasons": [
       "n_days=47<50"
     ],
-    "detected_at": "2026-11-01T18:06:30.974620+00:00"
+    "detected_at": "2026-11-01T19:26:26.512887+00:00"
   },
   "kucoin/TREND": {
     "combo": {
@@ -149,7 +149,7 @@
     "reasons": [
       "n_days=32<50"
     ],
-    "detected_at": "2026-11-01T18:06:32.329419+00:00"
+    "detected_at": "2026-11-01T19:26:27.875851+00:00"
   },
   "kucoin/RANGE": {
     "combo": {
@@ -179,7 +179,7 @@
     "reasons": [
       "n_days=42<50"
     ],
-    "detected_at": "2026-11-01T18:06:32.374093+00:00"
+    "detected_at": "2026-11-01T19:26:27.921860+00:00"
   },
   "hyperliquid/NEUTRAL": {
     "combo": {
@@ -209,7 +209,7 @@
     "reasons": [
       "n_days=30<50"
     ],
-    "detected_at": "2026-11-01T18:06:26.014195+00:00"
+    "detected_at": "2026-11-01T19:26:21.529371+00:00"
   },
   "aster/RANGE": {
     "combo": {
@@ -269,6 +269,6 @@
     "reasons": [
       "n_days=48<50"
     ],
-    "detected_at": "2026-11-01T18:06:32.413936+00:00"
+    "detected_at": "2026-11-01T19:26:27.962377+00:00"
   }
 }

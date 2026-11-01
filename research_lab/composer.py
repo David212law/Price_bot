@@ -5,7 +5,8 @@ import sys, os, json, math
 from collections import defaultdict
 sys.path.append(os.getcwd())
 
-from research_lab.audit_core import portfolio_daily_returns
+from research_lab.audit_core import (portfolio_daily_returns, calmar_maxdd,
+                                       correlation_stability)
 
 EXCHANGES = {
     "hyperliquid": ["BTC","ETH","SOL","BNB","XRP","AVAX"],
@@ -197,7 +198,27 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     
     if not selected:
         return None
-    
+
+    # D-438: Correlation Stability — all pairwise corr must be stable
+    stab_issues = []
+    # M31 vs each complement
+    for s in selected:
+        stab = correlation_stability(m31_rets, s["rets"], n_windows=4)
+        if stab and stab["stability"] == "UNSTABLE":
+            stab_issues.append(f"M31-{s['strategy']}_{s['symbol']}: "
+                               f"corr std={stab['std']}")
+    # Complement pairwise (if >1)
+    for i in range(len(selected)):
+        for j in range(i+1, len(selected)):
+            stab = correlation_stability(selected[i]["rets"], selected[j]["rets"], n_windows=4)
+            if stab and stab["stability"] == "UNSTABLE":
+                stab_issues.append(
+                    f"{selected[i]['strategy']}-{selected[j]['strategy']}: "
+                    f"corr std={stab['std']}")
+    if stab_issues:
+        print(f"    ⚠️ UNSTABLE correlations: {stab_issues[:3]}")
+        return None
+
     # Build weights: M31 + each selected complement (equal weight to complements)
     all_rets = [m31_rets] + [s["rets"] for s in selected]
     common_dates = set(m31_rets.keys())
@@ -223,12 +244,17 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     combo_calmar = combo_stats["calmar"]
     calmar_improvement = combo_calmar / m31_calmar if m31_calmar > 0 else 0
 
-        # D-418: Pure absolute gate — M31 backtest DD is synthetic (0.1%), can't compare
+        # D-418 + D-438: Absolute + Calmar quality gates
     # Criteria for "good combo":
-    #   - Absolute Sharpe >= 2.5 (strong)
-    #   - Absolute MaxDD <= 20% (manageable)
-    #   - Corr all components < 0.3 (verified upstream by find_complements)
-    passes = (combined_sr >= 2.5 and combo_stats["max_dd"] <= 0.20)
+    #   - Absolute Sharpe >= 2.5
+    #   - Absolute MaxDD <= 20%
+    #   - Calmar (CAGR/DD) >= 0.5 (D-438 NEW)
+    #   - Corr all components < 0.3 (verified upstream)
+    calmar_val = combo_calmar
+    passes_sharpe = combined_sr >= 2.5
+    passes_dd = combo_stats["max_dd"] <= 0.20
+    passes_calmar = calmar_val >= 0.5
+    passes = passes_sharpe and passes_dd and passes_calmar
 
     return {
         "components": [{"name": "M31", "weight": 0.5}] +
@@ -657,7 +683,8 @@ def main():
                     combo = build_combination(m31_reg, comps_with_rets)
                     if combo:
                         verdict = "✅ PASS GATE" if combo["passes_gate"] else "❌ absolute or relative quality failed"
-                        print(f"    → COMBO: SR={combo['combined_sharpe']} vs M31={combo['m31_only_sharpe']} n_days={combo['n_days']}")
+                        print(f"    → COMBO: SR={combo['combined_sharpe']} vs M31={combo['m31_only_sharpe']} "
+                              f"n_days={combo['n_days']} Calmar={combo['combined_calmar']}")
                         print(f"      Calmar={combo['combined_calmar']} vs M31={combo['m31_only_calmar']} "
                               f"(Δ={combo['calmar_improvement']}x) "
                               f"DD: {combo['max_dd_combo_pct']}% vs {combo['max_dd_m31_pct']}% {verdict}")

@@ -1,9 +1,8 @@
 {
   "hyperliquid": {
     "TREND": {
-      "M31": 0.5,
-      "KELTNER_REV_ETH": 0.5,
-      "CASH": 0.0
+      "M31": 0.65,
+      "CASH": 0.35
     },
     "RANGE": {
       "M31": 0.65,
@@ -22,9 +21,8 @@
       "CASH": 0.0
     },
     "RANGE": {
-      "M31": 0.5,
-      "KELTNER_REV_AVAXUSDT": 0.5,
-      "CASH": 0.0
+      "M31": 0.4,
+      "CASH": 0.6
     },
     "NEUTRAL": {
       "M31": 0.5,
