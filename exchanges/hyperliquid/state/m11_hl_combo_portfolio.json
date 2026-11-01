@@ -1,0 +1,15 @@
+{
+  "total_capital": 10000.0,
+  "m31_capital": 5000.0,
+  "m35_capital": 0.0,
+  "m40_capital": 0.0,
+  "m41_capital": 0.0,
+  "m31_pos": {},
+  "m35_pos": {},
+  "m40_pos": {},
+  "m41_pos": {},
+  "history": [],
+  "peak_equity": 10000.0,
+  "last_run": "2026-11-01T12:09:02.754380+00:00",
+  "cash_capital": 5000.0
+}

@@ -1,0 +1,39 @@
+{
+  "hyperliquid": {
+    "TREND": {
+      "M31": 0.5,
+      "CASH": 0.5
+    },
+    "RANGE": {
+      "M31": 0.65,
+      "CASH": 0.35
+    },
+    "NEUTRAL": {
+      "M31": 0.65,
+      "CASH": 0.35
+    },
+    "UNKNOWN": {
+      "M31": 0.65,
+      "CASH": 0.35
+    }
+  },
+  "aster": {
+    "TREND": {
+      "M31": 0.5,
+      "KELTNER_REV_AVAXUSDT": 0.5,
+      "CASH": 0.0
+    },
+    "RANGE": {
+      "M31": 0.4,
+      "CASH": 0.6
+    },
+    "NEUTRAL": {
+      "M31": 0.4,
+      "CASH": 0.6
+    },
+    "UNKNOWN": {
+      "M31": 0.4,
+      "CASH": 0.6
+    }
+  }
+}
