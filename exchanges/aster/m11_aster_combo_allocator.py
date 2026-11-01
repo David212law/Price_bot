@@ -50,6 +50,12 @@ def send_bale(msg):
         print(f"Bale Error: {e}")
 
 def load_from_github(filename):
+    """D-428: Try local first, then GitHub."""
+    if os.path.exists(filename):
+        try:
+            with open(filename) as f:
+                return json.load(f), None
+        except: pass
     try:
         url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
         r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
@@ -60,6 +66,13 @@ def load_from_github(filename):
     except: return {}, None
 
 def save_to_github(filename, data, sha=None):
+    """D-428: Always save locally first, then try GitHub."""
+    try:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, "w") as f:
+            json.dump(data, f, indent=2)
+    except Exception as _e:
+        print(f"[LOCAL SAVE ERROR] {_e}")
     try:
         if not sha: _, sha = load_from_github(filename)
         content = json.dumps(data, ensure_ascii=False, indent=2)
