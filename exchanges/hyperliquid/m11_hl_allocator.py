@@ -11,6 +11,7 @@ M31_PCT = 0.80  # D-313  # D-306: 100%
 M35_PCT = 0.0  # D-306  # D-286
 M40_PCT = 0.0  # D-306  # D-286
 M41_PCT = 0.0  # D-306  # D-286 # تخصیص جدید برای Diversifier
+KELTNER_PCT = 0.0  # D-397c — پیش‌فرض خاموش، از active_weights فعال می‌شود
 M31_LEVERAGE = 3  # D-310
 MAKER_FEE = 0.0002
 TAKER_FEE = 0.0005
@@ -40,7 +41,8 @@ def _log_close(state, sym, strat, pnl_val):
     state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
 
 
-def load_active_weights(exchange):
+def load_active_weights(exchange, regime=None):
+    """D-401: regime-aware weights loader. Backward-compatible with flat format."""
     import json, os
     path = "exchanges/active_weights.json"
     if not os.path.exists(path):
@@ -48,8 +50,20 @@ def load_active_weights(exchange):
     try:
         with open(path) as f:
             data = json.load(f)
-            return data.get(exchange, None)
-    except:
+        ex_data = data.get(exchange, {})
+        if not ex_data:
+            return None
+        regime_keys = {"TREND","RANGE","NEUTRAL","UNKNOWN"}
+        if any(k in regime_keys for k in ex_data.keys()):
+            if regime and regime in ex_data:
+                return ex_data[regime]
+            for fb in ("UNKNOWN","TREND"):
+                if fb in ex_data:
+                    return ex_data[fb]
+            return None
+        return ex_data
+    except Exception as _e:
+        print(f"[WEIGHTS] load error: {_e}")
         return None
 
 def main():
@@ -64,13 +78,16 @@ def main():
         globals()['_CURRENT_REGIME'] = 'UNKNOWN'
 
     # LOAD ACTIVE WEIGHTS (D-389: before state init)
-    _w = load_active_weights("hyperliquid")
+    _current_regime = globals().get('_CURRENT_REGIME', 'UNKNOWN')
+    _w = load_active_weights("hyperliquid", regime=_current_regime)
     if _w:
+        print(f"[WEIGHTS] regime={_current_regime} → keys={list(_w.keys())}")
         globals()["M31_PCT"] = _w.get("M31", globals()["M31_PCT"])
         globals()["M35_PCT"] = _w.get("M35", globals()["M35_PCT"])
         globals()["M40_PCT"] = _w.get("M40", globals()["M40_PCT"])
         globals()["M41_PCT"] = _w.get("M41", globals()["M41_PCT"])
-        print(f"[CONFIG] HL: M31={globals()['M31_PCT']*100:.0f}%, M35={globals()['M35_PCT']*100:.0f}%, M40={globals()['M40_PCT']*100:.0f}%, M41={globals()['M41_PCT']*100:.0f}%")
+        globals()["KELTNER_PCT"] = _w.get("KELTNER", globals()["KELTNER_PCT"])
+        print(f"[CONFIG] HL: M31={globals()['M31_PCT']*100:.0f}%, M35={globals()['M35_PCT']*100:.0f}%, M40={globals()['M40_PCT']*100:.0f}%, M41={globals()['M41_PCT']*100:.0f}%, KELTNER={globals()['KELTNER_PCT']*100:.0f}%")
 
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, 'r') as f: state = json.load(f)
@@ -135,9 +152,79 @@ def main():
                 state["m41_capital"] -= alloc
                 state["m41_pos"][sig["symbol"]] = {"side": "LONG" if sig["action"]=="OPEN_LONG" else "SHORT", "entry": sig["price"], "invested": alloc, "tp": sig["tp"], "sl": sig["sl"]}
 
+    # KELTNER Reversion (D-397c-v2) — منطق مطابق mean_reversion.py
+    if KELTNER_PCT > 0 and globals().get('_CURRENT_REGIME') in ('RANGE','NEUTRAL','UNKNOWN'):
+        from strategies.core_engine import load_data
+        from strategies.library.indicators import ema as _ema, atr as _atr
+
+        if "keltner_capital" not in state:
+            state["keltner_capital"] = INITIAL_CAPITAL * KELTNER_PCT
+        if "keltner_pos" not in state:
+            state["keltner_pos"] = {}
+
+        MAX_POS, POS_PCT, MIN_ALLOC = 3, 0.15, 10.0
+
+        # الف) بررسی خروج
+        for _sym in list(state["keltner_pos"].keys()):
+            _cd = load_data("hyperliquid", _sym)
+            if not _cd or len(_cd) < 30: continue
+            _lst, _pos = _cd[-1], state["keltner_pos"][_sym]
+            _ex = None
+            if _pos["side"] == "LONG":
+                if _lst["l"] <= _pos["sl"]: _ex = _pos["sl"]
+                elif _lst["h"] >= _pos["tp"]: _ex = _pos["tp"]
+            else:
+                if _lst["h"] >= _pos["sl"]: _ex = _pos["sl"]
+                elif _lst["l"] <= _pos["tp"]: _ex = _pos["tp"]
+            if _ex is not None:
+                _g = ((_ex - _pos["entry"]) / _pos["entry"] if _pos["side"] == "LONG"
+                      else (_pos["entry"] - _ex) / _pos["entry"])
+                _pnl = _pos["invested"] * (_g - 0.0012)
+                state["keltner_capital"] += _pos["invested"] + _pnl
+                del state["keltner_pos"][_sym]
+                _log_close(state, _sym, "KELTNER", _pnl)
+                print(f"[KELTNER] {_sym} CLOSE {_pos['side']} @ {_ex:.2f} | PnL {_pnl:+.2f}")
+
+        # ب) ورودهای جدید
+        _slots = MAX_POS - len(state["keltner_pos"])
+        if _slots > 0:
+            _cands = []
+            for _sym in SYMBOLS:
+                if _sym in state["keltner_pos"]: continue
+                _cd = load_data("hyperliquid", _sym)
+                if not _cd or len(_cd) < 30: continue
+                _cl = [x["c"] for x in _cd]
+                _e, _a = _ema(_cl, 20), _atr(_cd, 20)
+                if not _e or not _a or _e[-1] is None or _a[-1] is None: continue
+                _up, _lo = _e[-1] + 2*_a[-1], _e[-1] - 2*_a[-1]
+                _cur = _cd[-1]["c"]
+                # منطق دقیقاً مطابق mean_reversion.py:105
+                if _cur < _lo:   _cands.append(((_lo-_cur)/_a[-1], _sym, "LONG",  _cur, _lo-_a[-1], _e[-1]))
+                elif _cur > _up: _cands.append(((_cur-_up)/_a[-1], _sym, "SHORT", _cur, _up+_a[-1], _e[-1]))
+            _cands.sort(reverse=True)
+            for _st, _sym, _sd, _en, _sl, _tp in _cands[:_slots]:
+                _al = state["keltner_capital"] * POS_PCT
+                if _al < MIN_ALLOC or _al > state["keltner_capital"]: continue
+                state["keltner_capital"] -= _al
+                state["keltner_pos"][_sym] = {"side": _sd, "entry": _en, "invested": _al, "sl": _sl, "tp": _tp}
+                print(f"[KELTNER] {_sym} OPEN {_sd} @ {_en:.2f} | SL={_sl:.2f} TP={_tp:.2f} str={_st:.2f}")
+
     # 5. محاسبه سرمایه کل
     total_invested = sum(p["invested"] for pos in [state["m35_pos"], state["m40_pos"], state["m41_pos"]] for p in pos.values())
-    total_equity = (state["m31_capital"] + state["m35_capital"] + state["m40_capital"] + state["m41_capital"]
+    # MTM پوزیشن‌های باز Keltner
+    _ktm = 0.0
+    for _s, _p in state.get("keltner_pos", {}).items():
+        from strategies.core_engine import load_data as _ld
+        _cd = _ld("hyperliquid", _s)
+        if _cd:
+            _c = _cd[-1]["c"]
+            _g = ((_c - _p["entry"]) / _p["entry"] if _p["side"] == "LONG"
+                  else (_p["entry"] - _c) / _p["entry"])
+            _ktm += _p["invested"] * (1 + _g)
+        else:
+            _ktm += _p["invested"]
+    total_equity = (state["m31_capital"] + state["m35_capital"] + state["m40_capital"]
+                    + state["m41_capital"] + state.get("keltner_capital", 0) + _ktm
                     + state.get("cash_capital", 0) + total_invested)
     state["total_capital"] = total_equity
     # D-392: track peak equity for Kill Switch

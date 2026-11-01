@@ -105,8 +105,8 @@ def validate_candidate(cand, exchange, symbols):
     # DSR
     std = math.sqrt(sum((r-mean)**2 for r in all_returns) / max(len(all_returns)-1, 1))
     if std > 0:
-        sharpe = (mean / std) * math.sqrt(365)  # rough annualization
-        d = deflated_sharpe(sharpe, len(all_returns), 54)
+        sharpe = mean / std  # per-period (NOT annualized) — D-398 fix
+        d = deflated_sharpe(sharpe, len(all_returns), 54, annualized=False)
         dsr = d["DSR"] if d else 0
     else:
         dsr = 1.0

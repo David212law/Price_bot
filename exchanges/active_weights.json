@@ -1,5 +1,26 @@
 {
-  "hyperliquid": {"M31": 0.65, "M35": 0.0, "M40": 0.05, "M41": 0.0},
-  "aster":       {"M31": 0.0,  "A8": 0.0,  "A20": 0.0},
-  "kucoin":      {"M31": 0.30, "A20": 0.0, "M40": 0.0}
+  "_meta": {
+    "created": "2026-11-01",
+    "source": "research_lab/composer.py (D-400)",
+    "status": "provisional",
+    "notes": "HL regime-aware M31=65%. Aster cash-only (Route B candidate KELTNER_REV awaits manual approval per D-379). KuCoin M31=30%."
+  },
+  "hyperliquid": {
+    "TREND":   {"M31": 0.65, "CASH": 0.35},
+    "RANGE":   {"M31": 0.65, "CASH": 0.35},
+    "NEUTRAL": {"M31": 0.65, "CASH": 0.35},
+    "UNKNOWN": {"M31": 0.65, "CASH": 0.35}
+  },
+  "aster": {
+    "TREND":   {"CASH": 1.0},
+    "RANGE":   {"CASH": 1.0},
+    "NEUTRAL": {"CASH": 1.0},
+    "UNKNOWN": {"CASH": 1.0}
+  },
+  "kucoin": {
+    "TREND":   {"M31": 0.30, "CASH": 0.70},
+    "RANGE":   {"M31": 0.30, "CASH": 0.70},
+    "NEUTRAL": {"M31": 0.30, "CASH": 0.70},
+    "UNKNOWN": {"M31": 0.30, "CASH": 0.70}
+  }
 }
