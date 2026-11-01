@@ -234,6 +234,10 @@ def main():
     _current_regime = globals().get('_CURRENT_REGIME', 'UNKNOWN')
     _w = load_active_weights("aster", regime=_current_regime)
     _keltner_pct = 0.0
+    # D-435: Keltner فقط در RANGE/NEUTRAL (mean-reversion)
+    _keltner_allowed = _current_regime in ("RANGE", "NEUTRAL", "UNKNOWN")
+    if not _keltner_allowed:
+        print(f"[GATE] Keltner skipped in {_current_regime} (mean-reversion)")
     if _w:
         try: _keltner_pct = float(_w.get("KELTNER_REV_AVAXUSDT", _w.get("KELTNER", 0.0)))
         except (TypeError, ValueError): _keltner_pct = 0.0
