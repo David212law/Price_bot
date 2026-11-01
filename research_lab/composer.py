@@ -138,8 +138,20 @@ def notify_strict_approval(combo, exchange, regime):
             print(f"  [Bale] error: {_e}")
     return True
 
+
+def apply_m31_fees(daily_rets, avg_hold_days=30, taker_fee=0.0005):
+    """D-409-fix: M31 holds positions ~30 days; cost = 0.1% per cycle = 0.0033%/day."""
+    fee_per_day = (2 * taker_fee) / avg_hold_days
+    print(f"  [fee-adj] avg_hold={avg_hold_days}d → {fee_per_day*100:.4f}%/day "
+          f"({fee_per_day*365*100:.2f}%/yr)")
+    return {d: r - fee_per_day for d, r in daily_rets.items()}
+
 def build_combination(m31_rets, complements_rets, max_components=3):
-    """D-407: Take M31 + top N complements (family-diverse), return weights+metrics."""
+    """D-407: Take M31 + top N complements (family-diverse). Requires M31 positive."""
+    if not m31_rets: return None
+    m31_sr_check = sharpe(list(m31_rets.values()))
+    if m31_sr_check <= 0:
+        return None  # M31 negative → no meaningful combo
     if not m31_rets or not complements_rets:
         return None
     
@@ -188,7 +200,7 @@ def build_combination(m31_rets, complements_rets, max_components=3):
         "m31_only_sharpe": round(m31_sr, 3),
         "improvement": round(combined_sr / m31_sr if m31_sr > 0 else 0, 2),
         "max_dd_pct": round(mdd*100, 2),
-        "passes_gate": combined_sr >= m31_sr * 1.10,
+        "passes_gate": combined_sr >= m31_sr * 1.10 and m31_sr > 0,
     }
 
 def find_complements(state, regime, exchange, m31_rets, exclude_families=None, max_corr=0.3):
@@ -478,7 +490,13 @@ def main():
     for exchange, symbols in EXCHANGES.items():
         print(f"\n═══ {exchange.upper()} ═══")
         m31_daily = portfolio_daily_returns(exchange, symbols)
-        m31_rets = {d: r for d, r in m31_daily}
+        m31_rets_raw = {d: r for d, r in m31_daily}
+        # D-409: Apply realistic fees to M31
+        m31_rets = apply_m31_fees(m31_rets_raw)
+        if m31_rets:
+            sr_raw = sharpe(list(m31_rets_raw.values()))
+            sr_fee = sharpe(list(m31_rets.values()))
+            print(f"  M31 baseline: n={len(m31_rets)} SR_raw={sr_raw:.2f} SR_fee_adj={sr_fee:.2f}")
         if m31_rets:
             print(f"  M31 baseline: n={len(m31_rets)} Sharpe={sharpe(list(m31_rets.values())):.3f}")
 
@@ -540,7 +558,8 @@ def main():
     print("="*70)
     for exchange, symbols in EXCHANGES.items():
         m31_daily = portfolio_daily_returns(exchange, symbols)
-        m31_rets = dict(m31_daily)
+        m31_rets_raw = dict(m31_daily)
+        m31_rets = apply_m31_fees(m31_rets_raw)  # D-409
         if not m31_rets: continue
         print(f"\n─── {exchange.upper()} ───")
         for regime in ["TREND", "RANGE", "NEUTRAL"]:
