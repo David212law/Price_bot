@@ -221,15 +221,25 @@ def find_m31_weaknesses(m31_sig):
     return weaknesses
 
 
-def covers_weakness(sig, weakness):
-    """D-441c: annualized thresholds. 'Covers' = Sharpe > 2 in that condition."""
-    threshold = 2.0
+def covers_weakness(candidate_sig, m31_sig, weakness):
+    """D-441c: Candidate must BEAT M31 in the weak condition, not just be >2.0.
+    Keltner high_vol=6.50 vs M31 high_vol=8.01 → does NOT cover."""
+    floor = 2.0  # must be decent in absolute terms too
 
     if "low_vol" in weakness:
-        return (sig.get("sharpe_low_vol") or 0) > threshold
+        c = candidate_sig.get("sharpe_low_vol")
+        m = m31_sig.get("sharpe_low_vol")
+        if c is None or m is None: return False
+        return c > m and c > floor
     if "high_vol" in weakness:
-        return (sig.get("sharpe_high_vol") or 0) > threshold
+        c = candidate_sig.get("sharpe_high_vol")
+        m = m31_sig.get("sharpe_high_vol")
+        if c is None or m is None: return False
+        return c > m and c > floor
     if weakness.startswith(("weak_in_", "underperform_in_")):
         regime = weakness.replace("weak_in_", "").replace("underperform_in_", "")
-        return sig.get("sharpe_by_regime", {}).get(regime, 0) > threshold
+        c = candidate_sig.get("sharpe_by_regime", {}).get(regime)
+        m = m31_sig.get("sharpe_by_regime", {}).get(regime)
+        if c is None or m is None: return False
+        return c > m and c > floor
     return False
