@@ -1,6 +1,6 @@
 {
-  "total_equity": 9998.309721324407,
-  "m31_capital": 2998.309721324408,
+  "total_equity": 9998.029324842335,
+  "m31_capital": 2998.029324842335,
   "a20_capital": 0.0,
   "m40_capital": 0.0,
   "cash_capital": 7000.0,
@@ -14,13 +14,14 @@
         7.8e-05,
         8e-05,
         8.1e-05,
-        5.4e-05
+        5.4e-05,
+        5.3e-05
       ],
       "last_exit": 0,
-      "last_processed": 1793520000000
+      "last_processed": 1793548800000
     },
     "ETHUSDTM": {
-      "in_pos": false,
+      "in_pos": true,
       "hist": [
         -1.3e-05,
         -1.4e-05,
@@ -28,10 +29,11 @@
         2.5e-05,
         2.9e-05,
         3.3e-05,
-        1e-06
+        1e-06,
+        2.5e-05
       ],
       "last_exit": 0,
-      "last_processed": 1793520000000
+      "last_processed": 1793548800000
     },
     "SOLUSDTM": {
       "in_pos": true,
@@ -42,10 +44,11 @@
         -1e-05,
         1.1e-05,
         1e-05,
-        8.1e-05
+        8.1e-05,
+        0.0001
       ],
       "last_exit": 0,
-      "last_processed": 1793520000000
+      "last_processed": 1793548800000
     },
     "BNBUSDTM": {
       "in_pos": true,
@@ -56,10 +59,11 @@
         3.9e-05,
         7e-05,
         7.5e-05,
-        0.0001
+        0.0001,
+        -2.4e-05
       ],
       "last_exit": 0,
-      "last_processed": 1793520000000
+      "last_processed": 1793548800000
     },
     "XRPUSDTM": {
       "in_pos": true,
@@ -70,10 +74,11 @@
         0.0001,
         0.0001,
         0.0001,
-        0.0001
+        0.0001,
+        8.4e-05
       ],
       "last_exit": 0,
-      "last_processed": 1793520000000
+      "last_processed": 1793548800000
     },
     "AVAXUSDTM": {
       "in_pos": false,
@@ -84,15 +89,16 @@
         9.4e-05,
         6.6e-05,
         5.9e-05,
+        0.0001,
         0.0001
       ],
       "last_exit": 0,
-      "last_processed": 1793520000000
+      "last_processed": 1793548800000
     }
   },
   "a20_pos": {},
   "m40_pos": {},
   "history": [],
-  "last_run": "2026-11-01T15:22:45.242796+00:00",
+  "last_run": "2026-11-01T20:41:41.682651+00:00",
   "peak_equity": 9998.309721324407
 }
