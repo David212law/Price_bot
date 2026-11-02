@@ -26,6 +26,14 @@ jobs:
       - name: Run Composer
         run: python -m research_lab.composer
 
+      - name: Generate Report
+        run: python -m research_lab.composer_report
+
+      - name: Commit Report
+        run: |
+          git add research_lab/logs/composer_full_report.json research_lab/logs/composer_summary.md || true
+          git diff --staged --quiet || git commit -m "Auto: weekly report [skip ci]" || true
+
       - name: Send Bale Notification
         if: always()
         env:
