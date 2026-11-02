@@ -1698,3 +1698,235 @@ Cash: 26%
 - KuCoin: M31=30٪ + Cash=70٪ (KELTNER در KuCoin به‌دلیل n<15 رد شد)
 
 **پیش‌نیاز فعال‌سازی:** اجرای Paper با signal generation و مقایسه با backtest پس از ۴۸ ساعت.
+
+════════════════════════════════════════════════════════════════════
+  SESSION 2026-11-01 → 2026-11-02 — D-398 تا D-450
+  حجم: ۵۳ تصمیم در یک session فشرده
+════════════════════════════════════════════════════════════════════
+
+خلاصه گروه‌بندی‌شده (به ترتیب موضوعی):
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۱: باگ‌های آماری/محاسباتی (فیکس شدند)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-01-398 — DSR-DIMENSIONAL-FIX: تصحیح ابعادی DSR
+وضعیت: قفل | Sharpe annualized با SE per-period مقایسه می‌شد → DSR همیشه ۱.
+فیکس: deflated_sharpe با annualized explicit، validation_v2 Sharpe per-period به DSR می‌دهد.
+Commit: fc5b8ddc
+
+## D-2026-11-01-415 — M31-FRICTION-REALISTIC: friction واقعی برای M31
+وضعیت: قفل | basis_loss=0.5%/mo حذف شد (غیرسیستماتیک). fee+slip واقعی: 0.0067%/day.
+Commit: fc5b8ddc → D-415 در سند
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۲: زیرساخت کشف (ساخته شد)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-01-399 — PROFILER-BUILT: profiler.py (cascade L1-L4)
+وضعیت: قفل | ۳۸ استراتژی × ۳ صرافی × ۶ نماد. regime-tagging + stress tests.
+Commit: fc5b8ddc
+
+## D-2026-11-01-400 — COMPOSER-BUILT: composer.py (Route A/B)
+وضعیت: قفل | ساخت ترکیب با corr<0.3 + ۵ combo test + risk-parity.
+Commit: fc5b8ddc
+
+## D-2026-11-01-401 — REGIME-AWARE: allocators regime-aware
+وضعیت: قفل | HL/Aster/KuCoin از active_weights[regime] می‌خوانند.
+Commit: 320cf708
+
+## D-2026-11-01-402 — CLEANUP-PHASE1: پاک‌سازی فایل‌های مرده
+وضعیت: قفل | ۳۱ فایل حذف شد (build_*، screening، validation_v2، unified_master).
+Commit: 2a340417
+
+## D-2026-11-01-403 — KUCOIN-PAGINATION-FIX: forward pagination
+وضعیت: قفل | از ۲۰۰ به ۶۵۷۰ کندل (cursor=latest+1، نه oldest-1).
+Commit: 27251d1b
+
+## D-2026-11-01-405 — M31-CAP-FIX: aster m31_cap هم‌سان با active_weights
+وضعیت: قفل | composer "aster":0.0 → 0.40.
+Commit: d14c114c
+
+## D-2026-11-01-424 — INDICATORS-RESTORED: بازگردانی strategies/indicators.py
+وضعیت: قفل | اشتباه حذف شد (core_engine استفاده می‌کرد). بازگردانی از HEAD~1.
+Commit: f35c4483
+
+## D-2026-11-01-429 — NR-BREAKOUT-LOOKAHEAD-FIX: candles[i+1]["o"] نه ["c"]
+وضعیت: قفل | forward-close غیرقابل اجرا بود → open کندل بعد.
+Commit: 6ebf85bc
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۳: تست‌های اعتبارسنجی (افزوده شد)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-01-438 — CALMAR-CORR-GATES: Calmar + Correlation Stability
+وضعیت: قفل | Calmar gate (DD<60%، Calmar≥0.3) + Corr-Stability در ۴ بازه.
+Commit: d14c114c
+
+## D-2026-11-01-439 — COMBO-TESTS-5: پنج تست ترکیبی
+وضعیت: قفل | Component Dropout، Weight Robustness ±۲۰٪، Combo vs Best OOS،
+Diversification Ratio≥1.05، Regime-Conditional.
+Commit: c463e68a
+
+## D-2026-11-01-440 — RISK-PARITY: inverse-vol weighting
+وضعیت: قفل | وزن_i ∝ 1/vol_i. اثر: M31=98%, Keltner=2% → DR=1.31.
+Commit: 58567e68
+
+## D-2026-11-01-441a — SIGNATURE-MODULE: signature_for_m31/entry
+وضعیت: قفل | sharpe_by_regime + sharpe_low/high_vol + tail + skew.
+Commit: 0c68d4a5
+
+## D-2026-11-01-441b — SIGNATURE-ANNUALIZED: thresholds سالانه
+وضعیت: قفل | همه Sharpe سالانه (×√365). weak<2.0، underperform<50%best.
+Commit: 0c68d4a5
+
+## D-2026-11-01-441c — COVERS-WEAKNESS-FIX: candidate > M31
+وضعیت: قفل | قبلاً threshold>2.0 بود → Keltner با 6.5، "cover" در حالی که M31=8.01.
+فیکس: candidate_sr > m31_sr در همان شرایط.
+Commit: 0c68d4a5
+
+⚠️ D-441d (coverage gate) ناقص — فعلاً ranking، نه gate. مشکل باز.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۴: Aster COMBO و shadow bots
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-01-421 — COMBO-BOTS: HL COMBO + Aster COMBO
+وضعیت: قفل | M31+Keltner با weight‌های مستقل.
+Commit: 98b4806d
+
+## D-2026-11-01-422 — ASTER-CASH-FIX-ATTEMPT1: double-count cash
+وضعیت: ناموفق | cash formula بار اول فیکس نشد.
+
+## D-2026-11-01-426 — ASTER-RESET: reset state خراب
+وضعیت: قفل | حذف state و بازسازی.
+
+## D-2026-11-01-427 — LOCAL-SAVE-ATTEMPT1
+وضعیت: ناموفق | pattern mismatch.
+
+## D-2026-11-01-428 — LOCAL-SAVE-FALLBACK: save_to_github با local fallback
+وضعیت: قفل | اکنون equity=$10,000.85 درست (قبلاً $15,000).
+Commit: 98b4806d
+
+## D-2026-11-01-433 — HL-COMBO-REMOVED: حذف HL COMBO (بی‌فایده)
+وضعیت: قفل | M31=50%+CASH=50% فقط. Keltner نداشت.
+Commit: 234c81d3
+
+## D-2026-11-01-435 — KELTNER-GATE: فقط RANGE/NEUTRAL در Aster COMBO
+وضعیت: قفل | mean-reversion در TREND شکست می‌خورد.
+Commit: 330dd418
+
+## D-2026-11-01-436 — ASTER-COMBO-SKIP-TREND: skip کامل در TREND
+وضعیت: قفل | صرفه‌جویی API call.
+Commit: f917ff96
+
+## D-2026-11-01-437 — SHADOW-BOTS: HL Shadow + Aster Shadow TREND
+وضعیت: قفل | همه رژیم‌ها (برای تست gate‌ها).
+Commit: e7aae132
+
+## D-2026-11-01-446 — ASTER-AB-SHADOWS: Balanced (50/50) vs RP (98/2)
+وضعیت: قفل | A/B test — کدام weighting بهتر است.
+Commit: d9841053 → 794682a9
+
+## D-2026-11-02-448 — HL-SHADOW-EQUITY-FIX: $15,000 → $10,000
+وضعیت: قفل | همان باگ cash double-count.
+Commit: b024942d
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۵: Aster funding و Pooled returns (D-444)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-02-444 — ASTER-FUNDING-FIX + POOLED-RETURNS
+وضعیت: قفل | 
+- Aster funding: از 2021-2022 به 2024-2026 (۲۱۹۰ records هر نماد).
+- pooled_returns.py: n از ۱۲ به ۱۸۳ برای LOW_VOL_CARRY.
+اثر: Aster از proxy به داده واقعی → ۴ STRICT_PASS جدید.
+Commit: 6ccabd78
+
+## D-2026-11-02-445 — POOLED-COMPOSER: composer از pooled returns استفاده می‌کند
+وضعیت: قفل | filter_candidates + find_complements + main همه از pooled.
+Dedupe توسط (strategy, hash).
+Commit: 794682a9
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۶: گسترش استراتژی‌ها (D-442)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-02-442 — 4-NEW-STRATEGIES: ۴ استراتژی هم‌نوسان
+وضعیت: قفل | تأیید صریح صاحب پروژه (استثناء از دستور «بدون استراتژی جدید»).
+- FUNDING_MEAN_REV (funding MR، vol 0.2%)
+- PAIRS_RELATIVE (return reversal، vol 0.3%)
+- LOW_VOL_CARRY (low-vol only، vol 0.2%)
+- MTF_CONFIRMATION (4h+1d، vol 0.4%)
+هدف: DR واقعی با وزن 50/50.
+نتیجه: LOW_VOL_CARRY بهترین (KuCoin SR=5.1، n=183) ولی corr ناپایدار → رد شد.
+Commit: 62447779
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۷: امنیت و همگام‌سازی
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-02-443 — CONCURRENCY-SHARED: حل 422 SHA conflict
+وضعیت: قفل | group: state-commits (مشترک بین shadow_paper، aster_paper، kucoin).
+Commit: 2dd57b5c
+
+## D-2026-11-02-449 — MONITORING-ALL-BOTS: نظارت ۸ ربات
+وضعیت: قفل | performance_monitor (۸ ربات)، kill_switch (۴ اصلی)،
+daily_report + analytics_engine (۸ ربات).
+Commit: f4dae7b3
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+گروه ۸: گزارش‌دهی و آرشیو
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## D-2026-11-02-447 — STRUCTURED-REPORT: گزارش‌دهی JSON + Markdown
+وضعیت: قفل | composer_report.py — هر gate دلیل رد ثبت می‌شود.
+Commit: 05d70d0e
+
+## D-2026-11-02-450 — ARCHIVAL: تاریخچه کشف‌ها
+وضعیت: قفل | 
+- history/YYYY-MM-DD/ (snapshot کامل هر run)
+- discoveries.json (append-only، همه STRICT_PASS/WEAK_PASS)
+- signatures_cache.json (cache بدون محاسبه مجدد)
+Commit: ed80004c
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+تصمیمات باز (باید در session بعدی حل شوند)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ D-441d — Coverage Gate ناقص (فقط ranking، نه gate)
+⚠️ M31 Sharpe=8-13 در backtest غیرواقعی (Paper انتظار 2-4)
+⚠️ ۴ STRICT_PASS با وزن 98/2 = "M31 + 2% hedge"، نه ترکیب واقعی
+⚠️ LOW_VOL_CARRY corr ناپایدار (std=0.35) → رد شد
+⚠️ Paper صفر روز — داده واقعی نداریم
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+وضعیت نهایی session
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+کامیت‌های کلیدی:
+  fc5b8ddc  D-398/399/400/401 (پایه‌ها)
+  2a340417  D-402 (cleanup)
+  27251d1b  D-403 (KuCoin data)
+  d14c114c  D-438 (Calmar + Corr-Stab)
+  c463e68a  D-439 (5 combo tests)
+  58567e68  D-440 (risk-parity)
+  0c68d4a5  D-441a/b/c (signature)
+  62447779  D-442 (4 strategies)
+  6ccabd78  D-444 (Aster funding + pooled)
+  794682a9  D-445/446 (pooled composer + A/B shadows)
+  05d70d0e  D-447 (structured report)
+  b024942d  D-448 (HL Shadow fix)
+  f4dae7b3  D-449 (نظارت ۸ ربات)
+  ed80004c  D-450 (archival)
+
+۸ ربات Paper:
+  Main (kill_switch):    HL, Aster, KuCoin, Aster COMBO
+  Shadow (پایش):         HL Shadow, Aster Shadow TREND, Balanced, RP
+
+مسیر:
+  → ۳۰ روز Paper
+  → مقایسه A/B shadows
+  → Paper-based composer
+  → Live Gate (D-379)
+
