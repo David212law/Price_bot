@@ -5,9 +5,8 @@
       "CASH": 0.35
     },
     "RANGE": {
-      "M31": 0.989,
-      "KELTNER_REV_ETH": 0.011,
-      "CASH": 0.0
+      "M31": 0.65,
+      "CASH": 0.35
     },
     "NEUTRAL": {
       "M31": 0.65,
@@ -16,19 +15,16 @@
   },
   "aster": {
     "TREND": {
-      "M31": 0.9808,
-      "KELTNER_REV_AVAXUSDT": 0.0192,
-      "CASH": 0.0
+      "M31": 0.4,
+      "CASH": 0.6
     },
     "RANGE": {
-      "M31": 0.97,
-      "KELTNER_REV_AVAXUSDT": 0.03,
-      "CASH": 0.0
+      "M31": 0.4,
+      "CASH": 0.6
     },
     "NEUTRAL": {
-      "M31": 0.9734,
-      "KELTNER_REV_AVAXUSDT": 0.0266,
-      "CASH": 0.0
+      "M31": 0.4,
+      "CASH": 0.6
     }
   },
   "kucoin": {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T12:21:31.774203+00:00",
+  "generated_at": "2026-11-02T13:49:14.876363+00:00",
   "total_entries": 2023,
   "config": {
     "min_n": 30,
@@ -69,12 +69,13 @@
             }
           ],
           "rejected_by_gate": {
-            "quartiles": 420,
+            "quartiles": 417,
             "regime_n": 34,
-            "no_validation": 93,
+            "no_validation": 39,
             "fee_2x": 2,
             "param_fragile": 2,
-            "blacklist": 90
+            "blacklist": 90,
+            "pooled_n": 57
           },
           "sample_rejections": [
             {
@@ -280,12 +281,13 @@
             }
           ],
           "rejected_by_gate": {
-            "quartiles": 319,
-            "no_validation": 52,
+            "quartiles": 318,
+            "no_validation": 8,
             "regime_n": 176,
             "fee_2x": 2,
             "param_fragile": 2,
-            "blacklist": 90
+            "blacklist": 90,
+            "pooled_n": 45
           },
           "sample_rejections": [
             {
@@ -488,10 +490,11 @@
           "rejected_by_gate": {
             "quartiles": 321,
             "regime_n": 193,
-            "no_validation": 31,
+            "no_validation": 6,
             "fee_2x": 2,
             "param_fragile": 2,
-            "blacklist": 90
+            "blacklist": 90,
+            "pooled_n": 25
           },
           "sample_rejections": [
             {
@@ -712,10 +715,11 @@
             }
           ],
           "rejected_by_gate": {
-            "quartiles": 493,
+            "quartiles": 488,
             "fee_2x": 5,
             "regime_n": 29,
-            "no_validation": 43
+            "no_validation": 39,
+            "pooled_n": 9
           },
           "sample_rejections": [
             {
@@ -931,10 +935,11 @@
             }
           ],
           "rejected_by_gate": {
-            "quartiles": 398,
+            "quartiles": 396,
             "regime_n": 148,
             "fee_2x": 5,
-            "no_validation": 18
+            "no_validation": 11,
+            "pooled_n": 9
           },
           "sample_rejections": [
             {
@@ -1153,7 +1158,8 @@
             "quartiles": 417,
             "regime_n": 133,
             "fee_2x": 5,
-            "no_validation": 15
+            "no_validation": 11,
+            "pooled_n": 4
           },
           "sample_rejections": [
             {
@@ -1335,15 +1341,6 @@
           "examined": 658,
           "passed_gates": [
             {
-              "strategy": "LOW_VOL_CARRY",
-              "symbol": "SOLUSDTM",
-              "family": "OTHER",
-              "sharpe_ann": 5.123,
-              "quartiles": 4,
-              "n_regime": 12,
-              "pooled_n": 183
-            },
-            {
               "strategy": "KELTNER_REV",
               "symbol": "ETHUSDTM",
               "family": "MR",
@@ -1417,12 +1414,12 @@
             }
           ],
           "rejected_by_gate": {
-            "quartiles": 495,
-            "no_validation": 48,
+            "quartiles": 432,
+            "no_validation": 44,
             "regime_n": 7,
             "fee_2x": 8,
             "blacklist": 90,
-            "param_fragile": 1
+            "pooled_n": 69
           },
           "sample_rejections": [
             {
@@ -1580,15 +1577,6 @@
           "examined": 658,
           "passed_gates": [
             {
-              "strategy": "LOW_VOL_CARRY",
-              "symbol": "SOLUSDTM",
-              "family": "OTHER",
-              "sharpe_ann": 5.123,
-              "quartiles": 4,
-              "n_regime": 14,
-              "pooled_n": 183
-            },
-            {
               "strategy": "KELTNER_REV",
               "symbol": "ETHUSDTM",
               "family": "MR",
@@ -1653,12 +1641,12 @@
             }
           ],
           "rejected_by_gate": {
-            "quartiles": 441,
-            "no_validation": 21,
+            "quartiles": 379,
+            "no_validation": 16,
             "regime_n": 92,
             "fee_2x": 5,
             "blacklist": 90,
-            "param_fragile": 1
+            "pooled_n": 69
           },
           "sample_rejections": [
             {
@@ -1880,12 +1868,12 @@
             }
           ],
           "rejected_by_gate": {
-            "quartiles": 450,
-            "no_validation": 20,
+            "quartiles": 393,
+            "no_validation": 17,
             "regime_n": 82,
             "fee_2x": 8,
             "blacklist": 90,
-            "param_fragile": 1
+            "pooled_n": 61
           },
           "sample_rejections": [
             {
