@@ -89,10 +89,10 @@ def main():
     analyze_m11_hl_hyperliquid()
     analyze_aster_m11_aster()
     # D-449: 5 new bots
+    analyze_bot_generic("KuCoin Paper", "exchanges/kucoin/state/m11_kucoin_paper_state.json")
     analyze_bot_generic("Aster COMBO", "exchanges/aster/state/m11_aster_combo_paper_state.json")
     analyze_bot_generic("HL Shadow", "exchanges/hyperliquid/state/m11_hl_shadow_portfolio.json")
     analyze_bot_generic("Aster Shadow TREND", "exchanges/aster/state/m11_aster_shadow_trend_state.json")
-    analyze_bot_generic("Aster Shadow Balanced", "exchanges/aster/state/m11_aster_shadow_balanced_state.json")
     analyze_bot_generic("Aster Shadow RP", "exchanges/aster/state/m11_aster_shadow_rp_state.json")
     analyze_bot_generic("Aster Shadow LV", "exchanges/aster/state/m11_aster_shadow_lv_state.json")
 

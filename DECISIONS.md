@@ -1954,3 +1954,28 @@ Commit: ed80004c
 - Aster Shadow LV: M31=97%, LOW_VOL_CARRY=3%
 - هدف: مشاهده Paper عملکرد LOW_VOL_CARRY
 - اگر بعد از ۳۰ روز Paper مفید بود → ارتقا به combo
+
+## D-2026-11-02-458 — BALANCED-REMOVED: حذف Aster Shadow Balanced
+
+**وضعیت:** قفل
+
+**یافته:**
+- COMBO (main) و Balanced (shadow) در RANGE/NEUTRAL یکسان بودند (M31=50%, Keltner=50%)
+- تفاوت فقط در TREND: COMBO skip (D-436)، Balanced فعال
+- Keltner در TREND منطقاً اشتباه است (mean-reversion در TREND می‌شکند — D-435)
+
+**تصمیم:**
+- حذف Aster Shadow Balanced
+- حفظ COMBO (که در RANGE/NEUTRAL درست عمل می‌کند، در TREND skip)
+- حفظ RP (98/2) و LV (97/3) به‌عنوان shadow برای A/B
+
+**اثر:**
+- ۸ ربات Paper موازی (به جای ۹)
+- صفر داده تکراری
+- A/B معنادار: RP (Keltner 2%) vs LV (LOW_VOL 3%)
+- D-446 (Aster A/B shadows) هنوز معتبر است — فقط ۲ shadow به جای ۳
+
+**دلیل:**
+اصل صرفه‌جویی منابع (اصل ۲ صاحب پروژه) — داده تکراری = منابع هدر.
+Balanced منطقاً در TREND اشتباه بود، در RANGE/NEUTRAL تکراری.
+حذف آن هم منابع را آزاد می‌کند هم داده را تمیز نگه می‌دارد.
