@@ -2225,3 +2225,29 @@ STRICT_PASS kucoin/NEUTRAL → PROVISIONAL_PASS تا:
 
 **دلیل:** Sharpe از n=0 بی‌معنی است.
 
+
+## D-2026-11-02-495 — M31-VIABILITY-CONFIRMED
+
+**وضعیت:** قفل
+
+**نتیجه arith/geo:**
+  HL:      arith=+7.92%  geo=+8.24%  SR=8.16   (5.6%/yr)
+  Aster:   arith=+14.38% geo=+15.46% SR=8.26   (7.7%/yr)
+  KuCoin:  arith=+25.18% geo=+28.61% SR=7.76   (9.5%/yr)
+
+**تفسیر:**
+- geo > arith در هر سه → compounding مثبت، نه منفی
+- D-479 decay واقعی است (28% → 2-4%)
+- اما M31 هنوز سودده (5-9%/yr میانگین)
+- مرده نیست، فقط کند شده
+
+**Keltner decay:**
+- Aster: 7.71 → 5.84 (افت جزئی، پایدار)
+- KuCoin: 4.70 → 4.96 (پایدار)
+- Keltner decay ندارد → جایگزین جدی
+
+**تصمیم:**
+- M31 قابل استفاده است، ولی با انتظار 2-5%/yr در Live (نه 28%)
+- PROVISIONAL_PASS kucoin/NEUTRAL معتبر است
+- Paper ۳۰ روزه ادامه — بعد از D-494 بازبینی ۳ مرحله‌ای
+- اگر M31 در Paper SR < 2 بود → Keltner تقویت شود (ماه ۳)
