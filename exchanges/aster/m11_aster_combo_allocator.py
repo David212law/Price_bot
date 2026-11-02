@@ -236,6 +236,19 @@ def main():
     # D-436: Aster COMBO only for RANGE/NEUTRAL — skip entirely in TREND
     if _current_regime == "TREND":
         print(f"[SKIP] Aster COMBO: TREND regime (Keltner is mean-reversion)")
+        # D-459: save last_run so kill_switch freshness check passes
+        import os as _os
+        _existing = {}
+        if _os.path.exists(STATE_FILE):
+            try: _existing = json.load(open(STATE_FILE))
+            except: _existing = {}
+        _existing["last_run"] = datetime.now(timezone.utc).isoformat()
+        _existing["skipped_regime"] = "TREND"
+        try:
+            _os.makedirs(_os.path.dirname(STATE_FILE), exist_ok=True)
+            json.dump(_existing, open(STATE_FILE, "w"), indent=2)
+        except Exception as _e:
+            print(f"[SKIP-SAVE WARN] {_e}")
         import sys as _sys
         _sys.exit(0)
 

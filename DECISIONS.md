@@ -2008,3 +2008,20 @@ coverage gate به دو دسته تفکیک می‌شود:
 - composer برای STRICT همچنان تهاجمی است (تغییر نمی‌کند)
 
 **قانون:** DEFENSIVE_PASS هرگز به Live نمی‌رود بدون ارتقا به STRICT.
+
+## D-2026-11-02-459 — COMBO-SKIP-STATE: Aster COMBO last_run در TREND
+
+**وضعیت:** قفل
+
+**مسئله:**
+D-436 در TREND با sys.exit(0) خارج می‌شد، قبل از ذخیره state.
+نتیجه: last_run آپدیت نمی‌شد → kill_switch «stale > 9h» کاذب می‌داد.
+
+**فیکس:**
+قبل از exit، last_run و skipped_regime در state ذخیره می‌شود.
+state موجود (equity، capital) دست‌نخورده می‌ماند.
+
+**اثر:**
+- kill_switch freshness check پاس می‌شود
+- در RANGE/NEUTRAL، state به‌طور کامل آپدیت می‌شود
+- skipped_regime در state برای debug قابل رؤیت است
