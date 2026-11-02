@@ -24,15 +24,33 @@ jobs:
       - name: Generate Report
         run: python -m research_lab.composer_report
 
+      # ارسال محتوای واقعی گزارش به بله
+      - name: Send Bale Notification
+        if: always()
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+        run: |
+          python -c "
+import os, requests
+tok = os.environ.get('BALE_BOT_TOKEN')
+chat = os.environ.get('BALE_CHAT_ID')
+if tok and chat:
+    try:
+        with open('research_lab/logs/composer_summary.md', 'r') as f:
+            report = f.read()
+    except:
+        report = 'Report file not found.'
+    # Bale has a character limit, so we take the first 3500 chars
+    msg = '📊 **Weekly Research Report**\n\n' + report[:3500]
+    requests.post(f'https://tapi.bale.ai/bot{tok}/sendMessage', json={'chat_id': chat, 'text': msg})
+"
+
       - name: Commit Report
         run: |
-          # تنظیم هویت گیت (دقیقاً همین‌جا، بدون هیچ جای دیگر)
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # اجبار به اضافه کردن همه لاگ‌ها
           git add -f research_lab/logs/ || true
-          
           if ! git diff --staged --quiet; then
             git commit -m "Auto: weekly research [skip ci]"
             git push
