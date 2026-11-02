@@ -95,7 +95,10 @@ def main():
         if "m41_pos" not in state: state["m41_pos"] = {}
         if "cash_capital" not in state:
             _inv = sum(p.get("invested",0) for pos in [state.get("m35_pos",{}),state.get("m40_pos",{}),state.get("m41_pos",{})] for p in pos.values())
-            _alloc = state.get("m31_capital",0)+state.get("m35_capital",0)+state.get("m40_capital",0)+state.get("m41_capital",0)
+            # D-488: include keltner_capital in _alloc (D-448 regression fix)
+            _alloc = (state.get("m31_capital",0) + state.get("m35_capital",0)
+                      + state.get("m40_capital",0) + state.get("m41_capital",0)
+                      + state.get("keltner_capital",0))
             state["cash_capital"] = max(0, INITIAL_CAPITAL - _alloc - _inv)
             print(f"[MIGRATE] cash_capital initialized: ${state['cash_capital']:.2f}")
     else:
