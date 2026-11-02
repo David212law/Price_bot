@@ -2116,3 +2116,28 @@ D-450 archive سیستم طراحی شد، ولی .gitignore مسیر research_l
 هر فایل حیاتی در logs که باید persist شود، باید یا در exception .gitignore
 باشد یا با git add -f در workflow اضافه شود. فقط فایل‌های ephemeral
 (مثل state matrices محلی) نادیده گرفته شوند.
+
+## D-2026-11-02-483 — FIRST-STRICT-PASS: اولین ترکیب واقعی
+
+**وضعیت:** قفل
+
+**ترکیب:**
+- Exchange/Regime: kucoin/NEUTRAL
+- Components: M31=97.0%, KELTNER_REV_ETHUSDTM=2.4%, DUAL_MOMENTUM_XBTUSDTM=0.6%
+- SR=11.186 (M31=8.863 → +26%)
+- n_days=100
+- Dropout: PASS (comp2 redundant 3.1% — بی‌ضرر)
+
+**نکته صادقانه:**
+وزن ۹۷/۳ یعنی عملاً M31 + ۳٪ هج. Sharpe بهبود دارد، ولی تأثیر عملی ناچیز در Live.
+این نه به‌خاطر باگ است، بلکه به‌خاطر risk-parity: M31 نوسان ۰.۱٪ و Keltner نوسان ۲٪ دارد.
+
+**پیشرفت‌های این session (D-482):**
+- Correlation Stability per-regime (dاده فیلترشده رژیمی استفاده نمی‌شود، چون غیرپیوسته است)
+- Dropout HARMFUL detection (drop<0 → FAIL)
+- OOS unit fix (combined_sr از قبل annualized بود → double annualize حذف شد)
+
+**تصمیم:**
+- Paper فعلی (D-460) بدون تغییر ادامه می‌دهد (active_weights دست‌نخورده)
+- ترکیب در pending_approvals برای بازبینی ماه ۳ ثبت شد
+- در 2026-12-02: اگر M31 Sharpe واقعی ۲-۴ بود، تصمیم درباره فعال‌سازی این ترکیب
