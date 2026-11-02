@@ -289,16 +289,24 @@ def main():
     print("\n" + "="*80)
     print("  RANKING BY SHARPE (not PF — PF is misleading for funding)")
     print("="*80)
+    # D-469: Load blacklist to filter output
+    try:
+        from research_lab.composer import CONFIG
+        blacklist = set(CONFIG.get("blacklist", []))
+    except:
+        blacklist = set()
+
     for reg in ["TREND","RANGE","NEUTRAL"]:
         print(f"\n{reg}:")
         cands = []
         for k,v in state["done"].items():
             if not isinstance(v, dict): continue
+            st = v.get("strategy", "")
+            if st in blacklist: continue # <-- این خط اضافه شد
             m = v["metrics_by_regime"].get(reg)
             if not m or not m["sufficient"]: continue
             sh = m.get("sharpe_daily", 0)
             if sh < 0.15: continue
-            st = v["strategy"]
             fam = FAMILY.get(st, "OTHER")
             cands.append((sh, st, v["exchange"], v["symbol"], m, v.get("validation"), fam))
         cands.sort(reverse=True, key=lambda x: x[0])
