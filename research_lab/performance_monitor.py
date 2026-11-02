@@ -49,6 +49,22 @@ def metrics(history, days=30):
     
     return {"n": len(recent), "wr": round(wins/len(recent)*100, 1), "pf": pf, "pnl": round(gp-gl, 2)}
 
+def get_equity(st):
+    """D-490: handle tracker synthetic state (combo_hypo_equity in history)."""
+    if not st: return 0
+    for key in ["total_equity", "total_capital", "equity", "capital"]:
+        if key in st and st[key]:
+            return float(st[key])
+    # Fallback: tracker history
+    hist = st.get("history", [])
+    if hist and isinstance(hist, list):
+        last = hist[-1]
+        if "combo_hypo_equity" in last:
+            return float(last["combo_hypo_equity"])
+        if "m31_real_equity" in last:
+            return float(last["m31_real_equity"])
+    return 0
+
 def main():
     report = ["📊 **Performance Monitor (30-day rolling)**\n"]
     for name, path in EXCHANGES.items():
@@ -57,7 +73,7 @@ def main():
             report.append(f"🔹 {name}: State not found")
             continue
         
-        equity = st.get("total_equity", st.get("total_capital", 0))
+        equity = get_equity(st)
         history = st.get("history", [])
         m = metrics(history)
         
