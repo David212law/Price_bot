@@ -486,7 +486,9 @@ def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
         if fam in exclude_families: continue
 
         m = v["metrics_by_regime"].get(regime)
-        if not m or not m["sufficient"] or m["n"] < CONFIG["min_n"]: continue
+        if not m or not m["sufficient"]: continue
+        # D-445: pooled n gate
+        if _pooled_n(exchange, st, state) < CONFIG["min_n"]: continue
         val = v.get("validation")
         if not val: continue
         if val.get("quartiles_pass", 0) < CONFIG["min_q_pass"]: continue
@@ -500,9 +502,11 @@ def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
         try: h = key.split(":")[2]
         except: continue
 
-        rets_path = _os.path.join(RETURNS_DIR, exchange, f"{st}_{h}_{v['symbol']}.json")
-        if not _os.path.exists(rets_path): continue
-        rets = _json.load(open(rets_path))
+        # D-445: pooled returns filtered to regime
+        _reg_map = regime_by_date(exchange)
+        _pooled_all = _pooled_get(exchange, st, state)
+        rets = {d: r for d, r in _pooled_all.items() if _reg_map.get(d) == regime}
+        if len(rets) < 20: continue
 
         # Compute corr with M31
         common = sorted(set(rets.keys()) & set(m31_rets.keys()))
@@ -528,13 +532,23 @@ def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
                 coverage = 0
 
         complements.append({
-            "strategy": st, "family": fam, "symbol": v["symbol"],
-            "n": m["n"], "pf": m["pf"], "sr_daily": m["sharpe_daily"],
+            "strategy": st, "family": fam, "symbol": v["symbol"], "hash": h,
+            "n": len(rets), "pf": m["pf"], "sr_daily": m["sharpe_daily"],
             "corr_m31": round(corr, 3),
             "ann_sr_validation": val.get("sharpe_ann", 0),
             "quartiles_pass": val.get("quartiles_pass", 0),
             "m31_weakness_coverage": coverage,
         })
+
+    # D-445: dedupe by (strategy, hash) — one entry per strategy+params
+    seen = set()
+    deduped = []
+    for c_item in complements:
+        kk = (c_item["strategy"], c_item.get("hash", ""))
+        if kk in seen: continue
+        seen.add(kk)
+        deduped.append(c_item)
+    complements = deduped
 
     # Sort: primary by coverage desc, secondary by sharpe desc, tertiary by |corr| asc
     complements.sort(key=lambda x: (
@@ -543,6 +557,24 @@ def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
         abs(x["corr_m31"])
     ))
     return complements
+
+
+_pooled_cache = {}
+
+def _pooled_get(exchange, strategy, state):
+    """D-445: Cached pooled returns per (exchange, strategy)."""
+    key = (exchange, strategy)
+    if key in _pooled_cache:
+        return _pooled_cache[key]
+    try:
+        from research_lab.pooled_returns import pooled_returns as _pooled
+        _pooled_cache[key] = _pooled(exchange, strategy, state)
+    except Exception:
+        _pooled_cache[key] = {}
+    return _pooled_cache[key]
+
+def _pooled_n(exchange, strategy, state):
+    return len(_pooled_get(exchange, strategy, state))
 
 def filter_candidates(state, regime, exchange):
     out = []
@@ -554,7 +586,9 @@ def filter_candidates(state, regime, exchange):
         fam = FAMILY.get(st, "OTHER")
         if fam in CONFIG["exclude_families"]: continue
         m = v["metrics_by_regime"].get(regime)
-        if not m or not m["sufficient"] or m["n"] < CONFIG["min_n"]: continue
+        if not m or not m["sufficient"]: continue
+        # D-445: use pooled n (across all symbols) for gate
+        if _pooled_n(exchange, st, state) < CONFIG["min_n"]: continue
         val = v.get("validation")
         if not val or val.get("quartiles_pass",0) < CONFIG["min_q_pass"]: continue
         if val.get("sharpe_ann",0) <= CONFIG["min_ann_sr"]: continue
@@ -901,19 +935,11 @@ def main():
                                              f"{comp['strategy']}_{comp['hash']}_{comp['symbol']}.json") \
                                 if 'hash' in comp else None
                     # find via state
-                    for k, v in state["done"].items():
-                        if isinstance(v, dict) and v["strategy"] == comp["strategy"] \
-                           and v["symbol"] == comp["symbol"] and v["exchange"] == exchange:
-                            try:
-                                h = k.split(":")[2]
-                                rp = os.path.join(RETURNS_DIR, exchange, f"{comp['strategy']}_{h}_{comp['symbol']}.json")
-                                if os.path.exists(rp):
-                                    r = json.load(open(rp))
-                                    reg_filtered = {d: x for d, x in r.items() if reg_by_date.get(d) == regime}
-                                    if len(reg_filtered) >= 30:
-                                        comps_with_rets.append({**comp, "rets": reg_filtered})
-                            except: pass
-                            break
+                    # D-445: pooled returns
+                    _pooled = _pooled_get(exchange, comp["strategy"], state)
+                    reg_filtered = {d: x for d, x in _pooled.items() if reg_by_date.get(d) == regime}
+                    if len(reg_filtered) >= 30:
+                        comps_with_rets.append({**comp, "rets": reg_filtered})
                 
                 if comps_with_rets:
                     combo = build_combination(m31_reg, comps_with_rets)
