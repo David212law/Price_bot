@@ -1,0 +1,71 @@
+{
+  "key": "kucoin:MTF_CONFIRMATION:c88bc1df:BNBUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 2.034,
+    "wr": 29.4,
+    "sharpe_daily": 0.1957,
+    "sharpe_ann": 3.738,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.674,
+      0.0,
+      1.013,
+      4.057
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 47,
+        "pf": 1.231,
+        "sharpe_ann": 1.321
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 47,
+        "pf": 1.13,
+        "sharpe_ann": 0.795
+      },
+      "param_robustness": {
+        "baseline_sharpe": 3.738,
+        "best_variant_sharpe": 1.672,
+        "ratio": 0.447,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fast",
+            "val": 18,
+            "sharpe_ann": 0.187
+          },
+          {
+            "param": "fast",
+            "val": 22,
+            "sharpe_ann": -0.642
+          },
+          {
+            "param": "slow",
+            "val": 45,
+            "sharpe_ann": 0.959
+          },
+          {
+            "param": "slow",
+            "val": 55,
+            "sharpe_ann": -0.156
+          },
+          {
+            "param": "mtf_mult",
+            "val": 5,
+            "sharpe_ann": -0.052
+          },
+          {
+            "param": "mtf_mult",
+            "val": 6,
+            "sharpe_ann": 1.672
+          }
+        ]
+      }
+    }
+  }
+}

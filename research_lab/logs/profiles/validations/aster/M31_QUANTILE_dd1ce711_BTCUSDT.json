@@ -1,27 +1,34 @@
 {
   "key": "aster:M31_QUANTILE:dd1ce711:BTCUSDT",
   "validation": {
-    "n": 36,
-    "pf": 51.192,
-    "wr": 88.9,
-    "sharpe_daily": 1.5415,
-    "sharpe_ann": 29.45,
+    "n": 163,
+    "pf": 23.121,
+    "wr": 84.0,
+    "sharpe_daily": 1.3483,
+    "sharpe_ann": 25.759,
     "bootstrap_ci": {
-      "sharpe_per_period": 1.5415,
-      "sharpe_annualized": 29.45,
-      "ci_low_annualized": 21.516,
-      "ci_high_annualized": 43.216,
+      "sharpe_per_period": 1.3483,
+      "sharpe_annualized": 25.759,
+      "ci_low_annualized": 21.515,
+      "ci_high_annualized": 31.631,
       "significant": true,
-      "n_obs": 36,
+      "n_obs": 163,
       "n_boot": 1000
     },
     "quartile_pf": [
-      19.445,
-      25.861,
-      115.365,
-      99.99
+      3.768,
+      93.909,
+      621.461,
+      142.329
     ],
     "quartiles_pass": 4,
+    "calmar": {
+      "n": 163,
+      "total_ret_pct": 7.36,
+      "cagr_pct": 17.23,
+      "max_dd_pct": 0.21,
+      "calmar": 81.853
+    },
     "stress": {
       "fee_2x": {
         "skip": "funding-based (fee already in returns)"

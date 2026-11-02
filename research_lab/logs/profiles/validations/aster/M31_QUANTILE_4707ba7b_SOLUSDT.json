@@ -1,27 +1,34 @@
 {
   "key": "aster:M31_QUANTILE:4707ba7b:SOLUSDT",
   "validation": {
-    "n": 30,
-    "pf": 5.073,
-    "wr": 63.3,
-    "sharpe_daily": 0.6514,
-    "sharpe_ann": 12.445,
+    "n": 122,
+    "pf": 10.488,
+    "wr": 76.2,
+    "sharpe_daily": 0.8999,
+    "sharpe_ann": 17.193,
     "bootstrap_ci": {
-      "sharpe_per_period": 0.6514,
-      "sharpe_annualized": 12.445,
-      "ci_low_annualized": 5.701,
-      "ci_high_annualized": 21.429,
+      "sharpe_per_period": 0.8999,
+      "sharpe_annualized": 17.193,
+      "ci_low_annualized": 13.924,
+      "ci_high_annualized": 21.115,
       "significant": true,
-      "n_obs": 30,
+      "n_obs": 122,
       "n_boot": 1000
     },
     "quartile_pf": [
-      0.408,
-      1.38,
-      478.528,
-      99.99
+      2.383,
+      8.616,
+      67.214,
+      37.062
     ],
-    "quartiles_pass": 3,
+    "quartiles_pass": 4,
+    "calmar": {
+      "n": 122,
+      "total_ret_pct": 4.18,
+      "cagr_pct": 13.05,
+      "max_dd_pct": 0.12,
+      "calmar": 113.301
+    },
     "stress": {
       "fee_2x": {
         "skip": "funding-based (fee already in returns)"

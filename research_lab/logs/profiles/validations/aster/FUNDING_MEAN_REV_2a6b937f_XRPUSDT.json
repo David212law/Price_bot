@@ -1,0 +1,44 @@
+{
+  "key": "aster:FUNDING_MEAN_REV:2a6b937f:XRPUSDT",
+  "validation": {
+    "n": 46,
+    "pf": 0.129,
+    "wr": 43.5,
+    "sharpe_daily": -0.5759,
+    "sharpe_ann": -11.003,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.5759,
+      "sharpe_annualized": -11.003,
+      "ci_low_annualized": -15.73,
+      "ci_high_annualized": -6.675,
+      "significant": false,
+      "n_obs": 46,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.081,
+      0.323,
+      0.428,
+      0.016
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 46,
+      "total_ret_pct": -0.72,
+      "cagr_pct": -5.55,
+      "max_dd_pct": 0.72,
+      "calmar": -7.675
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

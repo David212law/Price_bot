@@ -1,0 +1,44 @@
+{
+  "key": "kucoin:FUNDING_MEAN_REV:9bbc76a7:AVAXUSDTM",
+  "validation": {
+    "n": 56,
+    "pf": 0.388,
+    "wr": 39.3,
+    "sharpe_daily": -0.3607,
+    "sharpe_ann": -6.891,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3607,
+      "sharpe_annualized": -6.891,
+      "ci_low_annualized": -11.668,
+      "ci_high_annualized": -2.263,
+      "significant": false,
+      "n_obs": 56,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.427,
+      0.822,
+      0.427,
+      0.064
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 56,
+      "total_ret_pct": -0.48,
+      "cagr_pct": -3.12,
+      "max_dd_pct": 0.51,
+      "calmar": -6.084
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

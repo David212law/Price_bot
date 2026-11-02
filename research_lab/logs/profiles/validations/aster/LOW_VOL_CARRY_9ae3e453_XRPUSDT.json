@@ -1,0 +1,51 @@
+{
+  "key": "aster:LOW_VOL_CARRY:9ae3e453:XRPUSDT",
+  "validation": {
+    "n": 13,
+    "pf": 1.63,
+    "wr": 53.8,
+    "sharpe_daily": 0.2079,
+    "sharpe_ann": 3.971,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.499,
+      99.99,
+      0.804,
+      0.753
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 36,
+        "pf": 1.499,
+        "sharpe_ann": 3.416
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 36,
+        "pf": 1.364,
+        "sharpe_ann": 2.619
+      },
+      "param_robustness": {
+        "baseline_sharpe": 3.971,
+        "best_variant_sharpe": 3.712,
+        "ratio": 0.935,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.27,
+            "sharpe_ann": 3.712
+          },
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.33,
+            "sharpe_ann": 1.994
+          }
+        ]
+      }
+    }
+  }
+}

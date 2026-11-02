@@ -1,0 +1,36 @@
+{
+  "key": "kucoin:FUNDING_MEAN_REV:806e147f:ETHUSDTM",
+  "validation": {
+    "n": 29,
+    "pf": 0.278,
+    "wr": 69.0,
+    "sharpe_daily": -0.3935,
+    "sharpe_ann": -7.517,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.061,
+      0.37,
+      0.749,
+      0.43
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 29,
+      "total_ret_pct": -0.29,
+      "cagr_pct": -3.58,
+      "max_dd_pct": 0.29,
+      "calmar": -12.217
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

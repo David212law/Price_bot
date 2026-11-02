@@ -1,0 +1,44 @@
+{
+  "key": "kucoin:FUNDING_MEAN_REV:2a6b937f:XBTUSDTM",
+  "validation": {
+    "n": 92,
+    "pf": 0.214,
+    "wr": 51.1,
+    "sharpe_daily": -0.4899,
+    "sharpe_ann": -9.36,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.4899,
+      "sharpe_annualized": -9.36,
+      "ci_low_annualized": -12.903,
+      "ci_high_annualized": -6.102,
+      "significant": false,
+      "n_obs": 92,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.116,
+      0.326,
+      0.239,
+      0.214
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 92,
+      "total_ret_pct": -1.15,
+      "cagr_pct": -4.48,
+      "max_dd_pct": 1.15,
+      "calmar": -3.9
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

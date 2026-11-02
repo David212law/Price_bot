@@ -1,0 +1,44 @@
+{
+  "key": "aster:FUNDING_MEAN_REV:2a6b937f:SOLUSDT",
+  "validation": {
+    "n": 53,
+    "pf": 0.264,
+    "wr": 52.8,
+    "sharpe_daily": -0.4333,
+    "sharpe_ann": -8.279,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.4333,
+      "sharpe_annualized": -8.279,
+      "ci_low_annualized": -12.411,
+      "ci_high_annualized": -4.16,
+      "significant": false,
+      "n_obs": 53,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.257,
+      0.291,
+      0.151,
+      0.442
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 53,
+      "total_ret_pct": -0.62,
+      "cagr_pct": -4.17,
+      "max_dd_pct": 0.68,
+      "calmar": -6.155
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

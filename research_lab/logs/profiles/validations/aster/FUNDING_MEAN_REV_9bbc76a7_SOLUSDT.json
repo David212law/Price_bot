@@ -1,0 +1,30 @@
+{
+  "key": "aster:FUNDING_MEAN_REV:9bbc76a7:SOLUSDT",
+  "validation": {
+    "n": 17,
+    "pf": 0.18,
+    "wr": 41.2,
+    "sharpe_daily": -0.5439,
+    "sharpe_ann": -10.391,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.023,
+      0.926,
+      0.026,
+      0.023
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

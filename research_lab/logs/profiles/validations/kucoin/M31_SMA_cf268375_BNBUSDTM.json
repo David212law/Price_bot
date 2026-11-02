@@ -2,15 +2,15 @@
   "key": "kucoin:M31_SMA:cf268375:BNBUSDTM",
   "validation": {
     "n": 220,
-    "pf": 8.258,
+    "pf": 8.236,
     "wr": 81.4,
-    "sharpe_daily": 0.8992,
-    "sharpe_ann": 17.178,
+    "sharpe_daily": 0.8964,
+    "sharpe_ann": 17.126,
     "bootstrap_ci": {
-      "sharpe_per_period": 0.8992,
-      "sharpe_annualized": 17.178,
-      "ci_low_annualized": 13.768,
-      "ci_high_annualized": 21.366,
+      "sharpe_per_period": 0.8964,
+      "sharpe_annualized": 17.126,
+      "ci_low_annualized": 13.716,
+      "ci_high_annualized": 21.3,
       "significant": true,
       "n_obs": 220,
       "n_boot": 1000
@@ -19,15 +19,15 @@
       3.087,
       8.67,
       34.244,
-      8.765
+      8.684
     ],
     "quartiles_pass": 4,
     "calmar": {
       "n": 220,
-      "total_ret_pct": 10.31,
-      "cagr_pct": 17.68,
+      "total_ret_pct": 10.28,
+      "cagr_pct": 17.62,
       "max_dd_pct": 0.22,
-      "calmar": 81.889
+      "calmar": 81.618
     },
     "stress": {
       "fee_2x": {

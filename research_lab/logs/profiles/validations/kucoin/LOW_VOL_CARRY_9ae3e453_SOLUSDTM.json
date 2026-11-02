@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:LOW_VOL_CARRY:9ae3e453:SOLUSDTM",
+  "validation": {
+    "n": 14,
+    "pf": 1.844,
+    "wr": 50.0,
+    "sharpe_daily": 0.2681,
+    "sharpe_ann": 5.123,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.216,
+      1.286,
+      2.949,
+      2.25
+    ],
+    "quartiles_pass": 4,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 49,
+        "pf": 1.481,
+        "sharpe_ann": 3.293
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 49,
+        "pf": 1.362,
+        "sharpe_ann": 2.597
+      },
+      "param_robustness": {
+        "baseline_sharpe": 5.123,
+        "best_variant_sharpe": 3.885,
+        "ratio": 0.758,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.27,
+            "sharpe_ann": 3.885
+          },
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.33,
+            "sharpe_ann": 2.533
+          }
+        ]
+      }
+    }
+  }
+}

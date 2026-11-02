@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:LOW_VOL_CARRY:54661bdf:XRPUSDTM",
+  "validation": {
+    "n": 12,
+    "pf": 1.369,
+    "wr": 50.0,
+    "sharpe_daily": 0.1359,
+    "sharpe_ann": 2.597,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.15,
+      3.033,
+      0.961,
+      0.603
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 41,
+        "pf": 1.233,
+        "sharpe_ann": 1.702
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 41,
+        "pf": 1.122,
+        "sharpe_ann": 0.938
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.597,
+        "best_variant_sharpe": 2.54,
+        "ratio": 0.978,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.18,
+            "sharpe_ann": 1.087
+          },
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.22,
+            "sharpe_ann": 2.54
+          }
+        ]
+      }
+    }
+  }
+}

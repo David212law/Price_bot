@@ -1,0 +1,36 @@
+{
+  "key": "kucoin:FUNDING_MEAN_REV:806e147f:SOLUSDTM",
+  "validation": {
+    "n": 25,
+    "pf": 1.385,
+    "wr": 72.0,
+    "sharpe_daily": 0.1233,
+    "sharpe_ann": 2.357,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.193,
+      3.124,
+      1.783,
+      0.132
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 25,
+      "total_ret_pct": 0.07,
+      "cagr_pct": 1.07,
+      "max_dd_pct": 0.05,
+      "calmar": 20.147
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

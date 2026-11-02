@@ -1,0 +1,44 @@
+{
+  "key": "kucoin:FUNDING_MEAN_REV:c6f86944:XRPUSDTM",
+  "validation": {
+    "n": 35,
+    "pf": 0.2,
+    "wr": 40.0,
+    "sharpe_daily": -0.498,
+    "sharpe_ann": -9.515,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.498,
+      "sharpe_annualized": -9.515,
+      "ci_low_annualized": -15.018,
+      "ci_high_annualized": -4.406,
+      "significant": false,
+      "n_obs": 35,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.323,
+      0.509,
+      0.27,
+      0.01
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 35,
+      "total_ret_pct": -0.45,
+      "cagr_pct": -4.57,
+      "max_dd_pct": 0.45,
+      "calmar": -10.211
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

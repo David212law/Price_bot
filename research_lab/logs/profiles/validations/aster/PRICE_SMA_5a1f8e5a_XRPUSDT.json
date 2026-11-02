@@ -56,7 +56,7 @@
           {
             "param": "period",
             "val": 22,
-            "sharpe_ann": -1.426
+            "sharpe_ann": 0.809
           }
         ]
       }

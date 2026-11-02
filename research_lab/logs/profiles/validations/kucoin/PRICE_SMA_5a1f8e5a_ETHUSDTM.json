@@ -44,14 +44,14 @@
       },
       "param_robustness": {
         "baseline_sharpe": -1.716,
-        "best_variant_sharpe": -0.252,
+        "best_variant_sharpe": 0.041,
         "ratio": 0,
         "verdict": "FRAGILE",
         "variants": [
           {
             "param": "period",
             "val": 18,
-            "sharpe_ann": -0.252
+            "sharpe_ann": 0.041
           },
           {
             "param": "period",

@@ -1,0 +1,51 @@
+{
+  "key": "aster:LOW_VOL_CARRY:26ffe48f:SOLUSDT",
+  "validation": {
+    "n": 13,
+    "pf": 2.214,
+    "wr": 53.8,
+    "sharpe_daily": 0.3577,
+    "sharpe_ann": 6.834,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.783,
+      3.238,
+      3.154,
+      1.954
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 40,
+        "pf": 1.575,
+        "sharpe_ann": 3.957
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 40,
+        "pf": 1.436,
+        "sharpe_ann": 3.156
+      },
+      "param_robustness": {
+        "baseline_sharpe": 6.834,
+        "best_variant_sharpe": 5.685,
+        "ratio": 0.832,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.36,
+            "sharpe_ann": 4.893
+          },
+          {
+            "param": "vol_pct_threshold",
+            "val": 0.44,
+            "sharpe_ann": 5.685
+          }
+        ]
+      }
+    }
+  }
+}

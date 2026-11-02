@@ -22,6 +22,13 @@
       1.941
     ],
     "quartiles_pass": 2,
+    "calmar": {
+      "n": 42,
+      "total_ret_pct": 21.5,
+      "cagr_pct": 443.17,
+      "max_dd_pct": 23.38,
+      "calmar": 18.954
+    },
     "stress": {
       "fee_2x": {
         "fee_mult": 2.0,

@@ -14,6 +14,7 @@
       0.342
     ],
     "quartiles_pass": 0,
+    "calmar": {},
     "stress": {
       "fee_2x": {
         "fee_mult": 2.0,

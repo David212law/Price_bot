@@ -1,0 +1,44 @@
+{
+  "key": "kucoin:FUNDING_MEAN_REV:2a6b937f:BNBUSDTM",
+  "validation": {
+    "n": 69,
+    "pf": 0.124,
+    "wr": 36.2,
+    "sharpe_daily": -0.6614,
+    "sharpe_ann": -12.636,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.6614,
+      "sharpe_annualized": -12.636,
+      "ci_low_annualized": -16.776,
+      "ci_high_annualized": -8.898,
+      "significant": false,
+      "n_obs": 69,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.1,
+      0.133,
+      0.167,
+      0.108
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 69,
+      "total_ret_pct": -1.24,
+      "cagr_pct": -6.39,
+      "max_dd_pct": 1.25,
+      "calmar": -5.119
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

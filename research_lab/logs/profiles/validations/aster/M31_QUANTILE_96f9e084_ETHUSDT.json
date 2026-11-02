@@ -1,27 +1,34 @@
 {
   "key": "aster:M31_QUANTILE:96f9e084:ETHUSDT",
   "validation": {
-    "n": 30,
-    "pf": 6.386,
-    "wr": 76.7,
-    "sharpe_daily": 0.742,
-    "sharpe_ann": 14.175,
+    "n": 164,
+    "pf": 38.242,
+    "wr": 88.4,
+    "sharpe_daily": 1.4489,
+    "sharpe_ann": 27.682,
     "bootstrap_ci": {
-      "sharpe_per_period": 0.742,
-      "sharpe_annualized": 14.175,
-      "ci_low_annualized": 7.466,
-      "ci_high_annualized": 23.21,
+      "sharpe_per_period": 1.4489,
+      "sharpe_annualized": 27.682,
+      "ci_low_annualized": 23.685,
+      "ci_high_annualized": 32.575,
       "significant": true,
-      "n_obs": 30,
+      "n_obs": 164,
       "n_boot": 1000
     },
     "quartile_pf": [
-      2.347,
-      1.116,
-      99.99,
-      99.99
+      13.9,
+      24.556,
+      243.66,
+      115.474
     ],
     "quartiles_pass": 4,
+    "calmar": {
+      "n": 164,
+      "total_ret_pct": 7.24,
+      "cagr_pct": 16.83,
+      "max_dd_pct": 0.04,
+      "calmar": 417.067
+    },
     "stress": {
       "fee_2x": {
         "skip": "funding-based (fee already in returns)"
