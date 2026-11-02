@@ -2,7 +2,7 @@ name: Weekly Research
 
 on:
   schedule:
-    - cron: '0 3 * * 1'   # هر دوشنبه ساعت ۳ صبح UTC
+    - cron: '0 3 * * 1'   # Every Monday 03:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -11,17 +11,12 @@ permissions:
 jobs:
   research:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
-
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install requests
+      - run: pip install requests
 
       - name: Run Composer
         run: python -m research_lab.composer
@@ -31,49 +26,16 @@ jobs:
 
       - name: Commit Report
         run: |
-          # D-462-fix3: force-add archive (history/, discoveries, reports)
-          git add -f research_lab/logs/composer_full_report.json 2>/dev/null || true
-          git add -f research_lab/logs/composer_summary.md 2>/dev/null || true
-          git add -f research_lab/logs/discoveries.json 2>/dev/null || true
-          git add -f research_lab/logs/history/ 2>/dev/null || true
-          git add -f research_lab/logs/signatures_cache.json 2>/dev/null || true
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Auto: weekly research + archive $(date -u +%Y-%m-%d) [skip ci]"
-            git push || echo "push failed"
-          fi
-
-      - name: Send Bale Notification
-        if: always()
-        env:
-          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
-          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-        run: |
-          python -c "
-          import os, requests
-          from datetime import datetime, timezone
-          tok = os.environ.get('BALE_BOT_TOKEN')
-          chat = os.environ.get('BALE_CHAT_ID')
-          if tok and chat:
-              msg = '📊 Weekly Research Check Completed: ' + datetime.now(timezone.utc).strftime('%Y-%m-%d')
-              requests.post(f'https://tapi.bale.ai/bot{tok}/sendMessage', json={'chat_id': chat, 'text': msg})
-          "
-
-      - name: Commit and Push State
-        if: always()
-        run: |
+          # تنظیم هویت گیت (دقیقاً همین‌جا، بدون هیچ جای دیگر)
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          # اضافه کردن فایل‌ها با استفاده از || true تا اگر فایلی نبود، خطا ندهد
-          git add research_lab/logs/ || true
-          git add exchanges/portfolio_by_regime.json || true
-          git add exchanges/pending_approvals.json || true
           
-          # اگر تغییری بود، کامیت و پوش کن
+          # اجبار به اضافه کردن همه لاگ‌ها
+          git add -f research_lab/logs/ || true
+          
           if ! git diff --staged --quiet; then
-            git commit -m "Auto: weekly research $(date -u +%Y-%m-%d) [skip ci]"
-            git push || echo "push failed"
+            git commit -m "Auto: weekly research [skip ci]"
+            git push
           else
             echo "No changes to commit"
           fi
