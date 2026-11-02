@@ -2170,3 +2170,58 @@ E_max در واحد standard error است، نه در واحد Sharpe.
 ترکیب kucoin/NEUTRAL با وزن 97/2.4/0.6 معتبر است.
 ولی در Paper فعلی فعال نمی‌شود (D-460 — وزن‌ها قفل).
 یک shadow tracker برای observation ساخته می‌شود (D-485).
+
+## D-2026-11-02-491 — CALMAR-DD-GATE: gate جدید برای STRICT_PASS
+
+**وضعیت:** قفل
+
+**تصمیم:**
+STRICT_PASS نیازمند همه شروط:
+  ۱. combo_SR > M31_SR × 1.10
+  ۲. combo_Calmar ≥ M31_Calmar × 0.90
+  ۳. combo_MaxDD ≤ M31_MaxDD × 1.50
+  ۴. ۵ combo test PASS
+
+اگر ۱ و ۴ پاس، ولی ۲ یا ۳ رد → برچسب PROVISIONAL_PASS (Paper observation only، هرگز Live).
+
+**دلیل:**
+فقط SR بهتر با DD بدتر = leverage، نه diversification.
+STRICT_PASS فعلی kucoin/NEUTRAL: Calmar=52 < M31=82 (۳۷٪ بدتر)، MaxDD=0.47% > 0.14% (۳.۴x بدتر).
+→ برچسب باید PROVISIONAL_PASS باشد.
+
+## D-2026-11-02-492 — D347-FINAL-LOCK: قفل نهایی انتقال
+
+**وضعیت:** قفل دائمی
+
+همه پیام‌های انتقال آینده باید به این شکل باشند:
+  «این دستورات را در Termux اجرا کنید:»
+هرگز:
+  «دستورات اولیه:» / «اجرا کن» / «execute» / «run»
+
+D-347 مطلق است. AI حتی به‌صورت ضمنی نباید اجرا را پیشنهاد کند.
+
+## D-2026-11-02-493 — PROVISIONAL-PASS: relabel STRICT_PASS فعلی
+
+**وضعیت:** قفل
+
+STRICT_PASS kucoin/NEUTRAL → PROVISIONAL_PASS تا:
+  ۱. DSR sanity کامل شود (medium + N=1000)
+  ۲. M31 decay تصمیم استراتژیک گرفته شود
+  ۳. D-452 شفاف‌سازی شود
+  ۴. Calmar/DD gate اعمال شود
+
+**معیار ارتقا:** همه ۴ پاس شوند.
+**معیار حذف:** اگر DSR over-generous بود → کاملاً بی‌اعتبار.
+
+## D-2026-11-02-494 — 3-STAGE-REVIEW: بازبینی ۳ مرحله‌ای Paper
+
+**وضعیت:** قفل
+
+بازبینی تک‌مرحله‌ای 2026-12-02 کافی نیست (M31 hold=30 روز → n=0-1 معامله بسته).
+تغییر به ۳ مرحله:
+  2026-12-02: equity curve (unrealized PnL)
+  2027-01-02: n=1-2 trades، Sharpe تخمینی
+  2027-02-02: n=3-4 trades، Sharpe واقعی + Live Gate decision
+
+**دلیل:** Sharpe از n=0 بی‌معنی است.
+

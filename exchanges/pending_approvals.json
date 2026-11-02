@@ -62,8 +62,9 @@
         }
       }
     },
-    "status": "STRICT_PASS",
+    "status": "PROVISIONAL_PASS",
     "reasons": [],
-    "detected_at": "2026-11-02T19:08:11.942774+00:00"
+    "detected_at": "2026-11-02T19:08:11.942774+00:00",
+    "provisional_reason": "Calmar/DD worse than M31 (D-491)\u061b \u0645\u0646\u062a\u0638\u0631 sanity checks (D-493)"
   }
 }
