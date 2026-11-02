@@ -1939,3 +1939,18 @@ Commit: ed80004c
 
 اثر: ۴ STRICT_PASS فعلی (وزن ۹۸/۲) → "M31 + ۲٪ hedge"، نه "combo".
 اگر بعد از ۳ ماه Paper این hedge ارزش افزود → به combo واقعی ارتقا می‌یابد.
+
+## D-2026-11-02-455 — LOW-VOL-CARRY-CONFIRMED: مکمل معتبر، نه weakness-coverer
+وضعیت: قفل |
+- LOW_VOL_CARRY pooled corr با M31: -0.114 (kucoin), -0.027 (aster), +0.006 (hl)
+- corr پایین → مکمل واقعی (نه artifact از per-symbol)
+- ولی در high_vol غیرفعال است → weakness M31 (underperform_in_high_vol) را پوشش نمی‌دهد
+- تفاوت با Keltner: Keltner در high_vol فعال ولی بدتر از M31؛ LOW_VOL_CARRY در high_vol غیرفعال
+- تصمیم: coverage gate همچنان رد می‌کند (اعتبار > کشف)
+- مسیر: Aster Shadow LV برای Paper observation (D-456)
+
+## D-2026-11-02-456 — ASTER-SHADOW-LV: تست LOW_VOL_CARRY در Paper
+وضعیت: قفل |
+- Aster Shadow LV: M31=97%, LOW_VOL_CARRY=3%
+- هدف: مشاهده Paper عملکرد LOW_VOL_CARRY
+- اگر بعد از ۳۰ روز Paper مفید بود → ارتقا به combo
