@@ -1,0 +1,44 @@
+{
+  "key": "aster:FUNDING_MEAN_REV:b84944b6:ETHUSDT",
+  "validation": {
+    "n": 44,
+    "pf": 0.251,
+    "wr": 50.0,
+    "sharpe_daily": -0.4297,
+    "sharpe_ann": -8.21,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.4297,
+      "sharpe_annualized": -8.21,
+      "ci_low_annualized": -12.547,
+      "ci_high_annualized": -3.704,
+      "significant": false,
+      "n_obs": 44,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.348,
+      0.232,
+      0.273,
+      0.089
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 44,
+      "total_ret_pct": -0.5,
+      "cagr_pct": -4.05,
+      "max_dd_pct": 0.5,
+      "calmar": -8.059
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "key": "aster:FUNDING_MEAN_REV:2a6b937f:AVAXUSDT",
+  "validation": {
+    "n": 31,
+    "pf": 0.006,
+    "wr": 9.7,
+    "sharpe_daily": -1.0157,
+    "sharpe_ann": -19.404,
+    "bootstrap_ci": {
+      "sharpe_per_period": -1.0157,
+      "sharpe_annualized": -19.404,
+      "ci_low_annualized": -26.495,
+      "ci_high_annualized": -14.867,
+      "significant": false,
+      "n_obs": 31,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.0,
+      0.028,
+      0.01,
+      0.0
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 31,
+      "total_ret_pct": -0.86,
+      "cagr_pct": -9.71,
+      "max_dd_pct": 0.86,
+      "calmar": -11.242
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

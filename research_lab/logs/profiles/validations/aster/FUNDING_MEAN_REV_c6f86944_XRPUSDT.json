@@ -1,0 +1,30 @@
+{
+  "key": "aster:FUNDING_MEAN_REV:c6f86944:XRPUSDT",
+  "validation": {
+    "n": 13,
+    "pf": 0.005,
+    "wr": 23.1,
+    "sharpe_daily": -0.8967,
+    "sharpe_ann": -17.131,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.015,
+      0.011,
+      0.0,
+      0.0
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

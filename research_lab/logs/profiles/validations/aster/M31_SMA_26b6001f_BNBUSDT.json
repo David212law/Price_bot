@@ -1,0 +1,44 @@
+{
+  "key": "aster:M31_SMA:26b6001f:BNBUSDT",
+  "validation": {
+    "n": 198,
+    "pf": 99.99,
+    "wr": 72.2,
+    "sharpe_daily": 0.9053,
+    "sharpe_ann": 17.296,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.9053,
+      "sharpe_annualized": 17.296,
+      "ci_low_annualized": 15.51,
+      "ci_high_annualized": 19.365,
+      "significant": true,
+      "n_obs": 198,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      99.99,
+      99.99,
+      99.99,
+      99.99
+    ],
+    "quartiles_pass": 4,
+    "calmar": {
+      "n": 198,
+      "total_ret_pct": 6.91,
+      "cagr_pct": 13.12,
+      "max_dd_pct": 0.0,
+      "calmar": 0
+    },
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}

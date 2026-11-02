@@ -1,0 +1,30 @@
+{
+  "key": "aster:FUNDING_MEAN_REV:806e147f:BNBUSDT",
+  "validation": {
+    "n": 10,
+    "pf": 0.291,
+    "wr": 50.0,
+    "sharpe_daily": -0.3858,
+    "sharpe_ann": -7.371,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.16,
+      99.99,
+      0.105,
+      0.186
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "skip": "funding-based (fee already in returns)"
+      },
+      "slippage_1.5x": {
+        "skip": "funding-based"
+      },
+      "param_robustness": {
+        "skip": "no valid variants"
+      }
+    }
+  }
+}
