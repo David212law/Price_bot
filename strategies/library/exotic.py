@@ -107,3 +107,62 @@ CANDLE_STRATEGIES = {
     "LOW_VOL_CARRY": (strat_low_vol_carry, {"vol_pct_threshold": [0.20, 0.30, 0.40]}),
     "MTF_CONFIRMATION": (strat_mtf_confirmation, {"fast": [20], "slow": [50], "mtf_mult": [6]}),
 }
+
+
+
+
+def strat_pairs_trading(candles_a, candles_b=None, lookback=30, z_threshold=2.0, fee_multiplier=1.0):
+    """D-468: Pairs Trading (same exchange, two correlated assets).
+    Requires candles_b (reference asset on same exchange).
+    Long A short B if ratio z-score < -threshold, vice versa."""
+    
+    if candles_b is None or not candles_a or len(candles_a) < lookback * 2:
+        return []
+    
+    b_by_t = {c["t"]: c["c"] for c in candles_b}
+    aligned = [(c["t"], c["c"], b_by_t[c["t"]]) for c in candles_a if c["t"] in b_by_t]
+    
+    if len(aligned) < lookback * 2:
+        return []
+    
+    # محاسبه ratio (نسبت قیمت A به B)
+    ratio = [a / b for _, a, b in aligned]
+    times = [t for t, _, _ in aligned]
+    
+    fee = 0.0006 * fee_multiplier
+    trades = []
+    pos = None
+    
+    for i in range(lookback, len(ratio)):
+        window = ratio[i-lookback:i]
+        m = sum(window) / len(window)
+        v = sum((x - m)**2 for x in window) / (len(window) - 1) if len(window) > 1 else 0
+        sd = math.sqrt(v) if v > 0 else 0
+        if sd == 0: continue
+        
+        z = (ratio[i] - m) / sd
+        
+        if pos is None:
+            if z > z_threshold:
+                # نسبت بالاتر از میانگین: A گران، B ارزان → short A long B
+                pos = {"side": "SHORT_A", "entry": ratio[i], "mean": m}
+            elif z < -z_threshold:
+                # نسبت پایین‌تر از میانگین: A ارزان → long A short B
+                pos = {"side": "LONG_A", "entry": ratio[i], "mean": m}
+        else:
+            # خروج: بازگشت به میانگین
+            if abs(z) < 0.5:
+                if pos["side"] == "SHORT_A":
+                    gross = (pos["entry"] - ratio[i]) / pos["entry"]
+                else:
+                    gross = (ratio[i] - pos["entry"]) / pos["entry"]
+                trades.append({"t": times[i], "ret": gross - (fee * 2)})
+                pos = None
+                
+    return trades
+
+
+CANDLE_STRATEGIES["PAIRS_TRADING"] = (
+    strat_pairs_trading,
+    {"lookback": [30, 50], "z_threshold": [1.5, 2.0, 2.5]}
+)
