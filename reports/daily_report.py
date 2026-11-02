@@ -124,11 +124,6 @@ def main():
     else:
         report.append("🔹 Aster Shadow TREND: State not found.")
 
-    # ─── Aster Shadow Balanced ───
-    asb_data = load_from_github("exchanges/aster/state/m11_aster_shadow_balanced_state.json")
-    if asb_data:
-        eq = asb_data.get("total_equity", 10000.0)
-        report.append("🌐 **Aster Shadow Balanced (50/50)**")
         report.append(f"   Equity: ${eq:.2f} | Keltner: ${asb_data.get('keltner_capital', 0):.2f}")
     else:
         report.append("🔹 Aster Shadow Balanced: State not found.")

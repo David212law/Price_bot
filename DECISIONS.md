@@ -1979,3 +1979,32 @@ Commit: ed80004c
 اصل صرفه‌جویی منابع (اصل ۲ صاحب پروژه) — داده تکراری = منابع هدر.
 Balanced منطقاً در TREND اشتباه بود، در RANGE/NEUTRAL تکراری.
 حذف آن هم منابع را آزاد می‌کند هم داده را تمیز نگه می‌دارد.
+
+## D-2026-11-02-457 — DEFENSIVE-PASS: تفکیک تهاجمی و دفاعی
+
+**وضعیت:** قفل
+
+**تصمیم:**
+coverage gate به دو دسته تفکیک می‌شود:
+
+### STRICT_PASS (تهاجمی — Live Gate candidate)
+- شرط: candidate_SR > M31_SR در همان weakness condition
+- یعنی: candidate باید در شرایط ضعف M31، از M31 بهتر باشد
+- وضعیت فعلی: هیچ استراتژی موجود این را برآورده نمی‌کند (Keltner 6.50 < M31 8.01)
+
+### DEFENSIVE_PASS (دفاعی — Paper observation only)
+- شرط: candidate_SR ≥ 0 در weakness AND vol_candidate < vol_M31
+- یعنی: candidate در شرایط ضعف M31، ضرر نمی‌زند
+- وضعیت فعلی: LOW_VOL_CARRY (غیرفعال در high_vol → صفر بازده، نه ضرر)
+
+**چرا این تفکیک:**
+- STRICT_PASS → می‌تواند به Live برود (بعد از ۶ ماه Paper)
+- DEFENSIVE_PASS → فقط Paper observation برای ۳ ماه
+- اگر DEFENSIVE_PASS در Paper ۳ ماه DD کمتری از M31 نشان داد → ارتقا به STRICT با تأیید صریح
+
+**اثر فوری:**
+- LOW_VOL_CARRY → DEFENSIVE_PASS (نه نامعتبر)
+- در Aster Shadow LV تست می‌شود
+- composer برای STRICT همچنان تهاجمی است (تغییر نمی‌کند)
+
+**قانون:** DEFENSIVE_PASS هرگز به Live نمی‌رود بدون ارتقا به STRICT.
