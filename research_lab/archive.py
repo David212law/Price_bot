@@ -87,14 +87,40 @@ def append_discoveries():
 
 
 def update_signature_cache(state):
-    """Cache strategy signatures (skip recompute if cached today)."""
+    """D-454: Cache strategy signatures with data_hash invalidation."""
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # D-454: data_hash — hash of returns_matrices dir mtimes
+    import hashlib
+    data_hash = hashlib.md5()
+    ret_dir = "research_lab/logs/profiles/returns_matrices"
+    try:
+        for root, dirs, files in os.walk(ret_dir):
+            for f in sorted(files):
+                fp = os.path.join(root, f)
+                try:
+                    mtime = os.path.getmtime(fp)
+                    data_hash.update(f"{fp}:{mtime}".encode())
+                except Exception:
+                    pass
+    except Exception:
+        pass
+    current_hash = data_hash.hexdigest()[:16]
+
     cache = {}
     if os.path.exists(SIGNATURES_CACHE_PATH):
         try:
             cache = json.load(open(SIGNATURES_CACHE_PATH))
         except Exception:
             cache = {}
+
+    # D-454: invalidate cache if data_hash changed
+    cached_hash = cache.get("__data_hash__", "")
+    if cached_hash != current_hash:
+        print(f"  [D-454] data_hash changed ({cached_hash[:8]} → {current_hash}), invalidating cache")
+        cache = {"__data_hash__": current_hash}
+    else:
+        print(f"  [D-454] data_hash match ({current_hash[:8]}), cache valid")
 
     # Only cache fresh (not already cached today)
     try:
@@ -107,7 +133,10 @@ def update_signature_cache(state):
     for key, v in state["done"].items():
         if not isinstance(v, dict): continue
         cache_key = key
-        if cache_key in cache and cache[cache_key].get("cached_at") == today:
+        # D-454: only skip if same-day AND hash match
+        if (cache_key in cache
+            and cache[cache_key].get("cached_at") == today
+            and cached_hash == current_hash):
             continue
         try:
             sig = signature_for_entry(v)
@@ -117,9 +146,12 @@ def update_signature_cache(state):
         except Exception:
             continue
 
-    if added > 0:
+    # Ensure data_hash is in cache
+    cache["__data_hash__"] = current_hash
+
+    if added > 0 or cached_hash != current_hash:
         os.makedirs(os.path.dirname(SIGNATURES_CACHE_PATH), exist_ok=True)
         with open(SIGNATURES_CACHE_PATH, "w") as f:
             json.dump(cache, f, indent=2, default=str)
-    print(f"✅ Signatures cached: +{added} (total {len(cache)})")
+    print(f"✅ Signatures cached: +{added} (total {len([k for k in cache if not k.startswith('__')])})")
     return added
