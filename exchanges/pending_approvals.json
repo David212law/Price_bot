@@ -56,7 +56,7 @@
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-02T10:23:20.227649+00:00"
+    "detected_at": "2026-11-02T10:47:27.920019+00:00"
   },
   "aster/TREND": {
     "combo": {
@@ -115,7 +115,7 @@
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-02T10:23:25.824215+00:00"
+    "detected_at": "2026-11-02T10:47:28.309083+00:00"
   },
   "aster/RANGE": {
     "combo": {
@@ -174,7 +174,7 @@
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-02T10:23:25.888916+00:00"
+    "detected_at": "2026-11-02T10:47:28.315998+00:00"
   },
   "aster/NEUTRAL": {
     "combo": {
@@ -233,6 +233,6 @@
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-02T10:23:25.950930+00:00"
+    "detected_at": "2026-11-02T10:47:28.322246+00:00"
   }
 }
