@@ -2141,3 +2141,32 @@ D-450 archive سیستم طراحی شد، ولی .gitignore مسیر research_l
 - Paper فعلی (D-460) بدون تغییر ادامه می‌دهد (active_weights دست‌نخورده)
 - ترکیب در pending_approvals برای بازبینی ماه ۳ ثبت شد
 - در 2026-12-02: اگر M31 Sharpe واقعی ۲-۴ بود، تصمیم درباره فعال‌سازی این ترکیب
+
+## D-2026-11-02-484 — DSR-FORMULA-FIX + COMBO-VERIFIED
+
+**وضعیت:** قفل
+
+**مسئله:**
+D-398 فرمول DSR را نوشتم، ولی unit mixing داشت:
+  z = (sr - E_max) / se     ← اشتباه
+E_max در واحد standard error است، نه در واحد Sharpe.
+نتیجه: DSR همیشه ~0 برای هر ترکیب (combo_1 در D-483 FAIL شد).
+
+**فیکس:**
+  z = sr / se - E_max       ← درست
+
+**تأیید فیکس با تست‌های کنترل:**
+  Pure noise (SR=0): DSR=0.03 ✅ (رد می‌شود)
+  Real edge (SR=8.94, N=200): DSR=1.0 ✅ (تأیید)
+  Real edge (SR=8.94, N=43):  DSR=1.0 ✅
+
+**تأیید مجدد ترکیب kucoin/NEUTRAL:**
+  Walk-forward: ✅ (Train SR=9.70 → Test SR=8.78)
+  Bootstrap CI: ✅ ([7.08, 11.75])
+  DSR (N=200):  ✅ (1.0)
+  → ALL PASS — combo واقعی است
+
+**تصمیم:**
+ترکیب kucoin/NEUTRAL با وزن 97/2.4/0.6 معتبر است.
+ولی در Paper فعلی فعال نمی‌شود (D-460 — وزن‌ها قفل).
+یک shadow tracker برای observation ساخته می‌شود (D-485).
