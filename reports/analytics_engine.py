@@ -95,6 +95,18 @@ def main():
     analyze_bot_generic("Aster Shadow TREND", "exchanges/aster/state/m11_aster_shadow_trend_state.json")
     analyze_bot_generic("Aster Shadow RP", "exchanges/aster/state/m11_aster_shadow_rp_state.json")
     analyze_bot_generic("Aster Shadow LV", "exchanges/aster/state/m11_aster_shadow_lv_state.json")
+    # D-486: KuCoin Combo Shadow tracker (has history, special handling)
+    kcs_state = load_data("exchanges/kucoin/state/m11_kucoin_shadow_combo_state.json")
+    if kcs_state:
+        print("=== 🎯 KuCoin Combo Shadow Tracker ===")
+        hist = kcs_state.get("history", [])
+        if hist:
+            last = hist[-1]
+            print(f"  M31 real: ${last.get('m31_real_equity', 0):.2f}")
+            print(f"  Combo hypo: ${last.get('combo_hypo_equity', 0):.2f}")
+            print(f"  Diff: {last.get('diff_pct', 0):+.4f}%")
+            print(f"  Snapshots: {len(hist)}")
+        print()
 
 if __name__ == "__main__":
     main()

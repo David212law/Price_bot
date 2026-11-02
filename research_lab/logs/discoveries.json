@@ -94,5 +94,35 @@
     ],
     "reasons": [],
     "detected_at": "2026-11-02T10:47:28.322246+00:00"
+  },
+  {
+    "date": "2026-11-02",
+    "exchange_regime": "kucoin/NEUTRAL",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 11.186,
+    "n_days": 100,
+    "max_dd_combo_pct": 0.47,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9701,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_ETHUSDTM",
+        "weight": 0.0238,
+        "family": "MR",
+        "corr": 0.061
+      },
+      {
+        "name": "DUAL_MOMENTUM_XBTUSDTM",
+        "weight": 0.0062,
+        "family": "MOMENTUM",
+        "corr": 0.056
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-02T19:08:11.942774+00:00"
   }
 ]

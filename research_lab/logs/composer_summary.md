@@ -1,6 +1,6 @@
 # Composer Report — 2026-11-02
 
-**Total entries**: 2023  
+**Total entries**: 2119  
 **Thresholds**: n≥30, q≥4/4, SR>1.5
 
 ## HYPERLIQUID
@@ -11,13 +11,12 @@
 
 ### TREND
 
-- Examined: **646** | Passed: **5**
+- Examined: **679** | Passed: **5**
 - **Rejected by gate**:
-  - `quartiles`: 417
+  - `quartiles`: 443
+  - `no_validation`: 95
   - `blacklist`: 90
-  - `pooled_n`: 57
-  - `no_validation`: 39
-  - `regime_n`: 34
+  - `regime_n`: 42
   - `fee_2x`: 2
   - `param_fragile`: 2
 - **Top passed**:
@@ -29,13 +28,12 @@
 
 ### RANGE
 
-- Examined: **646** | Passed: **5**
+- Examined: **679** | Passed: **5**
 - **Rejected by gate**:
-  - `quartiles`: 318
-  - `regime_n`: 176
+  - `quartiles`: 340
+  - `regime_n`: 186
   - `blacklist`: 90
-  - `pooled_n`: 45
-  - `no_validation`: 8
+  - `no_validation`: 54
   - `fee_2x`: 2
   - `param_fragile`: 2
 - **Top passed**:
@@ -47,13 +45,12 @@
 
 ### NEUTRAL
 
-- Examined: **644** | Passed: **5**
+- Examined: **677** | Passed: **5**
 - **Rejected by gate**:
-  - `quartiles`: 321
-  - `regime_n`: 193
+  - `quartiles`: 339
+  - `regime_n`: 206
   - `blacklist`: 90
-  - `pooled_n`: 25
-  - `no_validation`: 6
+  - `no_validation`: 33
   - `fee_2x`: 2
   - `param_fragile`: 2
 - **Top passed**:
@@ -71,12 +68,12 @@
 
 ### TREND
 
-- Examined: **575** | Passed: **5**
+- Examined: **750** | Passed: **5**
 - **Rejected by gate**:
-  - `quartiles`: 488
-  - `no_validation`: 39
-  - `regime_n`: 29
-  - `pooled_n`: 9
+  - `quartiles`: 538
+  - `blacklist`: 90
+  - `no_validation`: 79
+  - `regime_n`: 33
   - `fee_2x`: 5
 - **Top passed**:
   - `KELTNER_REV/AVAXUSDT`: SR=5.46, q=4/4, n_reg=386, n_pooled=508
@@ -87,12 +84,12 @@
 
 ### RANGE
 
-- Examined: **574** | Passed: **5**
+- Examined: **749** | Passed: **5**
 - **Rejected by gate**:
-  - `quartiles`: 396
-  - `regime_n`: 148
-  - `no_validation`: 11
-  - `pooled_n`: 9
+  - `quartiles`: 434
+  - `regime_n`: 171
+  - `blacklist`: 90
+  - `no_validation`: 44
   - `fee_2x`: 5
 - **Top passed**:
   - `KELTNER_REV/AVAXUSDT`: SR=5.46, q=4/4, n_reg=85, n_pooled=508
@@ -103,13 +100,13 @@
 
 ### NEUTRAL
 
-- Examined: **575** | Passed: **5**
+- Examined: **750** | Passed: **5**
 - **Rejected by gate**:
-  - `quartiles`: 417
-  - `regime_n`: 133
-  - `no_validation`: 11
+  - `quartiles`: 452
+  - `regime_n`: 156
+  - `blacklist`: 90
+  - `no_validation`: 42
   - `fee_2x`: 5
-  - `pooled_n`: 4
 - **Top passed**:
   - `KELTNER_REV/AVAXUSDT`: SR=5.46, q=4/4, n_reg=92, n_pooled=508
   - `KELTNER_REV/ETHUSDT`: SR=5.46, q=4/4, n_reg=55, n_pooled=508
@@ -125,51 +122,54 @@
 
 ### TREND
 
-- Examined: **658** | Passed: **8**
+- Examined: **690** | Passed: **9**
 - **Rejected by gate**:
-  - `quartiles`: 432
+  - `quartiles`: 521
   - `blacklist`: 90
-  - `pooled_n`: 69
-  - `no_validation`: 44
+  - `no_validation`: 52
+  - `regime_n`: 9
   - `fee_2x`: 8
-  - `regime_n`: 7
+  - `param_fragile`: 1
 - **Top passed**:
+  - `LOW_VOL_CARRY/SOLUSDTM`: SR=5.12, q=4/4, n_reg=12, n_pooled=183
   - `KELTNER_REV/ETHUSDTM`: SR=5.00, q=4/4, n_reg=424, n_pooled=649
   - `KELTNER_REV/BNBUSDTM`: SR=4.12, q=4/4, n_reg=355, n_pooled=649
   - `DUAL_MOMENTUM/XBTUSDTM`: SR=3.83, q=4/4, n_reg=27, n_pooled=517
   - `KELTNER_REV/BNBUSDTM`: SR=3.77, q=4/4, n_reg=222, n_pooled=649
-  - `ROC/XRPUSDTM`: SR=3.63, q=4/4, n_reg=41, n_pooled=419
 
 ### RANGE
 
-- Examined: **658** | Passed: **7**
+- Examined: **690** | Passed: **8**
 - **Rejected by gate**:
-  - `quartiles`: 379
-  - `regime_n`: 92
+  - `quartiles`: 458
+  - `regime_n`: 103
   - `blacklist`: 90
-  - `pooled_n`: 69
-  - `no_validation`: 16
+  - `no_validation`: 25
   - `fee_2x`: 5
+  - `param_fragile`: 1
 - **Top passed**:
+  - `LOW_VOL_CARRY/SOLUSDTM`: SR=5.12, q=4/4, n_reg=14, n_pooled=183
   - `KELTNER_REV/ETHUSDTM`: SR=5.00, q=4/4, n_reg=49, n_pooled=649
   - `KELTNER_REV/BNBUSDTM`: SR=4.12, q=4/4, n_reg=65, n_pooled=649
   - `DUAL_MOMENTUM/XBTUSDTM`: SR=3.83, q=4/4, n_reg=15, n_pooled=517
   - `KELTNER_REV/BNBUSDTM`: SR=3.77, q=4/4, n_reg=31, n_pooled=649
-  - `KELTNER_REV/SOLUSDTM`: SR=3.21, q=4/4, n_reg=45, n_pooled=649
 
 ### NEUTRAL
 
-- Examined: **658** | Passed: **7**
+- Examined: **690** | Passed: **7**
 - **Rejected by gate**:
-  - `quartiles`: 393
+  - `quartiles`: 465
+  - `regime_n`: 95
   - `blacklist`: 90
-  - `regime_n`: 82
-  - `pooled_n`: 61
-  - `no_validation`: 17
+  - `no_validation`: 24
   - `fee_2x`: 8
+  - `param_fragile`: 1
 - **Top passed**:
   - `KELTNER_REV/ETHUSDTM`: SR=5.00, q=4/4, n_reg=72, n_pooled=649
   - `KELTNER_REV/BNBUSDTM`: SR=4.12, q=4/4, n_reg=79, n_pooled=649
   - `DUAL_MOMENTUM/XBTUSDTM`: SR=3.83, q=4/4, n_reg=15, n_pooled=517
   - `KELTNER_REV/BNBUSDTM`: SR=3.77, q=4/4, n_reg=37, n_pooled=649
   - `KELTNER_REV/SOLUSDTM`: SR=3.21, q=4/4, n_reg=78, n_pooled=649
+- **Pending**: `STRICT_PASS`
+  - Weights: `M31=97.0%, KELTNER_REV_ETHUSDTM=2.4%, DUAL_MOMENTUM_XBTUSDTM=0.6%`
+  - SR=11.186, n_days=100

@@ -144,6 +144,19 @@ def main():
     else:
         report.append("🔹 Aster Shadow LV: State not found.")
 
+    # ─── KuCoin Combo Shadow (D-486) ───
+    kcs_data = load_from_github("exchanges/kucoin/state/m11_kucoin_shadow_combo_state.json")
+    if kcs_data:
+        hist = kcs_data.get("history", [])
+        last = hist[-1] if hist else {}
+        eq = last.get("combo_hypo_equity", 10000.0)
+        m31 = last.get("m31_real_equity", eq)
+        report.append("🌐 **KuCoin Combo Shadow (M31+Keltner+Dual)**")
+        report.append(f"   Combo: ${eq:.2f} | M31: ${m31:.2f}")
+        report.append(f"   Diff: {last.get('diff_pct', 0):+.4f}% | Snapshots: {len(hist)}")
+    else:
+        report.append("🔹 KuCoin Combo (S): State not found.")
+
     final_report = "\n".join(report)
     print(final_report)
 
