@@ -471,7 +471,7 @@ def build_combination(m31_rets, complements_rets, max_components=3):
         "combo_tests": combo_tests,
     }
 def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
-                     max_corr=0.3, m31_weaknesses=None):
+                     max_corr=0.3, m31_weaknesses=None, m31_sig=None):
     """D-406: Find strategies with LOW corr to M31 (true complements)."""
     import os as _os, json as _json
     if exclude_families is None:
