@@ -22,9 +22,11 @@ FUNDING_FLIP_PERIODS = 4
 DATA_STALE_HOURS = 9
 
 EXCHANGES = {
+    # D-449: kill_switch tracks main 4 bots (not shadows — those are experimental)
     "hyperliquid": "exchanges/hyperliquid/state/m11_hl_portfolio.json",
     "aster": "exchanges/aster/state/m11_aster_paper_state.json",
     "kucoin": "exchanges/kucoin/state/m11_kucoin_paper_state.json",
+    "aster_combo": "exchanges/aster/state/m11_aster_combo_paper_state.json",
 }
 
 def send_bale(msg):

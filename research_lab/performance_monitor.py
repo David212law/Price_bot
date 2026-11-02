@@ -5,10 +5,16 @@ from research_lab.bale_notifier import send_bale
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
 GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
 
+# D-449: Track all 8 paper bots
 EXCHANGES = {
-    "hyperliquid": "exchanges/hyperliquid/state/m11_hl_portfolio.json",
-    "aster": "exchanges/aster/state/m11_aster_paper_state.json",
-    "kucoin": "exchanges/kucoin/state/m11_kucoin_paper_state.json"
+    "HL Paper": "exchanges/hyperliquid/state/m11_hl_portfolio.json",
+    "Aster Paper": "exchanges/aster/state/m11_aster_paper_state.json",
+    "KuCoin Paper": "exchanges/kucoin/state/m11_kucoin_paper_state.json",
+    "Aster COMBO": "exchanges/aster/state/m11_aster_combo_paper_state.json",
+    "HL Shadow": "exchanges/hyperliquid/state/m11_hl_shadow_portfolio.json",
+    "Aster Shadow TREND": "exchanges/aster/state/m11_aster_shadow_trend_state.json",
+    "Aster Shadow Balanced": "exchanges/aster/state/m11_aster_shadow_balanced_state.json",
+    "Aster Shadow RP": "exchanges/aster/state/m11_aster_shadow_rp_state.json",
 }
 
 def load_state(path):
