@@ -203,6 +203,26 @@ def load_active_weights(exchange, regime=None):
         print(f"[WEIGHTS] load error: {_e}")
         return None
 
+def check_config_drift(state):
+    """D-500: fix m31_capital=0 drift"""
+    if not state or "m31_capital" not in state:
+        return state
+    cur = (state.get("m31_capital", 0) + state.get("a8_capital", 0) +
+           state.get("a20_capital", 0) + state.get("cash_capital", 0))
+    if cur < 100 or abs(cur - INITIAL_CAPITAL) > 500:
+        print(f"[RESET] State inconsistent (total=${cur:.0f}, expected=${INITIAL_CAPITAL:.0f}). Re-initializing.")
+        return {}
+    desired_m31 = cur * M31_ALLOC
+    drift_m31 = abs(state.get("m31_capital", 0) - desired_m31)
+    if drift_m31 > 500:
+        print(f"[DRIFT] M31 rebalance: {state.get('m31_capital', 0):.0f} → {desired_m31:.0f}")
+        state["m31_capital"] = desired_m31
+        state["a8_capital"] = cur * A8_ALLOC
+        state["a20_capital"] = cur * A20_ALLOC
+        state["cash_capital"] = cur * (1.0 - M31_ALLOC - A8_ALLOC - A20_ALLOC)
+    return state
+
+
 def main():
     # RUNTIME-REGIME-CHECK (D-356)
     try:
@@ -227,6 +247,7 @@ def main():
         print(f"[CONFIG] Aster: M31={globals()['M31_ALLOC']*100:.0f}%, A8={globals()['A8_ALLOC']*100:.0f}%, A20={globals()['A20_ALLOC']*100:.0f}%")
 
     state, sha = load_from_github(STATE_FILE)
+    state = check_config_drift(state)   # D-500
     # اصلاح کلیدهای وضعیت برای رفع باگ سرمایه
     if not isinstance(state, dict) or "m31_capital" not in state:
         state = {
