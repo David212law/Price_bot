@@ -2062,3 +2062,33 @@ state موجود (equity، capital) دست‌نخورده می‌ماند.
 - ۶ ماه: Live Gate (D-379)
 
 **قانون:** در این ۳۰ روز، composer/strategy/weights تغییر نمی‌کند مگر با D جداگانه.
+
+## D-2026-11-02-461 — PAPER-BASELINE: Snapshot شروع Paper
+
+**وضعیت:** قفل
+
+**۸ ربات — Baseline (2026-11-02، شروع Paper):**
+
+| # | ربات | Baseline Equity | Trades |
+|---|---|---|---|
+| 1 | HL Paper | $9,998.45 | 0 |
+| 2 | Aster Paper | $10,000.00 | 0 |
+| 3 | KuCoin Paper | $9,998.38 | 0 |
+| 4 | Aster COMBO | $10,003.13 | 0 |
+| 5 | HL Shadow | $10,000.00 | 0 |
+| 6 | Aster Shadow TREND | $10,002.35 | 0 |
+| 7 | Aster Shadow RP | $10,002.12 | 0 |
+| 8 | Aster Shadow LV | $10,002.10 | 0 |
+
+**معیار بازبینی:**
+- Equity در بازه 9500-10500 = سالم
+- انحراف > 5% از baseline در 2026-12-02 = investigate
+- هر ربات باید حداقل یک trade در 30 روز انجام دهد
+
+**مقایسه 30 روزه:**
+- Sharpe Paper هر ربات vs backtest 8.16
+- اگر Paper Sharpe < 2 → overfit جدی
+- اگر Paper Sharpe 4-6 → خوب
+- اگر Paper Sharpe 8-10 → شگفتی مثبت
+
+**Git commit:** 7e5a0391 (D-460)
