@@ -2025,3 +2025,40 @@ state موجود (equity، capital) دست‌نخورده می‌ماند.
 - kill_switch freshness check پاس می‌شود
 - در RANGE/NEUTRAL، state به‌طور کامل آپدیت می‌شود
 - skipped_regime در state برای debug قابل رؤیت است
+
+## D-2026-11-02-460 — PAPER-START: شروع رسمی Paper ۳۰ روزه
+
+**وضعیت:** قفل
+
+**تاریخ شروع:** 2026-11-02 (روز ۱ از ۳۰)
+
+**وضعیت ۸ ربات:**
+| # | ربات | TREND | RANGE/NEUTRAL |
+|---|---|---|---|
+| 1 | HL Paper | M31=65% | M31=65% |
+| 2 | Aster Paper | M31=10% | M31=10% |
+| 3 | KuCoin Paper | M31=30% | M31=30% |
+| 4 | Aster COMBO | skip | M31+Keltner 50/50 |
+| 5 | HL Shadow | M31+Keltner | M31+Keltner |
+| 6 | Aster Shadow TREND | M31+Keltner | CASH |
+| 7 | Aster Shadow RP | M31=98%+Keltner2% | same |
+| 8 | Aster Shadow LV | M31=97%+LOW_VOL3% | same |
+
+**پیش‌شرط‌های تأییدشده:**
+- همه state = equity~10000، last_run تازه
+- Coverage gate صادقانه (pending خالی)
+- Signature cache با data_hash
+- 11 workflow بدون syntax error
+- Billing: $0.25/$12 (۲٪)
+
+**A/B Test در Paper:**
+- وزن: RP (98/2) — تست Keltner با وزن کم
+- استراتژی: RP (Keltner) vs LV (LOW_VOL_CARRY) — کدام مکمل بهتر
+
+**بازبینی:**
+- ۳۰ روز بعد (Dec 2026): مقایسه ۸ ربات equity + M31 Sharpe واقعی
+- ۶۰ روز بعد: A/B shadows
+- ۹۰ روز بعد: Paper-based composer
+- ۶ ماه: Live Gate (D-379)
+
+**قانون:** در این ۳۰ روز، composer/strategy/weights تغییر نمی‌کند مگر با D جداگانه.
