@@ -931,7 +931,8 @@ def main():
             m31_reg = {d: r for d, r in m31_rets.items() if reg_by_date.get(d) == regime}
             if len(m31_reg) < 20: continue
             comps = find_complements(state, regime, exchange, m31_reg,
-                                      m31_weaknesses=m31_weaknesses)
+                                      m31_weaknesses=m31_weaknesses,
+                              m31_sig=m31_sig)
             if comps:
                 n_w = len(m31_weaknesses) if m31_weaknesses else 0
                 print(f"  [{regime}] {len(comps)} complements found:")
