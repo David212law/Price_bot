@@ -1,0 +1,61 @@
+name: Manual Research
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: 'Which task'
+        required: true
+        type: choice
+        options:
+          - expand_kucoin
+          - profiler_stress
+
+permissions:
+  contents: write
+
+jobs:
+  expand_kucoin:
+    if: github.event.inputs.task == 'expand_kucoin'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests
+      - name: Fetch All 6 Symbols
+        run: |
+          for sym in XBTUSDTM ETHUSDTM SOLUSDTM BNBUSDTM XRPUSDTM AVAXUSDTM; do
+            python research_lab/fetch_kucoin_extended.py $sym
+          done
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add exchanges/kucoin/data/
+          git commit -m "data: expand KuCoin" || echo "no changes"
+          git push
+
+  profiler_stress:
+    if: github.event.inputs.task == 'profiler_stress'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: python research_lab/reset_unstressed.py
+      - run: python -m research_lab.profiler
+      - name: Commit State
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -f research_lab/logs/profiles/ || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto: full profiler stress complete [skip ci]"
+            git push
+          fi
