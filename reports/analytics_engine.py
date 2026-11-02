@@ -94,6 +94,7 @@ def main():
     analyze_bot_generic("Aster Shadow TREND", "exchanges/aster/state/m11_aster_shadow_trend_state.json")
     analyze_bot_generic("Aster Shadow Balanced", "exchanges/aster/state/m11_aster_shadow_balanced_state.json")
     analyze_bot_generic("Aster Shadow RP", "exchanges/aster/state/m11_aster_shadow_rp_state.json")
+    analyze_bot_generic("Aster Shadow LV", "exchanges/aster/state/m11_aster_shadow_lv_state.json")
 
 if __name__ == "__main__":
     main()

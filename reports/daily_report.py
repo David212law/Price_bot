@@ -142,6 +142,16 @@ def main():
     else:
         report.append("🔹 Aster Shadow RP: State not found.")
 
+    # ─── Aster Shadow LV (D-456) ───
+    asl_data = load_from_github("exchanges/aster/state/m11_aster_shadow_lv_state.json")
+    if asl_data:
+        eq = asl_data.get("total_equity", 10000.0)
+        report.append("🌐 **Aster Shadow LV (M31=97%, LV=3%)**")
+        report.append(f"   Equity: ${eq:.2f} | LV Cap: ${asl_data.get('low_vol_capital', 0):.2f}")
+        report.append(f"   LV Positions: {len(asl_data.get('low_vol_pos', {}))}")
+    else:
+        report.append("🔹 Aster Shadow LV: State not found.")
+
     final_report = "\n".join(report)
     print(final_report)
 

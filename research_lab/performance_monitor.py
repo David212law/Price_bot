@@ -15,6 +15,7 @@ EXCHANGES = {
     "Aster Shadow TREND": "exchanges/aster/state/m11_aster_shadow_trend_state.json",
     "Aster Shadow Balanced": "exchanges/aster/state/m11_aster_shadow_balanced_state.json",
     "Aster Shadow RP": "exchanges/aster/state/m11_aster_shadow_rp_state.json",
+    "Aster Shadow LV": "exchanges/aster/state/m11_aster_shadow_lv_state.json",
 }
 
 def load_state(path):
