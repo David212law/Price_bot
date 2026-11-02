@@ -807,6 +807,16 @@ def main():
     print("  COMPOSER — Portfolio by Regime (D-400)")
     print("="*70)
 
+    # D-453: reset pending_approvals on each run (avoid stale entries)
+    _pend_path = "exchanges/pending_approvals.json"
+    try:
+        import os as _os
+        if _os.path.exists(_pend_path):
+            json.dump({}, open(_pend_path, "w"), indent=2)
+            print(f"[RESET] {_pend_path} cleared")
+    except Exception as _e:
+        print(f"[RESET WARN] {_e}")
+
     state = load_state()
     portfolio = {}
     report_lines = ["# Composer Report\n"]
