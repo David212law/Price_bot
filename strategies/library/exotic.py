@@ -102,8 +102,139 @@ def strat_mtf_confirmation(candles, fast=20, slow=50, mtf_mult=6, fee_multiplier
     return trades
 
 
+
+
+# ═══════════════════════════════════════════════════════════════
+# D-481: 3 new genuinely-different strategies
+# ═══════════════════════════════════════════════════════════════
+
+def strat_volume_profile(candles, period=50, va_width=0.7, fee_multiplier=1.0):
+    """Volume Profile Reversion: POC/VAH/VAL levels as support/resistance."""
+    if len(candles) < period + 20: return []
+    fee = 0.0006 * fee_multiplier
+    trades = []
+    pos = None
+    for i in range(period, len(candles)):
+        window = candles[i-period:i]
+        prices = [c["c"] for c in window]
+        volumes = [c["v"] for c in window]
+        if not prices or sum(volumes) == 0: continue
+        min_p, max_p = min(prices), max(prices)
+        if max_p == min_p: continue
+        bins = [(max_p - min_p) * j / 20 + min_p for j in range(21)]
+        bin_vol = [0.0] * 20
+        for cc in window:
+            for j in range(20):
+                if bins[j] <= cc["c"] < bins[j+1]:
+                    bin_vol[j] += cc["v"]; break
+        total_vol = sum(bin_vol)
+        if total_vol == 0: continue
+        poc_idx = bin_vol.index(max(bin_vol))
+        poc = (bins[poc_idx] + bins[poc_idx+1]) / 2
+        va_vol = bin_vol[poc_idx]
+        lo_idx = hi_idx = poc_idx
+        target = total_vol * va_width
+        while va_vol < target and (lo_idx > 0 or hi_idx < 19):
+            if lo_idx > 0 and (hi_idx >= 19 or bin_vol[lo_idx-1] >= bin_vol[hi_idx+1]):
+                lo_idx -= 1; va_vol += bin_vol[lo_idx]
+            elif hi_idx < 19:
+                hi_idx += 1; va_vol += bin_vol[hi_idx]
+            else: break
+        vah = bins[hi_idx+1]; val = bins[lo_idx]
+        last = candles[i]; cur = last["c"]
+        if pos is None:
+            if cur > vah:
+                pos = {"side":"SHORT","entry":cur,"tp":poc,"sl":cur + (vah-val)*0.5}
+            elif cur < val:
+                pos = {"side":"LONG","entry":cur,"tp":poc,"sl":cur - (vah-val)*0.5}
+        else:
+            ex = None
+            if pos["side"] == "LONG":
+                if last["l"] <= pos["sl"]: ex = pos["sl"]
+                elif last["h"] >= pos["tp"]: ex = pos["tp"]
+            else:
+                if last["h"] >= pos["sl"]: ex = pos["sl"]
+                elif last["l"] <= pos["tp"]: ex = pos["tp"]
+            if ex:
+                trades.append(_trade(last, pos["side"], pos["entry"], ex, fee))
+                pos = None
+    return trades
+
+
+def strat_weekly_pivot(candles, week_candles=42, fee_multiplier=1.0):
+    """Weekly Pivot Breakout: trade breaks of previous week high/low."""
+    if len(candles) < week_candles * 2 + 10: return []
+    fee = 0.0006 * fee_multiplier
+    trades = []
+    pos = None
+    i = week_candles
+    while i < len(candles):
+        prev_week = candles[i-week_candles:i]
+        week_high = max(c["h"] for c in prev_week)
+        week_low = min(c["l"] for c in prev_week)
+        end = min(i + week_candles, len(candles))
+        for j in range(i, end):
+            last = candles[j]; cur = last["c"]
+            if pos is None:
+                if cur > week_high:
+                    pos = {"side":"LONG","entry":cur,"sl":week_high*0.99,"tp":cur*1.03}
+                elif cur < week_low:
+                    pos = {"side":"SHORT","entry":cur,"sl":week_low*1.01,"tp":cur*0.97}
+            else:
+                ex = None
+                if pos["side"] == "LONG":
+                    if last["l"] <= pos["sl"]: ex = pos["sl"]
+                    elif last["h"] >= pos["tp"]: ex = pos["tp"]
+                else:
+                    if last["h"] >= pos["sl"]: ex = pos["sl"]
+                    elif last["l"] <= pos["tp"]: ex = pos["tp"]
+                if ex:
+                    trades.append(_trade(last, pos["side"], pos["entry"], ex, fee))
+                    pos = None
+            if j == end - 1 and pos is not None:
+                trades.append(_trade(last, pos["side"], pos["entry"], cur, fee))
+                pos = None
+        i = end
+    return trades
+
+
+def strat_volatility_trend(candles, ema_p=20, atr_p=14, atr_mult=1.5, fee_multiplier=1.0):
+    """Volatility-Adjusted Trend: trade only when ATR confirms expansion."""
+    if len(candles) < max(ema_p, atr_p) + 20: return []
+    closes = [c["c"] for c in candles]
+    e = ema(closes, ema_p)
+    a = atr(candles, atr_p)
+    fee = 0.0006 * fee_multiplier
+    trades = []
+    pos = None
+    for i in range(ema_p, len(candles)):
+        if e[i] is None or a[i] is None or a[i-1] is None: continue
+        atr_rising = a[i] > a[i-1] * 1.1
+        if pos is None:
+            if closes[i] > e[i] and closes[i-1] <= e[i-1] and atr_rising:
+                pos = {"side":"LONG","entry":closes[i],"sl":closes[i]-atr_mult*a[i],"tp":closes[i]+3*atr_mult*a[i]}
+            elif closes[i] < e[i] and closes[i-1] >= e[i-1] and atr_rising:
+                pos = {"side":"SHORT","entry":closes[i],"sl":closes[i]+atr_mult*a[i],"tp":closes[i]-3*atr_mult*a[i]}
+        else:
+            last = candles[i]; ex = None
+            if pos["side"] == "LONG":
+                if last["l"] <= pos["sl"]: ex = pos["sl"]
+                elif last["h"] >= pos["tp"]: ex = pos["tp"]
+                elif closes[i] < e[i] and closes[i-1] >= e[i-1]: ex = closes[i]
+            else:
+                if last["h"] >= pos["sl"]: ex = pos["sl"]
+                elif last["l"] <= pos["tp"]: ex = pos["tp"]
+                elif closes[i] > e[i] and closes[i-1] <= e[i-1]: ex = closes[i]
+            if ex:
+                trades.append(_trade(last, pos["side"], pos["entry"], ex, fee))
+                pos = None
+    return trades
+
 CANDLE_STRATEGIES = {
     "PAIRS_RELATIVE": (strat_pairs_relative, {"lookback": [20, 30], "z_threshold": [1.5, 2.0]}),
     "LOW_VOL_CARRY": (strat_low_vol_carry, {"vol_pct_threshold": [0.20, 0.30, 0.40]}),
     "MTF_CONFIRMATION": (strat_mtf_confirmation, {"fast": [20], "slow": [50], "mtf_mult": [6]}),
+    "VOLUME_PROFILE": (strat_volume_profile, {"period": [30, 50], "va_width": [0.6, 0.7]}),
+    "WEEKLY_PIVOT": (strat_weekly_pivot, {"week_candles": [42], "fee_multiplier": [1.0]}),
+    "VOL_TREND": (strat_volatility_trend, {"ema_p": [20, 50], "atr_mult": [1.5, 2.0]}),
 }
