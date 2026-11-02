@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-11-02T18:54:46.746936+00:00",
+  "initial_capital": 10000.0,
+  "history": [
+    {
+      "time_iso": "2026-11-02T18:54:47.226274+00:00",
+      "m31_real_equity": 9998.09,
+      "m31_real_ret_pct": -0.0191,
+      "combo_hypo_equity": 9998.51,
+      "combo_hypo_ret_pct": -0.0149,
+      "diff_pct": 0.0042,
+      "keltner_daily_avg": 0.1278,
+      "dual_daily_avg": 0.0882
+    }
+  ],
+  "last_run": "2026-11-02T18:54:47.226274+00:00"
+}
