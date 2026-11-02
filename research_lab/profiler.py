@@ -289,11 +289,11 @@ def main():
     print("\n" + "="*80)
     print("  RANKING BY SHARPE (not PF — PF is misleading for funding)")
     print("="*80)
-    # D-469: Load blacklist to filter output
+    # D-469-fix: Load blacklist to filter output (use different name to avoid shadowing global CONFIG)
     try:
-        from research_lab.composer import CONFIG
-        blacklist = set(CONFIG.get("blacklist", []))
-    except:
+        from research_lab.composer import CONFIG as COMPOSER_CONFIG
+        blacklist = set(COMPOSER_CONFIG.get("blacklist", []))
+    except Exception:
         blacklist = set()
 
     for reg in ["TREND","RANGE","NEUTRAL"]:
