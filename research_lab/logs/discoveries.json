@@ -1,0 +1,98 @@
+[
+  {
+    "date": "2026-11-02",
+    "exchange_regime": "hyperliquid/RANGE",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 12.519,
+    "n_days": 79,
+    "max_dd_combo_pct": 0.09,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.989,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_ETH",
+        "weight": 0.011,
+        "family": "MR",
+        "corr": -0.184
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-02T10:47:27.920019+00:00"
+  },
+  {
+    "date": "2026-11-02",
+    "exchange_regime": "aster/TREND",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 11.375,
+    "n_days": 221,
+    "max_dd_combo_pct": 0.21,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9808,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_AVAXUSDT",
+        "weight": 0.0192,
+        "family": "MR",
+        "corr": -0.032
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-02T10:47:28.309083+00:00"
+  },
+  {
+    "date": "2026-11-02",
+    "exchange_regime": "aster/RANGE",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 12.492,
+    "n_days": 109,
+    "max_dd_combo_pct": 0.14,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.97,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_AVAXUSDT",
+        "weight": 0.03,
+        "family": "MR",
+        "corr": 0.073
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-02T10:47:28.315998+00:00"
+  },
+  {
+    "date": "2026-11-02",
+    "exchange_regime": "aster/NEUTRAL",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 13.788,
+    "n_days": 82,
+    "max_dd_combo_pct": 0.16,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9734,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_AVAXUSDT",
+        "weight": 0.0266,
+        "family": "MR",
+        "corr": -0.048
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-02T10:47:28.322246+00:00"
+  }
+]

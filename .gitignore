@@ -16,3 +16,7 @@ research_lab/logs/
 # Diagnostic output files
 regime_core_results.txt
 *.log
+
+# D-462: allow historical archive to be committed
+!research_lab/logs/history/
+!research_lab/logs/discoveries.json

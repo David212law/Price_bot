@@ -2092,3 +2092,27 @@ state موجود (equity، capital) دست‌نخورده می‌ماند.
 - اگر Paper Sharpe 8-10 → شگفتی مثبت
 
 **Git commit:** 7e5a0391 (D-460)
+
+## D-2026-11-02-462-fix3 — ARCHIVE-PERSIST: ذخیره archive در GitHub
+
+**وضعیت:** قفل
+
+**مسئله:**
+D-450 archive سیستم طراحی شد، ولی .gitignore مسیر research_lab/logs/ را
+نادیده می‌گرفت. در نتیجه هر هفته فایل‌های archive در GitHub Actions
+ساخته می‌شدند ولی commit نمی‌شدند → با پایان run پاک می‌شدند.
+
+**فیکس:**
+1. .gitignore با exception برای history/ و discoveries.json
+2. workflow commit step با git add -f (force add)
+
+**اثر:**
+- archive در هر weekly run به GitHub commit می‌شود
+- تاریخچه در research_lab/logs/history/YYYY-MM-DD/ انباشته می‌شود
+- discoveries.json append-only باقی می‌ماند
+- signatures_cache.json با data_hash persist می‌شود
+
+**قانون:**
+هر فایل حیاتی در logs که باید persist شود، باید یا در exception .gitignore
+باشد یا با git add -f در workflow اضافه شود. فقط فایل‌های ephemeral
+(مثل state matrices محلی) نادیده گرفته شوند.
