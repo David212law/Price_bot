@@ -107,9 +107,3 @@ CANDLE_STRATEGIES = {
     "LOW_VOL_CARRY": (strat_low_vol_carry, {"vol_pct_threshold": [0.20, 0.30, 0.40]}),
     "MTF_CONFIRMATION": (strat_mtf_confirmation, {"fast": [20], "slow": [50], "mtf_mult": [6]}),
 }
-
-
-
-
-    {"lookback": [30, 50], "z_threshold": [1.5, 2.0, 2.5]}
-)
