@@ -5,6 +5,7 @@ from strategies.library.momentum import MOMENTUM_STRATEGIES
 from strategies.library.volatility import VOL_STRATEGIES
 from strategies.library.volume import VOLUME_STRATEGIES
 from strategies.library.funding import FUNDING_STRATEGIES
+from strategies.library.exotic import CANDLE_STRATEGIES as EXOTIC_STRATEGIES
 
 # Strategies that use candles (price-based)
 CANDLE_STRATEGIES = {}
@@ -13,6 +14,7 @@ CANDLE_STRATEGIES.update(MR_STRATEGIES)
 CANDLE_STRATEGIES.update(MOMENTUM_STRATEGIES)
 CANDLE_STRATEGIES.update(VOL_STRATEGIES)
 CANDLE_STRATEGIES.update(VOLUME_STRATEGIES)
+CANDLE_STRATEGIES.update(EXOTIC_STRATEGIES)
 
 # Strategies that use funding data
 FUNDING_STRATS = dict(FUNDING_STRATEGIES)

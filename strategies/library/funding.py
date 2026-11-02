@@ -157,3 +157,46 @@ FUNDING_STRATEGIES = {
 
 # NOTE: These return dict of daily returns, NOT trade list like other strategies.
 # Screening engine must handle them separately.
+
+
+def strat_funding_mean_rev(records, lookback=30, z_threshold=2.0, fee_multiplier=1.0):
+    """D-442: Funding MR — fade extreme funding rates (low vol by design)."""
+    from collections import defaultdict
+    from datetime import datetime, timezone
+    if not records or len(records) < lookback * 3:
+        return {}
+    daily_sum = defaultdict(float); daily_n = defaultdict(int)
+    for r in records:
+        try:
+            day = datetime.fromtimestamp(int(r["t"])/1000, tz=timezone.utc).strftime("%Y-%m-%d")
+            daily_sum[day] += float(r["rate"]); daily_n[day] += 1
+        except: continue
+    daily = {d: daily_sum[d]/daily_n[d] for d in daily_sum if daily_n[d] > 0}
+    days = sorted(daily.keys())
+    if len(days) < lookback + 10: return {}
+    fee = 0.0006 * fee_multiplier
+    out = {}; pos = 0
+    for i in range(lookback, len(days)):
+        window = [daily[days[j]] for j in range(i-lookback, i)]
+        m = sum(window)/len(window)
+        v = sum((x-m)**2 for x in window)/(len(window)-1) if len(window) > 1 else 0
+        sigma = v ** 0.5
+        if sigma == 0: continue
+        z = (daily[days[i]] - m) / sigma
+        if pos != 0 and abs(z) < 0.5:
+            pos = 0; continue
+        just_entered = False
+        if pos == 0:
+            if z > z_threshold: pos = -1; just_entered = True
+            elif z < -z_threshold: pos = 1; just_entered = True
+        if pos != 0:
+            daily_ret = -pos * daily[days[i]]
+            if just_entered: daily_ret -= fee
+            out[days[i]] = daily_ret
+    return out
+
+
+FUNDING_STRATEGIES["FUNDING_MEAN_REV"] = (
+    strat_funding_mean_rev,
+    {"lookback": [20, 30, 50], "z_threshold": [1.5, 2.0, 2.5]}
+)
