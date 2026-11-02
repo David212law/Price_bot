@@ -66,10 +66,34 @@ def analyze_aster_m11_aster():
         net_pnl = sum(h.get("pnl", 0) for h in history)
         print(f"\n  Closed Trades: {len(history)} | Realized PnL: ${net_pnl:+.2f}")
 
+def analyze_bot_generic(name, path):
+    """D-449: Generic bot analyzer — equity, positions."""
+    print(f"=== 🌐 {name} Analytics ===")
+    state = load_data(path)
+    if not state:
+        print("  No state found.")
+        return
+    eq = state.get("total_equity", state.get("total_capital", 10000.0))
+    print(f"  Equity: ${eq:.2f}")
+    if "keltner_capital" in state:
+        print(f"  Keltner Capital: ${state['keltner_capital']:.2f}")
+        print(f"  Keltner Positions: {len(state.get('keltner_pos', {}))}")
+    if "m31_capital" in state:
+        print(f"  M31 Capital: ${state['m31_capital']:.2f}")
+    if "history" in state:
+        print(f"  History: {len(state['history'])} closed trades")
+    print()
+
 def main():
     print(f"=== Project Deep Analytics Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===\n")
     analyze_m11_hl_hyperliquid()
     analyze_aster_m11_aster()
+    # D-449: 5 new bots
+    analyze_bot_generic("Aster COMBO", "exchanges/aster/state/m11_aster_combo_paper_state.json")
+    analyze_bot_generic("HL Shadow", "exchanges/hyperliquid/state/m11_hl_shadow_portfolio.json")
+    analyze_bot_generic("Aster Shadow TREND", "exchanges/aster/state/m11_aster_shadow_trend_state.json")
+    analyze_bot_generic("Aster Shadow Balanced", "exchanges/aster/state/m11_aster_shadow_balanced_state.json")
+    analyze_bot_generic("Aster Shadow RP", "exchanges/aster/state/m11_aster_shadow_rp_state.json")
 
 if __name__ == "__main__":
     main()

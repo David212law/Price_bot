@@ -92,6 +92,56 @@ def main():
     else:
         report.append("🔹 KuCoin: State not found.")
 
+    # ═══════════════════════════════════════════════════════════════
+    # D-449: 5 new bots
+    # ═══════════════════════════════════════════════════════════════
+
+    # ─── Aster COMBO ───
+    ac_data = load_from_github("exchanges/aster/state/m11_aster_combo_paper_state.json")
+    if ac_data:
+        eq = ac_data.get("total_equity", 10000.0)
+        report.append("🌐 **Aster COMBO (M31+Keltner)**")
+        report.append(f"   Equity: ${eq:.2f} | Keltner: ${ac_data.get('keltner_capital', 0):.2f}")
+        report.append(f"   Keltner positions: {len(ac_data.get('keltner_pos', {}))}")
+    else:
+        report.append("🔹 Aster COMBO: State not found.")
+
+    # ─── HL Shadow ───
+    hs_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_portfolio.json")
+    if hs_data:
+        eq = hs_data.get("total_equity", hs_data.get("total_capital", 10000.0))
+        report.append("🌐 **HL Shadow (M31+Keltner)**")
+        report.append(f"   Equity: ${eq:.2f} | Keltner: ${hs_data.get('keltner_capital', 0):.2f}")
+    else:
+        report.append("🔹 HL Shadow: State not found.")
+
+    # ─── Aster Shadow TREND ───
+    ast_data = load_from_github("exchanges/aster/state/m11_aster_shadow_trend_state.json")
+    if ast_data:
+        eq = ast_data.get("total_equity", 10000.0)
+        report.append("🌐 **Aster Shadow TREND**")
+        report.append(f"   Equity: ${eq:.2f} | Keltner: ${ast_data.get('keltner_capital', 0):.2f}")
+    else:
+        report.append("🔹 Aster Shadow TREND: State not found.")
+
+    # ─── Aster Shadow Balanced ───
+    asb_data = load_from_github("exchanges/aster/state/m11_aster_shadow_balanced_state.json")
+    if asb_data:
+        eq = asb_data.get("total_equity", 10000.0)
+        report.append("🌐 **Aster Shadow Balanced (50/50)**")
+        report.append(f"   Equity: ${eq:.2f} | Keltner: ${asb_data.get('keltner_capital', 0):.2f}")
+    else:
+        report.append("🔹 Aster Shadow Balanced: State not found.")
+
+    # ─── Aster Shadow RP ───
+    asr_data = load_from_github("exchanges/aster/state/m11_aster_shadow_rp_state.json")
+    if asr_data:
+        eq = asr_data.get("total_equity", 10000.0)
+        report.append("🌐 **Aster Shadow RP (98/2)**")
+        report.append(f"   Equity: ${eq:.2f} | Keltner: ${asr_data.get('keltner_capital', 0):.2f}")
+    else:
+        report.append("🔹 Aster Shadow RP: State not found.")
+
     final_report = "\n".join(report)
     print(final_report)
 
