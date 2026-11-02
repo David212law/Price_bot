@@ -111,6 +111,5 @@ CANDLE_STRATEGIES = {
 
 
 
-    strat_pairs_trading,
     {"lookback": [30, 50], "z_threshold": [1.5, 2.0, 2.5]}
 )
