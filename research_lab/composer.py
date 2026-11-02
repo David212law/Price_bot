@@ -203,11 +203,15 @@ def test_component_dropout(components_data, weights, base_sharpe):
         combined = {d: sum(w * r[d] for w, r in zip(subset_w, subset_rets)) for d in dates}
         sr_without = sharpe(list(combined.values()))
         drop_pct = (base_sharpe - sr_without) / base_sharpe if base_sharpe > 0 else 0
-        if drop_pct < 0.05:
+        if drop_pct < 0:
+            issues.append(f"comp{i}: HARMFUL (drop={drop_pct*100:.1f}%)")
+        elif drop_pct < 0.05:
             issues.append(f"comp{i}: redundant (drop={drop_pct*100:.1f}%)")
         if sr_without < base_sharpe * 0.4:
             issues.append(f"comp{i}: over-reliant (without SR={sr_without:.2f})")
-    return {"pass": len([x for x in issues if 'over-reliant' in x]) == 0,
+    # D-482b: fail if any component is HARMFUL or over-reliant
+    _fails = [x for x in issues if 'over-reliant' in x or 'HARMFUL' in x]
+    return {"pass": len(_fails) == 0,
             "issues": issues, "n_components": n}
 
 
@@ -324,7 +328,7 @@ def _compute_risk_parity_weights(rets_list, dates):
     return [iv / total for iv in inv_vols]
 
 
-def build_combination(m31_rets, complements_rets, max_components=3):
+def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_full=None):
     """D-407: Take M31 + top N complements (family-diverse). Requires M31 positive."""
     if not m31_rets: return None
     m31_sr_check = sharpe(list(m31_rets.values()))
@@ -346,18 +350,23 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     if not selected:
         return None
 
+    # D-482: stability on FULL data (regime-filtered dates are non-contiguous)
+    _stab_m31 = m31_rets_full if m31_rets_full is not None else m31_rets
+
     # D-438: Correlation Stability — all pairwise corr must be stable
     stab_issues = []
-    # M31 vs each complement
     for s in selected:
-        stab = correlation_stability(m31_rets, s["rets"], n_windows=4)
+        _stab_rets = s.get("rets_full", s["rets"])
+        stab = correlation_stability(_stab_m31, _stab_rets, n_windows=4)
         if stab and stab["stability"] == "UNSTABLE":
             stab_issues.append(f"M31-{s['strategy']}_{s['symbol']}: "
                                f"corr std={stab['std']}")
     # Complement pairwise (if >1)
     for i in range(len(selected)):
         for j in range(i+1, len(selected)):
-            stab = correlation_stability(selected[i]["rets"], selected[j]["rets"], n_windows=4)
+            _si = selected[i].get("rets_full", selected[i]["rets"])
+            _sj = selected[j].get("rets_full", selected[j]["rets"])
+            stab = correlation_stability(_si, _sj, n_windows=4)
             if stab and stab["stability"] == "UNSTABLE":
                 stab_issues.append(
                     f"{selected[i]['strategy']}-{selected[j]['strategy']}: "
@@ -419,8 +428,10 @@ def build_combination(m31_rets, complements_rets, max_components=3):
     for s in selected:
         val_sr = s.get("ann_sr_validation", 0)
         if val_sr: comp_oos.append(val_sr)
+    # D-482b: combined_sr is already annualized
     oos_test = test_combo_vs_best_component(
-        components_data, all_w, combined_sr * math.sqrt(365), comp_oos)
+        components_data, all_w, combined_sr, comp_oos
+    )
 
     # 4. Diversification Ratio
     dr_test = test_diversification_ratio(components_data, all_w)
@@ -955,10 +966,10 @@ def main():
                     _pooled = _pooled_get(exchange, comp["strategy"], state)
                     reg_filtered = {d: x for d, x in _pooled.items() if reg_by_date.get(d) == regime}
                     if len(reg_filtered) >= 30:
-                        comps_with_rets.append({**comp, "rets": reg_filtered})
+                        comps_with_rets.append({**comp, "rets": reg_filtered, "rets_full": _pooled})
                 
                 if comps_with_rets:
-                    combo = build_combination(m31_reg, comps_with_rets)
+                    combo = build_combination(m31_reg, comps_with_rets, m31_rets_full=m31_rets)
                     if combo:
                         verdict = "✅ PASS GATE" if combo["passes_gate"] else "❌ absolute or relative quality failed"
                         print(f"    → COMBO: SR={combo['combined_sharpe']} vs M31={combo['m31_only_sharpe']} "
