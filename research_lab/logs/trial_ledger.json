@@ -1,0 +1,6 @@
+[
+  {"timestamp": "2026-10-30T10:00:00+00:00", "exchange": "aster", "strategy": "A20", "metrics": {"status": "OK", "n": 437, "pf": 1.13}},
+  {"timestamp": "2026-10-30T10:00:00+00:00", "exchange": "aster", "strategy": "M40", "metrics": {"status": "OK", "n": 133, "pf": 1.11}},
+  {"timestamp": "2026-10-30T10:00:00+00:00", "exchange": "hyperliquid", "strategy": "M40", "metrics": {"status": "OK", "n": 109, "pf": 1.06}},
+  {"timestamp": "2026-10-30T10:00:00+00:00", "exchange": "hyperliquid", "strategy": "A20", "metrics": {"status": "OK", "n": 345, "pf": 2.06}}
+]
