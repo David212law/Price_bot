@@ -143,7 +143,9 @@ def deflated_sharpe(sharpe_input, n_obs, n_trials, annualized=True,
     else:
         se = math.sqrt(1 / (n_obs-1))
     
-    z = (sr - E_max) / se
+    # D-484-fix: E_max is in SE units, not raw Sharpe. Use sr/se - E_max.
+    # Old: (sr - E_max)/se was wrong unit mixing.
+    z = (sr / se) - E_max if se > 0 else 0
     dsr = Z_cdf(z)
     return {
         "sharpe_per_period": round(sr, 4),
