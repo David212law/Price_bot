@@ -1,0 +1,61 @@
+{
+  "key": "kucoin:VOL_TREND:0b079fb3:AVAXUSDTM",
+  "validation": {
+    "n": 18,
+    "pf": 0.203,
+    "wr": 5.6,
+    "sharpe_daily": -0.6394,
+    "sharpe_ann": -12.217,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.0,
+      0.683
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 43,
+        "pf": 1.025,
+        "sharpe_ann": 0.183
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 43,
+        "pf": 0.956,
+        "sharpe_ann": -0.336
+      },
+      "param_robustness": {
+        "baseline_sharpe": -12.217,
+        "best_variant_sharpe": 0.586,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "ema_p",
+            "val": 45,
+            "sharpe_ann": 0.416
+          },
+          {
+            "param": "ema_p",
+            "val": 55,
+            "sharpe_ann": -0.314
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.35,
+            "sharpe_ann": 0.187
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.65,
+            "sharpe_ann": 0.586
+          }
+        ]
+      }
+    }
+  }
+}

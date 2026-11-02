@@ -1,0 +1,61 @@
+{
+  "key": "aster:VOL_TREND:8d49a927:BTCUSDT",
+  "validation": {
+    "n": 16,
+    "pf": 0.564,
+    "wr": 31.2,
+    "sharpe_daily": -0.1963,
+    "sharpe_ann": -3.75,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.21,
+      0.021,
+      0.745,
+      0.082
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 47,
+        "pf": 0.843,
+        "sharpe_ann": -1.194
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 47,
+        "pf": 0.735,
+        "sharpe_ann": -2.231
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.75,
+        "best_variant_sharpe": 1.425,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "ema_p",
+            "val": 45,
+            "sharpe_ann": 1.425
+          },
+          {
+            "param": "ema_p",
+            "val": 55,
+            "sharpe_ann": 0.805
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.8,
+            "sharpe_ann": -2.393
+          },
+          {
+            "param": "atr_mult",
+            "val": 2.2,
+            "sharpe_ann": -0.215
+          }
+        ]
+      }
+    }
+  }
+}

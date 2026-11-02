@@ -1,0 +1,61 @@
+{
+  "key": "hyperliquid:VOL_TREND:551b48cd:ETH",
+  "validation": {
+    "n": 13,
+    "pf": 0.23,
+    "wr": 23.1,
+    "sharpe_daily": -0.5766,
+    "sharpe_ann": -11.015,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.028,
+      0.091,
+      1.086,
+      0.0
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 41,
+        "pf": 0.75,
+        "sharpe_ann": -1.934
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 41,
+        "pf": 0.687,
+        "sharpe_ann": -2.584
+      },
+      "param_robustness": {
+        "baseline_sharpe": -11.015,
+        "best_variant_sharpe": -1.972,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "ema_p",
+            "val": 18,
+            "sharpe_ann": -4.69
+          },
+          {
+            "param": "ema_p",
+            "val": 22,
+            "sharpe_ann": -2.825
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.8,
+            "sharpe_ann": -2.056
+          },
+          {
+            "param": "atr_mult",
+            "val": 2.2,
+            "sharpe_ann": -1.972
+          }
+        ]
+      }
+    }
+  }
+}

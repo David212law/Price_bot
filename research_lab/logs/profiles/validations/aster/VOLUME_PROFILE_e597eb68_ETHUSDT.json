@@ -1,0 +1,75 @@
+{
+  "key": "aster:VOLUME_PROFILE:e597eb68:ETHUSDT",
+  "validation": {
+    "n": 152,
+    "pf": 1.147,
+    "wr": 36.8,
+    "sharpe_daily": 0.048,
+    "sharpe_ann": 0.917,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.048,
+      "sharpe_annualized": 0.917,
+      "ci_low_annualized": -2.448,
+      "ci_high_annualized": 3.578,
+      "significant": false,
+      "n_obs": 152,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.386,
+      0.818,
+      0.938,
+      1.57
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 152,
+      "total_ret_pct": 16.77,
+      "cagr_pct": 45.11,
+      "max_dd_pct": 33.32,
+      "calmar": 1.354
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 489,
+        "pf": 0.865,
+        "sharpe_ann": -0.955
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 489,
+        "pf": 0.754,
+        "sharpe_ann": -1.903
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.917,
+        "best_variant_sharpe": -0.216,
+        "ratio": -0.236,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 27,
+            "sharpe_ann": -1.043
+          },
+          {
+            "param": "period",
+            "val": 33,
+            "sharpe_ann": -1.129
+          },
+          {
+            "param": "va_width",
+            "val": 0.54,
+            "sharpe_ann": -0.368
+          },
+          {
+            "param": "va_width",
+            "val": 0.66,
+            "sharpe_ann": -0.216
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "key": "kucoin:VOL_TREND:8be7a8da:BNBUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 1.968,
+    "wr": 41.2,
+    "sharpe_daily": 0.2626,
+    "sharpe_ann": 5.016,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      5.607,
+      2.224,
+      0.935,
+      1.453
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 42,
+        "pf": 1.325,
+        "sharpe_ann": 1.992
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 42,
+        "pf": 1.152,
+        "sharpe_ann": 1.022
+      },
+      "param_robustness": {
+        "baseline_sharpe": 5.016,
+        "best_variant_sharpe": 3.335,
+        "ratio": 0.665,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "ema_p",
+            "val": 18,
+            "sharpe_ann": 1.538
+          },
+          {
+            "param": "ema_p",
+            "val": 22,
+            "sharpe_ann": 2.181
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.35,
+            "sharpe_ann": 2.374
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.65,
+            "sharpe_ann": 3.335
+          }
+        ]
+      }
+    }
+  }
+}

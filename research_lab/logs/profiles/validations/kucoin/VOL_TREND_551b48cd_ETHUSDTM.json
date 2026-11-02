@@ -1,0 +1,61 @@
+{
+  "key": "kucoin:VOL_TREND:551b48cd:ETHUSDTM",
+  "validation": {
+    "n": 19,
+    "pf": 0.575,
+    "wr": 26.3,
+    "sharpe_daily": -0.1865,
+    "sharpe_ann": -3.563,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.849,
+      0.014,
+      0.072,
+      0.309
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 52,
+        "pf": 0.819,
+        "sharpe_ann": -1.349
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 52,
+        "pf": 0.75,
+        "sharpe_ann": -1.989
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.563,
+        "best_variant_sharpe": -0.848,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "ema_p",
+            "val": 18,
+            "sharpe_ann": -0.848
+          },
+          {
+            "param": "ema_p",
+            "val": 22,
+            "sharpe_ann": -2.104
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.8,
+            "sharpe_ann": -1.528
+          },
+          {
+            "param": "atr_mult",
+            "val": 2.2,
+            "sharpe_ann": -1.136
+          }
+        ]
+      }
+    }
+  }
+}

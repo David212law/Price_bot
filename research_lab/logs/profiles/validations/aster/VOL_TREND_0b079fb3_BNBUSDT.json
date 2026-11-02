@@ -1,0 +1,61 @@
+{
+  "key": "aster:VOL_TREND:0b079fb3:BNBUSDT",
+  "validation": {
+    "n": 12,
+    "pf": 1.216,
+    "wr": 25.0,
+    "sharpe_daily": 0.0726,
+    "sharpe_ann": 1.388,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      2.779,
+      1.186,
+      2.992
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 29,
+        "pf": 1.174,
+        "sharpe_ann": 1.232
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 29,
+        "pf": 1.045,
+        "sharpe_ann": 0.343
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.388,
+        "best_variant_sharpe": 2.043,
+        "ratio": 1.472,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "ema_p",
+            "val": 45,
+            "sharpe_ann": 0.747
+          },
+          {
+            "param": "ema_p",
+            "val": 55,
+            "sharpe_ann": 0.514
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.35,
+            "sharpe_ann": 1.537
+          },
+          {
+            "param": "atr_mult",
+            "val": 1.65,
+            "sharpe_ann": 2.043
+          }
+        ]
+      }
+    }
+  }
+}

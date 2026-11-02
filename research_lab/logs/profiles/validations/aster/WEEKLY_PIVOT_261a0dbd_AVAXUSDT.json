@@ -1,0 +1,75 @@
+{
+  "key": "aster:WEEKLY_PIVOT:261a0dbd:AVAXUSDT",
+  "validation": {
+    "n": 91,
+    "pf": 0.976,
+    "wr": 50.5,
+    "sharpe_daily": -0.0104,
+    "sharpe_ann": -0.199,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0104,
+      "sharpe_annualized": -0.199,
+      "ci_low_annualized": -3.964,
+      "ci_high_annualized": 4.24,
+      "significant": false,
+      "n_obs": 91,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.4,
+      2.933,
+      0.447,
+      1.6
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 91,
+      "total_ret_pct": -6.84,
+      "cagr_pct": -24.72,
+      "max_dd_pct": 25.65,
+      "calmar": -0.964
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 309,
+        "pf": 0.852,
+        "sharpe_ann": -1.255
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 309,
+        "pf": 0.749,
+        "sharpe_ann": -2.253
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.199,
+        "best_variant_sharpe": -0.538,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "week_candles",
+            "val": 37,
+            "sharpe_ann": -0.538
+          },
+          {
+            "param": "week_candles",
+            "val": 46,
+            "sharpe_ann": -1.185
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.589
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.589
+          }
+        ]
+      }
+    }
+  }
+}

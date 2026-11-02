@@ -1,0 +1,75 @@
+{
+  "key": "hyperliquid:VOLUME_PROFILE:477d537c:BNB",
+  "validation": {
+    "n": 51,
+    "pf": 1.221,
+    "wr": 37.3,
+    "sharpe_daily": 0.059,
+    "sharpe_ann": 1.128,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.059,
+      "sharpe_annualized": 1.128,
+      "ci_low_annualized": -6.169,
+      "ci_high_annualized": 4.886,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.067,
+      0.408,
+      1.267,
+      2.103
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 51,
+      "total_ret_pct": 9.45,
+      "cagr_pct": 90.87,
+      "max_dd_pct": 23.65,
+      "calmar": 3.842
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 317,
+        "pf": 0.977,
+        "sharpe_ann": -0.154
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 317,
+        "pf": 0.853,
+        "sharpe_ann": -1.075
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.128,
+        "best_variant_sharpe": 0.293,
+        "ratio": 0.26,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "period",
+            "val": 45,
+            "sharpe_ann": -0.406
+          },
+          {
+            "param": "period",
+            "val": 55,
+            "sharpe_ann": 0.293
+          },
+          {
+            "param": "va_width",
+            "val": 0.54,
+            "sharpe_ann": -1.308
+          },
+          {
+            "param": "va_width",
+            "val": 0.66,
+            "sharpe_ann": -0.385
+          }
+        ]
+      }
+    }
+  }
+}
