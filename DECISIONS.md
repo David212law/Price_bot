@@ -2251,3 +2251,31 @@ STRICT_PASS kucoin/NEUTRAL → PROVISIONAL_PASS تا:
 - PROVISIONAL_PASS kucoin/NEUTRAL معتبر است
 - Paper ۳۰ روزه ادامه — بعد از D-494 بازبینی ۳ مرحله‌ای
 - اگر M31 در Paper SR < 2 بود → Keltner تقویت شود (ماه ۳)
+
+## D-2026-11-03-500 — Aster main M31=0 fix (استثنای D-460)
+
+**وضعیت:** قفل
+
+**زمینه:**
+Aster main (m11_aster_paper_state.json) از زمان D-415 با `m31_capital=0.0` ذخیره شده بود.
+تابع init فقط وقتی اجرا می‌شود که کلید `m31_capital` وجود نداشته باشد — که این‌جا وجود دارد (برابر صفر). نتیجه: Aster main در Paper ۳۰ روزه عملاً هیچ M31 معامله نمی‌کرد.
+
+**تصمیم:**
+استثنای D-460 فقط برای Aster main. تابع `check_config_drift` به Aster allocator اضافه شد (الگو از KuCoin، تست‌شده).
+
+**اثر:**
+- قبل: m31=0.0، cash=10000.0
+- بعد: m31=1000.0، cash=9000.0، total=10000.0 (حفظ)
+- GitHub Actions #30 تأیید: `[DRIFT] M31 rebalance: 0 → 1000` و `State saved`
+
+**backup:**
+~/tmp/aster_state_backup_20261103_012539.json
+~/tmp/aster_allocator_backup_20261103_012539.py
+
+**چه چیزی تغییر نکرد:**
+- ۸ ربات دیگر (HL, KuCoin, ۵ Aster shadows): دست‌نخورده
+- weights, strategies, composer, profiler, dashboard, tests: دست‌نخورده
+
+**بازگشت در صورت مشکل:**
+cp ~/tmp/aster_state_backup_20261103_012539.json exchanges/aster/state/m11_aster_paper_state.json
+git revert 38d073a9
