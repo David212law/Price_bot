@@ -108,6 +108,15 @@ def generate():
     print("✅ composer_full_report.json")
     print("✅ composer_summary.md")
 
+    # D-450: archive + discoveries + signature cache
+    try:
+        from research_lab.archive import archive_run, append_discoveries, update_signature_cache
+        archive_run()
+        append_discoveries()
+        update_signature_cache(state)
+    except Exception as e:
+        print(f"⚠️ archive error: {e}")
+
 
 def _md(r):
     L = [f"# Composer Report — {r['generated_at'][:10]}", ""]
