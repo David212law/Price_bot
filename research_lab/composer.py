@@ -521,15 +521,20 @@ def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
 
         if corr > max_corr: continue  # not a complement
 
-        # D-441b: weakness coverage scoring
+        # D-441c/d: weakness coverage (3 args) + gate
         coverage = 0
-        if m31_weaknesses:
+        if m31_weaknesses and m31_sig is not None:
             try:
                 from research_lab.strategy_signature import signature_for_entry, covers_weakness
                 sig = signature_for_entry(v)
-                coverage = sum(1 for w in m31_weaknesses if covers_weakness(sig, w))
-            except Exception:
+                coverage = sum(1 for w in m31_weaknesses
+                               if covers_weakness(sig, m31_sig, w))
+            except Exception as _e:
                 coverage = 0
+
+        # D-441d: gate — if M31 has weaknesses, candidate MUST cover ≥1
+        if m31_weaknesses and coverage == 0:
+            continue
 
         complements.append({
             "strategy": st, "family": fam, "symbol": v["symbol"], "hash": h,
