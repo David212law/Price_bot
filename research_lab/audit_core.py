@@ -379,3 +379,19 @@ def no_lookahead_check():
         except: pass
     return {"files_checked": len(glob.glob("strategies/library/*.py")),
             "issues": issues, "verdict": "PASS" if not issues else "FAIL"}
+
+
+# ═══════════════════════════════════════════════════════════════════
+# D-507: Family-based DSR (N_trials per family, not global)
+# ═══════════════════════════════════════════════════════════════════
+
+_FAMILY_N_TRIALS_DEFAULT = {
+    "trend": 500, "mr": 500, "momentum": 500,
+    "vol": 500, "volume": 500, "funding": 500,
+}
+
+def deflated_sharpe_family(sharpe_ann, n_obs, family, family_n_trials=None):
+    """Family-based DSR: N_trials per family."""
+    if family_n_trials is None:
+        family_n_trials = _FAMILY_N_TRIALS_DEFAULT.get(family, 500)
+    return deflated_sharpe(sharpe_ann, n_obs, family_n_trials, annualized=True)
