@@ -40,23 +40,28 @@ def send_bale(msg):
     except: pass
 
 def load_from_github(filename):
-    try:
-        r = requests.get(f"https://api.github.com/repos/{GH_REPO}/contents/{filename}", headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
-        if r.status_code == 200:
-            d = r.json()
-            return json.loads(base64.b64decode(d["content"]).decode("utf-8")), d["sha"]
-    except: pass
+    """D-503: local disk read (migrated from GitHub API to avoid 422/rate-limit)"""
+    import os
+    if os.path.exists(filename):
+        try:
+            with open(filename, 'r') as f:
+                return json.load(f), None
+        except Exception as e:
+            print(f"[LOAD] {filename}: {e}")
+            return {}, None
     return {}, None
 
 def save_to_github(filename, data, sha=None):
+    """D-503: local disk write (migrated from GitHub API; sha ignored)"""
+    import os
     try:
-        if not sha: _, sha = load_from_github(filename)
-        content = json.dumps(data, ensure_ascii=False, indent=2)
-        payload = {"message": f"Update {filename}", "content": base64.b64encode(content.encode()).decode()}
-        if sha: payload["sha"] = sha
-        r = requests.put(f"https://api.github.com/repos/{GH_REPO}/contents/{filename}", headers={"Authorization": f"token {GH_TOKEN}"}, json=payload, timeout=15)
-        return r.status_code in [200, 201]
-    except: return False
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, 'w') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return True
+    except Exception as e:
+        print(f"[SAVE] {filename}: {e}")
+        return False
 
 def fetch_funding_rate(symbol):
     try:

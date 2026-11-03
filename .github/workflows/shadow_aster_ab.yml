@@ -53,4 +53,5 @@ jobs:
           git add exchanges/aster/state/m11_aster_shadow_rp_state.json 2>/dev/null || true
           git add exchanges/aster/state/m11_aster_shadow_lv_state.json 2>/dev/null || true 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Auto: Aster shadow A/B $(date -u +%Y-%m-%d-%H) [skip ci]" || true
+          git pull --rebase origin main || true
           git push || echo "push failed"

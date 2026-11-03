@@ -32,5 +32,6 @@ jobs:
           git add exchanges/aster/state/m11_aster_combo_paper_state.json || true
           if ! git diff --staged --quiet; then
             git commit -m "Auto: Aster COMBO state [skip ci]"
-            git push || echo "push failed"
+            git pull --rebase origin main || true
+          git push || echo "push failed"
           fi

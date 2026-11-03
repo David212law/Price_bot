@@ -50,42 +50,28 @@ def send_bale(msg):
         print(f"Bale Error: {e}")
 
 def load_from_github(filename):
-    """D-428: Try local first, then GitHub."""
+    """D-503: local disk read (migrated from GitHub API to avoid 422/rate-limit)"""
+    import os
     if os.path.exists(filename):
         try:
-            with open(filename) as f:
+            with open(filename, 'r') as f:
                 return json.load(f), None
-        except: pass
-    try:
-        url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
-        r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
-        if r.status_code == 200:
-            data = r.json()
-            return json.loads(base64.b64decode(data["content"]).decode("utf-8")), data["sha"]
-        return {}, None
-    except: return {}, None
+        except Exception as e:
+            print(f"[LOAD] {filename}: {e}")
+            return {}, None
+    return {}, None
 
 def save_to_github(filename, data, sha=None):
-    """D-428: Always save locally first, then try GitHub."""
+    """D-503: local disk write (migrated from GitHub API; sha ignored)"""
+    import os
     try:
         os.makedirs(os.path.dirname(filename), exist_ok=True)
-        with open(filename, "w") as f:
-            json.dump(data, f, indent=2)
-    except Exception as _e:
-        print(f"[LOCAL SAVE ERROR] {_e}")
-    try:
-        if not sha: _, sha = load_from_github(filename)
-        content = json.dumps(data, ensure_ascii=False, indent=2)
-        content_b64 = base64.b64encode(content.encode("utf-8")).decode("utf-8")
-        url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
-        payload = {"message": f"Update {filename}", "content": content_b64}
-        if sha: payload["sha"] = sha
-        r = requests.put(url, headers={"Authorization": f"token {GH_TOKEN}"}, json=payload, timeout=15)
-        if r.status_code not in [200, 201]:
-            print(f"[GitHub Save Error] Status: {r.status_code}")
-            send_bale(f"⚠️ STATE SAVE FAILED for {filename}: {r.status_code}")
-        return r.status_code in [200, 201]
-    except: return False
+        with open(filename, 'w') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return True
+    except Exception as e:
+        print(f"[SAVE] {filename}: {e}")
+        return False
 
 def fetch_klines(symbol, interval="4h", limit=300):
     url = f"https://fapi.asterdex.com/fapi/v1/klines?symbol={symbol}&interval={interval}&limit={limit}"
