@@ -65,3 +65,12 @@ try:
     print(f"[registry] D-508 expansion: +{len(_EXP_TREND)} trend strategies")
 except ImportError as _e:
     print(f"[registry] D-508 expansion not loaded: {_e}")
+
+# D-508: Expansion Phase 2 (MR + Momentum + Vol + Volume + Funding proxies)
+try:
+    from strategies.library.expansion_phase2 import PHASE2_CANDLE as _EXP_PHASE2
+    CANDLE_STRATEGIES.update(_EXP_PHASE2)
+    ALL_STRATEGIES.update(_EXP_PHASE2)
+    print(f"[registry] D-508 phase2: +{len(_EXP_PHASE2)} strategies")
+except ImportError as _e:
+    print(f"[registry] D-508 phase2 not loaded: {_e}")
