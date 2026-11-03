@@ -1,3 +1,9 @@
 {
-  "signals": []
+  "signals": [
+    {
+      "symbol": "AVAX",
+      "action": "CLOSE",
+      "time": 1793689200022
+    }
+  ]
 }
