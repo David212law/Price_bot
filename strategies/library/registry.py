@@ -56,3 +56,12 @@ def expand_param_grid(grid):
 
 print(f"[registry] {len(CANDLE_STRATEGIES)} candle strategies, {len(FUNDING_STRATS)} funding strategies")
 print(f"[registry] Total: {len(ALL_STRATEGIES)} strategies")
+
+# D-508: Expansion strategies (Phase 1: Trend)
+try:
+    from strategies.library.expansion_generated import TREND_STRATEGIES as _EXP_TREND
+    CANDLE_STRATEGIES.update(_EXP_TREND)
+    ALL_STRATEGIES.update(_EXP_TREND)
+    print(f"[registry] D-508 expansion: +{len(_EXP_TREND)} trend strategies")
+except ImportError as _e:
+    print(f"[registry] D-508 expansion not loaded: {_e}")
