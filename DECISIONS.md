@@ -2279,3 +2279,109 @@ Aster main (m11_aster_paper_state.json) از زمان D-415 با `m31_capital=0.
 **بازگشت در صورت مشکل:**
 cp ~/tmp/aster_state_backup_20261103_012539.json exchanges/aster/state/m11_aster_paper_state.json
 git revert 38d073a9
+
+## D-2026-11-03-504 — Audit کامل M31 و Keltner + پاسخ به بررسی مستقل
+
+**وضعیت:** قفل
+
+**زمینه:**
+یک بررسی مستقل خارجی (چت جدید) چهار نگرانی بحرانی درباره M31 مطرح کرد.
+ما هر چهار را با اجرای واقعی تست کردیم.
+
+### نتایج audit
+
+**۱. geo > arith — بررسی مستقل اشتباه بود:**
+   AM-GM به per-period mean اعمال می‌شود، نه total return.
+   برای total: (1+g)^n - 1 > n*g برای بازده‌های مثبت کوچک.
+   اعداد گزارش (HL: arith=7.92%, geo=8.24%) ریاضیاً صحیح هستند.
+   این یک artifact طبیعی total geometric است، نه باگ.
+
+**۲. n با hold=30d — بررسی مستقل اشتباه بود:**
+   n = تعداد روزها (نه تعداد معاملات).
+   portfolio_daily_returns یک return روزانه می‌دهد.
+   funding هر ۸ ساعت تسویه می‌شود → هر روز بازده دارد.
+   hold=30d یعنی پوزیشن ۳۰ روز باز است ولی funding روزانه جمع می‌شود.
+   کاملاً سازگار.
+
+**۳. SR=8 با vol~1% — مکانیزم بررسی مستقل اشتباه بود، ولی شک معتبر:**
+   بررسی گفت "padding صفر" علت است. ما تست کردیم:
+   - M31 HL: 538/538 روز non-zero (100%)
+   - M31 Aster: 731/731 (100%)
+   - M31 KuCoin: 1095/1096 (99.9%)
+   - Keltner HL: 422/422 (100%)
+   - Keltner Aster: 508/508 (100%)
+   - Keltner KuCoin: 649/649 (100%)
+   هیچ padding وجود ندارد. SR=8.16 محاسبه صحیح است.
+
+   ولی شک درست است به دلیل دیگری: M31 یک funding carry است.
+   ریسک‌های tail (funding flip، basis blowout، exchange halt، liquidation)
+   در بازه ۲-۳ ساله آرام رخ نداده‌اند، پس در SR دیده نمی‌شوند.
+   SR=8.16 ریسک واقعی بلندمدت را نشان نمی‌دهد.
+
+**۴. DSR فرمول — بررسی مستقل اشتباه بود:**
+   E_max در کد Bailey-López de Prado در واحد z-score است، نه Sharpe.
+   پس z = sr/se - E_max معادل (sr - E_max×se)/se است — درست.
+   فرمول پیشنهادی بررسی: (sr - E_max)/se
+   برای strong(8.94, 438, 200) نتیجه -48 می‌دهد (DSR≈0)،
+   در حالی که فرمول فعلی DSR=1.0 می‌دهد. کد فعلی صحیح است.
+
+### یافته‌های جدید (از اجرای cross-exchange)
+
+**Cross-Exchange Consistency (۲۲۰ استراتژی × نماد در ≥۲ صرافی):**
+   - General edge (3+ exch, cons≥0.5): 41
+   - Exchange-specific (cons<0.3): 100
+   - Unstable (0.3≤cons<0.5): 29
+   - All negative (max≤0): 45
+
+**Keltner family — لبه واقعی:**
+   KELTNER_REV:ETH   hyperliquid=5.39 aster=5.46 kucoin=5.00 (cons=0.92)
+   KELTNER_REV:XRP   hyperliquid=4.24 aster=4.25 kucoin=4.55 (cons=0.93)
+   KELTNER_REV:BNB   hyperliquid=5.01 aster=5.03 kucoin=4.12 (cons=0.82)
+   KELTNER_REV:SOL   hyperliquid=3.98 aster=3.58 kucoin=3.21 (cons=0.81)
+   KELTNER_REV:BTC   hyperliquid=3.37 aster=2.72 kucoin=3.25 (cons=0.81)
+   → Keltner در ۳ صرافی مستقل تقریباً یکسان است. لبه عمومی واقعی.
+
+**M31 variants — artifact:**
+   M31_QUANTILE:AVAX  hyp=22.8 aster=100.2 kucoin=11.5 (cons=0.11)
+   M31_THRESHOLD:AVAX hyp=59.4 aster=49.2 kucoin=11.6 (cons=0.20)
+   M31_EMA:AVAX       hyp=35.6 aster=38.7 kucoin=11.1 (cons=0.29)
+   → این‌ها artifact یک صرافی هستند، نه لبه عمومی.
+
+**تصحیح ادعای قبلی ما:**
+"دیسکرپنسی ۷۰x بین backtest و Paper Keltner" — اشتباه بود.
+Backtest: میانگین روی روزهای معامله (TREND excluded در gating).
+Paper: فعلاً ۱ روز، رژیم TREND، Keltner خاموش (طبق D-435).
+این دو مقایسه apples-to-oranges است. عذرخواهی.
+
+### ریسک جدید شناسایی‌شده
+
+**Keltner در Paper فعلاً صفر معامله:**
+   - رژیم فعلی TREND (ADX=25.43)
+   - Keltner gating RANGE/NEUTRAL (D-435)
+   - Aster COMBO: keltner_pos=0، history=0
+   - Aster Shadow RP: 200$ Keltner، بدون پوزیشن
+   - Aster Shadow LV: LOW_VOL_CARRY، نه Keltner
+
+**اگر ۳۰ روز Paper در TREND بماند → هیچ داده Paper از Keltner نخواهیم داشت.**
+پیشنهاد: تمدید Paper به ۶۰ یا ۹۰ روز، یا فعال‌سازی بیشتر Aster Shadow TREND.
+
+### اقدامات
+
+**بسته شد (با شواهد):**
+   - M31 SR padding: صفر (۱۰۰٪ non-zero)
+   - Keltner SR padding: صفر (۱۰۰٪ non-zero)
+   - geo>arith: artifact طبیعی total geometric
+   - DSR فرمول: صحیح (E_max در واحد z-score)
+
+**باز (نیاز به پیگیری):**
+   - Keltner Paper data در TREND: صفر (تمدید Paper)
+   - M31 variants artifact: filter در composer (cons≥0.5) یا حذف
+   - Aster COMBO backtest vs Paper: مقایسه باید روی روزهای هم‌رژیم باشد
+   - KuCoin last_run=05:13 (با cron :30 ناسازگار): investigate
+   - Backup ۵ ربات دیگر (HL Paper، Aster COMBO، سه shadow، KuCoin Combo)
+   - m36/m11/m31 naming: یک خط توضیح در گزارش
+
+**تصمیم نهایی:**
+Paper ۳۰ روزه (D-460) ادامه دارد. Keltner risk (TREND padding) در بازبینی
+2026-12-02 با تصمیم تمدید یا کاهش gating ارزیابی می‌شود.
+
