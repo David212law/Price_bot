@@ -170,7 +170,16 @@ def main():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE) as f: state = json.load(f)
         print(f"[RESUME] {len(state.get('done',{}))} items already processed")
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--family", default=None, help="Only run this family")
+    args = ap.parse_args()
     strategies = list_strategies()
+    if args.family:
+        from strategies.library.families import STRATEGY_FAMILY
+        before = len(strategies)
+        strategies = [(n, k) for n, k in strategies if STRATEGY_FAMILY.get(n) == args.family]
+        print(f"[FILTER] --family={args.family}: {len(strategies)}/{before} strategies")
     print(f"[INFO] {len(strategies)} strategies × 3 exchanges × 6 symbols")
     
     print("\n[PREP] precomputing regime series...")
