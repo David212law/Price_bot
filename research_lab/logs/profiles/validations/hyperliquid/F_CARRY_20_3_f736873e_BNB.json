@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:F_CARRY_20_3:f736873e:BNB",
+  "validation": {
+    "n": 13,
+    "pf": 1.763,
+    "wr": 46.2,
+    "sharpe_daily": 0.2491,
+    "sharpe_ann": 4.758,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.798,
+      1.292,
+      0.826,
+      2.785
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 40,
+        "pf": 1.152,
+        "sharpe_ann": 1.192
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 40,
+        "pf": 1.075,
+        "sharpe_ann": 0.615
+      },
+      "param_robustness": {
+        "baseline_sharpe": 4.758,
+        "best_variant_sharpe": 1.192,
+        "ratio": 0.251,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.192
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.192
+          }
+        ]
+      }
+    }
+  }
+}

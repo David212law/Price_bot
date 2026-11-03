@@ -1,0 +1,57 @@
+{
+  "key": "aster:F_TREND_200:bc2478a6:XRPUSDT",
+  "validation": {
+    "n": 25,
+    "pf": 1.203,
+    "wr": 16.0,
+    "sharpe_daily": 0.0431,
+    "sharpe_ann": 0.824,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.269,
+      0.0,
+      0.104,
+      4.307
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 25,
+      "total_ret_pct": 2.76,
+      "cagr_pct": 48.89,
+      "max_dd_pct": 20.7,
+      "calmar": 2.361
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 95,
+        "pf": 1.0,
+        "sharpe_ann": -0.001
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 95,
+        "pf": 0.814,
+        "sharpe_ann": -1.113
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.824,
+        "best_variant_sharpe": -0.001,
+        "ratio": -0.001,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.001
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.001
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:F_EMALONG_20_100:461b1110:XBTUSDTM",
+  "validation": {
+    "n": 11,
+    "pf": 1.254,
+    "wr": 45.5,
+    "sharpe_daily": 0.0855,
+    "sharpe_ann": 1.634,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.986,
+      0.0,
+      99.99,
+      0.807
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 36,
+        "pf": 1.353,
+        "sharpe_ann": 2.237
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 36,
+        "pf": 1.177,
+        "sharpe_ann": 1.235
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.634,
+        "best_variant_sharpe": 2.237,
+        "ratio": 1.369,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.237
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.237
+          }
+        ]
+      }
+    }
+  }
+}

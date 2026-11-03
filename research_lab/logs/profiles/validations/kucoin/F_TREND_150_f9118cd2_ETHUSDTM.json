@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:F_TREND_150:f9118cd2:ETHUSDTM",
+  "validation": {
+    "n": 28,
+    "pf": 1.668,
+    "wr": 32.1,
+    "sharpe_daily": 0.1431,
+    "sharpe_ann": 2.733,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.401,
+      1.824,
+      1.656,
+      3.826
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 28,
+      "total_ret_pct": 15.69,
+      "cagr_pct": 568.56,
+      "max_dd_pct": 12.2,
+      "calmar": 46.602
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 106,
+        "pf": 1.307,
+        "sharpe_ann": 1.44
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 106,
+        "pf": 1.063,
+        "sharpe_ann": 0.35
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.733,
+        "best_variant_sharpe": 1.44,
+        "ratio": 0.527,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.44
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.44
+          }
+        ]
+      }
+    }
+  }
+}

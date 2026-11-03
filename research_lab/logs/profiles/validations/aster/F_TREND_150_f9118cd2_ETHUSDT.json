@@ -1,0 +1,57 @@
+{
+  "key": "aster:F_TREND_150:f9118cd2:ETHUSDT",
+  "validation": {
+    "n": 22,
+    "pf": 1.771,
+    "wr": 27.3,
+    "sharpe_daily": 0.1727,
+    "sharpe_ann": 3.3,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.419,
+      2.198,
+      0.155,
+      3.916
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 22,
+      "total_ret_pct": 14.88,
+      "cagr_pct": 899.04,
+      "max_dd_pct": 8.63,
+      "calmar": 104.128
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 72,
+        "pf": 1.439,
+        "sharpe_ann": 1.989
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 72,
+        "pf": 1.17,
+        "sharpe_ann": 0.909
+      },
+      "param_robustness": {
+        "baseline_sharpe": 3.3,
+        "best_variant_sharpe": 1.989,
+        "ratio": 0.603,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.989
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.989
+          }
+        ]
+      }
+    }
+  }
+}

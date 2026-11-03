@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:F_CARRY_60_2:706c4e10:AVAXUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 0.898,
+    "wr": 17.6,
+    "sharpe_daily": -0.0394,
+    "sharpe_ann": -0.752,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.145,
+      0.0,
+      0.0,
+      2.659
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 79,
+        "pf": 0.928,
+        "sharpe_ann": -0.513
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 79,
+        "pf": 0.87,
+        "sharpe_ann": -0.971
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.752,
+        "best_variant_sharpe": -0.513,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.513
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.513
+          }
+        ]
+      }
+    }
+  }
+}

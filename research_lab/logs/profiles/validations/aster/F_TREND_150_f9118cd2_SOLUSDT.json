@@ -1,0 +1,65 @@
+{
+  "key": "aster:F_TREND_150:f9118cd2:SOLUSDT",
+  "validation": {
+    "n": 31,
+    "pf": 1.213,
+    "wr": 12.9,
+    "sharpe_daily": 0.0528,
+    "sharpe_ann": 1.008,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0528,
+      "sharpe_annualized": 1.008,
+      "ci_low_annualized": -16.889,
+      "ci_high_annualized": 5.854,
+      "significant": false,
+      "n_obs": 31,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.0,
+      1.558,
+      0.417,
+      3.594
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 31,
+      "total_ret_pct": 4.7,
+      "cagr_pct": 71.65,
+      "max_dd_pct": 18.3,
+      "calmar": 3.916
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 94,
+        "pf": 1.49,
+        "sharpe_ann": 2.077
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 94,
+        "pf": 1.237,
+        "sharpe_ann": 1.183
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.008,
+        "best_variant_sharpe": 2.077,
+        "ratio": 2.061,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.077
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.077
+          }
+        ]
+      }
+    }
+  }
+}

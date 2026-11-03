@@ -1,0 +1,57 @@
+{
+  "key": "hyperliquid:F_TREND_300:c6243a47:SOL",
+  "validation": {
+    "n": 28,
+    "pf": 0.277,
+    "wr": 3.6,
+    "sharpe_daily": -0.4114,
+    "sharpe_ann": -7.859,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      0.0,
+      1.357
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 28,
+      "total_ret_pct": -20.44,
+      "cagr_pct": -94.92,
+      "max_dd_pct": 22.72,
+      "calmar": -4.179
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 63,
+        "pf": 1.167,
+        "sharpe_ann": 0.758
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 63,
+        "pf": 0.955,
+        "sharpe_ann": -0.244
+      },
+      "param_robustness": {
+        "baseline_sharpe": -7.859,
+        "best_variant_sharpe": 0.758,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.758
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.758
+          }
+        ]
+      }
+    }
+  }
+}

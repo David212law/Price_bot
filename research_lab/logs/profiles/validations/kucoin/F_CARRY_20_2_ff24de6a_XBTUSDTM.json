@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:F_CARRY_20_2:ff24de6a:XBTUSDTM",
+  "validation": {
+    "n": 29,
+    "pf": 0.56,
+    "wr": 13.8,
+    "sharpe_daily": -0.219,
+    "sharpe_ann": -4.185,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.606,
+      0.653,
+      0.287,
+      0.608
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 29,
+      "total_ret_pct": -28.27,
+      "cagr_pct": -98.47,
+      "max_dd_pct": 28.27,
+      "calmar": -3.483
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 96,
+        "pf": 0.974,
+        "sharpe_ann": -0.192
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 96,
+        "pf": 0.865,
+        "sharpe_ann": -1.088
+      },
+      "param_robustness": {
+        "baseline_sharpe": -4.185,
+        "best_variant_sharpe": -0.192,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.192
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.192
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:F_CARRY_60_2:706c4e10:ETHUSDTM",
+  "validation": {
+    "n": 23,
+    "pf": 1.435,
+    "wr": 26.1,
+    "sharpe_daily": 0.135,
+    "sharpe_ann": 2.579,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.79,
+      1.267,
+      1.093,
+      2.603
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 23,
+      "total_ret_pct": 19.1,
+      "cagr_pct": 1501.82,
+      "max_dd_pct": 14.59,
+      "calmar": 102.97
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 89,
+        "pf": 1.061,
+        "sharpe_ann": 0.445
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 89,
+        "pf": 0.964,
+        "sharpe_ann": -0.282
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.579,
+        "best_variant_sharpe": 0.445,
+        "ratio": 0.173,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.445
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.445
+          }
+        ]
+      }
+    }
+  }
+}

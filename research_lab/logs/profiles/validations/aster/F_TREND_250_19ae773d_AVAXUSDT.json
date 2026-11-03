@@ -1,0 +1,57 @@
+{
+  "key": "aster:F_TREND_250:19ae773d:AVAXUSDT",
+  "validation": {
+    "n": 27,
+    "pf": 0.639,
+    "wr": 11.1,
+    "sharpe_daily": -0.1356,
+    "sharpe_ann": -2.591,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.245,
+      0.0,
+      2.052
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 27,
+      "total_ret_pct": -18.74,
+      "cagr_pct": -93.95,
+      "max_dd_pct": 30.66,
+      "calmar": -3.064
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 101,
+        "pf": 0.889,
+        "sharpe_ann": -0.599
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 101,
+        "pf": 0.73,
+        "sharpe_ann": -1.729
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.591,
+        "best_variant_sharpe": -0.599,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.599
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.599
+          }
+        ]
+      }
+    }
+  }
+}

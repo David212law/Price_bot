@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:F_EMALONG_10_50:55d7e34a:BNBUSDTM",
+  "validation": {
+    "n": 30,
+    "pf": 1.258,
+    "wr": 33.3,
+    "sharpe_daily": 0.0858,
+    "sharpe_ann": 1.638,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0858,
+      "sharpe_annualized": 1.638,
+      "ci_low_annualized": -5.633,
+      "ci_high_annualized": 7.628,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.576,
+      1.619,
+      0.009,
+      3.141
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 30,
+      "total_ret_pct": 8.66,
+      "cagr_pct": 174.77,
+      "max_dd_pct": 17.55,
+      "calmar": 9.958
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 88,
+        "pf": 1.301,
+        "sharpe_ann": 1.9
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 88,
+        "pf": 1.112,
+        "sharpe_ann": 0.79
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.638,
+        "best_variant_sharpe": 1.9,
+        "ratio": 1.16,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.9
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.9
+          }
+        ]
+      }
+    }
+  }
+}

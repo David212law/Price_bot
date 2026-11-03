@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:F_CARRY_60_3:b5154030:BNBUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 1.239,
+    "wr": 35.3,
+    "sharpe_daily": 0.0943,
+    "sharpe_ann": 1.801,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.528,
+      0.6,
+      0.743,
+      4.762
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 49,
+        "pf": 1.256,
+        "sharpe_ann": 1.826
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 49,
+        "pf": 1.166,
+        "sharpe_ann": 1.248
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.801,
+        "best_variant_sharpe": 1.826,
+        "ratio": 1.014,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.826
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.826
+          }
+        ]
+      }
+    }
+  }
+}

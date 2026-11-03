@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:F_EMALONG_10_50:55d7e34a:ETHUSDTM",
+  "validation": {
+    "n": 27,
+    "pf": 0.816,
+    "wr": 25.9,
+    "sharpe_daily": -0.0778,
+    "sharpe_ann": -1.486,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.214,
+      0.216,
+      1.184,
+      1.031
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 27,
+      "total_ret_pct": -13.51,
+      "cagr_pct": -85.94,
+      "max_dd_pct": 18.24,
+      "calmar": -4.712
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 91,
+        "pf": 0.941,
+        "sharpe_ann": -0.446
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 91,
+        "pf": 0.835,
+        "sharpe_ann": -1.366
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.486,
+        "best_variant_sharpe": -0.446,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.446
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.446
+          }
+        ]
+      }
+    }
+  }
+}

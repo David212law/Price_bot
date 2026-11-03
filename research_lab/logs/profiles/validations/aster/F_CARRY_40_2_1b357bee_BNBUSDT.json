@@ -1,0 +1,57 @@
+{
+  "key": "aster:F_CARRY_40_2:1b357bee:BNBUSDT",
+  "validation": {
+    "n": 20,
+    "pf": 1.307,
+    "wr": 30.0,
+    "sharpe_daily": 0.1087,
+    "sharpe_ann": 2.077,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.82,
+      1.353,
+      2.287,
+      0.934
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 20,
+      "total_ret_pct": 9.4,
+      "cagr_pct": 415.28,
+      "max_dd_pct": 10.55,
+      "calmar": 39.349
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 65,
+        "pf": 1.104,
+        "sharpe_ann": 0.758
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 65,
+        "pf": 0.988,
+        "sharpe_ann": -0.093
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.077,
+        "best_variant_sharpe": 0.758,
+        "ratio": 0.365,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.758
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.758
+          }
+        ]
+      }
+    }
+  }
+}

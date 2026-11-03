@@ -1,0 +1,51 @@
+{
+  "key": "aster:F_EMALONG_20_50:8c209ae9:SOLUSDT",
+  "validation": {
+    "n": 10,
+    "pf": 3.154,
+    "wr": 50.0,
+    "sharpe_daily": 0.4309,
+    "sharpe_ann": 8.233,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.438,
+      18.281,
+      3.46,
+      6.357
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 44,
+        "pf": 1.647,
+        "sharpe_ann": 3.658
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 44,
+        "pf": 1.501,
+        "sharpe_ann": 3.019
+      },
+      "param_robustness": {
+        "baseline_sharpe": 8.233,
+        "best_variant_sharpe": 3.658,
+        "ratio": 0.444,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 3.658
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 3.658
+          }
+        ]
+      }
+    }
+  }
+}

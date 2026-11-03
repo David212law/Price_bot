@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:F_EMALONG_30_80:e3cadee8:AVAXUSDTM",
+  "validation": {
+    "n": 11,
+    "pf": 0.916,
+    "wr": 27.3,
+    "sharpe_daily": -0.0321,
+    "sharpe_ann": -0.614,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.138,
+      0.0,
+      0.0,
+      1.589
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 37,
+        "pf": 1.091,
+        "sharpe_ann": 0.655
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 37,
+        "pf": 1.01,
+        "sharpe_ann": 0.077
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.614,
+        "best_variant_sharpe": 0.655,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.655
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.655
+          }
+        ]
+      }
+    }
+  }
+}

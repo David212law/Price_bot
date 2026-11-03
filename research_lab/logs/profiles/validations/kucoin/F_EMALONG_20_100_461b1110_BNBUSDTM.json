@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:F_EMALONG_20_100:461b1110:BNBUSDTM",
+  "validation": {
+    "n": 14,
+    "pf": 0.839,
+    "wr": 28.6,
+    "sharpe_daily": -0.0704,
+    "sharpe_ann": -1.345,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.941,
+      2.023,
+      0.0,
+      0.78
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 43,
+        "pf": 0.979,
+        "sharpe_ann": -0.163
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 43,
+        "pf": 0.851,
+        "sharpe_ann": -1.264
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.345,
+        "best_variant_sharpe": -0.163,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.163
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.163
+          }
+        ]
+      }
+    }
+  }
+}

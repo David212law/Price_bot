@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:F_EMALONG_30_80:e3cadee8:SOLUSDTM",
+  "validation": {
+    "n": 13,
+    "pf": 1.396,
+    "wr": 38.5,
+    "sharpe_daily": 0.1413,
+    "sharpe_ann": 2.7,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.836,
+      0.0,
+      0.735,
+      6.985
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 39,
+        "pf": 2.033,
+        "sharpe_ann": 5.612
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 39,
+        "pf": 1.888,
+        "sharpe_ann": 5.096
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.7,
+        "best_variant_sharpe": 5.612,
+        "ratio": 2.079,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 5.612
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 5.612
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:F_CARRY_60_3:b5154030:SOLUSDTM",
+  "validation": {
+    "n": 14,
+    "pf": 1.026,
+    "wr": 28.6,
+    "sharpe_daily": 0.0109,
+    "sharpe_ann": 0.209,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.731,
+      0.0,
+      1.411,
+      2.318
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 62,
+        "pf": 1.172,
+        "sharpe_ann": 1.251
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 62,
+        "pf": 1.119,
+        "sharpe_ann": 0.894
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.209,
+        "best_variant_sharpe": 1.251,
+        "ratio": 5.986,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.251
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.251
+          }
+        ]
+      }
+    }
+  }
+}

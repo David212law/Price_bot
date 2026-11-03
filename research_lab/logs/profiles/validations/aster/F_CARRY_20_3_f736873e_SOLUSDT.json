@@ -1,0 +1,51 @@
+{
+  "key": "aster:F_CARRY_20_3:f736873e:SOLUSDT",
+  "validation": {
+    "n": 18,
+    "pf": 0.938,
+    "wr": 22.2,
+    "sharpe_daily": -0.0249,
+    "sharpe_ann": -0.477,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.668,
+      1.7,
+      0.0,
+      1.475
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 54,
+        "pf": 0.94,
+        "sharpe_ann": -0.476
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 54,
+        "pf": 0.892,
+        "sharpe_ann": -0.888
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.477,
+        "best_variant_sharpe": -0.476,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.476
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.476
+          }
+        ]
+      }
+    }
+  }
+}
