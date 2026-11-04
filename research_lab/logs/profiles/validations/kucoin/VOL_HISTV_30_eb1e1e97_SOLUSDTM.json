@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:VOL_HISTV_30:eb1e1e97:SOLUSDTM",
+  "validation": {
+    "n": 11,
+    "pf": 1.207,
+    "wr": 36.4,
+    "sharpe_daily": 0.0815,
+    "sharpe_ann": 1.556,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.569,
+      1.557,
+      1.582
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 62,
+        "pf": 1.234,
+        "sharpe_ann": 1.849
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 62,
+        "pf": 1.167,
+        "sharpe_ann": 1.373
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.556,
+        "best_variant_sharpe": 1.849,
+        "ratio": 1.188,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.849
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.849
+          }
+        ]
+      }
+    }
+  }
+}

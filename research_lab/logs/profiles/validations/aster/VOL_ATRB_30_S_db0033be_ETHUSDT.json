@@ -1,0 +1,57 @@
+{
+  "key": "aster:VOL_ATRB_30_S:db0033be:ETHUSDT",
+  "validation": {
+    "n": 29,
+    "pf": 0.538,
+    "wr": 24.1,
+    "sharpe_daily": -0.2902,
+    "sharpe_ann": -5.544,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.287,
+      1.83,
+      0.0,
+      0.616
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 29,
+      "total_ret_pct": -33.65,
+      "cagr_pct": -99.43,
+      "max_dd_pct": 37.02,
+      "calmar": -2.685
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 97,
+        "pf": 0.925,
+        "sharpe_ann": -0.676
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 97,
+        "pf": 0.827,
+        "sharpe_ann": -1.683
+      },
+      "param_robustness": {
+        "baseline_sharpe": -5.544,
+        "best_variant_sharpe": -0.676,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.676
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.676
+          }
+        ]
+      }
+    }
+  }
+}

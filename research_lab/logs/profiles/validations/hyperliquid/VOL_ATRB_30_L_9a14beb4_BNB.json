@@ -1,0 +1,57 @@
+{
+  "key": "hyperliquid:VOL_ATRB_30_L:9a14beb4:BNB",
+  "validation": {
+    "n": 27,
+    "pf": 1.315,
+    "wr": 44.4,
+    "sharpe_daily": 0.1251,
+    "sharpe_ann": 2.389,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.46,
+      0.74,
+      0.919,
+      2.238
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 27,
+      "total_ret_pct": 10.77,
+      "cagr_pct": 298.36,
+      "max_dd_pct": 14.91,
+      "calmar": 20.006
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 80,
+        "pf": 1.057,
+        "sharpe_ann": 0.474
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 80,
+        "pf": 0.922,
+        "sharpe_ann": -0.708
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.389,
+        "best_variant_sharpe": 0.474,
+        "ratio": 0.198,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.474
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.474
+          }
+        ]
+      }
+    }
+  }
+}

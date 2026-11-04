@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:VOL_ATRB_30_S:db0033be:XRPUSDTM",
+  "validation": {
+    "n": 30,
+    "pf": 1.266,
+    "wr": 43.3,
+    "sharpe_daily": 0.1053,
+    "sharpe_ann": 2.013,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1053,
+      "sharpe_annualized": 2.013,
+      "ci_low_annualized": -5.022,
+      "ci_high_annualized": 9.035,
+      "significant": false,
+      "n_obs": 30,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.11,
+      0.458,
+      2.125,
+      1.727
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 30,
+      "total_ret_pct": 15.38,
+      "cagr_pct": 470.01,
+      "max_dd_pct": 23.64,
+      "calmar": 19.879
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 117,
+        "pf": 1.196,
+        "sharpe_ann": 1.49
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 117,
+        "pf": 1.094,
+        "sharpe_ann": 0.754
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.013,
+        "best_variant_sharpe": 1.49,
+        "ratio": 0.74,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.49
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.49
+          }
+        ]
+      }
+    }
+  }
+}

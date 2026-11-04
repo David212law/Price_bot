@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:VOL_ATRB_14_S:227f583d:XBTUSDTM",
+  "validation": {
+    "n": 51,
+    "pf": 0.785,
+    "wr": 31.4,
+    "sharpe_daily": -0.111,
+    "sharpe_ann": -2.121,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.111,
+      "sharpe_annualized": -2.121,
+      "ci_low_annualized": -7.93,
+      "ci_high_annualized": 3.142,
+      "significant": false,
+      "n_obs": 51,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.677,
+      0.641,
+      1.053,
+      0.851
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 51,
+      "total_ret_pct": -20.97,
+      "cagr_pct": -81.45,
+      "max_dd_pct": 27.99,
+      "calmar": -2.91
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 187,
+        "pf": 0.909,
+        "sharpe_ann": -0.828
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 187,
+        "pf": 0.78,
+        "sharpe_ann": -2.194
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.121,
+        "best_variant_sharpe": -0.828,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.828
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.828
+          }
+        ]
+      }
+    }
+  }
+}

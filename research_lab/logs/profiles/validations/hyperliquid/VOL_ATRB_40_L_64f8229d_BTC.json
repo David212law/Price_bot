@@ -1,0 +1,57 @@
+{
+  "key": "hyperliquid:VOL_ATRB_40_L:64f8229d:BTC",
+  "validation": {
+    "n": 28,
+    "pf": 1.014,
+    "wr": 32.1,
+    "sharpe_daily": 0.0063,
+    "sharpe_ann": 0.121,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.706,
+      1.665,
+      0.163,
+      0.364
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 28,
+      "total_ret_pct": -0.85,
+      "cagr_pct": -10.55,
+      "max_dd_pct": 17.72,
+      "calmar": -0.595
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 80,
+        "pf": 1.012,
+        "sharpe_ann": 0.1
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 80,
+        "pf": 0.862,
+        "sharpe_ann": -1.28
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.121,
+        "best_variant_sharpe": 0.1,
+        "ratio": 0.826,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.1
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.1
+          }
+        ]
+      }
+    }
+  }
+}

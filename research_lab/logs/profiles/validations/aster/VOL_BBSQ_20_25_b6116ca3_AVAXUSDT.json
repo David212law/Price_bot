@@ -1,0 +1,51 @@
+{
+  "key": "aster:VOL_BBSQ_20_25:b6116ca3:AVAXUSDT",
+  "validation": {
+    "n": 16,
+    "pf": 0.202,
+    "wr": 12.5,
+    "sharpe_daily": -0.7964,
+    "sharpe_ann": -15.216,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.614,
+      0.0,
+      0.274
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 58,
+        "pf": 0.861,
+        "sharpe_ann": -1.278
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 58,
+        "pf": 0.804,
+        "sharpe_ann": -1.893
+      },
+      "param_robustness": {
+        "baseline_sharpe": -15.216,
+        "best_variant_sharpe": -1.278,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.278
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.278
+          }
+        ]
+      }
+    }
+  }
+}

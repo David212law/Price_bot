@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:VOL_BBSQ_20_15:e0b91e39:XRP",
+  "validation": {
+    "n": 13,
+    "pf": 0.957,
+    "wr": 30.8,
+    "sharpe_daily": -0.0191,
+    "sharpe_ann": -0.364,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.026,
+      2.343,
+      0.0,
+      0.842
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 37,
+        "pf": 1.357,
+        "sharpe_ann": 2.376
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 37,
+        "pf": 1.262,
+        "sharpe_ann": 1.831
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.364,
+        "best_variant_sharpe": 2.376,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.376
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.376
+          }
+        ]
+      }
+    }
+  }
+}

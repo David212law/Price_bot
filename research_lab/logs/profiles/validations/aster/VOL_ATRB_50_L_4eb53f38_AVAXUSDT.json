@@ -1,0 +1,65 @@
+{
+  "key": "aster:VOL_ATRB_50_L:4eb53f38:AVAXUSDT",
+  "validation": {
+    "n": 39,
+    "pf": 0.604,
+    "wr": 23.1,
+    "sharpe_daily": -0.2277,
+    "sharpe_ann": -4.349,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2277,
+      "sharpe_annualized": -4.349,
+      "ci_low_annualized": -14.025,
+      "ci_high_annualized": 1.567,
+      "significant": false,
+      "n_obs": 39,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.956,
+      0.199,
+      0.444,
+      0.818
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 39,
+      "total_ret_pct": -39.54,
+      "cagr_pct": -99.1,
+      "max_dd_pct": 45.14,
+      "calmar": -2.195
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 110,
+        "pf": 0.828,
+        "sharpe_ann": -1.623
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 110,
+        "pf": 0.748,
+        "sharpe_ann": -2.534
+      },
+      "param_robustness": {
+        "baseline_sharpe": -4.349,
+        "best_variant_sharpe": -1.623,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.623
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.623
+          }
+        ]
+      }
+    }
+  }
+}

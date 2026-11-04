@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:VOL_BBSQ_30_15:4e639eb2:XRPUSDTM",
+  "validation": {
+    "n": 19,
+    "pf": 0.498,
+    "wr": 21.1,
+    "sharpe_daily": -0.3186,
+    "sharpe_ann": -6.087,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.566,
+      1.603,
+      0.455
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 59,
+        "pf": 0.921,
+        "sharpe_ann": -0.654
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 59,
+        "pf": 0.858,
+        "sharpe_ann": -1.226
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.087,
+        "best_variant_sharpe": -0.654,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.654
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.654
+          }
+        ]
+      }
+    }
+  }
+}

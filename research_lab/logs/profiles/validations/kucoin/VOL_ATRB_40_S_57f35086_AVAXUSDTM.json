@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:VOL_ATRB_40_S:57f35086:AVAXUSDTM",
+  "validation": {
+    "n": 45,
+    "pf": 0.658,
+    "wr": 26.7,
+    "sharpe_daily": -0.1964,
+    "sharpe_ann": -3.753,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1964,
+      "sharpe_annualized": -3.753,
+      "ci_low_annualized": -11.175,
+      "ci_high_annualized": 1.622,
+      "significant": false,
+      "n_obs": 45,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.63,
+      0.465,
+      0.662,
+      0.837
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 45,
+      "total_ret_pct": -44.44,
+      "cagr_pct": -99.15,
+      "max_dd_pct": 60.94,
+      "calmar": -1.627
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 130,
+        "pf": 1.031,
+        "sharpe_ann": 0.255
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 130,
+        "pf": 0.952,
+        "sharpe_ann": -0.42
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.753,
+        "best_variant_sharpe": 0.255,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.255
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.255
+          }
+        ]
+      }
+    }
+  }
+}
