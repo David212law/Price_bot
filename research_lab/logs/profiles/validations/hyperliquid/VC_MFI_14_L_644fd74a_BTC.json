@@ -1,0 +1,65 @@
+{
+  "key": "hyperliquid:VC_MFI_14_L:644fd74a:BTC",
+  "validation": {
+    "n": 33,
+    "pf": 0.526,
+    "wr": 42.4,
+    "sharpe_daily": -0.2621,
+    "sharpe_ann": -5.007,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2621,
+      "sharpe_annualized": -5.007,
+      "ci_low_annualized": -11.787,
+      "ci_high_annualized": 1.722,
+      "significant": false,
+      "n_obs": 33,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.367,
+      0.652,
+      0.18,
+      1.175
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 33,
+      "total_ret_pct": -17.06,
+      "cagr_pct": -87.37,
+      "max_dd_pct": 18.82,
+      "calmar": -4.642
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 107,
+        "pf": 0.806,
+        "sharpe_ann": -1.6
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 107,
+        "pf": 0.594,
+        "sharpe_ann": -3.813
+      },
+      "param_robustness": {
+        "baseline_sharpe": -5.007,
+        "best_variant_sharpe": -1.6,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.6
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.6
+          }
+        ]
+      }
+    }
+  }
+}

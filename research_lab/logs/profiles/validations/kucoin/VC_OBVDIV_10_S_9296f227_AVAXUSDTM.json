@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:VC_OBVDIV_10_S:9296f227:AVAXUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 1.412,
+    "wr": 47.1,
+    "sharpe_daily": 0.155,
+    "sharpe_ann": 2.962,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      4.563,
+      1.603,
+      1.007,
+      0.707
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 59,
+        "pf": 1.028,
+        "sharpe_ann": 0.232
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 59,
+        "pf": 0.974,
+        "sharpe_ann": -0.219
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.962,
+        "best_variant_sharpe": 0.232,
+        "ratio": 0.078,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.232
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.232
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:VC_OBVDIV_30_S:edcde430:ETHUSDTM",
+  "validation": {
+    "n": 15,
+    "pf": 0.369,
+    "wr": 20.0,
+    "sharpe_daily": -0.478,
+    "sharpe_ann": -9.132,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.951,
+      0.737,
+      0.231
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 89,
+        "pf": 0.848,
+        "sharpe_ann": -1.42
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 89,
+        "pf": 0.784,
+        "sharpe_ann": -2.117
+      },
+      "param_robustness": {
+        "baseline_sharpe": -9.132,
+        "best_variant_sharpe": -1.42,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.42
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.42
+          }
+        ]
+      }
+    }
+  }
+}

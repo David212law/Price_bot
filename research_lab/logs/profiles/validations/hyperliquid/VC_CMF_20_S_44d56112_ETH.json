@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:VC_CMF_20_S:44d56112:ETH",
+  "validation": {
+    "n": 15,
+    "pf": 0.565,
+    "wr": 26.7,
+    "sharpe_daily": -0.2665,
+    "sharpe_ann": -5.092,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.065,
+      0.697,
+      0.754
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 48,
+        "pf": 1.152,
+        "sharpe_ann": 1.158
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 48,
+        "pf": 1.081,
+        "sharpe_ann": 0.642
+      },
+      "param_robustness": {
+        "baseline_sharpe": -5.092,
+        "best_variant_sharpe": 1.158,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.158
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.158
+          }
+        ]
+      }
+    }
+  }
+}

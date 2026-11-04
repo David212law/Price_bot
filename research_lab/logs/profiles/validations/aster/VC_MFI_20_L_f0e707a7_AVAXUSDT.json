@@ -1,0 +1,57 @@
+{
+  "key": "aster:VC_MFI_20_L:f0e707a7:AVAXUSDT",
+  "validation": {
+    "n": 25,
+    "pf": 0.682,
+    "wr": 36.0,
+    "sharpe_daily": -0.143,
+    "sharpe_ann": -2.733,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.876,
+      0.101,
+      0.253,
+      1.456
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 25,
+      "total_ret_pct": -18.3,
+      "cagr_pct": -94.77,
+      "max_dd_pct": 25.63,
+      "calmar": -3.698
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 106,
+        "pf": 1.104,
+        "sharpe_ann": 0.723
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 106,
+        "pf": 0.964,
+        "sharpe_ann": -0.272
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.733,
+        "best_variant_sharpe": 0.723,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.723
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.723
+          }
+        ]
+      }
+    }
+  }
+}

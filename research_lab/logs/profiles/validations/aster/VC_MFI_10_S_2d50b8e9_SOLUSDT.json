@@ -1,0 +1,51 @@
+{
+  "key": "aster:VC_MFI_10_S:2d50b8e9:SOLUSDT",
+  "validation": {
+    "n": 15,
+    "pf": 0.537,
+    "wr": 26.7,
+    "sharpe_daily": -0.2911,
+    "sharpe_ann": -5.562,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.512,
+      3.035,
+      0.0,
+      0.214
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 58,
+        "pf": 0.972,
+        "sharpe_ann": -0.234
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 58,
+        "pf": 0.917,
+        "sharpe_ann": -0.733
+      },
+      "param_robustness": {
+        "baseline_sharpe": -5.562,
+        "best_variant_sharpe": -0.234,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.234
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.234
+          }
+        ]
+      }
+    }
+  }
+}

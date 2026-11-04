@@ -1,0 +1,57 @@
+{
+  "key": "hyperliquid:VC_MFI_14_L:644fd74a:AVAX",
+  "validation": {
+    "n": 27,
+    "pf": 0.642,
+    "wr": 51.9,
+    "sharpe_daily": -0.1635,
+    "sharpe_ann": -3.123,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.278,
+      0.97,
+      1.232,
+      0.46
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 27,
+      "total_ret_pct": -17.84,
+      "cagr_pct": -92.98,
+      "max_dd_pct": 20.19,
+      "calmar": -4.605
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 109,
+        "pf": 0.984,
+        "sharpe_ann": -0.121
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 109,
+        "pf": 0.849,
+        "sharpe_ann": -1.245
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.123,
+        "best_variant_sharpe": -0.121,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.121
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.121
+          }
+        ]
+      }
+    }
+  }
+}

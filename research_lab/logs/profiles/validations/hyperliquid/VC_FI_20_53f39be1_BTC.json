@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:VC_FI_20:53f39be1:BTC",
+  "validation": {
+    "n": 17,
+    "pf": 1.065,
+    "wr": 35.3,
+    "sharpe_daily": 0.0281,
+    "sharpe_ann": 0.536,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      6.551,
+      0.672,
+      0.605,
+      0.492
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 51,
+        "pf": 0.947,
+        "sharpe_ann": -0.459
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 51,
+        "pf": 0.852,
+        "sharpe_ann": -1.372
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.536,
+        "best_variant_sharpe": -0.459,
+        "ratio": -0.856,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.459
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.459
+          }
+        ]
+      }
+    }
+  }
+}

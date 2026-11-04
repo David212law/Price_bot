@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:VC_CMF_15_S:caf4f064:ETHUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 0.978,
+    "wr": 33.3,
+    "sharpe_daily": -0.0097,
+    "sharpe_ann": -0.186,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.432,
+      0.351,
+      1.585,
+      0.384
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 24,
+      "total_ret_pct": -10.1,
+      "cagr_pct": -80.21,
+      "max_dd_pct": 33.62,
+      "calmar": -2.386
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 87,
+        "pf": 0.996,
+        "sharpe_ann": -0.036
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 87,
+        "pf": 0.931,
+        "sharpe_ann": -0.614
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.186,
+        "best_variant_sharpe": -0.036,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.036
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.036
+          }
+        ]
+      }
+    }
+  }
+}

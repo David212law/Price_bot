@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:VC_CMF_10_L:4451aff5:XRPUSDTM",
+  "validation": {
+    "n": 29,
+    "pf": 0.371,
+    "wr": 17.2,
+    "sharpe_daily": -0.4456,
+    "sharpe_ann": -8.513,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.306,
+      0.245,
+      0.187,
+      0.685
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 29,
+      "total_ret_pct": -66.0,
+      "cagr_pct": -100.0,
+      "max_dd_pct": 70.4,
+      "calmar": -1.42
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 82,
+        "pf": 1.035,
+        "sharpe_ann": 0.27
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 82,
+        "pf": 0.982,
+        "sharpe_ann": -0.146
+      },
+      "param_robustness": {
+        "baseline_sharpe": -8.513,
+        "best_variant_sharpe": 0.27,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.27
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.27
+          }
+        ]
+      }
+    }
+  }
+}

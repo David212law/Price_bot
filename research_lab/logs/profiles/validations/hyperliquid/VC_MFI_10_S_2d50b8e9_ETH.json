@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:VC_MFI_10_S:2d50b8e9:ETH",
+  "validation": {
+    "n": 12,
+    "pf": 0.87,
+    "wr": 33.3,
+    "sharpe_daily": -0.064,
+    "sharpe_ann": -1.223,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.066,
+      2.9,
+      0.0,
+      0.897
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 53,
+        "pf": 1.103,
+        "sharpe_ann": 0.821
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 53,
+        "pf": 1.027,
+        "sharpe_ann": 0.225
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.223,
+        "best_variant_sharpe": 0.821,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.821
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.821
+          }
+        ]
+      }
+    }
+  }
+}

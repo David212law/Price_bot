@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:VC_FI_10:f958f26a:SOLUSDTM",
+  "validation": {
+    "n": 20,
+    "pf": 0.609,
+    "wr": 20.0,
+    "sharpe_daily": -0.2032,
+    "sharpe_ann": -3.882,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.486,
+      0.661,
+      1.934,
+      0.0
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 20,
+      "total_ret_pct": -35.48,
+      "cagr_pct": -99.97,
+      "max_dd_pct": 37.35,
+      "calmar": -2.677
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 82,
+        "pf": 1.033,
+        "sharpe_ann": 0.263
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 82,
+        "pf": 0.982,
+        "sharpe_ann": -0.146
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.882,
+        "best_variant_sharpe": 0.263,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.263
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.263
+          }
+        ]
+      }
+    }
+  }
+}

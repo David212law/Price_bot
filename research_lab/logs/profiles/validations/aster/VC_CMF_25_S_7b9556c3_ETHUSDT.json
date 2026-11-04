@@ -1,0 +1,51 @@
+{
+  "key": "aster:VC_CMF_25_S:7b9556c3:ETHUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 0.886,
+    "wr": 36.8,
+    "sharpe_daily": -0.056,
+    "sharpe_ann": -1.07,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.475,
+      1.672,
+      1.281,
+      0.67
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 64,
+        "pf": 1.484,
+        "sharpe_ann": 3.42
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 64,
+        "pf": 1.378,
+        "sharpe_ann": 2.798
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.07,
+        "best_variant_sharpe": 3.42,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 3.42
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 3.42
+          }
+        ]
+      }
+    }
+  }
+}

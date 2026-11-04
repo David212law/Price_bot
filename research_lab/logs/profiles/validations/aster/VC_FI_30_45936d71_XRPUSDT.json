@@ -1,0 +1,51 @@
+{
+  "key": "aster:VC_FI_30:45936d71:XRPUSDT",
+  "validation": {
+    "n": 18,
+    "pf": 0.654,
+    "wr": 27.8,
+    "sharpe_daily": -0.1909,
+    "sharpe_ann": -3.646,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.831,
+      0.558,
+      0.368,
+      0.446
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 55,
+        "pf": 0.858,
+        "sharpe_ann": -1.116
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 55,
+        "pf": 0.804,
+        "sharpe_ann": -1.622
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.646,
+        "best_variant_sharpe": -1.116,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.116
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.116
+          }
+        ]
+      }
+    }
+  }
+}

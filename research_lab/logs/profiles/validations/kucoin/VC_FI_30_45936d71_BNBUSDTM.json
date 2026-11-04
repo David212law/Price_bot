@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:VC_FI_30:45936d71:BNBUSDTM",
+  "validation": {
+    "n": 24,
+    "pf": 0.942,
+    "wr": 37.5,
+    "sharpe_daily": -0.0278,
+    "sharpe_ann": -0.532,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.304,
+      0.661,
+      0.967,
+      3.283
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 24,
+      "total_ret_pct": -6.28,
+      "cagr_pct": -62.71,
+      "max_dd_pct": 30.07,
+      "calmar": -2.086
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 71,
+        "pf": 1.104,
+        "sharpe_ann": 0.802
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 71,
+        "pf": 1.004,
+        "sharpe_ann": 0.036
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.532,
+        "best_variant_sharpe": 0.802,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.802
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.802
+          }
+        ]
+      }
+    }
+  }
+}
