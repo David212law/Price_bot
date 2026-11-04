@@ -1,6 +1,6 @@
 {
-  "total_capital": 9998.0002,
-  "m31_capital": 4998.0002,
+  "total_capital": 9998.25010313375,
+  "m31_capital": 4998.250103133751,
   "m35_capital": 0.0,
   "m40_capital": 0.0,
   "m41_capital": 0.0,
@@ -19,6 +19,6 @@
   "keltner_capital": 5000.0,
   "keltner_pos": {},
   "peak_equity": 10000.0,
-  "last_run": "2026-11-04T00:34:59.256339+00:00",
+  "last_run": "2026-11-04T11:49:09.330015+00:00",
   "cash_capital": 0
 }

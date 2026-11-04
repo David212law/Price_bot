@@ -1,0 +1,23 @@
+{
+  "total_capital": 9998.0002,
+  "m31_capital": 4998.0002,
+  "m35_capital": 0.0,
+  "m40_capital": 0.0,
+  "m41_capital": 0.0,
+  "m31_pos": {
+    "BNB": {
+      "entry_time": 1793743200114
+    },
+    "AVAX": {
+      "entry_time": 1793750400065
+    }
+  },
+  "m35_pos": {},
+  "m40_pos": {},
+  "m41_pos": {},
+  "history": [],
+  "keltner_capital": 5000.0,
+  "keltner_pos": {},
+  "peak_equity": 9998.0002,
+  "last_run": "2026-11-04T11:49:09.704072+00:00"
+}
