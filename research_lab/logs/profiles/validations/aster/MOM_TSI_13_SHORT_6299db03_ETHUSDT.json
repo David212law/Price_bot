@@ -1,0 +1,51 @@
+{
+  "key": "aster:MOM_TSI_13_SHORT:6299db03:ETHUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 0.443,
+    "wr": 21.1,
+    "sharpe_daily": -0.3824,
+    "sharpe_ann": -7.306,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.394,
+      1.428,
+      0.0,
+      0.304
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 67,
+        "pf": 0.848,
+        "sharpe_ann": -1.409
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 67,
+        "pf": 0.786,
+        "sharpe_ann": -2.088
+      },
+      "param_robustness": {
+        "baseline_sharpe": -7.306,
+        "best_variant_sharpe": -1.409,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.409
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.409
+          }
+        ]
+      }
+    }
+  }
+}

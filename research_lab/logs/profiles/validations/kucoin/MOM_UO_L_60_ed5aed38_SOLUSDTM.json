@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:MOM_UO_L_60:ed5aed38:SOLUSDTM",
+  "validation": {
+    "n": 18,
+    "pf": 0.699,
+    "wr": 27.8,
+    "sharpe_daily": -0.1524,
+    "sharpe_ann": -2.911,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.512,
+      0.0,
+      1.331,
+      1.082
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 79,
+        "pf": 0.96,
+        "sharpe_ann": -0.334
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 79,
+        "pf": 0.913,
+        "sharpe_ann": -0.753
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.911,
+        "best_variant_sharpe": -0.334,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.334
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.334
+          }
+        ]
+      }
+    }
+  }
+}

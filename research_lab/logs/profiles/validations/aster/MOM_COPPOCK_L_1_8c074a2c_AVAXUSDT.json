@@ -1,0 +1,51 @@
+{
+  "key": "aster:MOM_COPPOCK_L_1:8c074a2c:AVAXUSDT",
+  "validation": {
+    "n": 14,
+    "pf": 0.82,
+    "wr": 28.6,
+    "sharpe_daily": -0.0871,
+    "sharpe_ann": -1.663,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.295,
+      1.459,
+      1.006,
+      0.35
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 62,
+        "pf": 0.853,
+        "sharpe_ann": -1.372
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 62,
+        "pf": 0.805,
+        "sharpe_ann": -1.888
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.663,
+        "best_variant_sharpe": -1.372,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.372
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.372
+          }
+        ]
+      }
+    }
+  }
+}

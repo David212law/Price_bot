@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:MOM_COPPOCK_L_1:8c074a2c:SOLUSDTM",
+  "validation": {
+    "n": 14,
+    "pf": 0.878,
+    "wr": 28.6,
+    "sharpe_daily": -0.0535,
+    "sharpe_ann": -1.023,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.733,
+      2.21,
+      0.741,
+      0.473
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 57,
+        "pf": 1.191,
+        "sharpe_ann": 1.431
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 57,
+        "pf": 1.133,
+        "sharpe_ann": 1.034
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.023,
+        "best_variant_sharpe": 1.431,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.431
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.431
+          }
+        ]
+      }
+    }
+  }
+}

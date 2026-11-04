@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:MOM_TSI_25_SHORT:9c283321:SOL",
+  "validation": {
+    "n": 10,
+    "pf": 0.503,
+    "wr": 20.0,
+    "sharpe_daily": -0.3115,
+    "sharpe_ann": -5.951,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      1.51,
+      0.651
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 38,
+        "pf": 1.221,
+        "sharpe_ann": 1.706
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 38,
+        "pf": 1.151,
+        "sharpe_ann": 1.212
+      },
+      "param_robustness": {
+        "baseline_sharpe": -5.951,
+        "best_variant_sharpe": 1.706,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.706
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.706
+          }
+        ]
+      }
+    }
+  }
+}

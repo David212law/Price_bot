@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:MOM_COPPOCK_L_1:8c074a2c:XBTUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 1.059,
+    "wr": 23.5,
+    "sharpe_daily": 0.0214,
+    "sharpe_ann": 0.41,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      5.144,
+      0.0,
+      0.863,
+      0.569
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 69,
+        "pf": 1.196,
+        "sharpe_ann": 1.458
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 69,
+        "pf": 1.085,
+        "sharpe_ann": 0.679
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.41,
+        "best_variant_sharpe": 1.458,
+        "ratio": 3.556,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.458
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.458
+          }
+        ]
+      }
+    }
+  }
+}

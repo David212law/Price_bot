@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:MOM_TSI_13:df2887b8:AVAXUSDTM",
+  "validation": {
+    "n": 20,
+    "pf": 0.757,
+    "wr": 30.0,
+    "sharpe_daily": -0.1265,
+    "sharpe_ann": -2.417,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.613,
+      0.951,
+      1.249,
+      0.417
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 20,
+      "total_ret_pct": -25.55,
+      "cagr_pct": -99.54,
+      "max_dd_pct": 35.53,
+      "calmar": -2.802
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 70,
+        "pf": 0.923,
+        "sharpe_ann": -0.688
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 70,
+        "pf": 0.876,
+        "sharpe_ann": -1.143
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.417,
+        "best_variant_sharpe": -0.688,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.688
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.688
+          }
+        ]
+      }
+    }
+  }
+}

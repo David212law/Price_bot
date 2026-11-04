@@ -1,0 +1,51 @@
+{
+  "key": "aster:MOM_COPPOCK_L_1:8c074a2c:BTCUSDT",
+  "validation": {
+    "n": 15,
+    "pf": 1.196,
+    "wr": 33.3,
+    "sharpe_daily": 0.0763,
+    "sharpe_ann": 1.458,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.847,
+      1.443,
+      0.0,
+      1.212
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 48,
+        "pf": 1.166,
+        "sharpe_ann": 1.216
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 48,
+        "pf": 1.053,
+        "sharpe_ann": 0.418
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.458,
+        "best_variant_sharpe": 1.216,
+        "ratio": 0.834,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.216
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.216
+          }
+        ]
+      }
+    }
+  }
+}

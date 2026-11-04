@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:MOM_UO_S_50:9312e240:AVAX",
+  "validation": {
+    "n": 10,
+    "pf": 0.739,
+    "wr": 30.0,
+    "sharpe_daily": -0.1341,
+    "sharpe_ann": -2.563,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      99.99,
+      0.637
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 54,
+        "pf": 1.16,
+        "sharpe_ann": 1.224
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 54,
+        "pf": 1.106,
+        "sharpe_ann": 0.834
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.563,
+        "best_variant_sharpe": 1.224,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.224
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.224
+          }
+        ]
+      }
+    }
+  }
+}

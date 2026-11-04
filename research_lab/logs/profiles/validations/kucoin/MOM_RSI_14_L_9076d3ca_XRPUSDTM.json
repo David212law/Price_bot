@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:MOM_RSI_14_L:9076d3ca:XRPUSDTM",
+  "validation": {
+    "n": 14,
+    "pf": 0.311,
+    "wr": 21.4,
+    "sharpe_daily": -0.4974,
+    "sharpe_ann": -9.502,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.342,
+      0.0,
+      0.0,
+      0.137
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 56,
+        "pf": 0.96,
+        "sharpe_ann": -0.299
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 56,
+        "pf": 0.895,
+        "sharpe_ann": -0.838
+      },
+      "param_robustness": {
+        "baseline_sharpe": -9.502,
+        "best_variant_sharpe": -0.299,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.299
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.299
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:MOM_KST_L_30:96f0462f:BNBUSDTM",
+  "validation": {
+    "n": 11,
+    "pf": 0.955,
+    "wr": 36.4,
+    "sharpe_daily": -0.021,
+    "sharpe_ann": -0.401,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.0,
+      1.28,
+      2.742
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 55,
+        "pf": 1.157,
+        "sharpe_ann": 1.261
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 55,
+        "pf": 1.058,
+        "sharpe_ann": 0.493
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.401,
+        "best_variant_sharpe": 1.261,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.261
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.261
+          }
+        ]
+      }
+    }
+  }
+}

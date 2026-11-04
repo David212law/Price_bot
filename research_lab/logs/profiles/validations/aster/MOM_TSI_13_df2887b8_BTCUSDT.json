@@ -1,0 +1,57 @@
+{
+  "key": "aster:MOM_TSI_13:df2887b8:BTCUSDT",
+  "validation": {
+    "n": 21,
+    "pf": 1.006,
+    "wr": 28.6,
+    "sharpe_daily": 0.0025,
+    "sharpe_ann": 0.048,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.441,
+      0.624,
+      0.461,
+      0.47
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 21,
+      "total_ret_pct": -2.68,
+      "cagr_pct": -37.61,
+      "max_dd_pct": 21.45,
+      "calmar": -1.754
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 60,
+        "pf": 0.89,
+        "sharpe_ann": -0.99
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 60,
+        "pf": 0.799,
+        "sharpe_ann": -1.934
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.048,
+        "best_variant_sharpe": -0.99,
+        "ratio": -20.625,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.99
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.99
+          }
+        ]
+      }
+    }
+  }
+}

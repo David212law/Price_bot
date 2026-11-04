@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:MOM_COPPOCK_L_2:b09f70c8:XRP",
+  "validation": {
+    "n": 17,
+    "pf": 0.45,
+    "wr": 23.5,
+    "sharpe_daily": -0.3601,
+    "sharpe_ann": -6.881,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.617,
+      0.375,
+      0.206,
+      0.633
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 38,
+        "pf": 0.782,
+        "sharpe_ann": -1.972
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 38,
+        "pf": 0.743,
+        "sharpe_ann": -2.411
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.881,
+        "best_variant_sharpe": -1.972,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.972
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.972
+          }
+        ]
+      }
+    }
+  }
+}

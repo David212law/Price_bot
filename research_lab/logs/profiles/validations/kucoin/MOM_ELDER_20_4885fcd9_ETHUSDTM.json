@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:MOM_ELDER_20:4885fcd9:ETHUSDTM",
+  "validation": {
+    "n": 136,
+    "pf": 1.158,
+    "wr": 73.5,
+    "sharpe_daily": 0.0494,
+    "sharpe_ann": 0.944,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0494,
+      "sharpe_annualized": 0.944,
+      "ci_low_annualized": -2.063,
+      "ci_high_annualized": 4.591,
+      "significant": false,
+      "n_obs": 136,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.695,
+      0.725,
+      1.034,
+      1.28
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 136,
+      "total_ret_pct": 11.18,
+      "cagr_pct": 32.89,
+      "max_dd_pct": 16.01,
+      "calmar": 2.054
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 462,
+        "pf": 0.998,
+        "sharpe_ann": -0.016
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 462,
+        "pf": 0.694,
+        "sharpe_ann": -2.28
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.944,
+        "best_variant_sharpe": -0.016,
+        "ratio": -0.017,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.016
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.016
+          }
+        ]
+      }
+    }
+  }
+}

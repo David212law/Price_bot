@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:MOM_RSI_50:7c643a4f:BTC",
+  "validation": {
+    "n": 19,
+    "pf": 0.944,
+    "wr": 31.6,
+    "sharpe_daily": -0.0259,
+    "sharpe_ann": -0.494,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      6.11,
+      0.743,
+      0.601,
+      0.337
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 56,
+        "pf": 0.899,
+        "sharpe_ann": -0.901
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 56,
+        "pf": 0.81,
+        "sharpe_ann": -1.826
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.494,
+        "best_variant_sharpe": -0.901,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.901
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.901
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "aster:MOM_RSI_50:7c643a4f:BNBUSDT",
+  "validation": {
+    "n": 19,
+    "pf": 1.105,
+    "wr": 42.1,
+    "sharpe_daily": 0.0461,
+    "sharpe_ann": 0.88,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.656,
+      1.88,
+      0.425,
+      1.285
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 63,
+        "pf": 1.076,
+        "sharpe_ann": 0.629
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 63,
+        "pf": 0.985,
+        "sharpe_ann": -0.133
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.88,
+        "best_variant_sharpe": 0.629,
+        "ratio": 0.715,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.629
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.629
+          }
+        ]
+      }
+    }
+  }
+}

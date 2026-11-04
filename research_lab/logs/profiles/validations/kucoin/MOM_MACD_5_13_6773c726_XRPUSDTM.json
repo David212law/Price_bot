@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:MOM_MACD_5_13:6773c726:XRPUSDTM",
+  "validation": {
+    "n": 154,
+    "pf": 0.888,
+    "wr": 25.3,
+    "sharpe_daily": -0.0391,
+    "sharpe_ann": -0.747,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0391,
+      "sharpe_annualized": -0.747,
+      "ci_low_annualized": -4.455,
+      "ci_high_annualized": 2.079,
+      "significant": false,
+      "n_obs": 154,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.858,
+      0.43,
+      2.553,
+      0.521
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 154,
+      "total_ret_pct": -20.95,
+      "cagr_pct": -42.72,
+      "max_dd_pct": 30.04,
+      "calmar": -1.422
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 531,
+        "pf": 0.947,
+        "sharpe_ann": -0.319
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 531,
+        "pf": 0.729,
+        "sharpe_ann": -1.984
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.747,
+        "best_variant_sharpe": -0.319,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.319
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.319
+          }
+        ]
+      }
+    }
+  }
+}

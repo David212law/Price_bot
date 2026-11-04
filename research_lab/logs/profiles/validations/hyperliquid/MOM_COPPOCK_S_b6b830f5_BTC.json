@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:MOM_COPPOCK_S:b6b830f5:BTC",
+  "validation": {
+    "n": 14,
+    "pf": 0.476,
+    "wr": 21.4,
+    "sharpe_daily": -0.3468,
+    "sharpe_ann": -6.626,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      3.503,
+      0.755,
+      0.0
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 39,
+        "pf": 0.882,
+        "sharpe_ann": -1.064
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 39,
+        "pf": 0.797,
+        "sharpe_ann": -1.954
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.626,
+        "best_variant_sharpe": -1.064,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.064
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.064
+          }
+        ]
+      }
+    }
+  }
+}

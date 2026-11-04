@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:MOM_COPPOCK_S:b6b830f5:SOL",
+  "validation": {
+    "n": 17,
+    "pf": 0.576,
+    "wr": 23.5,
+    "sharpe_daily": -0.2528,
+    "sharpe_ann": -4.831,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.396,
+      0.726,
+      0.544
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 49,
+        "pf": 1.03,
+        "sharpe_ann": 0.236
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 49,
+        "pf": 0.969,
+        "sharpe_ann": -0.255
+      },
+      "param_robustness": {
+        "baseline_sharpe": -4.831,
+        "best_variant_sharpe": 0.236,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.236
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.236
+          }
+        ]
+      }
+    }
+  }
+}

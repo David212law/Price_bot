@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:MOM_KST_L:0d81e328:XBTUSDTM",
+  "validation": {
+    "n": 20,
+    "pf": 0.91,
+    "wr": 30.0,
+    "sharpe_daily": -0.0417,
+    "sharpe_ann": -0.798,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.451,
+      2.624,
+      0.671,
+      0.59
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 20,
+      "total_ret_pct": -7.91,
+      "cagr_pct": -77.78,
+      "max_dd_pct": 17.4,
+      "calmar": -4.471
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 64,
+        "pf": 1.023,
+        "sharpe_ann": 0.192
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 64,
+        "pf": 0.922,
+        "sharpe_ann": -0.709
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.798,
+        "best_variant_sharpe": 0.192,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.192
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.192
+          }
+        ]
+      }
+    }
+  }
+}

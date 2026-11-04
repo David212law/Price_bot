@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:MOM_UO_L_50:675620cc:XRPUSDTM",
+  "validation": {
+    "n": 29,
+    "pf": 0.487,
+    "wr": 20.7,
+    "sharpe_daily": -0.3205,
+    "sharpe_ann": -6.123,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.305,
+      1.452,
+      0.0,
+      0.616
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 29,
+      "total_ret_pct": -60.05,
+      "cagr_pct": -100.0,
+      "max_dd_pct": 65.22,
+      "calmar": -1.533
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 86,
+        "pf": 1.018,
+        "sharpe_ann": 0.137
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 86,
+        "pf": 0.965,
+        "sharpe_ann": -0.28
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.123,
+        "best_variant_sharpe": 0.137,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.137
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.137
+          }
+        ]
+      }
+    }
+  }
+}

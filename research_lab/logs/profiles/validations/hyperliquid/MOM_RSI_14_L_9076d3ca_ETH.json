@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:MOM_RSI_14_L:9076d3ca:ETH",
+  "validation": {
+    "n": 10,
+    "pf": 1.633,
+    "wr": 40.0,
+    "sharpe_daily": 0.2017,
+    "sharpe_ann": 3.853,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.126,
+      0.0,
+      2.772,
+      2.289
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 36,
+        "pf": 1.131,
+        "sharpe_ann": 1.052
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 36,
+        "pf": 1.038,
+        "sharpe_ann": 0.323
+      },
+      "param_robustness": {
+        "baseline_sharpe": 3.853,
+        "best_variant_sharpe": 1.052,
+        "ratio": 0.273,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.052
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.052
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:MOM_TSI_40:578be201:ETHUSDTM",
+  "validation": {
+    "n": 17,
+    "pf": 0.977,
+    "wr": 29.4,
+    "sharpe_daily": -0.0098,
+    "sharpe_ann": -0.187,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.608,
+      2.122,
+      0.945,
+      0.437
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 58,
+        "pf": 1.033,
+        "sharpe_ann": 0.282
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 58,
+        "pf": 0.955,
+        "sharpe_ann": -0.408
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.187,
+        "best_variant_sharpe": 0.282,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.282
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.282
+          }
+        ]
+      }
+    }
+  }
+}

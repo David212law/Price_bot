@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:MOM_COPPOCK_S:b6b830f5:XRPUSDTM",
+  "validation": {
+    "n": 12,
+    "pf": 1.594,
+    "wr": 50.0,
+    "sharpe_daily": 0.2121,
+    "sharpe_ann": 4.051,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.084,
+      2.531,
+      0.979,
+      2.221
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 49,
+        "pf": 1.091,
+        "sharpe_ann": 0.755
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 49,
+        "pf": 1.035,
+        "sharpe_ann": 0.302
+      },
+      "param_robustness": {
+        "baseline_sharpe": 4.051,
+        "best_variant_sharpe": 0.755,
+        "ratio": 0.186,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.755
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.755
+          }
+        ]
+      }
+    }
+  }
+}

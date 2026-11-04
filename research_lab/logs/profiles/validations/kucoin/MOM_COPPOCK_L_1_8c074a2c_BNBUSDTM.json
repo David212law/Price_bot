@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:MOM_COPPOCK_L_1:8c074a2c:BNBUSDTM",
+  "validation": {
+    "n": 23,
+    "pf": 0.936,
+    "wr": 39.1,
+    "sharpe_daily": -0.0303,
+    "sharpe_ann": -0.578,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.473,
+      0.276,
+      1.648,
+      1.956
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 23,
+      "total_ret_pct": -7.42,
+      "cagr_pct": -70.58,
+      "max_dd_pct": 30.7,
+      "calmar": -2.299
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 75,
+        "pf": 1.221,
+        "sharpe_ann": 1.633
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 75,
+        "pf": 1.121,
+        "sharpe_ann": 0.943
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.578,
+        "best_variant_sharpe": 1.633,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.633
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.633
+          }
+        ]
+      }
+    }
+  }
+}
