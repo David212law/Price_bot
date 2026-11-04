@@ -32,6 +32,15 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: python exchanges/hyperliquid/m11_hl_shadow_allocator.py
 
+      - name: HL Shadow MOM (M31_MOMENTUM — D-522)
+        continue-on-error: true
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python exchanges/hyperliquid/m11_hl_shadow_mom_allocator.py
+
       - name: HL Shadow RP (M31 98% + Keltner 2%)
         continue-on-error: true
         env:
@@ -57,6 +66,7 @@ jobs:
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add exchanges/hyperliquid/state/m11_hl_shadow_portfolio.json 2>/dev/null || true
           git add exchanges/hyperliquid/state/m11_hl_shadow_rp_portfolio.json 2>/dev/null || true
+          git add exchanges/hyperliquid/state/m11_hl_shadow_mom_portfolio.json 2>/dev/null || true
           git add exchanges/aster/state/m11_aster_shadow_trend_state.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Auto: shadow states $(date -u +%Y-%m-%d-%H) [skip ci]" || true
           git pull --rebase origin main || true

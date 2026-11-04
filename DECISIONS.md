@@ -2506,3 +2506,47 @@ git revert <commit_hash> برای حذف کامل ماژول
 - اگر HL Shadow RP در ۳۰ روز بهتر از HL Main بود → ارتقا به route
 - اگر بدتر بود → حذف Shadow RP و ادامه M31_ONLY
 
+
+## D-2026-11-05-522 — بهینه‌سازی M31 (روش درست کشف)
+
+**وضعیت:** قفل
+
+**زمینه:**
+۱۰ جلسه تلاش برای کشف لبه جدید (CEFA، spike capture، RCE، ...) همه شکست خورد.
+کاربر پیشنهاد داد روی استراتژی‌های موجود کار کنیم — همان روشی که M31 را M31 کرد.
+اولین تست: M31_MOMENTUM (فیلتر momentum روی funding).
+
+**نتیجه تست (HL/BTC, padded, with fee):**
+  M31 plain:        SR=8.16,  Return=+8.24%,  Trans=0
+  M31_EMA:          SR=11.01, Return=+28.63%, Trans=76
+  M31_SMA:          SR=11.39, Return=+29.88%, Trans=59
+  M31_MOMENTUM:     SR=13.36, Return=+33.91%, Trans=47  ← بهترین
+  
+Cross-exchange (M31_MOMENTUM_e15cd75e):
+  HL:      SR=13.29, Trans=45
+  Aster:   SR=13.29, Trans=55
+  KuCoin:  SR=8.79,  Trans=158
+  
+Cross-exchange consistency: 0.66 (بالای 0.5 → لبه عمومی، نه exchange-specific)
+Look-ahead: ندارد (کد verified)
+Padding: ندارد (verified نسبت 1.00x)
+Fee resistance: 2x fees → هنوز SR=11.51 (41% بهتر از M31)
+
+**تصمیم:**
+۱. M31_MOMENTUM یک لبه سوم واقعی است — اولین بهینه‌سازی موفق M31.
+۲. یک ربات شاهد جدید (HL Shadow MOM) می‌سازیم که M31_MOMENTUM را در Paper تست کند.
+۳. Paper اصلی (D-460 Freeze) هیچ تغییری نمی‌کند.
+۴. اگر ۳۰ روز Paper بهتر بود → در ۲۰۲۶-۱۲-۰۲ جایگزینی M31 plain.
+
+**درس دائمی برای ربات محقق:**
+برای هر لبه موجود، ۴ مسیر بهینه‌سازی:
+  1. Momentum filter روی سیگنال
+  2. Volatility filter (low_vol فقط)
+  3. Regime filter (conditional)
+  4. Cross-validation
+
+هر کدام ممکن است 20-50% SR اضافه کند. اول این مسیرها، بعد جستجوی لبه جدید.
+
+**بازگشت در صورت مشکل:**
+git revert <commit_hash>
+
