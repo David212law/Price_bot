@@ -11,14 +11,14 @@
 - weights: {'M31': 0.65, 'CASH': 0.35}
 
 ### RANGE
-- route=M31_ONLY, SR=8.192, n_days=142
-- components: []
-- weights: {'M31': 0.65, 'CASH': 0.35}
+- route=A, SR=9.635, n_days=176
+- components: ['M31', 'KELTNER_REV_ETH']
+- weights: {'M31': 0.175, 'KELTNER_REV_ETH': 0.175, 'CASH': 0.65}
 
 ### NEUTRAL
-- route=M31_ONLY, SR=5.804, n_days=111
-- components: []
-- weights: {'M31': 0.65, 'CASH': 0.35}
+- route=A, SR=6.834, n_days=131
+- components: ['M31', 'KELTNER_REV_ETH']
+- weights: {'M31': 0.175, 'KELTNER_REV_ETH': 0.175, 'CASH': 0.65}
 
 ## ASTER
 
@@ -30,9 +30,9 @@
 - weights: {'M31': 0.4, 'CASH': 0.6}
 
 ### RANGE
-- route=M31_ONLY, SR=8.626, n_days=203
-- components: []
-- weights: {'M31': 0.4, 'CASH': 0.6}
+- route=A, SR=9.515, n_days=218
+- components: ['M31', 'KELTNER_REV_ETHUSDT']
+- weights: {'M31': 0.3, 'KELTNER_REV_ETHUSDT': 0.3, 'CASH': 0.4}
 
 ### NEUTRAL
 - route=M31_ONLY, SR=7.301, n_days=144
@@ -49,9 +49,9 @@
 - weights: {'M31': 0.3, 'CASH': 0.7}
 
 ### RANGE
-- route=M31_ONLY, SR=7.485, n_days=271
-- components: []
-- weights: {'M31': 0.3, 'CASH': 0.7}
+- route=A, SR=8.515, n_days=271
+- components: ['M31', 'KELTNER_REV_ETHUSDTM']
+- weights: {'M31': 0.35, 'KELTNER_REV_ETHUSDTM': 0.35, 'CASH': 0.30000000000000004}
 
 ### NEUTRAL
 - route=M31_ONLY, SR=7.52, n_days=213
@@ -59,33 +59,31 @@
 - weights: {'M31': 0.3, 'CASH': 0.7}
 
 ### HYPERLIQUID/TREND complements:
-- KELTNER_REV corr=-0.029 SR=5.008
-- KELTNER_REV corr=-0.029 SR=4.558
+- KELTNER_REV corr=-0.029 SR=5.379
 
 ### HYPERLIQUID/RANGE complements:
-- KELTNER_REV corr=-0.184 SR=5.008
-- KELTNER_REV corr=-0.184 SR=4.558
+- KELTNER_REV corr=-0.184 SR=5.379
 
 ### HYPERLIQUID/NEUTRAL complements:
-- KELTNER_REV corr=0.027 SR=5.008
-- KELTNER_REV corr=0.027 SR=4.558
+- KELTNER_REV corr=0.027 SR=5.379
+
+### ASTER/TREND complements:
+- KELTNER_REV corr=-0.032 SR=5.457
+- KELTNER_REV corr=-0.032 SR=5.456
+
+### ASTER/RANGE complements:
+- KELTNER_REV corr=0.073 SR=5.457
+- KELTNER_REV corr=0.073 SR=5.456
+
+### ASTER/NEUTRAL complements:
+- KELTNER_REV corr=-0.048 SR=5.457
+- KELTNER_REV corr=-0.048 SR=5.456
 
 ### KUCOIN/TREND complements:
-- MOM_TSI_30_SHORT corr=-0.418 SR=5.254
-- LOW_VOL_CARRY corr=-0.217 SR=5.123
 - KELTNER_REV corr=-0.035 SR=4.998
-- DUAL_MOMENTUM corr=-0.003 SR=3.829
-- KELTNER_REV corr=-0.035 SR=3.775
 
 ### KUCOIN/RANGE complements:
-- LOW_VOL_CARRY corr=0.065 SR=5.123
 - KELTNER_REV corr=-0.095 SR=4.998
-- DUAL_MOMENTUM corr=0.177 SR=3.829
-- KELTNER_REV corr=-0.095 SR=3.775
-- DUAL_MOMENTUM corr=0.177 SR=2.834
 
 ### KUCOIN/NEUTRAL complements:
 - KELTNER_REV corr=0.061 SR=4.998
-- DUAL_MOMENTUM corr=0.056 SR=3.829
-- KELTNER_REV corr=0.061 SR=3.775
-- DUAL_MOMENTUM corr=0.056 SR=2.834

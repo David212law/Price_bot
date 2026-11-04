@@ -1,26 +1,89 @@
 {
+  "hyperliquid/TREND": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.9815
+        },
+        {
+          "name": "KELTNER_REV_ETH",
+          "weight": 0.0185,
+          "family": "MR",
+          "corr": -0.029
+        }
+      ],
+      "n_days": 331,
+      "combined_sharpe": 8.004,
+      "m31_only_sharpe": 7.958,
+      "combined_calmar": 20.632,
+      "m31_only_calmar": 11.187,
+      "calmar_improvement": 1.84,
+      "max_dd_combo_pct": 0.37,
+      "max_dd_m31_pct": 0.49,
+      "passes_gate": true,
+      "combo_tests": {
+        "component_dropout": {
+          "pass": true,
+          "issues": [
+            "comp1: redundant (drop=0.6%)"
+          ],
+          "n_components": 2
+        },
+        "weight_robustness": {
+          "pass": true,
+          "worst_ratio": 1.025,
+          "note": "FAIL if ratio<0.7 (overfit weights)"
+        },
+        "combo_vs_best_comp": {
+          "pass": true,
+          "ratio": 1.488,
+          "best_comp_oos": 5.379,
+          "combo_oos": 8.004,
+          "note": "FAIL if combo doesn't beat best component in OOS"
+        },
+        "diversification": {
+          "pass": true,
+          "dr": 1.446,
+          "note": "FAIL if DR<1.05 (no diversification)"
+        },
+        "regime_conditional": {
+          "pass": true,
+          "combo_sr": 8.004,
+          "m31_sr": 7.958,
+          "ratio": 1.006,
+          "regime": "regime"
+        }
+      }
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "improvement=1.01<1.10"
+    ],
+    "detected_at": "2026-11-04T18:31:27.520941+00:00"
+  },
   "hyperliquid/RANGE": {
     "combo": {
       "components": [
         {
           "name": "M31",
-          "weight": 0.989
+          "weight": 0.9862
         },
         {
-          "name": "KELTNER_REV_BNB",
-          "weight": 0.011,
+          "name": "KELTNER_REV_ETH",
+          "weight": 0.0138,
           "family": "MR",
           "corr": -0.184
         }
       ],
-      "n_days": 79,
-      "combined_sharpe": 12.519,
-      "m31_only_sharpe": 8.709,
-      "combined_calmar": 117.457,
-      "m31_only_calmar": 24.933,
-      "calmar_improvement": 4.71,
-      "max_dd_combo_pct": 0.09,
-      "max_dd_m31_pct": 0.22,
+      "n_days": 176,
+      "combined_sharpe": 9.635,
+      "m31_only_sharpe": 7.235,
+      "combined_calmar": 45.104,
+      "m31_only_calmar": 12.678,
+      "calmar_improvement": 3.56,
+      "max_dd_combo_pct": 0.17,
+      "max_dd_m31_pct": 0.35,
       "passes_gate": true,
       "combo_tests": {
         "component_dropout": {
@@ -30,56 +93,56 @@
         },
         "weight_robustness": {
           "pass": true,
-          "worst_ratio": 0.954,
+          "worst_ratio": 1.048,
           "note": "FAIL if ratio<0.7 (overfit weights)"
         },
         "combo_vs_best_comp": {
           "pass": true,
-          "ratio": 2.5,
-          "best_comp_oos": 5.008,
-          "combo_oos": 12.519,
+          "ratio": 1.791,
+          "best_comp_oos": 5.379,
+          "combo_oos": 9.635,
           "note": "FAIL if combo doesn't beat best component in OOS"
         },
         "diversification": {
           "pass": true,
-          "dr": 1.566,
+          "dr": 1.507,
           "note": "FAIL if DR<1.05 (no diversification)"
         },
         "regime_conditional": {
           "pass": true,
-          "combo_sr": 12.519,
-          "m31_sr": 8.709,
-          "ratio": 1.437,
+          "combo_sr": 9.635,
+          "m31_sr": 7.235,
+          "ratio": 1.332,
           "regime": "regime"
         }
       }
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-04T11:20:24.318858+00:00"
+    "detected_at": "2026-11-04T18:31:27.570732+00:00"
   },
   "hyperliquid/NEUTRAL": {
     "combo": {
       "components": [
         {
           "name": "M31",
-          "weight": 0.9871
+          "weight": 0.9882
         },
         {
-          "name": "KELTNER_REV_BNB",
-          "weight": 0.0129,
+          "name": "KELTNER_REV_ETH",
+          "weight": 0.0118,
           "family": "MR",
           "corr": 0.027
         }
       ],
-      "n_days": 61,
-      "combined_sharpe": 6.519,
-      "m31_only_sharpe": 5.482,
-      "combined_calmar": 20.176,
-      "m31_only_calmar": 10.837,
-      "calmar_improvement": 1.86,
-      "max_dd_combo_pct": 0.28,
-      "max_dd_m31_pct": 0.3,
+      "n_days": 131,
+      "combined_sharpe": 6.834,
+      "m31_only_sharpe": 5.308,
+      "combined_calmar": 20.44,
+      "m31_only_calmar": 6.723,
+      "calmar_improvement": 3.04,
+      "max_dd_combo_pct": 0.22,
+      "max_dd_m31_pct": 0.36,
       "passes_gate": true,
       "combo_tests": {
         "component_dropout": {
@@ -89,99 +152,276 @@
         },
         "weight_robustness": {
           "pass": true,
-          "worst_ratio": 0.946,
+          "worst_ratio": 1.0,
           "note": "FAIL if ratio<0.7 (overfit weights)"
         },
         "combo_vs_best_comp": {
           "pass": true,
-          "ratio": 1.302,
-          "best_comp_oos": 5.008,
-          "combo_oos": 6.519,
+          "ratio": 1.271,
+          "best_comp_oos": 5.379,
+          "combo_oos": 6.834,
           "note": "FAIL if combo doesn't beat best component in OOS"
         },
         "diversification": {
           "pass": true,
-          "dr": 1.395,
+          "dr": 1.415,
           "note": "FAIL if DR<1.05 (no diversification)"
         },
         "regime_conditional": {
           "pass": true,
-          "combo_sr": 6.519,
-          "m31_sr": 5.482,
-          "ratio": 1.189,
+          "combo_sr": 6.834,
+          "m31_sr": 5.308,
+          "ratio": 1.287,
           "regime": "regime"
         }
       }
     },
     "status": "STRICT_PASS",
     "reasons": [],
-    "detected_at": "2026-11-04T11:20:24.407715+00:00"
+    "detected_at": "2026-11-04T18:31:27.617597+00:00"
+  },
+  "aster/TREND": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.9816
+        },
+        {
+          "name": "KELTNER_REV_AVAXUSDT",
+          "weight": 0.0184,
+          "family": "MR",
+          "corr": -0.032
+        }
+      ],
+      "n_days": 441,
+      "combined_sharpe": 8.61,
+      "m31_only_sharpe": 8.261,
+      "combined_calmar": 33.892,
+      "m31_only_calmar": 14.518,
+      "calmar_improvement": 2.33,
+      "max_dd_combo_pct": 0.23,
+      "max_dd_m31_pct": 0.36,
+      "passes_gate": true,
+      "combo_tests": {
+        "component_dropout": {
+          "pass": true,
+          "issues": [
+            "comp1: redundant (drop=4.1%)"
+          ],
+          "n_components": 2
+        },
+        "weight_robustness": {
+          "pass": true,
+          "worst_ratio": 1.073,
+          "note": "FAIL if ratio<0.7 (overfit weights)"
+        },
+        "combo_vs_best_comp": {
+          "pass": true,
+          "ratio": 1.578,
+          "best_comp_oos": 5.457,
+          "combo_oos": 8.61,
+          "note": "FAIL if combo doesn't beat best component in OOS"
+        },
+        "diversification": {
+          "pass": true,
+          "dr": 1.431,
+          "note": "FAIL if DR<1.05 (no diversification)"
+        },
+        "regime_conditional": {
+          "pass": true,
+          "combo_sr": 8.61,
+          "m31_sr": 8.261,
+          "ratio": 1.042,
+          "regime": "regime"
+        }
+      }
+    },
+    "status": "WEAK_PASS",
+    "reasons": [
+      "improvement=1.04<1.10"
+    ],
+    "detected_at": "2026-11-04T18:31:32.902787+00:00"
+  },
+  "aster/RANGE": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.9692
+        },
+        {
+          "name": "KELTNER_REV_AVAXUSDT",
+          "weight": 0.0308,
+          "family": "MR",
+          "corr": 0.073
+        }
+      ],
+      "n_days": 218,
+      "combined_sharpe": 9.515,
+      "m31_only_sharpe": 8.267,
+      "combined_calmar": 112.526,
+      "m31_only_calmar": 97.394,
+      "calmar_improvement": 1.16,
+      "max_dd_combo_pct": 0.14,
+      "max_dd_m31_pct": 0.1,
+      "passes_gate": true,
+      "combo_tests": {
+        "component_dropout": {
+          "pass": true,
+          "issues": [],
+          "n_components": 2
+        },
+        "weight_robustness": {
+          "pass": true,
+          "worst_ratio": 1.223,
+          "note": "FAIL if ratio<0.7 (overfit weights)"
+        },
+        "combo_vs_best_comp": {
+          "pass": true,
+          "ratio": 1.744,
+          "best_comp_oos": 5.457,
+          "combo_oos": 9.515,
+          "note": "FAIL if combo doesn't beat best component in OOS"
+        },
+        "diversification": {
+          "pass": true,
+          "dr": 1.374,
+          "note": "FAIL if DR<1.05 (no diversification)"
+        },
+        "regime_conditional": {
+          "pass": true,
+          "combo_sr": 9.515,
+          "m31_sr": 8.267,
+          "ratio": 1.151,
+          "regime": "regime"
+        }
+      }
+    },
+    "status": "STRICT_PASS",
+    "reasons": [],
+    "detected_at": "2026-11-04T18:31:32.979052+00:00"
+  },
+  "kucoin/RANGE": {
+    "combo": {
+      "components": [
+        {
+          "name": "M31",
+          "weight": 0.97
+        },
+        {
+          "name": "KELTNER_REV_ETHUSDTM",
+          "weight": 0.03,
+          "family": "MR",
+          "corr": -0.095
+        }
+      ],
+      "n_days": 271,
+      "combined_sharpe": 8.515,
+      "m31_only_sharpe": 7.485,
+      "combined_calmar": 21.225,
+      "m31_only_calmar": 13.87,
+      "calmar_improvement": 1.53,
+      "max_dd_combo_pct": 0.64,
+      "max_dd_m31_pct": 0.62,
+      "passes_gate": true,
+      "combo_tests": {
+        "component_dropout": {
+          "pass": true,
+          "issues": [],
+          "n_components": 2
+        },
+        "weight_robustness": {
+          "pass": true,
+          "worst_ratio": 1.278,
+          "note": "FAIL if ratio<0.7 (overfit weights)"
+        },
+        "combo_vs_best_comp": {
+          "pass": true,
+          "ratio": 1.704,
+          "best_comp_oos": 4.998,
+          "combo_oos": 8.515,
+          "note": "FAIL if combo doesn't beat best component in OOS"
+        },
+        "diversification": {
+          "pass": true,
+          "dr": 1.482,
+          "note": "FAIL if DR<1.05 (no diversification)"
+        },
+        "regime_conditional": {
+          "pass": true,
+          "combo_sr": 8.515,
+          "m31_sr": 7.485,
+          "ratio": 1.138,
+          "regime": "regime"
+        }
+      }
+    },
+    "status": "STRICT_PASS",
+    "reasons": [],
+    "detected_at": "2026-11-04T18:31:40.211869+00:00"
   },
   "kucoin/NEUTRAL": {
     "combo": {
       "components": [
         {
           "name": "M31",
-          "weight": 0.9701
+          "weight": 0.9725
         },
         {
           "name": "KELTNER_REV_ETHUSDTM",
-          "weight": 0.0238,
+          "weight": 0.0275,
           "family": "MR",
           "corr": 0.061
-        },
-        {
-          "name": "DUAL_MOMENTUM_XBTUSDTM",
-          "weight": 0.0062,
-          "family": "MOMENTUM",
-          "corr": 0.056
         }
       ],
-      "n_days": 100,
-      "combined_sharpe": 11.186,
-      "m31_only_sharpe": 8.863,
-      "combined_calmar": 52.068,
-      "m31_only_calmar": 82.398,
-      "calmar_improvement": 0.63,
-      "max_dd_combo_pct": 0.47,
-      "max_dd_m31_pct": 0.14,
+      "n_days": 213,
+      "combined_sharpe": 7.83,
+      "m31_only_sharpe": 7.52,
+      "combined_calmar": 23.168,
+      "m31_only_calmar": 17.523,
+      "calmar_improvement": 1.32,
+      "max_dd_combo_pct": 0.57,
+      "max_dd_m31_pct": 0.49,
       "passes_gate": true,
       "combo_tests": {
         "component_dropout": {
           "pass": true,
           "issues": [
-            "comp2: redundant (drop=3.1%)"
+            "comp1: redundant (drop=4.0%)"
           ],
-          "n_components": 3
+          "n_components": 2
         },
         "weight_robustness": {
           "pass": true,
-          "worst_ratio": 0.921,
+          "worst_ratio": 1.245,
           "note": "FAIL if ratio<0.7 (overfit weights)"
         },
         "combo_vs_best_comp": {
           "pass": true,
-          "ratio": 2.238,
+          "ratio": 1.567,
           "best_comp_oos": 4.998,
-          "combo_oos": 11.186,
+          "combo_oos": 7.83,
           "note": "FAIL if combo doesn't beat best component in OOS"
         },
         "diversification": {
           "pass": true,
-          "dr": 1.862,
+          "dr": 1.372,
           "note": "FAIL if DR<1.05 (no diversification)"
         },
         "regime_conditional": {
           "pass": true,
-          "combo_sr": 11.186,
-          "m31_sr": 8.863,
-          "ratio": 1.262,
+          "combo_sr": 7.83,
+          "m31_sr": 7.52,
+          "ratio": 1.041,
           "regime": "regime"
         }
       }
     },
-    "status": "STRICT_PASS",
-    "reasons": [],
-    "detected_at": "2026-11-04T11:20:37.109060+00:00"
+    "status": "WEAK_PASS",
+    "reasons": [
+      "improvement=1.04<1.10"
+    ],
+    "detected_at": "2026-11-04T18:31:40.261421+00:00"
   }
 }
