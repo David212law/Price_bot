@@ -1,0 +1,65 @@
+{
+  "key": "hyperliquid:MR_BB_30_15:bac9cdb3:BTC",
+  "validation": {
+    "n": 76,
+    "pf": 1.037,
+    "wr": 63.2,
+    "sharpe_daily": 0.016,
+    "sharpe_ann": 0.306,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.016,
+      "sharpe_annualized": 0.306,
+      "ci_low_annualized": -3.826,
+      "ci_high_annualized": 5.318,
+      "significant": false,
+      "n_obs": 76,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.56,
+      0.696,
+      0.679,
+      2.117
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 76,
+      "total_ret_pct": 0.78,
+      "cagr_pct": 3.82,
+      "max_dd_pct": 20.83,
+      "calmar": 0.183
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 266,
+        "pf": 1.057,
+        "sharpe_ann": 0.454
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 266,
+        "pf": 0.841,
+        "sharpe_ann": -1.403
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.306,
+        "best_variant_sharpe": 0.454,
+        "ratio": 1.484,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.454
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.454
+          }
+        ]
+      }
+    }
+  }
+}

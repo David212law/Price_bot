@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:MR_CMO_20:67b7e7b4:XBTUSDTM",
+  "validation": {
+    "n": 28,
+    "pf": 0.772,
+    "wr": 53.6,
+    "sharpe_daily": -0.1095,
+    "sharpe_ann": -2.091,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.969,
+      0.855,
+      1.09,
+      0.272
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 28,
+      "total_ret_pct": -9.43,
+      "cagr_pct": -72.51,
+      "max_dd_pct": 15.69,
+      "calmar": -4.62
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 121,
+        "pf": 1.014,
+        "sharpe_ann": 0.111
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 121,
+        "pf": 0.815,
+        "sharpe_ann": -1.607
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.091,
+        "best_variant_sharpe": 0.111,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.111
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.111
+          }
+        ]
+      }
+    }
+  }
+}

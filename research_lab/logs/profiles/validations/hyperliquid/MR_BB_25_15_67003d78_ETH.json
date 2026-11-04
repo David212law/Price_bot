@@ -1,0 +1,65 @@
+{
+  "key": "hyperliquid:MR_BB_25_15:67003d78:ETH",
+  "validation": {
+    "n": 78,
+    "pf": 1.128,
+    "wr": 66.7,
+    "sharpe_daily": 0.0515,
+    "sharpe_ann": 0.983,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0515,
+      "sharpe_annualized": 0.983,
+      "ci_low_annualized": -2.967,
+      "ci_high_annualized": 5.709,
+      "significant": false,
+      "n_obs": 78,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.633,
+      0.542,
+      1.522,
+      1.845
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 78,
+      "total_ret_pct": 9.15,
+      "cagr_pct": 50.66,
+      "max_dd_pct": 27.78,
+      "calmar": 1.824
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 291,
+        "pf": 1.102,
+        "sharpe_ann": 0.8
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 291,
+        "pf": 0.932,
+        "sharpe_ann": -0.573
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.983,
+        "best_variant_sharpe": 0.8,
+        "ratio": 0.814,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.8
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.8
+          }
+        ]
+      }
+    }
+  }
+}

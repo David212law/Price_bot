@@ -1,0 +1,65 @@
+{
+  "key": "hyperliquid:MR_WR_14:ddff8bab:BNB",
+  "validation": {
+    "n": 106,
+    "pf": 1.067,
+    "wr": 68.9,
+    "sharpe_daily": 0.024,
+    "sharpe_ann": 0.459,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.024,
+      "sharpe_annualized": 0.459,
+      "ci_low_annualized": -3.078,
+      "ci_high_annualized": 4.896,
+      "significant": false,
+      "n_obs": 106,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.126,
+      0.748,
+      3.135,
+      0.859
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 106,
+      "total_ret_pct": 2.92,
+      "cagr_pct": 10.42,
+      "max_dd_pct": 16.73,
+      "calmar": 0.623
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 365,
+        "pf": 1.143,
+        "sharpe_ann": 0.932
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 365,
+        "pf": 0.788,
+        "sharpe_ann": -1.558
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.459,
+        "best_variant_sharpe": 0.932,
+        "ratio": 2.031,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.932
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.932
+          }
+        ]
+      }
+    }
+  }
+}

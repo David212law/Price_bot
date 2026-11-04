@@ -1,0 +1,65 @@
+{
+  "key": "aster:MR_HL_60:e4eca8fe:BNBUSDT",
+  "validation": {
+    "n": 52,
+    "pf": 1.062,
+    "wr": 61.5,
+    "sharpe_daily": 0.0273,
+    "sharpe_ann": 0.522,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0273,
+      "sharpe_annualized": 0.522,
+      "ci_low_annualized": -4.534,
+      "ci_high_annualized": 5.995,
+      "significant": false,
+      "n_obs": 52,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.419,
+      0.952,
+      0.628,
+      1.485
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 52,
+      "total_ret_pct": 1.99,
+      "cagr_pct": 14.82,
+      "max_dd_pct": 14.34,
+      "calmar": 1.034
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 172,
+        "pf": 1.028,
+        "sharpe_ann": 0.233
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 172,
+        "pf": 0.843,
+        "sharpe_ann": -1.405
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.522,
+        "best_variant_sharpe": 0.233,
+        "ratio": 0.446,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.233
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.233
+          }
+        ]
+      }
+    }
+  }
+}

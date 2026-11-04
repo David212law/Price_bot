@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:MR_KELT_25:943a664d:BNBUSDTM",
+  "validation": {
+    "n": 68,
+    "pf": 0.935,
+    "wr": 60.3,
+    "sharpe_daily": -0.0284,
+    "sharpe_ann": -0.543,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0284,
+      "sharpe_annualized": -0.543,
+      "ci_low_annualized": -5.103,
+      "ci_high_annualized": 4.244,
+      "significant": false,
+      "n_obs": 68,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.436,
+      2.715,
+      1.129,
+      0.885
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 68,
+      "total_ret_pct": -9.06,
+      "cagr_pct": -39.94,
+      "max_dd_pct": 25.93,
+      "calmar": -1.54
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 250,
+        "pf": 0.973,
+        "sharpe_ann": -0.224
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 250,
+        "pf": 0.818,
+        "sharpe_ann": -1.641
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.543,
+        "best_variant_sharpe": -0.224,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.224
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.224
+          }
+        ]
+      }
+    }
+  }
+}

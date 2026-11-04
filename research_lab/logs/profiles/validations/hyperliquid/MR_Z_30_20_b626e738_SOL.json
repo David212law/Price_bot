@@ -1,0 +1,65 @@
+{
+  "key": "hyperliquid:MR_Z_30_20:b626e738:SOL",
+  "validation": {
+    "n": 48,
+    "pf": 0.757,
+    "wr": 58.3,
+    "sharpe_daily": -0.1217,
+    "sharpe_ann": -2.325,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1217,
+      "sharpe_annualized": -2.325,
+      "ci_low_annualized": -7.14,
+      "ci_high_annualized": 3.736,
+      "significant": false,
+      "n_obs": 48,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.737,
+      0.574,
+      0.567,
+      1.601
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 48,
+      "total_ret_pct": -21.91,
+      "cagr_pct": -84.75,
+      "max_dd_pct": 37.27,
+      "calmar": -2.274
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 157,
+        "pf": 1.173,
+        "sharpe_ann": 1.303
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 157,
+        "pf": 1.023,
+        "sharpe_ann": 0.184
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.325,
+        "best_variant_sharpe": 1.303,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.303
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.303
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "key": "hyperliquid:MR_HL_80:25e01c89:XRP",
+  "validation": {
+    "n": 34,
+    "pf": 1.117,
+    "wr": 55.9,
+    "sharpe_daily": 0.051,
+    "sharpe_ann": 0.974,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.051,
+      "sharpe_annualized": 0.974,
+      "ci_low_annualized": -5.554,
+      "ci_high_annualized": 7.753,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.047,
+      1.013,
+      2.325,
+      0.752
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 34,
+      "total_ret_pct": 4.36,
+      "cagr_pct": 58.19,
+      "max_dd_pct": 18.34,
+      "calmar": 3.173
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 113,
+        "pf": 1.109,
+        "sharpe_ann": 0.839
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 113,
+        "pf": 0.994,
+        "sharpe_ann": -0.045
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.974,
+        "best_variant_sharpe": 0.839,
+        "ratio": 0.861,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.839
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.839
+          }
+        ]
+      }
+    }
+  }
+}

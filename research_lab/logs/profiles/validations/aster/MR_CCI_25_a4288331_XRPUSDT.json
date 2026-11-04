@@ -1,0 +1,65 @@
+{
+  "key": "aster:MR_CCI_25:a4288331:XRPUSDT",
+  "validation": {
+    "n": 79,
+    "pf": 1.51,
+    "wr": 68.4,
+    "sharpe_daily": 0.1635,
+    "sharpe_ann": 3.124,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1635,
+      "sharpe_annualized": 3.124,
+      "ci_low_annualized": -0.591,
+      "ci_high_annualized": 7.911,
+      "significant": false,
+      "n_obs": 79,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      3.597,
+      0.834,
+      2.231,
+      1.332
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 79,
+      "total_ret_pct": 36.62,
+      "cagr_pct": 322.72,
+      "max_dd_pct": 11.89,
+      "calmar": 27.143
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 269,
+        "pf": 1.073,
+        "sharpe_ann": 0.501
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 269,
+        "pf": 0.883,
+        "sharpe_ann": -0.859
+      },
+      "param_robustness": {
+        "baseline_sharpe": 3.124,
+        "best_variant_sharpe": 0.501,
+        "ratio": 0.16,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.501
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.501
+          }
+        ]
+      }
+    }
+  }
+}

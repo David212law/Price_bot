@@ -1,0 +1,65 @@
+{
+  "key": "aster:MR_HL_80:25e01c89:BTCUSDT",
+  "validation": {
+    "n": 36,
+    "pf": 1.399,
+    "wr": 66.7,
+    "sharpe_daily": 0.1473,
+    "sharpe_ann": 2.814,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1473,
+      "sharpe_annualized": 2.814,
+      "ci_low_annualized": -3.316,
+      "ci_high_annualized": 9.273,
+      "significant": false,
+      "n_obs": 36,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.309,
+      0.852,
+      4.936,
+      1.312
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 36,
+      "total_ret_pct": 14.11,
+      "cagr_pct": 281.16,
+      "max_dd_pct": 15.34,
+      "calmar": 18.322
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 130,
+        "pf": 1.048,
+        "sharpe_ann": 0.391
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 130,
+        "pf": 0.859,
+        "sharpe_ann": -1.257
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.814,
+        "best_variant_sharpe": 0.391,
+        "ratio": 0.139,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.391
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.391
+          }
+        ]
+      }
+    }
+  }
+}

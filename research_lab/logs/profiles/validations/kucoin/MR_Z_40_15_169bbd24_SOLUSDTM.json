@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:MR_Z_40_15:169bbd24:SOLUSDTM",
+  "validation": {
+    "n": 71,
+    "pf": 0.926,
+    "wr": 64.8,
+    "sharpe_daily": -0.0322,
+    "sharpe_ann": -0.614,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0322,
+      "sharpe_annualized": -0.614,
+      "ci_low_annualized": -5.253,
+      "ci_high_annualized": 4.296,
+      "significant": false,
+      "n_obs": 71,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.261,
+      0.894,
+      1.115,
+      0.593
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 71,
+      "total_ret_pct": -13.46,
+      "cagr_pct": -52.45,
+      "max_dd_pct": 25.68,
+      "calmar": -2.042
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 249,
+        "pf": 1.003,
+        "sharpe_ann": 0.027
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 249,
+        "pf": 0.888,
+        "sharpe_ann": -0.96
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.614,
+        "best_variant_sharpe": 0.027,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.027
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.027
+          }
+        ]
+      }
+    }
+  }
+}
