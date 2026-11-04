@@ -2436,3 +2436,41 @@ Paper ۳۰ روزه (D-460) ادامه دارد. Keltner risk (TREND padding) د
 - به `shadow_paper.yml` اضافه شد.
 - هدف: مقایسه این ترکیب با M31 تنها و ترکیب ۵۰/۵۰ (در ربات HL Shadow عادی) در طول ۳۰ روز آینده.
 
+
+## D-2026-11-04-511 — Live Analyzer (تحلیل داده‌های زنده)
+
+**وضعیت:** قفل
+
+**زمینه:**
+کاربر پیشنهاد داد که ربات محقق علاوه بر دیتابیس تاریخی، داده‌های زنده صرافی‌ها را هم تحلیل کند تا مشخص شود استراتژی‌های فعال هنوز کار می‌کنند یا نه (Decay Detection). این مهم است چون Paper روی داده‌های واقعی در حال اجراست، نه گذشته.
+
+**تصمیم:**
+ماژول جدید `research_lab/live_analyzer.py` ساخته شد:
+- READ-ONLY: هیچ وزن یا state ای را تغییر نمی‌دهد
+- WATCHLIST شامل ۶ آیتم: M31 در ۳ صرافی + Keltner در ۳ صرافی
+- ۳ پنجره زمانی: ۷، ۳۰، ۹۰ روز
+- مقایسه با Sharpe تاریخی از profiler state
+- طبقه‌بندی: HEALTHY (ratio≥0.7)، DECAYING (0.3≤ratio<0.7)، DEAD (ratio<0.3)
+- Bale alert اگر چیزی DECAYING/DEAD شود
+- گزارش روزانه در `research_lab/logs/live_reports/YYYY-MM-DD.json`
+- Cache 6 ساعته برای جلوگیری از فراخوانی مکرر API
+
+**مشکلات حل‌شده:**
+- KuCoin Funding API از ایران 404 می‌دهد → fallback به فایل محلی `exchanges/kucoin/data/{sym}_funding.json`
+- M31 Historical SR در state.json نیست (چون synthetic است) → از portfolio_daily_returns + apply_m31_fees محاسبه می‌شود
+- KuCoin/Funding User-Agent header الزامی است
+
+**تأیید تست محلی:**
+- M31 HL: Hist=8.16, 30d Health=HEALTHY (ratio 2.7)
+- M31 Aster: Hist=8.26, 30d Health=HEALTHY (ratio 2.42)
+- M31 KuCoin: Hist=7.76, 30d Health=HEALTHY (ratio 3.81, fallback از فایل محلی)
+- Keltner HL/Aster/KuCoin: همه HEALTHY
+
+**چه چیزی تغییر نکرد:**
+- ۹ ربات Paper دست‌نخورده (D-460 Freeze)
+- weights، composer، profiler
+- فقط یک ماژول جدید اضافه شد
+
+**بازگشت در صورت مشکل:**
+git revert <commit_hash> برای حذف کامل ماژول
+
