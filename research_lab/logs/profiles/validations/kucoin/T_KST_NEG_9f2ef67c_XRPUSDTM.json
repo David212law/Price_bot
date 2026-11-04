@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:T_KST_NEG:9f2ef67c:XRPUSDTM",
+  "validation": {
+    "n": 10,
+    "pf": 1.657,
+    "wr": 50.0,
+    "sharpe_daily": 0.2289,
+    "sharpe_ann": 4.373,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.064,
+      0.0,
+      99.99,
+      1.476
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 40,
+        "pf": 1.611,
+        "sharpe_ann": 4.022
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 40,
+        "pf": 1.523,
+        "sharpe_ann": 3.572
+      },
+      "param_robustness": {
+        "baseline_sharpe": 4.373,
+        "best_variant_sharpe": 4.022,
+        "ratio": 0.92,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 4.022
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 4.022
+          }
+        ]
+      }
+    }
+  }
+}

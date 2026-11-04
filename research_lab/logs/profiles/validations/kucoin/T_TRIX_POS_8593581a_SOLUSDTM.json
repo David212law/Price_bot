@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:T_TRIX_POS:8593581a:SOLUSDTM",
+  "validation": {
+    "n": 13,
+    "pf": 1.023,
+    "wr": 38.5,
+    "sharpe_daily": 0.0102,
+    "sharpe_ann": 0.196,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.577,
+      0.723,
+      5.052,
+      0.645
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 55,
+        "pf": 1.131,
+        "sharpe_ann": 1.061
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 55,
+        "pf": 1.068,
+        "sharpe_ann": 0.575
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.196,
+        "best_variant_sharpe": 1.061,
+        "ratio": 5.413,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.061
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.061
+          }
+        ]
+      }
+    }
+  }
+}

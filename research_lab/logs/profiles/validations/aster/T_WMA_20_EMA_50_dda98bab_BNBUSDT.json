@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_WMA_20_EMA_50:dda98bab:BNBUSDT",
+  "validation": {
+    "n": 25,
+    "pf": 0.559,
+    "wr": 24.0,
+    "sharpe_daily": -0.248,
+    "sharpe_ann": -4.737,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.431,
+      0.937,
+      0.0,
+      0.648
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 25,
+      "total_ret_pct": -20.35,
+      "cagr_pct": -96.39,
+      "max_dd_pct": 22.43,
+      "calmar": -4.298
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 70,
+        "pf": 0.974,
+        "sharpe_ann": -0.202
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 70,
+        "pf": 0.848,
+        "sharpe_ann": -1.287
+      },
+      "param_robustness": {
+        "baseline_sharpe": -4.737,
+        "best_variant_sharpe": -0.202,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.202
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.202
+          }
+        ]
+      }
+    }
+  }
+}

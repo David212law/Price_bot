@@ -1,0 +1,51 @@
+{
+  "key": "aster:T_KAMA_20_SMA_100:fab92566:XRPUSDT",
+  "validation": {
+    "n": 17,
+    "pf": 1.511,
+    "wr": 47.1,
+    "sharpe_daily": 0.181,
+    "sharpe_ann": 3.458,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      6.448,
+      1.739,
+      0.316,
+      1.07
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 56,
+        "pf": 1.232,
+        "sharpe_ann": 1.716
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 56,
+        "pf": 1.132,
+        "sharpe_ann": 1.027
+      },
+      "param_robustness": {
+        "baseline_sharpe": 3.458,
+        "best_variant_sharpe": 1.716,
+        "ratio": 0.496,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.716
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.716
+          }
+        ]
+      }
+    }
+  }
+}

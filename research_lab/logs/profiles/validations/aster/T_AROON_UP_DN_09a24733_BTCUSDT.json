@@ -1,0 +1,65 @@
+{
+  "key": "aster:T_AROON_UP_DN:09a24733:BTCUSDT",
+  "validation": {
+    "n": 34,
+    "pf": 0.894,
+    "wr": 41.2,
+    "sharpe_daily": -0.0471,
+    "sharpe_ann": -0.9,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0471,
+      "sharpe_annualized": -0.9,
+      "ci_low_annualized": -8.171,
+      "ci_high_annualized": 5.064,
+      "significant": false,
+      "n_obs": 34,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.793,
+      1.681,
+      0.348,
+      1.328
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 34,
+      "total_ret_pct": -6.71,
+      "cagr_pct": -52.54,
+      "max_dd_pct": 18.5,
+      "calmar": -2.84
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 125,
+        "pf": 0.885,
+        "sharpe_ann": -0.923
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 125,
+        "pf": 0.715,
+        "sharpe_ann": -2.598
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.9,
+        "best_variant_sharpe": -0.923,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.923
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.923
+          }
+        ]
+      }
+    }
+  }
+}

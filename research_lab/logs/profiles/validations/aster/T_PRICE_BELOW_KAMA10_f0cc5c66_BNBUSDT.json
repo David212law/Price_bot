@@ -1,0 +1,51 @@
+{
+  "key": "aster:T_PRICE_BELOW_KAMA10:f0cc5c66:BNBUSDT",
+  "validation": {
+    "n": 13,
+    "pf": 0.616,
+    "wr": 23.1,
+    "sharpe_daily": -0.2153,
+    "sharpe_ann": -4.113,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.912,
+      0.0,
+      1.433,
+      0.474
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 71,
+        "pf": 0.899,
+        "sharpe_ann": -0.835
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 71,
+        "pf": 0.826,
+        "sharpe_ann": -1.531
+      },
+      "param_robustness": {
+        "baseline_sharpe": -4.113,
+        "best_variant_sharpe": -0.835,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.835
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.835
+          }
+        ]
+      }
+    }
+  }
+}

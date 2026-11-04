@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_TEMA_20_EMA_50:b62d8d0e:SOLUSDT",
+  "validation": {
+    "n": 26,
+    "pf": 0.916,
+    "wr": 30.8,
+    "sharpe_daily": -0.0353,
+    "sharpe_ann": -0.674,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.274,
+      4.043,
+      0.613,
+      0.823
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 26,
+      "total_ret_pct": -7.69,
+      "cagr_pct": -67.47,
+      "max_dd_pct": 17.42,
+      "calmar": -3.873
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 89,
+        "pf": 1.292,
+        "sharpe_ann": 1.964
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 89,
+        "pf": 1.166,
+        "sharpe_ann": 1.198
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.674,
+        "best_variant_sharpe": 1.964,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.964
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.964
+          }
+        ]
+      }
+    }
+  }
+}

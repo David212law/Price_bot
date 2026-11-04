@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:T_WMA_20_EMA_50:dda98bab:AVAXUSDTM",
+  "validation": {
+    "n": 33,
+    "pf": 0.402,
+    "wr": 18.2,
+    "sharpe_daily": -0.4026,
+    "sharpe_ann": -7.692,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.4026,
+      "sharpe_annualized": -7.692,
+      "ci_low_annualized": -20.905,
+      "ci_high_annualized": -0.867,
+      "significant": false,
+      "n_obs": 33,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.785,
+      0.0,
+      1.049,
+      0.25
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 33,
+      "total_ret_pct": -57.68,
+      "cagr_pct": -99.99,
+      "max_dd_pct": 62.41,
+      "calmar": -1.602
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 99,
+        "pf": 0.829,
+        "sharpe_ann": -1.478
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 99,
+        "pf": 0.768,
+        "sharpe_ann": -2.106
+      },
+      "param_robustness": {
+        "baseline_sharpe": -7.692,
+        "best_variant_sharpe": -1.478,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.478
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.478
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_PRICE_BELOW_KAMA10:f0cc5c66:BTC",
+  "validation": {
+    "n": 16,
+    "pf": 0.354,
+    "wr": 18.8,
+    "sharpe_daily": -0.5004,
+    "sharpe_ann": -9.56,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      1.764,
+      0.453,
+      0.0
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 64,
+        "pf": 0.851,
+        "sharpe_ann": -1.365
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 64,
+        "pf": 0.769,
+        "sharpe_ann": -2.259
+      },
+      "param_robustness": {
+        "baseline_sharpe": -9.56,
+        "best_variant_sharpe": -1.365,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.365
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.365
+          }
+        ]
+      }
+    }
+  }
+}

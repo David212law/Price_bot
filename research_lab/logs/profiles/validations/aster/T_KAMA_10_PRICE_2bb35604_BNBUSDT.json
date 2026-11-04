@@ -1,0 +1,65 @@
+{
+  "key": "aster:T_KAMA_10_PRICE:2bb35604:BNBUSDT",
+  "validation": {
+    "n": 114,
+    "pf": 0.647,
+    "wr": 64.9,
+    "sharpe_daily": -0.1517,
+    "sharpe_ann": -2.898,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1517,
+      "sharpe_annualized": -2.898,
+      "ci_low_annualized": -6.026,
+      "ci_high_annualized": 0.545,
+      "significant": false,
+      "n_obs": 114,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.578,
+      0.403,
+      2.825,
+      0.677
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 114,
+      "total_ret_pct": -25.05,
+      "cagr_pct": -60.28,
+      "max_dd_pct": 27.67,
+      "calmar": -2.178
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 412,
+        "pf": 0.871,
+        "sharpe_ann": -0.897
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 412,
+        "pf": 0.536,
+        "sharpe_ann": -3.674
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.898,
+        "best_variant_sharpe": -0.897,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.897
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.897
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_TEMA_20_SMA_50:9ecef739:BNBUSDT",
+  "validation": {
+    "n": 28,
+    "pf": 1.35,
+    "wr": 35.7,
+    "sharpe_daily": 0.1182,
+    "sharpe_ann": 2.259,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.104,
+      2.997,
+      0.0,
+      1.222
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 28,
+      "total_ret_pct": 10.64,
+      "cagr_pct": 273.41,
+      "max_dd_pct": 14.97,
+      "calmar": 18.262
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 92,
+        "pf": 1.214,
+        "sharpe_ann": 1.485
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 92,
+        "pf": 1.034,
+        "sharpe_ann": 0.264
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.259,
+        "best_variant_sharpe": 1.485,
+        "ratio": 0.657,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.485
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.485
+          }
+        ]
+      }
+    }
+  }
+}

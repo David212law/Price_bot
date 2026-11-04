@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_PRICE_BELOW_KAMA10:f0cc5c66:ETHUSDT",
+  "validation": {
+    "n": 20,
+    "pf": 0.73,
+    "wr": 30.0,
+    "sharpe_daily": -0.1464,
+    "sharpe_ann": -2.797,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.458,
+      1.856,
+      0.555,
+      0.454
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 20,
+      "total_ret_pct": -23.27,
+      "cagr_pct": -99.2,
+      "max_dd_pct": 33.82,
+      "calmar": -2.933
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 80,
+        "pf": 0.906,
+        "sharpe_ann": -0.827
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 80,
+        "pf": 0.844,
+        "sharpe_ann": -1.438
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.797,
+        "best_variant_sharpe": -0.827,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.827
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.827
+          }
+        ]
+      }
+    }
+  }
+}

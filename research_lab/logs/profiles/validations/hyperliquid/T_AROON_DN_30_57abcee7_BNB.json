@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_AROON_DN_30:57abcee7:BNB",
+  "validation": {
+    "n": 13,
+    "pf": 0.836,
+    "wr": 30.8,
+    "sharpe_daily": -0.0783,
+    "sharpe_ann": -1.496,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.777,
+      1.087,
+      0.0,
+      1.921
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 41,
+        "pf": 0.998,
+        "sharpe_ann": -0.018
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 41,
+        "pf": 0.918,
+        "sharpe_ann": -0.679
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.496,
+        "best_variant_sharpe": -0.018,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.018
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.018
+          }
+        ]
+      }
+    }
+  }
+}

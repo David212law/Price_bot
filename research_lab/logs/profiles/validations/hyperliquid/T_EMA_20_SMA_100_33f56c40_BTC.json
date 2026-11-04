@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_EMA_20_SMA_100:33f56c40:BTC",
+  "validation": {
+    "n": 10,
+    "pf": 1.043,
+    "wr": 30.0,
+    "sharpe_daily": 0.0172,
+    "sharpe_ann": 0.329,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.733,
+      0.0,
+      0.0,
+      3.087
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 40,
+        "pf": 1.208,
+        "sharpe_ann": 1.513
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 40,
+        "pf": 1.037,
+        "sharpe_ann": 0.296
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.329,
+        "best_variant_sharpe": 1.513,
+        "ratio": 4.599,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.513
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.513
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_WMA_20_EMA_50:dda98bab:SOL",
+  "validation": {
+    "n": 17,
+    "pf": 1.365,
+    "wr": 41.2,
+    "sharpe_daily": 0.1293,
+    "sharpe_ann": 2.47,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.32,
+      1.601,
+      1.095,
+      1.253
+    ],
+    "quartiles_pass": 4,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 58,
+        "pf": 1.374,
+        "sharpe_ann": 2.407
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 58,
+        "pf": 1.252,
+        "sharpe_ann": 1.732
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.47,
+        "best_variant_sharpe": 2.407,
+        "ratio": 0.974,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.407
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.407
+          }
+        ]
+      }
+    }
+  }
+}

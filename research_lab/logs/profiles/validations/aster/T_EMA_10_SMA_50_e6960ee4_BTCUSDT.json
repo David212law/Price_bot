@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_EMA_10_SMA_50:e6960ee4:BTCUSDT",
+  "validation": {
+    "n": 24,
+    "pf": 0.344,
+    "wr": 29.2,
+    "sharpe_daily": -0.4704,
+    "sharpe_ann": -8.988,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.054,
+      0.83,
+      0.952,
+      0.0
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 24,
+      "total_ret_pct": -24.19,
+      "cagr_pct": -98.52,
+      "max_dd_pct": 24.19,
+      "calmar": -4.072
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 87,
+        "pf": 0.816,
+        "sharpe_ann": -1.562
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 87,
+        "pf": 0.692,
+        "sharpe_ann": -2.914
+      },
+      "param_robustness": {
+        "baseline_sharpe": -8.988,
+        "best_variant_sharpe": -1.562,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.562
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.562
+          }
+        ]
+      }
+    }
+  }
+}

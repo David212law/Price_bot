@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:T_AROON_UP_DN:09a24733:SOLUSDTM",
+  "validation": {
+    "n": 49,
+    "pf": 0.433,
+    "wr": 28.6,
+    "sharpe_daily": -0.3402,
+    "sharpe_ann": -6.499,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.3402,
+      "sharpe_annualized": -6.499,
+      "ci_low_annualized": -13.939,
+      "ci_high_annualized": -1.107,
+      "significant": false,
+      "n_obs": 49,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.529,
+      0.162,
+      0.396,
+      0.844
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 49,
+      "total_ret_pct": -50.44,
+      "cagr_pct": -99.46,
+      "max_dd_pct": 57.9,
+      "calmar": -1.718
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 165,
+        "pf": 0.807,
+        "sharpe_ann": -1.571
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 165,
+        "pf": 0.716,
+        "sharpe_ann": -2.496
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.499,
+        "best_variant_sharpe": -1.571,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -1.571
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -1.571
+          }
+        ]
+      }
+    }
+  }
+}

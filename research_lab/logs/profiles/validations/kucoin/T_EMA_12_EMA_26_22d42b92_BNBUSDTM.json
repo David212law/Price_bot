@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:T_EMA_12_EMA_26:22d42b92:BNBUSDTM",
+  "validation": {
+    "n": 42,
+    "pf": 0.962,
+    "wr": 26.2,
+    "sharpe_daily": -0.0142,
+    "sharpe_ann": -0.271,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0142,
+      "sharpe_annualized": -0.271,
+      "ci_low_annualized": -8.686,
+      "ci_high_annualized": 4.558,
+      "significant": false,
+      "n_obs": 42,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.751,
+      1.129,
+      1.887,
+      0.533
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 42,
+      "total_ret_pct": -5.76,
+      "cagr_pct": -40.3,
+      "max_dd_pct": 19.42,
+      "calmar": -2.075
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 120,
+        "pf": 1.043,
+        "sharpe_ann": 0.296
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 120,
+        "pf": 0.886,
+        "sharpe_ann": -0.871
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.271,
+        "best_variant_sharpe": 0.296,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.296
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.296
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:T_EMA_50_SMA_200:206c28a1:XRPUSDTM",
+  "validation": {
+    "n": 12,
+    "pf": 1.979,
+    "wr": 50.0,
+    "sharpe_daily": 0.3031,
+    "sharpe_ann": 5.791,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      3.869,
+      1.13,
+      3.231,
+      0.838
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 39,
+        "pf": 1.551,
+        "sharpe_ann": 3.715
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 39,
+        "pf": 1.429,
+        "sharpe_ann": 3.049
+      },
+      "param_robustness": {
+        "baseline_sharpe": 5.791,
+        "best_variant_sharpe": 3.715,
+        "ratio": 0.642,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 3.715
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 3.715
+          }
+        ]
+      }
+    }
+  }
+}

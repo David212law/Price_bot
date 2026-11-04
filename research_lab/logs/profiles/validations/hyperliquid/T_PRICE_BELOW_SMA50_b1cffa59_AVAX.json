@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_PRICE_BELOW_SMA50:b1cffa59:AVAX",
+  "validation": {
+    "n": 14,
+    "pf": 0.489,
+    "wr": 21.4,
+    "sharpe_daily": -0.3324,
+    "sharpe_ann": -6.35,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      0.938,
+      1.008,
+      0.385
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 48,
+        "pf": 1.303,
+        "sharpe_ann": 2.243
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 48,
+        "pf": 1.233,
+        "sharpe_ann": 1.792
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.35,
+        "best_variant_sharpe": 2.243,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.243
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.243
+          }
+        ]
+      }
+    }
+  }
+}

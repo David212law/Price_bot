@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:T_KAMA_TEMA:1dcfe610:ETHUSDTM",
+  "validation": {
+    "n": 52,
+    "pf": 1.282,
+    "wr": 63.5,
+    "sharpe_daily": 0.1024,
+    "sharpe_ann": 1.956,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.1024,
+      "sharpe_annualized": 1.956,
+      "ci_low_annualized": -3.278,
+      "ci_high_annualized": 7.337,
+      "significant": false,
+      "n_obs": 52,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.652,
+      2.256,
+      0.952,
+      2.3
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 52,
+      "total_ret_pct": 18.65,
+      "cagr_pct": 232.08,
+      "max_dd_pct": 19.6,
+      "calmar": 11.841
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 194,
+        "pf": 1.034,
+        "sharpe_ann": 0.267
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 194,
+        "pf": 0.868,
+        "sharpe_ann": -1.09
+      },
+      "param_robustness": {
+        "baseline_sharpe": 1.956,
+        "best_variant_sharpe": 0.267,
+        "ratio": 0.137,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.267
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.267
+          }
+        ]
+      }
+    }
+  }
+}

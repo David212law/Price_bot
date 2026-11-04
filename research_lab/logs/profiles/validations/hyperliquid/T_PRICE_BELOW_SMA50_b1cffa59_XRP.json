@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_PRICE_BELOW_SMA50:b1cffa59:XRP",
+  "validation": {
+    "n": 12,
+    "pf": 1.276,
+    "wr": 41.7,
+    "sharpe_daily": 0.1087,
+    "sharpe_ann": 2.077,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      2.962,
+      1.134,
+      2.142
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 28,
+        "pf": 1.508,
+        "sharpe_ann": 3.577
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 28,
+        "pf": 1.424,
+        "sharpe_ann": 3.089
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.077,
+        "best_variant_sharpe": 3.577,
+        "ratio": 1.722,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 3.577
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 3.577
+          }
+        ]
+      }
+    }
+  }
+}

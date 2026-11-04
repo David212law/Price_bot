@@ -1,0 +1,65 @@
+{
+  "key": "aster:T_AROON_UP_DN:09a24733:XRPUSDT",
+  "validation": {
+    "n": 41,
+    "pf": 1.098,
+    "wr": 41.5,
+    "sharpe_daily": 0.0372,
+    "sharpe_ann": 0.71,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.0372,
+      "sharpe_annualized": 0.71,
+      "ci_low_annualized": -5.898,
+      "ci_high_annualized": 6.283,
+      "significant": false,
+      "n_obs": 41,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.904,
+      1.936,
+      0.811,
+      0.885
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 41,
+      "total_ret_pct": 2.81,
+      "cagr_pct": 27.94,
+      "max_dd_pct": 22.85,
+      "calmar": 1.223
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 134,
+        "pf": 1.276,
+        "sharpe_ann": 1.793
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 134,
+        "pf": 1.114,
+        "sharpe_ann": 0.803
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.71,
+        "best_variant_sharpe": 1.793,
+        "ratio": 2.525,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.793
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.793
+          }
+        ]
+      }
+    }
+  }
+}

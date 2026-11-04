@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_KAMA_20_EMA_100:6436848a:SOL",
+  "validation": {
+    "n": 13,
+    "pf": 0.462,
+    "wr": 23.1,
+    "sharpe_daily": -0.3525,
+    "sharpe_ann": -6.734,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.763,
+      0.695,
+      0.0,
+      0.485
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 35,
+        "pf": 1.449,
+        "sharpe_ann": 3.006
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 35,
+        "pf": 1.338,
+        "sharpe_ann": 2.39
+      },
+      "param_robustness": {
+        "baseline_sharpe": -6.734,
+        "best_variant_sharpe": 3.006,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 3.006
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 3.006
+          }
+        ]
+      }
+    }
+  }
+}

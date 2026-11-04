@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:T_EMA_20_SMA_100:33f56c40:XBTUSDTM",
+  "validation": {
+    "n": 16,
+    "pf": 1.761,
+    "wr": 43.8,
+    "sharpe_daily": 0.2377,
+    "sharpe_ann": 4.542,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.467,
+      2.572,
+      0.481,
+      3.88
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 62,
+        "pf": 1.161,
+        "sharpe_ann": 1.213
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 62,
+        "pf": 1.012,
+        "sharpe_ann": 0.099
+      },
+      "param_robustness": {
+        "baseline_sharpe": 4.542,
+        "best_variant_sharpe": 1.213,
+        "ratio": 0.267,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.213
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.213
+          }
+        ]
+      }
+    }
+  }
+}

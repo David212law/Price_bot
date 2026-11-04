@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:T_TRIX_NEG:fc496f7b:AVAXUSDTM",
+  "validation": {
+    "n": 16,
+    "pf": 0.273,
+    "wr": 12.5,
+    "sharpe_daily": -0.6271,
+    "sharpe_ann": -11.981,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.731,
+      0.0,
+      0.576,
+      0.0
+    ],
+    "quartiles_pass": 0,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 60,
+        "pf": 1.112,
+        "sharpe_ann": 0.874
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 60,
+        "pf": 1.057,
+        "sharpe_ann": 0.461
+      },
+      "param_robustness": {
+        "baseline_sharpe": -11.981,
+        "best_variant_sharpe": 0.874,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.874
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.874
+          }
+        ]
+      }
+    }
+  }
+}

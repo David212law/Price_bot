@@ -1,0 +1,51 @@
+{
+  "key": "aster:T_PRICE_ABOVE_EMA200:c399ef96:XRPUSDT",
+  "validation": {
+    "n": 14,
+    "pf": 0.722,
+    "wr": 28.6,
+    "sharpe_daily": -0.1427,
+    "sharpe_ann": -2.727,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.882,
+      0.713,
+      0.0,
+      1.485
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 45,
+        "pf": 0.918,
+        "sharpe_ann": -0.674
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 45,
+        "pf": 0.85,
+        "sharpe_ann": -1.303
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.727,
+        "best_variant_sharpe": -0.674,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.674
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.674
+          }
+        ]
+      }
+    }
+  }
+}

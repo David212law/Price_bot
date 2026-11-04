@@ -1,0 +1,65 @@
+{
+  "key": "aster:T_KAMA_10_PRICE:2bb35604:AVAXUSDT",
+  "validation": {
+    "n": 118,
+    "pf": 1.841,
+    "wr": 82.2,
+    "sharpe_daily": 0.2316,
+    "sharpe_ann": 4.425,
+    "bootstrap_ci": {
+      "sharpe_per_period": 0.2316,
+      "sharpe_annualized": 4.425,
+      "ci_low_annualized": 0.929,
+      "ci_high_annualized": 8.586,
+      "significant": true,
+      "n_obs": 118,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      1.304,
+      1.934,
+      1.459,
+      2.99
+    ],
+    "quartiles_pass": 4,
+    "calmar": {
+      "n": 118,
+      "total_ret_pct": 87.28,
+      "cagr_pct": 596.4,
+      "max_dd_pct": 10.48,
+      "calmar": 56.912
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 406,
+        "pf": 1.223,
+        "sharpe_ann": 1.472
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 406,
+        "pf": 0.955,
+        "sharpe_ann": -0.321
+      },
+      "param_robustness": {
+        "baseline_sharpe": 4.425,
+        "best_variant_sharpe": 1.472,
+        "ratio": 0.333,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.472
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.472
+          }
+        ]
+      }
+    }
+  }
+}

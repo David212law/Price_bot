@@ -1,0 +1,51 @@
+{
+  "key": "kucoin:T_KAMA_20_EMA_100:6436848a:BNBUSDTM",
+  "validation": {
+    "n": 12,
+    "pf": 1.378,
+    "wr": 41.7,
+    "sharpe_daily": 0.1398,
+    "sharpe_ann": 2.672,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.51,
+      2.501,
+      0.628,
+      1.013
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 50,
+        "pf": 1.143,
+        "sharpe_ann": 1.062
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 50,
+        "pf": 1.029,
+        "sharpe_ann": 0.228
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.672,
+        "best_variant_sharpe": 1.062,
+        "ratio": 0.397,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.062
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.062
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_ST_10_3_BOTH:5f206741:SOL",
+  "validation": {
+    "n": 18,
+    "pf": 1.392,
+    "wr": 44.4,
+    "sharpe_daily": 0.1389,
+    "sharpe_ann": 2.654,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.228,
+      0.968,
+      1.401,
+      1.748
+    ],
+    "quartiles_pass": 3,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 61,
+        "pf": 1.196,
+        "sharpe_ann": 1.387
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 61,
+        "pf": 1.093,
+        "sharpe_ann": 0.701
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.654,
+        "best_variant_sharpe": 1.387,
+        "ratio": 0.523,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.387
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.387
+          }
+        ]
+      }
+    }
+  }
+}

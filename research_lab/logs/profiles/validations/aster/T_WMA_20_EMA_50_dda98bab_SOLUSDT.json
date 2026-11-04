@@ -1,0 +1,51 @@
+{
+  "key": "aster:T_WMA_20_EMA_50:dda98bab:SOLUSDT",
+  "validation": {
+    "n": 18,
+    "pf": 1.13,
+    "wr": 33.3,
+    "sharpe_daily": 0.0494,
+    "sharpe_ann": 0.944,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.28,
+      2.707,
+      0.556,
+      1.2
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 69,
+        "pf": 1.399,
+        "sharpe_ann": 2.613
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 69,
+        "pf": 1.273,
+        "sharpe_ann": 1.91
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.944,
+        "best_variant_sharpe": 2.613,
+        "ratio": 2.768,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.613
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.613
+          }
+        ]
+      }
+    }
+  }
+}

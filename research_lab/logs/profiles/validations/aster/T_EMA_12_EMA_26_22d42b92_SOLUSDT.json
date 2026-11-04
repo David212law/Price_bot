@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_EMA_12_EMA_26:22d42b92:SOLUSDT",
+  "validation": {
+    "n": 28,
+    "pf": 0.988,
+    "wr": 28.6,
+    "sharpe_daily": -0.0049,
+    "sharpe_ann": -0.093,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.309,
+      2.464,
+      2.258,
+      0.581
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 28,
+      "total_ret_pct": -2.8,
+      "cagr_pct": -30.96,
+      "max_dd_pct": 15.45,
+      "calmar": -2.003
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 103,
+        "pf": 1.216,
+        "sharpe_ann": 1.44
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 103,
+        "pf": 1.086,
+        "sharpe_ann": 0.618
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.093,
+        "best_variant_sharpe": 1.44,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 1.44
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 1.44
+          }
+        ]
+      }
+    }
+  }
+}

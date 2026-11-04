@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_KST_NEG:9f2ef67c:ETH",
+  "validation": {
+    "n": 11,
+    "pf": 0.699,
+    "wr": 27.3,
+    "sharpe_daily": -0.1634,
+    "sharpe_ann": -3.121,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.0,
+      99.99,
+      0.0,
+      0.511
+    ],
+    "quartiles_pass": 1,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 37,
+        "pf": 1.404,
+        "sharpe_ann": 2.883
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 37,
+        "pf": 1.312,
+        "sharpe_ann": 2.331
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.121,
+        "best_variant_sharpe": 2.883,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.883
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.883
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "key": "kucoin:T_EMA_12_EMA_26:22d42b92:AVAXUSDTM",
+  "validation": {
+    "n": 49,
+    "pf": 0.492,
+    "wr": 18.4,
+    "sharpe_daily": -0.2801,
+    "sharpe_ann": -5.351,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.2801,
+      "sharpe_annualized": -5.351,
+      "ci_low_annualized": -14.978,
+      "ci_high_annualized": -0.041,
+      "significant": false,
+      "n_obs": 49,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.702,
+      0.257,
+      0.399,
+      0.616
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 49,
+      "total_ret_pct": -55.31,
+      "cagr_pct": -99.75,
+      "max_dd_pct": 64.76,
+      "calmar": -1.54
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 133,
+        "pf": 0.986,
+        "sharpe_ann": -0.103
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 133,
+        "pf": 0.896,
+        "sharpe_ann": -0.84
+      },
+      "param_robustness": {
+        "baseline_sharpe": -5.351,
+        "best_variant_sharpe": -0.103,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.103
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.103
+          }
+        ]
+      }
+    }
+  }
+}

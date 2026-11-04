@@ -1,0 +1,51 @@
+{
+  "key": "hyperliquid:T_KAMA_20_SMA_100:fab92566:BNB",
+  "validation": {
+    "n": 10,
+    "pf": 2.083,
+    "wr": 50.0,
+    "sharpe_daily": 0.3297,
+    "sharpe_ann": 6.299,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      2.304,
+      2.918,
+      1.27,
+      2.192
+    ],
+    "quartiles_pass": 4,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 34,
+        "pf": 1.724,
+        "sharpe_ann": 4.051
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 34,
+        "pf": 1.517,
+        "sharpe_ann": 3.161
+      },
+      "param_robustness": {
+        "baseline_sharpe": 6.299,
+        "best_variant_sharpe": 4.051,
+        "ratio": 0.643,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 4.051
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 4.051
+          }
+        ]
+      }
+    }
+  }
+}

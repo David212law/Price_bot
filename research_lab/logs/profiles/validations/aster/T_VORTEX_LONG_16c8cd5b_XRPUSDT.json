@@ -1,0 +1,65 @@
+{
+  "key": "aster:T_VORTEX_LONG:16c8cd5b:XRPUSDT",
+  "validation": {
+    "n": 80,
+    "pf": 0.649,
+    "wr": 25.0,
+    "sharpe_daily": -0.1373,
+    "sharpe_ann": -2.624,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.1373,
+      "sharpe_annualized": -2.624,
+      "ci_low_annualized": -8.548,
+      "ci_high_annualized": 1.498,
+      "significant": false,
+      "n_obs": 80,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.89,
+      0.558,
+      0.767,
+      0.469
+    ],
+    "quartiles_pass": 0,
+    "calmar": {
+      "n": 80,
+      "total_ret_pct": -30.22,
+      "cagr_pct": -80.63,
+      "max_dd_pct": 31.47,
+      "calmar": -2.562
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 271,
+        "pf": 1.086,
+        "sharpe_ann": 0.457
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 271,
+        "pf": 0.864,
+        "sharpe_ann": -0.841
+      },
+      "param_robustness": {
+        "baseline_sharpe": -2.624,
+        "best_variant_sharpe": 0.457,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.457
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.457
+          }
+        ]
+      }
+    }
+  }
+}

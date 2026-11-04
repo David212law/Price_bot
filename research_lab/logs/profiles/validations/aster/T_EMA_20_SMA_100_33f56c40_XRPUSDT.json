@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_EMA_20_SMA_100:33f56c40:XRPUSDT",
+  "validation": {
+    "n": 25,
+    "pf": 1.327,
+    "wr": 32.0,
+    "sharpe_daily": 0.1159,
+    "sharpe_ann": 2.214,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.095,
+      1.19,
+      0.492,
+      2.69
+    ],
+    "quartiles_pass": 3,
+    "calmar": {
+      "n": 25,
+      "total_ret_pct": 14.16,
+      "cagr_pct": 590.93,
+      "max_dd_pct": 15.29,
+      "calmar": 38.645
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 65,
+        "pf": 1.091,
+        "sharpe_ann": 0.713
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 65,
+        "pf": 0.991,
+        "sharpe_ann": -0.072
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.214,
+        "best_variant_sharpe": 0.713,
+        "ratio": 0.322,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.713
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.713
+          }
+        ]
+      }
+    }
+  }
+}

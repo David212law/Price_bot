@@ -1,0 +1,57 @@
+{
+  "key": "kucoin:T_KAMA_20_SMA_100:fab92566:SOLUSDTM",
+  "validation": {
+    "n": 20,
+    "pf": 1.062,
+    "wr": 40.0,
+    "sharpe_daily": 0.0264,
+    "sharpe_ann": 0.504,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      1.603,
+      0.397,
+      0.502,
+      2.634
+    ],
+    "quartiles_pass": 2,
+    "calmar": {
+      "n": 20,
+      "total_ret_pct": -0.52,
+      "cagr_pct": -9.14,
+      "max_dd_pct": 30.55,
+      "calmar": -0.299
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 64,
+        "pf": 1.373,
+        "sharpe_ann": 2.671
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 64,
+        "pf": 1.275,
+        "sharpe_ann": 2.07
+      },
+      "param_robustness": {
+        "baseline_sharpe": 0.504,
+        "best_variant_sharpe": 2.671,
+        "ratio": 5.3,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.671
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.671
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "key": "aster:T_KAMA_10_EMA_50:d38cfce0:SOLUSDT",
+  "validation": {
+    "n": 16,
+    "pf": 1.404,
+    "wr": 43.8,
+    "sharpe_daily": 0.1464,
+    "sharpe_ann": 2.797,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.666,
+      2.274,
+      0.277,
+      4.479
+    ],
+    "quartiles_pass": 2,
+    "calmar": {},
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 64,
+        "pf": 1.394,
+        "sharpe_ann": 2.669
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 64,
+        "pf": 1.28,
+        "sharpe_ann": 2.008
+      },
+      "param_robustness": {
+        "baseline_sharpe": 2.797,
+        "best_variant_sharpe": 2.669,
+        "ratio": 0.954,
+        "verdict": "ROBUST",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 2.669
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 2.669
+          }
+        ]
+      }
+    }
+  }
+}

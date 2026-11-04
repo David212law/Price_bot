@@ -1,0 +1,65 @@
+{
+  "key": "aster:T_EMA9_PRICE:04fb9d6c:ETHUSDT",
+  "validation": {
+    "n": 168,
+    "pf": 0.77,
+    "wr": 67.3,
+    "sharpe_daily": -0.0822,
+    "sharpe_ann": -1.571,
+    "bootstrap_ci": {
+      "sharpe_per_period": -0.0822,
+      "sharpe_annualized": -1.571,
+      "ci_low_annualized": -4.14,
+      "ci_high_annualized": 1.972,
+      "significant": false,
+      "n_obs": 168,
+      "n_boot": 1000
+    },
+    "quartile_pf": [
+      0.56,
+      1.363,
+      0.753,
+      0.606
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 168,
+      "total_ret_pct": -24.82,
+      "cagr_pct": -46.2,
+      "max_dd_pct": 32.26,
+      "calmar": -1.432
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 554,
+        "pf": 0.93,
+        "sharpe_ann": -0.469
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 554,
+        "pf": 0.611,
+        "sharpe_ann": -2.991
+      },
+      "param_robustness": {
+        "baseline_sharpe": -1.571,
+        "best_variant_sharpe": -0.469,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.469
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.469
+          }
+        ]
+      }
+    }
+  }
+}

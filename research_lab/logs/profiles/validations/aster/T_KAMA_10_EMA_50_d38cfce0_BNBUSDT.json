@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_KAMA_10_EMA_50:d38cfce0:BNBUSDT",
+  "validation": {
+    "n": 21,
+    "pf": 0.672,
+    "wr": 28.6,
+    "sharpe_daily": -0.16,
+    "sharpe_ann": -3.057,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.277,
+      0.0,
+      4.399,
+      0.542
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 21,
+      "total_ret_pct": -12.01,
+      "cagr_pct": -89.18,
+      "max_dd_pct": 19.04,
+      "calmar": -4.684
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 71,
+        "pf": 0.924,
+        "sharpe_ann": -0.618
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 71,
+        "pf": 0.807,
+        "sharpe_ann": -1.714
+      },
+      "param_robustness": {
+        "baseline_sharpe": -3.057,
+        "best_variant_sharpe": -0.618,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": -0.618
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": -0.618
+          }
+        ]
+      }
+    }
+  }
+}

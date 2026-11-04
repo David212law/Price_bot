@@ -1,0 +1,57 @@
+{
+  "key": "aster:T_ST_20_2_LONG:cfb597ff:SOLUSDT",
+  "validation": {
+    "n": 29,
+    "pf": 0.978,
+    "wr": 31.0,
+    "sharpe_daily": -0.0081,
+    "sharpe_ann": -0.154,
+    "bootstrap_ci": null,
+    "quartile_pf": [
+      0.105,
+      0.97,
+      2.796,
+      0.765
+    ],
+    "quartiles_pass": 1,
+    "calmar": {
+      "n": 29,
+      "total_ret_pct": -4.21,
+      "cagr_pct": -41.79,
+      "max_dd_pct": 19.96,
+      "calmar": -2.093
+    },
+    "stress": {
+      "fee_2x": {
+        "fee_mult": 2.0,
+        "n": 112,
+        "pf": 1.106,
+        "sharpe_ann": 0.748
+      },
+      "slippage_1.5x": {
+        "slip_pct": 0.15,
+        "n": 112,
+        "pf": 0.98,
+        "sharpe_ann": -0.15
+      },
+      "param_robustness": {
+        "baseline_sharpe": -0.154,
+        "best_variant_sharpe": 0.748,
+        "ratio": 0,
+        "verdict": "FRAGILE",
+        "variants": [
+          {
+            "param": "fee_multiplier",
+            "val": 0.9,
+            "sharpe_ann": 0.748
+          },
+          {
+            "param": "fee_multiplier",
+            "val": 1.1,
+            "sharpe_ann": 0.748
+          }
+        ]
+      }
+    }
+  }
+}
