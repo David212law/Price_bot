@@ -1,0 +1,228 @@
+{
+  "generated_at": "2026-11-04T12:35:23.207109+00:00",
+  "watchlist": [
+    {
+      "exchange": "hyperliquid",
+      "strategy": "M31",
+      "symbol": "BTC",
+      "kind": "funding",
+      "notes": "HL Main + Shadow",
+      "windows": {
+        "7": {
+          "n": 7,
+          "sr": 47.05,
+          "pf": 999,
+          "wr": 100.0,
+          "mean": 0.0259,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 5.77
+        },
+        "30": {
+          "n": 22,
+          "sr": 22.01,
+          "pf": 16.55,
+          "wr": 81.8,
+          "mean": 0.0153,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 2.7
+        },
+        "90": {
+          "n": 22,
+          "sr": 22.01,
+          "pf": 16.55,
+          "wr": 81.8,
+          "mean": 0.0153,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 2.7
+        }
+      },
+      "historical_sr": 8.156592522236247
+    },
+    {
+      "exchange": "aster",
+      "strategy": "M31",
+      "symbol": "BTCUSDT",
+      "kind": "funding",
+      "notes": "Aster Main + COMBO",
+      "windows": {
+        "7": {
+          "n": 7,
+          "sr": 81.59,
+          "pf": 999,
+          "wr": 100.0,
+          "mean": 0.0197,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 9.87
+        },
+        "30": {
+          "n": 30,
+          "sr": 19.98,
+          "pf": 11.02,
+          "wr": 73.3,
+          "mean": 0.0113,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 2.42
+        },
+        "90": {
+          "n": 90,
+          "sr": 23.35,
+          "pf": 14.89,
+          "wr": 86.7,
+          "mean": 0.0109,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 2.83
+        }
+      },
+      "historical_sr": 8.264421679312614
+    },
+    {
+      "exchange": "kucoin",
+      "strategy": "M31",
+      "symbol": "XBTUSDTM",
+      "kind": "funding",
+      "notes": "KuCoin Main + Combo",
+      "windows": {
+        "7": {
+          "n": 7,
+          "sr": 51.87,
+          "pf": 999,
+          "wr": 100.0,
+          "mean": 0.0168,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 6.68
+        },
+        "30": {
+          "n": 30,
+          "sr": 29.59,
+          "pf": 47.95,
+          "wr": 90.0,
+          "mean": 0.0121,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 3.81
+        },
+        "90": {
+          "n": 90,
+          "sr": 15.43,
+          "pf": 7.75,
+          "wr": 77.8,
+          "mean": 0.0076,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 1.99
+        }
+      },
+      "historical_sr": 7.763315461468088
+    },
+    {
+      "exchange": "hyperliquid",
+      "strategy": "KELTNER_REV",
+      "symbol": "BNB",
+      "kind": "candle",
+      "notes": "HL Shadow RP + NEUTRAL",
+      "windows": {
+        "7": {
+          "n": 7,
+          "sr": 6.52,
+          "pf": 2.13,
+          "wr": 57.1,
+          "mean": 0.5151,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 1.3
+        },
+        "30": {
+          "n": 30,
+          "sr": 4.13,
+          "pf": 1.7,
+          "wr": 50.0,
+          "mean": 0.3196,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 0.82
+        },
+        "90": {
+          "n": 38,
+          "sr": 6.34,
+          "pf": 2.25,
+          "wr": 55.3,
+          "mean": 0.4737,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 1.27
+        }
+      },
+      "historical_sr": 5.008
+    },
+    {
+      "exchange": "aster",
+      "strategy": "KELTNER_REV",
+      "symbol": "AVAXUSDT",
+      "kind": "candle",
+      "notes": "Aster COMBO",
+      "windows": {
+        "7": {
+          "n": 7,
+          "sr": 9.61,
+          "pf": 3.32,
+          "wr": 57.1,
+          "mean": 1.9309,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 1.16
+        },
+        "30": {
+          "n": 30,
+          "sr": 12.0,
+          "pf": 5.32,
+          "wr": 70.0,
+          "mean": 2.0384,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 1.44
+        },
+        "90": {
+          "n": 34,
+          "sr": 12.49,
+          "pf": 5.8,
+          "wr": 70.6,
+          "mean": 2.0528,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 1.5
+        }
+      },
+      "historical_sr": 8.308
+    },
+    {
+      "exchange": "kucoin",
+      "strategy": "KELTNER_REV",
+      "symbol": "ETHUSDTM",
+      "kind": "candle",
+      "notes": "KuCoin Combo",
+      "windows": {
+        "7": {
+          "n": 7,
+          "sr": 31.77,
+          "pf": 28.28,
+          "wr": 85.7,
+          "mean": 3.4565,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 6.36
+        },
+        "30": {
+          "n": 10,
+          "sr": 26.36,
+          "pf": 23.91,
+          "wr": 80.0,
+          "mean": 3.5646,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 5.27
+        },
+        "90": {
+          "n": 10,
+          "sr": 26.36,
+          "pf": 23.91,
+          "wr": 80.0,
+          "mean": 3.5646,
+          "health": "HEALTHY",
+          "ratio_vs_hist": 5.27
+        }
+      },
+      "historical_sr": 4.998
+    }
+  ],
+  "alerts": []
+}
