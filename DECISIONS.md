@@ -2474,3 +2474,35 @@ Paper ۳۰ روزه (D-460) ادامه دارد. Keltner risk (TREND padding) د
 **بازگشت در صورت مشکل:**
 git revert <commit_hash> برای حذف کامل ماژول
 
+
+## D-2026-11-04-513 — پذیرش ابهام کامپوزر و واگذاری به Paper
+
+**وضعیت:** قفل
+
+**زمینه:**
+پس از D-512 (fix union/risk-parity) و D-512b (fix greedy_build)، دو تابع کامپوزر نتایج متفاوت می‌دهند:
+- `build_combination`: HL/RANGE SR=9.635 (STRICT_PASS)
+- `greedy_build`: HL/RANGE SR=8.192 (M31_ONLY)
+
+این ناسازگاری را در D-513 مستند می‌کنیم.
+
+**تصمیم:**
+۱. `route=M31_ONLY` برای همه HL/Aster رژیم‌ها پذیرفته می‌شود — محافظه‌کارانه و امن.
+۲. KuCoin پس از fix، همه کامبوها FAIL شدند → ۳ STRICT_PASS قبلی artifact بود.
+۳. Paper HL Shadow RP (۹۸.۹/۱.۱) در ۳۰ روز آینده، تصمیم نهایی را با داده واقعی می‌گیرد.
+۴. مسیر توسعه بیشتر (۱۲ ارز) با M31_ONLY به عنوان baseline ادامه می‌یابد.
+
+**چه چیزی تغییر کرد:**
+- KuCoin: ۳ کامبوی جعلی از pending_approvals حذف شد
+- HL: ۳ STRICT_PASS همچنان در pending_approvals است (اطلاعاتی، نه اجرا)
+- route همه ۹ رژیم/صرافی: M31_ONLY
+
+**چه چیزی تغییر نکرد:**
+- ۹ ربات Paper دست‌نخورده
+- weights، active_weights.json
+- D-460 Freeze
+
+**بازبینی 2026-12-02:**
+- اگر HL Shadow RP در ۳۰ روز بهتر از HL Main بود → ارتقا به route
+- اگر بدتر بود → حذف Shadow RP و ادامه M31_ONLY
+

@@ -378,12 +378,16 @@ def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_ful
 
     # Build weights: M31 + each selected complement (equal weight to complements)
     all_rets = [m31_rets] + [s["rets"] for s in selected]
-    common_dates = set(m31_rets.keys())
-    for r in all_rets[1:]:
-        common_dates &= set(r.keys())
-    common_dates = sorted(common_dates)
+    # D-512: UNION of dates (not intersection). Missing days = 0 return.
+    _all_dates = set()
+    for _r in all_rets:
+        _all_dates |= set(_r.keys())
+    common_dates = sorted(_all_dates)
     if len(common_dates) < 30:
         return None
+    # Pad with 0.0 for missing days
+    all_rets = [{d: r.get(d, 0.0) for d in common_dates} for r in all_rets]
+    m31_rets = all_rets[0]
     
     # D-440: Risk-parity weights (inverse-vol)
     weights = _compute_risk_parity_weights(all_rets, common_dates)
@@ -710,17 +714,23 @@ def greedy_build(base_name, base_rets, candidates_dict, initial_weights=None):
             # Corr with all selected
             max_c = max(corr(rets, s_rets, sorted(common)) for _, s_rets in selected)
             if max_c > CONFIG["max_corr"]: continue
-            # Test combination
+            # D-512b: UNION dates + risk-parity (no leverage)
             test_comps = [r for _, r in selected] + [rets]
-            test_w = weights + [weights[0]]  # new component same weight as base
-            combined = weighted_returns(test_comps, test_w)
+            _all_dates = set()
+            for _r in test_comps: _all_dates |= set(_r.keys())
+            _all_dates = sorted(_all_dates)
+            _padded = [{d: r.get(d, 0.0) for d in _all_dates} for r in test_comps]
+            test_w = _compute_risk_parity_weights(_padded, _all_dates)
+            combined = {}
+            for d in _all_dates:
+                combined[d] = sum(w*p[d] for w,p in zip(test_w, _padded))
             new_sr = sharpe(list(combined.values()))
             if new_sr > best_sr * CONFIG["min_improvement"]:
                 best_sr = new_sr; best = (name, rets)
         if not best: break
         selected.append(best)
         weights.append(weights[0])
-        dates &= set(best[1].keys())
+        dates |= set(best[1].keys())  # D-512b: union
         current_sr = best_sr
         history.append({"step": len(selected)-1, "name": best[0],
                         "sharpe": round(current_sr,3), "n_days": len(dates)})
@@ -754,7 +764,16 @@ def compose_regime(regime, exchange, state, m31_rets_full):
         sel_a, hist_a = greedy_build("M31", m31_rets, cand_rets,
                                        initial_weights={"M31": m31_cap})
         base_sr = sharpe(list(m31_rets.values()))
-        combined_a = weighted_returns([r for _,r in sel_a], [1.0]*len(sel_a))
+        # D-512b: risk-parity (not uniform leverage)
+        _sel_rets = [r for _,r in sel_a]
+        _all_dates_a = set()
+        for _r in _sel_rets: _all_dates_a |= set(_r.keys())
+        _all_dates_a = sorted(_all_dates_a)
+        _padded_a = [{d: r.get(d, 0.0) for d in _all_dates_a} for r in _sel_rets]
+        _w_a = _compute_risk_parity_weights(_padded_a, _all_dates_a)
+        combined_a = {}
+        for d in _all_dates_a:
+            combined_a[d] = sum(w*p[d] for w,p in zip(_w_a, _padded_a))
         sr_a = sharpe(list(combined_a.values()))
         route_a = {
             "components": [{"name": n, "family": FAMILY.get(n.split("_")[0],"OTHER")}
