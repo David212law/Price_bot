@@ -5,6 +5,7 @@ import sys, os, json, math
 from collections import defaultdict
 sys.path.append(os.getcwd())
 
+from strategies.library.families import STRATEGY_FAMILY as FAMILY
 from research_lab.audit_core import (portfolio_daily_returns, calmar_maxdd,
                                        correlation_stability)
 
@@ -623,6 +624,16 @@ def filter_candidates(state, regime, exchange):
         calmar_data = val.get("calmar", {})
         if calmar_data:
             if calmar_data.get("max_dd_pct", 0) > 60: continue
+
+        # D-509: Family-based Deflated Sharpe Ratio (balanced threshold)
+        from research_lab.audit_core import deflated_sharpe_family
+        sr_ann = val.get("sharpe_ann", 0)
+        n_obs = val.get("n", m["n"])
+        if n_obs < 30: continue
+        dsr_res = deflated_sharpe_family(sr_ann, n_obs, fam)
+        # Accept if DSR > 0.50 (better than random chance after multiple testing penalty)
+        if dsr_res is None or dsr_res.get("DSR", 0) < CONFIG.get("min_dsr", 0.50):
+            continue
 
         try:
             h = key.split(":")[2]
