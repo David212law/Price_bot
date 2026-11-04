@@ -180,6 +180,9 @@ def main():
         before = len(strategies)
         strategies = [(n, k) for n, k in strategies if STRATEGY_FAMILY.get(n) == args.family]
         print(f"[FILTER] --family={args.family}: {len(strategies)}/{before} strategies")
+    import sys
+    print(f"[DEBUG] sys.argv: {sys.argv}")
+    print(f"[DEBUG] args.family: {args.family}")
     print(f"[INFO] {len(strategies)} strategies × 3 exchanges × 6 symbols")
     
     print("\n[PREP] precomputing regime series...")
