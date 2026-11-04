@@ -1,14 +1,3 @@
 {
-  "signals": [
-    {
-      "symbol": "BNB",
-      "action": "OPEN",
-      "time": 1793743200114
-    },
-    {
-      "symbol": "AVAX",
-      "action": "OPEN",
-      "time": 1793750400065
-    }
-  ]
+  "signals": []
 }
