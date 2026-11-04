@@ -58,12 +58,24 @@
 - components: []
 - weights: {'M31': 0.3, 'CASH': 0.7}
 
+### HYPERLIQUID/TREND complements:
+- KELTNER_REV corr=-0.029 SR=5.008
+- KELTNER_REV corr=-0.029 SR=4.558
+
+### HYPERLIQUID/RANGE complements:
+- KELTNER_REV corr=-0.184 SR=5.008
+- KELTNER_REV corr=-0.184 SR=4.558
+
+### HYPERLIQUID/NEUTRAL complements:
+- KELTNER_REV corr=0.027 SR=5.008
+- KELTNER_REV corr=0.027 SR=4.558
+
 ### KUCOIN/TREND complements:
+- MOM_TSI_30_SHORT corr=-0.418 SR=5.254
 - LOW_VOL_CARRY corr=-0.217 SR=5.123
 - KELTNER_REV corr=-0.035 SR=4.998
 - DUAL_MOMENTUM corr=-0.003 SR=3.829
 - KELTNER_REV corr=-0.035 SR=3.775
-- ROC corr=0.016 SR=3.632
 
 ### KUCOIN/RANGE complements:
 - LOW_VOL_CARRY corr=0.065 SR=5.123
