@@ -124,5 +124,190 @@
     ],
     "reasons": [],
     "detected_at": "2026-11-02T19:08:11.942774+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "hyperliquid/TREND",
+    "status": "WEAK_PASS",
+    "combined_sharpe": 8.004,
+    "n_days": 331,
+    "max_dd_combo_pct": 0.37,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9815,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_ETH",
+        "weight": 0.0185,
+        "family": "MR",
+        "corr": -0.029
+      }
+    ],
+    "reasons": [
+      "improvement=1.01<1.10"
+    ],
+    "detected_at": "2026-11-04T23:03:05.926284+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "hyperliquid/RANGE",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 9.635,
+    "n_days": 176,
+    "max_dd_combo_pct": 0.17,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9862,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_ETH",
+        "weight": 0.0138,
+        "family": "MR",
+        "corr": -0.184
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-04T23:03:06.042521+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "hyperliquid/NEUTRAL",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 6.834,
+    "n_days": 131,
+    "max_dd_combo_pct": 0.22,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9882,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_ETH",
+        "weight": 0.0118,
+        "family": "MR",
+        "corr": 0.027
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-04T23:03:06.283268+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "aster/TREND",
+    "status": "WEAK_PASS",
+    "combined_sharpe": 8.61,
+    "n_days": 441,
+    "max_dd_combo_pct": 0.23,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9816,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_AVAXUSDT",
+        "weight": 0.0184,
+        "family": "MR",
+        "corr": -0.032
+      }
+    ],
+    "reasons": [
+      "improvement=1.04<1.10"
+    ],
+    "detected_at": "2026-11-04T23:03:06.719823+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "aster/RANGE",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 9.515,
+    "n_days": 218,
+    "max_dd_combo_pct": 0.14,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9692,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_AVAXUSDT",
+        "weight": 0.0308,
+        "family": "MR",
+        "corr": 0.073
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-04T23:03:06.726558+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "kucoin/RANGE",
+    "status": "STRICT_PASS",
+    "combined_sharpe": 8.515,
+    "n_days": 271,
+    "max_dd_combo_pct": 0.64,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.97,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_ETHUSDTM",
+        "weight": 0.03,
+        "family": "MR",
+        "corr": -0.095
+      }
+    ],
+    "reasons": [],
+    "detected_at": "2026-11-04T23:03:07.023798+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "kucoin/NEUTRAL",
+    "status": "WEAK_PASS",
+    "combined_sharpe": 7.83,
+    "n_days": 213,
+    "max_dd_combo_pct": 0.57,
+    "components": [
+      {
+        "name": "M31",
+        "weight": 0.9725,
+        "family": null,
+        "corr": null
+      },
+      {
+        "name": "KELTNER_REV_ETHUSDTM",
+        "weight": 0.0275,
+        "family": "MR",
+        "corr": 0.061
+      }
+    ],
+    "reasons": [
+      "improvement=1.04<1.10"
+    ],
+    "detected_at": "2026-11-04T23:03:07.028794+00:00"
+  },
+  {
+    "date": "2026-11-04",
+    "exchange_regime": "mlp_portfolio_20261104",
+    "status": null,
+    "combined_sharpe": null,
+    "n_days": null,
+    "max_dd_combo_pct": null,
+    "components": [],
+    "reasons": [],
+    "detected_at": "2026-11-04T23:03:09.115791+00:00"
   }
 ]

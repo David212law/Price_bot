@@ -1,0 +1,1294 @@
+{
+  "generated_at": "2026-11-04T23:03:08.882002+00:00",
+  "corr_threshold": 0.7,
+  "by_thesis": {
+    "INDEPENDENT": [
+      {
+        "strategy": "M31_EMA",
+        "exchange": "aster",
+        "symbol": "BTCUSDT",
+        "hash": "2a5ae47a",
+        "baseline_sr": 31.25,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "M31_QUANTILE",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "dd1ce711",
+        "baseline_sr": 17.3,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.292
+      },
+      {
+        "strategy": "M31_QUANTILE",
+        "exchange": "aster",
+        "symbol": "SOLUSDT",
+        "hash": "96f9e084",
+        "baseline_sr": 16.38,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.261
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "16598fcc",
+        "baseline_sr": 10.67,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.075
+      },
+      {
+        "strategy": "VOL_DONCHIAN",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "d162381d",
+        "baseline_sr": 8.43,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.057
+      },
+      {
+        "strategy": "MR_CCI_25",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "a4288331",
+        "baseline_sr": 6.54,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.631
+      },
+      {
+        "strategy": "ROC",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "4c4de2d8",
+        "baseline_sr": 6.03,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.398
+      },
+      {
+        "strategy": "T_KAMA_10_PRICE",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "2bb35604",
+        "baseline_sr": 5.78,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.232
+      },
+      {
+        "strategy": "PRICE_MOMENTUM",
+        "exchange": "hyperliquid",
+        "symbol": "BTC",
+        "hash": "bfd6bfb8",
+        "baseline_sr": 5.75,
+        "hints": [
+          "INDEPENDENT",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.194
+      },
+      {
+        "strategy": "MOMENTUM_EMA",
+        "exchange": "kucoin",
+        "symbol": "BNBUSDTM",
+        "hash": "a2b1971a",
+        "baseline_sr": 5.63,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.229
+      },
+      {
+        "strategy": "MOM_ELDER_30",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "0d356e83",
+        "baseline_sr": 5.52,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.68
+      },
+      {
+        "strategy": "BOLLINGER",
+        "exchange": "hyperliquid",
+        "symbol": "BTC",
+        "hash": "f0442d80",
+        "baseline_sr": 5.26,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.618
+      },
+      {
+        "strategy": "MFI",
+        "exchange": "aster",
+        "symbol": "SOLUSDT",
+        "hash": "ca3644ea",
+        "baseline_sr": 5.19,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.408
+      },
+      {
+        "strategy": "VC_MFI_14_L",
+        "exchange": "hyperliquid",
+        "symbol": "SOL",
+        "hash": "644fd74a",
+        "baseline_sr": 5.18,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.518
+      },
+      {
+        "strategy": "BOLLINGER",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "3d3d39a5",
+        "baseline_sr": 5.16,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.473
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "16598fcc",
+        "baseline_sr": 5.03,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.445
+      },
+      {
+        "strategy": "ROC",
+        "exchange": "hyperliquid",
+        "symbol": "BTC",
+        "hash": "5a39e00f",
+        "baseline_sr": 4.9,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.416
+      },
+      {
+        "strategy": "BOLLINGER",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "ad7364f4",
+        "baseline_sr": 4.85,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.253
+      },
+      {
+        "strategy": "MR_Z_20_15",
+        "exchange": "hyperliquid",
+        "symbol": "XRP",
+        "hash": "83f3e0f3",
+        "baseline_sr": 4.58,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.571
+      },
+      {
+        "strategy": "MOMENTUM_SMA",
+        "exchange": "aster",
+        "symbol": "SOLUSDT",
+        "hash": "ee35929c",
+        "baseline_sr": 4.27,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.507
+      },
+      {
+        "strategy": "ROC",
+        "exchange": "kucoin",
+        "symbol": "SOLUSDTM",
+        "hash": "6a982929",
+        "baseline_sr": 4.03,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.193
+      },
+      {
+        "strategy": "T_PSAR_FLIP_SHORT",
+        "exchange": "hyperliquid",
+        "symbol": "ETH",
+        "hash": "117af4c7",
+        "baseline_sr": 3.94,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "DIRECTIONAL"
+        ],
+        "max_corr_with_kept": 0.38
+      },
+      {
+        "strategy": "MR_CCI_14",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "657de4c5",
+        "baseline_sr": 3.87,
+        "hints": [
+          "INDEPENDENT",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.677
+      },
+      {
+        "strategy": "VOLUME_BREAKOUT",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "b9b5428b",
+        "baseline_sr": 3.83,
+        "hints": [
+          "INDEPENDENT",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.386
+      },
+      {
+        "strategy": "F_TREND_100",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "e22d9f44",
+        "baseline_sr": 3.83,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.159
+      },
+      {
+        "strategy": "VOL_ATRB_30_L",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "9a14beb4",
+        "baseline_sr": 3.82,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "DIRECTIONAL"
+        ],
+        "max_corr_with_kept": 0.408
+      },
+      {
+        "strategy": "DUAL_MOMENTUM",
+        "exchange": "kucoin",
+        "symbol": "SOLUSDTM",
+        "hash": "8e447ab2",
+        "baseline_sr": 3.81,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_ROBUST"
+        ],
+        "max_corr_with_kept": 0.198
+      },
+      {
+        "strategy": "MR_HL_60",
+        "exchange": "hyperliquid",
+        "symbol": "XRP",
+        "hash": "e4eca8fe",
+        "baseline_sr": 3.63,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.568
+      },
+      {
+        "strategy": "DUAL_MOMENTUM",
+        "exchange": "kucoin",
+        "symbol": "XBTUSDTM",
+        "hash": "8e447ab2",
+        "baseline_sr": 3.45,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.443
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "hyperliquid",
+        "symbol": "BTC",
+        "hash": "80e7c85f",
+        "baseline_sr": 3.37,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.549
+      },
+      {
+        "strategy": "MOM_ELDER_30",
+        "exchange": "hyperliquid",
+        "symbol": "ETH",
+        "hash": "0d356e83",
+        "baseline_sr": 3.37,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.428
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "aster",
+        "symbol": "SOLUSDT",
+        "hash": "16598fcc",
+        "baseline_sr": 3.1,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.593
+      },
+      {
+        "strategy": "VOL_ATRB_14_S",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "227f583d",
+        "baseline_sr": 3.02,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_ROBUST",
+          "DIRECTIONAL"
+        ],
+        "max_corr_with_kept": 0.3
+      },
+      {
+        "strategy": "ELDER_IMPULSE",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "bf9e1a87",
+        "baseline_sr": 2.97,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.564
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "80e7c85f",
+        "baseline_sr": 2.96,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.591
+      },
+      {
+        "strategy": "MR_HL_80",
+        "exchange": "aster",
+        "symbol": "BTCUSDT",
+        "hash": "25e01c89",
+        "baseline_sr": 2.81,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.618
+      },
+      {
+        "strategy": "ROC",
+        "exchange": "kucoin",
+        "symbol": "XBTUSDTM",
+        "hash": "ab35171e",
+        "baseline_sr": 2.75,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.318
+      },
+      {
+        "strategy": "MFI",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "f484acce",
+        "baseline_sr": 2.71,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.561
+      },
+      {
+        "strategy": "MFI",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "a9b717f5",
+        "baseline_sr": 2.65,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.524
+      },
+      {
+        "strategy": "MR_Z_15_20",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "e7260d54",
+        "baseline_sr": 2.54,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.657
+      },
+      {
+        "strategy": "T_TEMA_20_SMA_50",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "9ecef739",
+        "baseline_sr": 2.26,
+        "hints": [
+          "INDEPENDENT",
+          "CALM_MARKET",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.34
+      },
+      {
+        "strategy": "MR_CCI_25",
+        "exchange": "kucoin",
+        "symbol": "ETHUSDTM",
+        "hash": "a4288331",
+        "baseline_sr": 2.26,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.623
+      },
+      {
+        "strategy": "VWAP",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "5d749660",
+        "baseline_sr": 2.25,
+        "hints": [
+          "INDEPENDENT",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.687
+      },
+      {
+        "strategy": "SUPERTREND",
+        "exchange": "kucoin",
+        "symbol": "BNBUSDTM",
+        "hash": "11fdb3f9",
+        "baseline_sr": 2.21,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.491
+      },
+      {
+        "strategy": "MOMENTUM_EMA",
+        "exchange": "kucoin",
+        "symbol": "ETHUSDTM",
+        "hash": "9f436de0",
+        "baseline_sr": 2.13,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.583
+      },
+      {
+        "strategy": "TRIPLE_EMA",
+        "exchange": "hyperliquid",
+        "symbol": "SOL",
+        "hash": "0947aca2",
+        "baseline_sr": 2.08,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.371
+      },
+      {
+        "strategy": "T_KAMA_10_PRICE",
+        "exchange": "hyperliquid",
+        "symbol": "SOL",
+        "hash": "2bb35604",
+        "baseline_sr": 1.88,
+        "hints": [
+          "INDEPENDENT",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.682
+      },
+      {
+        "strategy": "MOMENTUM_SMA",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "68c79e14",
+        "baseline_sr": 1.85,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.638
+      },
+      {
+        "strategy": "ZSCORE",
+        "exchange": "hyperliquid",
+        "symbol": "BTC",
+        "hash": "def60a83",
+        "baseline_sr": 1.8,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.7
+      },
+      {
+        "strategy": "VWAP",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "08e900bb",
+        "baseline_sr": 1.72,
+        "hints": [
+          "INDEPENDENT",
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.571
+      },
+      {
+        "strategy": "VOLUME_BREAKOUT",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "b9b5428b",
+        "baseline_sr": 1.69,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.495
+      },
+      {
+        "strategy": "ELDER_IMPULSE",
+        "exchange": "aster",
+        "symbol": "SOLUSDT",
+        "hash": "bf9e1a87",
+        "baseline_sr": 1.64,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST"
+        ],
+        "max_corr_with_kept": 0.675
+      },
+      {
+        "strategy": "DUAL_MOMENTUM",
+        "exchange": "kucoin",
+        "symbol": "ETHUSDTM",
+        "hash": "49c218ac",
+        "baseline_sr": 1.64,
+        "hints": [
+          "INDEPENDENT",
+          "TREND_FOLLOWING",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.451
+      }
+    ],
+    "M31_CLONE": [
+      {
+        "strategy": "M31_THRESHOLD",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "08399452",
+        "baseline_sr": 59.39,
+        "hints": [
+          "M31_CLONE",
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "M31_EMA",
+        "exchange": "hyperliquid",
+        "symbol": "ETH",
+        "hash": "078447f0",
+        "baseline_sr": 38.08,
+        "hints": [
+          "M31_CLONE",
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.696
+      },
+      {
+        "strategy": "M31_EMA",
+        "exchange": "kucoin",
+        "symbol": "ETHUSDTM",
+        "hash": "078447f0",
+        "baseline_sr": 23.01,
+        "hints": [
+          "M31_CLONE",
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.691
+      },
+      {
+        "strategy": "M31_QUANTILE",
+        "exchange": "hyperliquid",
+        "symbol": "XRP",
+        "hash": "7010f625",
+        "baseline_sr": 20.59,
+        "hints": [
+          "M31_CLONE",
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.7
+      },
+      {
+        "strategy": "M31_THRESHOLD",
+        "exchange": "kucoin",
+        "symbol": "BNBUSDTM",
+        "hash": "5ccd9f70",
+        "baseline_sr": 17.86,
+        "hints": [
+          "M31_CLONE",
+          "REGIME_AGNOSTIC",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.678
+      }
+    ],
+    "REGIME_AGNOSTIC": [
+      {
+        "strategy": "M31_QUANTILE",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "d94dcc57",
+        "baseline_sr": 100.19,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "M31_QUANTILE",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "d94dcc57",
+        "baseline_sr": 28.93,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.429
+      },
+      {
+        "strategy": "M31_QUANTILE",
+        "exchange": "aster",
+        "symbol": "SOLUSDT",
+        "hash": "7010f625",
+        "baseline_sr": 22.02,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.39
+      },
+      {
+        "strategy": "M31_THRESHOLD",
+        "exchange": "aster",
+        "symbol": "XRPUSDT",
+        "hash": "08399452",
+        "baseline_sr": 21.84,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.481
+      },
+      {
+        "strategy": "M31_THRESHOLD",
+        "exchange": "kucoin",
+        "symbol": "XBTUSDTM",
+        "hash": "5ccd9f70",
+        "baseline_sr": 20.65,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.678
+      },
+      {
+        "strategy": "M31_THRESHOLD",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "5ccd9f70",
+        "baseline_sr": 19.1,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.356
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "16598fcc",
+        "baseline_sr": 8.31,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.087
+      },
+      {
+        "strategy": "MR_RSI_14_30",
+        "exchange": "hyperliquid",
+        "symbol": "XRP",
+        "hash": "e54dd116",
+        "baseline_sr": 6.43,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.403
+      },
+      {
+        "strategy": "MR_Z_40_20",
+        "exchange": "hyperliquid",
+        "symbol": "AVAX",
+        "hash": "afddc905",
+        "baseline_sr": 5.43,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.479
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "hyperliquid",
+        "symbol": "BNB",
+        "hash": "80e7c85f",
+        "baseline_sr": 5.01,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.365
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "aster",
+        "symbol": "SOLUSDT",
+        "hash": "80e7c85f",
+        "baseline_sr": 3.58,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.464
+      },
+      {
+        "strategy": "MR_BB_25_20",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "60fe9179",
+        "baseline_sr": 3.04,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.669
+      },
+      {
+        "strategy": "F_TREND_150",
+        "exchange": "kucoin",
+        "symbol": "ETHUSDTM",
+        "hash": "f9118cd2",
+        "baseline_sr": 2.73,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST"
+        ],
+        "max_corr_with_kept": 0.153
+      },
+      {
+        "strategy": "MR_Z_40_15",
+        "exchange": "kucoin",
+        "symbol": "ETHUSDTM",
+        "hash": "169bbd24",
+        "baseline_sr": 2.01,
+        "hints": [
+          "REGIME_AGNOSTIC",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.681
+      }
+    ],
+    "MEAN_REVERSION": [
+      {
+        "strategy": "FUNDING_MEAN_REV",
+        "exchange": "kucoin",
+        "symbol": "SOLUSDTM",
+        "hash": "6853cf9c",
+        "baseline_sr": 6.97,
+        "hints": [
+          "MEAN_REVERSION",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "aster",
+        "symbol": "BNBUSDT",
+        "hash": "80e7c85f",
+        "baseline_sr": 4.36,
+        "hints": [
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.159
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "hyperliquid",
+        "symbol": "SOL",
+        "hash": "80e7c85f",
+        "baseline_sr": 3.98,
+        "hints": [
+          "MEAN_REVERSION",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.361
+      },
+      {
+        "strategy": "MOM_ELDER_40",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "1a45da9e",
+        "baseline_sr": 3.86,
+        "hints": [
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.259
+      },
+      {
+        "strategy": "MR_RSI_10_30",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "5cd646be",
+        "baseline_sr": 2.81,
+        "hints": [
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.276
+      },
+      {
+        "strategy": "MR_CCI_25",
+        "exchange": "hyperliquid",
+        "symbol": "ETH",
+        "hash": "a4288331",
+        "baseline_sr": 2.43,
+        "hints": [
+          "MEAN_REVERSION",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.653
+      }
+    ],
+    "KELTNER_CLONE": [
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "aster",
+        "symbol": "ETHUSDT",
+        "hash": "80e7c85f",
+        "baseline_sr": 5.46,
+        "hints": [
+          "KELTNER_CLONE",
+          "MEAN_REVERSION",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "hyperliquid",
+        "symbol": "ETH",
+        "hash": "16598fcc",
+        "baseline_sr": 5.39,
+        "hints": [
+          "KELTNER_CLONE",
+          "MEAN_REVERSION",
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.649
+      },
+      {
+        "strategy": "T_KAMA_TEMA",
+        "exchange": "hyperliquid",
+        "symbol": "ETH",
+        "hash": "1dcfe610",
+        "baseline_sr": 4.16,
+        "hints": [
+          "KELTNER_CLONE",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.475
+      },
+      {
+        "strategy": "MR_WR_30",
+        "exchange": "hyperliquid",
+        "symbol": "ETH",
+        "hash": "3da4eef5",
+        "baseline_sr": 2.39,
+        "hints": [
+          "KELTNER_CLONE",
+          "MEAN_REVERSION",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.659
+      }
+    ],
+    "TREND_FOLLOWING": [
+      {
+        "strategy": "M31_THRESHOLD",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "5ccd9f70",
+        "baseline_sr": 49.25,
+        "hints": [
+          "TREND_FOLLOWING",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "MOM_UO_S_50",
+        "exchange": "kucoin",
+        "symbol": "AVAXUSDTM",
+        "hash": "9312e240",
+        "baseline_sr": 4.49,
+        "hints": [
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST",
+          "DIRECTIONAL"
+        ],
+        "max_corr_with_kept": 0.321
+      },
+      {
+        "strategy": "T_TEMA_20_SMA_50",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "9ecef739",
+        "baseline_sr": 2.2,
+        "hints": [
+          "TREND_FOLLOWING",
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.032
+      },
+      {
+        "strategy": "VOL_ATRB_30_S",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "db0033be",
+        "baseline_sr": 2.01,
+        "hints": [
+          "TREND_FOLLOWING",
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST",
+          "DIRECTIONAL"
+        ],
+        "max_corr_with_kept": 0.405
+      }
+    ],
+    "VOLATILITY_THESIS": [
+      {
+        "strategy": "MR_Z_40_15",
+        "exchange": "aster",
+        "symbol": "AVAXUSDT",
+        "hash": "169bbd24",
+        "baseline_sr": 3.88,
+        "hints": [
+          "VOLATILITY_THESIS",
+          "CRISIS_ROBUST",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "KELTNER_REV",
+        "exchange": "hyperliquid",
+        "symbol": "BTC",
+        "hash": "16598fcc",
+        "baseline_sr": 3.15,
+        "hints": [
+          "VOLATILITY_THESIS",
+          "CRISIS_FRAGILE",
+          "MARKET_NEUTRAL"
+        ],
+        "max_corr_with_kept": 0.453
+      }
+    ],
+    "CALM_MARKET": [
+      {
+        "strategy": "MR_RSI_14_30",
+        "exchange": "kucoin",
+        "symbol": "XRPUSDTM",
+        "hash": "e54dd116",
+        "baseline_sr": 3.04,
+        "hints": [
+          "CALM_MARKET",
+          "CRISIS_FRAGILE"
+        ],
+        "max_corr_with_kept": 0.0
+      },
+      {
+        "strategy": "F_CARRY_60_2",
+        "exchange": "kucoin",
+        "symbol": "ETHUSDTM",
+        "hash": "706c4e10",
+        "baseline_sr": 2.58,
+        "hints": [
+          "CALM_MARKET",
+          "CRISIS_FRAGILE",
+          "DIRECTIONAL"
+        ],
+        "max_corr_with_kept": 0.0
+      }
+    ]
+  }
+}
