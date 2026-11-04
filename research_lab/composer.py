@@ -107,6 +107,10 @@ def notify_strict_approval(combo, exchange, regime):
         if "corr" in comp and abs(comp["corr"]) > cfg["max_corr"]:
             reasons.append(f"{comp['name']} corr={comp['corr']}")
 
+    _base = combo.get("m31_only_sharpe", 0)
+    _imp = combo["combined_sharpe"] / _base if _base > 0 else 0
+    if _imp < 1.10:
+        reasons.append(f"improvement={_imp:.2f}<1.10")
     status = "STRICT_PASS" if not reasons else "WEAK_PASS"
 
     # ALWAYS save
@@ -488,90 +492,79 @@ def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_ful
     }
 def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
                      max_corr=0.3, m31_weaknesses=None, m31_sig=None):
-    """D-406: Find strategies with LOW corr to M31 (true complements)."""
-    import os as _os, json as _json
+    """D-515: Single source of truth — uses filter_candidates internally.
+
+    This ensures route_a (portfolio) and STRICT_PASS (pending) see the SAME
+    candidates. DSR gate, Calmar gate, stress gate all applied uniformly.
+    """
     if exclude_families is None:
         exclude_families = {"FUNDING_M31"}
 
+    _reg_map = regime_by_date(exchange)
     complements = []
-    for key, v in state["done"].items():
-        if not isinstance(v, dict): continue
-        if v["exchange"] != exchange: continue
-        st = v["strategy"]
+    seen_keys = set()  # D-515: dedupe by (strategy, symbol)
+
+    # D-515: Use filter_candidates (which has DSR + Calmar + stress gates)
+    for cand in filter_candidates(state, regime, exchange):
+        st = cand["strategy"]
         fam = FAMILY.get(st, "OTHER")
-        if fam in exclude_families: continue
+        if fam in exclude_families:
+            continue
 
-        m = v["metrics_by_regime"].get(regime)
-        if not m or not m["sufficient"]: continue
-        # D-445: pooled n gate
-        if _pooled_n(exchange, st, state) < CONFIG["min_n"]: continue
-        val = v.get("validation")
-        if not val: continue
-        if val.get("quartiles_pass", 0) < CONFIG["min_q_pass"]: continue
+        # Dedupe by (strategy, symbol) — keep best hash only
+        dedupe_key = (st, cand["symbol"])
+        if dedupe_key in seen_keys:
+            continue
 
-        # Stress check
-        stress = val.get("stress", {})
-        if stress:
-            if stress.get("fee_2x", {}).get("pf", 0) < 1.2: continue
-            if stress.get("param_robustness", {}).get("verdict") == "FRAGILE": continue
-
-        try: h = key.split(":")[2]
-        except: continue
-
-        # D-445: pooled returns filtered to regime
-        _reg_map = regime_by_date(exchange)
+        # Pooled returns for this strategy
         _pooled_all = _pooled_get(exchange, st, state)
         rets = {d: r for d, r in _pooled_all.items() if _reg_map.get(d) == regime}
-        if len(rets) < 20: continue
+        if len(rets) < 20:
+            continue
 
-        # Compute corr with M31
+        # Corr with M31
         common = sorted(set(rets.keys()) & set(m31_rets.keys()))
-        if len(common) < 20: continue
+        if len(common) < 20:
+            continue
         va = [m31_rets[d] for d in common]
         vb = [rets[d] for d in common]
         ma = sum(va)/len(va); mb = sum(vb)/len(vb)
         cov = sum((va[i]-ma)*(vb[i]-mb) for i in range(len(va)))
         sa = math.sqrt(sum((v-ma)**2 for v in va))
         sb = math.sqrt(sum((v-mb)**2 for v in vb))
-        corr = cov/(sa*sb) if sa > 0 and sb > 0 else 1.0
+        corr_val = cov/(sa*sb) if sa > 0 and sb > 0 else 1.0
+        if corr_val > max_corr:
+            continue
 
-        if corr > max_corr: continue  # not a complement
-
-        # D-441c/d: weakness coverage (3 args) + gate
+        # Weakness coverage (D-441c/d)
         coverage = 0
         if m31_weaknesses and m31_sig is not None:
             try:
                 from research_lab.strategy_signature import signature_for_entry, covers_weakness
-                sig = signature_for_entry(v)
-                coverage = sum(1 for w in m31_weaknesses
-                               if covers_weakness(sig, m31_sig, w))
-            except Exception as _e:
+                # Need full entry from state for signature
+                for _k, _v in state["done"].items():
+                    if isinstance(_v, dict) and _v.get("strategy") == st and _v.get("symbol") == cand["symbol"]:
+                        sig = signature_for_entry(_v)
+                        coverage = sum(1 for w in m31_weaknesses
+                                       if covers_weakness(sig, m31_sig, w))
+                        break
+            except Exception:
                 coverage = 0
 
-        # D-441d: gate — if M31 has weaknesses, candidate MUST cover ≥1
-        if m31_weaknesses and coverage == 0:
-            continue
+        # D-520: weakness coverage is informational; route_a doesn't gate on it
+        # (1% Keltner in RANGE doesn't relate to high_vol weakness)
 
+        seen_keys.add(dedupe_key)
         complements.append({
-            "strategy": st, "family": fam, "symbol": v["symbol"], "hash": h,
-            "n": len(rets), "pf": m["pf"], "sr_daily": m["sharpe_daily"],
-            "corr_m31": round(corr, 3),
-            "ann_sr_validation": val.get("sharpe_ann", 0),
-            "quartiles_pass": val.get("quartiles_pass", 0),
+            "strategy": st, "family": fam, "symbol": cand["symbol"], "hash": cand["hash"],
+            "n": len(rets), "pf": cand["pf"], "sr_daily": cand["sr_daily"],
+            "corr_m31": round(corr_val, 3),
+            "ann_sr_validation": cand["val"].get("sharpe_ann", 0),
+            "quartiles_pass": cand["val"].get("quartiles_pass", 0),
             "m31_weakness_coverage": coverage,
         })
 
-    # D-445: dedupe by (strategy, hash) — one entry per strategy+params
-    seen = set()
-    deduped = []
-    for c_item in complements:
-        kk = (c_item["strategy"], c_item.get("hash", ""))
-        if kk in seen: continue
-        seen.add(kk)
-        deduped.append(c_item)
-    complements = deduped
-
-    # Sort: primary by coverage desc, secondary by sharpe desc, tertiary by |corr| asc
+    # Sort: coverage desc, ann_sr desc, |corr| asc
     complements.sort(key=lambda x: (
         -x.get("m31_weakness_coverage", 0),
         -x["ann_sr_validation"],
@@ -758,32 +751,58 @@ def compose_regime(regime, exchange, state, m31_rets_full):
         return {"route_a": None, "route_b": None, "candidates": cands,
                 "reason": f"no_data_after_regime_filter (regime_days={len(m31_rets)})"}
 
-    # Route A: M31 as base
+    # D-514: Route A uses build_combination (SAME function as STRICT_PASS path)
+    # This eliminates the inconsistency between greedy_build and build_combination.
     m31_cap = CONFIG["m31_cap"][exchange]
     if m31_cap > 0 and m31_rets:
-        sel_a, hist_a = greedy_build("M31", m31_rets, cand_rets,
-                                       initial_weights={"M31": m31_cap})
+        # D-516: Use pooled returns (same as second loop) to ensure consistency
+        complements = []
+        for c in cands:
+            rets_full = _pooled_get(exchange, c["strategy"], state)
+            rets = filter_by_regime(rets_full, reg_by_date, regime)
+            if len(rets) >= 5:
+                # D-519: Use regime-filtered corr (same as find_complements)
+                common = sorted(set(m31_rets.keys()) & set(rets.keys()))
+                corr_val = corr(m31_rets, rets, common) if len(common) >= 20 else 1.0
+                c_copy = dict(c)
+                c_copy["rets"] = rets
+                c_copy["rets_full"] = rets_full
+                c_copy["corr_m31"] = corr_val
+                complements.append(c_copy)
+
+        # Sort by SR descending (best first)
+        def _cand_sr(cc):
+            vals = list(cc.get("rets", {}).values())
+            return sharpe(vals) if vals else 0
+        complements.sort(key=_cand_sr, reverse=True)
+
         base_sr = sharpe(list(m31_rets.values()))
-        # D-512b: risk-parity (not uniform leverage)
-        _sel_rets = [r for _,r in sel_a]
-        _all_dates_a = set()
-        for _r in _sel_rets: _all_dates_a |= set(_r.keys())
-        _all_dates_a = sorted(_all_dates_a)
-        _padded_a = [{d: r.get(d, 0.0) for d in _all_dates_a} for r in _sel_rets]
-        _w_a = _compute_risk_parity_weights(_padded_a, _all_dates_a)
-        combined_a = {}
-        for d in _all_dates_a:
-            combined_a[d] = sum(w*p[d] for w,p in zip(_w_a, _padded_a))
-        sr_a = sharpe(list(combined_a.values()))
-        route_a = {
-            "components": [{"name": n, "family": FAMILY.get(n.split("_")[0],"OTHER")}
-                           for n,_ in sel_a],
-            "n_days": len(combined_a),
-            "sharpe_ann": round(sr_a,3),
-            "max_dd": round(max_dd(list(combined_a.values()))*100,2),
-            "history": hist_a,
-            "improvement_vs_m31": round(sr_a/base_sr if base_sr>0 else 0, 2),
-        }
+        combo_a = build_combination(m31_rets, complements, max_components=3, m31_rets_full=m31_rets_full)
+
+        if combo_a and combo_a.get("passes_gate"):
+            # Combo passes all gates → route A
+            route_a = {
+                "components": [{"name": cc["name"], "family": cc.get("family", "OTHER"),
+                                "weight": cc.get("weight", 0)} for cc in combo_a["components"]],
+                "n_days": combo_a["n_days"],
+                "sharpe_ann": combo_a["combined_sharpe"],
+                "max_dd": combo_a["max_dd_combo_pct"],
+                "history": [{"step": "base", "name": "M31", "sharpe": round(base_sr, 3)},
+                            {"step": 1, "name": "combo", "sharpe": combo_a["combined_sharpe"]}],
+                "improvement_vs_m31": round(combo_a["combined_sharpe"] / base_sr if base_sr > 0 else 1.0, 2),
+                "passes_gate": True,
+            }
+        else:
+            # No valid combo → M31 alone
+            route_a = {
+                "components": [{"name": "M31", "family": "FUNDING_M31", "weight": m31_cap}],
+                "n_days": len(m31_rets),
+                "sharpe_ann": round(base_sr, 3),
+                "max_dd": round(max_dd(list(m31_rets.values()))*100, 2),
+                "history": [{"step": "base", "name": "M31", "sharpe": round(base_sr, 3)}],
+                "improvement_vs_m31": 1.0,
+                "passes_gate": False,
+            }
     else:
         route_a = None
 
