@@ -19,7 +19,7 @@ jobs:
       - run: pip install requests
 
       - name: Run Composer
-        run: python -m research_lab.composer
+        run: python -m research_lab.composer && PYTHONPATH=. python -m research_lab.researcher_v2
 
       - name: Generate Report
         run: python -m research_lab.composer_report

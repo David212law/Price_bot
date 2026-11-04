@@ -423,5 +423,25 @@
       "improvement=1.04<1.10"
     ],
     "detected_at": "2026-11-04T18:31:40.261421+00:00"
+  },
+  "mlp_portfolio_20261104": {
+    "type": "multi_layer_portfolio",
+    "verdict": "PASS",
+    "weights": {
+      "M31": 0.6234,
+      "Keltner": 0.0115,
+      "M31_THRESHOLD_AVAXUSDT": 0.0632,
+      "M31_EMA_BTCUSDT": 0.1999,
+      "M31_QUANTILE_ETHUSDT": 0.0881,
+      "KELTNER_REV_ETHUSDT": 0.014
+    },
+    "validation": {
+      "n_test": 221,
+      "port_sr": 7.06,
+      "m31_sr": 3.47,
+      "improvement_pct": 103.6,
+      "coverage": 1.0
+    },
+    "detected_at": "2026-11-04T22:52:48.357031+00:00"
   }
 }
