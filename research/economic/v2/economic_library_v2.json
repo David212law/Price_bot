@@ -1,0 +1,2874 @@
+{
+  "version": "2.0.0",
+  "n_strategies": 250,
+  "strategies": [
+    {
+      "id": "price_mr_000",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "mult": 1.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_001",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "mult": 2.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_002",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "mult": 2.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_003",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "mult": 3.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_004",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "mult": 4.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_005",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 1.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_006",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 2.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_007",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 2.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_008",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 3.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_009",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 4.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_010",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 1.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_011",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 2.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_012",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 2.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_013",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 3.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_014",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 4.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_015",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 1.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_016",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 2.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_017",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 2.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_018",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 3.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_019",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 4.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_020",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 1.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_021",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 2.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_022",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 2.5,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_023",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 3.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_024",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 4.0,
+        "method": "bollinger",
+        "mode": "both"
+      },
+      "thesis": "Bollinger reversal"
+    },
+    {
+      "id": "price_mr_025",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 10,
+        "z": 1.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_026",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 10,
+        "z": 2.0,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_027",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 10,
+        "z": 2.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_028",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 15,
+        "z": 1.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_029",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 15,
+        "z": 2.0,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_030",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 15,
+        "z": 2.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_031",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "z": 1.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_032",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "z": 2.0,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_033",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "z": 2.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_034",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 30,
+        "z": 1.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_035",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 30,
+        "z": 2.0,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_036",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 30,
+        "z": 2.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_037",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "z": 1.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_038",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "z": 2.0,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_039",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "z": 2.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_040",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 60,
+        "z": 1.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_041",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 60,
+        "z": 2.0,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_042",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "window": 60,
+        "z": 2.5,
+        "method": "zscore",
+        "mode": "both"
+      },
+      "thesis": "Z-score reversal"
+    },
+    {
+      "id": "price_mr_043",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 7,
+        "oversold": 20,
+        "overbought": 80,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_044",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 7,
+        "oversold": 25,
+        "overbought": 75,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_045",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 7,
+        "oversold": 30,
+        "overbought": 70,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_046",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "oversold": 20,
+        "overbought": 80,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_047",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "oversold": 25,
+        "overbought": 75,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_048",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 10,
+        "oversold": 30,
+        "overbought": 70,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_049",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "oversold": 20,
+        "overbought": 80,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_050",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "oversold": 25,
+        "overbought": 75,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_051",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "oversold": 30,
+        "overbought": 70,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_052",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 21,
+        "oversold": 20,
+        "overbought": 80,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_053",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 21,
+        "oversold": 25,
+        "overbought": 75,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_054",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 21,
+        "oversold": 30,
+        "overbought": 70,
+        "method": "rsi",
+        "mode": "both"
+      },
+      "thesis": "RSI reversal"
+    },
+    {
+      "id": "price_mr_055",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 20,
+        "threshold_pct": 2,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_056",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 20,
+        "threshold_pct": 3,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_057",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 20,
+        "threshold_pct": 5,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_058",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 30,
+        "threshold_pct": 2,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_059",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 30,
+        "threshold_pct": 3,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_060",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 30,
+        "threshold_pct": 5,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_061",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 50,
+        "threshold_pct": 2,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_062",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 50,
+        "threshold_pct": 3,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_063",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 50,
+        "threshold_pct": 5,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_064",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 100,
+        "threshold_pct": 2,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_065",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 100,
+        "threshold_pct": 3,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_066",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "ma_period": 100,
+        "threshold_pct": 5,
+        "method": "dist",
+        "mode": "both"
+      },
+      "thesis": "Distance from MA"
+    },
+    {
+      "id": "price_mr_067",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 1.5,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_068",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 2.0,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_069",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 2.5,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_070",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 1.5,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_071",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 2.0,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_072",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 2.5,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_073",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 1.5,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_074",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 2.0,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_mr_075",
+      "category": "price_mr",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 2.5,
+        "method": "keltner",
+        "mode": "both"
+      },
+      "thesis": "Keltner reversal"
+    },
+    {
+      "id": "price_momentum_076",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 5,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_077",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 5,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_078",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 10,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_079",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 10,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_080",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 15,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_081",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 15,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_082",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 20,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_083",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 20,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_084",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 30,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_085",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 30,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_086",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 50,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_087",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 50,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_088",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 60,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_089",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 60,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_090",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 100,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_091",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 100,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_092",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 150,
+        "method": "lookback",
+        "mode": "long_only"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_093",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "lookback": 150,
+        "method": "lookback",
+        "mode": "both"
+      },
+      "thesis": "Lookback momentum"
+    },
+    {
+      "id": "price_momentum_094",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "method": "breakout",
+        "mode": "long_only"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_095",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "method": "breakout",
+        "mode": "both"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_096",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "method": "breakout",
+        "mode": "long_only"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_097",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "method": "breakout",
+        "mode": "both"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_098",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "method": "breakout",
+        "mode": "long_only"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_099",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "method": "breakout",
+        "mode": "both"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_100",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 100,
+        "method": "breakout",
+        "mode": "long_only"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_101",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 100,
+        "method": "breakout",
+        "mode": "both"
+      },
+      "thesis": "Breakout"
+    },
+    {
+      "id": "price_momentum_102",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 5,
+        "slow": 30,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_103",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 5,
+        "slow": 50,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_104",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 5,
+        "slow": 100,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_105",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 5,
+        "slow": 200,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_106",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 10,
+        "slow": 30,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_107",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 10,
+        "slow": 50,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_108",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 10,
+        "slow": 100,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_109",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 10,
+        "slow": 200,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_110",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 15,
+        "slow": 30,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_111",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 15,
+        "slow": 50,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_112",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 15,
+        "slow": 100,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_113",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 15,
+        "slow": 200,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_114",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 20,
+        "slow": 30,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_115",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 20,
+        "slow": 50,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_116",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 20,
+        "slow": 100,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_117",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "fast": 20,
+        "slow": 200,
+        "method": "ma_cross",
+        "mode": "both"
+      },
+      "thesis": "MA cross"
+    },
+    {
+      "id": "price_momentum_118",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 7,
+        "threshold": 0,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_119",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 7,
+        "threshold": 2,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_120",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 7,
+        "threshold": 5,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_121",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "threshold": 0,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_122",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "threshold": 2,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_123",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "threshold": 5,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_124",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 21,
+        "threshold": 0,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_125",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 21,
+        "threshold": 2,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_126",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 21,
+        "threshold": 5,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_127",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "threshold": 0,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_128",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "threshold": 2,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_momentum_129",
+      "category": "price_momentum",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "threshold": 5,
+        "method": "roc"
+      },
+      "thesis": "Rate of change"
+    },
+    {
+      "id": "price_vol_130",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "keep_pct": 30,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_131",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "keep_pct": 50,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_132",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "keep_pct": 70,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_133",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "keep_pct": 90,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_134",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "keep_pct": 30,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_135",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "keep_pct": 50,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_136",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "keep_pct": 70,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_137",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "keep_pct": 90,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_138",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "keep_pct": 30,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_139",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "keep_pct": 50,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_140",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "keep_pct": 70,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_141",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "keep_pct": 90,
+        "method": "regime",
+        "keep": "low"
+      },
+      "thesis": "Vol regime filter"
+    },
+    {
+      "id": "price_vol_142",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 1.5,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_143",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 2.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_144",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "mult": 3.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_145",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 1.5,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_146",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 2.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_147",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "mult": 3.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_148",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 1.5,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_149",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 2.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_150",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "mult": 3.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_151",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 1.5,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_152",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 2.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_153",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 50,
+        "mult": 3.0,
+        "method": "breakout"
+      },
+      "thesis": "ATR breakout"
+    },
+    {
+      "id": "price_vol_154",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "pct": 20,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_155",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "pct": 30,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_156",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 14,
+        "pct": 50,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_157",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "pct": 20,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_158",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "pct": 30,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_159",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 20,
+        "pct": 50,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_160",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "pct": 20,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_161",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "pct": 30,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_vol_162",
+      "category": "price_vol",
+      "data_source": "price",
+      "params": {
+        "period": 30,
+        "pct": 50,
+        "method": "contraction"
+      },
+      "thesis": "BB contraction"
+    },
+    {
+      "id": "price_volume_163",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 1.5,
+        "direction": "long_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_164",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 1.5,
+        "direction": "short_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_165",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 1.5,
+        "direction": "both",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_166",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 2.0,
+        "direction": "long_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_167",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 2.0,
+        "direction": "short_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_168",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 2.0,
+        "direction": "both",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_169",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 2.5,
+        "direction": "long_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_170",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 2.5,
+        "direction": "short_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_171",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 2.5,
+        "direction": "both",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_172",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 3.0,
+        "direction": "long_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_173",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 3.0,
+        "direction": "short_only",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_174",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "mult": 3.0,
+        "direction": "both",
+        "window": 20,
+        "method": "spike"
+      },
+      "thesis": "Volume spike"
+    },
+    {
+      "id": "price_volume_175",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "thesis": "OBV divergence"
+    },
+    {
+      "id": "price_volume_176",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "window": 10,
+        "direction": "short",
+        "method": "obv"
+      },
+      "thesis": "OBV divergence"
+    },
+    {
+      "id": "price_volume_177",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "direction": "long",
+        "method": "obv"
+      },
+      "thesis": "OBV divergence"
+    },
+    {
+      "id": "price_volume_178",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "direction": "short",
+        "method": "obv"
+      },
+      "thesis": "OBV divergence"
+    },
+    {
+      "id": "price_volume_179",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "window": 30,
+        "direction": "long",
+        "method": "obv"
+      },
+      "thesis": "OBV divergence"
+    },
+    {
+      "id": "price_volume_180",
+      "category": "price_volume",
+      "data_source": "price",
+      "params": {
+        "window": 30,
+        "direction": "short",
+        "method": "obv"
+      },
+      "thesis": "OBV divergence"
+    },
+    {
+      "id": "calendar_181",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 2,
+        "position": "before",
+        "method": "eom"
+      },
+      "thesis": "End of month"
+    },
+    {
+      "id": "calendar_182",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 2,
+        "position": "after",
+        "method": "eom"
+      },
+      "thesis": "End of month"
+    },
+    {
+      "id": "calendar_183",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 3,
+        "position": "before",
+        "method": "eom"
+      },
+      "thesis": "End of month"
+    },
+    {
+      "id": "calendar_184",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 3,
+        "position": "after",
+        "method": "eom"
+      },
+      "thesis": "End of month"
+    },
+    {
+      "id": "calendar_185",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 5,
+        "position": "before",
+        "method": "eom"
+      },
+      "thesis": "End of month"
+    },
+    {
+      "id": "calendar_186",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 5,
+        "position": "after",
+        "method": "eom"
+      },
+      "thesis": "End of month"
+    },
+    {
+      "id": "calendar_187",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "day": 0,
+        "method": "dow"
+      },
+      "thesis": "Day of week"
+    },
+    {
+      "id": "calendar_188",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "day": 1,
+        "method": "dow"
+      },
+      "thesis": "Day of week"
+    },
+    {
+      "id": "calendar_189",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "day": 2,
+        "method": "dow"
+      },
+      "thesis": "Day of week"
+    },
+    {
+      "id": "calendar_190",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "day": 3,
+        "method": "dow"
+      },
+      "thesis": "Day of week"
+    },
+    {
+      "id": "calendar_191",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "day": 4,
+        "method": "dow"
+      },
+      "thesis": "Day of week"
+    },
+    {
+      "id": "calendar_192",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 1,
+        "method": "first_days"
+      },
+      "thesis": "First days of month"
+    },
+    {
+      "id": "calendar_193",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 2,
+        "method": "first_days"
+      },
+      "thesis": "First days of month"
+    },
+    {
+      "id": "calendar_194",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "window": 3,
+        "method": "first_days"
+      },
+      "thesis": "First days of month"
+    },
+    {
+      "id": "calendar_195",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "mode": "trade",
+        "method": "weekend"
+      },
+      "thesis": "Weekend effect"
+    },
+    {
+      "id": "calendar_196",
+      "category": "calendar",
+      "data_source": "price",
+      "params": {
+        "mode": "avoid",
+        "method": "weekend"
+      },
+      "thesis": "Weekend effect"
+    },
+    {
+      "id": "funding_carry_197",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_198",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_199",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_200",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_201",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_202",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_203",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.0005,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_204",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.0005,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_205",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.0005,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_206",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_207",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_208",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_209",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.002,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_210",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.002,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_carry_211",
+      "category": "funding_carry",
+      "data_source": "funding",
+      "params": {
+        "threshold": 0.002,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "thesis": "Funding carry"
+    },
+    {
+      "id": "funding_zscore_212",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_213",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 30,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_214",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 30,
+        "z": 2.0,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_215",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_216",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 60,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_217",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 60,
+        "z": 2.0,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_218",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_219",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 90,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_zscore_220",
+      "category": "funding_zscore",
+      "data_source": "funding",
+      "params": {
+        "window": 90,
+        "z": 2.0,
+        "method": "zscore"
+      },
+      "thesis": "Funding z-score"
+    },
+    {
+      "id": "funding_divergence_221",
+      "category": "funding_divergence",
+      "data_source": "funding+price",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "thesis": "Funding-price divergence"
+    },
+    {
+      "id": "funding_divergence_222",
+      "category": "funding_divergence",
+      "data_source": "funding+price",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "thesis": "Funding-price divergence"
+    },
+    {
+      "id": "funding_divergence_223",
+      "category": "funding_divergence",
+      "data_source": "funding+price",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "thesis": "Funding-price divergence"
+    },
+    {
+      "id": "funding_divergence_224",
+      "category": "funding_divergence",
+      "data_source": "funding+price",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "thesis": "Funding-price divergence"
+    },
+    {
+      "id": "funding_divergence_225",
+      "category": "funding_divergence",
+      "data_source": "funding+price",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "thesis": "Funding-price divergence"
+    },
+    {
+      "id": "funding_divergence_226",
+      "category": "funding_divergence",
+      "data_source": "funding+price",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "thesis": "Funding-price divergence"
+    },
+    {
+      "id": "statistical_227",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "hurst_threshold": 0.4,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_228",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "hurst_threshold": 0.5,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_229",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "hurst_threshold": 0.4,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_230",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "hurst_threshold": 0.5,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_231",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 200,
+        "hurst_threshold": 0.4,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_232",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 200,
+        "hurst_threshold": 0.5,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_233",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 300,
+        "hurst_threshold": 0.4,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_234",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 300,
+        "hurst_threshold": 0.5,
+        "method": "hurst"
+      },
+      "thesis": "Hurst regime"
+    },
+    {
+      "id": "statistical_235",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "lag": 1,
+        "threshold": 0.1,
+        "method": "autocorr"
+      },
+      "thesis": "Autocorrelation"
+    },
+    {
+      "id": "statistical_236",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "lag": 1,
+        "threshold": 0.2,
+        "method": "autocorr"
+      },
+      "thesis": "Autocorrelation"
+    },
+    {
+      "id": "statistical_237",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "lag": 5,
+        "threshold": 0.1,
+        "method": "autocorr"
+      },
+      "thesis": "Autocorrelation"
+    },
+    {
+      "id": "statistical_238",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "lag": 5,
+        "threshold": 0.2,
+        "method": "autocorr"
+      },
+      "thesis": "Autocorrelation"
+    },
+    {
+      "id": "statistical_239",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "lag": 10,
+        "threshold": 0.1,
+        "method": "autocorr"
+      },
+      "thesis": "Autocorrelation"
+    },
+    {
+      "id": "statistical_240",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "lag": 10,
+        "threshold": 0.2,
+        "method": "autocorr"
+      },
+      "thesis": "Autocorrelation"
+    },
+    {
+      "id": "statistical_241",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "dd_pct": 5,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_242",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "dd_pct": 10,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_243",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 20,
+        "dd_pct": 15,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_244",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "dd_pct": 5,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_245",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "dd_pct": 10,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_246",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 50,
+        "dd_pct": 15,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_247",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "dd_pct": 5,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_248",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "dd_pct": 10,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    },
+    {
+      "id": "statistical_249",
+      "category": "statistical",
+      "data_source": "price",
+      "params": {
+        "window": 100,
+        "dd_pct": 15,
+        "method": "dd_reversal"
+      },
+      "thesis": "Drawdown reversal"
+    }
+  ]
+}
