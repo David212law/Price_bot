@@ -1,9 +1,14 @@
 {
   "signals": [
     {
-      "symbol": "BTC",
-      "action": "OPEN",
-      "time": 1793869200042
+      "symbol": "SOL",
+      "action": "CLOSE",
+      "time": 1793912400049
+    },
+    {
+      "symbol": "AVAX",
+      "action": "CLOSE",
+      "time": 1793901600056
     }
   ]
 }
