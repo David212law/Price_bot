@@ -22,8 +22,8 @@ from collections import defaultdict
 ROOT = Path.cwd()
 STATE_PATH = ROOT / "research_lab/logs/profiles/state.json"
 DEFS_PATH = ROOT / "research_lab/logs/generated/economic_v1_definitions.json"
-RET_DIR = ROOT / "research_lab/logs/profiles/returns_matrices/economic"
-RESULTS_PATH = ROOT / "research_lab/logs/generated/economic_v1_results.json"
+RET_DIR = ROOT / "research" / "economic" / "returns"
+RESULTS_PATH = ROOT / "research" / "economic" / "v1_results.json"
 
 EXCHANGES = {
     "hyperliquid": ["BTC", "ETH", "SOL", "BNB", "XRP", "AVAX"],

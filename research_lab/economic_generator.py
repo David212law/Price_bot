@@ -12,7 +12,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 LIB_PATH = Path("research_lab/economic_library.json")
-OUT_PATH = Path("research_lab/logs/generated/economic_v1_definitions.json")
+OUT_PATH = Path("research/economic/v1_definitions.json")
 
 
 def stable_hash(obj):
