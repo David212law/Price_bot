@@ -1,0 +1,177 @@
+name: Economic Verify (Artifact Detection)
+
+on:
+  workflow_dispatch:
+    inputs:
+      logic_filter:
+        description: "Logic to verify (or 'all')"
+        required: false
+        default: "all"
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+
+      - name: Compare each economic strategy vs M31 on same days
+        run: |
+          PYTHONPATH=. python3 - << 'PYEOF'
+          import json, glob
+          from pathlib import Path
+          from collections import defaultdict
+
+          def sharpe_ann(vals):
+              if len(vals) < 10: return 0.0
+              m = sum(vals)/len(vals)
+              v = sum((x-m)**2 for x in vals)/len(vals)
+              sd = v**0.5
+              return round((m/sd)*(365**0.5), 2) if sd > 0 else 0.0
+
+          def corr(a, b, dates):
+              va=[a[d] for d in dates]; vb=[b[d] for d in dates]
+              ma=sum(va)/len(va); mb=sum(vb)/len(vb)
+              cov=sum((va[i]-ma)*(vb[i]-mb) for i in range(len(va)))
+              sa=sum((x-ma)**2 for x in va)**0.5
+              sb=sum((x-mb)**2 for x in vb)**0.5
+              return round(cov/(sa*sb),3) if sa*sb>0 else 0.0
+
+          # Load M31 baseline per exchange (from composer report)
+          m31_baseline = {
+              "hyperliquid": {"SR": 8.16, "symbol": "BTC"},
+              "aster": {"SR": 8.26, "symbol": "BTCUSDT"},
+              "kucoin": {"SR": 7.76, "symbol": "XBTUSDTM"},
+          }
+
+          # Load M31 returns for correlation
+          m31_rets = {}
+          for exch in ["hyperliquid", "aster", "kucoin"]:
+              d = Path(f"research_lab/logs/profiles/returns_matrices/{exch}")
+              if not d.exists(): continue
+              files = list(d.glob("M31_EMA_*.json"))  # M31_EMA as proxy for M31 plain
+              if not files: continue
+              # Use first BTC file
+              for f in files:
+                  if "BTC" in f.name or "XBT" in f.name:
+                      m31_rets[exch] = json.loads(f.read_text())
+                      break
+
+          eco_dir = Path("research/economic/returns")
+          results = []
+          for exch in ["hyperliquid", "aster", "kucoin"]:
+              p = eco_dir / exch
+              if not p.exists(): continue
+              for f in p.glob("ECO_*.json"):
+                  parts = f.name.replace(".json","").split("_")
+                  # Extract: ECO_<LOGIC>_<HASH>_<SYMBOL>
+                  # e.g., ECO_FUNDING_VOLATILITY_FILTER_05159a1a_ETHUSDT
+                  if "_FUNDING_" in f.name:
+                      logic_end = f.name.find("_", f.name.find("FUNDING_")+8)
+                  else:
+                      continue
+                  try:
+                      rets = json.loads(f.read_text())
+                  except: continue
+
+                  if exch not in m31_rets: continue
+                  m31 = m31_rets[exch]
+                  common = sorted(set(rets.keys()) & set(m31.keys()))
+                  if len(common) < 60: continue
+
+                  # Split 70/30
+                  split = int(len(common)*0.7)
+                  test_dates = common[split:]
+
+                  eco_test = [rets[d] for d in test_dates]
+                  m31_test = [m31[d] for d in test_dates]
+                  sr_eco = sharpe_ann(eco_test)
+                  sr_m31 = sharpe_ann(m31_test)
+                  imp = (sr_eco/sr_m31 - 1)*100 if sr_m31 > 0 else 0
+                  c = corr(rets, m31, common)
+
+                  # Which logic?
+                  logic = "unknown"
+                  for tag, name in [("VOLATILITY_FILTER","funding_volatility_filter"),
+                                    ("REGIME_CONTRARIAN","funding_regime_contrarian"),
+                                    ("FUNDING_ZSCORE","funding_zscore")]:
+                      if tag in f.name:
+                          logic = name; break
+
+                  results.append({
+                      "file": f.name, "exchange": exch, "logic": logic,
+                      "n_common": len(common), "n_test": len(test_dates),
+                      "sr_eco": sr_eco, "sr_m31": sr_m31,
+                      "improvement_pct": round(imp, 1),
+                      "corr_m31": c,
+                  })
+
+          # Classify
+          print("="*72)
+          print(" ARTIFACT DETECTION RESULTS")
+          print("="*72)
+          print(f"Total analyzed: {len(results)}")
+          print()
+
+          verdicts = defaultdict(lambda: {"real":0, "correlated":0, "no_improvement":0, "small_sample":0})
+          for r in results:
+              v = verdicts[r["logic"]]
+              if r["n_test"] < 30:
+                  v["small_sample"] += 1
+              elif abs(r["corr_m31"]) > 0.7:
+                  v["correlated"] += 1
+              elif r["improvement_pct"] < 10:
+                  v["no_improvement"] += 1
+              else:
+                  v["real"] += 1
+
+          print("By logic:")
+          for logic, v in verdicts.items():
+              print(f"  {logic}:")
+              print(f"    REAL (corr<0.7 & imp>10%): {v['real']}")
+              print(f"    Correlated with M31 (>0.7): {v['correlated']}")
+              print(f"    No improvement (<10%):      {v['no_improvement']}")
+              print(f"    Small sample:               {v['small_sample']}")
+
+          print()
+          print("="*72)
+          print(" REAL CANDIDATES (corr<0.7 AND improvement>10%):")
+          print("="*72)
+          real = [r for r in results if abs(r["corr_m31"])<0.7 and r["improvement_pct"]>=10 and r["n_test"]>=30]
+          for r in sorted(real, key=lambda x: -x["improvement_pct"])[:20]:
+              print(f"  {r['logic']:<28} {r['exchange']:<12} {r['sr_eco']:>6.2f} (M31={r['sr_m31']:.2f}) "
+                    f"imp={r['improvement_pct']:>+6.1f}% corr={r['corr_m31']:>+6.3f}")
+
+          print()
+          print(f"TOTAL REAL: {len(real)}")
+          if len(real) == 0:
+              print("  ⚠️ ALL strategies are artifacts or correlated with M31")
+          elif len(real) <= 5:
+              print("  ⚠️ Very few real candidates — need independent validation")
+          else:
+              print("  ✅ Multiple real candidates — promising")
+
+          # Save
+          out = Path("research/economic/verify_results.json")
+          out.write_text(json.dumps({"n_total": len(results), "by_logic": dict(verdicts), "real_candidates": real}, indent=2))
+          print(f"\nSaved to {out}")
+          PYEOF
+
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto: economic verify $(date -u +%Y-%m-%d) [skip ci]"
+            git pull --rebase origin main || true
+            git push || echo "push failed"
+          fi
