@@ -21,7 +21,7 @@ from collections import defaultdict
 
 ROOT = Path.cwd()
 STATE_PATH = ROOT / "research_lab/logs/profiles/state.json"
-DEFS_PATH = ROOT / "research_lab/logs/generated/economic_v1_definitions.json"
+DEFS_PATH = ROOT / "research" / "economic" / "v1_definitions.json"
 RET_DIR = ROOT / "research" / "economic" / "returns"
 RESULTS_PATH = ROOT / "research" / "economic" / "v1_results.json"
 
