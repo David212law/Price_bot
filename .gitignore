@@ -26,3 +26,6 @@ research_lab/logs/*.json
 research_lab/logs/*.md
 !research_lab/logs/profiles/state.json
 reports/auto_scan/*.json
+
+# Ignore backup files
+*.bak
