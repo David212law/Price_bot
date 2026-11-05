@@ -223,6 +223,15 @@ def main():
     # D-437 SHADOW: only TREND
     if _current_regime != "TREND":
         print(f"[SKIP] Aster Shadow: not TREND (current={_current_regime})")
+        # D-535: Heartbeat — update last_run even when skipping
+        try:
+            _hb_state, _hb_sha = load_from_github(STATE_FILE)
+            if isinstance(_hb_state, dict) and _hb_state:
+                _hb_state["last_run"] = datetime.now(timezone.utc).isoformat()
+                save_to_github(STATE_FILE, _hb_state, sha=_hb_sha)
+                print(f"[HEARTBEAT] last_run updated to {_hb_state['last_run']}")
+        except Exception as _e:
+            print(f"[HEARTBEAT] Error: {_e}")
         import sys as _sys
         _sys.exit(0)
 
