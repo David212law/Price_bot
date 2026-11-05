@@ -20,3 +20,9 @@ regime_core_results.txt
 # D-462: allow historical archive to be committed
 !research_lab/logs/history/
 !research_lab/logs/discoveries.json
+
+# Ignore generated logs and caches
+research_lab/logs/*.json
+research_lab/logs/*.md
+!research_lab/logs/profiles/state.json
+reports/auto_scan/*.json
