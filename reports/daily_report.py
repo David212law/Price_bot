@@ -1,3 +1,4 @@
+from pathlib import Path
 import os, json, base64, requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -24,6 +25,14 @@ def send_bale(msg):
     except: pass
 
 def load_from_github(filename):
+    # D-532: Hybrid loader (Local first, API fallback)
+    try:
+        p = Path(filename)
+        if p.exists():
+            with open(p, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except: pass
+    
     try:
         url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
         r = session.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
@@ -156,6 +165,34 @@ def main():
         report.append(f"   Diff: {last.get('diff_pct', 0):+.4f}% | Snapshots: {len(hist)}")
     else:
         report.append("🔹 KuCoin Combo (S): State not found.")
+
+
+    # ─── HL Shadow RP (D-510) ───
+    hsrp_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_rp_portfolio.json")
+    if hsrp_data:
+        eq = hsrp_data.get("total_equity", hsrp_data.get("total_capital", 10000.0))
+        report.append("🌐 **HL Shadow RP (M31 98.9% + Keltner)**")
+        report.append(f"   Equity: ${eq:.2f}")
+    else:
+        report.append("🔹 HL Shadow RP: State not found.")
+
+    # ─── HL Shadow MOM (D-522) ───
+    hsmom_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_mom_portfolio.json")
+    if hsmom_data:
+        eq = hsmom_data.get("total_equity", hsmom_data.get("total_capital", 10000.0))
+        report.append("🌐 **HL Shadow MOM (M31_MOMENTUM)**")
+        report.append(f"   Equity: ${eq:.2f}")
+    else:
+        report.append("🔹 HL Shadow MOM: State not found.")
+
+    # ─── HL Shadow MLP (D-528) ───
+    hsmlp_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_mlp_portfolio.json")
+    if hsmlp_data:
+        eq = hsmlp_data.get("portfolio_equity", 10000.0)
+        report.append("🌐 **HL Shadow MLP (Portfolio)**")
+        report.append(f"   Equity: ${eq:.2f}")
+    else:
+        report.append("🔹 HL Shadow MLP: State not found.")
 
     final_report = "\n".join(report)
     print(final_report)
