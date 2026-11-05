@@ -417306,6 +417306,8482 @@
         "stress": {},
         "calmar": {}
       }
+    },
+    "economic_v2:price_volume_175:hyperliquid:ETH": {
+      "strategy": "price_volume_175",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 721,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 721,
+          "pf": 2.158,
+          "wr": 28.2,
+          "sharpe_daily": 0.1712,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 721,
+          "pf": 2.158,
+          "wr": 28.2,
+          "sharpe_daily": 0.1712,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 721,
+          "pf": 2.158,
+          "wr": 28.2,
+          "sharpe_daily": 0.1712,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 721,
+        "pf": 2.158,
+        "wr": 28.2,
+        "sharpe_daily": 0.1712,
+        "sharpe_ann": 3.27,
+        "quartile_pf": [
+          2.263,
+          2.84,
+          1.474,
+          2.3
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:price_volume_175:hyperliquid:BNB": {
+      "strategy": "price_volume_175",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 721,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 721,
+          "pf": 1.992,
+          "wr": 33.0,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 721,
+          "pf": 1.992,
+          "wr": 33.0,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 721,
+          "pf": 1.992,
+          "wr": 33.0,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 721,
+        "pf": 1.992,
+        "wr": 33.0,
+        "sharpe_daily": 0.1612,
+        "sharpe_ann": 3.08,
+        "quartile_pf": [
+          2.133,
+          2.317,
+          1.189,
+          2.247
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:price_volume_175:aster:BTCUSDT": {
+      "strategy": "price_volume_175",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 824,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 824,
+          "pf": 1.942,
+          "wr": 29.6,
+          "sharpe_daily": 0.1576,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 824,
+          "pf": 1.942,
+          "wr": 29.6,
+          "sharpe_daily": 0.1576,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 824,
+          "pf": 1.942,
+          "wr": 29.6,
+          "sharpe_daily": 0.1576,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 824,
+        "pf": 1.942,
+        "wr": 29.6,
+        "sharpe_daily": 0.1576,
+        "sharpe_ann": 3.01,
+        "quartile_pf": [
+          1.935,
+          1.991,
+          1.546,
+          2.358
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:price_volume_175:aster:ETHUSDT": {
+      "strategy": "price_volume_175",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 824,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 824,
+          "pf": 2.253,
+          "wr": 30.7,
+          "sharpe_daily": 0.19,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 824,
+          "pf": 2.253,
+          "wr": 30.7,
+          "sharpe_daily": 0.19,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 824,
+          "pf": 2.253,
+          "wr": 30.7,
+          "sharpe_daily": 0.19,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 824,
+        "pf": 2.253,
+        "wr": 30.7,
+        "sharpe_daily": 0.19,
+        "sharpe_ann": 3.63,
+        "quartile_pf": [
+          2.013,
+          3.585,
+          1.632,
+          2.11
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:price_volume_175:kucoin:XBTUSDTM": {
+      "strategy": "price_volume_175",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "kucoin",
+      "symbol": "XBTUSDTM",
+      "n_total": 1086,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 1086,
+          "pf": 1.947,
+          "wr": 28.5,
+          "sharpe_daily": 0.1581,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 1086,
+          "pf": 1.947,
+          "wr": 28.5,
+          "sharpe_daily": 0.1581,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 1086,
+          "pf": 1.947,
+          "wr": 28.5,
+          "sharpe_daily": 0.1581,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 1086,
+        "pf": 1.947,
+        "wr": 28.5,
+        "sharpe_daily": 0.1581,
+        "sharpe_ann": 3.02,
+        "quartile_pf": [
+          2.309,
+          1.753,
+          1.612,
+          2.042
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:price_volume_175:kucoin:ETHUSDTM": {
+      "strategy": "price_volume_175",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "kucoin",
+      "symbol": "ETHUSDTM",
+      "n_total": 1086,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 1086,
+          "pf": 2.11,
+          "wr": 29.9,
+          "sharpe_daily": 0.1733,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 1086,
+          "pf": 2.11,
+          "wr": 29.9,
+          "sharpe_daily": 0.1733,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 1086,
+          "pf": 2.11,
+          "wr": 29.9,
+          "sharpe_daily": 0.1733,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 1086,
+        "pf": 2.11,
+        "wr": 29.9,
+        "sharpe_daily": 0.1733,
+        "sharpe_ann": 3.31,
+        "quartile_pf": [
+          2.312,
+          2.171,
+          1.955,
+          2.026
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:price_volume_175:kucoin:AVAXUSDTM": {
+      "strategy": "price_volume_175",
+      "params": {
+        "window": 10,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "kucoin",
+      "symbol": "AVAXUSDTM",
+      "n_total": 1086,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 1086,
+          "pf": 1.9,
+          "wr": 29.1,
+          "sharpe_daily": 0.1576,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 1086,
+          "pf": 1.9,
+          "wr": 29.1,
+          "sharpe_daily": 0.1576,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 1086,
+          "pf": 1.9,
+          "wr": 29.1,
+          "sharpe_daily": 0.1576,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 1086,
+        "pf": 1.9,
+        "wr": 29.1,
+        "sharpe_daily": 0.1576,
+        "sharpe_ann": 3.01,
+        "quartile_pf": [
+          2.087,
+          1.909,
+          1.95,
+          1.627
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:price_volume_177:hyperliquid:ETH": {
+      "strategy": "price_volume_177",
+      "params": {
+        "window": 20,
+        "direction": "long",
+        "method": "obv"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 2.169,
+          "wr": 24.9,
+          "sharpe_daily": 0.157,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 2.169,
+          "wr": 24.9,
+          "sharpe_daily": 0.157,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 2.169,
+          "wr": 24.9,
+          "sharpe_daily": 0.157,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 2.169,
+        "wr": 24.9,
+        "sharpe_daily": 0.157,
+        "sharpe_ann": 3.0,
+        "quartile_pf": [
+          3.938,
+          2.289,
+          1.322,
+          2.317
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:hyperliquid:BTC": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 86.4,
+        "sharpe_daily": 0.894,
+        "sharpe_ann": 17.08,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:hyperliquid:ETH": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 82.2,
+        "sharpe_daily": 0.8202,
+        "sharpe_ann": 15.67,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:hyperliquid:SOL": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 72.1,
+        "sharpe_daily": 0.7061,
+        "sharpe_ann": 13.49,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:hyperliquid:BNB": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 74.9,
+        "sharpe_daily": 0.6899,
+        "sharpe_ann": 13.18,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:hyperliquid:XRP": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 77.3,
+        "sharpe_daily": 0.6805,
+        "sharpe_ann": 13.0,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:hyperliquid:AVAX": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 74.5,
+        "sharpe_daily": 0.6993,
+        "sharpe_ann": 13.36,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:aster:BTCUSDT": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 88.9,
+        "sharpe_daily": 0.8459,
+        "sharpe_ann": 16.16,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:aster:ETHUSDT": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 90.7,
+        "sharpe_daily": 0.4423,
+        "sharpe_ann": 8.45,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:aster:SOLUSDT": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 75.9,
+        "sharpe_daily": 0.3795,
+        "sharpe_ann": 7.25,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:aster:BNBUSDT": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 333,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 333,
+        "pf": 999,
+        "wr": 92.5,
+        "sharpe_daily": 0.7611,
+        "sharpe_ann": 14.54,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:aster:XRPUSDT": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 78.9,
+        "sharpe_daily": 0.4412,
+        "sharpe_ann": 8.43,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_197:aster:AVAXUSDT": {
+      "strategy": "funding_carry_197",
+      "params": {
+        "threshold": 0,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 94.3,
+        "sharpe_daily": 0.4229,
+        "sharpe_ann": 8.08,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:hyperliquid:BTC": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 86.4,
+        "sharpe_daily": 0.894,
+        "sharpe_ann": 17.08,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:hyperliquid:ETH": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 82.2,
+        "sharpe_daily": 0.8202,
+        "sharpe_ann": 15.67,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:hyperliquid:SOL": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 72.1,
+        "sharpe_daily": 0.7061,
+        "sharpe_ann": 13.49,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:hyperliquid:BNB": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 74.9,
+        "sharpe_daily": 0.6899,
+        "sharpe_ann": 13.18,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:hyperliquid:XRP": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 77.3,
+        "sharpe_daily": 0.6805,
+        "sharpe_ann": 13.0,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:hyperliquid:AVAX": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 74.5,
+        "sharpe_daily": 0.6993,
+        "sharpe_ann": 13.36,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:aster:BTCUSDT": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 88.9,
+        "sharpe_daily": 0.8459,
+        "sharpe_ann": 16.16,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:aster:ETHUSDT": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 90.7,
+        "sharpe_daily": 0.4423,
+        "sharpe_ann": 8.45,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:aster:SOLUSDT": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 75.9,
+        "sharpe_daily": 0.3795,
+        "sharpe_ann": 7.25,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:aster:BNBUSDT": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 333,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 333,
+        "pf": 999,
+        "wr": 92.5,
+        "sharpe_daily": 0.7611,
+        "sharpe_ann": 14.54,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:aster:XRPUSDT": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 78.9,
+        "sharpe_daily": 0.4412,
+        "sharpe_ann": 8.43,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_198:aster:AVAXUSDT": {
+      "strategy": "funding_carry_198",
+      "params": {
+        "threshold": 0,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 94.3,
+        "sharpe_daily": 0.4229,
+        "sharpe_ann": 8.08,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:hyperliquid:BTC": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 86.4,
+          "sharpe_daily": 0.894,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 86.4,
+        "sharpe_daily": 0.894,
+        "sharpe_ann": 17.08,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:hyperliquid:ETH": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 82.2,
+          "sharpe_daily": 0.8202,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 82.2,
+        "sharpe_daily": 0.8202,
+        "sharpe_ann": 15.67,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:hyperliquid:SOL": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 72.1,
+          "sharpe_daily": 0.7061,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 72.1,
+        "sharpe_daily": 0.7061,
+        "sharpe_ann": 13.49,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:hyperliquid:BNB": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.9,
+          "sharpe_daily": 0.6899,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 74.9,
+        "sharpe_daily": 0.6899,
+        "sharpe_ann": 13.18,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:hyperliquid:XRP": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 77.3,
+          "sharpe_daily": 0.6805,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 77.3,
+        "sharpe_daily": 0.6805,
+        "sharpe_ann": 13.0,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:hyperliquid:AVAX": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 538,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 538,
+          "pf": 999,
+          "wr": 74.5,
+          "sharpe_daily": 0.6993,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 538,
+        "pf": 999,
+        "wr": 74.5,
+        "sharpe_daily": 0.6993,
+        "sharpe_ann": 13.36,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:aster:BTCUSDT": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 88.9,
+          "sharpe_daily": 0.8459,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 88.9,
+        "sharpe_daily": 0.8459,
+        "sharpe_ann": 16.16,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:aster:ETHUSDT": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 90.7,
+          "sharpe_daily": 0.4423,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 90.7,
+        "sharpe_daily": 0.4423,
+        "sharpe_ann": 8.45,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:aster:SOLUSDT": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 75.9,
+          "sharpe_daily": 0.3795,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 75.9,
+        "sharpe_daily": 0.3795,
+        "sharpe_ann": 7.25,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:aster:BNBUSDT": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 333,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 333,
+          "pf": 999,
+          "wr": 92.5,
+          "sharpe_daily": 0.7611,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 333,
+        "pf": 999,
+        "wr": 92.5,
+        "sharpe_daily": 0.7611,
+        "sharpe_ann": 14.54,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:aster:XRPUSDT": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 78.9,
+          "sharpe_daily": 0.4412,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 78.9,
+        "sharpe_daily": 0.4412,
+        "sharpe_ann": 8.43,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_199:aster:AVAXUSDT": {
+      "strategy": "funding_carry_199",
+      "params": {
+        "threshold": 0,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 94.3,
+          "sharpe_daily": 0.4229,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 94.3,
+        "sharpe_daily": 0.4229,
+        "sharpe_ann": 8.08,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_200:aster:BTCUSDT": {
+      "strategy": "funding_carry_200",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 4.9,
+        "sharpe_daily": 0.1905,
+        "sharpe_ann": 3.64,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_200:aster:ETHUSDT": {
+      "strategy": "funding_carry_200",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 5.7,
+        "sharpe_daily": 0.1633,
+        "sharpe_ann": 3.12,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_200:aster:SOLUSDT": {
+      "strategy": "funding_carry_200",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 7.4,
+        "sharpe_daily": 0.1785,
+        "sharpe_ann": 3.41,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_200:aster:BNBUSDT": {
+      "strategy": "funding_carry_200",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 333,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 333,
+        "pf": 999,
+        "wr": 30.6,
+        "sharpe_daily": 0.5271,
+        "sharpe_ann": 10.07,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_200:aster:XRPUSDT": {
+      "strategy": "funding_carry_200",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 5.3,
+        "sharpe_daily": 0.1774,
+        "sharpe_ann": 3.39,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_200:aster:AVAXUSDT": {
+      "strategy": "funding_carry_200",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 6.8,
+        "sharpe_daily": 0.1905,
+        "sharpe_ann": 3.64,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_201:aster:BTCUSDT": {
+      "strategy": "funding_carry_201",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 4.9,
+        "sharpe_daily": 0.1905,
+        "sharpe_ann": 3.64,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_201:aster:ETHUSDT": {
+      "strategy": "funding_carry_201",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 5.7,
+        "sharpe_daily": 0.1633,
+        "sharpe_ann": 3.12,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_201:aster:SOLUSDT": {
+      "strategy": "funding_carry_201",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 7.4,
+        "sharpe_daily": 0.1785,
+        "sharpe_ann": 3.41,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_201:aster:BNBUSDT": {
+      "strategy": "funding_carry_201",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 333,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 333,
+        "pf": 999,
+        "wr": 30.6,
+        "sharpe_daily": 0.5271,
+        "sharpe_ann": 10.07,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_201:aster:XRPUSDT": {
+      "strategy": "funding_carry_201",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 5.3,
+        "sharpe_daily": 0.1774,
+        "sharpe_ann": 3.39,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_201:aster:AVAXUSDT": {
+      "strategy": "funding_carry_201",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 6.8,
+        "sharpe_daily": 0.1905,
+        "sharpe_ann": 3.64,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_202:aster:BTCUSDT": {
+      "strategy": "funding_carry_202",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 4.9,
+        "sharpe_daily": 0.1905,
+        "sharpe_ann": 3.64,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_202:aster:ETHUSDT": {
+      "strategy": "funding_carry_202",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.7,
+          "sharpe_daily": 0.1633,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 5.7,
+        "sharpe_daily": 0.1633,
+        "sharpe_ann": 3.12,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_202:aster:SOLUSDT": {
+      "strategy": "funding_carry_202",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 7.4,
+        "sharpe_daily": 0.1785,
+        "sharpe_ann": 3.41,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_202:aster:BNBUSDT": {
+      "strategy": "funding_carry_202",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 333,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 333,
+          "pf": 999,
+          "wr": 30.6,
+          "sharpe_daily": 0.5271,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 333,
+        "pf": 999,
+        "wr": 30.6,
+        "sharpe_daily": 0.5271,
+        "sharpe_ann": 10.07,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_202:aster:XRPUSDT": {
+      "strategy": "funding_carry_202",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 5.3,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 5.3,
+        "sharpe_daily": 0.1774,
+        "sharpe_ann": 3.39,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_202:aster:AVAXUSDT": {
+      "strategy": "funding_carry_202",
+      "params": {
+        "threshold": 0.0001,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 6.8,
+          "sharpe_daily": 0.1905,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 6.8,
+        "sharpe_daily": 0.1905,
+        "sharpe_ann": 3.64,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_203:aster:AVAXUSDT": {
+      "strategy": "funding_carry_203",
+      "params": {
+        "threshold": 0.0005,
+        "hold_days": 1,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 3.8,
+        "sharpe_daily": 0.1685,
+        "sharpe_ann": 3.22,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_204:aster:AVAXUSDT": {
+      "strategy": "funding_carry_204",
+      "params": {
+        "threshold": 0.0005,
+        "hold_days": 3,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 3.8,
+        "sharpe_daily": 0.1685,
+        "sharpe_ann": 3.22,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_carry_205:aster:AVAXUSDT": {
+      "strategy": "funding_carry_205",
+      "params": {
+        "threshold": 0.0005,
+        "hold_days": 7,
+        "method": "plain"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 731,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 731,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.1685,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 731,
+        "pf": 999,
+        "wr": 3.8,
+        "sharpe_daily": 0.1685,
+        "sharpe_ann": 3.22,
+        "quartile_pf": [
+          999,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:hyperliquid:BTC": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 7.7,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 7.7,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 7.7,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 7.7,
+        "sharpe_daily": 0.2251,
+        "sharpe_ann": 4.3,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:hyperliquid:ETH": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.1,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.1,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.1,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 5.1,
+        "sharpe_daily": 0.1769,
+        "sharpe_ann": 3.38,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:hyperliquid:SOL": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 9.1,
+          "sharpe_daily": 0.2256,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 9.1,
+          "sharpe_daily": 0.2256,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 9.1,
+          "sharpe_daily": 0.2256,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 9.1,
+        "sharpe_daily": 0.2256,
+        "sharpe_ann": 4.31,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:hyperliquid:BNB": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 4.1,
+        "sharpe_daily": 0.1696,
+        "sharpe_ann": 3.24,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:hyperliquid:XRP": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 12.4,
+          "sharpe_daily": 0.2465,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 12.4,
+          "sharpe_daily": 0.2465,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 12.4,
+          "sharpe_daily": 0.2465,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 12.4,
+        "sharpe_daily": 0.2465,
+        "sharpe_ann": 4.71,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:hyperliquid:AVAX": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.7,
+          "sharpe_daily": 0.1931,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.7,
+          "sharpe_daily": 0.1931,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.7,
+          "sharpe_daily": 0.1931,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 4.7,
+        "sharpe_daily": 0.1931,
+        "sharpe_ann": 3.69,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:aster:BTCUSDT": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.1,
+          "sharpe_daily": 0.212,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.1,
+          "sharpe_daily": 0.212,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.1,
+          "sharpe_daily": 0.212,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 12.1,
+        "sharpe_daily": 0.212,
+        "sharpe_ann": 4.05,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_212:aster:BNBUSDT": {
+      "strategy": "funding_zscore_212",
+      "params": {
+        "window": 30,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 303,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.2,
+          "sharpe_daily": 0.3523,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.2,
+          "sharpe_daily": 0.3523,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.2,
+          "sharpe_daily": 0.3523,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 303,
+        "pf": 999,
+        "wr": 16.2,
+        "sharpe_daily": 0.3523,
+        "sharpe_ann": 6.73,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_213:hyperliquid:BTC": {
+      "strategy": "funding_zscore_213",
+      "params": {
+        "window": 30,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.9,
+          "sharpe_daily": 0.1822,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.9,
+          "sharpe_daily": 0.1822,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.9,
+          "sharpe_daily": 0.1822,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 3.9,
+        "sharpe_daily": 0.1822,
+        "sharpe_ann": 3.48,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_213:hyperliquid:XRP": {
+      "strategy": "funding_zscore_213",
+      "params": {
+        "window": 30,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1795,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1795,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1795,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 4.9,
+        "sharpe_daily": 0.1795,
+        "sharpe_ann": 3.43,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_213:hyperliquid:AVAX": {
+      "strategy": "funding_zscore_213",
+      "params": {
+        "window": 30,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.1649,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.1649,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.1649,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 3.1,
+        "sharpe_daily": 0.1649,
+        "sharpe_ann": 3.15,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_213:aster:BNBUSDT": {
+      "strategy": "funding_zscore_213",
+      "params": {
+        "window": 30,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 303,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 303,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2544,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 303,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2544,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 303,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2544,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 303,
+        "pf": 999,
+        "wr": 8.6,
+        "sharpe_daily": 0.2544,
+        "sharpe_ann": 4.86,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_214:hyperliquid:BTC": {
+      "strategy": "funding_zscore_214",
+      "params": {
+        "window": 30,
+        "z": 2.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.0,
+          "sharpe_daily": 0.1628,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.0,
+          "sharpe_daily": 0.1628,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.0,
+          "sharpe_daily": 0.1628,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 3.0,
+        "sharpe_daily": 0.1628,
+        "sharpe_ann": 3.11,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_214:aster:BNBUSDT": {
+      "strategy": "funding_zscore_214",
+      "params": {
+        "window": 30,
+        "z": 2.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 303,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 303,
+          "pf": 999,
+          "wr": 4.6,
+          "sharpe_daily": 0.1874,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 303,
+          "pf": 999,
+          "wr": 4.6,
+          "sharpe_daily": 0.1874,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 303,
+          "pf": 999,
+          "wr": 4.6,
+          "sharpe_daily": 0.1874,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 303,
+        "pf": 999,
+        "wr": 4.6,
+        "sharpe_daily": 0.1874,
+        "sharpe_ann": 3.58,
+        "quartile_pf": [
+          1.0,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:hyperliquid:BTC": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 7.1,
+          "sharpe_daily": 0.2172,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 7.1,
+          "sharpe_daily": 0.2172,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 7.1,
+          "sharpe_daily": 0.2172,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 7.1,
+        "sharpe_daily": 0.2172,
+        "sharpe_ann": 4.15,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:hyperliquid:ETH": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.4,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.4,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.4,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 4.4,
+        "sharpe_daily": 0.1769,
+        "sharpe_ann": 3.38,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:hyperliquid:SOL": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 8.6,
+        "sharpe_daily": 0.2251,
+        "sharpe_ann": 4.3,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:hyperliquid:XRP": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 9.8,
+          "sharpe_daily": 0.2329,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 9.8,
+          "sharpe_daily": 0.2329,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 9.8,
+          "sharpe_daily": 0.2329,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 9.8,
+        "sharpe_daily": 0.2329,
+        "sharpe_ann": 4.45,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:hyperliquid:AVAX": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1895,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1895,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1895,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 4.0,
+        "sharpe_daily": 0.1895,
+        "sharpe_ann": 3.62,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:aster:BTCUSDT": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 9.5,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 9.5,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 9.5,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 9.5,
+        "sharpe_daily": 0.2251,
+        "sharpe_ann": 4.3,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:aster:ETHUSDT": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 8.8,
+          "sharpe_daily": 0.2706,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 8.8,
+          "sharpe_daily": 0.2706,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 8.8,
+          "sharpe_daily": 0.2706,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 8.8,
+        "sharpe_daily": 0.2706,
+        "sharpe_ann": 5.17,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:aster:BNBUSDT": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 273,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 273,
+          "pf": 999,
+          "wr": 10.6,
+          "sharpe_daily": 0.2942,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 273,
+          "pf": 999,
+          "wr": 10.6,
+          "sharpe_daily": 0.2942,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 273,
+          "pf": 999,
+          "wr": 10.6,
+          "sharpe_daily": 0.2942,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 273,
+        "pf": 999,
+        "wr": 10.6,
+        "sharpe_daily": 0.2942,
+        "sharpe_ann": 5.62,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_215:aster:XRPUSDT": {
+      "strategy": "funding_zscore_215",
+      "params": {
+        "window": 60,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 10.3,
+          "sharpe_daily": 0.3366,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 10.3,
+          "sharpe_daily": 0.3366,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 10.3,
+          "sharpe_daily": 0.3366,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 10.3,
+        "sharpe_daily": 0.3366,
+        "sharpe_ann": 6.43,
+        "quartile_pf": [
+          1.0,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_216:hyperliquid:AVAX": {
+      "strategy": "funding_zscore_216",
+      "params": {
+        "window": 60,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 2.7,
+        "sharpe_daily": 0.1612,
+        "sharpe_ann": 3.08,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_216:aster:BNBUSDT": {
+      "strategy": "funding_zscore_216",
+      "params": {
+        "window": 60,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 273,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 273,
+          "pf": 999,
+          "wr": 6.6,
+          "sharpe_daily": 0.2298,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 273,
+          "pf": 999,
+          "wr": 6.6,
+          "sharpe_daily": 0.2298,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 273,
+          "pf": 999,
+          "wr": 6.6,
+          "sharpe_daily": 0.2298,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 273,
+        "pf": 999,
+        "wr": 6.6,
+        "sharpe_daily": 0.2298,
+        "sharpe_ann": 4.39,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_217:aster:BNBUSDT": {
+      "strategy": "funding_zscore_217",
+      "params": {
+        "window": 60,
+        "z": 2.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 273,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 273,
+          "pf": 999,
+          "wr": 3.7,
+          "sharpe_daily": 0.1759,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 273,
+          "pf": 999,
+          "wr": 3.7,
+          "sharpe_daily": 0.1759,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 273,
+          "pf": 999,
+          "wr": 3.7,
+          "sharpe_daily": 0.1759,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 273,
+        "pf": 999,
+        "wr": 3.7,
+        "sharpe_daily": 0.1759,
+        "sharpe_ann": 3.36,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:hyperliquid:BTC": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 7.6,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 7.6,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 7.6,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 7.6,
+        "sharpe_daily": 0.2251,
+        "sharpe_ann": 4.3,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:hyperliquid:ETH": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1785,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 4.0,
+        "sharpe_daily": 0.1785,
+        "sharpe_ann": 3.41,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:hyperliquid:SOL": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 6.9,
+          "sharpe_daily": 0.2088,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 6.9,
+          "sharpe_daily": 0.2088,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 6.9,
+          "sharpe_daily": 0.2088,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 6.9,
+        "sharpe_daily": 0.2088,
+        "sharpe_ann": 3.99,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:hyperliquid:XRP": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 8.0,
+          "sharpe_daily": 0.2104,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 8.0,
+          "sharpe_daily": 0.2104,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 8.0,
+          "sharpe_daily": 0.2104,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 8.0,
+        "sharpe_daily": 0.2104,
+        "sharpe_ann": 4.02,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:hyperliquid:AVAX": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 4.5,
+          "sharpe_daily": 0.202,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 4.5,
+          "sharpe_daily": 0.202,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 4.5,
+          "sharpe_daily": 0.202,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 4.5,
+        "sharpe_daily": 0.202,
+        "sharpe_ann": 3.86,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:aster:BTCUSDT": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 8.7,
+          "sharpe_daily": 0.3067,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 8.7,
+          "sharpe_daily": 0.3067,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 8.7,
+          "sharpe_daily": 0.3067,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 8.7,
+        "sharpe_daily": 0.3067,
+        "sharpe_ann": 5.86,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:aster:ETHUSDT": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 7.2,
+          "sharpe_daily": 0.2392,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 7.2,
+          "sharpe_daily": 0.2392,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 7.2,
+          "sharpe_daily": 0.2392,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 7.2,
+        "sharpe_daily": 0.2392,
+        "sharpe_ann": 4.57,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:aster:SOLUSDT": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 9.0,
+          "sharpe_daily": 0.3146,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 9.0,
+          "sharpe_daily": 0.3146,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 9.0,
+          "sharpe_daily": 0.3146,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 9.0,
+        "sharpe_daily": 0.3146,
+        "sharpe_ann": 6.01,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:aster:BNBUSDT": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 243,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 243,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.2423,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 243,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.2423,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 243,
+          "pf": 999,
+          "wr": 7.4,
+          "sharpe_daily": 0.2423,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 243,
+        "pf": 999,
+        "wr": 7.4,
+        "sharpe_daily": 0.2423,
+        "sharpe_ann": 4.63,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_218:aster:XRPUSDT": {
+      "strategy": "funding_zscore_218",
+      "params": {
+        "window": 90,
+        "z": 1.0,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 9.5,
+          "sharpe_daily": 0.3235,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 9.5,
+          "sharpe_daily": 0.3235,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 9.5,
+          "sharpe_daily": 0.3235,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 9.5,
+        "sharpe_daily": 0.3235,
+        "sharpe_ann": 6.18,
+        "quartile_pf": [
+          1.0,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_219:hyperliquid:BTC": {
+      "strategy": "funding_zscore_219",
+      "params": {
+        "window": 90,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 2.7,
+        "sharpe_daily": 0.1612,
+        "sharpe_ann": 3.08,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_219:hyperliquid:AVAX": {
+      "strategy": "funding_zscore_219",
+      "params": {
+        "window": 90,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.9,
+          "sharpe_daily": 0.1664,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.9,
+          "sharpe_daily": 0.1664,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.9,
+          "sharpe_daily": 0.1664,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 2.9,
+        "sharpe_daily": 0.1664,
+        "sharpe_ann": 3.18,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_zscore_219:aster:BNBUSDT": {
+      "strategy": "funding_zscore_219",
+      "params": {
+        "window": 90,
+        "z": 1.5,
+        "method": "zscore"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 243,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 243,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.168,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 243,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.168,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 243,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.168,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 243,
+        "pf": 999,
+        "wr": 3.3,
+        "sharpe_daily": 0.168,
+        "sharpe_ann": 3.21,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:hyperliquid:BTC": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 6.886,
+          "wr": 44.4,
+          "sharpe_daily": 0.4648,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 6.886,
+          "wr": 44.4,
+          "sharpe_daily": 0.4648,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 6.886,
+          "wr": 44.4,
+          "sharpe_daily": 0.4648,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 6.886,
+        "wr": 44.4,
+        "sharpe_daily": 0.4648,
+        "sharpe_ann": 8.88,
+        "quartile_pf": [
+          22.036,
+          11.176,
+          2.479,
+          9.977
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:hyperliquid:ETH": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 2.515,
+          "wr": 33.1,
+          "sharpe_daily": 0.1659,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 2.515,
+          "wr": 33.1,
+          "sharpe_daily": 0.1659,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 2.515,
+          "wr": 33.1,
+          "sharpe_daily": 0.1659,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 2.515,
+        "wr": 33.1,
+        "sharpe_daily": 0.1659,
+        "sharpe_ann": 3.17,
+        "quartile_pf": [
+          4.594,
+          1.009,
+          2.074,
+          8.394
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:aster:BTCUSDT": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 15.325,
+          "wr": 45.7,
+          "sharpe_daily": 0.4611,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 15.325,
+          "wr": 45.7,
+          "sharpe_daily": 0.4611,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 15.325,
+          "wr": 45.7,
+          "sharpe_daily": 0.4611,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 15.325,
+        "wr": 45.7,
+        "sharpe_daily": 0.4611,
+        "sharpe_ann": 8.81,
+        "quartile_pf": [
+          12953.283,
+          698.91,
+          3.235,
+          9.384
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:aster:ETHUSDT": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 18.346,
+          "wr": 44.3,
+          "sharpe_daily": 0.3559,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 18.346,
+          "wr": 44.3,
+          "sharpe_daily": 0.3559,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 18.346,
+          "wr": 44.3,
+          "sharpe_daily": 0.3559,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 18.346,
+        "wr": 44.3,
+        "sharpe_daily": 0.3559,
+        "sharpe_ann": 6.8,
+        "quartile_pf": [
+          999,
+          83.184,
+          4.191,
+          6.253
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:aster:SOLUSDT": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 5.491,
+          "wr": 36.2,
+          "sharpe_daily": 0.2423,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 5.491,
+          "wr": 36.2,
+          "sharpe_daily": 0.2423,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 5.491,
+          "wr": 36.2,
+          "sharpe_daily": 0.2423,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 5.491,
+        "wr": 36.2,
+        "sharpe_daily": 0.2423,
+        "sharpe_ann": 4.63,
+        "quartile_pf": [
+          62.614,
+          2.979,
+          1.17,
+          2.235
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:aster:BNBUSDT": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 322,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 322,
+          "pf": 4.843,
+          "wr": 38.2,
+          "sharpe_daily": 0.2806,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 322,
+          "pf": 4.843,
+          "wr": 38.2,
+          "sharpe_daily": 0.2806,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 322,
+          "pf": 4.843,
+          "wr": 38.2,
+          "sharpe_daily": 0.2806,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 322,
+        "pf": 4.843,
+        "wr": 38.2,
+        "sharpe_daily": 0.2806,
+        "sharpe_ann": 5.36,
+        "quartile_pf": [
+          3.327,
+          3.166,
+          62.602,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:aster:XRPUSDT": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 5.974,
+          "wr": 38.9,
+          "sharpe_daily": 0.3884,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 5.974,
+          "wr": 38.9,
+          "sharpe_daily": 0.3884,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 5.974,
+          "wr": 38.9,
+          "sharpe_daily": 0.3884,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 5.974,
+        "wr": 38.9,
+        "sharpe_daily": 0.3884,
+        "sharpe_ann": 7.42,
+        "quartile_pf": [
+          55.285,
+          17.688,
+          0.807,
+          6.34
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_221:aster:AVAXUSDT": {
+      "strategy": "funding_divergence_221",
+      "params": {
+        "window": 7,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 12.53,
+          "wr": 49.9,
+          "sharpe_daily": 0.4533,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 12.53,
+          "wr": 49.9,
+          "sharpe_daily": 0.4533,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 12.53,
+          "wr": 49.9,
+          "sharpe_daily": 0.4533,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 12.53,
+        "wr": 49.9,
+        "sharpe_daily": 0.4533,
+        "sharpe_ann": 8.66,
+        "quartile_pf": [
+          88.13,
+          999,
+          3.298,
+          17.722
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:hyperliquid:BTC": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 9.581,
+          "wr": 41.8,
+          "sharpe_daily": 0.4334,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 9.581,
+          "wr": 41.8,
+          "sharpe_daily": 0.4334,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 9.581,
+          "wr": 41.8,
+          "sharpe_daily": 0.4334,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 9.581,
+        "wr": 41.8,
+        "sharpe_daily": 0.4334,
+        "sharpe_ann": 8.28,
+        "quartile_pf": [
+          13.139,
+          33.89,
+          2.17,
+          5.954
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:hyperliquid:ETH": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 11.751,
+          "wr": 48.8,
+          "sharpe_daily": 0.4957,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 11.751,
+          "wr": 48.8,
+          "sharpe_daily": 0.4957,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 11.751,
+          "wr": 48.8,
+          "sharpe_daily": 0.4957,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 11.751,
+        "wr": 48.8,
+        "sharpe_daily": 0.4957,
+        "sharpe_ann": 9.47,
+        "quartile_pf": [
+          12.385,
+          43.017,
+          2.78,
+          24.991
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:hyperliquid:SOL": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 2.347,
+          "wr": 37.9,
+          "sharpe_daily": 0.1811,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 2.347,
+          "wr": 37.9,
+          "sharpe_daily": 0.1811,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 2.347,
+          "wr": 37.9,
+          "sharpe_daily": 0.1811,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 2.347,
+        "wr": 37.9,
+        "sharpe_daily": 0.1811,
+        "sharpe_ann": 3.46,
+        "quartile_pf": [
+          2.381,
+          5.949,
+          0.55,
+          4.99
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:hyperliquid:BNB": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 4.141,
+          "wr": 48.2,
+          "sharpe_daily": 0.3198,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 4.141,
+          "wr": 48.2,
+          "sharpe_daily": 0.3198,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 4.141,
+          "wr": 48.2,
+          "sharpe_daily": 0.3198,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 4.141,
+        "wr": 48.2,
+        "sharpe_daily": 0.3198,
+        "sharpe_ann": 6.11,
+        "quartile_pf": [
+          2.989,
+          6.03,
+          3.161,
+          7.658
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:hyperliquid:XRP": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 4.171,
+          "wr": 39.5,
+          "sharpe_daily": 0.2963,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 4.171,
+          "wr": 39.5,
+          "sharpe_daily": 0.2963,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 4.171,
+          "wr": 39.5,
+          "sharpe_daily": 0.2963,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 4.171,
+        "wr": 39.5,
+        "sharpe_daily": 0.2963,
+        "sharpe_ann": 5.66,
+        "quartile_pf": [
+          4.814,
+          25.874,
+          0.847,
+          3.784
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:hyperliquid:AVAX": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 3.402,
+          "wr": 43.3,
+          "sharpe_daily": 0.2863,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 3.402,
+          "wr": 43.3,
+          "sharpe_daily": 0.2863,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 3.402,
+          "wr": 43.3,
+          "sharpe_daily": 0.2863,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 3.402,
+        "wr": 43.3,
+        "sharpe_daily": 0.2863,
+        "sharpe_ann": 5.47,
+        "quartile_pf": [
+          3.832,
+          7.799,
+          1.622,
+          2.255
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:aster:BTCUSDT": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 24.984,
+          "wr": 43.0,
+          "sharpe_daily": 0.4784,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 24.984,
+          "wr": 43.0,
+          "sharpe_daily": 0.4784,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 24.984,
+          "wr": 43.0,
+          "sharpe_daily": 0.4784,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 24.984,
+        "wr": 43.0,
+        "sharpe_daily": 0.4784,
+        "sharpe_ann": 9.14,
+        "quartile_pf": [
+          61.679,
+          49.431,
+          4.841,
+          15.358
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:aster:ETHUSDT": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 35.49,
+          "wr": 46.5,
+          "sharpe_daily": 0.2738,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 35.49,
+          "wr": 46.5,
+          "sharpe_daily": 0.2738,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 35.49,
+          "wr": 46.5,
+          "sharpe_daily": 0.2738,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 35.49,
+        "wr": 46.5,
+        "sharpe_daily": 0.2738,
+        "sharpe_ann": 5.23,
+        "quartile_pf": [
+          578.815,
+          256.944,
+          3.606,
+          70.705
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:aster:SOLUSDT": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 4.489,
+          "wr": 39.3,
+          "sharpe_daily": 0.1712,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 4.489,
+          "wr": 39.3,
+          "sharpe_daily": 0.1712,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 4.489,
+          "wr": 39.3,
+          "sharpe_daily": 0.1712,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 4.489,
+        "wr": 39.3,
+        "sharpe_daily": 0.1712,
+        "sharpe_ann": 3.27,
+        "quartile_pf": [
+          43.918,
+          16.359,
+          0.448,
+          2.092
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:aster:BNBUSDT": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 322,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 322,
+          "pf": 10.119,
+          "wr": 54.0,
+          "sharpe_daily": 0.4276,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 322,
+          "pf": 10.119,
+          "wr": 54.0,
+          "sharpe_daily": 0.4276,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 322,
+          "pf": 10.119,
+          "wr": 54.0,
+          "sharpe_daily": 0.4276,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 322,
+        "pf": 10.119,
+        "wr": 54.0,
+        "sharpe_daily": 0.4276,
+        "sharpe_ann": 8.17,
+        "quartile_pf": [
+          4.932,
+          12.134,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:aster:XRPUSDT": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 9.587,
+          "wr": 39.7,
+          "sharpe_daily": 0.2471,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 9.587,
+          "wr": 39.7,
+          "sharpe_daily": 0.2471,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 9.587,
+          "wr": 39.7,
+          "sharpe_daily": 0.2471,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 9.587,
+        "wr": 39.7,
+        "sharpe_daily": 0.2471,
+        "sharpe_ann": 4.72,
+        "quartile_pf": [
+          53.366,
+          33.062,
+          0.903,
+          4.434
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_222:aster:AVAXUSDT": {
+      "strategy": "funding_divergence_222",
+      "params": {
+        "window": 7,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 718,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 718,
+          "pf": 63.152,
+          "wr": 44.0,
+          "sharpe_daily": 0.2701,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 718,
+          "pf": 63.152,
+          "wr": 44.0,
+          "sharpe_daily": 0.2701,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 718,
+          "pf": 63.152,
+          "wr": 44.0,
+          "sharpe_daily": 0.2701,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 718,
+        "pf": 63.152,
+        "wr": 44.0,
+        "sharpe_daily": 0.2701,
+        "sharpe_ann": 5.16,
+        "quartile_pf": [
+          556.257,
+          999,
+          8.644,
+          22.232
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_223:hyperliquid:BTC": {
+      "strategy": "funding_divergence_223",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 5.1,
+          "wr": 45.4,
+          "sharpe_daily": 0.3852,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 5.1,
+          "wr": 45.4,
+          "sharpe_daily": 0.3852,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 5.1,
+          "wr": 45.4,
+          "sharpe_daily": 0.3852,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 5.1,
+        "wr": 45.4,
+        "sharpe_daily": 0.3852,
+        "sharpe_ann": 7.36,
+        "quartile_pf": [
+          5.934,
+          16.493,
+          1.901,
+          13.761
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_223:aster:BTCUSDT": {
+      "strategy": "funding_divergence_223",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 16.06,
+          "wr": 45.4,
+          "sharpe_daily": 0.4475,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 16.06,
+          "wr": 45.4,
+          "sharpe_daily": 0.4475,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 16.06,
+          "wr": 45.4,
+          "sharpe_daily": 0.4475,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 16.06,
+        "wr": 45.4,
+        "sharpe_daily": 0.4475,
+        "sharpe_ann": 8.55,
+        "quartile_pf": [
+          999,
+          87.82,
+          3.273,
+          15.055
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_223:aster:ETHUSDT": {
+      "strategy": "funding_divergence_223",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 15.295,
+          "wr": 45.3,
+          "sharpe_daily": 0.625,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 15.295,
+          "wr": 45.3,
+          "sharpe_daily": 0.625,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 15.295,
+          "wr": 45.3,
+          "sharpe_daily": 0.625,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 15.295,
+        "wr": 45.3,
+        "sharpe_daily": 0.625,
+        "sharpe_ann": 11.94,
+        "quartile_pf": [
+          999,
+          86.979,
+          4.153,
+          7.66
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_223:aster:SOLUSDT": {
+      "strategy": "funding_divergence_223",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 5.349,
+          "wr": 37.8,
+          "sharpe_daily": 0.2507,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 5.349,
+          "wr": 37.8,
+          "sharpe_daily": 0.2507,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 5.349,
+          "wr": 37.8,
+          "sharpe_daily": 0.2507,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 5.349,
+        "wr": 37.8,
+        "sharpe_daily": 0.2507,
+        "sharpe_ann": 4.79,
+        "quartile_pf": [
+          78.342,
+          2.647,
+          1.38,
+          2.028
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_223:aster:BNBUSDT": {
+      "strategy": "funding_divergence_223",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 315,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 315,
+          "pf": 3.424,
+          "wr": 33.7,
+          "sharpe_daily": 0.2204,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 315,
+          "pf": 3.424,
+          "wr": 33.7,
+          "sharpe_daily": 0.2204,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 315,
+          "pf": 3.424,
+          "wr": 33.7,
+          "sharpe_daily": 0.2204,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 315,
+        "pf": 3.424,
+        "wr": 33.7,
+        "sharpe_daily": 0.2204,
+        "sharpe_ann": 4.21,
+        "quartile_pf": [
+          2.166,
+          2.32,
+          59.832,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_223:aster:XRPUSDT": {
+      "strategy": "funding_divergence_223",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 6.652,
+          "wr": 38.3,
+          "sharpe_daily": 0.4329,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 6.652,
+          "wr": 38.3,
+          "sharpe_daily": 0.4329,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 6.652,
+          "wr": 38.3,
+          "sharpe_daily": 0.4329,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 6.652,
+        "wr": 38.3,
+        "sharpe_daily": 0.4329,
+        "sharpe_ann": 8.27,
+        "quartile_pf": [
+          693.054,
+          9.659,
+          1.351,
+          5.202
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_223:aster:AVAXUSDT": {
+      "strategy": "funding_divergence_223",
+      "params": {
+        "window": 14,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 11.591,
+          "wr": 51.2,
+          "sharpe_daily": 0.4999,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 11.591,
+          "wr": 51.2,
+          "sharpe_daily": 0.4999,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 11.591,
+          "wr": 51.2,
+          "sharpe_daily": 0.4999,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 11.591,
+        "wr": 51.2,
+        "sharpe_daily": 0.4999,
+        "sharpe_ann": 9.55,
+        "quartile_pf": [
+          287.965,
+          999,
+          2.846,
+          12.402
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:hyperliquid:BTC": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 13.381,
+          "wr": 40.6,
+          "sharpe_daily": 0.4727,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 13.381,
+          "wr": 40.6,
+          "sharpe_daily": 0.4727,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 13.381,
+          "wr": 40.6,
+          "sharpe_daily": 0.4727,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 13.381,
+        "wr": 40.6,
+        "sharpe_daily": 0.4727,
+        "sharpe_ann": 9.03,
+        "quartile_pf": [
+          28.889,
+          47.185,
+          2.693,
+          5.854
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:hyperliquid:ETH": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 13.969,
+          "wr": 48.5,
+          "sharpe_daily": 0.4915,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 13.969,
+          "wr": 48.5,
+          "sharpe_daily": 0.4915,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 13.969,
+          "wr": 48.5,
+          "sharpe_daily": 0.4915,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 13.969,
+        "wr": 48.5,
+        "sharpe_daily": 0.4915,
+        "sharpe_ann": 9.39,
+        "quartile_pf": [
+          16.11,
+          18.211,
+          4.672,
+          25.617
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:hyperliquid:SOL": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 2.16,
+          "wr": 42.2,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 2.16,
+          "wr": 42.2,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 2.16,
+          "wr": 42.2,
+          "sharpe_daily": 0.1774,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 2.16,
+        "wr": 42.2,
+        "sharpe_daily": 0.1774,
+        "sharpe_ann": 3.39,
+        "quartile_pf": [
+          2.084,
+          5.107,
+          0.559,
+          5.987
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:hyperliquid:BNB": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 3.957,
+          "wr": 48.1,
+          "sharpe_daily": 0.3214,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 3.957,
+          "wr": 48.1,
+          "sharpe_daily": 0.3214,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 3.957,
+          "wr": 48.1,
+          "sharpe_daily": 0.3214,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 3.957,
+        "wr": 48.1,
+        "sharpe_daily": 0.3214,
+        "sharpe_ann": 6.14,
+        "quartile_pf": [
+          2.914,
+          6.632,
+          2.977,
+          5.475
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:hyperliquid:XRP": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 3.627,
+          "wr": 42.7,
+          "sharpe_daily": 0.2915,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 3.627,
+          "wr": 42.7,
+          "sharpe_daily": 0.2915,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 3.627,
+          "wr": 42.7,
+          "sharpe_daily": 0.2915,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 3.627,
+        "wr": 42.7,
+        "sharpe_daily": 0.2915,
+        "sharpe_ann": 5.57,
+        "quartile_pf": [
+          4.773,
+          19.678,
+          0.737,
+          3.169
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:hyperliquid:AVAX": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 4.163,
+          "wr": 45.4,
+          "sharpe_daily": 0.3256,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 4.163,
+          "wr": 45.4,
+          "sharpe_daily": 0.3256,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 4.163,
+          "wr": 45.4,
+          "sharpe_daily": 0.3256,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 4.163,
+        "wr": 45.4,
+        "sharpe_daily": 0.3256,
+        "sharpe_ann": 6.22,
+        "quartile_pf": [
+          7.858,
+          6.935,
+          1.874,
+          2.362
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:aster:BTCUSDT": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 22.039,
+          "wr": 43.2,
+          "sharpe_daily": 0.4904,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 22.039,
+          "wr": 43.2,
+          "sharpe_daily": 0.4904,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 22.039,
+          "wr": 43.2,
+          "sharpe_daily": 0.4904,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 22.039,
+        "wr": 43.2,
+        "sharpe_daily": 0.4904,
+        "sharpe_ann": 9.37,
+        "quartile_pf": [
+          58.446,
+          82.673,
+          3.063,
+          13.37
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:aster:ETHUSDT": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 38.706,
+          "wr": 45.4,
+          "sharpe_daily": 0.2748,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 38.706,
+          "wr": 45.4,
+          "sharpe_daily": 0.2748,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 38.706,
+          "wr": 45.4,
+          "sharpe_daily": 0.2748,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 38.706,
+        "wr": 45.4,
+        "sharpe_daily": 0.2748,
+        "sharpe_ann": 5.25,
+        "quartile_pf": [
+          660.551,
+          170.058,
+          3.506,
+          22.819
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:aster:SOLUSDT": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 4.413,
+          "wr": 37.4,
+          "sharpe_daily": 0.1701,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 4.413,
+          "wr": 37.4,
+          "sharpe_daily": 0.1701,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 4.413,
+          "wr": 37.4,
+          "sharpe_daily": 0.1701,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 4.413,
+        "wr": 37.4,
+        "sharpe_daily": 0.1701,
+        "sharpe_ann": 3.25,
+        "quartile_pf": [
+          38.676,
+          13.183,
+          0.417,
+          2.208
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:aster:BNBUSDT": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 315,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 315,
+          "pf": 13.442,
+          "wr": 58.4,
+          "sharpe_daily": 0.4758,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 315,
+          "pf": 13.442,
+          "wr": 58.4,
+          "sharpe_daily": 0.4758,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 315,
+          "pf": 13.442,
+          "wr": 58.4,
+          "sharpe_daily": 0.4758,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 315,
+        "pf": 13.442,
+        "wr": 58.4,
+        "sharpe_daily": 0.4758,
+        "sharpe_ann": 9.09,
+        "quartile_pf": [
+          6.81,
+          11.221,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:aster:XRPUSDT": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 8.434,
+          "wr": 40.1,
+          "sharpe_daily": 0.2434,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 8.434,
+          "wr": 40.1,
+          "sharpe_daily": 0.2434,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 8.434,
+          "wr": 40.1,
+          "sharpe_daily": 0.2434,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 8.434,
+        "wr": 40.1,
+        "sharpe_daily": 0.2434,
+        "sharpe_ann": 4.65,
+        "quartile_pf": [
+          41.25,
+          59.089,
+          0.672,
+          5.338
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_224:aster:AVAXUSDT": {
+      "strategy": "funding_divergence_224",
+      "params": {
+        "window": 14,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 711,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 711,
+          "pf": 91.568,
+          "wr": 42.8,
+          "sharpe_daily": 0.2533,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 711,
+          "pf": 91.568,
+          "wr": 42.8,
+          "sharpe_daily": 0.2533,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 711,
+          "pf": 91.568,
+          "wr": 42.8,
+          "sharpe_daily": 0.2533,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 711,
+        "pf": 91.568,
+        "wr": 42.8,
+        "sharpe_daily": 0.2533,
+        "sharpe_ann": 4.84,
+        "quartile_pf": [
+          234.205,
+          999,
+          19.454,
+          38.159
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:hyperliquid:BTC": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 4.48,
+          "wr": 43.9,
+          "sharpe_daily": 0.3638,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 4.48,
+          "wr": 43.9,
+          "sharpe_daily": 0.3638,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 4.48,
+          "wr": 43.9,
+          "sharpe_daily": 0.3638,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 4.48,
+        "wr": 43.9,
+        "sharpe_daily": 0.3638,
+        "sharpe_ann": 6.95,
+        "quartile_pf": [
+          5.249,
+          14.891,
+          1.961,
+          15.733
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:hyperliquid:ETH": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 2.118,
+          "wr": 36.0,
+          "sharpe_daily": 0.157,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 2.118,
+          "wr": 36.0,
+          "sharpe_daily": 0.157,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 2.118,
+          "wr": 36.0,
+          "sharpe_daily": 0.157,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 2.118,
+        "wr": 36.0,
+        "sharpe_daily": 0.157,
+        "sharpe_ann": 3.0,
+        "quartile_pf": [
+          2.589,
+          0.587,
+          2.187,
+          11.622
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:aster:BTCUSDT": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 14.66,
+          "wr": 44.2,
+          "sharpe_daily": 0.6354,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 14.66,
+          "wr": 44.2,
+          "sharpe_daily": 0.6354,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 14.66,
+          "wr": 44.2,
+          "sharpe_daily": 0.6354,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 14.66,
+        "wr": 44.2,
+        "sharpe_daily": 0.6354,
+        "sharpe_ann": 12.14,
+        "quartile_pf": [
+          999,
+          699.541,
+          2.469,
+          34.892
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:aster:ETHUSDT": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 15.681,
+          "wr": 45.0,
+          "sharpe_daily": 0.6799,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 15.681,
+          "wr": 45.0,
+          "sharpe_daily": 0.6799,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 15.681,
+          "wr": 45.0,
+          "sharpe_daily": 0.6799,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 15.681,
+        "wr": 45.0,
+        "sharpe_daily": 0.6799,
+        "sharpe_ann": 12.99,
+        "quartile_pf": [
+          268.326,
+          49.863,
+          4.065,
+          6.871
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:aster:SOLUSDT": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 4.007,
+          "wr": 30.6,
+          "sharpe_daily": 0.2826,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 4.007,
+          "wr": 30.6,
+          "sharpe_daily": 0.2826,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 4.007,
+          "wr": 30.6,
+          "sharpe_daily": 0.2826,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 4.007,
+        "wr": 30.6,
+        "sharpe_daily": 0.2826,
+        "sharpe_ann": 5.4,
+        "quartile_pf": [
+          42.992,
+          2.175,
+          1.372,
+          2.137
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:aster:BNBUSDT": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 299,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 299,
+          "pf": 3.286,
+          "wr": 43.5,
+          "sharpe_daily": 0.2502,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 299,
+          "pf": 3.286,
+          "wr": 43.5,
+          "sharpe_daily": 0.2502,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 299,
+          "pf": 3.286,
+          "wr": 43.5,
+          "sharpe_daily": 0.2502,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 299,
+        "pf": 3.286,
+        "wr": 43.5,
+        "sharpe_daily": 0.2502,
+        "sharpe_ann": 4.78,
+        "quartile_pf": [
+          1.102,
+          11.746,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:aster:XRPUSDT": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 4.354,
+          "wr": 35.0,
+          "sharpe_daily": 0.3648,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 4.354,
+          "wr": 35.0,
+          "sharpe_daily": 0.3648,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 4.354,
+          "wr": 35.0,
+          "sharpe_daily": 0.3648,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 4.354,
+        "wr": 35.0,
+        "sharpe_daily": 0.3648,
+        "sharpe_ann": 6.97,
+        "quartile_pf": [
+          27.75,
+          8.784,
+          0.442,
+          3.424
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_225:aster:AVAXUSDT": {
+      "strategy": "funding_divergence_225",
+      "params": {
+        "window": 30,
+        "direction": "same",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 10.258,
+          "wr": 52.7,
+          "sharpe_daily": 0.5344,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 10.258,
+          "wr": 52.7,
+          "sharpe_daily": 0.5344,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 10.258,
+          "wr": 52.7,
+          "sharpe_daily": 0.5344,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 10.258,
+        "wr": 52.7,
+        "sharpe_daily": 0.5344,
+        "sharpe_ann": 10.21,
+        "quartile_pf": [
+          322.472,
+          999,
+          2.987,
+          11.34
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:hyperliquid:BTC": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 13.32,
+          "wr": 41.7,
+          "sharpe_daily": 0.4836,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 13.32,
+          "wr": 41.7,
+          "sharpe_daily": 0.4836,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 13.32,
+          "wr": 41.7,
+          "sharpe_daily": 0.4836,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 13.32,
+        "wr": 41.7,
+        "sharpe_daily": 0.4836,
+        "sharpe_ann": 9.24,
+        "quartile_pf": [
+          19.79,
+          45.307,
+          1.496,
+          7.831
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:hyperliquid:ETH": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 14.672,
+          "wr": 45.5,
+          "sharpe_daily": 0.4863,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 14.672,
+          "wr": 45.5,
+          "sharpe_daily": 0.4863,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 14.672,
+          "wr": 45.5,
+          "sharpe_daily": 0.4863,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 14.672,
+        "wr": 45.5,
+        "sharpe_daily": 0.4863,
+        "sharpe_ann": 9.29,
+        "quartile_pf": [
+          19.289,
+          38.846,
+          2.448,
+          17.094
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:hyperliquid:SOL": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 2.03,
+          "wr": 49.0,
+          "sharpe_daily": 0.1727,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 2.03,
+          "wr": 49.0,
+          "sharpe_daily": 0.1727,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 2.03,
+          "wr": 49.0,
+          "sharpe_daily": 0.1727,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 2.03,
+        "wr": 49.0,
+        "sharpe_daily": 0.1727,
+        "sharpe_ann": 3.3,
+        "quartile_pf": [
+          1.454,
+          4.769,
+          0.667,
+          5.776
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:hyperliquid:BNB": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 2.234,
+          "wr": 44.5,
+          "sharpe_daily": 0.2088,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 2.234,
+          "wr": 44.5,
+          "sharpe_daily": 0.2088,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 2.234,
+          "wr": 44.5,
+          "sharpe_daily": 0.2088,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 2.234,
+        "wr": 44.5,
+        "sharpe_daily": 0.2088,
+        "sharpe_ann": 3.99,
+        "quartile_pf": [
+          1.216,
+          3.61,
+          2.423,
+          5.033
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:hyperliquid:XRP": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 4.054,
+          "wr": 48.0,
+          "sharpe_daily": 0.3277,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 4.054,
+          "wr": 48.0,
+          "sharpe_daily": 0.3277,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 4.054,
+          "wr": 48.0,
+          "sharpe_daily": 0.3277,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 4.054,
+        "wr": 48.0,
+        "sharpe_daily": 0.3277,
+        "sharpe_ann": 6.26,
+        "quartile_pf": [
+          4.596,
+          18.404,
+          0.658,
+          5.366
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:hyperliquid:AVAX": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 4.723,
+          "wr": 45.1,
+          "sharpe_daily": 0.3476,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 4.723,
+          "wr": 45.1,
+          "sharpe_daily": 0.3476,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 4.723,
+          "wr": 45.1,
+          "sharpe_daily": 0.3476,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 4.723,
+        "wr": 45.1,
+        "sharpe_daily": 0.3476,
+        "sharpe_ann": 6.64,
+        "quartile_pf": [
+          5.143,
+          14.155,
+          2.184,
+          2.835
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:aster:BTCUSDT": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 20.54,
+          "wr": 44.2,
+          "sharpe_daily": 0.4146,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 20.54,
+          "wr": 44.2,
+          "sharpe_daily": 0.4146,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 20.54,
+          "wr": 44.2,
+          "sharpe_daily": 0.4146,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 20.54,
+        "wr": 44.2,
+        "sharpe_daily": 0.4146,
+        "sharpe_ann": 7.92,
+        "quartile_pf": [
+          56.604,
+          46.718,
+          2.781,
+          17.433
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:aster:ETHUSDT": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 28.084,
+          "wr": 45.5,
+          "sharpe_daily": 0.268,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 28.084,
+          "wr": 45.5,
+          "sharpe_daily": 0.268,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 28.084,
+          "wr": 45.5,
+          "sharpe_daily": 0.268,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 28.084,
+        "wr": 45.5,
+        "sharpe_daily": 0.268,
+        "sharpe_ann": 5.12,
+        "quartile_pf": [
+          999,
+          284.638,
+          3.322,
+          21.822
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:aster:SOLUSDT": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 3.736,
+          "wr": 44.0,
+          "sharpe_daily": 0.1607,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 3.736,
+          "wr": 44.0,
+          "sharpe_daily": 0.1607,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 3.736,
+          "wr": 44.0,
+          "sharpe_daily": 0.1607,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 3.736,
+        "wr": 44.0,
+        "sharpe_daily": 0.1607,
+        "sharpe_ann": 3.07,
+        "quartile_pf": [
+          32.292,
+          10.555,
+          0.489,
+          2.004
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:aster:BNBUSDT": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 299,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 299,
+          "pf": 12.793,
+          "wr": 48.2,
+          "sharpe_daily": 0.4093,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 299,
+          "pf": 12.793,
+          "wr": 48.2,
+          "sharpe_daily": 0.4093,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 299,
+          "pf": 12.793,
+          "wr": 48.2,
+          "sharpe_daily": 0.4093,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 299,
+        "pf": 12.793,
+        "wr": 48.2,
+        "sharpe_daily": 0.4093,
+        "sharpe_ann": 7.82,
+        "quartile_pf": [
+          17.667,
+          5.427,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:aster:XRPUSDT": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 9.855,
+          "wr": 43.0,
+          "sharpe_daily": 0.2481,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 9.855,
+          "wr": 43.0,
+          "sharpe_daily": 0.2481,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 9.855,
+          "wr": 43.0,
+          "sharpe_daily": 0.2481,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 9.855,
+        "wr": 43.0,
+        "sharpe_daily": 0.2481,
+        "sharpe_ann": 4.74,
+        "quartile_pf": [
+          999,
+          58.992,
+          1.245,
+          8.961
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v2:funding_divergence_226:aster:AVAXUSDT": {
+      "strategy": "funding_divergence_226",
+      "params": {
+        "window": 30,
+        "direction": "opposite",
+        "method": "divergence"
+      },
+      "kind": "economic_v2",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 695,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 695,
+          "pf": 108.648,
+          "wr": 41.4,
+          "sharpe_daily": 0.2868,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 695,
+          "pf": 108.648,
+          "wr": 41.4,
+          "sharpe_daily": 0.2868,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 695,
+          "pf": 108.648,
+          "wr": 41.4,
+          "sharpe_daily": 0.2868,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 695,
+        "pf": 108.648,
+        "wr": 41.4,
+        "sharpe_daily": 0.2868,
+        "sharpe_ann": 5.48,
+        "quartile_pf": [
+          90.228,
+          999,
+          999,
+          41.585
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
     }
   },
   "started": "2026-11-02T17:31:33.386662+00:00"

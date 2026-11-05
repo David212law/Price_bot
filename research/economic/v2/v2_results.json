@@ -1,0 +1,478 @@
+{
+  "generated_at": "2026-11-05T22:19:58.745161+00:00",
+  "n_total": 163,
+  "by_category": {
+    "price_volume": {
+      "count": 8,
+      "qpass": 8,
+      "avg_sr": 3.17
+    },
+    "funding_carry": {
+      "count": 57,
+      "qpass": 39,
+      "avg_sr": 9.43
+    },
+    "funding_zscore": {
+      "count": 39,
+      "qpass": 20,
+      "avg_sr": 4.22
+    },
+    "funding_divergence": {
+      "count": 59,
+      "qpass": 45,
+      "avg_sr": 6.68
+    }
+  },
+  "top50": [
+    {
+      "key": "economic_v2:funding_carry_197:hyperliquid:BTC",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n": 538,
+      "sr": 17.08,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:hyperliquid:BTC",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n": 538,
+      "sr": 17.08,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:hyperliquid:BTC",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n": 538,
+      "sr": 17.08,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:aster:BTCUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 731,
+      "sr": 16.16,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:aster:BTCUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 731,
+      "sr": 16.16,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:aster:BTCUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 731,
+      "sr": 16.16,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:hyperliquid:ETH",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n": 538,
+      "sr": 15.67,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:hyperliquid:ETH",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n": 538,
+      "sr": 15.67,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:hyperliquid:ETH",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n": 538,
+      "sr": 15.67,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:aster:BNBUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n": 333,
+      "sr": 14.54,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:aster:BNBUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n": 333,
+      "sr": 14.54,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:aster:BNBUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n": 333,
+      "sr": 14.54,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:hyperliquid:SOL",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n": 538,
+      "sr": 13.49,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:hyperliquid:SOL",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n": 538,
+      "sr": 13.49,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:hyperliquid:SOL",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n": 538,
+      "sr": 13.49,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:hyperliquid:AVAX",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n": 538,
+      "sr": 13.36,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:hyperliquid:AVAX",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n": 538,
+      "sr": 13.36,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:hyperliquid:AVAX",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n": 538,
+      "sr": 13.36,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:hyperliquid:BNB",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n": 538,
+      "sr": 13.18,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:hyperliquid:BNB",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n": 538,
+      "sr": 13.18,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:hyperliquid:BNB",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n": 538,
+      "sr": 13.18,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:hyperliquid:XRP",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n": 538,
+      "sr": 13.0,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:hyperliquid:XRP",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n": 538,
+      "sr": 13.0,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:hyperliquid:XRP",
+      "category": "funding_carry",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n": 538,
+      "sr": 13.0,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_225:aster:ETHUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 695,
+      "sr": 12.99,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_225:aster:BTCUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 695,
+      "sr": 12.14,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_223:aster:ETHUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 711,
+      "sr": 11.94,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_225:aster:AVAXUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n": 695,
+      "sr": 10.21,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_200:aster:BNBUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n": 333,
+      "sr": 10.07,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_201:aster:BNBUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n": 333,
+      "sr": 10.07,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_202:aster:BNBUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n": 333,
+      "sr": 10.07,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_223:aster:AVAXUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n": 711,
+      "sr": 9.55,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_222:hyperliquid:ETH",
+      "category": "funding_divergence",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n": 531,
+      "sr": 9.47,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_224:hyperliquid:ETH",
+      "category": "funding_divergence",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n": 524,
+      "sr": 9.39,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_224:aster:BTCUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 711,
+      "sr": 9.37,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_226:hyperliquid:ETH",
+      "category": "funding_divergence",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n": 508,
+      "sr": 9.29,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_226:hyperliquid:BTC",
+      "category": "funding_divergence",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n": 508,
+      "sr": 9.24,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_222:aster:BTCUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 718,
+      "sr": 9.14,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_224:aster:BNBUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n": 315,
+      "sr": 9.09,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_224:hyperliquid:BTC",
+      "category": "funding_divergence",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n": 524,
+      "sr": 9.03,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_221:hyperliquid:BTC",
+      "category": "funding_divergence",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n": 531,
+      "sr": 8.88,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_221:aster:BTCUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 718,
+      "sr": 8.81,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_221:aster:AVAXUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n": 718,
+      "sr": 8.66,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_divergence_223:aster:BTCUSDT",
+      "category": "funding_divergence",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 711,
+      "sr": 8.55,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:aster:ETHUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 731,
+      "sr": 8.45,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:aster:ETHUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 731,
+      "sr": 8.45,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:aster:ETHUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 731,
+      "sr": 8.45,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_197:aster:XRPUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n": 731,
+      "sr": 8.43,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_198:aster:XRPUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n": 731,
+      "sr": 8.43,
+      "qpass": true
+    },
+    {
+      "key": "economic_v2:funding_carry_199:aster:XRPUSDT",
+      "category": "funding_carry",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n": 731,
+      "sr": 8.43,
+      "qpass": true
+    }
+  ]
+}
