@@ -1,0 +1,191 @@
+{
+  "version": "1.0.0",
+  "description": "Economic hypothesis library for strategy generation",
+  "logics": [
+    {
+      "id": "funding_volatility_filter",
+      "name": "Funding Volatility Filter",
+      "status": "implemented",
+      "thesis": "When funding rate volatility is low, carry risk is lower because funding is unlikely to flip negative. Enter only during low-vol windows.",
+      "data_source": "funding",
+      "variants": [
+        {
+          "lookback": 7,
+          "threshold_pct": 60
+        },
+        {
+          "lookback": 14,
+          "threshold_pct": 60
+        },
+        {
+          "lookback": 30,
+          "threshold_pct": 70
+        }
+      ]
+    },
+    {
+      "id": "funding_regime_contrarian",
+      "name": "Funding Regime Contrarian",
+      "status": "implemented",
+      "thesis": "Extreme funding rates signal crowding. When funding is in top percentiles, the position is crowded and reversal is likely. Take contrarian (short-perp) position.",
+      "data_source": "funding",
+      "variants": [
+        {
+          "lookback": 30,
+          "threshold_pct": 85
+        },
+        {
+          "lookback": 60,
+          "threshold_pct": 90
+        },
+        {
+          "lookback": 90,
+          "threshold_pct": 95
+        }
+      ]
+    },
+    {
+      "id": "funding_zscore",
+      "name": "Funding Z-Score Dynamic Threshold",
+      "status": "implemented",
+      "thesis": "Fixed-threshold strategies adapt poorly to regime changes. A z-score threshold adapts to changing funding distributions.",
+      "data_source": "funding",
+      "variants": [
+        {
+          "lookback": 30,
+          "z_threshold": 1.0
+        },
+        {
+          "lookback": 30,
+          "z_threshold": 1.5
+        },
+        {
+          "lookback": 60,
+          "z_threshold": 1.5
+        }
+      ]
+    },
+    {
+      "id": "cross_symbol_funding_spread",
+      "name": "Cross-Symbol Funding Spread",
+      "status": "todo",
+      "thesis": "When one symbol has much higher funding than another, go long the low-funding and short the high-funding symbol. Captures relative funding without market exposure.",
+      "data_source": "funding_multi",
+      "variants": [
+        {
+          "min_spread_bps": 5
+        },
+        {
+          "min_spread_bps": 10
+        },
+        {
+          "min_spread_bps": 20
+        }
+      ]
+    },
+    {
+      "id": "funding_price_divergence",
+      "name": "Funding-Price Divergence",
+      "status": "todo",
+      "thesis": "When funding is very positive but price is falling, longs are paying high funding while price is against them. Forced exits may follow. Contrarian signal.",
+      "data_source": "funding+price",
+      "variants": [
+        {
+          "lookback": 14
+        },
+        {
+          "lookback": 30
+        }
+      ]
+    },
+    {
+      "id": "weekend_funding_effect",
+      "name": "Weekend Funding Effect",
+      "status": "todo",
+      "thesis": "Weekend funding behavior differs due to lower liquidity. Test if funding carry has different weekend vs weekday characteristics.",
+      "data_source": "funding+calendar",
+      "variants": [
+        {
+          "keep": "weekend"
+        },
+        {
+          "keep": "weekday"
+        }
+      ]
+    },
+    {
+      "id": "short_term_mean_reversion",
+      "name": "Short-Term Mean Reversion",
+      "status": "todo",
+      "thesis": "Keltner captures medium-term (14-period) mean reversion. Test shorter windows (5-7 periods) to capture intraday/weekly reversal.",
+      "data_source": "price",
+      "variants": [
+        {
+          "period": 5,
+          "mult": 2.0
+        },
+        {
+          "period": 7,
+          "mult": 1.5
+        },
+        {
+          "period": 10,
+          "mult": 2.0
+        }
+      ]
+    },
+    {
+      "id": "vol_regime_transition",
+      "name": "Volatility Regime Transition",
+      "status": "todo",
+      "thesis": "When volatility shifts from low to high regime, prices often over-react. Trade the initial over-reaction.",
+      "data_source": "price",
+      "variants": [
+        {
+          "low_pct": 30,
+          "high_pct": 70
+        },
+        {
+          "low_pct": 20,
+          "high_pct": 80
+        }
+      ]
+    },
+    {
+      "id": "end_of_month_rebalancing",
+      "name": "End-of-Month Rebalancing",
+      "status": "todo",
+      "thesis": "Institutional rebalancing happens at month-end. Prices may drift in predictable directions on the last 2-3 days of each month.",
+      "data_source": "price+calendar",
+      "variants": [
+        {
+          "window_days": 2
+        },
+        {
+          "window_days": 3
+        },
+        {
+          "window_days": 5
+        }
+      ]
+    },
+    {
+      "id": "funding_mean_reversion",
+      "name": "Funding Mean Reversion",
+      "status": "todo",
+      "thesis": "Funding rates mean-revert to a long-term average. When funding deviates, entering a carry position captures both the rate and reversion premium.",
+      "data_source": "funding",
+      "variants": [
+        {
+          "lookback": 30
+        },
+        {
+          "lookback": 60
+        },
+        {
+          "lookback": 90
+        }
+      ]
+    }
+  ]
+}
