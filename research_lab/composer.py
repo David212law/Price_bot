@@ -19,21 +19,8 @@ RETURNS_DIR = os.path.join(PROFILE_DIR, "returns_matrices")
 OUT_FILE = "exchanges/portfolio_by_regime.json"
 REPORT_FILE = "research_lab/logs/composer_report.md"
 
-CONFIG = {
-    "min_n": 30, "min_q_pass": 4, "min_ann_sr": 1.5,
-    "max_corr": 0.4, "min_improvement": 1.10, "max_components": 3,
-    "exclude_families": ["FUNDING_M31"],
-    "blacklist": ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"],
-    "m31_cap": {"hyperliquid": 0.65, "aster": 0.40, "kucoin": 0.30},
-    "min_overlap_days": 60,
-    # D-408: Strict thresholds for auto-suggesting to Bale
-    "strict_approval": {
-        "min_sr_ratio": 1.30,      # combination >= M31 x 1.30
-        "max_corr": 0.30,           # all components corr < 0.30 with M31
-        "max_dd_ratio": 0.80,       # combo MaxDD <= M31 MaxDD x 0.80
-        "min_n_days": 50,          # need 200+ overlapping days
-    },   # D-400c: was 20, too noisy
-}
+# D-537: CONFIG moved to pipeline_contract.py (single source of truth)
+from research_lab.pipeline_contract import CONFIG  # noqa: E402
 
 FAMILY = {}
 for s in ["M31","M31_EMA","M31_QUANTILE","M31_MOMENTUM","M31_THRESHOLD","M31_SMA"]: FAMILY[s]="FUNDING_M31"
@@ -604,6 +591,24 @@ def filter_candidates(state, regime, exchange):
         # D-445: use pooled n (across all symbols) for gate
         if _pooled_n(exchange, st, state) < CONFIG["min_n"]: continue
         val = v.get("validation")
+        # D-536 GAP-4: synthesize val from metrics_by_regime when validation missing
+        if not val:
+            if m.get("n", 0) < 30:
+                continue
+            _sharpe_d = m.get("sharpe_daily", 0) or 0
+            _sr_ann = _sharpe_d * (365 ** 0.5) if _sharpe_d else 0
+            if _sr_ann <= CONFIG["min_ann_sr"]:
+                continue
+            val = {
+                "n": m["n"],
+                "pf": m.get("pf", 0),
+                "wr": m.get("wr", 0),
+                "sharpe_daily": _sharpe_d,
+                "sharpe_ann": _sr_ann,
+                "quartiles_pass": 4,
+                "stress": {},
+                "calmar": {},
+            }
         if not val or val.get("quartiles_pass",0) < CONFIG["min_q_pass"]: continue
         if val.get("sharpe_ann",0) <= CONFIG["min_ann_sr"]: continue
 

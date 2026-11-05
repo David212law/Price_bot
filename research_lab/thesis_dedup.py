@@ -35,6 +35,8 @@ def dedup_group(items, corr_threshold=0.70):
     for item in items_sorted:
         rets = load_returns(item["exchange"], item["strategy"], item["hash"], item["symbol"])
         if not rets: continue
+        # D-536 GAP-3: reject artifacts with <30 days
+        if len(rets) < 30: continue
         item["_rets"] = rets
         max_corr = 0.0
         is_dup = False

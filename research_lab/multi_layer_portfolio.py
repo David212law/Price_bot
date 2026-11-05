@@ -341,6 +341,19 @@ def main():
         return
 
     print("\n[STAGE 2] Pick one per thesis (top SR)...")
+    # D-536 GAP-1: exclude Stage-1 blacklist
+    try:
+        from research_lab.pipeline_contract import CONFIG as _C
+        _blacklist = _C.get("blacklist", [])
+    except Exception as _e:
+        _blacklist = []
+        print(f"  ⚠️ Could not import CONFIG: {_e}")
+    _n_before = len(novel)
+    novel = [n for n in novel if n.get("strategy") not in _blacklist]
+    if _n_before != len(novel):
+        print(f"  [D-536 GAP-1] Blacklist filter: {_n_before} → {len(novel)} "
+              f"(removed {_n_before - len(novel)} blacklisted)")
+
     picks = pick_per_thesis(novel, top_n=4)
     print(f"  Picked {len(picks)}:")
     for p in picks:

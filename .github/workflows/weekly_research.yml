@@ -18,6 +18,11 @@ jobs:
           python-version: '3.11'
       - run: pip install requests
 
+      - name: Pipeline Health Check (D-537)
+        run: PYTHONPATH=. python3 -m research_lab.health_check
+        # If health_check fails, alert but continue (for now)
+        continue-on-error: true
+
       - name: Run Composer
         run: python -m research_lab.composer && PYTHONPATH=. python -m research_lab.researcher_v2
 
