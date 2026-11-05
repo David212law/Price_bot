@@ -40,6 +40,36 @@ Run `python3 -m research_lab.health_check` before touching any code.
 3. `python3 -m research_lab.health_check` after
 4. One GAP per commit
 
+
+## Known Limitations (D-538, manually verified)
+
+### Confirmed vs Candidate Edges
+- **M31 (funding carry)** — economic mechanism. Backtest SR~8, expected
+  Live SR=2-4 (haircut 50-75%). Real money flows.
+- **Keltner (mean reversion)** — statistical pattern only, NO economic
+  narrative. cross-exchange consistency 0.81-0.93 does NOT prove
+  independence (same OHLCV data across exchanges). Treat as candidate.
+
+### Statistical Caveats
+- 2026-12-02 review is pre-statistical: hold=30d yields n<=1 closed trade.
+  Metric should be "execution health" not "performance".
+- MLP +3.4% improvement has NO CI computed yet. Helper
+  `_bootstrap_improvement_ci` now exists but not wired into verdict.
+- DSR=0.50 at N=8766 means "survived 8766-candidate selection bias",
+  NOT "profitable in live".
+
+### Governance Gaps
+- D-460 weight freeze has no emergency override.
+- improve_strategy tests vs own baseline, NOT vs M31 (warning now printed).
+
+### Execution Risks (not modeled)
+- No latency, no partial fill, no exchange-down, no stop-loss.
+
+### Architecture Notes
+- 4 of 12 Paper bots are shadow variants of M31+Keltner (not diversification).
+- Aster Shadow TREND: skip/skip in current regimes.
+- Bots 10, 12: track artifact strategies for comparison only.
+
 ## Recent Decisions
 
 - **D-537** (today): pipeline_contract + health_check + this file

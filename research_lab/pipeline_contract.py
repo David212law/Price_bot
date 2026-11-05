@@ -102,3 +102,16 @@ if __name__ == "__main__":
             print(f"  - {i}")
     else:
         print("\n✅ Contract internally consistent")
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# DSR E_max Reference (D-538)
+# ═══════════════════════════════════════════════════════════════════════
+# deflated_sharpe_family(sr, n, family) computes:
+#   E[max_SR] = expected maximum Sharpe under null across N trials
+#   DSR_z = sr_annual / se - E_max
+# As N grows, E_max grows (multiple testing penalty).
+# DSR >= 0.50 at N=8766 = survived very strong selection bias.
+# This does NOT prove live profitability — only "better than chance".
+# See research_lab/audit_core.py:deflated_sharpe_family
+# Any change to N_trials must be logged in DECISIONS.md.

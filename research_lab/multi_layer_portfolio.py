@@ -18,6 +18,39 @@ from pathlib import Path
 from datetime import datetime, timezone
 from collections import defaultdict
 
+def _bootstrap_improvement_ci(port_rets, base_rets, n_iter=1000):
+    """D-538: 95% bootstrap CI on (port_SR / base_SR - 1)*100.
+    port_rets and base_rets must be same-length lists.
+    Returns dict with ci95_low/high/median, or None if insufficient data.
+    """
+    import random
+    random.seed(42)
+    if len(port_rets) != len(base_rets) or len(port_rets) < 30:
+        return None
+    n = len(port_rets)
+    ratios = []
+    for _ in range(n_iter):
+        idx = [random.randint(0, n - 1) for _ in range(n)]
+        p = [port_rets[i] for i in idx]
+        b = [base_rets[i] for i in idx]
+        mp = sum(p)/n; mb = sum(b)/n
+        sp = (sum((x-mp)**2 for x in p)/n) ** 0.5
+        sb = (sum((x-mb)**2 for x in b)/n) ** 0.5
+        if sp == 0 or sb == 0: continue
+        sr_p = mp/sp; sr_b = mb/sb
+        if sr_b > 0:
+            ratios.append((sr_p/sr_b - 1) * 100)
+    if len(ratios) < 100:
+        return None
+    ratios.sort()
+    return {
+        "ci95_low": round(ratios[int(0.025*len(ratios))], 2),
+        "ci95_high": round(ratios[int(0.975*len(ratios))], 2),
+        "median": round(ratios[len(ratios)//2], 2),
+        "n_boot": len(ratios),
+    }
+
+
 
 def sharpe(vals):  # delegate_to_utils
     from research_lab.utils import sharpe as _u

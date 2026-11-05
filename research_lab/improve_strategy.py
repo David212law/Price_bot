@@ -312,6 +312,12 @@ def main():
                         near_misses.append(best_near)
 
     print(f"\n{'='*78}")
+    print()
+    print("  ⚠️  KNOWN LIMITATION (D-538):")
+    print("      Improvements are measured vs each strategy's OWN baseline,")
+    print("      NOT vs M31. A filter may improve Keltner while raising corr")
+    print("      with M31. Treat all results as CANDIDATES, not confirmed.")
+    print()
     print(f" RESULTS")
     print(f"{'='*78}")
     print(f"  Strategies analyzed: {len(seen)}")
