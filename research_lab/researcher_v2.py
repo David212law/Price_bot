@@ -113,6 +113,8 @@ def main():
         return
     if not run_stage("4: multi_layer_portfolio", "research_lab.multi_layer_portfolio"):
         return
+    if not run_stage("5: improve_strategy", "research_lab.improve_strategy"):
+        print("  (improve_strategy optional, continuing)")
 
     p = Path("research_lab/logs/multi_layer_portfolio.json")
     if p.exists():

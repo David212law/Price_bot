@@ -72,6 +72,12 @@ def filter_novel(deduped, m31, keltner, threshold=0.5):
             c_m31 = corr_on_union(rets, m31)
             c_kelt = corr_on_union(rets, keltner) if keltner else 0
             if abs(c_m31) < threshold and abs(c_kelt) < threshold:
+                # D-530: apply all 4 individual validation gates
+                from research_lab.composer import load_state as _load_state
+                _state = _load_state()
+                ok, reason = validate_novel_candidate(item, _state)
+                if not ok:
+                    continue
                 novel.append({
                     **item,
                     "thesis": thesis,
@@ -156,6 +162,155 @@ def validate_70_30(port_rets, m31_rets, holdout=0.30):
     }
 
 
+def validate_novel_candidate(item, state):
+    """Check stress/DSR/quartile/calmar from state.json for the original strategy."""
+    exch, strat, sym, h = item["exchange"], item["strategy"], item["symbol"], item["hash"]
+    target_key = f"{exch}:{strat}:{h}:{sym}"
+    entry = state.get("done", {}).get(target_key)
+
+    if not isinstance(entry, dict):
+        for k, v in state.get("done", {}).items():
+            if not isinstance(v, dict): continue
+            parts = k.split(":")
+            if len(parts) >= 4 and parts[0] == exch and parts[1] == strat and parts[2] == h:
+                if sym in parts[3] or parts[3] in sym:
+                    entry = v
+                    break
+
+    if not isinstance(entry, dict):
+        return False, "not_in_state"
+
+    val = entry.get("validation", {})
+    if not val:
+        return False, "no_validation"
+
+    if val.get("quartiles_pass", 0) < 4:
+        return False, f"quartile_{val.get('quartiles_pass')}/4"
+
+    stress = val.get("stress", {})
+    if not stress:
+        return False, "no_stress"
+
+    fee = stress.get("fee_2x", {})
+    if fee.get("pf", 999) < 1.2:
+        return False, f"fee_2x_pf_{fee.get('pf')}"
+
+    slip = stress.get("slippage_1.5x", {})
+    if slip.get("sharpe_ann", 1) < 0:
+        return False, f"slip_sr_{slip.get('sharpe_ann')}"
+
+    rob = stress.get("param_robustness", {})
+    if rob.get("verdict") == "FRAGILE":
+        return False, "param_fragile"
+
+    try:
+        from research_lab.audit_core import deflated_sharpe_family
+        from strategies.library.families import STRATEGY_FAMILY
+        fam = STRATEGY_FAMILY.get(strat, "OTHER")
+        sr = val.get("sharpe_ann", 0)
+        n = val.get("n", entry.get("n_total", 0))
+        if n < 30:
+            return False, f"n_{n}"
+        dsr_res = deflated_sharpe_family(sr, n, fam)
+        dsr_val = dsr_res.get("DSR", 0) if dsr_res else 0
+        if dsr_val < 0.50:
+            return False, f"dsr_{round(dsr_val, 2)}"
+    except Exception as e:
+        return False, f"dsr_err_{e}"
+
+    calmar = val.get("calmar", {})
+    if calmar and calmar.get("max_dd_pct", 0) > 60:
+        return False, f"dd_{calmar.get('max_dd_pct')}"
+
+    return True, "ok"
+
+
+def combo_tests(port, m31_rets, keltner_rets):
+    """5 combo-level validation tests on the final portfolio."""
+    port_rets = port["returns"]
+    components = port["components"]
+    weights = port["weights"]
+    port_sr = sharpe(list(port_rets.values()))
+
+    # 1. Dropout: removing any of the 4 picks should NOT destroy SR by <5%
+    dropout_issues = []
+    for i in range(2, len(components)):  # skip M31/Keltner base
+        others = [components[j] for j in range(len(components)) if j != i]
+        other_w = [weights[j] for j in range(len(weights)) if j != i]
+        total_w = sum(other_w)
+        if total_w <= 0: continue
+        other_w = [w / total_w for w in other_w]
+        dates, padded = align_union(others)
+        combined = {}
+        for d in dates:
+            combined[d] = sum(w * r[d] for w, r in zip(other_w, padded))
+        other_sr = sharpe(list(combined.values()))
+        drop_pct = (port_sr - other_sr) / port_sr if port_sr > 0 else 0
+        if drop_pct < 0.05:
+            dropout_issues.append(f"comp{i+1}_redundant(drop={drop_pct*100:.1f}%)")
+        elif drop_pct < 0:
+            dropout_issues.append(f"comp{i+1}_harmful(drop={drop_pct*100:.1f}%)")
+
+    # 2. Weight robustness ±20%
+    perturbed_w = [w * 1.2 for w in weights]
+    total = sum(perturbed_w)
+    perturbed_w = [w / total for w in perturbed_w]
+    dates, padded = align_union(components)
+    comb_p = {}
+    for d in dates:
+        comb_p[d] = sum(w * r[d] for w, r in zip(perturbed_w, padded))
+    perturbed_sr = sharpe(list(comb_p.values()))
+    worst_ratio = perturbed_sr / port_sr if port_sr > 0 else 0
+
+    # 3. OOS vs best component
+    dates_all = sorted(port_rets.keys())
+    test_dates = dates_all[int(len(dates_all) * 0.7):]
+    port_test_sr = sharpe([port_rets[d] for d in test_dates])
+    best_comp_sr = 0.0
+    for comp in components:
+        comp_test_sr = sharpe([comp.get(d, 0.0) for d in test_dates])
+        if comp_test_sr > best_comp_sr:
+            best_comp_sr = comp_test_sr
+
+    # 4. Diversification Ratio
+    stds = []
+    for comp in components:
+        vals = list(comp.values())
+        if not vals: stds.append(0); continue
+        m = sum(vals) / len(vals)
+        v = sum((x - m) ** 2 for x in vals) / len(vals)
+        stds.append(v ** 0.5)
+    weighted_vol = sum(w * s for w, s in zip(weights, stds))
+    cv = list(port_rets.values())
+    cm = sum(cv) / len(cv)
+    cvar = sum((x - cm) ** 2 for x in cv) / len(cv)
+    combo_vol = cvar ** 0.5
+    dr = weighted_vol / combo_vol if combo_vol > 0 else 0
+
+    # 5. Regime-conditional (portfolio >= M31 in each regime on test)
+    from research_lab.composer import regime_by_date
+    reg_map = regime_by_date("hyperliquid")
+    regime_issues = []
+    for regime in ["TREND", "RANGE", "NEUTRAL"]:
+        port_r = [port_rets[d] for d in test_dates if reg_map.get(d) == regime]
+        m31_r = [m31_rets.get(d, 0.0) for d in test_dates if reg_map.get(d) == regime]
+        if len(port_r) < 10: continue
+        port_sr_r = sharpe(port_r)
+        m31_sr_r = sharpe(m31_r)
+        if port_sr_r < m31_sr_r:
+            regime_issues.append(f"{regime}:port={port_sr_r:.1f}<m31={m31_sr_r:.1f}")
+
+    return {
+        "dropout": {"pass": len(dropout_issues) == 0, "issues": dropout_issues},
+        "weight_robustness": {"pass": worst_ratio >= 0.7, "worst_ratio": round(worst_ratio, 3)},
+        "oos_vs_best": {"pass": port_test_sr >= best_comp_sr,
+                        "port_test": round(port_test_sr, 2),
+                        "best_comp": round(best_comp_sr, 2)},
+        "diversification": {"pass": dr >= 1.05, "dr": round(dr, 3)},
+        "regime_conditional": {"pass": len(regime_issues) == 0, "issues": regime_issues},
+    }
+
+
 def main():
     print("=" * 78)
     print(" Multi-Layer Portfolio — D-528")
@@ -203,6 +358,16 @@ def main():
     for name, w in zip(port["names"], port["weights"]):
         print(f"    {name:35s}: {w*100:5.2f}%")
 
+    print("\n[STAGE 3.5] Combo-level validation (5 tests)...")
+    tests = combo_tests(port, m31, keltner)
+    for name, t in tests.items():
+        status = "✅" if t["pass"] else "❌"
+        detail = t.get("issues") or t.get("dr") or t.get("worst_ratio") or ""
+        print(f"  {status} {name}: {detail}")
+
+    all_combo_pass = all(t["pass"] for t in tests.values())
+    print(f"  Combo tests: {'ALL PASS' if all_combo_pass else 'SOME FAIL'}")
+
     print("\n[STAGE 4] Validate on 30% holdout vs M31-only...")
     result = validate_70_30(port["returns"], m31)
     if not result:
@@ -217,12 +382,15 @@ def main():
     print("\n" + "=" * 78)
     print(" VERDICT")
     print("=" * 78)
-    if result["improvement_pct"] >= 20 and result["coverage"] >= 0.5:
+    if not all_combo_pass:
+        print(" ❌ FAIL: combo tests failed (D-530)")
+        verdict = "FAIL"
+    elif result["improvement_pct"] >= 20 and result["coverage"] >= 0.5:
         print(f" ✅ PASS: portfolio({result['port_sr']}) beats M31({result['m31_sr']}) "
-              f"by {result['improvement_pct']:+.0f}%")
+              f"by {result['improvement_pct']:+.0f}% (all 5 combo tests PASS)")
         verdict = "PASS"
     elif result["improvement_pct"] >= 10 and result["coverage"] >= 0.5:
-        print(f" ⚠️  MARGINAL: +{result['improvement_pct']:.0f}% — might not survive Live")
+        print(f" ⚠️  MARGINAL: +{result['improvement_pct']:.0f}% (all 5 combo tests PASS)")
         verdict = "MARGINAL"
     else:
         print(f" ❌ FAIL: portfolio({result['port_sr']}) ≤ M31({result['m31_sr']})")
@@ -234,6 +402,7 @@ def main():
         "verdict": verdict,
         "picks": [{k: v for k, v in p.items() if not k.startswith("_")} for p in picks],
         "weights": {name: round(w, 4) for name, w in zip(port["names"], port["weights"])},
+        "combo_tests": tests,
         "validation": result,
     }, indent=2))
     print(f"\n[SAVE] {out}")
