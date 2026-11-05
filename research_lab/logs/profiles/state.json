@@ -411794,7 +411794,5519 @@
     "kucoin:VC_VWAP_30:d9d77995:SOLUSDTM": "reject:low_n(0)",
     "kucoin:VC_VWAP_30:d9d77995:BNBUSDTM": "reject:low_n(0)",
     "kucoin:VC_VWAP_30:d9d77995:XRPUSDTM": "reject:low_n(0)",
-    "kucoin:VC_VWAP_30:d9d77995:AVAXUSDTM": "reject:low_n(0)"
+    "kucoin:VC_VWAP_30:d9d77995:AVAXUSDTM": "reject:low_n(0)",
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:BTC": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 7.347,
+          "wr": 52.0,
+          "sharpe_daily": 0.525,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 7.347,
+          "wr": 52.0,
+          "sharpe_daily": 0.525,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 7.347,
+          "wr": 52.0,
+          "sharpe_daily": 0.525,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 7.347,
+        "wr": 52.0,
+        "sharpe_daily": 0.525,
+        "sharpe_ann": 10.03,
+        "quartile_pf": [
+          7.474,
+          23.948,
+          3.747,
+          7.797
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:ETH": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 5.107,
+          "wr": 52.4,
+          "sharpe_daily": 0.3732,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 5.107,
+          "wr": 52.4,
+          "sharpe_daily": 0.3732,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 5.107,
+          "wr": 52.4,
+          "sharpe_daily": 0.3732,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 5.107,
+        "wr": 52.4,
+        "sharpe_daily": 0.3732,
+        "sharpe_ann": 7.13,
+        "quartile_pf": [
+          3.426,
+          3.175,
+          5.134,
+          15.89
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:SOL": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 1.288,
+          "wr": 44.8,
+          "sharpe_daily": 0.0209,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 1.288,
+          "wr": 44.8,
+          "sharpe_daily": 0.0209,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 1.288,
+          "wr": 44.8,
+          "sharpe_daily": 0.0209,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 1.288,
+        "wr": 44.8,
+        "sharpe_daily": 0.0209,
+        "sharpe_ann": 0.4,
+        "quartile_pf": [
+          1.81,
+          0.788,
+          1.193,
+          4.015
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:BNB": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 3.907,
+          "wr": 48.8,
+          "sharpe_daily": 0.3889,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 3.907,
+          "wr": 48.8,
+          "sharpe_daily": 0.3889,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 3.907,
+          "wr": 48.8,
+          "sharpe_daily": 0.3889,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 3.907,
+        "wr": 48.8,
+        "sharpe_daily": 0.3889,
+        "sharpe_ann": 7.43,
+        "quartile_pf": [
+          4.946,
+          3.597,
+          2.885,
+          5.329
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:XRP": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 3.375,
+          "wr": 48.8,
+          "sharpe_daily": 0.2188,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 3.375,
+          "wr": 48.8,
+          "sharpe_daily": 0.2188,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 3.375,
+          "wr": 48.8,
+          "sharpe_daily": 0.2188,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 3.375,
+        "wr": 48.8,
+        "sharpe_daily": 0.2188,
+        "sharpe_ann": 4.18,
+        "quartile_pf": [
+          11.504,
+          3.259,
+          2.206,
+          3.469
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:AVAX": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 531,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 531,
+          "pf": 2.43,
+          "wr": 45.8,
+          "sharpe_daily": 0.2722,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 531,
+          "pf": 2.43,
+          "wr": 45.8,
+          "sharpe_daily": 0.2722,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 531,
+          "pf": 2.43,
+          "wr": 45.8,
+          "sharpe_daily": 0.2722,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 531,
+        "pf": 2.43,
+        "wr": 45.8,
+        "sharpe_daily": 0.2722,
+        "sharpe_ann": 5.2,
+        "quartile_pf": [
+          1.252,
+          7.524,
+          2.227,
+          2.234
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:BTCUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 724,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 724,
+          "pf": 52.283,
+          "wr": 56.9,
+          "sharpe_daily": 0.8113,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 724,
+          "pf": 52.283,
+          "wr": 56.9,
+          "sharpe_daily": 0.8113,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 724,
+          "pf": 52.283,
+          "wr": 56.9,
+          "sharpe_daily": 0.8113,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 724,
+        "pf": 52.283,
+        "wr": 56.9,
+        "sharpe_daily": 0.8113,
+        "sharpe_ann": 15.5,
+        "quartile_pf": [
+          143.842,
+          1057.729,
+          17.46,
+          18.259
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:ETHUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 724,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 724,
+          "pf": 59.274,
+          "wr": 58.3,
+          "sharpe_daily": 0.9804,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 724,
+          "pf": 59.274,
+          "wr": 58.3,
+          "sharpe_daily": 0.9804,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 724,
+          "pf": 59.274,
+          "wr": 58.3,
+          "sharpe_daily": 0.9804,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 724,
+        "pf": 59.274,
+        "wr": 58.3,
+        "sharpe_daily": 0.9804,
+        "sharpe_ann": 18.73,
+        "quartile_pf": [
+          245.714,
+          348.956,
+          18.668,
+          19.677
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:SOLUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 724,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 724,
+          "pf": 7.884,
+          "wr": 50.3,
+          "sharpe_daily": 0.2062,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 724,
+          "pf": 7.884,
+          "wr": 50.3,
+          "sharpe_daily": 0.2062,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 724,
+          "pf": 7.884,
+          "wr": 50.3,
+          "sharpe_daily": 0.2062,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 724,
+        "pf": 7.884,
+        "wr": 50.3,
+        "sharpe_daily": 0.2062,
+        "sharpe_ann": 3.94,
+        "quartile_pf": [
+          40.636,
+          9.032,
+          1.661,
+          4.566
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:BNBUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 326,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 326,
+          "pf": 17.665,
+          "wr": 58.3,
+          "sharpe_daily": 0.5998,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 326,
+          "pf": 17.665,
+          "wr": 58.3,
+          "sharpe_daily": 0.5998,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 326,
+          "pf": 17.665,
+          "wr": 58.3,
+          "sharpe_daily": 0.5998,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 326,
+        "pf": 17.665,
+        "wr": 58.3,
+        "sharpe_daily": 0.5998,
+        "sharpe_ann": 11.46,
+        "quartile_pf": [
+          3.678,
+          6.286,
+          96.597,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:XRPUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 724,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 724,
+          "pf": 11.079,
+          "wr": 51.2,
+          "sharpe_daily": 0.6506,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 724,
+          "pf": 11.079,
+          "wr": 51.2,
+          "sharpe_daily": 0.6506,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 724,
+          "pf": 11.079,
+          "wr": 51.2,
+          "sharpe_daily": 0.6506,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 724,
+        "pf": 11.079,
+        "wr": 51.2,
+        "sharpe_daily": 0.6506,
+        "sharpe_ann": 12.43,
+        "quartile_pf": [
+          109.346,
+          29.196,
+          1.505,
+          8.185
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 724,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 724,
+          "pf": 237.764,
+          "wr": 59.4,
+          "sharpe_daily": 1.0772,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 724,
+          "pf": 237.764,
+          "wr": 59.4,
+          "sharpe_daily": 1.0772,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 724,
+          "pf": 237.764,
+          "wr": 59.4,
+          "sharpe_daily": 1.0772,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 724,
+        "pf": 237.764,
+        "wr": 59.4,
+        "sharpe_daily": 1.0772,
+        "sharpe_ann": 20.58,
+        "quartile_pf": [
+          3585.164,
+          999,
+          55.57,
+          902.557
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:BTC": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 5.433,
+          "wr": 50.6,
+          "sharpe_daily": 0.446,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 5.433,
+          "wr": 50.6,
+          "sharpe_daily": 0.446,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 5.433,
+          "wr": 50.6,
+          "sharpe_daily": 0.446,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 5.433,
+        "wr": 50.6,
+        "sharpe_daily": 0.446,
+        "sharpe_ann": 8.52,
+        "quartile_pf": [
+          2.791,
+          33.298,
+          2.65,
+          8.759
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:ETH": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 4.097,
+          "wr": 51.0,
+          "sharpe_daily": 0.3282,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 4.097,
+          "wr": 51.0,
+          "sharpe_daily": 0.3282,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 4.097,
+          "wr": 51.0,
+          "sharpe_daily": 0.3282,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 4.097,
+        "wr": 51.0,
+        "sharpe_daily": 0.3282,
+        "sharpe_ann": 6.27,
+        "quartile_pf": [
+          1.854,
+          2.833,
+          4.185,
+          13.876
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:SOL": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 1.141,
+          "wr": 44.5,
+          "sharpe_daily": 0.0105,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 1.141,
+          "wr": 44.5,
+          "sharpe_daily": 0.0105,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 1.141,
+          "wr": 44.5,
+          "sharpe_daily": 0.0105,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 1.141,
+        "wr": 44.5,
+        "sharpe_daily": 0.0105,
+        "sharpe_ann": 0.2,
+        "quartile_pf": [
+          0.467,
+          0.744,
+          1.132,
+          3.948
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:BNB": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 2.722,
+          "wr": 46.2,
+          "sharpe_daily": 0.2926,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 2.722,
+          "wr": 46.2,
+          "sharpe_daily": 0.2926,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 2.722,
+          "wr": 46.2,
+          "sharpe_daily": 0.2926,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 2.722,
+        "wr": 46.2,
+        "sharpe_daily": 0.2926,
+        "sharpe_ann": 5.59,
+        "quartile_pf": [
+          0.508,
+          1.988,
+          2.681,
+          4.977
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:XRP": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 3.05,
+          "wr": 48.9,
+          "sharpe_daily": 0.1979,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 3.05,
+          "wr": 48.9,
+          "sharpe_daily": 0.1979,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 3.05,
+          "wr": 48.9,
+          "sharpe_daily": 0.1979,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 3.05,
+        "wr": 48.9,
+        "sharpe_daily": 0.1979,
+        "sharpe_ann": 3.78,
+        "quartile_pf": [
+          4.993,
+          2.181,
+          3.783,
+          3.167
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:AVAX": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 524,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 524,
+          "pf": 2.125,
+          "wr": 43.9,
+          "sharpe_daily": 0.2266,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 524,
+          "pf": 2.125,
+          "wr": 43.9,
+          "sharpe_daily": 0.2266,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 524,
+          "pf": 2.125,
+          "wr": 43.9,
+          "sharpe_daily": 0.2266,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 524,
+        "pf": 2.125,
+        "wr": 43.9,
+        "sharpe_daily": 0.2266,
+        "sharpe_ann": 4.33,
+        "quartile_pf": [
+          1.285,
+          5.221,
+          2.885,
+          1.653
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:BTCUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 717,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 717,
+          "pf": 36.897,
+          "wr": 55.9,
+          "sharpe_daily": 0.8636,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 717,
+          "pf": 36.897,
+          "wr": 55.9,
+          "sharpe_daily": 0.8636,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 717,
+          "pf": 36.897,
+          "wr": 55.9,
+          "sharpe_daily": 0.8636,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 717,
+        "pf": 36.897,
+        "wr": 55.9,
+        "sharpe_daily": 0.8636,
+        "sharpe_ann": 16.5,
+        "quartile_pf": [
+          95.819,
+          64.572,
+          20.639,
+          19.357
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:ETHUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 717,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 717,
+          "pf": 45.144,
+          "wr": 57.9,
+          "sharpe_daily": 0.9757,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 717,
+          "pf": 45.144,
+          "wr": 57.9,
+          "sharpe_daily": 0.9757,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 717,
+          "pf": 45.144,
+          "wr": 57.9,
+          "sharpe_daily": 0.9757,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 717,
+        "pf": 45.144,
+        "wr": 57.9,
+        "sharpe_daily": 0.9757,
+        "sharpe_ann": 18.64,
+        "quartile_pf": [
+          248.52,
+          149.59,
+          12.429,
+          14.999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:SOLUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 717,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 717,
+          "pf": 6.472,
+          "wr": 49.8,
+          "sharpe_daily": 0.1921,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 717,
+          "pf": 6.472,
+          "wr": 49.8,
+          "sharpe_daily": 0.1921,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 717,
+          "pf": 6.472,
+          "wr": 49.8,
+          "sharpe_daily": 0.1921,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 717,
+        "pf": 6.472,
+        "wr": 49.8,
+        "sharpe_daily": 0.1921,
+        "sharpe_ann": 3.67,
+        "quartile_pf": [
+          37.949,
+          8.413,
+          2.353,
+          2.956
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:BNBUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 319,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 319,
+          "pf": 260.529,
+          "wr": 59.9,
+          "sharpe_daily": 0.6344,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 319,
+          "pf": 260.529,
+          "wr": 59.9,
+          "sharpe_daily": 0.6344,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 319,
+          "pf": 260.529,
+          "wr": 59.9,
+          "sharpe_daily": 0.6344,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 319,
+        "pf": 260.529,
+        "wr": 59.9,
+        "sharpe_daily": 0.6344,
+        "sharpe_ann": 12.12,
+        "quartile_pf": [
+          1.0,
+          999,
+          101.751,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:XRPUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 717,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 717,
+          "pf": 12.766,
+          "wr": 51.7,
+          "sharpe_daily": 0.7103,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 717,
+          "pf": 12.766,
+          "wr": 51.7,
+          "sharpe_daily": 0.7103,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 717,
+          "pf": 12.766,
+          "wr": 51.7,
+          "sharpe_daily": 0.7103,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 717,
+        "pf": 12.766,
+        "wr": 51.7,
+        "sharpe_daily": 0.7103,
+        "sharpe_ann": 13.57,
+        "quartile_pf": [
+          82.129,
+          34.581,
+          2.271,
+          7.333
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 717,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 717,
+          "pf": 41.334,
+          "wr": 58.3,
+          "sharpe_daily": 1.028,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 717,
+          "pf": 41.334,
+          "wr": 58.3,
+          "sharpe_daily": 1.028,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 717,
+          "pf": 41.334,
+          "wr": 58.3,
+          "sharpe_daily": 1.028,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 717,
+        "pf": 41.334,
+        "wr": 58.3,
+        "sharpe_daily": 1.028,
+        "sharpe_ann": 19.64,
+        "quartile_pf": [
+          50.141,
+          999,
+          11.72,
+          83.207
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:BTC": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 4.886,
+          "wr": 57.7,
+          "sharpe_daily": 0.4763,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 4.886,
+          "wr": 57.7,
+          "sharpe_daily": 0.4763,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 4.886,
+          "wr": 57.7,
+          "sharpe_daily": 0.4763,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 4.886,
+        "wr": 57.7,
+        "sharpe_daily": 0.4763,
+        "sharpe_ann": 9.1,
+        "quartile_pf": [
+          3.197,
+          44.307,
+          1.87,
+          10.562
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:ETH": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 3.176,
+          "wr": 55.1,
+          "sharpe_daily": 0.3046,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 3.176,
+          "wr": 55.1,
+          "sharpe_daily": 0.3046,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 3.176,
+          "wr": 55.1,
+          "sharpe_daily": 0.3046,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 3.176,
+        "wr": 55.1,
+        "sharpe_daily": 0.3046,
+        "sharpe_ann": 5.82,
+        "quartile_pf": [
+          1.674,
+          2.687,
+          2.148,
+          14.41
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:BNB": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 3.498,
+          "wr": 54.7,
+          "sharpe_daily": 0.368,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 3.498,
+          "wr": 54.7,
+          "sharpe_daily": 0.368,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 3.498,
+          "wr": 54.7,
+          "sharpe_daily": 0.368,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 3.498,
+        "wr": 54.7,
+        "sharpe_daily": 0.368,
+        "sharpe_ann": 7.03,
+        "quartile_pf": [
+          78.868,
+          2.668,
+          2.803,
+          5.236
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:XRP": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 1.623,
+          "wr": 50.2,
+          "sharpe_daily": 0.1083,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 1.623,
+          "wr": 50.2,
+          "sharpe_daily": 0.1083,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 1.623,
+          "wr": 50.2,
+          "sharpe_daily": 0.1083,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 1.623,
+        "wr": 50.2,
+        "sharpe_daily": 0.1083,
+        "sharpe_ann": 2.07,
+        "quartile_pf": [
+          0.372,
+          3.253,
+          0.947,
+          3.282
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:AVAX": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 1.887,
+          "wr": 51.8,
+          "sharpe_daily": 0.1361,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 1.887,
+          "wr": 51.8,
+          "sharpe_daily": 0.1361,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 1.887,
+          "wr": 51.8,
+          "sharpe_daily": 0.1361,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 1.887,
+        "wr": 51.8,
+        "sharpe_daily": 0.1361,
+        "sharpe_ann": 2.6,
+        "quartile_pf": [
+          0.796,
+          2.752,
+          3.374,
+          1.697
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:BTCUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 18.41,
+          "wr": 63.2,
+          "sharpe_daily": 0.9092,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 18.41,
+          "wr": 63.2,
+          "sharpe_daily": 0.9092,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 18.41,
+          "wr": 63.2,
+          "sharpe_daily": 0.9092,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 18.41,
+        "wr": 63.2,
+        "sharpe_daily": 0.9092,
+        "sharpe_ann": 17.37,
+        "quartile_pf": [
+          53.062,
+          76.472,
+          4.758,
+          20.009
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:ETHUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 37.687,
+          "wr": 66.5,
+          "sharpe_daily": 1.094,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 37.687,
+          "wr": 66.5,
+          "sharpe_daily": 1.094,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 37.687,
+          "wr": 66.5,
+          "sharpe_daily": 1.094,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 37.687,
+        "wr": 66.5,
+        "sharpe_daily": 1.094,
+        "sharpe_ann": 20.9,
+        "quartile_pf": [
+          265.249,
+          115.795,
+          10.251,
+          14.767
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:SOLUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 3.367,
+          "wr": 54.2,
+          "sharpe_daily": 0.3742,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 3.367,
+          "wr": 54.2,
+          "sharpe_daily": 0.3742,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 3.367,
+          "wr": 54.2,
+          "sharpe_daily": 0.3742,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 3.367,
+        "wr": 54.2,
+        "sharpe_daily": 0.3742,
+        "sharpe_ann": 7.15,
+        "quartile_pf": [
+          8.455,
+          8.726,
+          1.035,
+          2.436
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:BNBUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 303,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 303,
+          "pf": 319.88,
+          "wr": 70.0,
+          "sharpe_daily": 0.671,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 303,
+          "pf": 319.88,
+          "wr": 70.0,
+          "sharpe_daily": 0.671,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 303,
+          "pf": 319.88,
+          "wr": 70.0,
+          "sharpe_daily": 0.671,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 303,
+        "pf": 319.88,
+        "wr": 70.0,
+        "sharpe_daily": 0.671,
+        "sharpe_ann": 12.82,
+        "quartile_pf": [
+          999,
+          76.371,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:XRPUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 6.262,
+          "wr": 55.5,
+          "sharpe_daily": 0.6344,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 6.262,
+          "wr": 55.5,
+          "sharpe_daily": 0.6344,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 6.262,
+          "wr": 55.5,
+          "sharpe_daily": 0.6344,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 6.262,
+        "wr": 55.5,
+        "sharpe_daily": 0.6344,
+        "sharpe_ann": 12.12,
+        "quartile_pf": [
+          19.025,
+          12.088,
+          1.425,
+          5.978
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 18.902,
+          "wr": 66.3,
+          "sharpe_daily": 0.9552,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 18.902,
+          "wr": 66.3,
+          "sharpe_daily": 0.9552,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 18.902,
+          "wr": 66.3,
+          "sharpe_daily": 0.9552,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 18.902,
+        "wr": 66.3,
+        "sharpe_daily": 0.9552,
+        "sharpe_ann": 18.25,
+        "quartile_pf": [
+          32.823,
+          999,
+          5.434,
+          21.132
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:BTC": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 6.1,
+          "sharpe_daily": 0.2099,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 6.1,
+          "sharpe_daily": 0.2099,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 6.1,
+          "sharpe_daily": 0.2099,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 6.1,
+        "sharpe_daily": 0.2099,
+        "sharpe_ann": 4.01,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:ETH": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1853,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1853,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1853,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 4.9,
+        "sharpe_daily": 0.1853,
+        "sharpe_ann": 3.54,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:SOL": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 6.5,
+          "sharpe_daily": 0.2073,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 6.5,
+          "sharpe_daily": 0.2073,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 6.5,
+          "sharpe_daily": 0.2073,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 6.5,
+        "sharpe_daily": 0.2073,
+        "sharpe_ann": 3.96,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:BNB": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.5,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.5,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.5,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 3.5,
+        "sharpe_daily": 0.1696,
+        "sharpe_ann": 3.24,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:XRP": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 8.5,
+          "sharpe_daily": 0.2219,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 8.5,
+          "sharpe_daily": 0.2219,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 8.5,
+          "sharpe_daily": 0.2219,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 8.5,
+        "sharpe_daily": 0.2219,
+        "sharpe_ann": 4.24,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:AVAX": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.5,
+          "sharpe_daily": 0.2041,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.5,
+          "sharpe_daily": 0.2041,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.5,
+          "sharpe_daily": 0.2041,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 5.5,
+        "sharpe_daily": 0.2041,
+        "sharpe_ann": 3.9,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:BTCUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 10.1,
+          "sharpe_daily": 0.1952,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 10.1,
+          "sharpe_daily": 0.1952,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 10.1,
+          "sharpe_daily": 0.1952,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 10.1,
+        "sharpe_daily": 0.1952,
+        "sharpe_ann": 3.73,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:ETHUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 8.1,
+          "sharpe_daily": 0.112,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 8.1,
+          "sharpe_daily": 0.112,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 8.1,
+          "sharpe_daily": 0.112,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 8.1,
+        "sharpe_daily": 0.112,
+        "sharpe_ann": 2.14,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:SOLUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 7.0,
+          "sharpe_daily": 0.09,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 7.0,
+          "sharpe_daily": 0.09,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 7.0,
+          "sharpe_daily": 0.09,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 7.0,
+        "sharpe_daily": 0.09,
+        "sharpe_ann": 1.72,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:BNBUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 303,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.5,
+          "sharpe_daily": 0.357,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.5,
+          "sharpe_daily": 0.357,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.5,
+          "sharpe_daily": 0.357,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 303,
+        "pf": 999,
+        "wr": 16.5,
+        "sharpe_daily": 0.357,
+        "sharpe_ann": 6.82,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:XRPUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 5.8,
+          "sharpe_daily": 0.1068,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 5.8,
+          "sharpe_daily": 0.1068,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 5.8,
+          "sharpe_daily": 0.1068,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 5.8,
+        "sharpe_daily": 0.1068,
+        "sharpe_ann": 2.04,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:036ddea8:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.4,
+          "sharpe_daily": 0.0801,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.4,
+          "sharpe_daily": 0.0801,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.4,
+          "sharpe_daily": 0.0801,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 1.4,
+        "sharpe_daily": 0.0801,
+        "sharpe_ann": 1.53,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:BTC": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1727,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1727,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1727,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 3.3,
+        "sharpe_daily": 0.1727,
+        "sharpe_ann": 3.3,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:ETH": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1764,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1764,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 4.0,
+          "sharpe_daily": 0.1764,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 4.0,
+        "sharpe_daily": 0.1764,
+        "sharpe_ann": 3.37,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:SOL": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.9,
+          "sharpe_daily": 0.1586,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.9,
+          "sharpe_daily": 0.1586,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.9,
+          "sharpe_daily": 0.1586,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 2.9,
+        "sharpe_daily": 0.1586,
+        "sharpe_ann": 3.03,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:BNB": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.3,
+          "sharpe_daily": 0.1418,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.3,
+          "sharpe_daily": 0.1418,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.3,
+          "sharpe_daily": 0.1418,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 2.3,
+        "sharpe_daily": 0.1418,
+        "sharpe_ann": 2.71,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:XRP": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1644,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1644,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1644,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 3.3,
+        "sharpe_daily": 0.1644,
+        "sharpe_ann": 3.14,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:AVAX": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.179,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.179,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 3.8,
+          "sharpe_daily": 0.179,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 3.8,
+        "sharpe_daily": 0.179,
+        "sharpe_ann": 3.42,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:BTCUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 4.5,
+          "sharpe_daily": 0.1418,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 4.5,
+          "sharpe_daily": 0.1418,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 4.5,
+          "sharpe_daily": 0.1418,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 4.5,
+        "sharpe_daily": 0.1418,
+        "sharpe_ann": 2.71,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:ETHUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1455,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1455,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.1455,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 3.3,
+        "sharpe_daily": 0.1455,
+        "sharpe_ann": 2.78,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:SOLUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.0523,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.0523,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.0523,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 3.1,
+        "sharpe_daily": 0.0523,
+        "sharpe_ann": 1.0,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:BNBUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 273,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 273,
+          "pf": 999,
+          "wr": 8.1,
+          "sharpe_daily": 0.258,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 273,
+          "pf": 999,
+          "wr": 8.1,
+          "sharpe_daily": 0.258,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 273,
+          "pf": 999,
+          "wr": 8.1,
+          "sharpe_daily": 0.258,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 273,
+        "pf": 999,
+        "wr": 8.1,
+        "sharpe_daily": 0.258,
+        "sharpe_ann": 4.93,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:XRPUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.6,
+          "sharpe_daily": 0.1282,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.6,
+          "sharpe_daily": 0.1282,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.6,
+          "sharpe_daily": 0.1282,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 1.6,
+        "sharpe_daily": 0.1282,
+        "sharpe_ann": 2.45,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:35679c91:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0995,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0995,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0995,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 1.0,
+        "sharpe_daily": 0.0995,
+        "sharpe_ann": 1.9,
+        "quartile_pf": [
+          1.0,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:BTC": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1518,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1518,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1518,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 2.5,
+        "sharpe_daily": 0.1518,
+        "sharpe_ann": 2.9,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:ETH": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1356,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1356,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1356,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 2.5,
+        "sharpe_daily": 0.1356,
+        "sharpe_ann": 2.59,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:SOL": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1455,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1455,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1455,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 2.5,
+        "sharpe_daily": 0.1455,
+        "sharpe_ann": 2.78,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:BNB": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 1.8,
+          "sharpe_daily": 0.1293,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 1.8,
+          "sharpe_daily": 0.1293,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 1.8,
+          "sharpe_daily": 0.1293,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 1.8,
+        "sharpe_daily": 0.1293,
+        "sharpe_ann": 2.47,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:XRP": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.1345,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.1345,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.1345,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 2.0,
+        "sharpe_daily": 0.1345,
+        "sharpe_ann": 2.57,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:AVAX": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 448,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 448,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.168,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 448,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.168,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 448,
+          "pf": 999,
+          "wr": 3.3,
+          "sharpe_daily": 0.168,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 448,
+        "pf": 999,
+        "wr": 3.3,
+        "sharpe_daily": 0.168,
+        "sharpe_ann": 3.21,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:BTCUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 1.2,
+          "sharpe_daily": 0.112,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 1.2,
+          "sharpe_daily": 0.112,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 1.2,
+          "sharpe_daily": 0.112,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 1.2,
+        "sharpe_daily": 0.112,
+        "sharpe_ann": 2.14,
+        "quartile_pf": [
+          1.0,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:ETHUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.5,
+          "sharpe_daily": 0.0529,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.5,
+          "sharpe_daily": 0.0529,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.5,
+          "sharpe_daily": 0.0529,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 0.5,
+        "sharpe_daily": 0.0529,
+        "sharpe_ann": 1.01,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:SOLUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.2,
+          "sharpe_daily": 0.0398,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.2,
+          "sharpe_daily": 0.0398,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.2,
+          "sharpe_daily": 0.0398,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 0.2,
+        "sharpe_daily": 0.0398,
+        "sharpe_ann": 0.76,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:BNBUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 243,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 243,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1429,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 243,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1429,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 243,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1429,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 243,
+        "pf": 999,
+        "wr": 2.5,
+        "sharpe_daily": 0.1429,
+        "sharpe_ann": 2.73,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_REGIME_CONTRARIAN:f199bd31:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 641,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.9,
+          "sharpe_daily": 0.0947,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.9,
+          "sharpe_daily": 0.0947,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 641,
+          "pf": 999,
+          "wr": 0.9,
+          "sharpe_daily": 0.0947,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 641,
+        "pf": 999,
+        "wr": 0.9,
+        "sharpe_daily": 0.0947,
+        "sharpe_ann": 1.81,
+        "quartile_pf": [
+          1.0,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:BTC": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 7.7,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 7.7,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 7.7,
+          "sharpe_daily": 0.2251,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 7.7,
+        "sharpe_daily": 0.2251,
+        "sharpe_ann": 4.3,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:ETH": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.1,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.1,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 5.1,
+          "sharpe_daily": 0.1769,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 5.1,
+        "sharpe_daily": 0.1769,
+        "sharpe_ann": 3.38,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:SOL": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 9.1,
+          "sharpe_daily": 0.2256,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 9.1,
+          "sharpe_daily": 0.2256,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 9.1,
+          "sharpe_daily": 0.2256,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 9.1,
+        "sharpe_daily": 0.2256,
+        "sharpe_ann": 4.31,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:BNB": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1696,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 4.1,
+        "sharpe_daily": 0.1696,
+        "sharpe_ann": 3.24,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:XRP": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 12.4,
+          "sharpe_daily": 0.2465,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 12.4,
+          "sharpe_daily": 0.2465,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 12.4,
+          "sharpe_daily": 0.2465,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 12.4,
+        "sharpe_daily": 0.2465,
+        "sharpe_ann": 4.71,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:AVAX": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.7,
+          "sharpe_daily": 0.1931,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.7,
+          "sharpe_daily": 0.1931,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.7,
+          "sharpe_daily": 0.1931,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 4.7,
+        "sharpe_daily": 0.1931,
+        "sharpe_ann": 3.69,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:BTCUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.1,
+          "sharpe_daily": 0.212,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.1,
+          "sharpe_daily": 0.212,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.1,
+          "sharpe_daily": 0.212,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 12.1,
+        "sharpe_daily": 0.212,
+        "sharpe_ann": 4.05,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:ETHUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 9.0,
+          "sharpe_daily": 0.1131,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 9.0,
+          "sharpe_daily": 0.1131,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 9.0,
+          "sharpe_daily": 0.1131,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 9.0,
+        "sharpe_daily": 0.1131,
+        "sharpe_ann": 2.16,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:SOLUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.3,
+          "sharpe_daily": 0.1094,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.3,
+          "sharpe_daily": 0.1094,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 12.3,
+          "sharpe_daily": 0.1094,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 12.3,
+        "sharpe_daily": 0.1094,
+        "sharpe_ann": 2.09,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:BNBUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 303,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.2,
+          "sharpe_daily": 0.3523,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.2,
+          "sharpe_daily": 0.3523,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 303,
+          "pf": 999,
+          "wr": 16.2,
+          "sharpe_daily": 0.3523,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 303,
+        "pf": 999,
+        "wr": 16.2,
+        "sharpe_daily": 0.3523,
+        "sharpe_ann": 6.73,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:XRPUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 11.6,
+          "sharpe_daily": 0.1293,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 11.6,
+          "sharpe_daily": 0.1293,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 11.6,
+          "sharpe_daily": 0.1293,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 11.6,
+        "sharpe_daily": 0.1293,
+        "sharpe_ann": 2.47,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:c497661d:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.0848,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.0848,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.0848,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 2.0,
+        "sharpe_daily": 0.0848,
+        "sharpe_ann": 1.62,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:BTC": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.9,
+          "sharpe_daily": 0.1822,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.9,
+          "sharpe_daily": 0.1822,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.9,
+          "sharpe_daily": 0.1822,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 3.9,
+        "sharpe_daily": 0.1822,
+        "sharpe_ann": 3.48,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:ETH": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 2.6,
+          "sharpe_daily": 0.1356,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 2.6,
+          "sharpe_daily": 0.1356,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 2.6,
+          "sharpe_daily": 0.1356,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 2.6,
+        "sharpe_daily": 0.1356,
+        "sharpe_ann": 2.59,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:SOL": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.0,
+          "sharpe_daily": 0.1481,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.0,
+          "sharpe_daily": 0.1481,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.0,
+          "sharpe_daily": 0.1481,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 3.0,
+        "sharpe_daily": 0.1481,
+        "sharpe_ann": 2.83,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:BNB": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.134,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.134,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 2.0,
+          "sharpe_daily": 0.134,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 2.0,
+        "sharpe_daily": 0.134,
+        "sharpe_ann": 2.56,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:XRP": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1795,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1795,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 4.9,
+          "sharpe_daily": 0.1795,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 4.9,
+        "sharpe_daily": 0.1795,
+        "sharpe_ann": 3.43,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:AVAX": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 508,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.1649,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.1649,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 508,
+          "pf": 999,
+          "wr": 3.1,
+          "sharpe_daily": 0.1649,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 508,
+        "pf": 999,
+        "wr": 3.1,
+        "sharpe_daily": 0.1649,
+        "sharpe_ann": 3.15,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:BTCUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1225,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1225,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 4.1,
+          "sharpe_daily": 0.1225,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 4.1,
+        "sharpe_daily": 0.1225,
+        "sharpe_ann": 2.34,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:ETHUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 3.7,
+          "sharpe_daily": 0.0858,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 3.7,
+          "sharpe_daily": 0.0858,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 3.7,
+          "sharpe_daily": 0.0858,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 3.7,
+        "sharpe_daily": 0.0858,
+        "sharpe_ann": 1.64,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:SOLUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.7,
+          "sharpe_daily": 0.0639,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.7,
+          "sharpe_daily": 0.0639,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.7,
+          "sharpe_daily": 0.0639,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 1.7,
+        "sharpe_daily": 0.0639,
+        "sharpe_ann": 1.22,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:BNBUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 303,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 303,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2544,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 303,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2544,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 303,
+          "pf": 999,
+          "wr": 8.6,
+          "sharpe_daily": 0.2544,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 303,
+        "pf": 999,
+        "wr": 8.6,
+        "sharpe_daily": 0.2544,
+        "sharpe_ann": 4.86,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:XRPUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 2.6,
+          "sharpe_daily": 0.0686,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 2.6,
+          "sharpe_daily": 0.0686,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 2.6,
+          "sharpe_daily": 0.0686,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 2.6,
+        "sharpe_daily": 0.0686,
+        "sharpe_ann": 1.31,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:d1f1c084:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 701,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.1,
+          "sharpe_daily": 0.066,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.1,
+          "sharpe_daily": 0.066,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 701,
+          "pf": 999,
+          "wr": 1.1,
+          "sharpe_daily": 0.066,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 701,
+        "pf": 999,
+        "wr": 1.1,
+        "sharpe_daily": 0.066,
+        "sharpe_ann": 1.26,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:BTC": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BTC",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1549,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1549,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.5,
+          "sharpe_daily": 0.1549,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 2.5,
+        "sharpe_daily": 0.1549,
+        "sharpe_ann": 2.96,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:ETH": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "ETH",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.1199,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.1199,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.1199,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 1.9,
+        "sharpe_daily": 0.1199,
+        "sharpe_ann": 2.29,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:SOL": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "SOL",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.1,
+          "sharpe_daily": 0.1408,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.1,
+          "sharpe_daily": 0.1408,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.1,
+          "sharpe_daily": 0.1408,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 2.1,
+        "sharpe_daily": 0.1408,
+        "sharpe_ann": 2.69,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:BNB": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "BNB",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.7,
+          "sharpe_daily": 0.1251,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.7,
+          "sharpe_daily": 0.1251,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.7,
+          "sharpe_daily": 0.1251,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 1.7,
+        "sharpe_daily": 0.1251,
+        "sharpe_ann": 2.39,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:XRP": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "XRP",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.1329,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.1329,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.1329,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 1.9,
+        "sharpe_daily": 0.1329,
+        "sharpe_ann": 2.54,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:AVAX": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "hyperliquid",
+      "symbol": "AVAX",
+      "n_total": 478,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 478,
+          "pf": 999,
+          "wr": 2.7,
+          "sharpe_daily": 0.1612,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 478,
+        "pf": 999,
+        "wr": 2.7,
+        "sharpe_daily": 0.1612,
+        "sharpe_ann": 3.08,
+        "quartile_pf": [
+          999,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:BTCUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.0879,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.0879,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.9,
+          "sharpe_daily": 0.0879,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 1.9,
+        "sharpe_daily": 0.0879,
+        "sharpe_ann": 1.68,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 3,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:ETHUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0754,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0754,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0754,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 1.0,
+        "sharpe_daily": 0.0754,
+        "sharpe_ann": 1.44,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          999
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:SOLUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "SOLUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 0.6,
+          "sharpe_daily": 0.0408,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 0.6,
+          "sharpe_daily": 0.0408,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 0.6,
+          "sharpe_daily": 0.0408,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 0.6,
+        "sharpe_daily": 0.0408,
+        "sharpe_ann": 0.78,
+        "quartile_pf": [
+          999,
+          1.0,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 2,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:BNBUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "BNBUSDT",
+      "n_total": 273,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 273,
+          "pf": 999,
+          "wr": 6.6,
+          "sharpe_daily": 0.2298,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 273,
+          "pf": 999,
+          "wr": 6.6,
+          "sharpe_daily": 0.2298,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 273,
+          "pf": 999,
+          "wr": 6.6,
+          "sharpe_daily": 0.2298,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 273,
+        "pf": 999,
+        "wr": 6.6,
+        "sharpe_daily": 0.2298,
+        "sharpe_ann": 4.39,
+        "quartile_pf": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "quartiles_pass": 4,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:XRPUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 0.7,
+          "sharpe_daily": 0.0869,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 0.7,
+          "sharpe_daily": 0.0869,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 0.7,
+          "sharpe_daily": 0.0869,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 0.7,
+        "sharpe_daily": 0.0869,
+        "sharpe_ann": 1.66,
+        "quartile_pf": [
+          1.0,
+          1.0,
+          999,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    },
+    "economic_v1:ECO_FUNDING_ZSCORE:2b6023a5:AVAXUSDT": {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "kind": "economic_v1",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n_total": 671,
+      "status": "profiled",
+      "metrics_by_regime": {
+        "TREND": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0995,
+          "sufficient": true
+        },
+        "RANGE": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0995,
+          "sufficient": true
+        },
+        "NEUTRAL": {
+          "n": 671,
+          "pf": 999,
+          "wr": 1.0,
+          "sharpe_daily": 0.0995,
+          "sufficient": true
+        }
+      },
+      "validation": {
+        "n": 671,
+        "pf": 999,
+        "wr": 1.0,
+        "sharpe_daily": 0.0995,
+        "sharpe_ann": 1.9,
+        "quartile_pf": [
+          1.0,
+          999,
+          1.0,
+          1.0
+        ],
+        "quartiles_pass": 1,
+        "stress": {},
+        "calmar": {}
+      }
+    }
   },
   "started": "2026-11-02T17:31:33.386662+00:00"
 }

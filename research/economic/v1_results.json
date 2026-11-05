@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-11-05T21:22:26.968437+00:00",
+  "n_total": 106,
+  "by_logic": {
+    "funding_volatility_filter": {
+      "count": 35,
+      "avg_sr": 9.86,
+      "qpass": 29
+    },
+    "funding_regime_contrarian": {
+      "count": 35,
+      "avg_sr": 2.87,
+      "qpass": 11
+    },
+    "funding_zscore": {
+      "count": 36,
+      "avg_sr": 2.81,
+      "qpass": 16
+    }
+  },
+  "top10": [
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:ETHUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 701,
+      "sr": 20.9,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:AVAXUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n": 724,
+      "sr": 20.58,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:AVAXUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n": 717,
+      "sr": 19.64,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:ETHUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 724,
+      "sr": 18.73,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:ETHUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "ETHUSDT",
+      "n": 717,
+      "sr": 18.64,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:AVAXUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "AVAXUSDT",
+      "n": 701,
+      "sr": 18.25,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:05159a1a:BTCUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 701,
+      "sr": 17.37,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:BTCUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 717,
+      "sr": 16.5,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:1b51a026:BTCUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "BTCUSDT",
+      "n": 724,
+      "sr": 15.5,
+      "qpass": true
+    },
+    {
+      "key": "economic_v1:ECO_FUNDING_VOLATILITY_FILTER:70e8dc29:XRPUSDT",
+      "logic": "funding_volatility_filter",
+      "exchange": "aster",
+      "symbol": "XRPUSDT",
+      "n": 717,
+      "sr": 13.57,
+      "qpass": true
+    }
+  ]
+}
