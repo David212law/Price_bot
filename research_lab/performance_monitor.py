@@ -1,6 +1,6 @@
 import os, json, base64, requests
 from datetime import datetime, timezone
-from research_lab.bale_notifier import send_bale
+from research_lab.utils import send_bale
 
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
 GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")

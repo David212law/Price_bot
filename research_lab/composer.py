@@ -581,7 +581,7 @@ def _pooled_get(exchange, strategy, state):
     if key in _pooled_cache:
         return _pooled_cache[key]
     try:
-        from research_lab.pooled_returns import pooled_returns as _pooled
+        from research_lab.utils import pooled_returns as _pooled
         _pooled_cache[key] = _pooled(exchange, strategy, state)
     except Exception:
         _pooled_cache[key] = {}
