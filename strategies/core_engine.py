@@ -2,7 +2,6 @@ import json
 import os
 import math
 from datetime import datetime, timezone
-from strategies.core_engine import calc_ema, calc_atr
 
 # ─── اندیکاتورها ───
 def calc_bb(closes, period, std_mult):
