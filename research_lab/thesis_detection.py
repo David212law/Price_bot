@@ -28,12 +28,9 @@ def load_returns(exchange, strategy, hash_val, symbol):
     try: return json.loads(p.read_text())
     except: return {}
 
-def sharpe(vals):
-    if len(vals) < 10: return 0.0
-    m = sum(vals) / len(vals)
-    v = sum((x - m) ** 2 for x in vals) / len(vals)
-    sd = v ** 0.5
-    return (m / sd) * (365 ** 0.5) if sd > 0 else 0.0
+def sharpe(vals):  # delegate_to_utils
+    from research_lab.utils import sharpe as _u
+    return _u(vals)
 
 def corr(a, b, dates):
     if len(dates) < 10: return 0.0

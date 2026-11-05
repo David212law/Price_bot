@@ -663,12 +663,9 @@ def weighted_returns(components, weights):
         if total_w > 0: out[d] = total_r / total_w
     return out
 
-def sharpe(rets):
-    if len(rets) < 10: return 0
-    m = sum(rets)/len(rets)
-    v = sum((r-m)**2 for r in rets)/(len(rets)-1) if len(rets) > 1 else 0
-    s = math.sqrt(v)
-    return (m/s)*math.sqrt(365) if s > 0 else 0
+def sharpe(vals):  # delegate_to_utils
+    from research_lab.utils import sharpe as _u
+    return _u(vals)
 
 def corr(a, b, dates):
     if len(dates) < CONFIG["min_overlap_days"]: return 1.0
