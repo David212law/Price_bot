@@ -1,0 +1,116 @@
+{
+  "generated_at": "2026-11-05T21:20:17.310845+00:00",
+  "version": "1.0.0",
+  "n_definitions": 9,
+  "n_skipped_todo": 18,
+  "definitions": [
+    {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "logic_id": "funding_volatility_filter",
+      "params": {
+        "lookback": 7,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "hash": "1b51a026",
+      "data_source": "funding",
+      "thesis": "When funding rate volatility is low, carry risk is lower because funding is unlikely to flip negative. Enter only during low-vol windows."
+    },
+    {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "logic_id": "funding_volatility_filter",
+      "params": {
+        "lookback": 14,
+        "threshold_pct": 60,
+        "logic_id": "funding_volatility_filter"
+      },
+      "hash": "70e8dc29",
+      "data_source": "funding",
+      "thesis": "When funding rate volatility is low, carry risk is lower because funding is unlikely to flip negative. Enter only during low-vol windows."
+    },
+    {
+      "strategy": "ECO_FUNDING_VOLATILITY_FILTER",
+      "logic_id": "funding_volatility_filter",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 70,
+        "logic_id": "funding_volatility_filter"
+      },
+      "hash": "05159a1a",
+      "data_source": "funding",
+      "thesis": "When funding rate volatility is low, carry risk is lower because funding is unlikely to flip negative. Enter only during low-vol windows."
+    },
+    {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "logic_id": "funding_regime_contrarian",
+      "params": {
+        "lookback": 30,
+        "threshold_pct": 85,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "hash": "036ddea8",
+      "data_source": "funding",
+      "thesis": "Extreme funding rates signal crowding. When funding is in top percentiles, the position is crowded and reversal is likely. Take contrarian (short-perp) position."
+    },
+    {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "logic_id": "funding_regime_contrarian",
+      "params": {
+        "lookback": 60,
+        "threshold_pct": 90,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "hash": "35679c91",
+      "data_source": "funding",
+      "thesis": "Extreme funding rates signal crowding. When funding is in top percentiles, the position is crowded and reversal is likely. Take contrarian (short-perp) position."
+    },
+    {
+      "strategy": "ECO_FUNDING_REGIME_CONTRARIAN",
+      "logic_id": "funding_regime_contrarian",
+      "params": {
+        "lookback": 90,
+        "threshold_pct": 95,
+        "logic_id": "funding_regime_contrarian"
+      },
+      "hash": "f199bd31",
+      "data_source": "funding",
+      "thesis": "Extreme funding rates signal crowding. When funding is in top percentiles, the position is crowded and reversal is likely. Take contrarian (short-perp) position."
+    },
+    {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "logic_id": "funding_zscore",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.0,
+        "logic_id": "funding_zscore"
+      },
+      "hash": "c497661d",
+      "data_source": "funding",
+      "thesis": "Fixed-threshold strategies adapt poorly to regime changes. A z-score threshold adapts to changing funding distributions."
+    },
+    {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "logic_id": "funding_zscore",
+      "params": {
+        "lookback": 30,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "hash": "d1f1c084",
+      "data_source": "funding",
+      "thesis": "Fixed-threshold strategies adapt poorly to regime changes. A z-score threshold adapts to changing funding distributions."
+    },
+    {
+      "strategy": "ECO_FUNDING_ZSCORE",
+      "logic_id": "funding_zscore",
+      "params": {
+        "lookback": 60,
+        "z_threshold": 1.5,
+        "logic_id": "funding_zscore"
+      },
+      "hash": "2b6023a5",
+      "data_source": "funding",
+      "thesis": "Fixed-threshold strategies adapt poorly to regime changes. A z-score threshold adapts to changing funding distributions."
+    }
+  ]
+}
