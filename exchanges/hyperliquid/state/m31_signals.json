@@ -2,8 +2,8 @@
   "signals": [
     {
       "symbol": "BTC",
-      "action": "CLOSE",
-      "time": 1793826000029
+      "action": "OPEN",
+      "time": 1793869200042
     }
   ]
 }
