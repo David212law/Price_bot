@@ -33,3 +33,7 @@ reports/auto_scan/*.json
 # Backup files
 *.bak
 *.bak_*
+
+# Allow economic research results
+!research_lab/logs/generated/
+!research_lab/logs/generated/*.json

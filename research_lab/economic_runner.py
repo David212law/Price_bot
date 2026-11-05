@@ -177,6 +177,22 @@ def main():
     if not STATE_PATH.exists():
         print(f"❌ {STATE_PATH} not found"); return 1
 
+    # DIAGNOSTIC: check funding availability
+    print("\n[DIAGNOSTIC] Funding file check:")
+    import os
+    for exch, syms in EXCHANGES.items():
+        for sym in syms[:1]:  # just first symbol per exchange
+            funding = safe_load_funding(exch, sym)
+            print(f"  {exch}/{sym}: {len(funding)} funding days")
+            # Check file paths
+            paths_to_check = [
+                f"exchanges/{exch}/data/{sym}_funding.json",
+                f"data/{exch}/{sym}_funding.json",
+            ]
+            for p in paths_to_check:
+                exists = "✅" if os.path.exists(p) else "❌"
+                print(f"    {exists} {p}")
+
     defs = json.loads(DEFS_PATH.read_text())
     state = json.loads(STATE_PATH.read_text())
 
