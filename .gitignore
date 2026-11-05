@@ -29,3 +29,7 @@ reports/auto_scan/*.json
 
 # Ignore backup files
 *.bak
+
+# Backup files
+*.bak
+*.bak_*
