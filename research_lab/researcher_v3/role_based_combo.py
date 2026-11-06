@@ -262,19 +262,37 @@ def build_combo(regime, strategies, per_regime_metrics, roles):
             "components": [{"strategy": "CASH", "weight": 1.0, "role": "champion"}],
             "fallback": "cash_only",
         }
-    supporting = find_supporting(champion, regime, strategies, per_regime_metrics, roles)
-    components = [{"strategy": champion, "weight": 0.45, "role": "champion"}]
-    if supporting:
-        per_w = 0.20
-        for s in supporting:
-            components.append({"strategy": s, "weight": per_w, "role": "supporting"})
-    total = sum(c["weight"] for c in components)
-    cash_w = round(1.0 - total, 3)
-    if cash_w > 0.01:
-        components.append({"strategy": "CASH", "weight": cash_w, "role": "buffer"})
+    
+    # D-568: structure depends on regime type
+    # TREND: concentrated (champion + buffer, no supporting)
+    # RANGE: diversified (champion + supporting)
+    is_trend = regime.startswith("TREND")
+    
+    if is_trend:
+        # TREND: champion only + cash buffer
+        components = [
+            {"strategy": champion, "weight": 0.85, "role": "champion"},
+            {"strategy": "CASH", "weight": 0.15, "role": "buffer"},
+        ]
+        structure = "concentrated"
+    else:
+        # RANGE: champion + supporting
+        supporting = find_supporting(champion, regime, strategies, per_regime_metrics, roles)
+        components = [{"strategy": champion, "weight": 0.45, "role": "champion"}]
+        if supporting:
+            per_w = 0.20
+            for s in supporting:
+                components.append({"strategy": s, "weight": per_w, "role": "supporting"})
+        total = sum(c["weight"] for c in components)
+        cash_w = round(1.0 - total, 3)
+        if cash_w > 0.01:
+            components.append({"strategy": "CASH", "weight": cash_w, "role": "buffer"})
+        structure = "diversified"
+    
     return {
         "champion": champion,
         "champion_thesis": roles[champion]["thesis"],
+        "structure": structure,
         "components": components,
         "fallback": None,
     }
