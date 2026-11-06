@@ -110,3 +110,29 @@ Run `python3 -m research_lab.health_check` before touching any code.
 - هیچ تست Paper
 - هیچ تصمیم Live Gate
 - همه SR/DD Paper = FAKE
+
+
+## وضعیت آرشیو (2026-11-06 15:28 UTC)
+
+### آرشیو زائد (archive/2026-11-06/obsolete/):
+- regime_detector_v2.py (جایگزین: researcher_v3/regime_v3.py)
+- hybrid_manager.py (جایگزین: researcher_v3/combo_builder_v3.py)
+- hedge_backtest.py (v1 — نسخه باگ‌دار)
+- economic_generator.py + runner.py + v2.py + researcher_v3.py
+- economic_library.json
+- data/external/ (OI/LS/onchain)
+- research/economic/ (v1/v2/v3)
+
+### آرشیو مهم (archive/2026-11-06/important/):
+- مستندات: PIPELINE_STATE, DECISIONS, FINAL_REPORT, MIGRATION_PLAN
+- Pipeline stages: composer, thesis_detection, thesis_dedup, MLP, improve
+- زیرساخت: pipeline_contract, health_check
+- Hedge (D-552): hedge_design, hedge_backtest_v2
+- Registry: registry.json, econ_registry.json
+- researcher_v3/ (کامل)
+- baseline_data/ (M31 + Keltner × ۳ صرافی)
+
+### وضعیت fix ربات‌ها:
+- 11 allocator از 11 هنوز fix نشده
+- Migration: ۲-۳ هفته (MIGRATION_PLAN.md)
+- تا fix: Paper متوقف، هیچ تست Paper

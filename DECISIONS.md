@@ -2628,3 +2628,21 @@ Aster (499 days):
 D-543 PROVEN برای Keltner/RSI/MACD (بازده واقعی).
 M31 استثناست: SR=8-16 فقط funding-only (تئوریک).
 Real trading M31: unhedged SR=0.47، hedged SR=11.41 (D-552).
+
+
+## D-556: آرشیو کامل + همگام‌سازی
+تاریخ: 2026-11-06 | وضعیت: قفل
+
+**آرشیو زائد (obsolete):**
+- regime_detector_v2, hybrid_manager, hedge_backtest v1
+- economic_* و research/economic/
+
+**آرشیو مهم (important):**
+- مستندات، pipeline stages، hedge، registry، researcher_v3
+- baseline_data: M31 + Keltner در ۳ صرافی
+
+**⚠️ fix ربات‌ها هنوز انجام نشده:**
+- {unfixed} allocator نیاز به migration hedged
+- ۲-۳ هفته کار (MIGRATION_PLAN.md)
+
+**Rollback:** archive/2026-11-06/obsolete/* → سر جای اصلی
