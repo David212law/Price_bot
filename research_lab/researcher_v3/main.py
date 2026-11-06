@@ -123,14 +123,21 @@ def main():
             print(f"  per-exchange Pareto [{_exch}]: {len(_exch_pareto)}")
     print(f"  {len(pareto)} strategies on Pareto front")
     
-    # Phase 5: Family diversity
-    family_best = {}
-    for name in pareto:
-        fam = get_family(name)
-        if fam not in family_best or metrics[name]["sr"] > metrics[family_best[fam]]["sr"]:
-            family_best[fam] = name
-    pareto = list(family_best.values())
-    print(f"  {len(pareto)} after family diversity: {pareto}")
+    # Phase 5: Family diversity (PER-EXCHANGE)
+    _pareto_by_exch = {}
+    for _s in pareto:
+        _exch = strategies.get(_s, {}).get('exchange', '?')
+        _pareto_by_exch.setdefault(_exch, []).append(_s)
+    _final_pareto = []
+    for _exch, _strats in _pareto_by_exch.items():
+        _fam_best = {}
+        for _s in _strats:
+            _fam = next((f for f in ['M31','KELTNER','RSI','FUNDING','MACD','EMA','SUPERTREND'] if _s.startswith(f)), _s.split('_')[0])
+            if _fam not in _fam_best or metrics.get(_s, {}).get('sr', 0) > metrics.get(_fam_best[_fam], {}).get('sr', 0):
+                _fam_best[_fam] = _s
+        _final_pareto.extend(_fam_best.values())
+    pareto = _final_pareto
+    print(f'  {len(pareto)} after family diversity (per-exchange): {pareto}')
     
     # Phase 6: Per-exchange
     print("\n[6] Per-exchange testing...")
