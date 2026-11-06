@@ -2575,3 +2575,37 @@ Scope for Paper:
 Paper bot: exchanges/wallex/v3_hybrid_bot.py
 Workflow: .github/workflows/wallex_v3_paper.yml
 Baselines: M31, Keltner, M31+Keltner untouched
+
+
+## D-552: Delta-Neutral Hedge M31 (PROVEN)
+تاریخ: 2026-11-06 | وضعیت: PROVEN
+
+**Discovery:** M31 unhedged is NOT pure funding carry — it's directional short-perp exposure.
+
+**Test results (real HL fees 0.035%, funding summed per day):**
+
+Hyperliquid (537 days):
+- M31 alone: Return +0.09%, SR=0.47, DD=68.04%
+- Hedged (45% spot + 45% perp): Return +8.09%, SR=11.41, DD=0.21%
+- Funding contribution: +8.97%, Fees: -1.19%, Price: +0.31% (delta-neutral confirmed)
+
+Aster (499 days):
+- M31 alone: Return +31.16%, SR=0.83, DD=18.88%
+- Hedged: Return +1.91%, SR=5.13, DD=0.39%
+
+**Conclusion:** 
+- M31 "alpha" was mostly BETA in unhedged form
+- Hedged M31 = pure funding alpha (SR 5-11, DD < 1%)
+- This should be the basis of any Live deployment
+
+**Action items:**
+1. AUDIT existing 12 paper bots: are they hedged or unhedged?
+2. If unhedged → risk of DD=68% in next BTC crash
+3. If hedged → safe but verify structure
+
+**Files:**
+- research_lab/hedge_design.md
+- research_lab/hedge_backtest.py (v1)
+- research_lab/hedge_backtest_v2.py (corrected)
+
+**Status:** PROVEN on 2 exchanges, 1000+ days. Ready for Live consideration.

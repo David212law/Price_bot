@@ -84,3 +84,9 @@ Run `python3 -m research_lab.health_check` before touching any code.
 - Scope: USDTTMN + BTCTMN
 - Bot: exchanges/wallex/v3_hybrid_bot.py
 - Workflow: wallex_v3_paper.yml (every 4h)
+
+## D-552 (PROVEN): Delta-Neutral Hedge M31
+- HL: SR 0.47→11.41, DD 68%→0.21% (unhedged→hedged)
+- Aster: SR 0.83→5.13, DD 19%→0.39%
+- Delta-neutral confirmed (price contrib ~0.3%)
+- ACTION: audit 12 paper bots — hedged or unhedged?
