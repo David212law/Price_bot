@@ -86,6 +86,8 @@ def build_combo_for_regime(regime, candidates, all_returns, metrics_dict, crisis
     for i in range(len(valid)):
         for j in range(i + 1, len(valid)):
             name_i, name_j = valid[i], valid[j]
+            if name_i.startswith("M31_") and name_j.startswith("M31_"):
+                continue  # D-561
             if name_i not in all_returns or name_j not in all_returns:
                 continue
             common = sorted(set(all_returns[name_i].keys()) & set(all_returns[name_j].keys()))
