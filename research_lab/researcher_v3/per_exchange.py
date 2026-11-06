@@ -58,7 +58,8 @@ def test_per_exchange():
     for exch in ["hyperliquid", "aster", "kucoin"]:
         strategies = load_returns_for_exchange(exch)
         ranked = []
-        BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"]
+        BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE",
+                     "FUNDING_MEAN_REV", "FUNDING_ZSCORE", "FUNDING_CARRY"]
         for name, rets in strategies.items():
             # D-559: skip blacklisted + M31 variants
             if any(bl in name for bl in BLACKLIST): continue

@@ -25,7 +25,8 @@ CRISIS_WINDOWS = {
     "Rate_Hikes": ("2022-06-01", "2022-10-31"),
 }
 
-BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"]
+BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE",
+             "FUNDING_MEAN_REV", "FUNDING_ZSCORE", "FUNDING_CARRY"]  # D-560: FUNDING_* = artifact
 
 
 def load_profiler_strategies():
