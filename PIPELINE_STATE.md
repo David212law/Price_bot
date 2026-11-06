@@ -79,3 +79,8 @@ Run `python3 -m research_lab.health_check` before touching any code.
 - **D-529**: researcher_v2 orchestrator
 - **D-528**: multi_layer_portfolio (16-test validation)
 - **D-522**: M31_MOMENTUM discovered (later blacklisted)
+## D-551 (2026-11-06): Hybrid_v3_Wallex
+- Status: PROMISING (Paper test)
+- Scope: USDTTMN + BTCTMN
+- Bot: exchanges/wallex/v3_hybrid_bot.py
+- Workflow: wallex_v3_paper.yml (every 4h)

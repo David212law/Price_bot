@@ -2550,3 +2550,28 @@ Fee resistance: 2x fees → هنوز SR=11.51 (41% بهتر از M31)
 **بازگشت در صورت مشکل:**
 git revert <commit_hash>
 
+
+
+## D-551: Hybrid_v3_Wallex (PROMISING_DEFENSIVE)
+تاریخ: 2026-11-06 | وضعیت: PROMISING (نه PROVEN)
+
+Framework: Trend-Confirmed Defensive
+- Default strategy per asset (economic thesis)
+- Defensive = vol > 1.5x median AND price < MA50
+- Cash weight: normal=0%, warning=40%, defensive=80%
+- 3-day confirmation
+
+Tested on 6 assets (crypto USD + Toman):
+- 4/6 better than Buy&Hold
+- Crisis protection: BTC LUNA +39.4%, Oil Rate Hikes +32%
+- Oil: -86% (MeanRev+defensive tension)
+- Iran sanctions: -17% vs B&H (defensive hurts in bull)
+
+Scope for Paper:
+- USDTTMN + BTCTMN only
+- Oil/Iran_BTC excluded
+- Fee: 0.6% roundtrip (Wallex real)
+
+Paper bot: exchanges/wallex/v3_hybrid_bot.py
+Workflow: .github/workflows/wallex_v3_paper.yml
+Baselines: M31, Keltner, M31+Keltner untouched

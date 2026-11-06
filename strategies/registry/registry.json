@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "created": "2026-11-06",
+  "design_principle": "Economic role-based, NOT data optimization",
+  "explanation": "Each strategy declares its economic thesis and natural regime. The hybrid manager selects strategies by regime, not by backtested SR.",
+  "regimes": {
+    "TREND_UP": "قیمت صعودی + ADX بالا + funding پایدار مثبت",
+    "TREND_DOWN": "قیمت نزولی + ADX بالا",
+    "RANGE_LOW_VOL": "رِنج با نوسان پایین",
+    "RANGE_MED_VOL": "رِنج با نوسان متوسط",
+    "RANGE_HIGH_VOL": "رِنج با نوسان بالا",
+    "CRISIS_NEGATIVE_FUNDING": "funding منفی — بحران funding",
+    "CRISIS_VOL_SPIKE": "جهش ناگهانی نوسان",
+    "UNKNOWN": "نامشخص"
+  },
+  "strategies": {
+    "M31": {
+      "economic_role": "funding_carry",
+      "thesis_fa": "پول از funding rate مثبت جابه‌جا می‌شود",
+      "works_in": [
+        "TREND_UP",
+        "TREND_DOWN",
+        "RANGE_LOW_VOL",
+        "RANGE_MED_VOL"
+      ],
+      "fails_in": [
+        "CRISIS_NEGATIVE_FUNDING",
+        "CRISIS_VOL_SPIKE"
+      ],
+      "regime_weights": {
+        "TREND_UP": 0.9,
+        "TREND_DOWN": 0.6,
+        "RANGE_LOW_VOL": 0.85,
+        "RANGE_MED_VOL": 0.75,
+        "RANGE_HIGH_VOL": 0.4,
+        "CRISIS_NEGATIVE_FUNDING": 0.0,
+        "CRISIS_VOL_SPIKE": 0.2,
+        "UNKNOWN": 0.5
+      }
+    },
+    "KELTNER_REV": {
+      "economic_role": "mean_reversion",
+      "thesis_fa": "بازگشت به میانگین در بازار رِنج",
+      "works_in": [
+        "RANGE_LOW_VOL",
+        "RANGE_MED_VOL"
+      ],
+      "fails_in": [
+        "TREND_UP",
+        "TREND_DOWN",
+        "CRISIS_VOL_SPIKE"
+      ],
+      "regime_weights": {
+        "TREND_UP": 0.1,
+        "TREND_DOWN": 0.1,
+        "RANGE_LOW_VOL": 0.4,
+        "RANGE_MED_VOL": 0.35,
+        "RANGE_HIGH_VOL": 0.2,
+        "CRISIS_NEGATIVE_FUNDING": 0.7,
+        "CRISIS_VOL_SPIKE": 0.4,
+        "UNKNOWN": 0.2
+      }
+    },
+    "CASH": {
+      "economic_role": "safe_haven",
+      "thesis_fa": "در شرایط نامعلوم، سرمایه در cash",
+      "works_in": [
+        "CRISIS_NEGATIVE_FUNDING",
+        "CRISIS_VOL_SPIKE"
+      ],
+      "fails_in": [],
+      "regime_weights": {
+        "TREND_UP": 0.0,
+        "TREND_DOWN": 0.2,
+        "RANGE_LOW_VOL": 0.0,
+        "RANGE_MED_VOL": 0.05,
+        "RANGE_HIGH_VOL": 0.3,
+        "CRISIS_NEGATIVE_FUNDING": 0.3,
+        "CRISIS_VOL_SPIKE": 0.4,
+        "UNKNOWN": 0.3
+      }
+    }
+  },
+  "regime_detection_rules": {
+    "source": "regime_detector_v2.py",
+    "signals_used": [
+      "funding_rate",
+      "funding_vol",
+      "btc_vol",
+      "btc_trend",
+      "adx"
+    ],
+    "no_data_optimization": true
+  }
+}

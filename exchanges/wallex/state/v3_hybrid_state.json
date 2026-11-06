@@ -1,0 +1,20 @@
+{
+  "initial_capital": 10000.0,
+  "equity": 9970.0,
+  "usdt_amount": 0.036961655526267984,
+  "cash_tmn": 0,
+  "peak_equity": 10000.0,
+  "regime_history": [
+    "normal"
+  ],
+  "last_run": "2026-11-06T13:22:55.453078+00:00",
+  "trades": [
+    {
+      "time": "2026-11-06T13:22:55.451734+00:00",
+      "action": "buy",
+      "value": 10000.0,
+      "fee": 30.0,
+      "price": 269739.0
+    }
+  ]
+}

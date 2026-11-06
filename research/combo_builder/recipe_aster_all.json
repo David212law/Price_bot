@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-11-06T14:09:44.453238",
+  "regime": "ALL (Aster)",
+  "components": {
+    "M31": 0.95,
+    "KELTNER_REV_BNBUSDT": 0.05
+  },
+  "tests_passed": 12,
+  "metrics": {
+    "sr": 11.63,
+    "dd": 0.18,
+    "ret": 28.98,
+    "n": 219
+  },
+  "tests_detail": {
+    "SR>=3": true,
+    "SR>=2": true,
+    "Calmar>=5": true,
+    "DD<10%": true,
+    "DD<5%": true,
+    "Return>20%": true,
+    "WR>50%": true,
+    "MaxLoss<5%": true,
+    "Neg<40%": true,
+    "Q4/4": true,
+    "Crisis>=0": true,
+    "Crisis>M31": true
+  }
+}
