@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-11-06T20:59:46.600510+00:00",
+  "thresholds": {
+    "fee_per_transition": 0.001,
+    "train_split": 0.7,
+    "min_train_improvement": 15.0,
+    "min_test_improvement": 10.0,
+    "min_test_coverage": 0.3,
+    "min_baseline_sr": 1.0,
+    "require_quartile_4of4": true,
+    "min_data_days": 60,
+    "min_test_days": 30
+  },
+  "n_analyzed": 1,
+  "improvements": [],
+  "near_misses": []
+}

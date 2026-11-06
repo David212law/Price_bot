@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-11-06T20:59:45.465850+00:00",
+  "verdict": "FAIL",
+  "picks": [],
+  "weights": {
+    "M31": 0.9821,
+    "Keltner": 0.0179
+  },
+  "combo_tests": {
+    "dropout": {
+      "pass": true,
+      "issues": []
+    },
+    "weight_robustness": {
+      "pass": true,
+      "worst_ratio": 1.0
+    },
+    "oos_vs_best": {
+      "pass": true,
+      "port_test": 8.18,
+      "best_comp": 8.06
+    },
+    "diversification": {
+      "pass": true,
+      "dr": 1.829
+    },
+    "regime_conditional": {
+      "pass": false,
+      "issues": [
+        "TREND:port=9.3<m31=9.3"
+      ]
+    }
+  },
+  "validation": {
+    "n_test": 186,
+    "port_sr": 8.18,
+    "m31_sr": 8.06,
+    "improvement_pct": 1.5,
+    "coverage": 1.0
+  }
+}

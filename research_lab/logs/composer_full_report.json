@@ -1,0 +1,1977 @@
+{
+  "generated_at": "2026-11-06T20:59:46.766881+00:00",
+  "total_entries": 4969,
+  "config": {
+    "min_n": 30,
+    "min_q_pass": 4,
+    "min_ann_sr": 1.5
+  },
+  "exchanges": {
+    "hyperliquid": {
+      "m31_sharpe_by_regime": {
+        "TREND": 8.887,
+        "RANGE": 8.192,
+        "NEUTRAL": 5.804
+      },
+      "m31_low_vol": 13.539,
+      "m31_high_vol": 4.617,
+      "m31_weaknesses": [
+        "underperform_in_high_vol"
+      ],
+      "regimes": {
+        "TREND": {
+          "examined": 1569,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETH",
+              "family": "MR",
+              "sharpe_ann": 3.176,
+              "quartiles": 4,
+              "n_regime": 285,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNB",
+              "family": "MR",
+              "sharpe_ann": 2.583,
+              "quartiles": 4,
+              "n_regime": 228,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOL",
+              "family": "MR",
+              "sharpe_ann": 2.514,
+              "quartiles": 4,
+              "n_regime": 285,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNB",
+              "family": "MR",
+              "sharpe_ann": 1.75,
+              "quartiles": 4,
+              "n_regime": 148,
+              "pooled_n": 422
+            }
+          ],
+          "rejected_by_gate": {
+            "quartiles": 991,
+            "regime_n": 90,
+            "sharpe_ann": 19,
+            "param_fragile": 3,
+            "blacklist": 90,
+            "no_validation": 222,
+            "pooled_n": 149,
+            "fee_2x": 1
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": 0.108,
+              "quartiles": 2,
+              "n_regime": 10,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.11",
+                "fee_2x=1.19",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETH",
+              "family": "TREND",
+              "sharpe_ann": 0.807,
+              "quartiles": 2,
+              "n_regime": 11,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.81"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNB",
+              "family": "TREND",
+              "sharpe_ann": 0.479,
+              "quartiles": 1,
+              "n_regime": 5,
+              "pooled_n": 265,
+              "first_fail": "regime_n=5",
+              "all_fails": [
+                "regime_n=5",
+                "quartiles=1/4",
+                "sharpe_ann=0.48",
+                "fee_2x=0.91",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRP",
+              "family": "TREND",
+              "sharpe_ann": 0.873,
+              "quartiles": 1,
+              "n_regime": 8,
+              "pooled_n": 265,
+              "first_fail": "regime_n=8",
+              "all_fails": [
+                "regime_n=8",
+                "quartiles=1/4",
+                "sharpe_ann=0.87",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAX",
+              "family": "TREND",
+              "sharpe_ann": 0.473,
+              "quartiles": 1,
+              "n_regime": 7,
+              "pooled_n": 265,
+              "first_fail": "regime_n=7",
+              "all_fails": [
+                "regime_n=7",
+                "quartiles=1/4",
+                "sharpe_ann=0.47",
+                "fee_2x=0.98",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": 0.682,
+              "quartiles": 3,
+              "n_regime": 9,
+              "pooled_n": 265,
+              "first_fail": "regime_n=9",
+              "all_fails": [
+                "regime_n=9",
+                "quartiles=3/4",
+                "sharpe_ann=0.68",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETH",
+              "family": "TREND",
+              "sharpe_ann": -0.044,
+              "quartiles": 2,
+              "n_regime": 11,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=-0.04",
+                "fee_2x=1.01"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRP",
+              "family": "TREND",
+              "sharpe_ann": 0.82,
+              "quartiles": 0,
+              "n_regime": 10,
+              "pooled_n": 265,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.82",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNB",
+              "family": "TREND",
+              "sharpe_ann": -8.316,
+              "quartiles": 1,
+              "n_regime": 6,
+              "pooled_n": 265,
+              "first_fail": "regime_n=6",
+              "all_fails": [
+                "regime_n=6",
+                "quartiles=1/4",
+                "sharpe_ann=-8.32",
+                "fee_2x=1.03",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "MACD",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": -0.046,
+              "quartiles": 1,
+              "n_regime": 48,
+              "pooled_n": 289,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.05",
+                "fee_2x=0.87",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        },
+        "RANGE": {
+          "examined": 1557,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETH",
+              "family": "MR",
+              "sharpe_ann": 3.176,
+              "quartiles": 4,
+              "n_regime": 34,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNB",
+              "family": "MR",
+              "sharpe_ann": 2.583,
+              "quartiles": 4,
+              "n_regime": 54,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOL",
+              "family": "MR",
+              "sharpe_ann": 2.514,
+              "quartiles": 4,
+              "n_regime": 35,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNB",
+              "family": "MR",
+              "sharpe_ann": 1.75,
+              "quartiles": 4,
+              "n_regime": 24,
+              "pooled_n": 422
+            }
+          ],
+          "rejected_by_gate": {
+            "quartiles": 706,
+            "regime_n": 542,
+            "sharpe_ann": 17,
+            "param_fragile": 1,
+            "blacklist": 90,
+            "no_validation": 76,
+            "fee_2x": 1,
+            "pooled_n": 120
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": 0.108,
+              "quartiles": 2,
+              "n_regime": 23,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.11",
+                "fee_2x=1.19",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETH",
+              "family": "TREND",
+              "sharpe_ann": 0.807,
+              "quartiles": 2,
+              "n_regime": 26,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.81"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNB",
+              "family": "TREND",
+              "sharpe_ann": 0.479,
+              "quartiles": 1,
+              "n_regime": 20,
+              "pooled_n": 265,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.48",
+                "fee_2x=0.91",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRP",
+              "family": "TREND",
+              "sharpe_ann": 0.873,
+              "quartiles": 1,
+              "n_regime": 19,
+              "pooled_n": 265,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.87",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAX",
+              "family": "TREND",
+              "sharpe_ann": 0.473,
+              "quartiles": 1,
+              "n_regime": 25,
+              "pooled_n": 265,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.47",
+                "fee_2x=0.98",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": 0.682,
+              "quartiles": 3,
+              "n_regime": 14,
+              "pooled_n": 265,
+              "first_fail": "quartiles=3/4",
+              "all_fails": [
+                "quartiles=3/4",
+                "sharpe_ann=0.68",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETH",
+              "family": "TREND",
+              "sharpe_ann": -0.044,
+              "quartiles": 2,
+              "n_regime": 12,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=-0.04",
+                "fee_2x=1.01"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRP",
+              "family": "TREND",
+              "sharpe_ann": 0.82,
+              "quartiles": 0,
+              "n_regime": 14,
+              "pooled_n": 265,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.82",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNB",
+              "family": "TREND",
+              "sharpe_ann": -8.316,
+              "quartiles": 1,
+              "n_regime": 10,
+              "pooled_n": 265,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-8.32",
+                "fee_2x=1.03",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "MACD",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": -0.046,
+              "quartiles": 1,
+              "n_regime": 46,
+              "pooled_n": 289,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.05",
+                "fee_2x=0.87",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        },
+        "NEUTRAL": {
+          "examined": 1564,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETH",
+              "family": "MR",
+              "sharpe_ann": 3.176,
+              "quartiles": 4,
+              "n_regime": 49,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNB",
+              "family": "MR",
+              "sharpe_ann": 2.583,
+              "quartiles": 4,
+              "n_regime": 46,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOL",
+              "family": "MR",
+              "sharpe_ann": 2.514,
+              "quartiles": 4,
+              "n_regime": 51,
+              "pooled_n": 422
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNB",
+              "family": "MR",
+              "sharpe_ann": 1.75,
+              "quartiles": 4,
+              "n_regime": 23,
+              "pooled_n": 422
+            }
+          ],
+          "rejected_by_gate": {
+            "quartiles": 692,
+            "regime_n": 588,
+            "sharpe_ann": 17,
+            "param_fragile": 1,
+            "blacklist": 90,
+            "no_validation": 52,
+            "pooled_n": 120
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": 0.108,
+              "quartiles": 2,
+              "n_regime": 12,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.11",
+                "fee_2x=1.19",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETH",
+              "family": "TREND",
+              "sharpe_ann": 0.807,
+              "quartiles": 2,
+              "n_regime": 6,
+              "pooled_n": 265,
+              "first_fail": "regime_n=6",
+              "all_fails": [
+                "regime_n=6",
+                "quartiles=2/4",
+                "sharpe_ann=0.81"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNB",
+              "family": "TREND",
+              "sharpe_ann": 0.479,
+              "quartiles": 1,
+              "n_regime": 11,
+              "pooled_n": 265,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.48",
+                "fee_2x=0.91",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRP",
+              "family": "TREND",
+              "sharpe_ann": 0.873,
+              "quartiles": 1,
+              "n_regime": 13,
+              "pooled_n": 265,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.87",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAX",
+              "family": "TREND",
+              "sharpe_ann": 0.473,
+              "quartiles": 1,
+              "n_regime": 9,
+              "pooled_n": 265,
+              "first_fail": "regime_n=9",
+              "all_fails": [
+                "regime_n=9",
+                "quartiles=1/4",
+                "sharpe_ann=0.47",
+                "fee_2x=0.98",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": 0.682,
+              "quartiles": 3,
+              "n_regime": 8,
+              "pooled_n": 265,
+              "first_fail": "regime_n=8",
+              "all_fails": [
+                "regime_n=8",
+                "quartiles=3/4",
+                "sharpe_ann=0.68",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETH",
+              "family": "TREND",
+              "sharpe_ann": -0.044,
+              "quartiles": 2,
+              "n_regime": 10,
+              "pooled_n": 265,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=-0.04",
+                "fee_2x=1.01"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRP",
+              "family": "TREND",
+              "sharpe_ann": 0.82,
+              "quartiles": 0,
+              "n_regime": 9,
+              "pooled_n": 265,
+              "first_fail": "regime_n=9",
+              "all_fails": [
+                "regime_n=9",
+                "quartiles=0/4",
+                "sharpe_ann=0.82",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNB",
+              "family": "TREND",
+              "sharpe_ann": -8.316,
+              "quartiles": 1,
+              "n_regime": 7,
+              "pooled_n": 265,
+              "first_fail": "regime_n=7",
+              "all_fails": [
+                "regime_n=7",
+                "quartiles=1/4",
+                "sharpe_ann=-8.32",
+                "fee_2x=1.03",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "MACD",
+              "symbol": "BTC",
+              "family": "TREND",
+              "sharpe_ann": -0.046,
+              "quartiles": 1,
+              "n_regime": 21,
+              "pooled_n": 289,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.05",
+                "fee_2x=0.87",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        }
+      }
+    },
+    "aster": {
+      "m31_sharpe_by_regime": {
+        "TREND": 9.063,
+        "RANGE": 8.626,
+        "NEUTRAL": 7.301
+      },
+      "m31_low_vol": 21.665,
+      "m31_high_vol": 8.434,
+      "m31_weaknesses": [
+        "underperform_in_high_vol"
+      ],
+      "regimes": {
+        "TREND": {
+          "examined": 1769,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "AVAXUSDT",
+              "family": "MR",
+              "sharpe_ann": 4.559,
+              "quartiles": 4,
+              "n_regime": 386,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETHUSDT",
+              "family": "MR",
+              "sharpe_ann": 3.716,
+              "quartiles": 4,
+              "n_regime": 334,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOLUSDT",
+              "family": "MR",
+              "sharpe_ann": 3.193,
+              "quartiles": 4,
+              "n_regime": 345,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDT",
+              "family": "MR",
+              "sharpe_ann": 2.9,
+              "quartiles": 4,
+              "n_regime": 286,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDT",
+              "family": "MR",
+              "sharpe_ann": 2.428,
+              "quartiles": 4,
+              "n_regime": 184,
+              "pooled_n": 508
+            }
+          ],
+          "rejected_by_gate": {
+            "regime_n": 70,
+            "quartiles": 1159,
+            "sharpe_ann": 27,
+            "blacklist": 90,
+            "no_validation": 265,
+            "param_fragile": 1,
+            "pooled_n": 152
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.715,
+              "quartiles": 1,
+              "n_regime": 9,
+              "pooled_n": 303,
+              "first_fail": "regime_n=9",
+              "all_fails": [
+                "regime_n=9",
+                "quartiles=1/4",
+                "sharpe_ann=0.71",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDT",
+              "family": "TREND",
+              "sharpe_ann": -0.044,
+              "quartiles": 1,
+              "n_regime": 10,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.04",
+                "fee_2x=0.70",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTCUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.18,
+              "quartiles": 3,
+              "n_regime": 12,
+              "pooled_n": 303,
+              "first_fail": "quartiles=3/4",
+              "all_fails": [
+                "quartiles=3/4",
+                "sharpe_ann=0.18"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.712,
+              "quartiles": 2,
+              "n_regime": 7,
+              "pooled_n": 303,
+              "first_fail": "regime_n=7",
+              "all_fails": [
+                "regime_n=7",
+                "quartiles=2/4",
+                "sharpe_ann=0.71",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.765,
+              "quartiles": 0,
+              "n_regime": 9,
+              "pooled_n": 303,
+              "first_fail": "regime_n=9",
+              "all_fails": [
+                "regime_n=9",
+                "quartiles=0/4",
+                "sharpe_ann=0.77",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDT",
+              "family": "TREND",
+              "sharpe_ann": -2.322,
+              "quartiles": 1,
+              "n_regime": 10,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-2.32",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDT",
+              "family": "TREND",
+              "sharpe_ann": 2.0,
+              "quartiles": 1,
+              "n_regime": 8,
+              "pooled_n": 303,
+              "first_fail": "regime_n=8",
+              "all_fails": [
+                "regime_n=8",
+                "quartiles=1/4"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.143,
+              "quartiles": 0,
+              "n_regime": 10,
+              "pooled_n": 303,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.14",
+                "fee_2x=0.99",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.506,
+              "quartiles": 0,
+              "n_regime": 10,
+              "pooled_n": 303,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.51",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDT",
+              "family": "TREND",
+              "sharpe_ann": -2.482,
+              "quartiles": 1,
+              "n_regime": 11,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-2.48",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        },
+        "RANGE": {
+          "examined": 1756,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "AVAXUSDT",
+              "family": "MR",
+              "sharpe_ann": 4.559,
+              "quartiles": 4,
+              "n_regime": 85,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETHUSDT",
+              "family": "MR",
+              "sharpe_ann": 3.716,
+              "quartiles": 4,
+              "n_regime": 50,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOLUSDT",
+              "family": "MR",
+              "sharpe_ann": 3.193,
+              "quartiles": 4,
+              "n_regime": 45,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDT",
+              "family": "MR",
+              "sharpe_ann": 2.9,
+              "quartiles": 4,
+              "n_regime": 83,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDT",
+              "family": "MR",
+              "sharpe_ann": 2.428,
+              "quartiles": 4,
+              "n_regime": 45,
+              "pooled_n": 508
+            }
+          ],
+          "rejected_by_gate": {
+            "quartiles": 892,
+            "regime_n": 515,
+            "sharpe_ann": 25,
+            "blacklist": 90,
+            "no_validation": 82,
+            "pooled_n": 147
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.715,
+              "quartiles": 1,
+              "n_regime": 29,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.71",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDT",
+              "family": "TREND",
+              "sharpe_ann": -0.044,
+              "quartiles": 1,
+              "n_regime": 26,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.04",
+                "fee_2x=0.70",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTCUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.18,
+              "quartiles": 3,
+              "n_regime": 15,
+              "pooled_n": 303,
+              "first_fail": "quartiles=3/4",
+              "all_fails": [
+                "quartiles=3/4",
+                "sharpe_ann=0.18"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.712,
+              "quartiles": 2,
+              "n_regime": 19,
+              "pooled_n": 303,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.71",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.765,
+              "quartiles": 0,
+              "n_regime": 14,
+              "pooled_n": 303,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.77",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDT",
+              "family": "TREND",
+              "sharpe_ann": -2.322,
+              "quartiles": 1,
+              "n_regime": 11,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-2.32",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDT",
+              "family": "TREND",
+              "sharpe_ann": 2.0,
+              "quartiles": 1,
+              "n_regime": 11,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.143,
+              "quartiles": 0,
+              "n_regime": 14,
+              "pooled_n": 303,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.14",
+                "fee_2x=0.99",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.506,
+              "quartiles": 0,
+              "n_regime": 15,
+              "pooled_n": 303,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.51",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDT",
+              "family": "TREND",
+              "sharpe_ann": -2.482,
+              "quartiles": 1,
+              "n_regime": 12,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-2.48",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        },
+        "NEUTRAL": {
+          "examined": 1761,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "AVAXUSDT",
+              "family": "MR",
+              "sharpe_ann": 4.559,
+              "quartiles": 4,
+              "n_regime": 92,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETHUSDT",
+              "family": "MR",
+              "sharpe_ann": 3.716,
+              "quartiles": 4,
+              "n_regime": 55,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOLUSDT",
+              "family": "MR",
+              "sharpe_ann": 3.193,
+              "quartiles": 4,
+              "n_regime": 66,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDT",
+              "family": "MR",
+              "sharpe_ann": 2.9,
+              "quartiles": 4,
+              "n_regime": 65,
+              "pooled_n": 508
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDT",
+              "family": "MR",
+              "sharpe_ann": 2.428,
+              "quartiles": 4,
+              "n_regime": 39,
+              "pooled_n": 508
+            }
+          ],
+          "rejected_by_gate": {
+            "regime_n": 543,
+            "quartiles": 885,
+            "sharpe_ann": 24,
+            "blacklist": 90,
+            "no_validation": 68,
+            "pooled_n": 146
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.715,
+              "quartiles": 1,
+              "n_regime": 9,
+              "pooled_n": 303,
+              "first_fail": "regime_n=9",
+              "all_fails": [
+                "regime_n=9",
+                "quartiles=1/4",
+                "sharpe_ann=0.71",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDT",
+              "family": "TREND",
+              "sharpe_ann": -0.044,
+              "quartiles": 1,
+              "n_regime": 12,
+              "pooled_n": 303,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.04",
+                "fee_2x=0.70",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BTCUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.18,
+              "quartiles": 3,
+              "n_regime": 10,
+              "pooled_n": 303,
+              "first_fail": "quartiles=3/4",
+              "all_fails": [
+                "quartiles=3/4",
+                "sharpe_ann=0.18"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.712,
+              "quartiles": 2,
+              "n_regime": 8,
+              "pooled_n": 303,
+              "first_fail": "regime_n=8",
+              "all_fails": [
+                "regime_n=8",
+                "quartiles=2/4",
+                "sharpe_ann=0.71",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.765,
+              "quartiles": 0,
+              "n_regime": 11,
+              "pooled_n": 303,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.77",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDT",
+              "family": "TREND",
+              "sharpe_ann": -2.322,
+              "quartiles": 1,
+              "n_regime": 6,
+              "pooled_n": 303,
+              "first_fail": "regime_n=6",
+              "all_fails": [
+                "regime_n=6",
+                "quartiles=1/4",
+                "sharpe_ann=-2.32",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDT",
+              "family": "TREND",
+              "sharpe_ann": 2.0,
+              "quartiles": 1,
+              "n_regime": 8,
+              "pooled_n": 303,
+              "first_fail": "regime_n=8",
+              "all_fails": [
+                "regime_n=8",
+                "quartiles=1/4"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.143,
+              "quartiles": 0,
+              "n_regime": 6,
+              "pooled_n": 303,
+              "first_fail": "regime_n=6",
+              "all_fails": [
+                "regime_n=6",
+                "quartiles=0/4",
+                "sharpe_ann=0.14",
+                "fee_2x=0.99",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDT",
+              "family": "TREND",
+              "sharpe_ann": 0.506,
+              "quartiles": 0,
+              "n_regime": 11,
+              "pooled_n": 303,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.51",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDT",
+              "family": "TREND",
+              "sharpe_ann": -2.482,
+              "quartiles": 1,
+              "n_regime": 5,
+              "pooled_n": 303,
+              "first_fail": "regime_n=5",
+              "all_fails": [
+                "regime_n=5",
+                "quartiles=1/4",
+                "sharpe_ann=-2.48",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        }
+      }
+    },
+    "kucoin": {
+      "m31_sharpe_by_regime": {
+        "TREND": 7.611,
+        "RANGE": 7.485,
+        "NEUTRAL": 7.52
+      },
+      "m31_low_vol": 8.831,
+      "m31_high_vol": 7.731,
+      "m31_weaknesses": [],
+      "regimes": {
+        "TREND": {
+          "examined": 1631,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.547,
+              "quartiles": 4,
+              "n_regime": 355,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOLUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.501,
+              "quartiles": 4,
+              "n_regime": 400,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETHUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.414,
+              "quartiles": 4,
+              "n_regime": 424,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDTM",
+              "family": "MR",
+              "sharpe_ann": 1.83,
+              "quartiles": 4,
+              "n_regime": 222,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "XRPUSDTM",
+              "family": "MR",
+              "sharpe_ann": 1.722,
+              "quartiles": 4,
+              "n_regime": 320,
+              "pooled_n": 649
+            }
+          ],
+          "rejected_by_gate": {
+            "quartiles": 1239,
+            "sharpe_ann": 31,
+            "regime_n": 32,
+            "blacklist": 90,
+            "no_validation": 226,
+            "pooled_n": 7,
+            "param_fragile": 1
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.428,
+              "quartiles": 0,
+              "n_regime": 13,
+              "pooled_n": 388,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.43",
+                "fee_2x=1.00",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.029,
+              "quartiles": 1,
+              "n_regime": 15,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.03",
+                "fee_2x=0.81",
+                "param_fragile",
+                "dd=66%"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.122,
+              "quartiles": 3,
+              "n_regime": 18,
+              "pooled_n": 388,
+              "first_fail": "quartiles=3/4",
+              "all_fails": [
+                "quartiles=3/4",
+                "sharpe_ann=-0.12",
+                "fee_2x=1.15",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.441,
+              "quartiles": 2,
+              "n_regime": 14,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.44",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.477,
+              "quartiles": 2,
+              "n_regime": 18,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.48",
+                "fee_2x=1.09",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.059,
+              "quartiles": 2,
+              "n_regime": 16,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.06",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.385,
+              "quartiles": 1,
+              "n_regime": 15,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.39"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.605,
+              "quartiles": 1,
+              "n_regime": 18,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.60",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 2.806,
+              "quartiles": 2,
+              "n_regime": 17,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "fee_2x=1.18"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.165,
+              "quartiles": 1,
+              "n_regime": 14,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.17",
+                "fee_2x=1.09",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        },
+        "RANGE": {
+          "examined": 1619,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.547,
+              "quartiles": 4,
+              "n_regime": 65,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOLUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.501,
+              "quartiles": 4,
+              "n_regime": 45,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETHUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.414,
+              "quartiles": 4,
+              "n_regime": 49,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDTM",
+              "family": "MR",
+              "sharpe_ann": 1.83,
+              "quartiles": 4,
+              "n_regime": 31,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "XRPUSDTM",
+              "family": "MR",
+              "sharpe_ann": 1.722,
+              "quartiles": 4,
+              "n_regime": 33,
+              "pooled_n": 649
+            }
+          ],
+          "rejected_by_gate": {
+            "quartiles": 969,
+            "regime_n": 488,
+            "sharpe_ann": 22,
+            "blacklist": 90,
+            "no_validation": 42,
+            "pooled_n": 3
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.428,
+              "quartiles": 0,
+              "n_regime": 29,
+              "pooled_n": 388,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.43",
+                "fee_2x=1.00",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.029,
+              "quartiles": 1,
+              "n_regime": 28,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.03",
+                "fee_2x=0.81",
+                "param_fragile",
+                "dd=66%"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.122,
+              "quartiles": 3,
+              "n_regime": 17,
+              "pooled_n": 388,
+              "first_fail": "quartiles=3/4",
+              "all_fails": [
+                "quartiles=3/4",
+                "sharpe_ann=-0.12",
+                "fee_2x=1.15",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.441,
+              "quartiles": 2,
+              "n_regime": 22,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.44",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.477,
+              "quartiles": 2,
+              "n_regime": 18,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.48",
+                "fee_2x=1.09",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.059,
+              "quartiles": 2,
+              "n_regime": 10,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.06",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.385,
+              "quartiles": 1,
+              "n_regime": 13,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.39"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.605,
+              "quartiles": 1,
+              "n_regime": 15,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.60",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 2.806,
+              "quartiles": 2,
+              "n_regime": 6,
+              "pooled_n": 388,
+              "first_fail": "regime_n=6",
+              "all_fails": [
+                "regime_n=6",
+                "quartiles=2/4",
+                "fee_2x=1.18"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.165,
+              "quartiles": 1,
+              "n_regime": 13,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.17",
+                "fee_2x=1.09",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        },
+        "NEUTRAL": {
+          "examined": 1625,
+          "passed_gates": [
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.547,
+              "quartiles": 4,
+              "n_regime": 79,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "SOLUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.501,
+              "quartiles": 4,
+              "n_regime": 78,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "ETHUSDTM",
+              "family": "MR",
+              "sharpe_ann": 2.414,
+              "quartiles": 4,
+              "n_regime": 72,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "BNBUSDTM",
+              "family": "MR",
+              "sharpe_ann": 1.83,
+              "quartiles": 4,
+              "n_regime": 37,
+              "pooled_n": 649
+            },
+            {
+              "strategy": "KELTNER_REV",
+              "symbol": "XRPUSDTM",
+              "family": "MR",
+              "sharpe_ann": 1.722,
+              "quartiles": 4,
+              "n_regime": 74,
+              "pooled_n": 649
+            }
+          ],
+          "rejected_by_gate": {
+            "quartiles": 1009,
+            "regime_n": 443,
+            "sharpe_ann": 27,
+            "blacklist": 90,
+            "no_validation": 48,
+            "pooled_n": 3
+          },
+          "sample_rejections": [
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.428,
+              "quartiles": 0,
+              "n_regime": 18,
+              "pooled_n": 388,
+              "first_fail": "quartiles=0/4",
+              "all_fails": [
+                "quartiles=0/4",
+                "sharpe_ann=0.43",
+                "fee_2x=1.00",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.029,
+              "quartiles": 1,
+              "n_regime": 14,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=-0.03",
+                "fee_2x=0.81",
+                "param_fragile",
+                "dd=66%"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.122,
+              "quartiles": 3,
+              "n_regime": 13,
+              "pooled_n": 388,
+              "first_fail": "quartiles=3/4",
+              "all_fails": [
+                "quartiles=3/4",
+                "sharpe_ann=-0.12",
+                "fee_2x=1.15",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XRPUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.441,
+              "quartiles": 2,
+              "n_regime": 19,
+              "pooled_n": 388,
+              "first_fail": "quartiles=2/4",
+              "all_fails": [
+                "quartiles=2/4",
+                "sharpe_ann=0.44",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "AVAXUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.477,
+              "quartiles": 2,
+              "n_regime": 9,
+              "pooled_n": 388,
+              "first_fail": "regime_n=9",
+              "all_fails": [
+                "regime_n=9",
+                "quartiles=2/4",
+                "sharpe_ann=0.48",
+                "fee_2x=1.09",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.059,
+              "quartiles": 2,
+              "n_regime": 6,
+              "pooled_n": 388,
+              "first_fail": "regime_n=6",
+              "all_fails": [
+                "regime_n=6",
+                "quartiles=2/4",
+                "sharpe_ann=0.06",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "ETHUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.385,
+              "quartiles": 1,
+              "n_regime": 13,
+              "pooled_n": 388,
+              "first_fail": "quartiles=1/4",
+              "all_fails": [
+                "quartiles=1/4",
+                "sharpe_ann=0.39"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "BNBUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 0.605,
+              "quartiles": 1,
+              "n_regime": 8,
+              "pooled_n": 388,
+              "first_fail": "regime_n=8",
+              "all_fails": [
+                "regime_n=8",
+                "quartiles=1/4",
+                "sharpe_ann=0.60",
+                "param_fragile"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "XBTUSDTM",
+              "family": "TREND",
+              "sharpe_ann": 2.806,
+              "quartiles": 2,
+              "n_regime": 6,
+              "pooled_n": 388,
+              "first_fail": "regime_n=6",
+              "all_fails": [
+                "regime_n=6",
+                "quartiles=2/4",
+                "fee_2x=1.18"
+              ]
+            },
+            {
+              "strategy": "EMA_CROSS",
+              "symbol": "SOLUSDTM",
+              "family": "TREND",
+              "sharpe_ann": -0.165,
+              "quartiles": 1,
+              "n_regime": 5,
+              "pooled_n": 388,
+              "first_fail": "regime_n=5",
+              "all_fails": [
+                "regime_n=5",
+                "quartiles=1/4",
+                "sharpe_ann=-0.17",
+                "fee_2x=1.09",
+                "param_fragile"
+              ]
+            }
+          ],
+          "pending_combo": null
+        }
+      }
+    }
+  }
+}
