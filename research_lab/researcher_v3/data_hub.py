@@ -20,8 +20,9 @@ def fetch_hl(symbol="BTC"):
     url = "https://api.hyperliquid.xyz/info"
     try:
         req = urllib.request.Request(url, data=json.dumps({
-            "type": "candles", "coin": symbol, "interval": "1d",
-            "startTime": start, "endTime": end
+            "type": "candleSnapshot",
+            "req": {"coin": symbol, "interval": "1d",
+                    "startTime": start, "endTime": end}
         }).encode(), headers={"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=10) as r:
             candles = json.loads(r.read())
