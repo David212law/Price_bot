@@ -21,7 +21,7 @@ import json, os, requests, time
 from datetime import datetime, timezone
 
 INITIAL_CAPITAL = 10000.0
-M31_LEVERAGE = 3
+M31_LEVERAGE = 0.45  # D-557: hedged (45% spot + 45% perp + 10% cash) migrated_D557
 STATE_FILE = "exchanges/hyperliquid/state/m11_hl_shadow_mlp_portfolio.json"
 HL_SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "AVAX"]
 LOOKBACK = 6

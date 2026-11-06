@@ -25,7 +25,7 @@ A8_ALLOC = 0.0  # D-306  # D-287
 A20_ALLOC = 0.0  # D-306  # D-287
 
 # M31 Config
-M31_LEVERAGE = 3  # D-310
+M31_LEVERAGE = 0.45  # D-557: hedged (45% spot + 45% perp + 10% cash) migrated_D557  # D-310
 
 # A8 Config
 A8_RISK = 0.01

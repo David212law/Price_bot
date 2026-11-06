@@ -2664,3 +2664,19 @@ Real trading M31: unhedged SR=0.47، hedged SR=11.41 (D-552).
 - New: 45% spot + 45% perp × 1x + 10% cash (delta-neutral, DD <5%)
 
 **Rollback:** git revert or *.bak_D557 backups
+
+
+## D-557b: Fix 8 remaining allocators
+تاریخ: 2026-11-06 | وضعیت: قفل
+
+**Change:** M31_LEVERAGE = 3 → 0.45 (in 8 remaining files)
+- Before: income = (capital/6) * 3 * rate (unhedged, 3x short perp)
+- After:  income = (capital/6) * 0.45 * rate (hedged, 45% allocation)
+- Also affects fee calculation (fees scale with position size)
+
+**Results:**
+- Patched: 8/8
+- Tests passed: 4/8
+- Workflows re-enabled: 0
+
+**Rollback:** *.bak_D557c backups

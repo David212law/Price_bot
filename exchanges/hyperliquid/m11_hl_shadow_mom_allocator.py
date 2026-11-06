@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 
 INITIAL_CAPITAL = 10000.0
 M31_PCT = 0.80
-M31_LEVERAGE = 3
+M31_LEVERAGE = 0.45  # D-557: hedged (45% spot + 45% perp + 10% cash) migrated_D557
 KELTNER_PCT = 0.0
 MAKER_FEE = 0.0002
 TAKER_FEE = 0.0005
