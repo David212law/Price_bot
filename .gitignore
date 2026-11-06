@@ -37,3 +37,7 @@ reports/auto_scan/*.json
 # Allow economic research results
 !research_lab/logs/generated/
 !research_lab/logs/generated/*.json
+
+# D-559: track returns_matrices for researcher_v3 (needed in GitHub Actions)
+!research_lab/logs/profiles/returns_matrices/
+!research_lab/logs/profiles/returns_matrices/**

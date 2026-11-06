@@ -112,7 +112,15 @@ def main():
     
     # Phase 4: Pareto
     print("\n[5] Pareto filter...")
-    pareto = pareto_filter(list(metrics.keys()), metrics)
+    pareto = []
+    _all_exch = set(s.get("exchange") for s in strategies.values() if s.get("exchange"))
+    for _exch in sorted(_all_exch):
+        _exch_keys = [k for k in metrics if strategies.get(k, {}).get("exchange") == _exch]
+        if _exch_keys:
+            _exch_metrics = {k: metrics[k] for k in _exch_keys}
+            _exch_pareto = pareto_filter(_exch_keys, _exch_metrics)
+            pareto.extend(_exch_pareto)
+            print(f"  per-exchange Pareto [{_exch}]: {len(_exch_pareto)}")
     print(f"  {len(pareto)} strategies on Pareto front")
     
     # Phase 5: Family diversity
