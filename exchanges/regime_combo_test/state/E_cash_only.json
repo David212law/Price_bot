@@ -1,0 +1,20 @@
+{
+  "bot_name": "E_cash_only",
+  "initial_capital": 1000.0,
+  "equity": 1000.0,
+  "current_combo": {
+    "CASH": 1.0
+  },
+  "history": [
+    {
+      "time": "2026-11-06T17:30:12.999586+00:00",
+      "regime": "RANGE_MED",
+      "combo": {
+        "CASH": 1.0
+      },
+      "daily_ret": 0,
+      "equity": 1000.0
+    }
+  ],
+  "last_run": "2026-11-06T17:30:12.999687+00:00"
+}

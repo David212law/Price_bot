@@ -1,0 +1,22 @@
+{
+  "bot_name": "C_static_90_10",
+  "initial_capital": 1000.0,
+  "equity": 1001.211983753516,
+  "current_combo": {
+    "M31": 0.9,
+    "Keltner": 0.1
+  },
+  "history": [
+    {
+      "time": "2026-11-06T17:30:12.997357+00:00",
+      "regime": "RANGE_MED",
+      "combo": {
+        "M31": 0.9,
+        "Keltner": 0.1
+      },
+      "daily_ret": 0.001212,
+      "equity": 1001.21
+    }
+  ],
+  "last_run": "2026-11-06T17:30:12.997434+00:00"
+}

@@ -1,0 +1,35 @@
+name: Regime Combo Test
+
+on:
+  schedule:
+    - cron: '30 */4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: regime-combo-test
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run combo test
+        run: PYTHONPATH=. python3 -m research_lab.researcher_v3.regime_combo_paper_bot
+      - name: Commit state
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add exchanges/regime_combo_test/ 2>/dev/null || true
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto: regime combo test $(date -u +%Y-%m-%d-%H) [skip ci]"
+            git pull --rebase origin main || true
+            git push || echo "push failed"
+          fi
