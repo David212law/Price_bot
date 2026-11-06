@@ -225,6 +225,19 @@ def build_combos(rankings, top_n=3):
             "top_strategies": top[:3],
             "total_sr_sum": round(total_sr, 2),
         }
+    
+    # D-563: CRISIS fallback (0-1 strategy → Cash)
+    for regime in ["CRISIS_NEGATIVE", "CRISIS_VOL"]:
+        if regime not in combos:
+            # Cash 100% for CRISIS without enough strategies
+            combos[regime] = {
+                "components": [{"strategy": "CASH", "weight": 1.0}],
+                "top_strategies": [],
+                "total_sr_sum": 0,
+                "fallback": "cash_only",
+                "reason": "insufficient strategies in crisis (D-548: only 2 real edges)",
+            }
+    
     return combos
 
 
