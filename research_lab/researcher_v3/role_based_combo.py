@@ -119,7 +119,8 @@ def load_strategies():
             if strat in BLACKLIST or strat.startswith("M31_"): continue
             val = v.get("validation", {})
             if not isinstance(val, dict): continue
-            if val.get("sharpe_ann", 0) < 2: continue
+            # D-567: lower threshold (T_ strategies have high per-regime SR but low aggregate)
+            if val.get("sharpe_ann", 0) < 1: continue
             parts = key.split(":")
             if len(parts) < 4: continue
             exch, s, h, sym = parts[0], parts[1], parts[2], parts[3]
@@ -217,20 +218,39 @@ def find_champion(regime, strategies, per_regime_metrics, roles):
     return candidates[0][0]
 
 
+def _family(name):
+    """D-567: family helper for diversity check."""
+    if name.startswith("M31"): return "M31"
+    if name.startswith("KELTNER"): return "KELTNER"
+    if name.startswith("T_"): return name.split("_")[0] + "_" + name.split("_")[1] if "_" in name else name
+    return name.split("_")[0]
+
+
 def find_supporting(champion, regime, strategies, per_regime_metrics, roles, max_n=2):
+    """D-567: Also enforce FAMILY diversity (not just thesis)."""
     if champion == "CASH": return []
     champion_thesis = roles.get(champion, {}).get("thesis", "unknown")
+    champion_family = _family(champion)
+    used_families = {champion_family}
     candidates = []
     for name in strategies:
         if name == champion: continue
         role = roles.get(name)
         if not role: continue
-        if role["thesis"] == champion_thesis: continue  # diversity
+        if role["thesis"] == champion_thesis: continue  # thesis diversity
+        fam = _family(name)
+        if fam in used_families: continue  # D-567: family diversity (no M31 twice)
         m = per_regime_metrics[name].get(regime)
-        if m and m["sr"] >= 3:
-            candidates.append((name, m["sr"]))
+        if m and m["sr"] >= 2:  # lower threshold (was 3)
+            candidates.append((name, m["sr"], fam))
     candidates.sort(key=lambda x: -x[1])
-    return [c[0] for c in candidates[:max_n]]
+    result = []
+    for name, sr, fam in candidates:
+        if fam in used_families: continue
+        used_families.add(fam)
+        result.append(name)
+        if len(result) >= max_n: break
+    return result
 
 
 def build_combo(regime, strategies, per_regime_metrics, roles):
