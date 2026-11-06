@@ -2609,3 +2609,22 @@ Aster (499 days):
 - research_lab/hedge_backtest_v2.py (corrected)
 
 **Status:** PROVEN on 2 exchanges, 1000+ days. Ready for Live consideration.
+
+## D-554: توقف فوری Paper — بحرانی
+تاریخ: 2026-11-06 | وضعیت: قفل
+
+**کشف:** همه ۱۰ ربات Paper UNHEDGED. Equity FAKE.
+
+**اقدامات:**
+- ورک‌فلوهای Paper متوقف (.yml.paused)
+- Archive: archive/2026-11-06/
+- MIGRATION_PLAN.md ساخته شد
+
+**Rollback:** .yml.paused → .yml
+
+## D-555: استثنای M31 در D-543
+تاریخ: 2026-11-06 | وضعیت: قفل
+
+D-543 PROVEN برای Keltner/RSI/MACD (بازده واقعی).
+M31 استثناست: SR=8-16 فقط funding-only (تئوریک).
+Real trading M31: unhedged SR=0.47، hedged SR=11.41 (D-552).

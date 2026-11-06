@@ -90,3 +90,23 @@ Run `python3 -m research_lab.health_check` before touching any code.
 - Aster: SR 0.83→5.13, DD 19%→0.39%
 - Delta-neutral confirmed (price contrib ~0.3%)
 - ACTION: audit 12 paper bots — hedged or unhedged?
+
+## وضعیت بحرانی (2026-11-06)
+
+**همه ربات‌های Paper متوقف شدند** — کشف شد equity کاملاً FAKE است.
+
+### یافته‌های audit:
+- همه ۱۰ ربات Paper UNHEDGED هستند
+- خط ۱۱۵ کد فقط funding را محاسبه می‌کند (بدون price P&L)
+- DD واقعی در بحران: ۶۸٪ (بر اساس D-552)
+- Paper equity نشان می‌دهد DD=۰.۱٪ = FAKE
+
+### اقدامات:
+- همه ورک‌فلوهای Paper متوقف (.yml.paused)
+- فایل‌های economic v1/v2/v3 به archive/2026-11-06/ آرشیو شد
+- نقشه راه migration: MIGRATION_PLAN.md
+
+### تا تکمیل migration:
+- هیچ تست Paper
+- هیچ تصمیم Live Gate
+- همه SR/DD Paper = FAKE
