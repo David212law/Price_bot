@@ -286,7 +286,11 @@ def main():
         print(f"\n  {regime}:")
         for c in combo["components"]:
             print(f"    {c['weight']*100:>5.1f}%  {c['strategy']}")
-        print(f"    (top SR: {combo['top_strategies'][0]['sr']:.2f})")
+        # D-564: safe print for cash fallback (top_strategies empty)
+        if combo.get("top_strategies"):
+            print(f"    (top SR: {combo['top_strategies'][0]['sr']:.2f})")
+        elif combo.get("fallback"):
+            print(f"    (fallback: {combo['fallback']} — {combo.get('reason', '')})")
     
     # Save
     out = Path("research_lab/logs/researcher_v3/regime_combos.json")
