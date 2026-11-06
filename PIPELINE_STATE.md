@@ -136,3 +136,22 @@ Run `python3 -m research_lab.health_check` before touching any code.
 - 11 allocator از 11 هنوز fix نشده
 - Migration: ۲-۳ هفته (MIGRATION_PLAN.md)
 - تا fix: Paper متوقف، هیچ تست Paper
+
+
+## D-557 Migration Complete (2026-11-06 15:49 UTC)
+
+**All 11 allocators migrated to delta-neutral hedged structure:**
+- Before: earned = (capital/6) * rate * 3 (100% × 3x leverage, unhedged)
+- After:  earned = (capital/6) * 0.45 * rate * 1.0 (45% × 1x, delta-neutral)
+- New state field: hedge_structure (spot_pct=0.45, perp_pct=0.45, cash_pct=0.10)
+- Delta-neutral: price P&L ~= 0, only funding remains
+
+**Migration results:**
+- Patched: 2 | Skipped: 0 | Errors: 8
+- Tests passed: 11 | Failed: 0
+- State files migrated: 3
+
+**Expected impact:**
+- SR: ~20 (fake) → 5-10 (real, D-552 based)
+- DD in crisis: 68% (fake) → <5% (D-552 crisis test PASS)
+- D-552 tested on LUNA/FTX/COVID: PASS

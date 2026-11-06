@@ -1,18 +1,10 @@
 {
-  "total_equity": 9993.915390887778,
+  "total_equity": 9991.933359886698,
   "m31_capital": 5007.148874679324,
   "a8_capital": 0.0,
   "a20_capital": 0.0,
-  "keltner_capital": 4250.0,
-  "keltner_pos": {
-    "XRPUSDT": {
-      "side": "LONG",
-      "entry": 1.2185,
-      "invested": 750.0,
-      "sl": 1.1946328103002448,
-      "tp": 1.266412135921517
-    }
-  },
+  "keltner_capital": 4984.784485207373,
+  "keltner_pos": {},
   "cash_capital": 0.0,
   "m31_last_funding_time": {
     "BTCUSDT": 1793952000000,
@@ -24,7 +16,14 @@
   },
   "a8_positions": {},
   "a20_positions": {},
-  "history": [],
+  "history": [
+    {
+      "time": 1793966400000,
+      "strat": "KELTNER_COMBO",
+      "sym": "XRPUSDT",
+      "pnl": -15.2155
+    }
+  ],
   "peak_equity": 10005.917143736522,
-  "last_run": "2026-11-06T12:02:25.828169+00:00"
+  "last_run": "2026-11-06T15:51:38.799994+00:00"
 }

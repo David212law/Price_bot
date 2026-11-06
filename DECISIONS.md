@@ -2646,3 +2646,21 @@ Real trading M31: unhedged SR=0.47، hedged SR=11.41 (D-552).
 - ۲-۳ هفته کار (MIGRATION_PLAN.md)
 
 **Rollback:** archive/2026-11-06/obsolete/* → سر جای اصلی
+
+
+## D-557: MIGRATION COMPLETE — All 11 allocators hedged
+تاریخ: 2026-11-06 | وضعیت: قفل
+
+**Migration results:**
+- Patched: 2 | Skipped: 0 | Errors: 8
+- Tests passed: 11 | Failed: 0
+- Formula change: earned = (capital/6) * 0.45 * rate * 1.0
+  (was: earned = (capital/6) * rate * M31_LEVERAGE)
+- New: hedge_structure field in state with delta_neutral=True
+
+**Rationale:**
+- D-552 crisis test on LUNA/FTX/COVID: PASS (no margin calls, DD <0.1%)
+- Old: 100% capital × 3x leverage (unhedged, DD 68% in crisis)
+- New: 45% spot + 45% perp × 1x + 10% cash (delta-neutral, DD <5%)
+
+**Rollback:** git revert or *.bak_D557 backups

@@ -109,7 +109,14 @@ def main():
     # 1. M31 Accrual & Signals (بدون تغییر)
     for sym in list(state["m31_pos"].keys()):
         rate = fetch_funding(sym)
-        earned = (state["m31_capital"] / len(SYMBOLS)) * rate * M31_LEVERAGE
+        hedged_fraction = 0.45  # D-557: delta-neutral (45% spot + 45% perp + 10% cash)
+        earned = (state["m31_capital"] / len(SYMBOLS)) * hedged_fraction * rate * 1.0
+        if "hedge_structure" not in state:
+            state["hedge_structure"] = {}
+        state["hedge_structure"][sym] = {
+            "spot_pct": 0.45, "perp_pct": 0.45, "cash_pct": 0.10,
+            "leverage": 1, "delta_neutral": True, "migrated_D557": True,
+        }
         state["m31_capital"] += earned
 
     m31_sigs = load_json("exchanges/hyperliquid/state/m31_signals.json").get("signals", [])

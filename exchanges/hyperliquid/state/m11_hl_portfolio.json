@@ -1,6 +1,6 @@
 {
-  "total_capital": 9995.796700262608,
-  "m31_capital": 6495.796700262608,
+  "total_capital": 9995.894137761195,
+  "m31_capital": 6495.894137761196,
   "m35_capital": 0.0,
   "m40_capital": 364.5,
   "m41_capital": 0.0,
@@ -46,5 +46,39 @@
   "history": [],
   "cash_capital": 3000.0,
   "peak_equity": 9998.705508417668,
-  "last_run": "2026-11-06T06:23:00.212861+00:00"
+  "last_run": "2026-11-06T15:51:44.767196+00:00",
+  "hedge_structure": {
+    "XRP": {
+      "spot_pct": 0.45,
+      "perp_pct": 0.45,
+      "cash_pct": 0.1,
+      "leverage": 1,
+      "delta_neutral": true,
+      "migrated_D557": true
+    },
+    "ETH": {
+      "spot_pct": 0.45,
+      "perp_pct": 0.45,
+      "cash_pct": 0.1,
+      "leverage": 1,
+      "delta_neutral": true,
+      "migrated_D557": true
+    },
+    "BNB": {
+      "spot_pct": 0.45,
+      "perp_pct": 0.45,
+      "cash_pct": 0.1,
+      "leverage": 1,
+      "delta_neutral": true,
+      "migrated_D557": true
+    },
+    "BTC": {
+      "spot_pct": 0.45,
+      "perp_pct": 0.45,
+      "cash_pct": 0.1,
+      "leverage": 1,
+      "delta_neutral": true,
+      "migrated_D557": true
+    }
+  }
 }
