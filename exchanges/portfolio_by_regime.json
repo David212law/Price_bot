@@ -29,8 +29,8 @@
   },
   "kucoin": {
     "TREND": {
-      "M31": 0.3,
-      "CASH": 0.7
+      "FUNDING_MEAN_REV_ETHUSDTM": 1.0,
+      "CASH": 0
     },
     "RANGE": {
       "M31": 0.3,
