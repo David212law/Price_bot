@@ -1,14 +1,3 @@
 {
-  "signals": [
-    {
-      "symbol": "SOL",
-      "action": "CLOSE",
-      "time": 1793912400049
-    },
-    {
-      "symbol": "AVAX",
-      "action": "CLOSE",
-      "time": 1793901600056
-    }
-  ]
+  "signals": []
 }
