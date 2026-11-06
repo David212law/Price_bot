@@ -1,0 +1,124 @@
+{
+  "version": "2.0",
+  "created": "2026-11-06",
+  "design_principle": "Economic role + per-asset defaults + regime compatibility",
+  "roles": {
+    "funding_carry": {
+      "thesis_fa": "پول از funding rate مثبت جابه‌جا می‌شود",
+      "compatible_regimes": [
+        "TREND_UP",
+        "TREND_DOWN",
+        "RANGE_LOW_VOL",
+        "RANGE_MED_VOL",
+        "RANGE_HIGH_VOL"
+      ],
+      "fails_in": [
+        "CRISIS_NEGATIVE_FUNDING",
+        "CRISIS_VOL_SPIKE"
+      ]
+    },
+    "mean_reversion": {
+      "thesis_fa": "بازگشت به میانگین در بازار رِنج",
+      "compatible_regimes": [
+        "RANGE_LOW_VOL",
+        "RANGE_MED_VOL",
+        "RANGE_HIGH_VOL",
+        "TREND_DOWN",
+        "CRISIS_VOL_SPIKE"
+      ],
+      "fails_in": [
+        "TREND_UP",
+        "TREND_DOWN"
+      ]
+    },
+    "trend_following": {
+      "thesis_fa": "پیروی از روند در بازار ترند",
+      "compatible_regimes": [
+        "TREND_UP",
+        "TREND_DOWN"
+      ],
+      "fails_in": [
+        "RANGE_LOW_VOL",
+        "CRISIS_VOL_SPIKE"
+      ]
+    },
+    "momentum": {
+      "thesis_fa": "مومنتوم در بازار emerging",
+      "compatible_regimes": [
+        "TREND_UP",
+        "TREND_DOWN"
+      ],
+      "fails_in": [
+        "RANGE_LOW_VOL",
+        "CRISIS_NEGATIVE_FUNDING"
+      ]
+    },
+    "cash": {
+      "thesis_fa": "سرمایه در cash",
+      "compatible_regimes": [
+        "CRISIS_NEGATIVE_FUNDING",
+        "CRISIS_VOL_SPIKE"
+      ],
+      "fails_in": []
+    }
+  },
+  "strategies": {
+    "M31": {
+      "role": "funding_carry",
+      "default": true,
+      "hedge_required": true
+    },
+    "KELTNER_REV": {
+      "role": "mean_reversion",
+      "hedge_required": false
+    },
+    "M31_MOMENTUM": {
+      "role": "momentum",
+      "default": false,
+      "deprecated": true,
+      "deprecated_reason": "corr=0.999 with M31 (D-522)"
+    },
+    "RSI_MOMENTUM": {
+      "role": "momentum",
+      "hedge_required": false
+    },
+    "FUNDING_MEAN_REV": {
+      "role": "funding_carry",
+      "hedge_required": false
+    },
+    "KELTNER_REV_ETHUSDT": {
+      "role": "mean_reversion",
+      "hedge_required": false
+    },
+    "KELTNER_REV_AVAXUSDT": {
+      "role": "mean_reversion",
+      "hedge_required": false
+    }
+  },
+  "per_asset_baselines": {
+    "BTC-USD": {
+      "default": "Breakout",
+      "thesis": "speculative, needs trend"
+    },
+    "Gold": {
+      "default": "Buy&Hold",
+      "thesis": "store of value"
+    },
+    "Oil": {
+      "default": "MeanRev",
+      "thesis": "commodity cycles"
+    },
+    "SP500": {
+      "default": "Breakout",
+      "thesis": "secular bull"
+    },
+    "Iran_BTC": {
+      "default": "Momentum",
+      "thesis": "emerging asset"
+    },
+    "USDTTMN": {
+      "default": "Breakout",
+      "thesis": "Toman market"
+    }
+  }
+}

@@ -212,6 +212,31 @@ def main():
                 print(f"    ⚠️ WARNING: same family ({families_in_combo}) — combo may be artifact")
             else:
                 combos[regime] = combo
+        elif regime == "TREND_UP":
+            # TREND_UP: M31 alone (funding positive in bull) + small cash buffer
+            m31_candidates = [p for p in pareto if get_family(p) == "M31"]
+            if m31_candidates:
+                best_m31 = max(m31_candidates, key=lambda x: metrics[x]["sr"])
+                trend_combo = {
+                    "components": [
+                        {"strategy": best_m31, "weight": 0.90},
+                        {"strategy": "CASH", "weight": 0.10},
+                    ],
+                    "metrics": metrics.get(best_m31, {}),
+                    "coverage": sum([
+                        metrics.get(best_m31, {}).get("sr", 0) >= 3,
+                        metrics.get(best_m31, {}).get("sr", 0) >= 2,
+                        metrics.get(best_m31, {}).get("dd", 100) < 10,
+                        metrics.get(best_m31, {}).get("dd", 100) < 5,
+                        metrics.get(best_m31, {}).get("wr", 0) > 50,
+                        metrics.get(best_m31, {}).get("neg_pct", 100) < 40,
+                        metrics.get(best_m31, {}).get("q4", False),
+                    ]),
+                    "regime": regime,
+                    "note": "M31 alone — TREND_UP, no dilution",
+                }
+                combos[regime] = trend_combo
+                print(f"  {regime:<28} → {best_m31}@90%, CASH@10% (M31 alone)")
         elif regime.startswith("CRISIS"):
             # For crisis, use cash + Keltner explicitly
             keltners = [p for p in pareto if get_family(p) == "KELTNER"]
