@@ -1,3 +1,9 @@
 {
-  "signals": []
+  "signals": [
+    {
+      "symbol": "SOL",
+      "action": "OPEN",
+      "time": 1793962800060
+    }
+  ]
 }
