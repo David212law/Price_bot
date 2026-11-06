@@ -152,6 +152,19 @@ def main():
     for regime in ["TREND_UP", "TREND_DOWN", "RANGE_LOW_VOL", "RANGE_MED_VOL",
                    "RANGE_HIGH_VOL", "CRISIS_NEGATIVE_FUNDING", "CRISIS_VOL_SPIKE"]:
         combo = build_combo_for_regime(regime, pareto, all_returns, metrics, CRISIS_WINDOWS)
+
+        # D-560: CRISIS_NEGATIVE_FUNDING fallback (no compatible strategy)
+
+        if regime == 'CRISIS_NEGATIVE_FUNDING' and (not combo or 'error' in combo):
+
+            _kelts = [p for p in pareto if 'KELTNER' in p]
+
+            if _kelts:
+
+                _best_k = max(_kelts, key=lambda x: metrics.get(x, {}).get('sr', 0))
+
+                combo = {'components': [{'strategy': 'CASH', 'weight': 0.7}, {'strategy': _best_k, 'weight': 0.3}], 'metrics': {'sr': 0, 'dd': 0, 'ret': 0}, 'coverage': 5, 'regime': regime}
+
         if combo and "error" not in combo:
             combos[regime] = combo
             comps = ", ".join(f"{c['strategy']}@{c['weight']:.0%}" for c in combo["components"])
