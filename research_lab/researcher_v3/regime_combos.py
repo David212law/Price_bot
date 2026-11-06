@@ -88,8 +88,8 @@ def detect_regime_from_prices(prices, lookback=14, ma_period=50):
         price = prices[dates[i-1]]
         below_ma = price < ma50 if ma50 > 0 else False
         
-        # Classify
-        if vol > 0.06: 
+        # D-562: classify with crisis detection (vol threshold lower)
+        if vol > 0.045:  # was 0.06 — too high, LUNA was ~5%
             r = "CRISIS_VOL"
         elif abs(trend) > 0.08 and not below_ma:
             r = "TREND_UP"
@@ -172,6 +172,23 @@ def rank_strategies_per_regime(strategies, regime_map):
     
     for regime in rankings:
         rankings[regime].sort(key=lambda x: -x["sr"])
+    
+    # D-562: family diversity per regime (M31 only once)
+    def get_family(name):
+        if name.startswith("M31"): return "M31"
+        if name.startswith("KELTNER"): return "KELTNER"
+        return name.split("_")[0]
+    
+    for regime in rankings:
+        family_seen = {}
+        deduped = []
+        for item in rankings[regime]:
+            fam = get_family(item["name"])
+            if fam not in family_seen:
+                family_seen[fam] = item["name"]
+                deduped.append(item)
+        rankings[regime] = deduped
+    
     return rankings
 
 
@@ -182,10 +199,22 @@ def build_combos(rankings, top_n=3):
         ranked = rankings.get(regime, [])
         if len(ranked) < 2: continue
         top = ranked[:top_n]
-        # Weights based on SR (normalized)
+        # Weights based on SR (normalized), but cap at 70%
         total_sr = sum(t["sr"] for t in top)
         if total_sr <= 0: continue
-        components = [{"strategy": t["name"], "weight": round(t["sr"]/total_sr, 3)} for t in top]
+        raw_weights = [t["sr"]/total_sr for t in top]
+        # D-562: cap max weight to 70%, redistribute
+        capped = [min(w, 0.70) for w in raw_weights]
+        excess = sum(raw_weights) - sum(capped)
+        if excess > 0:
+            remaining = [w for w in capped if w < 0.70]
+            if remaining:
+                redistribute = excess / len(remaining)
+                capped = [min(w + redistribute, 0.70) if w < 0.70 else w for w in capped]
+        # Normalize to 1.0
+        total = sum(capped)
+        capped = [w/total for w in capped]
+        components = [{"strategy": t["name"], "weight": round(w, 3)} for t, w in zip(top, capped)]
         # For CRISIS, add cash buffer
         if regime.startswith("CRISIS"):
             for c in components:
