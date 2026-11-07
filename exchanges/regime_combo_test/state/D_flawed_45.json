@@ -1,7 +1,7 @@
 {
   "bot_name": "D_flawed_45",
   "initial_capital": 1000.0,
-  "equity": 1001.1216494639805,
+  "equity": 1002.2050631546145,
   "current_combo": {
     "M31": 0.45,
     "Keltner": 0.2,
@@ -32,7 +32,19 @@
       },
       "daily_ret": 0.000888,
       "equity": 1001.12
+    },
+    {
+      "time": "2026-11-07T06:16:57.371521+00:00",
+      "regime": "RANGE_MED",
+      "combo": {
+        "M31": 0.45,
+        "Keltner": 0.2,
+        "Supporting": 0.2,
+        "CASH": 0.15
+      },
+      "daily_ret": 0.001082,
+      "equity": 1002.21
     }
   ],
-  "last_run": "2026-11-07T00:10:21.788490+00:00"
+  "last_run": "2026-11-07T06:16:57.371533+00:00"
 }
