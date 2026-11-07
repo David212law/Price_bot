@@ -3,10 +3,7 @@
   "initial_capital": 1000.0,
   "equity": 999.4028943978548,
   "current_combo": {
-    "KELTNER_REV_ETHUSDT": 0.45,
-    "M31_aster": 0.2,
-    "VOLUME_PROFILE_ETH": 0.2,
-    "CASH": 0.15
+    "CASH": 1.0
   },
   "history": [
     {
@@ -20,7 +17,16 @@
       },
       "daily_ret": -0.000597,
       "equity": 999.4
+    },
+    {
+      "time": "2026-11-07T00:10:21.787962+00:00",
+      "regime": "RANGE_MED",
+      "combo": {
+        "CASH": 1.0
+      },
+      "daily_ret": 0,
+      "equity": 999.4
     }
   ],
-  "last_run": "2026-11-06T17:30:12.994551+00:00"
+  "last_run": "2026-11-07T00:10:21.787983+00:00"
 }
