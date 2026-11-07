@@ -2,8 +2,8 @@
   "signals": [
     {
       "symbol": "SOL",
-      "action": "OPEN",
-      "time": 1793962800060
+      "action": "CLOSE",
+      "time": 1794006000012
     }
   ]
 }
