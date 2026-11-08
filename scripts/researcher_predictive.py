@@ -110,6 +110,10 @@ def detect_regime(df):
 def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
     top_per_regime = {}
     for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
+        # SURVIVAL MODE: In BEAR/CRASH, always use Tether (no active strategies)
+        if r in ["BEAR", "CRASH"]:
+            top_per_regime[r] = ["tether"]
+            continue
         r_train = train_mask & (regimes == r)
         if r_train.sum() < 15:
             top_per_regime[r] = ["bh_BTC"]

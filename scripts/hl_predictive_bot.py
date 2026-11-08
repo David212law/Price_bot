@@ -85,7 +85,11 @@ def main():
             return
             
     regime = detect_regime(df)
-    target = get_target_portfolio(df, regime)
+    if regime in ["BEAR", "CRASH"]:
+        print(f"⚠️ Regime {regime}: Forcing TETHER (Survival Mode)")
+        target = {"TETHER": 1.0}
+    else:
+        target = get_target_portfolio(df, regime)
     print(f"Date: {df.index[-1].date()} | Regime: {regime} | Target: {target}")
     
     if os.path.exists(STATE_FILE): state = json.load(open(STATE_FILE))

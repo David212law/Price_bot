@@ -120,7 +120,11 @@ def main():
     regime = detect_regime(df)
     print(f"Detected Regime: {regime}")
     
-    target_port = get_target_portfolio(df, regime)
+    if regime in ["BEAR", "CRASH"]:
+        print(f"⚠️ Regime {regime}: Forcing TETHER (Survival Mode)")
+        target_port = {"TETHER": 1.0}
+    else:
+        target_port = get_target_portfolio(df, regime)
     print(f"Target Portfolio: {target_port}")
     
     if os.path.exists(STATE_FILE):
