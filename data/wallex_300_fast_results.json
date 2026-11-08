@@ -1,11 +1,11 @@
 {
   "TMN": {
     "combined": {
-      "total": 75.36892178040785,
-      "dd": 36.497897492891504,
-      "sharpe": 1.6767019993884038,
-      "switches": 1,
-      "fee_pct": 0.3
+      "total": -75.06005048649189,
+      "dd": 89.78262950784315,
+      "sharpe": -0.4189985689345948,
+      "switches": 30,
+      "fee_pct": 9.000000000000004
     },
     "bnh_btc": {
       "total": 97.56678127603581,
@@ -13,20 +13,20 @@
       "sharpe": 2.7666139873645053
     },
     "best_per_regime": {
-      "BULL_STRONG": "tether",
-      "BULL": "tether",
-      "FLAT": "bb10_2",
-      "BEAR": "tether",
-      "CRASH": "tether"
+      "BULL_STRONG": "mom45_t3_ma",
+      "BULL": "mom10_t2_no",
+      "FLAT": "bb30_1.5",
+      "BEAR": "btfd20_h5",
+      "CRASH": "brk20_t1"
     }
   },
   "USDT": {
     "combined": {
-      "total": -81.78973909359397,
-      "dd": 91.93641683089143,
-      "sharpe": -0.2740976124355066,
-      "switches": 1,
-      "fee_pct": 0.3
+      "total": -89.49684156230926,
+      "dd": 97.84047216432687,
+      "sharpe": 0.11856021374667804,
+      "switches": 43,
+      "fee_pct": 12.900000000000006
     },
     "bnh_btc": {
       "total": 7.0441351341327785,
@@ -34,11 +34,11 @@
       "sharpe": 0.46324589116366355
     },
     "best_per_regime": {
-      "BULL_STRONG": "tether",
-      "BULL": "tether",
-      "FLAT": "btfd30_h5",
-      "BEAR": "tether",
-      "CRASH": "tether"
+      "BULL_STRONG": "mom5_t1_no",
+      "BULL": "bb10_1.5",
+      "FLAT": "ma50_200_t1",
+      "BEAR": "bb15_3",
+      "CRASH": "brk10_t1"
     }
   }
 }

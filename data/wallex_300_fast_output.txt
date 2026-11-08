@@ -15,10 +15,14 @@
   Computing strategy returns...
   TRAIN: 559d | TEST: 240d | split: 2026-03-14
   Ranking per regime...
-    FLAT           (559d) -> bb10_2
+    BULL_STRONG    (131d) -> mom45_t3_ma
+    BULL           (184d) -> mom10_t2_no
+    FLAT           (132d) -> bb30_1.5
+    BEAR           ( 86d) -> btfd20_h5
+    CRASH          ( 26d) -> brk20_t1
 
   RESULTS:
-    Combined: +75.4% (DD 36.5%, Sh 1.68), Switches=1, Fee=0.3%
+    Combined: -75.1% (DD 89.8%, Sh -0.42), Switches=30, Fee=9.0%
     B&H BTC:  +97.6% (DD 33.6%, Sh 2.77)
 
 ====================================================================================================
@@ -30,10 +34,14 @@
   Computing strategy returns...
   TRAIN: 559d | TEST: 240d | split: 2026-03-14
   Ranking per regime...
-    FLAT           (559d) -> btfd30_h5
+    BULL_STRONG    ( 68d) -> mom5_t1_no
+    BULL           (116d) -> bb10_1.5
+    FLAT           (222d) -> ma50_200_t1
+    BEAR           ( 99d) -> bb15_3
+    CRASH          ( 54d) -> brk10_t1
 
   RESULTS:
-    Combined: -81.8% (DD 91.9%, Sh -0.27), Switches=1, Fee=0.3%
+    Combined: -89.5% (DD 97.8%, Sh 0.12), Switches=43, Fee=12.9%
     B&H BTC:  +7.0% (DD 28.5%, Sh 0.46)
 
 Saved: data/wallex_300_fast_results.json
