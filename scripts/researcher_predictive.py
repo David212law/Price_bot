@@ -137,7 +137,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
             cur_strats = strats
         combined.append(r_val)
         
-    ct, cdd, csh = stats(pd.Series(combined, index=df.index[test_mask]))
+    ct, cdd, csh = stats(pd.Series(combined, index=df_rets.index[test_mask]))
     return top_per_regime, ct, cdd, csh, switches
 
 def process_market(name, df, fee):

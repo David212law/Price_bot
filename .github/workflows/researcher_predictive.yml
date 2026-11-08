@@ -14,6 +14,9 @@ jobs:
         with: { python-version: '3.11' }
       - run: pip install pandas numpy
       - run: python scripts/researcher_predictive.py 2>&1 | tee data/researcher_predictive_output.txt
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
