@@ -1,0 +1,77 @@
+==============================================================================================
+ HONEST per-regime discovery — decision at T, return at T+1
+==============================================================================================
+
+Data: 3076 days (2011-11-27 -> 2026-11-05)
+TRAIN: 2011-11-27 -> 2022-09-13 (2153 days)
+TEST:  2022-09-14 -> 2026-11-05 (923 days)
+
+Precomputing decisions (14 strategies x all dates)...
+Building honest daily returns...
+
+==============================================================================================
+ STEP 1: Rank 14 strategies per regime (TRAIN only, honest returns)
+==============================================================================================
+
+  BULL_STRONG: only 10 train days — skipping (too few)
+
+  BULL: only 17 train days — skipping (too few)
+
+  FLAT  (22 train days)
+    1. bh_bnb        +1.3212%/day ⬅ BEST
+    2. bh_eth        +1.1100%/day
+    3. mom30         +0.7821%/day
+    4. bh_btc        +0.7792%/day
+    5. mom60         +0.7103%/day
+
+  BEAR  (21 train days)
+    1. rsi_mr        +0.3225%/day ⬅ BEST
+    2. bh_btc        +0.2226%/day
+    3. ma20_50       +0.1745%/day
+    4. bb_mr         +0.1266%/day
+    5. break50       +0.1165%/day
+
+  CRASH  (57 train days)
+    1. ma50_200      +0.0168%/day ⬅ BEST
+    2. tether        +0.0000%/day
+    3. bb_mr         -0.0203%/day
+    4. bh_eth        -0.0582%/day
+    5. bh_btc        -0.0884%/day
+
+==============================================================================================
+ STEP 2: Apply best_per_regime on TEST (honest, no look-ahead)
+==============================================================================================
+
+  Strategy                    Total      DD   Sharpe
+  ----------------------------------------------------
+  REGIME_COMBINED           -32.1%  37.9%   -0.21
+  mom10                     +49.4%  57.5%    0.58
+  mom20                     +95.5%  57.8%    0.73
+  mom30                    +207.6%  56.0%    0.98
+  mom60                    +138.6%  56.6%    0.84
+  break20                    +0.2%  70.4%    0.26
+  break50                   +17.9%  58.8%    0.37
+  ma20_50                  +179.5%  40.5%    0.99
+  ma50_200                 +229.1%  36.7%    1.10
+  rsi_mr                   +109.6%  35.6%    0.86
+  bb_mr                    +218.1%  22.2%    1.57
+  bh_btc                   +654.2%  36.4%    1.65
+  bh_bnb                   +268.4%  44.9%    1.14
+  bh_eth                   +228.0%  51.8%    1.00
+  tether                     +0.0%   0.0%    0.00
+
+  B&H BTC-TMN              +654.2%  36.4%    1.65
+
+==============================================================================================
+ FINAL VERDICT
+==============================================================================================
+
+  REGIME_COMBINED: -32.1%  |  B&H: +654.2%  |  diff: -686.4%
+  ❌ regime-aware از B&H بدتر است — با این داده/استراتژی‌ها، alpha ندارد
+
+  Best per regime (selected from TRAIN):
+    BULL_STRONG   : tether
+    BULL          : tether
+    FLAT          : bh_bnb
+    BEAR          : rsi_mr
+    CRASH         : ma50_200
