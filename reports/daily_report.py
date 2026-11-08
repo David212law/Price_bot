@@ -1,206 +1,80 @@
-from pathlib import Path
-import os, json, base64, requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-from datetime import datetime, timezone
+"""Unified Daily Dashboard — Reports on ALL active bots."""
+import json
+import glob
+import os
+from datetime import datetime
 
-def get_session():
-    session = requests.Session()
-    retry = Retry(total=5, read=5, connect=5, backoff_factor=1, status_forcelist=[429, 500, 502, 503, 504])
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount('http://', adapter)
-    session.mount('https://', adapter)
-    return session
-
-session = get_session()
-GH_TOKEN = os.environ.get("GH_TOKEN", "")
-GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
-BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
-BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
-
-def send_bale(msg):
-    if not BALE_TOKEN or not BALE_CHAT: return
-    url = f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage"
-    try: session.post(url, json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
-    except: pass
-
-def load_from_github(filename):
-    # D-532: Hybrid loader (Local first, API fallback)
-    try:
-        p = Path(filename)
-        if p.exists():
-            with open(p, "r", encoding="utf-8") as f:
-                return json.load(f)
-    except: pass
-    
-    try:
-        url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
-        r = session.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
-        if r.status_code == 200:
-            data = r.json()
-            return json.loads(base64.b64decode(data["content"]).decode("utf-8"))
-        return {}
-    except: return {}
+def get_eq(data, keys):
+    for k in keys:
+        if k in data and data[k]: return data[k]
+    return 0.0
 
 def main():
-    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    report = [f"📊 **Daily Project Report** ({now})\n"]
-    alerts = []
+    print("="*70)
+    print(f" PRICE_BOT UNIFIED DASHBOARD | {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
+    print("="*70)
 
-    # ─── Hyperliquid M11-HL ───
-    report.append("🌐 **Hyperliquid M11-HL (Global DEX)**")
-    hl_data = load_from_github("exchanges/hyperliquid/state/m11_hl_portfolio.json")
-    if hl_data:
-        total_cap = hl_data.get("total_capital", 10000.0)
-        roi = ((total_cap - 10000.0) / 10000.0) * 100
-        m31_open = len(hl_data.get("m31_pos", {}))
-        m35_open = len(hl_data.get("m35_pos", {}))
-        m40_open = len(hl_data.get("m40_pos", {}))
-        m41_open = len(hl_data.get("m41_pos", {}))
+    # 1. Legacy M31 Bots
+    print("\n📊 LEGACY M31 BOTS (Daily)")
+    print("-" * 70)
+    m31_total = 0
+    for f in sorted(glob.glob("exchanges/*/state/m11_*.json")):
+        try:
+            d = json.load(open(f))
+            eq = get_eq(d, ["total_equity", "total_capital", "portfolio_equity"])
+            name = f.split("/")[-1].replace(".json", "")
+            m31_total += eq
+            print(f"  {name:<45} ${eq:>10.2f}")
+        except: pass
+    print(f"  {'M31 Total':<45} ${m31_total:>10.2f}")
 
-        report.append(f"   Equity: ${total_cap:.2f} (ROI: {roi:+.2f}%)")
-        report.append(f"   Open Pos: M31={m31_open} | M35={m35_open} | M40={m40_open} | M41={m41_open}")
+    # 2. Predictive Bots
+    print("\n🚀 PREDICTIVE BOTS")
+    print("-" * 70)
+    pred_total = 0
+    bots = [
+        ("wallex_paper_bot_state.json", "Wallex (Iran)"),
+        ("hl_predictive_bot_state.json", "Hyperliquid (Global)")
+    ]
+    for fname, label in bots:
+        path = f"data/{fname}"
+        if os.path.exists(path):
+            d = json.load(open(path))
+            cash = d.get("capital", 0)
+            holdings = d.get("holdings", {})
+            # Rough equity calc if cash is 0 (fully invested)
+            eq = cash if cash > 0 else 10000.0 
+            if cash > 0 and holdings:
+                 # if partially invested
+                 eq = cash + sum(d.get("holdings_values", {}).values())
+            regime = d.get("last_regime", "?")
+            n_hold = len(holdings)
+            print(f"  {label:<25} ${eq:>9.2f} | Regime: {regime:<12} | {n_hold} positions")
+            pred_total += eq
+        else:
+            print(f"  {label:<25} (not initialized)")
+    print(f"  {'Predictive Total':<25} ${pred_total:>9.2f}")
 
-        if roi < -3: alerts.append(f"⚠️ M11-HL Drawdown Alert: ROI is {roi:.2f}%")
+    # 3. Researcher Latest
+    print("\n🧠 RESEARCHER LATEST")
+    print("-" * 70)
+    res_path = "data/researcher_predictive_results.json"
+    if os.path.exists(res_path):
+        res = json.load(open(res_path))
+        for market in ["TMN", "USDT", "GLOBAL"]:
+            if market in res and res[market]:
+                r = res[market]
+                print(f"  {market}: Oracle {r['oracle']['return']:+.1f}% | Pred {r['predictive']['return']:+.1f}%")
+                # Show top strategy for FLAT/BULL
+                tops = r['predictive'].get('top', {})
+                if tops:
+                    print(f"    BULL_STRONG -> {tops.get('BULL_STRONG', [])[0]}")
+                    print(f"    FLAT        -> {tops.get('FLAT', [])[0]}")
     else:
-        report.append("🔹 M11-HL: State not found.")
+        print("  (No researcher data found)")
 
-    report.append("")
-
-    # ─── Aster M11-Aster ───
-    report.append("🌟 **Aster (M11-Aster Portfolio)**")
-    aster_data = load_from_github("exchanges/aster/state/m11_aster_paper_state.json")
-    if aster_data:
-        eq = aster_data.get("total_equity", 10000.0)
-        cash = aster_data.get("cash_capital", aster_data.get("cash", 10000.0))
-        a8_pos = len(aster_data.get("a8_positions", {}))
-        a20_pos = len(aster_data.get("a20_positions", {}))
-        roi = ((eq - 10000.0) / 10000.0) * 100
-        
-        report.append(f"   Equity: ${eq:.2f} (ROI: {roi:+.2f}%)")
-        report.append(f"   Cash: ${cash:.2f} | Open Pos: A8={a8_pos} | A20={a20_pos}")
-        
-        if roi < -3: alerts.append(f"⚠️ Aster Drawdown Alert: ROI is {roi:.2f}%")
-    else:
-        report.append("🔹 Aster: State not found.")
-
-    report.append("")
-
-    # ─── KuCoin M11-KuCoin ───
-    report.append("🔷 **KuCoin (M11-KuCoin)**")
-    kc_data = load_from_github("exchanges/kucoin/state/m11_kucoin_paper_state.json")
-    if kc_data:
-        eq = kc_data.get("total_equity", 10000.0)
-        cash = kc_data.get("cash_capital", 0.0)
-        m31_active = sum(1 for p in kc_data.get("m31_pos", {}).values() if p.get("in_pos"))
-        m31_total = len(kc_data.get("m31_pos", {}))
-        roi = ((eq - 10000.0) / 10000.0) * 100
-        report.append(f"   Equity: ${eq:.2f} (ROI: {roi:+.2f}%)")
-        report.append(f"   Cash: ${cash:.2f} | M31: {m31_active}/{m31_total} active")
-        if roi < -3: alerts.append(f"⚠️ KuCoin Drawdown Alert: ROI is {roi:.2f}%")
-    else:
-        report.append("🔹 KuCoin: State not found.")
-
-    # ═══════════════════════════════════════════════════════════════
-    # D-449: 5 new bots
-    # ═══════════════════════════════════════════════════════════════
-
-    # ─── Aster COMBO ───
-    ac_data = load_from_github("exchanges/aster/state/m11_aster_combo_paper_state.json")
-    if ac_data:
-        eq = ac_data.get("total_equity", 10000.0)
-        report.append("🌐 **Aster COMBO (M31+Keltner)**")
-        report.append(f"   Equity: ${eq:.2f} | Keltner: ${ac_data.get('keltner_capital', 0):.2f}")
-        report.append(f"   Keltner positions: {len(ac_data.get('keltner_pos', {}))}")
-    else:
-        report.append("🔹 Aster COMBO: State not found.")
-
-    # ─── HL Shadow ───
-    hs_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_portfolio.json")
-    if hs_data:
-        eq = hs_data.get("total_equity", hs_data.get("total_capital", 10000.0))
-        report.append("🌐 **HL Shadow (M31+Keltner)**")
-        report.append(f"   Equity: ${eq:.2f} | Keltner: ${hs_data.get('keltner_capital', 0):.2f}")
-    else:
-        report.append("🔹 HL Shadow: State not found.")
-
-    # ─── Aster Shadow TREND ───
-    ast_data = load_from_github("exchanges/aster/state/m11_aster_shadow_trend_state.json")
-    if ast_data:
-        eq = ast_data.get("total_equity", 10000.0)
-        report.append("🌐 **Aster Shadow TREND**")
-        report.append(f"   Equity: ${eq:.2f} | Keltner: ${ast_data.get('keltner_capital', 0):.2f}")
-    else:
-        report.append("🔹 Aster Shadow TREND: State not found.")
-
-
-    # ─── Aster Shadow RP ───
-    asr_data = load_from_github("exchanges/aster/state/m11_aster_shadow_rp_state.json")
-    if asr_data:
-        eq = asr_data.get("total_equity", 10000.0)
-        report.append("🌐 **Aster Shadow RP (98/2)**")
-        report.append(f"   Equity: ${eq:.2f} | Keltner: ${asr_data.get('keltner_capital', 0):.2f}")
-    else:
-        report.append("🔹 Aster Shadow RP: State not found.")
-
-    # ─── Aster Shadow LV (D-456) ───
-    asl_data = load_from_github("exchanges/aster/state/m11_aster_shadow_lv_state.json")
-    if asl_data:
-        eq = asl_data.get("total_equity", 10000.0)
-        report.append("🌐 **Aster Shadow LV (M31=97%, LV=3%)**")
-        report.append(f"   Equity: ${eq:.2f} | LV Cap: ${asl_data.get('low_vol_capital', 0):.2f}")
-        report.append(f"   LV Positions: {len(asl_data.get('low_vol_pos', {}))}")
-    else:
-        report.append("🔹 Aster Shadow LV: State not found.")
-
-    # ─── KuCoin Combo Shadow (D-486) ───
-    kcs_data = load_from_github("exchanges/kucoin/state/m11_kucoin_shadow_combo_state.json")
-    if kcs_data:
-        hist = kcs_data.get("history", [])
-        last = hist[-1] if hist else {}
-        eq = last.get("combo_hypo_equity", 10000.0)
-        m31 = last.get("m31_real_equity", eq)
-        report.append("🌐 **KuCoin Combo Shadow (M31+Keltner+Dual)**")
-        report.append(f"   Combo: ${eq:.2f} | M31: ${m31:.2f}")
-        report.append(f"   Diff: {last.get('diff_pct', 0):+.4f}% | Snapshots: {len(hist)}")
-    else:
-        report.append("🔹 KuCoin Combo (S): State not found.")
-
-
-    # ─── HL Shadow RP (D-510) ───
-    hsrp_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_rp_portfolio.json")
-    if hsrp_data:
-        eq = hsrp_data.get("total_equity", hsrp_data.get("total_capital", 10000.0))
-        report.append("🌐 **HL Shadow RP (M31 98.9% + Keltner)**")
-        report.append(f"   Equity: ${eq:.2f}")
-    else:
-        report.append("🔹 HL Shadow RP: State not found.")
-
-    # ─── HL Shadow MOM (D-522) ───
-    hsmom_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_mom_portfolio.json")
-    if hsmom_data:
-        eq = hsmom_data.get("total_equity", hsmom_data.get("total_capital", 10000.0))
-        report.append("🌐 **HL Shadow MOM (M31_MOMENTUM)**")
-        report.append(f"   Equity: ${eq:.2f}")
-    else:
-        report.append("🔹 HL Shadow MOM: State not found.")
-
-    # ─── HL Shadow MLP (D-528) ───
-    hsmlp_data = load_from_github("exchanges/hyperliquid/state/m11_hl_shadow_mlp_portfolio.json")
-    if hsmlp_data:
-        eq = hsmlp_data.get("portfolio_equity", 10000.0)
-        report.append("🌐 **HL Shadow MLP (Portfolio)**")
-        report.append(f"   Equity: ${eq:.2f}")
-    else:
-        report.append("🔹 HL Shadow MLP: State not found.")
-
-    final_report = "\n".join(report)
-    print(final_report)
-
-    if alerts:
-        final_report += "\n\n🚨 **ALERTS:**\n" + "\n".join(alerts)
-
-    send_bale(final_report)
+    print("\n" + "="*70)
+    print(f" GRAND TOTAL: ${m31_total + pred_total:,.2f}")
 
 if __name__ == "__main__":
     main()
