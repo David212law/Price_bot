@@ -25,3 +25,19 @@ Current Equity: $19880.00
   Bought 0.211968 OSMO @ 10,400 TMN ($2204.47)
   Bought 0.052177 AGLD @ 42,250 TMN ($2204.47)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-08
+Detected Regime: FLAT
+✅ Loaded dynamic strategies from Researcher JSON.
+Traceback (most recent call last):
+  File "/home/runner/work/Price_bot/Price_bot/scripts/wallex_paper_bot.py", line 162, in <module>
+    main()
+  File "/home/runner/work/Price_bot/Price_bot/scripts/wallex_paper_bot.py", line 115, in main
+    target_port = get_target_portfolio(df, regime)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/wallex_paper_bot.py", line 86, in get_target_portfolio
+    p = int(s.replace("bb", ""))
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '30_1.5'
