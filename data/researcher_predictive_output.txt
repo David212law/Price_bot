@@ -1,0 +1,8 @@
+================================================================================
+ PREDICTIVE RESEARCHER v2 — Multi-Market
+================================================================================
+❌ TMN: name 'df' is not defined
+❌ USDT: name 'df' is not defined
+❌ GLOBAL: name 'df' is not defined
+✅ Saved results to JSON
+⚠️ Bale credentials not set. Skipping message.
