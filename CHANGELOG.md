@@ -7,3 +7,8 @@ All significant changes to strategies, thresholds, and architecture.
 - ADDED: Changelog for all auto-approvals
 - REASON: Previous version removed Human entirely, which is unsafe.
 
+
+## 2026-11-09 — v11.2 (Stability window adjusted)
+- CHANGED: Auto-approve stability window from 30 days to 7 days
+- REASON: 30 days made system too slow to adapt. 7 days = 1 week, balances safety and freshness.
+

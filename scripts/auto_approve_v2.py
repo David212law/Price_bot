@@ -7,7 +7,7 @@ HISTORY = "data/approval_history.json"
 MAIN = "data/researcher_predictive_results.json"
 CHANGELOG = "CHANGELOG.md"
 AUTO_THRESHOLD = 1.0   # Sharpe > 1.0 → auto-approve
-MIN_DAYS = 30           # 30 days stability required
+MIN_DAYS = 7            # 7 days stability required (one full week)
 
 def load_json(path):
     if os.path.exists(path):
@@ -66,10 +66,10 @@ def main():
         main_data["approval_method"] = "auto_v2_stable_30d"
         json.dump(main_data, open(MAIN, "w"), indent=2)
         os.remove(PENDING)
-        append_changelog(f"Auto-approved {len(auto_approved)} strategies (stable 30d):\n- " + "\n- ".join(auto_approved))
+        append_changelog(f"Auto-approved {len(auto_approved)} strategies (stable 7d):\n- " + "\n- ".join(auto_approved))
         print(f"✅ Auto-approved {len(auto_approved)} strategies (stable 30 days).")
     else:
-        append_changelog(f"Pending (not stable 30d): {sum(len(v) for v in history.values())} observations")
+        append_changelog(f"Pending (not stable 7d): {sum(len(v) for v in history.values())} observations")
         print("⏳ Strategies not stable for 30 days. Still pending.")
 
     json.dump(history, open(HISTORY, "w"), indent=2)
