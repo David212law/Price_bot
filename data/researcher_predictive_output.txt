@@ -1,8 +1,8 @@
 ================================================================================
  PREDICTIVE RESEARCHER v2 — Multi-Market
 ================================================================================
-❌ TMN: name 'df' is not defined
-❌ USDT: name 'df' is not defined
-❌ GLOBAL: name 'df' is not defined
+✅ TMN: 185 assets
+✅ USDT: 185 assets
+✅ GLOBAL: 13 assets
 ✅ Saved results to JSON
-⚠️ Bale credentials not set. Skipping message.
+✅ Bale message sent.
