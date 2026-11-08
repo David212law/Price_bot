@@ -217,12 +217,13 @@ def main():
         print(f"✅ GLOBAL: {len(df.columns)} assets")
     except Exception as e: print(f"❌ GLOBAL: {e}")
 
-    with open("data/researcher_predictive_results.json", "w") as f:
+    # Save to pending (requires human approval)
+    with open("data/researcher_pending.json", "w") as f:
         json.dump(results, f, indent=2)
-    print("✅ Saved results to JSON")
+    print("✅ Saved results to PENDING. Human approval required.")
 
     # Bale
-    msg = "🤖 *Predictive Researcher v2*\n\n"
+    msg = "🤖 *Predictive Researcher — PENDING APPROVAL*\n\n"
     for m, r in results.items():
         if not r: continue
         msg += f"📊 *{m}* ({r['assets']} assets, {r['days']}d)\n"
@@ -230,6 +231,7 @@ def main():
         msg += f"├ Predicted: {r['predictive']['return']:+.1f}% (DD {r['predictive']['dd']:.1f}%, Sh {r['predictive']['sharpe']:.2f})\n"
         msg += f"└ B&H BTC: {r['bnh_btc']['return']:+.1f}%\n"
         msg += "Top: " + ", ".join([f"{k}:{v[0]}" for k,v in r['predictive']['top'].items()]) + "\n\n"
+    msg += "\n✅ برای تأیید: در ترموس دستور python3 scripts/approve_strategies.py را اجرا کنید."
     send_bale(msg)
 
 if __name__ == "__main__":
