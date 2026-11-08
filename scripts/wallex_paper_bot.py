@@ -1,4 +1,4 @@
-"""WALLEX PAPER BOT — Live execution of Vol+Trend Ensemble."""
+"""WALLEX PAPER BOT — Live execution of Vol+Trend Ensemble with Active Strategies."""
 import os, json
 import pandas as pd
 import numpy as np
@@ -19,7 +19,7 @@ def load_data():
     return df
 
 def detect_regime(df):
-    """Vol + Trend Logic"""
+    """Vol + Trend Logic (Optimized from Oracle testing)"""
     btc = df["BTC"]
     rets = btc.pct_change()
     vol = rets.rolling(14).std() * np.sqrt(365)
@@ -39,8 +39,7 @@ def detect_regime(df):
     return "CRASH"
 
 def get_target_portfolio(df, regime):
-    """Returns dict of {asset: weight} based on trained logic"""
-    # These top 3s were derived from the Oracle test on TRAIN data
+    """Executes the actual active strategies chosen by Oracle for this regime"""
     top_per_regime = {
         "BULL_STRONG": ["bh_XRP", "bh_BTC", "rsi21"],
         "BULL": ["bb15", "bb30", "bh_XRP"],
@@ -50,24 +49,56 @@ def get_target_portfolio(df, regime):
     }
     
     strats = top_per_regime.get(regime, ["bh_BTC"])
-    
-    # For simplicity in paper bot, we only execute pure B&H strategies right now
-    # because active strategies need daily asset rebalancing.
-    # Since Oracle chose bh_XRP, bh_BTC, bh_TRX mostly, we can hold those.
     portfolio = {}
+    
+    def get_bb_oversold(p):
+        ma = df.rolling(p).mean()
+        sd = df.rolling(p).std()
+        z = (df - ma) / sd
+        z_today = z.iloc[-1]
+        oversold = z_today[z_today < -2].sort_values(ascending=True).head(3)
+        return list(oversold.index) if not oversold.empty else ["BTC"]
+
+    def get_btfd(dip):
+        ret = df.pct_change(5).iloc[-1]
+        dips = ret[ret < -dip/100].sort_values(ascending=True).head(3)
+        return list(dips.index) if not dips.empty else ["BTC"]
+
+    def get_rsi_oversold(p):
+        delta = df.diff()
+        up = delta.clip(lower=0).ewm(alpha=1/p, adjust=False).mean()
+        down = -delta.clip(upper=0).ewm(alpha=1/p, adjust=False).mean()
+        rsi = 100 - 100/(1 + up/down)
+        rsi_today = rsi.iloc[-1]
+        oversold = rsi_today[rsi_today < 30].sort_values(ascending=True).head(3)
+        return list(oversold.index) if not oversold.empty else ["BTC"]
+
     for s in strats:
+        w = 1.0 / len(strats)  # Equal weight per strategy
         if s.startswith("bh_"):
             asset = s.replace("bh_", "")
-            portfolio[asset] = portfolio.get(asset, 0) + 1.0/len(strats)
-        else:
-            # Fallback to BTC if active strategy selected to avoid overcomplication in MVP bot
-            portfolio["BTC"] = portfolio.get("BTC", 0) + 1.0/len(strats)
-            
+            portfolio[asset] = portfolio.get(asset, 0) + w
+        elif s.startswith("bb"):
+            p = int(s.replace("bb", ""))
+            assets = get_bb_oversold(p)
+            for a in assets:
+                portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+        elif s.startswith("btfd"):
+            dip = int(s.replace("btfd", ""))
+            assets = get_btfd(dip)
+            for a in assets:
+                portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+        elif s.startswith("rsi"):
+            p = int(s.replace("rsi", ""))
+            assets = get_rsi_oversold(p)
+            for a in assets:
+                portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+                
     return portfolio
 
 def main():
     print("="*80)
-    print(" WALLEX PAPER BOT — EXECUTION")
+    print(" WALLEX PAPER BOT — EXECUTION (Active Strategies)")
     print("="*80)
     
     df = load_data()
@@ -80,13 +111,11 @@ def main():
     target_port = get_target_portfolio(df, regime)
     print(f"Target Portfolio: {target_port}")
     
-    # Load State
     if os.path.exists(STATE_FILE):
         state = json.load(open(STATE_FILE))
     else:
-        state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_date": None}
+        state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_date": None, "last_port_keys": []}
         
-    # Update value based on current prices
     current_val = state["capital"]
     for asset, qty in state["holdings"].items():
         if asset in df.columns:
@@ -94,27 +123,32 @@ def main():
             
     print(f"Current Equity: ${current_val:.2f}")
     
-    # Rebalance if regime changed
-    if regime != state["last_regime"]:
-        print(f"🔄 REGIME CHANGED: {state['last_regime']} -> {regime}. Rebalancing...")
-        # Apply 0.6% fee for full rebalance
-        fee = current_val * 0.006
+    curr_keys = set(target_port.keys())
+    prev_keys = set(state.get("last_port_keys", []))
+    
+    # Rebalance if regime changes OR if the target assets change
+    if regime != state["last_regime"] or curr_keys != prev_keys or not state["holdings"]:
+        print(f"🔄 REBALANCING... (Regime: {state['last_regime']} -> {regime}, Assets: {prev_keys} -> {curr_keys})")
+        
+        # Fee: 0.6% for regime change, 0.2% for daily active rotation
+        fee_pct = 0.006 if regime != state["last_regime"] else 0.002
+        fee = current_val * fee_pct
         current_val -= fee
         state["capital"] = current_val
         state["holdings"] = {}
         
-        # Buy new portfolio
         for asset, weight in target_port.items():
             if asset in df.columns:
                 price = df[asset].iloc[-1]
                 alloc = current_val * weight
                 qty = alloc / price
                 state["holdings"][asset] = qty
-                print(f"  Bought {qty:.4f} {asset} @ {price:,.0f} TMN (${alloc:.2f})")
+                print(f"  Bought {qty:.6f} {asset} @ {price:,.0f} TMN (${alloc:.2f})")
                 
         state["last_regime"] = regime
+        state["last_port_keys"] = list(curr_keys)
     else:
-        print("No regime change. Holding current portfolio.")
+        print("No regime change or asset rotation. Holding current portfolio.")
         
     state["last_date"] = today
     json.dump(state, open(STATE_FILE, "w"), indent=2)
