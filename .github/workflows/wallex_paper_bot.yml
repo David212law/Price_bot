@@ -1,0 +1,20 @@
+name: Wallex Paper Bot
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * *'  # هر روز ساعت ۱۲ ظهر UTC
+permissions: { contents: write }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install pandas numpy
+      - run: python scripts/wallex_paper_bot.py 2>&1 | tee -a data/wallex_paper_bot.log
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/wallex_paper_bot_state.json data/wallex_paper_bot.log
+          git diff --cached --quiet || (git commit -m "Auto: Wallex Paper Bot State [skip ci]" && git pull --rebase origin main && git push)
