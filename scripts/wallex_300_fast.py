@@ -177,7 +177,7 @@ def main():
         
         # Regime detection
         if "BTC" in df.columns:
-            btc_ret = df["BTC"].pct_change(30)
+            btc_ret = df["BTC"].pct_change(30) * 100  # ← FIX: convert to percent
             regimes = pd.Series("FLAT", index=df.index)
             regimes[btc_ret > 15] = "BULL_STRONG"
             regimes[(btc_ret > 5) & (btc_ret <= 15)] = "BULL"
