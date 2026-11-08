@@ -24,7 +24,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f data/regime_analysis_output.txt
+          git add -A data/ || true
           if git diff --cached --quiet; then
             echo "No changes"
           else
