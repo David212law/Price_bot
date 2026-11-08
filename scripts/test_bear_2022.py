@@ -47,18 +47,32 @@ def build_strategies(df):
     return S
 
 def detect_regime(df):
+    """v2 — Improved regime detection with drawdown + distance from MA50."""
     if "BTC" not in df.columns: return pd.Series("FLAT", index=df.index)
-    rets = df["BTC"].pct_change()
+    btc = df["BTC"]
+    rets = btc.pct_change()
     vol = rets.rolling(14).std() * np.sqrt(365)
-    ma50 = df["BTC"].rolling(50).mean()
+    ma50 = btc.rolling(50).mean()
+    ath = btc.cummax()
+    drawdown = (btc / ath - 1) * 100  # Negative if below ATH
+    distance_ma50 = (btc / ma50 - 1) * 100
+    
     regs = pd.Series("FLAT", index=df.index)
-    cond1 = df["BTC"] > ma50
-    cond2 = df["BTC"] <= ma50
-    regs[cond1 & (vol < 1.0)] = "BULL_STRONG"
-    regs[cond1 & (vol >= 1.0)] = "BULL"
-    regs[cond2 & (vol < 1.0)] = "FLAT"
-    regs[cond2 & (vol >= 1.0) & (vol < 2.0)] = "BEAR"
-    regs[cond2 & (vol >= 2.0)] = "CRASH"
+    
+    # Priority order: CRASH > BEAR > BULL > FLAT
+    # CRASH: vol very high OR deep drawdown
+    crash_mask = (vol > 1.5) | (drawdown < -50)
+    # BEAR: distance from MA50 negative OR high vol OR drawdown moderate
+    bear_mask = (distance_ma50 < -10) | (vol > 0.8) | (drawdown < -25)
+    # BULL_STRONG: above MA50 + strong
+    bull_strong_mask = (distance_ma50 > 10) & (vol < 1.0)
+    # BULL: above MA50
+    bull_mask = (distance_ma50 > 0)
+    
+    regs[bull_mask] = "BULL"
+    regs[bull_strong_mask] = "BULL_STRONG"
+    regs[bear_mask] = "BEAR"
+    regs[crash_mask] = "CRASH"
     return regs
 
 def stats(daily):
