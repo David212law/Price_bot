@@ -1,6 +1,7 @@
 """Find best strategy per regime — the test we should have done from start."""
+import os
 import sys
-sys.path.insert(0, "scripts")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from regime_bot_v2 import load, daily_rets, rolling_mean, rolling_std, detect_regime
 from regime_bot_v4 import simulate_v4
 
