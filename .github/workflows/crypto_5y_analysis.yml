@@ -1,0 +1,32 @@
+name: Crypto 5y + Regime Analysis
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 0'
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install yfinance
+      - run: python scripts/fetch_crypto_5y.py
+      - run: python scripts/analyze_regimes_5y.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/crypto_5y_usd.json data/regime_analysis_5y.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Auto: crypto 5y + regime analysis [skip ci]"
+            git push
+          fi
