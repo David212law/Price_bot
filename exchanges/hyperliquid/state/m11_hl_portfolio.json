@@ -1,6 +1,6 @@
 {
-  "total_capital": 9993.637630227735,
-  "m31_capital": 6493.637630227735,
+  "total_capital": 9993.706362999801,
+  "m31_capital": 6493.706362999802,
   "m35_capital": 0.0,
   "m40_capital": 364.5,
   "m41_capital": 0.0,
@@ -46,7 +46,7 @@
   "history": [],
   "cash_capital": 3000.0,
   "peak_equity": 9998.705508417668,
-  "last_run": "2026-11-07T20:09:58.757411+00:00",
+  "last_run": "2026-11-08T05:51:50.656132+00:00",
   "hedge_structure": {
     "XRP": {
       "spot_pct": 0.45,
