@@ -2,23 +2,27 @@ name: Predictive Researcher
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * 1' # هر دوشنبه ساعت ۳ بامداد UTC
+    - cron: "0 3 * * 1"
 permissions: { contents: write }
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: '3.11' }
+        with: { python-version: "3.11" }
       - run: pip install pandas numpy
-      - run: python scripts/researcher_predictive.py 2>&1 | tee data/researcher_predictive_output.txt
+      - name: Fetch Live Wallex Data
+        run: python scripts/fetch_wallex_full.py
+      - name: Run Predictive Researcher
+        run: python scripts/researcher_predictive.py 2>&1 | tee data/researcher_predictive_output.txt
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-      - run: |
+      - name: Commit Results
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f data/researcher_predictive_results.json data/researcher_predictive_output.txt
-          git diff --cached --quiet || (git commit -m "Auto: predictive researcher weekly update [skip ci]" && git pull --rebase origin main && git push)
+          git add -f data/wallex_tmn_all.json data/wallex_usdt_all.json data/researcher_predictive_results.json data/researcher_predictive_output.txt
+          git diff --cached --quiet || (git commit -m "Auto: live data + predictive researcher [skip ci]" && git pull --rebase origin main && git push)
