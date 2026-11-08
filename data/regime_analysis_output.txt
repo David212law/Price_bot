@@ -1,4 +1,79 @@
-Traceback (most recent call last):
-  File "/home/runner/work/Price_bot/Price_bot/scripts/find_best_per_regime.py", line 4, in <module>
-    from regime_bot_v2 import load, daily_rets, rolling_mean, rolling_std, detect_regime
-ModuleNotFoundError: No module named 'regime_bot_v2'
+==============================================================================================
+ FIND BEST STRATEGY PER REGIME — the test we should have done from start
+==============================================================================================
+
+Data: 3076 days (2011-11-27 -> 2026-11-05)
+TRAIN: 2011-11-27 -> 2022-09-14  |  TEST: 2022-09-14 -> 2026-11-05
+
+==============================================================================================
+ STEP 1: For each regime, rank 14 strategies on TRAIN
+==============================================================================================
+
+  BULL_STRONG: only 10 train days — using tether
+
+  BULL  (17 train days)
+    1. mom20         +2.4102%/day ⬅ BEST
+    2. break20       +1.4806%/day
+    3. mom10         +1.3136%/day
+    4. mom30         +0.7622%/day
+
+  FLAT  (22 train days)
+    1. mom20         +1.7695%/day ⬅ BEST
+    2. mom30         +1.5836%/day
+    3. break20       +1.4923%/day
+    4. mom10         +1.3842%/day
+
+  BEAR  (21 train days)
+    1. break20       +0.6852%/day ⬅ BEST
+    2. bh_btc        +0.2226%/day
+    3. break50       +0.2116%/day
+    4. mom10         +0.2064%/day
+
+  CRASH  (57 train days)
+    1. break20       +0.9376%/day ⬅ BEST
+    2. mom10         +0.6461%/day
+    3. mom20         +0.3846%/day
+    4. mom30         +0.2584%/day
+
+==============================================================================================
+ STEP 2: Apply best_per_regime on TEST (never seen)
+==============================================================================================
+
+  Strategy                    Total       DD   Sharpe   Mean/day
+  ----------------------------------------------------------------
+  REGIME_COMBINED        +17708.1%   24.2%    3.27  +0.6263%
+  mom10                  +2711159.8%   25.3%    5.08  +1.2106%
+  mom20                  +320681.4%   32.3%    4.13  +0.9761%
+  mom30                  +100126.9%   31.2%    3.73  +0.8404%
+  mom60                  +38551.6%   32.0%    3.33  +0.7332%
+  break20                +37301297.5%   20.0%    7.77  +1.4593%
+  break50                +7431077.0%   20.9%    6.67  +1.2837%
+  ma20_50                   +20.3%   27.8%    0.38  +0.0388%
+  ma50_200                  +96.5%   31.6%    1.05  +0.0854%
+  rsi_mr                    -92.1%   93.2%   -1.68  -0.2375%
+  bb_mr                     -95.5%   95.8%   -1.99  -0.2944%
+  bh_btc                   +654.2%   36.4%    1.65  +0.2667%
+  bh_bnb                   +268.4%   44.9%    1.14  +0.1953%
+  bh_eth                   +228.0%   51.8%    1.00  +0.2042%
+  tether                   +198.1%   22.8%    1.44  +0.1344%
+
+----------------------------------------------------------------
+  B&H BTC-TMN              +654.2%   36.4%    1.65  +0.2667%
+  v4a (baseline)           +567.9%   27.5%    1.91
+
+==============================================================================================
+ INTERPRETATION
+==============================================================================================
+
+  BEST_PER_REGIME  vs  B&H BTC:  +17708.1%  vs  +654.2%   diff: +17053.8%
+  BEST_PER_REGIME  vs  v4a:      +17708.1%  vs  +567.9%   diff: +17140.2%
+
+  چه چیزی یاد گرفتیم:
+    BULL_STRONG   : our v4a used momentum       | test says best is tether     [DIFFERENT]
+    BULL          : our v4a used momentum       | test says best is mom20      [DIFFERENT]
+    FLAT          : our v4a used meanreversion  | test says best is mom20      [DIFFERENT]
+    BEAR          : our v4a used tether         | test says best is break20    [DIFFERENT]
+    CRASH         : our v4a used tether         | test says best is break20    [DIFFERENT]
+
+  نتیجه نهایی:
+  ✅ regime-aware با انتخاب درست استراتژی، از B&H و v4a بهتر است
