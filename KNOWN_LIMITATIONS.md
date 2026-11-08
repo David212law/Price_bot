@@ -58,3 +58,13 @@ Corrected result (with fixed Kill Switch logic):
 
 Action: Kill Switch will be kept as safety net but not relied upon. 
 Vol+Trend regime detection is the primary defense mechanism.
+
+## Final Validation (2026-11-09): 2022 +27.7% is REAL, but trade-off exists
+- 2022 (bear): Strategy +27.7% vs B&H -65.3% (+93 units better)
+- 2023 (bull): Strategy +61.7% vs B&H +154.2% (-92.5 units worse)
+- Conclusion: System is DEFENSIVE, not AGGRESSIVE.
+  - Protects in bear markets (goes to Tether)
+  - Underperforms in bull markets (misses full upside)
+- This is by design, not a bug.
+- Live Gate decision: If goal is "capital preservation in crisis", system is ready.
+  If goal is "maximum return in bull", B&H is better.
