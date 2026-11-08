@@ -36,3 +36,13 @@ Researcher uses 80/20 split. If the 20% holdout is random, it can be contaminate
 - Max DD < 15%
 - No Kill Switch triggered in first 3 months
 - Iran currency crisis test passed (see #1 above)
+
+## Iran Currency Crisis Test Results (2026-11-09)
+- Test data: Wallex TMN, 799 days (Sep 2024 → Nov 2026)
+- Crisis days detected: 300/799 (37.5%)
+- During crisis: BTC/TMN +427%, USDT/TMN +327%
+- Correlation BTC vs USDT: 0.33 (moderate)
+- **Conclusion:** Survival Mode (Tether in BEAR/CRASH) provides partial protection.
+  In Iran currency crises, BTC actually outperforms Tether (+427% vs +327%).
+  This means Survival Mode protects against **crypto** crashes, not **currency** crises.
+  Full dual-crisis detection requires additional filter (not implemented in v7.0).
