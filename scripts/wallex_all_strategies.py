@@ -70,6 +70,9 @@ def build_sweep():
 
 def resolve(fn_tuple, tmn, tether, date):
     """Execute strategy decision -> return list of asset names."""
+    # Unwrap if tuple-in-tuple
+    if isinstance(fn_tuple, tuple) and len(fn_tuple) == 1 and isinstance(fn_tuple[0], tuple):
+        fn_tuple = fn_tuple[0]
     kind = fn_tuple[0]
     if kind == "mom":
         _, n, top, filt = fn_tuple
@@ -264,7 +267,7 @@ def main():
         for i in range(1, len(dates)):
             d, dp = dates[i], dates[i-1]
             for name, fn in strategies.items():
-                holds = resolve(fn, tmn, tether, dp)
+                holds = resolve(fn[0] if isinstance(fn, tuple) and len(fn) == 1 else fn, tmn, tether, dp)
                 if not holds:
                     strat_rets[name][d] = 0.0
                 else:
