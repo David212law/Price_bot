@@ -134,7 +134,7 @@ def main():
         fee_pct = 0.006 if regime != state["last_regime"] else 0.002
         fee = current_val * fee_pct
         current_val -= fee
-        state["capital"] = current_val
+        state["capital"] = 0.0  # Fully invested (no cash left)
         state["holdings"] = {}
         
         for asset, weight in target_port.items():
