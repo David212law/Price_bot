@@ -1,0 +1,37 @@
+================================================================================
+ BEAR MARKET TEST — 2022 (LUNA + FTX + Bear)
+================================================================================
+
+Data: 365 days (2022-01-01 → 2022-12-31)
+Assets: 10
+
+📊 Regime distribution in 2022:
+  BULL_STRONG      0 days (0.0%)
+  BULL             0 days (0.0%)
+  FLAT           365 days (100.0%)
+  BEAR             0 days (0.0%)
+  CRASH            0 days (0.0%)
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3816, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 172, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 201, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7726, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7734, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'BTC'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/Price_bot/Price_bot/scripts/test_bear_2022.py", line 165, in <module>
+    main()
+  File "/home/runner/work/Price_bot/Price_bot/scripts/test_bear_2022.py", line 95, in main
+    btc_ret = (df["BTC"].iloc[-1] / df["BTC"].iloc[0] - 1) * 100
+               ~~^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pandas/core/frame.py", line 4330, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3823, in get_loc
+    raise KeyError(key) from err
+KeyError: 'BTC'
