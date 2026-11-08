@@ -74,7 +74,9 @@ def main():
     print("="*80)
     
     raw = json.load(open("data/crypto_2022_bear.json"))
-    df = pd.DataFrame(raw)
+    # Strip -USD from keys
+    cleaned = {k.replace("-USD", ""): v for k, v in raw.items()}
+    df = pd.DataFrame(cleaned)
     df.index = pd.to_datetime(df.index)
     df = df.sort_index().ffill()
     rets = df.pct_change().fillna(0)
