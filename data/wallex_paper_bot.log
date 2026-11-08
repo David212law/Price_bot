@@ -8,3 +8,20 @@ Current Equity: $10000.00
 🔄 REGIME CHANGED: None -> FLAT. Rebalancing...
   Bought 0.0000 BTC @ 20,296,835,582 TMN ($9940.00)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-08
+Detected Regime: FLAT
+Target Portfolio: {'SYRUP': 0.2222222222222222, 'EGLD': 0.1111111111111111, 'WBTC': 0.1111111111111111, 'BCH': 0.1111111111111111, 'MAJOR': 0.1111111111111111, 'XRP': 0.1111111111111111, 'OSMO': 0.1111111111111111, 'AGLD': 0.1111111111111111}
+Current Equity: $19880.00
+🔄 REBALANCING... (Regime: FLAT -> FLAT, Assets: set() -> {'WBTC', 'XRP', 'BCH', 'OSMO', 'MAJOR', 'SYRUP', 'EGLD', 'AGLD'})
+  Bought 0.121996 SYRUP @ 36,140 TMN ($4408.94)
+  Bought 0.002756 EGLD @ 800,000 TMN ($2204.47)
+  Bought 0.000000 WBTC @ 19,893,789,982 TMN ($2204.47)
+  Bought 0.000034 BCH @ 65,113,694 TMN ($2204.47)
+  Bought 0.271420 MAJOR @ 8,122 TMN ($2204.47)
+  Bought 0.007123 XRP @ 309,500 TMN ($2204.47)
+  Bought 0.211968 OSMO @ 10,400 TMN ($2204.47)
+  Bought 0.052177 AGLD @ 42,250 TMN ($2204.47)
+Saved state to data/wallex_paper_bot_state.json
