@@ -127,7 +127,9 @@ def main():
                           "CRASH": ["bh_BTC"], "FLAT": ["btfd30_h5"]}
         print(f"⚠️ Using fallback strategies")
     
-    # Apply strategies
+    # Apply strategies with SMART regime-specific logic:
+    # - BEAR/CRASH: Always go to TETHER (survival mode)
+    # - FLAT/BULL: Use researcher's top strategies
     combined = []
     cur_strats = []
     switches = 0
@@ -137,10 +139,17 @@ def main():
         if r == "UNKNOWN": 
             combined.append(0)
             continue
-        strats = [s for s in top_per_regime.get(r, ["bh_BTC"]) if s in strat_rets.columns]
-        if not strats:
-            strats = ["bh_BTC"]
-        r_val = strat_rets.loc[d, strats].mean() if d in strat_rets.index else 0
+        
+        # SMART: In BEAR/CRASH, force TETHER (0% return, safe)
+        if r in ["BEAR", "CRASH"]:
+            r_val = 0.0  # Tether return = 0
+            strats = ["TETHER"]
+        else:
+            strats = [s for s in top_per_regime.get(r, ["bh_BTC"]) if s in strat_rets.columns]
+            if not strats:
+                strats = ["bh_BTC"]
+            r_val = strat_rets.loc[d, strats].mean() if d in strat_rets.index else 0
+        
         if set(strats) != set(cur_strats):
             r_val -= FEE * 0.5
             switches += 1
