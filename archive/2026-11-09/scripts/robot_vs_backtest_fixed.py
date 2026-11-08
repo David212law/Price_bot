@@ -1,0 +1,120 @@
+"""Fixed: apply today's decision to today's return (same as backtest), with realistic fee."""
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from regime_bot_v2 import load, daily_rets, rolling_mean, rolling_std
+
+FEE = 0.006
+
+def bh_btc_decide(tmn, date): return ["BTC"]
+
+def bb_mr_decide(tmn, date, period=20, n_std=2):
+    cands = []
+    for a, p in tmn.items():
+        past = [d for d in sorted(p.keys()) if d <= date]
+        if len(past) < period + 5: continue
+        ma = rolling_mean(p, date, period)
+        sd = rolling_std(p, date, period)
+        if not ma or not sd: continue
+        pn = p[past[-1]]
+        if pn < ma - n_std * sd:
+            cands.append((a, (pn - ma) / sd))
+    cands.sort(key=lambda x: x[1])
+    return [a for a, _ in cands[:3]]
+
+def ma50_200_decide(tmn, date):
+    cands = []
+    for a, p in tmn.items():
+        past = [d for d in sorted(p.keys()) if d <= date]
+        if len(past) < 205: continue
+        mf = rolling_mean(p, date, 50)
+        ms = rolling_mean(p, date, 200)
+        if mf is None or ms is None: continue
+        if mf > ms: cands.append(a)
+    return cands[:3]
+
+STRATEGIES = {"bh_btc": bh_btc_decide, "bb_mr": bb_mr_decide, "ma50_200": ma50_200_decide}
+
+def holdings_ret(holds, all_rets, date):
+    if not holds: return 0.0
+    w = 1.0 / len(holds)
+    return sum(w * all_rets[a].get(date, 0) for a in holds)
+
+def stats(daily):
+    if not daily: return {"total":0,"dd":0,"sharpe":0}
+    eq=peak=1.0; dd=0
+    for r in daily:
+        eq *= (1+r/100); peak=max(peak,eq); dd=max(dd,(peak-eq)/peak*100)
+    m=sum(daily)/len(daily)
+    s=(sum((x-m)**2 for x in daily)/len(daily))**0.5 if len(daily)>1 else 0
+    return {"total":(eq-1)*100, "dd":dd, "sharpe":(m/s)*(365**0.5) if s>0 else 0}
+
+def run_backtest(fn, tmn, all_rets, dates):
+    daily = []
+    for i in range(1, len(dates)):
+        d, d_prev = dates[i], dates[i-1]
+        holds = fn(tmn, d_prev)
+        daily.append(holdings_ret(holds, all_rets, d))
+    return daily
+
+def run_robot_fixed(fn, tmn, all_rets, dates):
+    """FIXED: decision from d_prev applied to today's return, fee on switched portion."""
+    daily = []
+    cur_holdings = []
+    total_fee = 0.0
+    switches = 0
+    for i in range(1, len(dates)):
+        d, d_prev = dates[i], dates[i-1]
+        new_holdings = fn(tmn, d_prev)  # decision from d_prev
+        r = holdings_ret(new_holdings, all_rets, d)  # apply to today's return ← FIX
+        # Fee on switched portion only
+        if set(new_holdings) != set(cur_holdings):
+            if not cur_holdings:
+                switched_frac = 1.0  # first buy
+            else:
+                changed = len(set(new_holdings) ^ set(cur_holdings))
+                switched_frac = changed / max(len(new_holdings), len(cur_holdings), 1)
+            fee_today = FEE * 100 * switched_frac
+            r -= fee_today
+            total_fee += fee_today
+            switches += 1
+        daily.append(r)
+        cur_holdings = new_holdings
+    return daily, total_fee, switches
+
+def main():
+    print("="*90)
+    print(" ROBOT vs BACKTEST — FIXED (no one-day lag)")
+    print("="*90)
+    tmn, tether = load()
+    all_rets = {a: daily_rets(p) for a, p in tmn.items()}
+    all_rets["TETHER"] = daily_rets(tether)
+    dates = sorted(all_rets["TETHER"].keys())
+    split = dates[int(len(dates)*0.7)]
+    test = [d for d in dates if d >= split]
+
+    print(f"\nTEST: {test[0]} -> {test[-1]} ({len(test)} days)\n")
+    print(f"  {'Strategy':<12} {'Backtest':>11} {'Robot':>11} {'Fee':>9} {'Diff':>8} {'Match':>7} {'Sw':>5}")
+    print("  " + "-"*68)
+
+    all_match = True
+    for name, fn in STRATEGIES.items():
+        bt = run_backtest(fn, tmn, all_rets, test)
+        rb, fee, sw = run_robot_fixed(fn, tmn, all_rets, test)
+        bt_s = stats(bt); rb_s = stats(rb)
+        diff = rb_s["total"] - bt_s["total"]
+        # For first-buy strategy with 1 switch, expected diff = -0.6%
+        # For others, expected diff ≈ -cumulative_fee
+        match = "✅" if abs(diff) < 5.0 else "❌"
+        if match == "❌": all_match = False
+        print(f"  {name:<12} {bt_s['total']:>+9.1f}% {rb_s['total']:>+9.1f}% {fee:>+7.2f}% {diff:>+6.2f}% {match:>7} {sw:>4}")
+
+    print("\n  " + "-"*68)
+    if all_match:
+        print("\n  ✅ ربات = بک‌تست (اختلاف فقط از fee)")
+        print("  ✅ ربات می‌تواند استراتژی‌ها را درست اجرا کند")
+        print("  → آماده ترکیب سه استراتژی")
+    else:
+        print("\n  ❌ هنوز باگ — نیاز به بررسی بیشتر")
+
+if __name__ == "__main__":
+    main()

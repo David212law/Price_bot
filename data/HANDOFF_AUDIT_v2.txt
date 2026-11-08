@@ -1,0 +1,108 @@
+
+==========================================================================================
+ 1. GLOBAL v4a (BTC/USD, crypto_5y_usd)
+==========================================================================================
+  File: data/regime_bot_v1_results.json
+  Windows: 6
+  Bot compound (5 windows): +38.7%
+  Tether compound: +0.0%
+
+==========================================================================================
+ 2. WALLEX 300 STRATEGIES (all 306)
+==========================================================================================
+  File: data/wallex_300_fast_results.json
+
+  [TMN]
+    Combined: -75.1% (DD 89.8%, Sh -0.42, switches=30)
+    B&H BTC:  +97.6% (DD 33.6%, Sh 2.77)
+    Best per regime: {'BULL_STRONG': 'mom45_t3_ma', 'BULL': 'mom10_t2_no', 'FLAT': 'bb30_1.5', 'BEAR': 'btfd20_h5', 'CRASH': 'brk20_t1'}
+
+  [USDT]
+    Combined: -89.5% (DD 97.8%, Sh 0.12, switches=43)
+    B&H BTC:  +7.0% (DD 28.5%, Sh 0.46)
+    Best per regime: {'BULL_STRONG': 'mom5_t1_no', 'BULL': 'bb10_1.5', 'FLAT': 'ma50_200_t1', 'BEAR': 'bb15_3', 'CRASH': 'brk10_t1'}
+
+==========================================================================================
+ 3. WALLEX ORACLE TEST (with perfect future vision)
+==========================================================================================
+  MARKET: TMN
+  Days: 799 | TRAIN: 559d | TEST: 240d
+  RESULTS on TEST (Oracle Regime):
+  Oracle Ensemble              +135.4%  DD  20.2%  Sh  3.03  (switches=24)
+  B&H BTC                       +97.6%  DD  33.6%  Sh  2.77
+  MARKET: USDT
+  Days: 799 | TRAIN: 559d | TEST: 240d
+  RESULTS on TEST (Oracle Regime):
+  Oracle Ensemble               +23.3%  DD  42.8%  Sh  0.81  (switches=27)
+  B&H BTC                        +7.0%  DD  28.5%  Sh  0.46
+
+==========================================================================================
+ 4. WALLEX PREDICTIVE REGIME (no future vision)
+==========================================================================================
+  PREDICTIVE REGIME DETECTORS — Can we approximate the Oracle?
+  MARKET: TMN
+  Oracle (Future)  -> Return   +135.4% | DD  20.2% | Sharpe  3.03 | Switches: 24
+  Past 7d Mom      -> Return   +134.2% | DD  46.3% | Sharpe  1.83 | Switches: 63
+  Vol + Trend      -> Return    +97.5% | DD  18.4% | Sharpe  2.38 | Switches: 13
+
+==========================================================================================
+ 5. WALLEX PAPER BOT STATE
+==========================================================================================
+  ❌ data/wallex_paper_bot_state.json not found (bot not run yet)
+
+==========================================================================================
+ 6. M31_LEVERAGE AUDIT (11 allocators)
+==========================================================================================
+  Leverage   File
+  ----------------------------------------------------------------------
+  0.45       m11_aster_allocator.py                             ✅ OK
+  0.45       m11_aster_combo_allocator.py                       ✅ OK
+  0.45       m11_aster_shadow_lv_allocator.py                   ✅ OK
+  0.45       m11_aster_shadow_rp_allocator.py                   ✅ OK
+  0.45       m11_aster_shadow_trend_allocator.py                ✅ OK
+  3.0        m11_hl_allocator.py                                🔴 NEEDS FIX
+  3.0        m11_hl_shadow_allocator.py                         🔴 NEEDS FIX
+  0.45       m11_hl_shadow_mlp_allocator.py                     ✅ OK
+  0.45       m11_hl_shadow_mom_allocator.py                     ✅ OK
+  3.0        m11_hl_shadow_rp_allocator.py                      🔴 NEEDS FIX
+  0.45       m11_kucoin_allocator.py                            ✅ OK
+
+  Summary: 8 fixed to 0.45, 3 still at 3.0
+  🔴 Action: 3 allocators need fix OR paper should be halted
+
+==========================================================================================
+ 7. PAPER BOTS EQUITY
+==========================================================================================
+  [u] m11_aster_combo_paper_state.json             $  10025.18
+  [u] m11_aster_paper_state.json                   $  10003.17
+  [u] m11_aster_shadow_lv_state.json               $  10030.71
+  [u] m11_aster_shadow_rp_state.json               $  10031.04
+  [u] m11_aster_shadow_trend_state.json            $   9979.30
+  [H] m11_hl_portfolio.json                        $   9993.79
+  [u] m11_hl_shadow_mlp_portfolio.json             $  10013.14
+  [u] m11_hl_shadow_mom_portfolio.json             $   9997.59
+  [H] m11_hl_shadow_portfolio.json                 $   9998.35
+  [H] m11_hl_shadow_rp_portfolio.json              $  10000.07
+  [u] m11_kucoin_paper_state.json                  $  10000.31
+  [u] m11_kucoin_shadow_combo_state.json           $      0.00
+
+  Total: 12 bots, 3 hedged, $110072.65
+
+==========================================================================================
+ 8. DATA FILES
+==========================================================================================
+  ✅ data/wallex_tmn_all.json                  2527.2KB  187 items, ~799 days each
+  ✅ data/wallex_usdt_all.json                 2293.2KB  186 items, ~497 days each
+  ✅ data/crypto_5y_usd.json                    769.9KB  13 items, ~1827 days each
+  ✅ data/usd_irr_tgju.json                      92.4KB  3997 records
+  ✅ data/btctmn_5y.json                         44.7KB  1404 records
+
+==========================================================================================
+ 9. KEY SCRIPTS
+==========================================================================================
+  ✅ wallex_paper_bot.py                 Live paper bot (Vol+Trend)
+  ✅ wallex_oracle.py                    Oracle test (proof of edge)
+  ✅ wallex_predictive_regime.py         Predictive detectors
+  ✅ wallex_300_fast.py                  300 strategies backtest
+  ✅ fetch_wallex_full.py                Fetch all Wallex data
+  ✅ regime_bot_v4.py                    Global v4a
