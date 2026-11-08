@@ -6,11 +6,11 @@ Data: 365 days (2022-01-01 → 2022-12-31)
 Assets: 10
 
 📊 Regime distribution in 2022:
-  BULL_STRONG     73 days (20.0%)
-  BULL             2 days (0.5%)
-  FLAT           264 days (72.3%)
-  BEAR            26 days (7.1%)
-  CRASH            0 days (0.0%)
+  BULL_STRONG      8 days (2.2%)
+  BULL            16 days (4.4%)
+  FLAT            79 days (21.6%)
+  BEAR            66 days (18.1%)
+  CRASH          196 days (53.7%)
 
 📈 BTC return in 2022: -65.3%
    Start: $47,723
