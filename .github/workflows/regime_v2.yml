@@ -1,0 +1,29 @@
+name: Regime Analysis v2 (OOS)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/regime_analysis_v2.py'
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/regime_analysis_v2.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/regime_analysis_v2.json
+          if git diff --cached --quiet; then echo "No changes"; else
+            git commit -m "Auto: regime analysis v2 (OOS) [skip ci]"
+            git push
+          fi
