@@ -1,12 +1,12 @@
 {
   "components": {
     "M31_HL": {
-      "equity": 6239.606498803797,
+      "equity": 6239.678738322268,
       "weight": 0.6234,
       "positions": {}
     },
     "M31_EMA_BTC": {
-      "equity": 2002.9149717621667,
+      "equity": 2002.977865295195,
       "weight": 0.1999,
       "positions": {
         "BTCUSDT": {
@@ -16,18 +16,18 @@
       }
     },
     "M31_ETH": {
-      "equity": 882.6676966765859,
+      "equity": 882.7025311572353,
       "weight": 0.0881,
       "positions": {}
     },
     "M31_AVAX": {
-      "equity": 633.4994129825945,
+      "equity": 633.5279204561788,
       "weight": 0.0632,
       "positions": {}
     }
   },
   "cash": 254.0,
-  "baseline_m31_only_equity": 10008.993421244457,
+  "baseline_m31_only_equity": 10009.10930112651,
   "baseline_m31_positions": {
     "BTC": {
       "in_pos": false
@@ -49,6 +49,6 @@
     }
   },
   "created_at": "2026-11-04T22:43:58.753796+00:00",
-  "portfolio_equity": 10012.688580225145,
-  "last_run": "2026-11-07T23:40:45.418912+00:00"
+  "portfolio_equity": 10012.887055230878,
+  "last_run": "2026-11-08T06:04:22.369293+00:00"
 }
