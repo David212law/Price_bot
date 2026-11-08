@@ -23,12 +23,12 @@ Assets: 10
 ================================================================================
   Strategy                 Return       DD   Sharpe
   --------------------------------------------------
-  Researcher Ensemble      -65.3%    66.7%   -1.34
+  Researcher Ensemble      -10.9%    22.9%   -0.27
   B&H BTC                  -65.3%    66.7%   -1.34
 
-  Switches: 1
+  Switches: 14
 
-  ⚠️ Kill Switch WOULD HAVE TRIGGERED (Return -65.3% < -10%)
+  ⚠️ Kill Switch WOULD HAVE TRIGGERED (Return -10.9% < -10%)
 
   Verdict:
-  ❌ Ensemble FAILED in bear market
+  ✅ Ensemble BEAT B&H in bear market (+54.4%)
