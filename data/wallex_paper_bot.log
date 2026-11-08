@@ -41,3 +41,21 @@ Traceback (most recent call last):
     p = int(s.replace("bb", ""))
         ^^^^^^^^^^^^^^^^^^^^^^^^
 ValueError: invalid literal for int() with base 10: '30_1.5'
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-08
+Detected Regime: FLAT
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'XRP': 0.1111111111111111, 'BCH': 0.1111111111111111, 'MAJOR': 0.2222222222222222, 'LINEA': 0.1111111111111111, 'NEXO': 0.1111111111111111, 'OSMO': 0.1111111111111111, 'HOT': 0.1111111111111111, 'AGLD': 0.1111111111111111}
+Current Equity: $10000.00
+🔄 REBALANCING... (Regime: None -> FLAT, Assets: set() -> {'OSMO', 'LINEA', 'NEXO', 'AGLD', 'XRP', 'BCH', 'HOT', 'MAJOR'})
+  Bought 0.003596 XRP @ 307,130 TMN ($1104.44)
+  Bought 0.000017 BCH @ 65,451,822 TMN ($1104.44)
+  Bought 0.271964 MAJOR @ 8,122 TMN ($2208.89)
+  Bought 2.008081 LINEA @ 550 TMN ($1104.44)
+  Bought 0.005759 NEXO @ 191,766 TMN ($1104.44)
+  Bought 0.112860 OSMO @ 9,786 TMN ($1104.44)
+  Bought 9.447771 HOT @ 117 TMN ($1104.44)
+  Bought 0.026435 AGLD @ 41,780 TMN ($1104.44)
+Saved state to data/wallex_paper_bot_state.json
