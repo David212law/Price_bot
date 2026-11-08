@@ -83,17 +83,17 @@ def get_target_portfolio(df, regime):
             asset = s.replace("bh_", "")
             portfolio[asset] = portfolio.get(asset, 0) + w
         elif s.startswith("bb"):
-            p = int(s.replace("bb", ""))
+            p = int(s.replace("bb", "").split("_")[0])
             assets = get_bb_oversold(p)
             for a in assets:
                 portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
         elif s.startswith("btfd"):
-            dip = int(s.replace("btfd", ""))
+            dip = int(s.replace("btfd", "").split("_")[0])
             assets = get_btfd(dip)
             for a in assets:
                 portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
         elif s.startswith("rsi"):
-            p = int(s.replace("rsi", ""))
+            p = int(s.replace("rsi", "").split("_")[0])
             assets = get_rsi_oversold(p)
             for a in assets:
                 portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
