@@ -1,20 +1,20 @@
 {
-  "total_equity": 10003.12453241179,
-  "m31_capital": 1003.1245324117901,
+  "total_equity": 10003.16770563776,
+  "m31_capital": 1003.1677056377596,
   "a8_capital": 0.0,
   "a20_capital": 0.0,
   "m31_last_funding_time": {
-    "BTCUSDT": 1794096000001,
-    "ETHUSDT": 1794096000001,
-    "SOLUSDT": 1794096000001,
-    "BNBUSDT": 1794096000001,
-    "XRPUSDT": 1794096000001,
-    "AVAXUSDT": 1794096000001
+    "BTCUSDT": 1794124800000,
+    "ETHUSDT": 1794124800000,
+    "SOLUSDT": 1794124800000,
+    "BNBUSDT": 1794124800000,
+    "XRPUSDT": 1794124800000,
+    "AVAXUSDT": 1794124800000
   },
   "a8_positions": {},
   "a20_positions": {},
   "history": [],
   "cash_capital": 9000.0,
-  "peak_equity": 10003.12453241179,
-  "last_run": "2026-11-08T05:56:40.313470+00:00"
+  "peak_equity": 10003.16770563776,
+  "last_run": "2026-11-08T15:09:37.414198+00:00"
 }
