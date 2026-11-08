@@ -1,0 +1,83 @@
+====================================================================================================
+ COMPREHENSIVE ROBOT TEST — Strategy + Detection + System
+====================================================================================================
+
+Data: 3076 days (2011-11-27 -> 2026-11-05)
+TRAIN: 2153 days  |  TEST: 923 days
+
+Precomputing honest strategy returns...
+
+====================================================================================================
+ PART A — Strategy quality per regime (TRAIN, honest)
+====================================================================================================
+
+  BULL_STRONG: 10 train days — too few, using tether
+
+  BULL: 17 train days — too few, using tether
+
+  FLAT (22 days):
+    1. mom30       +0.7821%/day ⬅
+    2. bh_btc      +0.7792%/day
+    3. bb_mr       +0.3016%/day
+    4. ma50_200    +0.1015%/day
+    5. tether      +0.0000%/day
+
+  BEAR (21 days):
+    1. bh_btc      +0.2226%/day ⬅
+    2. bb_mr       +0.1266%/day
+    3. tether      +0.0000%/day
+    4. ma50_200    -0.0694%/day
+    5. mom30       -0.2952%/day
+
+  CRASH (57 days):
+    1. ma50_200    +0.0168%/day ⬅
+    2. tether      +0.0000%/day
+    3. bb_mr       -0.0203%/day
+    4. bh_btc      -0.0884%/day
+    5. mom30       -0.5691%/day
+
+  best_per_regime:
+    BULL_STRONG    → tether
+    BULL           → tether
+    FLAT           → mom30
+    BEAR           → bh_btc
+    CRASH          → ma50_200
+
+====================================================================================================
+ PART B — Regime detection quality (vs what actually happened next 30d)
+====================================================================================================
+
+  Days evaluated: 893
+  Accuracy (detector == forward): 230/893 (25.8%)
+
+  detector↓ / future→ BULL_STRONG        BULL        FLAT        BEAR       CRASH
+  BULL_STRONG            152          38          27          46          38 
+  BULL                    98          28          35          47          16 
+  FLAT                    57          29          35          34           6 
+  BEAR                    63          33          29          14           0 
+  CRASH                   23          26          15           3           1 
+
+====================================================================================================
+ PART C — System performance (TEST)
+====================================================================================================
+
+  Config                              Total       DD   Sharpe
+  ------------------------------------------------------------
+  Robot (hyst+fee)                  +22.4%   29.8%    0.40
+  Robot_NoHyst                      -78.6%   79.3%   -1.30
+  Oracle_Look                       -41.1%   53.1%   -0.34
+  B&H BTC                          +654.2%   36.4%    1.65
+
+  Best single (bh_btc): +654.2% DD=36.4% Sharpe=1.65
+
+====================================================================================================
+ FINAL VERDICT
+====================================================================================================
+
+  1. Detection accuracy: 25.8%  (❌)
+  2. Cost of hysteresis:   Robot +22.4% vs NoHyst -78.6%
+  3. Cost of detection:    Robot +22.4% vs Oracle -41.1%
+  4. Robot vs B&H:         Robot +22.4% (Sh 0.40) vs B&H +654.2% (Sh 1.65)
+
+  OVERALL:
+  ❌ Robot worse than B&H — needs redesign
