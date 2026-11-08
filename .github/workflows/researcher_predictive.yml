@@ -14,7 +14,7 @@ jobs:
         with: { python-version: "3.11" }
       - run: pip install pandas numpy
       - name: Fetch Live Wallex Data
-        run: python scripts/fetch_wallex_full.py
+        run: python scripts/fetch_wallex_fast.py
       - name: Run Predictive Researcher
         run: python scripts/researcher_predictive.py 2>&1 | tee data/researcher_predictive_output.txt
         env:
