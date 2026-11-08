@@ -1,0 +1,73 @@
+====================================================================================================
+ COMPLEMENTARY ENSEMBLE — find anti-correlated strategies, combine
+====================================================================================================
+
+====================================================================================================
+ MARKET: TMN
+====================================================================================================
+  Assets: 185, Days: 799
+  Strategies: 28
+  TRAIN: 559d | TEST: 240d
+
+  Step 1: Filter good on TRAIN
+    Sharpe > 0.5 AND return > 0: 14/28
+
+  Step 2: Greedy selection (corr < 0.5 to existing)
+    Selected 3 strategies:
+      1. bh_BTC             (TRAIN Sh 1.76, return +196.1%)
+      2. bh_TRX             (TRAIN Sh 1.75, return +343.2%, max corr 0.35)
+      3. btfd10             (TRAIN Sh 0.81, return +370841920.7%, max corr 0.00)
+
+  Step 3: Ensemble on TEST (with fee)
+    Ensemble                      +76.2%  DD  35.1%  Sh  1.99
+    B&H BTC                       +97.6%  DD  33.6%  Sh  2.77
+    Excess                        -21.3%
+
+  Step 4: Selected strategies on TEST (individual)
+    bh_BTC                  +97.6%  DD  33.6%  Sh  2.77
+    bh_TRX                 +108.0%  DD  24.4%  Sh  2.86
+    btfd10                   +8.2%  DD  75.7%  Sh  0.65
+
+  Step 5: Correlation matrix (TRAIN)
+       bh_BTC    bh_TRX    btfd10
+       bh_BTC      1.00      0.35      0.00 
+       bh_TRX      0.35      1.00     -0.00 
+       btfd10      0.00     -0.00      1.00 
+
+====================================================================================================
+ MARKET: USDT
+====================================================================================================
+  Assets: 185, Days: 799
+  Strategies: 28
+  TRAIN: 559d | TEST: 240d
+
+  Step 1: Filter good on TRAIN
+    Sharpe > 0.5 AND return > 0: 9/28
+
+  Step 2: Greedy selection (corr < 0.5 to existing)
+    Selected 5 strategies:
+      1. bb30_2             (TRAIN Sh 2.78, return +6733.9%)
+      2. btfd20             (TRAIN Sh 2.48, return +353005.1%, max corr 0.33)
+      3. bh_XRP             (TRAIN Sh 1.11, return +155.4%, max corr 0.16)
+      4. bh_TRX             (TRAIN Sh 0.92, return +87.1%, max corr 0.29)
+      5. rsi14_30           (TRAIN Sh 0.65, return +29.2%, max corr 0.32)
+
+  Step 3: Ensemble on TEST (with fee)
+    Ensemble                      +18.3%  DD  27.6%  Sh  0.83
+    B&H BTC                        +7.0%  DD  28.5%  Sh  0.46
+    Excess                        +11.2%
+
+  Step 4: Selected strategies on TEST (individual)
+    bb30_2                  +64.6%  DD  26.1%  Sh  1.68
+    btfd20                  -65.6%  DD  87.5%  Sh -0.42
+    bh_XRP                  -16.2%  DD  34.4%  Sh -0.19
+    bh_TRX                  +11.4%  DD  18.4%  Sh  0.62
+    rsi14_30               +137.5%  DD  22.9%  Sh  2.92
+
+  Step 5: Correlation matrix (TRAIN)
+       bb30_2    btfd20    bh_XRP    bh_TRX  rsi14_30
+       bb30_2      1.00      0.33      0.16      0.10      0.32 
+       btfd20      0.33      1.00      0.08      0.06      0.21 
+       bh_XRP      0.16      0.08      1.00      0.29      0.19 
+       bh_TRX      0.10      0.06      0.29      1.00      0.19 
+     rsi14_30      0.32      0.21      0.19      0.19      1.00 
