@@ -1,0 +1,38 @@
+name: Iran Data Fetch
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * 0'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch TGJU + Wallex
+        run: python scripts/fetch_iran_data.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/usd_irr_tgju.json data/wallex_full.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto: Iran data (TGJU + Wallex) [skip ci]"
+            git push
+          fi
