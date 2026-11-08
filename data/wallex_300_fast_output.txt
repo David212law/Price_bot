@@ -1,0 +1,39 @@
+/home/runner/work/Price_bot/Price_bot/scripts/wallex_300_fast.py:114: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  days = df.index.dayofweek
+/home/runner/work/Price_bot/Price_bot/scripts/wallex_300_fast.py:114: Pandas4Warning: DatetimeIndex.dayofweek is deprecated and will be removed in a future version. Use DatetimeIndex.day_of_week instead.
+  days = df.index.dayofweek
+====================================================================================================
+ WALLEX 300+ STRATEGIES — PANDAS VECTORIZED
+====================================================================================================
+
+====================================================================================================
+ MARKET: TMN
+====================================================================================================
+  Assets: 185, Days: 799 (2024-09-01 -> 2026-11-08)
+  Building 306 strategies...
+  Strategies built: 306
+  Computing strategy returns...
+  TRAIN: 559d | TEST: 240d | split: 2026-03-14
+  Ranking per regime...
+    FLAT           (559d) -> bb10_2
+
+  RESULTS:
+    Combined: +75.4% (DD 36.5%, Sh 1.68), Switches=1, Fee=0.3%
+    B&H BTC:  +97.6% (DD 33.6%, Sh 2.77)
+
+====================================================================================================
+ MARKET: USDT
+====================================================================================================
+  Assets: 185, Days: 799 (2024-09-01 -> 2026-11-08)
+  Building 306 strategies...
+  Strategies built: 306
+  Computing strategy returns...
+  TRAIN: 559d | TEST: 240d | split: 2026-03-14
+  Ranking per regime...
+    FLAT           (559d) -> btfd30_h5
+
+  RESULTS:
+    Combined: -81.8% (DD 91.9%, Sh -0.27), Switches=1, Fee=0.3%
+    B&H BTC:  +7.0% (DD 28.5%, Sh 0.46)
+
+Saved: data/wallex_300_fast_results.json
