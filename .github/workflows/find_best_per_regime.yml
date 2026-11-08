@@ -1,0 +1,33 @@
+name: Find Best Strategy Per Regime
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/find_best_per_regime.py'
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run regime analysis
+        run: python scripts/find_best_per_regime.py 2>&1 | tee data/regime_analysis_output.txt
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/regime_analysis_output.txt
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Auto: best strategy per regime analysis [skip ci]"
+            git push
+          fi
