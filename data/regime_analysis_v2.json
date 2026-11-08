@@ -1,0 +1,802 @@
+{
+  "split_date": "2022-05-14",
+  "train_regimes": {
+    "BULL_STRONG": "TETHER",
+    "BULL": "XRP",
+    "FLAT": "BCH",
+    "BEAR": "DOT",
+    "CRASH": "TETHER"
+  },
+  "test_eval": {
+    "details": {
+      "BULL_STRONG": {
+        "chosen": "TETHER",
+        "alpha_test": 0.0,
+        "days": 0
+      },
+      "BULL": {
+        "chosen": "XRP",
+        "alpha_test": 0.2729559957600081,
+        "days": 359,
+        "sharpe_test": 0.08768351625411838
+      },
+      "FLAT": {
+        "chosen": "BCH",
+        "alpha_test": -0.25858881331493677,
+        "days": 540,
+        "sharpe_test": -0.08103293379097082
+      },
+      "BEAR": {
+        "chosen": "DOT",
+        "alpha_test": -0.6855851247451354,
+        "days": 293,
+        "sharpe_test": -0.19242943370398194
+      },
+      "CRASH": {
+        "chosen": "TETHER",
+        "alpha_test": 0.0,
+        "days": 0
+      }
+    },
+    "overall_alpha": -0.20345905894509028,
+    "total_days": 1192
+  },
+  "all_train": {
+    "BTC": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.32904282244960276,
+        "std_alpha": 4.130197702593872,
+        "sharpe_alpha": 0.07966757190411376
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": 0.0908221752125897,
+        "std_alpha": 3.6874228099978366,
+        "sharpe_alpha": 0.024630258012816
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": -0.23178267002794375,
+        "std_alpha": 2.3201284881799698,
+        "sharpe_alpha": -0.09990079049879096
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.06612994487642,
+        "std_alpha": 3.5125064280183373,
+        "sharpe_alpha": -0.3035239840053196
+      }
+    },
+    "ETH": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.7041356660436817,
+        "std_alpha": 4.141237369778806,
+        "sharpe_alpha": 0.17003025984025913
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.187677505811176,
+        "std_alpha": 4.098241669050279,
+        "sharpe_alpha": -0.04579464096236866
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": -0.22252883624369268,
+        "std_alpha": 2.7807805150406195,
+        "sharpe_alpha": -0.08002387640451449
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.400600400680982,
+        "std_alpha": 4.532665446840373,
+        "sharpe_alpha": -0.30900149528073184
+      }
+    },
+    "BNB": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.5259320194211168,
+        "std_alpha": 4.240160069215488,
+        "sharpe_alpha": 0.1240358879938286
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.17390928706407457,
+        "std_alpha": 3.0647546586528245,
+        "sharpe_alpha": -0.05674492950783863
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": 0.09381575872502464,
+        "std_alpha": 2.9898914937238352,
+        "sharpe_alpha": 0.03137764662094123
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.4000629215362115,
+        "std_alpha": 4.824024137012752,
+        "sharpe_alpha": -0.2902271799998066
+      }
+    },
+    "XRP": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 1.2532055661688395,
+        "std_alpha": 6.2211823829921515,
+        "sharpe_alpha": 0.2014417017567158
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": 0.02339844611864658,
+        "std_alpha": 4.528168496296044,
+        "sharpe_alpha": 0.005167309064975401
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": -0.3558126239048606,
+        "std_alpha": 3.1738074588264342,
+        "sharpe_alpha": -0.1121090767227663
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.1871556092102653,
+        "std_alpha": 5.15143793509964,
+        "sharpe_alpha": -0.23045130780311016
+      }
+    },
+    "SOL": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 1.2008906653053528,
+        "std_alpha": 6.05510879366898,
+        "sharpe_alpha": 0.19832685195697294
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.3779449183486298,
+        "std_alpha": 5.075195958937217,
+        "sharpe_alpha": -0.074469029650586
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": -0.29864245330213185,
+        "std_alpha": 3.563256608982379,
+        "sharpe_alpha": -0.08381166053247575
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -2.2374309949538898,
+        "std_alpha": 6.974350129034376,
+        "sharpe_alpha": -0.3208085274697372
+      }
+    },
+    "ADA": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.2996074591577463,
+        "std_alpha": 4.963649519063042,
+        "sharpe_alpha": 0.06036031714308092
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.6335198163200377,
+        "std_alpha": 4.0137115995753705,
+        "sharpe_alpha": -0.1578388981378385
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": 0.7818715930196973,
+        "std_alpha": 5.563365789235876,
+        "sharpe_alpha": 0.140539310669178
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.9444600585986391,
+        "std_alpha": 5.826539937469207,
+        "sharpe_alpha": -0.33372465982670796
+      }
+    },
+    "DOGE": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.071896817538612,
+        "std_alpha": 5.104888538649597,
+        "sharpe_alpha": 0.014083915249916694
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.479733304878001,
+        "std_alpha": 3.6058186284509715,
+        "sharpe_alpha": -0.13304421389716162
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": 0.5329789730749411,
+        "std_alpha": 4.531084333333833,
+        "sharpe_alpha": 0.11762724634233225
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.622034138088896,
+        "std_alpha": 5.343029340603733,
+        "sharpe_alpha": -0.30357949295962783
+      }
+    },
+    "DOT": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.6968270423531255,
+        "std_alpha": 4.441870561340823,
+        "sharpe_alpha": 0.15687693568062488
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.439119967778257,
+        "std_alpha": 4.536380592769416,
+        "sharpe_alpha": -0.09679963107111755
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": 0.6504490994871286,
+        "std_alpha": 4.607796364686132,
+        "sharpe_alpha": 0.14116272682363537
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -2.0493194110635424,
+        "std_alpha": 6.683189841932412,
+        "sharpe_alpha": -0.3066379168530385
+      }
+    },
+    "LINK": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.5803361293958113,
+        "std_alpha": 4.5717063503735575,
+        "sharpe_alpha": 0.12694081485535297
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.5490882117534032,
+        "std_alpha": 4.599443271018647,
+        "sharpe_alpha": -0.11938145105805287
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": 0.5017724428558374,
+        "std_alpha": 4.618745148764154,
+        "sharpe_alpha": 0.10863826140961633
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.837043389953701,
+        "std_alpha": 6.660493159342009,
+        "sharpe_alpha": -0.27581191752701734
+      }
+    },
+    "AVAX": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.338263508846731,
+        "std_alpha": 5.454814979653093,
+        "sharpe_alpha": 0.062011912431215656
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": 0.389155670282074,
+        "std_alpha": 5.611977887021057,
+        "sharpe_alpha": 0.06934376401982673
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": -0.5883921939518215,
+        "std_alpha": 4.283220719634007,
+        "sharpe_alpha": -0.1373714390329384
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.3190074510845247,
+        "std_alpha": 8.055578836284672,
+        "sharpe_alpha": -0.16373838278924552
+      }
+    },
+    "TRX": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.4551718363440638,
+        "std_alpha": 3.5165926793645657,
+        "sharpe_alpha": 0.12943547286980975
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": 0.2921050069088614,
+        "std_alpha": 3.779076486383871,
+        "sharpe_alpha": 0.07729534132514246
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": 0.31579238901743156,
+        "std_alpha": 3.9658111528408493,
+        "sharpe_alpha": 0.07962870062312938
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -0.7032525666155355,
+        "std_alpha": 5.510537576198403,
+        "sharpe_alpha": -0.12761959371315887
+      }
+    },
+    "LTC": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.7275358621006359,
+        "std_alpha": 4.679724317557103,
+        "sharpe_alpha": 0.15546553872225155
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": -0.26921010586032956,
+        "std_alpha": 4.243877680699865,
+        "sharpe_alpha": -0.0634349352443951
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": -0.0063514010677411395,
+        "std_alpha": 3.321068916966408,
+        "sharpe_alpha": -0.0019124568705255155
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.4186544135340284,
+        "std_alpha": 4.907315362652234,
+        "sharpe_alpha": -0.2890897178385729
+      }
+    },
+    "BCH": {
+      "BULL": {
+        "days": 23,
+        "mean_alpha": 0.515064803527446,
+        "std_alpha": 4.943272007331719,
+        "sharpe_alpha": 0.10419511666837607
+      },
+      "FLAT": {
+        "days": 34,
+        "mean_alpha": 0.6697751635713788,
+        "std_alpha": 4.473845295484571,
+        "sharpe_alpha": 0.14970905771984996
+      },
+      "BEAR": {
+        "days": 37,
+        "mean_alpha": -0.20039932007399855,
+        "std_alpha": 2.788617432300454,
+        "sharpe_alpha": -0.0718633247260024
+      },
+      "CRASH": {
+        "days": 53,
+        "mean_alpha": -1.681993989587072,
+        "std_alpha": 4.394802561212951,
+        "sharpe_alpha": -0.38272344801829894
+      }
+    }
+  },
+  "all_test": {
+    "BTC": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 0.7396339188167539,
+        "std_alpha": 2.6451246691793466,
+        "sharpe_alpha": 0.27962157225890844
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.5030838613396104,
+        "std_alpha": 2.3612302394532585,
+        "sharpe_alpha": 0.21306006205311817
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.04070893564574045,
+        "std_alpha": 2.027185029247086,
+        "sharpe_alpha": -0.020081509609835714
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.3028819266603509,
+        "std_alpha": 2.6591665624464875,
+        "sharpe_alpha": -0.11390107371901267
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.7035886333541794,
+        "std_alpha": 3.5701452752036866,
+        "sharpe_alpha": -0.19707563113493687
+      }
+    },
+    "ETH": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 0.9304670142458193,
+        "std_alpha": 3.5786096372805747,
+        "sharpe_alpha": 0.26000796637682216
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.6067894444449173,
+        "std_alpha": 3.296631007217837,
+        "sharpe_alpha": 0.18406350092454296
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.14185251476699648,
+        "std_alpha": 2.957651213808222,
+        "sharpe_alpha": -0.04796120452091765
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.41793841710374857,
+        "std_alpha": 3.6924946441489084,
+        "sharpe_alpha": -0.11318592371312164
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.9229576614092808,
+        "std_alpha": 4.6770931202672035,
+        "sharpe_alpha": -0.1973357463014446
+      }
+    },
+    "BNB": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 0.6638695071658058,
+        "std_alpha": 3.061609831321108,
+        "sharpe_alpha": 0.2168367439816265
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.39985701415738983,
+        "std_alpha": 2.4243054151545746,
+        "sharpe_alpha": 0.16493673266488776
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": 0.04497655733347807,
+        "std_alpha": 2.4641253966683707,
+        "sharpe_alpha": 0.018252544044344815
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.3096163350005043,
+        "std_alpha": 2.672303017363587,
+        "sharpe_alpha": -0.11586123766232258
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.6217415425115451,
+        "std_alpha": 3.8199746940843786,
+        "sharpe_alpha": -0.16276064432426096
+      }
+    },
+    "XRP": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 1.3676504755362002,
+        "std_alpha": 6.5784718111227525,
+        "sharpe_alpha": 0.2078979001207854
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.2729559957600081,
+        "std_alpha": 3.112968177153682,
+        "sharpe_alpha": 0.08768351625411838
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.2011693906513668,
+        "std_alpha": 3.0619735054999646,
+        "sharpe_alpha": -0.06569925908569202
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.10107201306678913,
+        "std_alpha": 4.589729702811822,
+        "sharpe_alpha": -0.02202134321872354
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.521778718764135,
+        "std_alpha": 4.45262103541614,
+        "sharpe_alpha": -0.11718462330701579
+      }
+    },
+    "SOL": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 1.4388076481309382,
+        "std_alpha": 5.405209106895343,
+        "sharpe_alpha": 0.2661890816204452
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.5738539136647642,
+        "std_alpha": 4.075676156398607,
+        "sharpe_alpha": 0.14079968369514403
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.19466535340728994,
+        "std_alpha": 3.924552748073935,
+        "sharpe_alpha": -0.04960192049981401
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.47294096046907497,
+        "std_alpha": 4.843695866123948,
+        "sharpe_alpha": -0.09764051532978157
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.6310765077868481,
+        "std_alpha": 6.177629799409567,
+        "sharpe_alpha": -0.10215511907935368
+      }
+    },
+    "ADA": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 1.3722382647625446,
+        "std_alpha": 4.941555145306052,
+        "sharpe_alpha": 0.27769360543634203
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.2961539485758717,
+        "std_alpha": 3.5815425259488727,
+        "sharpe_alpha": 0.08268893819637403
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.3786804473544782,
+        "std_alpha": 3.522461689421516,
+        "sharpe_alpha": -0.10750448996839702
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.41794092800788135,
+        "std_alpha": 5.813872447196721,
+        "sharpe_alpha": -0.07188684165394792
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.6017601351152545,
+        "std_alpha": 5.147430532449967,
+        "sharpe_alpha": -0.11690495506868769
+      }
+    },
+    "DOGE": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 1.4135575307723012,
+        "std_alpha": 5.672936858556851,
+        "sharpe_alpha": 0.24917561503265148
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.6072691322454512,
+        "std_alpha": 4.728654336513865,
+        "sharpe_alpha": 0.12842324454892423
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.3822488985541133,
+        "std_alpha": 3.7603189661620977,
+        "sharpe_alpha": -0.10165331770890937
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.45954106747830764,
+        "std_alpha": 4.156090244174305,
+        "sharpe_alpha": -0.11057052192802065
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.6663326060644995,
+        "std_alpha": 5.071487283249593,
+        "sharpe_alpha": -0.13138800688021088
+      }
+    },
+    "DOT": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 1.2380738795349189,
+        "std_alpha": 5.059924839139061,
+        "sharpe_alpha": 0.2446822668112152
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.1455052317831044,
+        "std_alpha": 3.76459700933031,
+        "sharpe_alpha": 0.03865094495439461
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.4135635956044089,
+        "std_alpha": 3.5211933231786348,
+        "sharpe_alpha": -0.11744984090537772
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.6855851247451354,
+        "std_alpha": 3.5627872074902265,
+        "sharpe_alpha": -0.19242943370398194
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.40996349056425796,
+        "std_alpha": 5.582162952597176,
+        "sharpe_alpha": -0.07344169169649857
+      }
+    },
+    "LINK": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 0.9938961123450499,
+        "std_alpha": 4.775579074482204,
+        "sharpe_alpha": 0.20812054346578146
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.5944498387521536,
+        "std_alpha": 4.3112765634293,
+        "sharpe_alpha": 0.13788255752243206
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.13833072371358604,
+        "std_alpha": 3.913054025123807,
+        "sharpe_alpha": -0.03535108966690265
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.5091380730117054,
+        "std_alpha": 4.397848462272674,
+        "sharpe_alpha": -0.11576980820948941
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.3620421378066428,
+        "std_alpha": 5.019445017911615,
+        "sharpe_alpha": -0.0721279218150045
+      }
+    },
+    "AVAX": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 1.3455898456174098,
+        "std_alpha": 5.242394409241397,
+        "sharpe_alpha": 0.25667466820988843
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.4395213386046707,
+        "std_alpha": 4.341075100156109,
+        "sharpe_alpha": 0.10124711700768897
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.3823399474120597,
+        "std_alpha": 4.186556665193177,
+        "sharpe_alpha": -0.09132563535824437
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.5096910937609692,
+        "std_alpha": 4.425343288491218,
+        "sharpe_alpha": -0.11517549273216811
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.7403960483453509,
+        "std_alpha": 5.573677142017041,
+        "sharpe_alpha": -0.13283798639212377
+      }
+    },
+    "TRX": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 0.6032196057765441,
+        "std_alpha": 6.337621004301914,
+        "sharpe_alpha": 0.09518076347056485
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.16888797115557677,
+        "std_alpha": 1.8184251025669926,
+        "sharpe_alpha": 0.09287595673704949
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.010515153740206633,
+        "std_alpha": 1.739359982079997,
+        "sharpe_alpha": -0.006045415468069
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": 0.07863698463028548,
+        "std_alpha": 2.479008043229957,
+        "sharpe_alpha": 0.031721149451305344
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.16032029371007697,
+        "std_alpha": 2.801697942495762,
+        "sharpe_alpha": -0.0572225475410326
+      }
+    },
+    "LTC": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 0.6937282772082235,
+        "std_alpha": 3.977949403011864,
+        "sharpe_alpha": 0.17439343916314626
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.43610749451548847,
+        "std_alpha": 3.7421006335632714,
+        "sharpe_alpha": 0.11654082485222261
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.1657734199042945,
+        "std_alpha": 3.129112850583923,
+        "sharpe_alpha": -0.052977769681064574
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.3873491377638961,
+        "std_alpha": 3.9333662192715444,
+        "sharpe_alpha": -0.09847777099067902
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.31014790552194077,
+        "std_alpha": 4.69874230762864,
+        "sharpe_alpha": -0.06600657904103409
+      }
+    },
+    "BCH": {
+      "BULL_STRONG": {
+        "days": 273,
+        "mean_alpha": 1.0539235259638002,
+        "std_alpha": 6.081803922617807,
+        "sharpe_alpha": 0.1732912700530071
+      },
+      "BULL": {
+        "days": 359,
+        "mean_alpha": 0.6506943648450679,
+        "std_alpha": 4.376403375783026,
+        "sharpe_alpha": 0.14868244742833966
+      },
+      "FLAT": {
+        "days": 540,
+        "mean_alpha": -0.25858881331493677,
+        "std_alpha": 3.191156992809636,
+        "sharpe_alpha": -0.08103293379097082
+      },
+      "BEAR": {
+        "days": 293,
+        "mean_alpha": -0.262098648879632,
+        "std_alpha": 3.964577006963142,
+        "sharpe_alpha": -0.066110116771423
+      },
+      "CRASH": {
+        "days": 174,
+        "mean_alpha": -0.7715993649582046,
+        "std_alpha": 4.9770571814300695,
+        "sharpe_alpha": -0.15503124373115984
+      }
+    }
+  }
+}
