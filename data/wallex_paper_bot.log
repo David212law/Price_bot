@@ -1,0 +1,10 @@
+================================================================================
+ WALLEX PAPER BOT — EXECUTION
+================================================================================
+Date: 2026-11-08
+Detected Regime: FLAT
+Target Portfolio: {'BTC': 1.0}
+Current Equity: $10000.00
+🔄 REGIME CHANGED: None -> FLAT. Rebalancing...
+  Bought 0.0000 BTC @ 20,296,835,582 TMN ($9940.00)
+Saved state to data/wallex_paper_bot_state.json
