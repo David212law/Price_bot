@@ -46,3 +46,15 @@ Researcher uses 80/20 split. If the 20% holdout is random, it can be contaminate
   In Iran currency crises, BTC actually outperforms Tether (+427% vs +327%).
   This means Survival Mode protects against **crypto** crashes, not **currency** crises.
   Full dual-crisis detection requires additional filter (not implemented in v7.0).
+
+## CORRECTION (2026-11-09): 2022 Test Result
+Previous report stated -36.2% return for 2022. This was due to a bug in Kill Switch
+logic that locked capital in Tether after trigger, missing the recovery. 
+
+Corrected result (with fixed Kill Switch logic):
+- 2022 Return: +27.7% (DD 20.7%)
+- B&H BTC: -65.3% (DD 66.7%)
+- Kill Switch is NOT required for positive return in bear markets.
+
+Action: Kill Switch will be kept as safety net but not relied upon. 
+Vol+Trend regime detection is the primary defense mechanism.
