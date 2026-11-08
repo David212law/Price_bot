@@ -76,6 +76,14 @@ def main():
         print("❌ Failed to fetch live data.")
         return
         
+    # KILL SWITCH CHECK
+    if os.path.exists(STATE_FILE):
+        tmp_state = json.load(open(STATE_FILE))
+        eq_check = tmp_state.get("capital", CAPITAL) + sum(q * df[a].iloc[-1] for a, q in tmp_state.get("holdings", {}).items() if a in df.columns)
+        if eq_check < CAPITAL * 0.9:
+            print(f"❌ KILL SWITCH TRIGGERED: Equity {eq_check:.2f} < 90% of {CAPITAL:.2f}")
+            return
+            
     regime = detect_regime(df)
     target = get_target_portfolio(df, regime)
     print(f"Date: {df.index[-1].date()} | Regime: {regime} | Target: {target}")
@@ -93,7 +101,8 @@ def main():
         val -= fee; state["capital"] = 0.0; state["holdings"] = {}
         for a, w in target.items():
             if a in df.columns:
-                qty = (val * w) / df[a].iloc[-1]
+                price = df[a].iloc[-1] * 1.001 # 0.1% Slippage
+                qty = (val * w) / price
                 state["holdings"][a] = qty
                 print(f"  Bought {qty:.4f} {a} @ ${df[a].iloc[-1]:,.0f}")
         state["last_regime"] = regime; state["last_port_keys"] = list(curr_keys)

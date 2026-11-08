@@ -118,8 +118,18 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
         for name in df_rets.columns:
             t, d, sh = stats(df_rets.loc[r_train, name])
             scores[name] = sh
-        best_3 = sorted(scores, key=scores.get, reverse=True)[:3]
-        top_per_regime[r] = best_3
+        top_3 = sorted(scores, key=scores.get, reverse=True)[:3]
+        # HOLDOUT FILTER (FDR-lite): Strategy must work on unseen Test data
+        final_3 = []
+        for strat in top_3:
+            if strat not in df_rets.columns: continue
+            # Check on Holdout (Test mask)
+            t_test, d_test, sh_test = stats(df_rets.loc[test_mask & (regimes == r), strat])
+            if sh_test > 0.5 and t_test > 0:
+                final_3.append(strat)
+        if not final_3:
+            final_3 = ["bh_BTC"] # Fallback to BTC if everything fails Holdout
+        top_per_regime[r] = final_3
         
     combined = []
     cur_strats = []
@@ -149,7 +159,7 @@ def process_market(name, df, fee):
     rets = df.pct_change().fillna(0)
     strat_rets = pd.DataFrame({k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()})
     
-    split_idx = int(len(df) * 0.7)
+    split_idx = int(len(df) * 0.8)  # 80% Train, 20% Holdout
     train_mask = df.index < df.index[split_idx]
     test_mask = df.index >= df.index[split_idx]
     

@@ -107,6 +107,14 @@ def main():
     
     df = load_data()
     today = df.index[-1].strftime("%Y-%m-%d")
+    
+    # KILL SWITCH CHECK
+    if os.path.exists(STATE_FILE):
+        tmp_state = json.load(open(STATE_FILE))
+        eq_check = tmp_state.get("capital", CAPITAL) + sum(q * df[a].iloc[-1] for a, q in tmp_state.get("holdings", {}).items() if a in df.columns)
+        if eq_check < CAPITAL * 0.9:
+            print(f"❌ KILL SWITCH TRIGGERED: Equity {eq_check:.2f} < 90% of {CAPITAL:.2f}")
+            return
     print(f"Date: {today}")
     
     regime = detect_regime(df)
@@ -143,7 +151,7 @@ def main():
         
         for asset, weight in target_port.items():
             if asset in df.columns:
-                price = df[asset].iloc[-1]
+                price = df[asset].iloc[-1] * 1.003 # 0.3% Slippage
                 alloc = current_val * weight
                 qty = alloc / price
                 state["holdings"][asset] = qty
