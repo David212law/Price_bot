@@ -1,0 +1,71 @@
+================================================================================
+ FETCH ALL WALLEX SYMBOLS
+================================================================================
+
+Total symbols: 373
+  TMN market:  187
+  USDT market: 186
+
+Fetching 187 TMN symbols...
+  [0/187] XLMTMN
+  [20/187] PEPETMN
+  [40/187] WIFTMN
+  [60/187] ZRXTMN
+  [80/187] FLOKITMN
+  [100/187] ZECTMN
+  [120/187] UNGONTMN
+  [140/187] USDTTMN
+  [160/187] HOODXTMN
+  [180/187] ALGOTMN
+  OK: 187, Failed: 0
+
+Fetching 186 USDT symbols...
+  [0/186] CGPTUSDT
+  [20/186] DOGEUSDT
+  [40/186] LTCUSDT
+  [60/186] METAXUSDT
+  [80/186] SLVONUSDT
+  [100/186] PROVEUSDT
+  [120/186] PAXGUSDT
+  [140/186] SUIUSDT
+  [160/186] AVAXUSDT
+  [180/186] TOSHIUSDT
+  OK: 186, Failed: 0
+
+TMN market:
+  <100 days: 1
+  100-499: 79
+  500-799: 107
+  800+: 0
+  Top 10 (by days):
+    XLMTMN          799d  (2024-09-01 -> 2026-11-08)
+    FETTMN          799d  (2024-09-01 -> 2026-11-08)
+    SANDTMN         799d  (2024-09-01 -> 2026-11-08)
+    JSTTMN          799d  (2024-09-01 -> 2026-11-08)
+    1BBABYDOGETMN   799d  (2024-09-01 -> 2026-11-08)
+    PEPETMN         799d  (2024-09-01 -> 2026-11-08)
+    CHZTMN          799d  (2024-09-01 -> 2026-11-08)
+    WLDTMN          799d  (2024-09-01 -> 2026-11-08)
+    XAUTTMN         799d  (2024-09-01 -> 2026-11-08)
+    XRPTMN          799d  (2024-09-01 -> 2026-11-08)
+
+USDT market:
+  <100 days: 1
+  100-499: 81
+  500-799: 104
+  800+: 0
+  Top 10 (by days):
+    BNBUSDT         799d  (2024-09-01 -> 2026-11-08)
+    ETCUSDT         799d  (2024-09-01 -> 2026-11-08)
+    DOGEUSDT        799d  (2024-09-01 -> 2026-11-08)
+    TRXUSDT         799d  (2024-09-01 -> 2026-11-08)
+    XLMUSDT         799d  (2024-09-01 -> 2026-11-08)
+    DASHUSDT        799d  (2024-09-01 -> 2026-11-08)
+    APEUSDT         799d  (2024-09-01 -> 2026-11-08)
+    DOGSUSDT        799d  (2024-09-01 -> 2026-11-08)
+    LTCUSDT         799d  (2024-09-01 -> 2026-11-08)
+    ATOMUSDT        799d  (2024-09-01 -> 2026-11-08)
+
+Saved:
+  data/wallex_tmn_all.json (187 symbols)
+  data/wallex_usdt_all.json (186 symbols)
