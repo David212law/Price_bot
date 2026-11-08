@@ -1,0 +1,105 @@
+"""HYPERLIQUID PREDICTIVE BOT — Connects live HL API to Researcher's strategies."""
+import os, json, time, requests
+import pandas as pd
+import numpy as np
+
+STATE_FILE = "data/hl_predictive_bot_state.json"
+CAPITAL = 10000.0
+COINS = ["BTC", "ETH", "SOL", "XRP", "BNB", "DOGE", "ADA", "AVAX", "LINK", "MATIC"]
+
+def fetch_hl_candles(coin, days=200):
+    """Fetch daily candles from Hyperliquid API."""
+    end = int(time.time() * 1000)
+    start = end - days * 86400 * 1000
+    try:
+        r = requests.post("https://api.hyperliquid.xyz/info", json={
+            "type": "candleSnapshot",
+            "req": {"coin": coin, "interval": "1d", "startTime": start, "endTime": end}
+        }, timeout=10)
+        data = r.json()
+        if not data: return None
+        # Format: {"T": time, "c": close, ...}
+        df = pd.DataFrame(data)
+        df["date"] = pd.to_datetime(df["T"], unit="ms")
+        df.set_index("date", inplace=True)
+        return df["c"].astype(float)
+    except Exception as e:
+        print(f"  ❌ HL {coin}: {e}")
+        return None
+
+def build_df():
+    series = {}
+    print("Fetching live data from Hyperliquid...")
+    for c in COINS:
+        s = fetch_hl_candles(c)
+        if s is not None and len(s) > 50:
+            series[c] = s
+    if not series: return None
+    df = pd.DataFrame(series)
+    return df.ffill()
+
+def detect_regime(df):
+    btc = df["BTC"]; rets = btc.pct_change()
+    vol = rets.rolling(14).std() * np.sqrt(365); ma50 = btc.rolling(50).mean()
+    today = df.index[-1]; price, v, ma = btc.loc[today], vol.loc[today], ma50.loc[today]
+    if pd.isna(v) or pd.isna(ma): return "FLAT"
+    if price > ma and v < 1.0: return "BULL_STRONG"
+    if price > ma and v >= 1.0: return "BULL"
+    if price <= ma and v < 1.0: return "FLAT"
+    if price <= ma and v >= 1.0 and v < 2.0: return "BEAR"
+    return "CRASH"
+
+def get_target_portfolio(df, regime):
+    try:
+        res = json.load(open("data/researcher_predictive_results.json"))
+        top_per_regime = res["GLOBAL"]["predictive"]["top"]
+        print("✅ Loaded GLOBAL strategies.")
+    except:
+        top_per_regime = {"FLAT": ["bh_BTC"]}
+        
+    strats = top_per_regime.get(regime, ["bh_BTC"])
+    portfolio = {}
+    for s in strats:
+        w = 1.0 / len(strats)
+        if s.startswith("bh_"):
+            portfolio[s.replace("bh_", "")] = portfolio.get(s.replace("bh_", ""), 0) + w
+        elif s.startswith("eq"):
+            n = int(s.replace("eq", ""))
+            for a in df.columns[:n]: portfolio[a] = portfolio.get(a, 0) + (w/n)
+        else:
+            portfolio["BTC"] = portfolio.get("BTC", 0) + w # fallback
+    return portfolio
+
+def main():
+    df = build_df()
+    if df is None:
+        print("❌ Failed to fetch live data.")
+        return
+        
+    regime = detect_regime(df)
+    target = get_target_portfolio(df, regime)
+    print(f"Date: {df.index[-1].date()} | Regime: {regime} | Target: {target}")
+    
+    if os.path.exists(STATE_FILE): state = json.load(open(STATE_FILE))
+    else: state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_port_keys": []}
+        
+    val = state["capital"]
+    for a, q in state["holdings"].items():
+        if a in df.columns: val += q * df[a].iloc[-1]
+            
+    curr_keys = set(target.keys())
+    if regime != state["last_regime"] or curr_keys != set(state["last_port_keys"]) or not state["holdings"]:
+        fee = val * 0.00035 # HL taker fee ~0.035%
+        val -= fee; state["capital"] = 0.0; state["holdings"] = {}
+        for a, w in target.items():
+            if a in df.columns:
+                qty = (val * w) / df[a].iloc[-1]
+                state["holdings"][a] = qty
+                print(f"  Bought {qty:.4f} {a} @ ${df[a].iloc[-1]:,.0f}")
+        state["last_regime"] = regime; state["last_port_keys"] = list(curr_keys)
+    
+    state["last_date"] = df.index[-1].strftime("%Y-%m-%d")
+    json.dump(state, open(STATE_FILE, "w"), indent=2)
+    print(f"Equity: ${val:.2f}")
+
+if __name__ == "__main__": main()
