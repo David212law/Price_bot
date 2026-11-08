@@ -15,6 +15,7 @@ def load_data():
         base = sym[:-3]
         if len(prices) >= 100: data[base] = prices
     df = pd.DataFrame(data).sort_index().ffill()
+    df.index = pd.to_datetime(df.index)
     return df
 
 def detect_regime(df):
