@@ -17,4 +17,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -f data/wallex_tmn_all.json data/wallex_usdt_all.json data/fetch_wallex_output.txt
-          git diff --cached --quiet || (git commit -m "Auto: full Wallex fetch (TMN + USDT) [skip ci]" && git push)
+          git diff --cached --quiet || (git commit -m "Auto: full Wallex fetch (TMN + USDT) [skip ci]" && git pull --rebase origin main && git push)
