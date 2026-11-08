@@ -1,0 +1,91 @@
+====================================================================================================
+ WALLEX ALL STRATEGIES — TMN + USDT, 300+, honest, per regime
+====================================================================================================
+
+Strategies built: 306
+
+====================================================================================================
+ MARKET: TMN
+====================================================================================================
+  Assets loaded: 185
+  Days: 798 (2024-09-02 -> 2026-11-08)
+
+  Precomputing 306 strategies × 798 days...
+
+  TRAIN: 530 days  |  TEST: 240 days  |  split: 2026-03-14
+
+  Ranking 306 strategies per regime...
+    BULL_STRONG (128d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+    BULL (185d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+    FLAT (105d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+    BEAR (86d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+    CRASH (26d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+
+  RESULTS on TEST:
+    RegimeCombined: -0.3% (DD 0.3%, Sharpe -1.24), switches=1, fee=0.3%
+    B&H BTC-TMN:    +97.6% (DD 33.6%, Sharpe 2.77)
+    Excess:         -97.9%
+
+  Top 5 single (by Sharpe):
+    mom5_t1_ma                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t1_no                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t2_ma                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t2_no                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t3_ma                 +0.0% (DD 0.0%, Sh 0.00)
+
+====================================================================================================
+ MARKET: USDT
+====================================================================================================
+  Assets loaded: 185
+  Days: 492 (2025-06-11 -> 2026-11-08)
+
+  Precomputing 306 strategies × 492 days...
+
+  TRAIN: 344 days  |  TEST: 148 days  |  split: 2026-06-02
+
+  Ranking 306 strategies per regime...
+    BULL_STRONG: 11 train days — tether
+    BULL (62d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+    FLAT (169d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+    BEAR (56d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+    CRASH (46d): best=mom5_t1_ma (+0.0000%/d), 2nd=mom5_t1_no, 3rd=mom5_t2_ma
+
+  RESULTS on TEST:
+    RegimeCombined: -0.9% (DD 0.9%, Sharpe -2.75), switches=3, fee=0.9%
+    B&H BTC-TMN:    +8.1% (DD 17.9%, Sharpe 0.68)
+    Excess:         -9.0%
+
+  Top 5 single (by Sharpe):
+    mom5_t1_ma                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t1_no                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t2_ma                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t2_no                 +0.0% (DD 0.0%, Sh 0.00)
+    mom5_t3_ma                 +0.0% (DD 0.0%, Sh 0.00)
+
+====================================================================================================
+ FINAL COMPARISON
+====================================================================================================
+
+TMN market:
+  Combined: -0.3% (DD 0.3%, Sh -1.24)
+  B&H BTC:  +97.6% (Sh 2.77)
+  Excess:   -97.9%
+  Best per regime:
+    BULL_STRONG    -> mom5_t1_ma
+    BULL           -> mom5_t1_ma
+    FLAT           -> mom5_t1_ma
+    BEAR           -> mom5_t1_ma
+    CRASH          -> mom5_t1_ma
+
+USDT market:
+  Combined: -0.9% (DD 0.9%, Sh -2.75)
+  B&H BTC:  +8.1% (Sh 0.68)
+  Excess:   -9.0%
+  Best per regime:
+    BULL_STRONG    -> tether
+    BULL           -> mom5_t1_ma
+    FLAT           -> mom5_t1_ma
+    BEAR           -> mom5_t1_ma
+    CRASH          -> mom5_t1_ma
+
+Saved: data/wallex_300_strategies.json

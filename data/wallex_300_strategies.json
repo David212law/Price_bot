@@ -1,0 +1,118 @@
+{
+  "TMN": {
+    "assets": 185,
+    "days": 798,
+    "train": 530,
+    "test": 240,
+    "combined": {
+      "total": -0.30000000000000027,
+      "dd": 0.30000000000000027,
+      "sharpe": -1.235797982163622,
+      "switches": 1,
+      "fee": 0.3
+    },
+    "bnh_btc": {
+      "total": 97.56678127603581,
+      "dd": 33.61636709802019,
+      "sharpe": 2.7723958410845397
+    },
+    "excess": -97.86678127603581,
+    "best_per_regime": {
+      "BULL_STRONG": "mom5_t1_ma",
+      "BULL": "mom5_t1_ma",
+      "FLAT": "mom5_t1_ma",
+      "BEAR": "mom5_t1_ma",
+      "CRASH": "mom5_t1_ma"
+    },
+    "top_singles": [
+      [
+        "mom5_t1_ma",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t1_no",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t2_ma",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t2_no",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t3_ma",
+        0.0,
+        0,
+        0
+      ]
+    ]
+  },
+  "USDT": {
+    "assets": 185,
+    "days": 492,
+    "train": 344,
+    "test": 148,
+    "combined": {
+      "total": -0.8973027000000022,
+      "dd": 0.8973027000000022,
+      "sharpe": -2.7480400539167986,
+      "switches": 3,
+      "fee": 0.8999999999999999
+    },
+    "bnh_btc": {
+      "total": 8.083252747443058,
+      "dd": 17.86231995632758,
+      "sharpe": 0.6846314576628266
+    },
+    "excess": -8.980555447443061,
+    "best_per_regime": {
+      "BULL_STRONG": "tether",
+      "BULL": "mom5_t1_ma",
+      "FLAT": "mom5_t1_ma",
+      "BEAR": "mom5_t1_ma",
+      "CRASH": "mom5_t1_ma"
+    },
+    "top_singles": [
+      [
+        "mom5_t1_ma",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t1_no",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t2_ma",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t2_no",
+        0.0,
+        0,
+        0
+      ],
+      [
+        "mom5_t3_ma",
+        0.0,
+        0,
+        0
+      ]
+    ]
+  }
+}
