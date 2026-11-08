@@ -40,13 +40,17 @@ def detect_regime(df):
 
 def get_target_portfolio(df, regime):
     """Executes the actual active strategies chosen by Oracle for this regime"""
-    top_per_regime = {
-        "BULL_STRONG": ["bh_XRP", "bh_BTC", "rsi21"],
-        "BULL": ["bb15", "bb30", "bh_XRP"],
-        "FLAT": ["bb15", "bb30", "btfd10"],
-        "BEAR": ["rsi14", "bh_TRX", "bb15"],
-        "CRASH": ["btfd20", "btfd10", "bb30"]
-    }
+    # Read dynamically from Researcher's output
+    try:
+        res = json.load(open("data/researcher_predictive_results.json"))
+        top_per_regime = res["TMN"]["predictive"]["top"]
+        print("✅ Loaded dynamic strategies from Researcher JSON.")
+    except Exception as e:
+        print(f"⚠️ Could not load Researcher JSON ({e}). Using defaults.")
+        top_per_regime = {
+            "BULL_STRONG": ["bh_BTC"], "BULL": ["bh_BTC"],
+            "FLAT": ["bh_BTC"], "BEAR": ["bh_BTC"], "CRASH": ["bh_BTC"]
+        }
     
     strats = top_per_regime.get(regime, ["bh_BTC"])
     portfolio = {}
