@@ -34,3 +34,8 @@ All significant changes to strategies, thresholds, and architecture.
 - Auto-approve still requires: 7d stable + 30d in top3 + Sharpe > 1.0
 - Emergency still triggers immediately for loss/alpha
 
+
+## 2026-11-09 — v18.1: High-frequency for predictive bots
+- CHANGED: Wallex Bot and HL Bot run every 4 hours (was daily)
+- UNCHANGED: Researcher every 3 days, M31 bots daily
+- REASON: Adaptive Mode needs frequent updates. Public repo, but keeping resource usage reasonable.

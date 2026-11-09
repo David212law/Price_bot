@@ -2,7 +2,7 @@ name: Wallex Paper Bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 12 * * *'  # هر روز ساعت ۱۲ ظهر UTC
+    - cron: '0 */4 * * *'  # هر روز ساعت ۱۲ ظهر UTC
 permissions: { contents: write }
 jobs:
   run:
