@@ -1,14 +1,19 @@
 {
   "signals": [
     {
-      "symbol": "SOL",
-      "action": "OPEN",
-      "time": 1794153600026
+      "symbol": "ETH",
+      "action": "CLOSE",
+      "time": 1794182400014
     },
     {
-      "symbol": "BNB",
+      "symbol": "SOL",
       "action": "CLOSE",
-      "time": 1794160800039
+      "time": 1794204000022
+    },
+    {
+      "symbol": "XRP",
+      "action": "CLOSE",
+      "time": 1794193200016
     }
   ]
 }
