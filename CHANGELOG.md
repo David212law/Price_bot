@@ -17,3 +17,13 @@ All significant changes to strategies, thresholds, and architecture.
 - ADDED: EMERGENCY-LOSS: If Kill Switch active + defensive strategy Sharpe > 1.5 → immediate approval
 - ADDED: EMERGENCY-ALPHA: If strategy Sharpe > 2.0 (very strong) → immediate approval
 - REASON: Some situations require immediate action (loss prevention, alpha capture)
+
+## 2026-11-09 — v16.0: Adaptive Mode deployed
+- ADDED: Adaptive exposure in Wallex and HL bots
+- RULES:
+  - BULL_STRONG: 100% BTC (Aggressive)
+  - BULL: 80% BTC
+  - FLAT: 30-80% BTC (based on 30d momentum)
+  - BEAR: 30% BTC
+  - CRASH: 0% BTC (Defensive)
+- REASON: Adaptive mode gave +103.4% in 2023 and -5.7% in 2022 (best compound +91.8%)

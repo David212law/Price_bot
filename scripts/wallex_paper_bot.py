@@ -120,11 +120,40 @@ def main():
     regime = detect_regime(df)
     print(f"Detected Regime: {regime}")
     
-    if regime in ["BEAR", "CRASH"]:
-        print(f"⚠️ Regime {regime}: Forcing TETHER (Survival Mode)")
-        target_port = {"TETHER": 1.0}
-    else:
+    # ADAPTIVE MODE: exposure based on regime + 30d momentum
+    # 30d momentum
+    btc_series = df["BTC"]
+    mom_30 = 0
+    if len(btc_series) >= 31:
+        mom_30 = (btc_series.iloc[-1] / btc_series.iloc[-31] - 1) * 100
+
+    if regime == "BULL_STRONG":
+        exposure, mode = 1.0, "AGGRESSIVE"
+    elif regime == "BULL":
+        exposure, mode = 0.8, "BULL-MILD"
+    elif regime == "FLAT":
+        if mom_30 < -5:
+            exposure, mode = 0.3, "FLAT->BEAR"
+        elif mom_30 > 5:
+            exposure, mode = 0.8, "FLAT->BULL"
+        else:
+            exposure, mode = 0.5, "BALANCED"
+    elif regime == "BEAR":
+        exposure, mode = 0.3, "BEAR-DEF"
+    else:  # CRASH
+        exposure, mode = 0.0, "DEFENSIVE"
+
+    print(f"📊 Adaptive: Regime={regime}, Mom30={mom_30:+.1f}%, Mode={mode}, Exposure={exposure:.0%}")
+
+    # Build portfolio: exposure% BTC + (1-exposure)% Tether
+    if exposure > 0:
         target_port = get_target_portfolio(df, regime)
+        # Scale to exposure
+        scaled = {k: v * exposure for k, v in target_port.items()}
+        scaled["TETHER"] = scaled.get("TETHER", 0) + (1.0 - exposure)
+        target_port = scaled
+    else:
+        target_port = {"TETHER": 1.0}
     print(f"Target Portfolio: {target_port}")
     
     if os.path.exists(STATE_FILE):
