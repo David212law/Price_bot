@@ -1,15 +1,12 @@
 {
-  "total_capital": 9999.780244070436,
-  "m31_capital": 4997.780444070437,
+  "total_capital": 9999.64225228231,
+  "m31_capital": 4997.642452282311,
   "m35_capital": 0.0,
   "m40_capital": 0.0,
   "m41_capital": 0.0,
   "m31_pos": {
     "BTC": {
       "entry_time": 1793869200042
-    },
-    "SOL": {
-      "entry_time": 1794153600026
     }
   },
   "m35_pos": {},
@@ -19,7 +16,7 @@
   "keltner_capital": 5000.0,
   "keltner_pos": {},
   "peak_equity": 10000.888563366278,
-  "last_run": "2026-11-08T20:29:50.094897+00:00",
+  "last_run": "2026-11-09T06:34:31.906934+00:00",
   "cash_capital": 1.9997999999995955,
   "hedge_structure": {
     "BNB": {
@@ -31,6 +28,14 @@
       "migrated_D557": true
     },
     "BTC": {
+      "spot_pct": 0.45,
+      "perp_pct": 0.45,
+      "cash_pct": 0.1,
+      "leverage": 1,
+      "delta_neutral": true,
+      "migrated_D557": true
+    },
+    "SOL": {
       "spot_pct": 0.45,
       "perp_pct": 0.45,
       "cash_pct": 0.1,
