@@ -68,3 +68,27 @@ Vol+Trend regime detection is the primary defense mechanism.
 - This is by design, not a bug.
 - Live Gate decision: If goal is "capital preservation in crisis", system is ready.
   If goal is "maximum return in bull", B&H is better.
+
+## Three Modes Comparison (2026-11-09)
+Tested Defensive / Balanced / Aggressive modes:
+
+### 2022 (Bear):
+| Mode | Return | DD | Sharpe |
+|------|--------|-----|--------|
+| Defensive | +27.7% | 20.7% | 0.96 |
+| Balanced | -25.5% | 38.8% | -0.59 |
+| Aggressive | -55.4% | 64.0% | -1.23 |
+
+### 2023 (Bull):
+| Mode | Return | DD | Sharpe |
+|------|--------|-----|--------|
+| Defensive | +61.7% | 20.1% | 1.54 |
+| Balanced | +67.7% | 20.1% | 1.64 |
+| Aggressive | +73.7% | 20.1% | 1.72 |
+
+**Conclusion:** Defensive is best choice. In bear market, Defensive is +53 units 
+better than Balanced. In bull market, Defensive is only -12 units worse than 
+Balanced. The trade-off is positive: protection in crisis (53 units) is worth 
+more than missing growth (12 units).
+
+**Decision:** Keep Defensive mode as primary. No change needed.
