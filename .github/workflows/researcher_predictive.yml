@@ -2,7 +2,7 @@ name: Predictive Researcher
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 3 1 * *"  # دوشنبه و پنجشنبه ساعت ۳ بامداد
+    - cron: "0 3 */3 * *"  # دوشنبه و پنجشنبه ساعت ۳ بامداد
 permissions: { contents: write }
 jobs:
   run:

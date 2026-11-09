@@ -27,3 +27,10 @@ All significant changes to strategies, thresholds, and architecture.
   - BEAR: 30% BTC
   - CRASH: 0% BTC (Defensive)
 - REASON: Adaptive mode gave +103.4% in 2023 and -5.7% in 2022 (best compound +91.8%)
+
+## 2026-11-09 — v17.1: Researcher frequency = every 3 days
+- CHANGED: Researcher runs every 3 days (was daily or monthly)
+- REASON: Balance between freshness (every 3 days) and noise reduction (10 runs/month)
+- Auto-approve still requires: 7d stable + 30d in top3 + Sharpe > 1.0
+- Emergency still triggers immediately for loss/alpha
+
