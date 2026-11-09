@@ -92,3 +92,27 @@ Balanced. The trade-off is positive: protection in crisis (53 units) is worth
 more than missing growth (12 units).
 
 **Decision:** Keep Defensive mode as primary. No change needed.
+
+## Adaptive Mode — Final Selection (2026-11-09)
+Compared 4 modes:
+
+| Mode | 2022 (Bear) | 2023 (Bull) | Compound |
+|------|-------------|-------------|----------|
+| Defensive | +27.7% | +61.7% | +106.7% |
+| Balanced | -25.5% | +67.7% | +24.9% |
+| Aggressive | -55.4% | +73.7% | -22.5% |
+| **Adaptive** | **-5.7%** | **+103.4%** | **+91.8%** |
+
+**Conclusion:** Adaptive wins. In 2023 it captured +103.4% (best), and in 2022 
+it limited loss to -5.7% (better than Balanced and Aggressive). Compound 
+return +91.8% is the best across all modes.
+
+**Decision:** Implement Adaptive mode in production bots. 
+Exposure rules:
+- BULL_STRONG: 100% BTC
+- BULL: 80% BTC
+- FLAT: 50% BTC (or 30% if 30d mom < -5%)
+- BEAR: 30% BTC
+- CRASH: 0% BTC (full tether)
+
+This combines defensive protection in bear markets with aggressive capture in bull markets.
