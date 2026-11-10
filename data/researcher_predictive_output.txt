@@ -1,14 +1,14 @@
 ================================================================================
  PREDICTIVE RESEARCHER v2 — Multi-Market
 ================================================================================
-  ⚠️ No profiler strategies for TMN
-✅ TMN: 185 assets
-  ⚠️ No profiler strategies for USDT
-✅ USDT: 185 assets
-  ✅ Loaded 1498 profiler strategies for GLOBAL
-     By status: {'validated': 2193, 'profiled': 164, 'other': 0}
-     Skipped: 270 blacklist, 0 no file, 2073 short
-  📊 GLOBAL: 1758 candidates (306 + 1498 profiler)
-✅ GLOBAL: 13 assets
+  ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
+  📊 TMN: 518 candidates (306 + 258 unified)
+❌ TMN: name 'regime' is not defined
+  ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
+  📊 USDT: 518 candidates (306 + 258 unified)
+❌ USDT: name 'regime' is not defined
+  ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
+  📊 GLOBAL: 1660 candidates (306 + 1400 unified)
+❌ GLOBAL: name 'regime' is not defined
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
