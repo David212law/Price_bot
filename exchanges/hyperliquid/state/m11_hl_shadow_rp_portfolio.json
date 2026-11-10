@@ -1,6 +1,6 @@
 {
-  "total_capital": 9999.566900132428,
-  "m31_capital": 4997.567100132428,
+  "total_capital": 9999.599215827779,
+  "m31_capital": 4997.599415827778,
   "m35_capital": 0.0,
   "m40_capital": 0.0,
   "m41_capital": 0.0,
@@ -19,7 +19,7 @@
   "keltner_capital": 5000.0,
   "keltner_pos": {},
   "peak_equity": 10000.888563366278,
-  "last_run": "2026-11-10T12:41:03.542306+00:00",
+  "last_run": "2026-11-10T21:48:56.287318+00:00",
   "cash_capital": 1.9997999999995955,
   "hedge_structure": {
     "BNB": {
