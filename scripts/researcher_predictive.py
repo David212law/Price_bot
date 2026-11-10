@@ -235,6 +235,80 @@ def load_all_profiler_strategies():
     return loaded
 
 
+def load_profiler_returns_as_df(market, dates_index):
+    """Load ALL 9035 profiler strategies (all statuses), filter blacklist only."""
+    import os
+    path = "research_lab/logs/profiles/state.json"
+    if not os.path.exists(path):
+        return pd.DataFrame()
+    
+    state = json.load(open(path))
+    done = state.get("done", {})
+    
+    # Load blacklist
+    try:
+        from research_lab.pipeline_contract import BLACKLIST
+    except:
+        BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"]
+    
+    cols = {}
+    skipped_blacklist = 0
+    skipped_no_file = 0
+    skipped_short = 0
+    loaded_by_status = {"validated": 0, "profiled": 0, "other": 0}
+    
+    for key, v in done.items():
+        if not isinstance(v, dict): continue
+        parts = key.split(":")
+        if len(parts) < 4: continue
+        exch, strat, h, sym = parts[0], parts[1], parts[2], parts[3]
+        
+        # Skip blacklist (artifact strategies)
+        if any(bl in strat for bl in BLACKLIST):
+            skipped_blacklist += 1
+            continue
+        
+        # Filter by market
+        if market == "GLOBAL":
+            if exch not in ["hyperliquid", "aster", "kucoin"]: continue
+        else:  # TMN / USDT
+            if exch != "wallex": continue
+        
+        ret_file = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{h}_{sym}.json"
+        if not os.path.exists(ret_file):
+            skipped_no_file += 1
+            continue
+        try:
+            rets = json.load(open(ret_file))
+            if len(rets) < 60:
+                skipped_short += 1
+                continue
+            s = pd.Series(rets)
+            s.index = pd.to_datetime(s.index)
+            s = s.reindex(dates_index, method=None).fillna(0.0)
+            if s.abs().sum() > 0:
+                name = f"P_{strat}_{sym}"
+                cols[name] = s
+                
+                status = v.get("status", "other")
+                if status in loaded_by_status:
+                    loaded_by_status[status] += 1
+                else:
+                    loaded_by_status["other"] += 1
+        except: 
+            skipped_no_file += 1
+    
+    if cols:
+        df = pd.DataFrame(cols)
+        print(f"  ✅ Loaded {len(cols)} profiler strategies for {market}")
+        print(f"     By status: {loaded_by_status}")
+        print(f"     Skipped: {skipped_blacklist} blacklist, {skipped_no_file} no file, {skipped_short} short")
+    else:
+        df = pd.DataFrame()
+        print(f"  ⚠️ No profiler strategies for {market}")
+    return df
+
+
 def main():
     print("="*80)
     print(" PREDICTIVE RESEARCHER v2 — Multi-Market")
