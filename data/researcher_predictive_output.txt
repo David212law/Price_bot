@@ -1,16 +1,14 @@
 ================================================================================
  PREDICTIVE RESEARCHER v2 — Multi-Market
 ================================================================================
+  ⚠️ No profiler strategies for TMN
 ✅ TMN: 185 assets
+  ⚠️ No profiler strategies for USDT
 ✅ USDT: 185 assets
+  ✅ Loaded 1498 profiler strategies for GLOBAL
+     By status: {'validated': 2193, 'profiled': 164, 'other': 0}
+     Skipped: 270 blacklist, 0 no file, 2073 short
+  📊 GLOBAL: 1758 candidates (306 + 1498 profiler)
 ✅ GLOBAL: 13 assets
-  ✅ Loaded 121 profiler strategies (NO filter)
-     Skipped: 269 (no file), 756 (too short)
 ✅ Saved results to PENDING. Human approval required.
-Traceback (most recent call last):
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 369, in <module>
-    main()
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 360, in main
-    msg += f"📊 *{m}* ({r['assets']} assets, {r['days']}d)\n"
-                        ~^^^^^^^^^^
-TypeError: 'int' object is not subscriptable
+✅ Bale message sent.
