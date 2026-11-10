@@ -154,87 +154,6 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
     ct, cdd, csh = stats(pd.Series(combined, index=df_rets.index[test_mask]))
     return top_per_regime, ct, cdd, csh, switches
 
-def process_market(name, df, fee):
-    df = df.copy()
-    df.index = pd.to_datetime(df.index)
-    df = df.sort_index().ffill()
-    if len(df) < 200: return None
-    S = build_strategies(df)
-    rets = df.pct_change().fillna(0)
-    strat_rets = pd.DataFrame({k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()})
-    
-    split_idx = int(len(df) * 0.8)  # 80% Train, 20% Holdout
-    train_mask = df.index < df.index[split_idx]
-    test_mask = df.index >= df.index[split_idx]
-    
-    # Oracle
-    if "BTC" in df.columns:
-        btc_fut = df["BTC"].shift(-30) / df["BTC"] - 1
-        oracle_regs = pd.Series("FLAT", index=df.index)
-        oracle_regs[btc_fut > 0.15] = "BULL_STRONG"
-        oracle_regs[(btc_fut > 0.05) & (btc_fut <= 0.15)] = "BULL"
-        oracle_regs[(btc_fut > -0.05) & (btc_fut <= 0.05)] = "FLAT"
-        oracle_regs[(btc_fut > -0.15) & (btc_fut <= -0.05)] = "BEAR"
-        oracle_regs[btc_fut <= -0.15] = "CRASH"
-        _, ct_o, cdd_o, csh_o, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee)
-        bht, bhdd, bhsh = stats(rets.loc[test_mask, "BTC"])
-    else:
-        ct_o, cdd_o, csh_o, bht, bhdd, bhsh = 0, 0, 0, 0, 0, 0
-
-    pred_regs = detect_regime(df)
-    top_p, ct_p, cdd_p, csh_p, sw_p = run_ensemble(strat_rets, pred_regs, train_mask, test_mask, fee)
-    
-    return {
-        "market": name, "assets": len(df.columns), "days": len(df),
-        "oracle": {"return": ct_o, "dd": cdd_o, "sharpe": csh_o},
-        "predictive": {"return": ct_p, "dd": cdd_p, "sharpe": csh_p, "switches": sw_p, "top": top_p},
-        "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
-    }
-
-
-def load_all_profiler_strategies():
-    """Load ALL 8766 profiled strategies from state.json — no filter."""
-    import os
-    path = "research_lab/logs/profiles/state.json"
-    if not os.path.exists(path):
-        print("  ⚠️ Profiler state not found")
-        return {}
-    
-    state = json.load(open(path))
-    done = state.get("done", {})
-    loaded = {}
-    skipped_no_file = 0
-    skipped_short = 0
-    
-    for key, v in done.items():
-        if not isinstance(v, dict): continue
-        val = v.get("validation", {})
-        sr = val.get("sharpe_ann", 0)
-        if v.get("status") != "profiled": continue
-        
-        parts = key.split(":")
-        if len(parts) < 4: continue
-        exch, strat, h, sym = parts[0], parts[1], parts[2], parts[3]
-        ret_file = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{h}_{sym}.json"
-        
-        if not os.path.exists(ret_file):
-            skipped_no_file += 1
-            continue
-        
-        try:
-            rets = json.load(open(ret_file))
-            if len(rets) < 60:
-                skipped_short += 1
-                continue
-            name = f"P_{strat}_{sym}"
-            loaded[name] = {"returns": rets, "sharpe_historical": sr}
-        except: pass
-    
-    print(f"  ✅ Loaded {len(loaded)} profiler strategies (NO filter)")
-    print(f"     Skipped: {skipped_no_file} (no file), {skipped_short} (too short)")
-    return loaded
-
-
 def load_profiler_returns_as_df(market, dates_index):
     """Load ALL 9035 profiler strategies (all statuses), filter blacklist only."""
     import os
@@ -309,6 +228,99 @@ def load_profiler_returns_as_df(market, dates_index):
     return df
 
 
+
+def process_market(name, df, fee):
+    df = df.copy()
+    df.index = pd.to_datetime(df.index)
+    df = df.sort_index().ffill()
+    if len(df) < 200: return None
+    S = build_strategies(df)
+    rets = df.pct_change().fillna(0)
+    strat_rets = pd.DataFrame({k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()})
+    
+    # Load profiler strategies (all statuses, only blacklist filtered)
+    try:
+        profiler_df = load_profiler_returns_as_df(name, df.index)
+        if not profiler_df.empty:
+            profiler_aligned = profiler_df.reindex(df.index).fillna(0.0)
+            strat_rets = pd.concat([strat_rets, profiler_aligned], axis=1)
+            print(f"  📊 {name}: {len(strat_rets.columns)} candidates (306 + {len(profiler_df.columns)} profiler)")
+    except Exception as e:
+        print(f"  ⚠️ Profiler load failed: {e}")
+    
+    split_idx = int(len(df) * 0.8)  # 80% Train, 20% Holdout
+    train_mask = df.index < df.index[split_idx]
+    test_mask = df.index >= df.index[split_idx]
+    
+    # Oracle
+    if "BTC" in df.columns:
+        btc_fut = df["BTC"].shift(-30) / df["BTC"] - 1
+        oracle_regs = pd.Series("FLAT", index=df.index)
+        oracle_regs[btc_fut > 0.15] = "BULL_STRONG"
+        oracle_regs[(btc_fut > 0.05) & (btc_fut <= 0.15)] = "BULL"
+        oracle_regs[(btc_fut > -0.05) & (btc_fut <= 0.05)] = "FLAT"
+        oracle_regs[(btc_fut > -0.15) & (btc_fut <= -0.05)] = "BEAR"
+        oracle_regs[btc_fut <= -0.15] = "CRASH"
+        _, ct_o, cdd_o, csh_o, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee)
+        bht, bhdd, bhsh = stats(rets.loc[test_mask, "BTC"])
+    else:
+        ct_o, cdd_o, csh_o, bht, bhdd, bhsh = 0, 0, 0, 0, 0, 0
+
+    pred_regs = detect_regime(df)
+    top_p, ct_p, cdd_p, csh_p, sw_p = run_ensemble(strat_rets, pred_regs, train_mask, test_mask, fee)
+    
+    return {
+        "market": name, "assets": len(df.columns), "days": len(df),
+        "oracle": {"return": ct_o, "dd": cdd_o, "sharpe": csh_o},
+        "predictive": {"return": ct_p, "dd": cdd_p, "sharpe": csh_p, "switches": sw_p, "top": top_p},
+        "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
+    }
+
+
+def load_all_profiler_strategies():
+    """Load ALL 8766 profiled strategies from state.json — no filter."""
+    import os
+    path = "research_lab/logs/profiles/state.json"
+    if not os.path.exists(path):
+        print("  ⚠️ Profiler state not found")
+        return {}
+    
+    state = json.load(open(path))
+    done = state.get("done", {})
+    loaded = {}
+    skipped_no_file = 0
+    skipped_short = 0
+    
+    for key, v in done.items():
+        if not isinstance(v, dict): continue
+        val = v.get("validation", {})
+        sr = val.get("sharpe_ann", 0)
+        if v.get("status") != "profiled": continue
+        
+        parts = key.split(":")
+        if len(parts) < 4: continue
+        exch, strat, h, sym = parts[0], parts[1], parts[2], parts[3]
+        ret_file = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{h}_{sym}.json"
+        
+        if not os.path.exists(ret_file):
+            skipped_no_file += 1
+            continue
+        
+        try:
+            rets = json.load(open(ret_file))
+            if len(rets) < 60:
+                skipped_short += 1
+                continue
+            name = f"P_{strat}_{sym}"
+            loaded[name] = {"returns": rets, "sharpe_historical": sr}
+        except: pass
+    
+    print(f"  ✅ Loaded {len(loaded)} profiler strategies (NO filter)")
+    print(f"     Skipped: {skipped_no_file} (no file), {skipped_short} (too short)")
+    return loaded
+
+
+
 def main():
     print("="*80)
     print(" PREDICTIVE RESEARCHER v2 — Multi-Market")
@@ -339,14 +351,10 @@ def main():
         print(f"✅ GLOBAL: {len(df.columns)} assets")
     except Exception as e: print(f"❌ GLOBAL: {e}")
 
-    # Load ALL 8766 profiler strategies (no filter)
+    # Load ALL profiler strategies
     try:
-        profiler = load_all_profiler_strategies()
-        if profiler:
-            results["_profiler_loaded"] = len(profiler)
-            results["_profiler_sample"] = list(profiler.keys())[:5]
-    except Exception as e:
-        print(f"  ⚠️ Profiler error: {e}")
+        profiler_df = load_profiler_returns_as_df("GLOBAL", df.index) if "GLOBAL" in "name" else None
+    except: pass
     
     # Save to pending (requires human approval)
     with open("data/researcher_pending.json", "w") as f:
@@ -356,8 +364,8 @@ def main():
     # Bale
     msg = "🤖 *Predictive Researcher — PENDING APPROVAL*\n\n"
     for m, r in results.items():
-        if not r: continue
-        msg += f"📊 *{m}* ({r['assets']} assets, {r['days']}d)\n"
+        if not isinstance(r, dict): continue
+        msg += f"📊 *{m}* ({r.get('assets', 0)} assets, {r.get('days', 0)}d)\n"
         msg += f"├ Oracle: {r['oracle']['return']:+.1f}% (DD {r['oracle']['dd']:.1f}%, Sh {r['oracle']['sharpe']:.2f})\n"
         msg += f"├ Predicted: {r['predictive']['return']:+.1f}% (DD {r['predictive']['dd']:.1f}%, Sh {r['predictive']['sharpe']:.2f})\n"
         msg += f"└ B&H BTC: {r['bnh_btc']['return']:+.1f}%\n"
