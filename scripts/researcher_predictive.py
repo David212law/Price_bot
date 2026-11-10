@@ -1,5 +1,6 @@
 """PREDICTIVE RESEARCHER v2 — Multi-Market + Bale Report + Save."""
 import math
+import traceback
 import sys, os, json
 import pandas as pd
 import numpy as np
