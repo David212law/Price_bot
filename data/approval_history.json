@@ -1,0 +1,92 @@
+{
+  "TMN_BULL_STRONG": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bb10_1.5"
+    }
+  ],
+  "TMN_BULL": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
+    }
+  ],
+  "TMN_FLAT": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bb30_1.5"
+    }
+  ],
+  "TMN_BEAR": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    }
+  ],
+  "TMN_CRASH": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    }
+  ],
+  "USDT_BULL_STRONG": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bb10_1.5"
+    }
+  ],
+  "USDT_BULL": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
+    }
+  ],
+  "USDT_FLAT": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bb40_1.5"
+    }
+  ],
+  "USDT_BEAR": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    }
+  ],
+  "USDT_CRASH": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    }
+  ],
+  "GLOBAL_BULL_STRONG": [
+    {
+      "date": "2026-11-10",
+      "strategy": "eq3"
+    }
+  ],
+  "GLOBAL_BULL": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
+    }
+  ],
+  "GLOBAL_FLAT": [
+    {
+      "date": "2026-11-10",
+      "strategy": "btfd30_h5"
+    }
+  ],
+  "GLOBAL_BEAR": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    }
+  ],
+  "GLOBAL_CRASH": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    }
+  ]
+}
