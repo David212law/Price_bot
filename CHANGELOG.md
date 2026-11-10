@@ -39,3 +39,38 @@ All significant changes to strategies, thresholds, and architecture.
 - CHANGED: Wallex Bot and HL Bot run every 4 hours (was daily)
 - UNCHANGED: Researcher every 3 days, M31 bots daily
 - REASON: Adaptive Mode needs frequent updates. Public repo, but keeping resource usage reasonable.
+
+
+## 2026-11-09 — v12.0 (RETROACTIVE: Human-in-the-loop دو سطحی)
+- RESTORED: Human-in-the-loop in two-tier form
+- RULE: Sharpe > 1.0 in Holdout → Auto-approve (after 7 days stable)
+- RULE: Sharpe < 1.0 in Holdout → Human approval required
+- REASON: Balance between automation and safety.
+  NOTE: Retroactive entry — added 2026-11-11 during audit v19.0.
+
+
+## 2026-11-09 — v13.0 (RETROACTIVE: کد = گزارش)
+- FIXED: auto_approve_v3.py now actually checks Sharpe > 1.0 (was only checking stability)
+- FIXED: Contradiction between report (claimed Sharpe check) and code (did not check)
+- REASON: Code and report must match. Audit revealed gap.
+  NOTE: Retroactive entry — added 2026-11-11 during audit v19.0.
+
+
+## 2026-11-11 — v19.1: Audit fixes (Kill Switch JSON + Survival 2D + CI)
+- FIXED: Kill Switch now writes to data/kill_switch_active.json (Wallex + HL)
+  - Was: only `return` on equity < 90%, no JSON write, no cross-bot notification
+  - Now: writes {active, last_triggered, reason, bot} and returns
+- FIXED: Researcher JSON guard in Wallex
+  - Was: fallback to bh_BTC if researcher_predictive_results.json missing
+  - Now: exit with error, no fallback trading
+- ADDED: Survival Mode 2D in Wallex
+  - Detects Iran currency crisis (USD/IRR 30d change > 20%)
+  - In BEAR/CRASH + iran_crisis → exposure 70% BTC (was 30% / 0%)
+  - REASON: BTC outperforms Tether in Iran-specific currency crises
+- FIXED: state["initialized"] flag (Wallex + HL)
+  - Was: `or not state["holdings"]` triggered rebalance every empty-state run
+  - Now: explicit `initialized` flag; only rebalance on regime/asset change
+- ADDED: CI/CD workflow (.github/workflows/ci.yml)
+  - Syntax check + health check on every push/PR
+- RESTORED: iran_data_fetch.yml from archive (weekly TGJU update)
+- AUDIT: Full code audit vs reports (v19.0) revealed 5 gaps, all now fixed.
