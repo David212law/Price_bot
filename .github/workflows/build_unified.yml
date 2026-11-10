@@ -1,0 +1,18 @@
+name: Build Unified Strategy DB
+on:
+  workflow_dispatch:
+permissions: { contents: write }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: python scripts/build_unified_strategy_db.py 2>&1 | tee data/build_unified_output.txt
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/all_strategies_unified.json data/build_unified_output.txt
+          git diff --cached --quiet || (git commit -m "Auto: unified strategy DB (all sources) [skip ci]" && git pull --rebase origin main && git push)
