@@ -132,6 +132,11 @@ def detect_regime(df):
     return regs
 
 def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
+    # Force DataFrame/Series types (guard against pandas edge cases)
+    if not isinstance(df_rets, pd.DataFrame):
+        df_rets = pd.DataFrame(df_rets)
+    if not isinstance(regimes, pd.Series):
+        regimes = pd.Series(regimes)
     top_per_regime = {}
     for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
         # SURVIVAL MODE: In BEAR/CRASH, always use Tether (no active strategies)
@@ -296,7 +301,10 @@ def process_market(name, df, fee):
     if len(df) < 200: return None
     S = build_strategies(df)
     rets = df.pct_change().fillna(0)
-    strat_rets = pd.DataFrame({k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()})
+    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+    strat_rets = pd.DataFrame(strat_rets_dict)
+    if not isinstance(strat_rets, pd.DataFrame):
+        strat_rets = pd.DataFrame(strat_rets)
     
     # Load from UNIFIED DB (single source of truth)
     try:
