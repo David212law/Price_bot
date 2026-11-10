@@ -301,7 +301,7 @@ def process_market(name, df, fee):
     df = df.sort_index().ffill()
     if len(df) < 200: return None
     S = build_strategies(df)
-    rets = df.pct_change().fillna(0)
+    market_rets = df.pct_change().fillna(0)
     strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
     strat_rets = pd.DataFrame(strat_rets_dict)
     if not isinstance(strat_rets, pd.DataFrame):
@@ -351,7 +351,7 @@ def process_market(name, df, fee):
         oracle_regs[(btc_fut > -0.15) & (btc_fut <= -0.05)] = "BEAR"
         oracle_regs[btc_fut <= -0.15] = "CRASH"
         _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
-        bht, bhdd, bhsh = stats(rets.loc[test_mask, "BTC"])
+        bht, bhdd, bhsh = stats(market_rets.loc[test_mask, "BTC"])
     else:
         ct_o, cdd_o, csh_o, bht, bhdd, bhsh = 0, 0, 0, 0, 0, 0
 
