@@ -82,6 +82,11 @@ def get_target_portfolio(df, regime):
 
     for s in strats:
         w = 1.0 / len(strats)  # Equal weight per strategy
+        # Parse new unified DB format: wallex::strategy::SYMBOL
+        if s.startswith("wallex::"):
+            parts = s.split("::")
+            if len(parts) >= 2:
+                s = parts[1]  # Extract strategy name (e.g., "bb15_1.5")
         if s.startswith("bh_"):
             asset = s.replace("bh_", "")
             portfolio[asset] = portfolio.get(asset, 0) + w
