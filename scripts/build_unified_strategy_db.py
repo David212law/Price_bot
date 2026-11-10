@@ -23,6 +23,8 @@ def main():
         done = state.get("done", {})
         loaded = 0
         skipped_bl = 0
+        skipped_no_file = 0
+        skipped_short = 0
         for key, v in done.items():
             if not isinstance(v, dict): continue
             parts = key.split(":")
@@ -34,16 +36,24 @@ def main():
                 skipped_bl += 1
                 continue
             
-            # Find returns file
+            # Find returns file — try both exact and stripped versions
             ret_file = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{h}_{sym}.json"
             if not os.path.exists(ret_file):
-                continue
+                # Try alternate path: {strat}_{sym}.json (no h)
+                ret_file_alt = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{sym}.json"
+                if os.path.exists(ret_file_alt):
+                    ret_file = ret_file_alt
+                else:
+                    skipped_no_file += 1
+                    continue
             
             try:
                 rets = json.load(open(ret_file))
-                if len(rets) < 60: continue
+                if len(rets) < 60: 
+                    skipped_short += 1
+                    continue
                 
-                sid = f"{exch}::{strat}::{sym}"
+                sid = f"{exch}::{strat}::{h}::{sym}"
                 unified["strategies"][sid] = {
                     "source": "profiler",
                     "exchange": exch,
@@ -56,7 +66,8 @@ def main():
                 loaded += 1
             except: pass
         
-        print(f"  ✅ Loaded {loaded} from state.json (skipped {skipped_bl} blacklist)")
+        print(f"  ✅ Loaded {loaded} from state.json")
+        print(f"     Skipped: {skipped_bl} blacklist, {skipped_no_file} no file, {skipped_short} short")
     else:
         print("  ⚠️ state.json not found")
     
