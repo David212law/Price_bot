@@ -1,0 +1,17 @@
+======================================================================
+ MERGE ALL STRATEGIES INTO RETURNS_MATRICES
+======================================================================
+
+📊 Processing TMN...
+  Assets: 185, Days: 799
+  Strategies: 260
+  ✅ Saved 254 return matrices
+
+📊 Processing USDT...
+  Assets: 185, Days: 799
+  Strategies: 260
+  ✅ Saved 258 return matrices
+
+======================================================================
+✅ Total: 512 new return files saved
+   Now Researcher can load them for TMN and USDT
