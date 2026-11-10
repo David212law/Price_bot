@@ -78,3 +78,7 @@ Current Equity: $9940.00
   Bought 2.820202 HOT @ 117 TMN ($330.67)
   Bought 0.007891 AGLD @ 41,905 TMN ($330.67)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+❌ KILL SWITCH TRIGGERED: Equity 2872.11 < 90% of 10000.00
