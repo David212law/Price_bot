@@ -1,4 +1,5 @@
 """PREDICTIVE RESEARCHER v2 — Multi-Market + Bale Report + Save."""
+import math
 import sys, os, json
 import pandas as pd
 import numpy as np
@@ -85,6 +86,29 @@ def build_strategies(df):
             S[f"bh_{a}"] = w
     return S
 
+def sharpe_to_pvalue(sharpe, n_days):
+    """Two-sided p-value from Sharpe (approx, normal returns)."""
+    if n_days < 10 or abs(sharpe) < 1e-6:
+        return 1.0
+    z = abs(sharpe) * math.sqrt(n_days)
+    # p = 2 * (1 - Phi(z)) = erfc(z / sqrt(2))
+    p = math.erfc(z / math.sqrt(2))
+    return min(1.0, p)
+
+def benjamini_hochberg(p_values, q=0.10):
+    """Return set of indices that pass FDR at level q."""
+    n = len(p_values)
+    if n == 0:
+        return set()
+    sorted_idx = sorted(range(n), key=lambda i: p_values[i])
+    sorted_p = [p_values[i] for i in sorted_idx]
+    max_k = -1
+    for k in range(n):
+        threshold = (k + 1) * q / n
+        if sorted_p[k] <= threshold:
+            max_k = k
+    return set(sorted_idx[:max_k + 1])
+
 def stats(daily):
     if len(daily) == 0: return 0, 0, 0
     eq = (1 + daily).cumprod()
@@ -107,7 +131,7 @@ def detect_regime(df):
     regs[cond2 & (vol >= 2.0)] = "CRASH"
     return regs
 
-def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
+def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
     top_per_regime = {}
     for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
         # SURVIVAL MODE: In BEAR/CRASH, always use Tether (no active strategies)
@@ -119,10 +143,23 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
             top_per_regime[r] = ["bh_BTC"]
             continue
         scores = {}
-        for name in df_rets.columns:
+        p_values = []
+        names_list = list(df_rets.columns)
+        for name in names_list:
             t, d, sh = stats(df_rets.loc[r_train, name])
             scores[name] = sh
-        top_3 = sorted(scores, key=scores.get, reverse=True)[:3]
+            p_values.append(sharpe_to_pvalue(sh, int(r_train.sum())))
+        # FDR filter (q=0.10 for Iran markets, q=0.05 for GLOBAL)
+        q_level = 0.05 if market == "GLOBAL" else 0.10
+        passing_idx = benjamini_hochberg(p_values, q=q_level)
+        passing_names = [names_list[i] for i in passing_idx]
+        if len(passing_names) > 0:
+            fdr_scores = {n: scores[n] for n in passing_names}
+            top_3 = sorted(fdr_scores, key=fdr_scores.get, reverse=True)[:3]
+            print(f"  FDR ({regime}): {len(passing_names)}/{len(names_list)} passed (q={q_level})")
+        else:
+            top_3 = sorted(scores, key=scores.get, reverse=True)[:3]
+            print(f"  ⚠️ FDR ({regime}): 0 passed! Fallback to top 3.")
         # HOLDOUT FILTER (FDR-lite): Strategy must work on unseen Test data
         final_3 = []
         for strat in top_3:
@@ -138,6 +175,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
     combined = []
     cur_strats = []
     switches = 0
+    regime_daily = {r: [] for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]}
     for d in df_rets.index[test_mask]:
         r = regimes.loc[d]
         strats = top_per_regime.get(r, ["bh_BTC"])
@@ -149,10 +187,18 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee):
             r_val -= fee * 0.5
             switches += 1
             cur_strats = strats
+        regime_daily[r].append(r_val)
         combined.append(r_val)
-        
+
     ct, cdd, csh = stats(pd.Series(combined, index=df_rets.index[test_mask]))
-    return top_per_regime, ct, cdd, csh, switches
+    per_regime_sharpe = {}
+    for r_name, daily_rets in regime_daily.items():
+        if len(daily_rets) >= 5:
+            _, _, sh_r = stats(pd.Series(daily_rets))
+            per_regime_sharpe[r_name] = round(sh_r, 4)
+        else:
+            per_regime_sharpe[r_name] = 0.0
+    return top_per_regime, ct, cdd, csh, switches, per_regime_sharpe
 
 def load_profiler_returns_as_df(market, dates_index):
     """Load ALL 9035 profiler strategies (all statuses), filter blacklist only."""
@@ -295,18 +341,18 @@ def process_market(name, df, fee):
         oracle_regs[(btc_fut > -0.05) & (btc_fut <= 0.05)] = "FLAT"
         oracle_regs[(btc_fut > -0.15) & (btc_fut <= -0.05)] = "BEAR"
         oracle_regs[btc_fut <= -0.15] = "CRASH"
-        _, ct_o, cdd_o, csh_o, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee)
+        _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
         bht, bhdd, bhsh = stats(rets.loc[test_mask, "BTC"])
     else:
         ct_o, cdd_o, csh_o, bht, bhdd, bhsh = 0, 0, 0, 0, 0, 0
 
     pred_regs = detect_regime(df)
-    top_p, ct_p, cdd_p, csh_p, sw_p = run_ensemble(strat_rets, pred_regs, train_mask, test_mask, fee)
-    
+    top_p, ct_p, cdd_p, csh_p, sw_p, sh_per_regime = run_ensemble(strat_rets, pred_regs, train_mask, test_mask, fee, market=name)
+
     return {
         "market": name, "assets": len(df.columns), "days": len(df),
         "oracle": {"return": ct_o, "dd": cdd_o, "sharpe": csh_o},
-        "predictive": {"return": ct_p, "dd": cdd_p, "sharpe": csh_p, "switches": sw_p, "top": top_p},
+        "predictive": {"return": ct_p, "dd": cdd_p, "sharpe": csh_p, "switches": sw_p, "top": top_p, "metrics": {r: {"sharpe": sh} for r, sh in sh_per_regime.items()}},
         "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
     }
 

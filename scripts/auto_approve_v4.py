@@ -31,10 +31,13 @@ def get_holdout_sharpe(market, regime):
     pred = pending[market].get("predictive", {})
     top = pred.get("top", {})
     if regime not in top: return 0.0
-    # Researcher stores top strategies; Sharpe is in 'sharpe' field if available
-    # If not available, fallback to 0 (which means human approval required)
+    # 1. Prefer per-regime Sharpe (if Researcher stores it)
     metrics = pred.get("metrics", {}).get(regime, {})
-    return metrics.get("sharpe", 0.0)
+    if "sharpe" in metrics:
+        return metrics["sharpe"]
+    # 2. Fallback: use ensemble Sharpe (predictive.sharpe)
+    overall = pred.get("sharpe", 0.0)
+    return overall if overall else 0.0
 
 def append_changelog(msg):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
