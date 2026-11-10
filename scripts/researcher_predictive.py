@@ -191,6 +191,50 @@ def process_market(name, df, fee):
         "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
     }
 
+
+def load_all_profiler_strategies():
+    """Load ALL 8766 profiled strategies from state.json — no filter."""
+    import os
+    path = "research_lab/logs/profiles/state.json"
+    if not os.path.exists(path):
+        print("  ⚠️ Profiler state not found")
+        return {}
+    
+    state = json.load(open(path))
+    done = state.get("done", {})
+    loaded = {}
+    skipped_no_file = 0
+    skipped_short = 0
+    
+    for key, v in done.items():
+        if not isinstance(v, dict): continue
+        val = v.get("validation", {})
+        sr = val.get("sharpe_ann", 0)
+        if v.get("status") != "profiled": continue
+        
+        parts = key.split(":")
+        if len(parts) < 4: continue
+        exch, strat, h, sym = parts[0], parts[1], parts[2], parts[3]
+        ret_file = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{h}_{sym}.json"
+        
+        if not os.path.exists(ret_file):
+            skipped_no_file += 1
+            continue
+        
+        try:
+            rets = json.load(open(ret_file))
+            if len(rets) < 60:
+                skipped_short += 1
+                continue
+            name = f"P_{strat}_{sym}"
+            loaded[name] = {"returns": rets, "sharpe_historical": sr}
+        except: pass
+    
+    print(f"  ✅ Loaded {len(loaded)} profiler strategies (NO filter)")
+    print(f"     Skipped: {skipped_no_file} (no file), {skipped_short} (too short)")
+    return loaded
+
+
 def main():
     print("="*80)
     print(" PREDICTIVE RESEARCHER v2 — Multi-Market")
@@ -221,6 +265,15 @@ def main():
         print(f"✅ GLOBAL: {len(df.columns)} assets")
     except Exception as e: print(f"❌ GLOBAL: {e}")
 
+    # Load ALL 8766 profiler strategies (no filter)
+    try:
+        profiler = load_all_profiler_strategies()
+        if profiler:
+            results["_profiler_loaded"] = len(profiler)
+            results["_profiler_sample"] = list(profiler.keys())[:5]
+    except Exception as e:
+        print(f"  ⚠️ Profiler error: {e}")
+    
     # Save to pending (requires human approval)
     with open("data/researcher_pending.json", "w") as f:
         json.dump(results, f, indent=2)
