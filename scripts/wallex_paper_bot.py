@@ -41,16 +41,19 @@ def detect_regime(df):
 def get_target_portfolio(df, regime):
     """Executes the actual active strategies chosen by Oracle for this regime"""
     # Read dynamically from Researcher's output
+    # GUARD: If Researcher JSON doesn't exist, exit — do NOT use fallback
+    if not os.path.exists("data/researcher_predictive_results.json"):
+        print("❌ CRITICAL: researcher_predictive_results.json not found.")
+        print("   Run researcher_predictive.py first. Exiting to avoid trading with fallback.")
+        return None
     try:
         res = json.load(open("data/researcher_predictive_results.json"))
         top_per_regime = res["TMN"]["predictive"]["top"]
         print("✅ Loaded dynamic strategies from Researcher JSON.")
     except Exception as e:
-        print(f"⚠️ Could not load Researcher JSON ({e}). Using defaults.")
-        top_per_regime = {
-            "BULL_STRONG": ["bh_BTC"], "BULL": ["bh_BTC"],
-            "FLAT": ["bh_BTC"], "BEAR": ["bh_BTC"], "CRASH": ["bh_BTC"]
-        }
+        print(f"❌ CRITICAL: Failed to parse Researcher JSON: {e}")
+        print("   Exiting to avoid trading with fallback.")
+        return None
     
     strats = top_per_regime.get(regime, ["bh_BTC"])
     portfolio = {}
@@ -114,11 +117,33 @@ def main():
         eq_check = tmp_state.get("capital", CAPITAL) + sum(q * df[a].iloc[-1] for a, q in tmp_state.get("holdings", {}).items() if a in df.columns)
         if eq_check < CAPITAL * 0.9:
             print(f"❌ KILL SWITCH TRIGGERED: Equity {eq_check:.2f} < 90% of {CAPITAL:.2f}")
+            json.dump({
+                "active": True,
+                "last_triggered": datetime.now().isoformat(),
+                "reason": f"Equity {eq_check:.2f} < 90% of {CAPITAL:.2f}",
+                "bot": "wallex"
+            }, open("data/kill_switch_active.json", "w"), indent=2)
             return
     print(f"Date: {today}")
     
     regime = detect_regime(df)
     print(f"Detected Regime: {regime}")
+
+    # ── IRAN CURRENCY CRISIS DETECTION (Survival Mode 2D) ──
+    iran_crisis = False
+    try:
+        tgju = json.load(open("data/usd_irr_tgju.json"))
+        dates_sorted = sorted(tgju.keys())
+        if len(dates_sorted) >= 31:
+            usd_now = tgju[dates_sorted[-1]]
+            usd_30d = tgju[dates_sorted[-31]]
+            change_30d = (usd_now / usd_30d - 1)
+            if change_30d > 0.20:
+                iran_crisis = True
+                print(f"🇮🇷 Iran currency crisis detected: USD/IRR +{change_30d*100:.1f}% in 30d")
+    except Exception as e:
+        print(f"⚠️ Iran crisis check failed: {e}")
+
     
     # ADAPTIVE MODE: exposure based on regime + 30d momentum
     # 30d momentum
@@ -139,15 +164,24 @@ def main():
         else:
             exposure, mode = 0.5, "BALANCED"
     elif regime == "BEAR":
-        exposure, mode = 0.3, "BEAR-DEF"
+        if iran_crisis:
+            exposure, mode = 0.7, "IRAN-CRISIS-BTC"
+        else:
+            exposure, mode = 0.3, "BEAR-DEF"
     else:  # CRASH
-        exposure, mode = 0.0, "DEFENSIVE"
+        if iran_crisis:
+            exposure, mode = 0.7, "IRAN-CRISIS-BTC"
+        else:
+            exposure, mode = 0.0, "DEFENSIVE"
 
     print(f"📊 Adaptive: Regime={regime}, Mom30={mom_30:+.1f}%, Mode={mode}, Exposure={exposure:.0%}")
 
     # Build portfolio: exposure% BTC + (1-exposure)% Tether
     if exposure > 0:
         target_port = get_target_portfolio(df, regime)
+        if target_port is None:
+            print("❌ Exiting: no valid strategy config.")
+            return
         # Scale to exposure
         scaled = {k: v * exposure for k, v in target_port.items()}
         scaled["TETHER"] = scaled.get("TETHER", 0) + (1.0 - exposure)
@@ -159,7 +193,7 @@ def main():
     if os.path.exists(STATE_FILE):
         state = json.load(open(STATE_FILE))
     else:
-        state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_date": None, "last_port_keys": []}
+        state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_date": None, "last_port_keys": [], "initialized": False}
         
     current_val = state["capital"]
     for asset, qty in state["holdings"].items():
@@ -172,7 +206,9 @@ def main():
     prev_keys = set(state.get("last_port_keys", []))
     
     # Rebalance if regime changes OR if the target assets change
-    if regime != state["last_regime"] or curr_keys != prev_keys or not state["holdings"]:
+    if (not state.get("initialized", False)
+        or regime != state["last_regime"]
+        or curr_keys != prev_keys):
         print(f"🔄 REBALANCING... (Regime: {state['last_regime']} -> {regime}, Assets: {prev_keys} -> {curr_keys})")
         
         # Fee: 0.6% for regime change, 0.2% for daily active rotation
@@ -192,6 +228,7 @@ def main():
                 
         state["last_regime"] = regime
         state["last_port_keys"] = list(curr_keys)
+        state["initialized"] = True
     else:
         print("No regime change or asset rotation. Holding current portfolio.")
         

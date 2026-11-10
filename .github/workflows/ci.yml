@@ -1,0 +1,19 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install pandas numpy requests
+      - name: Syntax check
+        run: |
+          python3 -c "import ast; ast.parse(open('scripts/wallex_paper_bot.py').read())"
+          python3 -c "import ast; ast.parse(open('scripts/hl_predictive_bot.py').read())"
+          python3 -c "import ast; ast.parse(open('scripts/researcher_predictive.py').read())"
+      - name: Health check
+        run: python3 -m research_lab.health_check

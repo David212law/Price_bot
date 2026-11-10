@@ -82,6 +82,13 @@ def main():
         eq_check = tmp_state.get("capital", CAPITAL) + sum(q * df[a].iloc[-1] for a, q in tmp_state.get("holdings", {}).items() if a in df.columns)
         if eq_check < CAPITAL * 0.9:
             print(f"❌ KILL SWITCH TRIGGERED: Equity {eq_check:.2f} < 90% of {CAPITAL:.2f}")
+            from datetime import datetime as _dt
+            json.dump({
+                "active": True,
+                "last_triggered": _dt.now().isoformat(),
+                "reason": f"Equity {eq_check:.2f} < 90% of {CAPITAL:.2f}",
+                "bot": "hl"
+            }, open("data/kill_switch_active.json", "w"), indent=2)
             return
             
     regime = detect_regime(df)
@@ -119,14 +126,16 @@ def main():
     print(f"Date: {df.index[-1].date()} | Regime: {regime} | Target: {target}")
     
     if os.path.exists(STATE_FILE): state = json.load(open(STATE_FILE))
-    else: state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_port_keys": []}
+    else: state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_port_keys": [], "initialized": False}
         
     val = state["capital"]
     for a, q in state["holdings"].items():
         if a in df.columns: val += q * df[a].iloc[-1]
             
     curr_keys = set(target.keys())
-    if regime != state["last_regime"] or curr_keys != set(state["last_port_keys"]) or not state["holdings"]:
+    if (not state.get("initialized", False)
+        or regime != state["last_regime"]
+        or curr_keys != set(state["last_port_keys"])):
         fee = val * 0.00035 # HL taker fee ~0.035%
         val -= fee; state["capital"] = 0.0; state["holdings"] = {}
         for a, w in target.items():
@@ -135,7 +144,7 @@ def main():
                 qty = (val * w) / price
                 state["holdings"][a] = qty
                 print(f"  Bought {qty:.4f} {a} @ ${df[a].iloc[-1]:,.0f}")
-        state["last_regime"] = regime; state["last_port_keys"] = list(curr_keys)
+        state["last_regime"] = regime; state["last_port_keys"] = list(curr_keys); state["initialized"] = True
     
     state["last_date"] = df.index[-1].strftime("%Y-%m-%d")
     json.dump(state, open(STATE_FILE, "w"), indent=2)
