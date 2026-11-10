@@ -3,12 +3,21 @@
 ================================================================================
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 518 candidates (306 + 258 unified)
-❌ TMN: name 'regime' is not defined
+  FDR (BULL_STRONG): 487/518 passed (q=0.1)
+  FDR (BULL): 500/518 passed (q=0.1)
+  FDR (FLAT): 475/518 passed (q=0.1)
+❌ TMN: 'dict' object has no attribute 'loc'
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 518 candidates (306 + 258 unified)
-❌ USDT: name 'regime' is not defined
+  FDR (BULL_STRONG): 488/518 passed (q=0.1)
+  FDR (BULL): 494/518 passed (q=0.1)
+  FDR (FLAT): 498/518 passed (q=0.1)
+❌ USDT: 'dict' object has no attribute 'loc'
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1660 candidates (306 + 1400 unified)
-❌ GLOBAL: name 'regime' is not defined
+  FDR (BULL_STRONG): 1528/1660 passed (q=0.05)
+  FDR (BULL): 1515/1660 passed (q=0.05)
+  FDR (FLAT): 1499/1660 passed (q=0.05)
+❌ GLOBAL: 'dict' object has no attribute 'loc'
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
