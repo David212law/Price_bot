@@ -59,3 +59,22 @@ Current Equity: $10000.00
   Bought 9.447771 HOT @ 117 TMN ($1104.44)
   Bought 0.026435 AGLD @ 41,780 TMN ($1104.44)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-08
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-8.4%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'XRP': 0.03333333333333333, 'BCH': 0.03333333333333333, 'MAJOR': 0.06666666666666667, 'LINEA': 0.03333333333333333, 'NEXO': 0.03333333333333333, 'OSMO': 0.03333333333333333, 'HOT': 0.03333333333333333, 'AGLD': 0.03333333333333333, 'TETHER': 0.7}
+Current Equity: $9940.00
+🔄 REBALANCING... (Regime: FLAT -> FLAT, Assets: {'OSMO', 'XRP', 'HOT', 'LINEA', 'BCH', 'MAJOR', 'NEXO', 'AGLD'} -> {'OSMO', 'XRP', 'HOT', 'AGLD', 'LINEA', 'BCH', 'TETHER', 'NEXO', 'MAJOR'})
+  Bought 0.001073 XRP @ 308,051 TMN ($330.67)
+  Bought 0.000005 BCH @ 65,648,177 TMN ($330.67)
+  Bought 0.081182 MAJOR @ 8,146 TMN ($661.34)
+  Bought 0.599421 LINEA @ 552 TMN ($330.67)
+  Bought 0.001719 NEXO @ 192,341 TMN ($330.67)
+  Bought 0.033689 OSMO @ 9,815 TMN ($330.67)
+  Bought 2.820202 HOT @ 117 TMN ($330.67)
+  Bought 0.007891 AGLD @ 41,905 TMN ($330.67)
+Saved state to data/wallex_paper_bot_state.json
