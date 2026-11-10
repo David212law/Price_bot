@@ -422,7 +422,9 @@ def main():
         df = pd.DataFrame({k[:-3]: v for k,v in raw.items() if k != "USDTTMN" and k.endswith("TMN") and len(v)>=100})
         results["TMN"] = process_market("TMN", df, FEE_TMN)
         print(f"✅ TMN: {len(df.columns)} assets")
-    except Exception as e: print(f"❌ TMN: {e}")
+    except Exception as e:
+        print(f"❌ TMN: {e}")
+        traceback.print_exc()
 
     # 2. USDT
     try:
@@ -430,7 +432,9 @@ def main():
         df = pd.DataFrame({k[:-4]: v for k,v in raw.items() if k != "USDTUSDT" and k.endswith("USDT") and len(v)>=100})
         results["USDT"] = process_market("USDT", df, FEE_USDT)
         print(f"✅ USDT: {len(df.columns)} assets")
-    except Exception as e: print(f"❌ USDT: {e}")
+    except Exception as e:
+        print(f"❌ USDT: {e}")
+        traceback.print_exc()
 
     # 3. GLOBAL
     try:
@@ -438,7 +442,9 @@ def main():
         df = pd.DataFrame({k[:-4]: v for k,v in raw.items() if k.endswith("-USD")})
         results["GLOBAL"] = process_market("GLOBAL", df, FEE_GLOBAL)
         print(f"✅ GLOBAL: {len(df.columns)} assets")
-    except Exception as e: print(f"❌ GLOBAL: {e}")
+    except Exception as e:
+        print(f"❌ GLOBAL: {e}")
+        traceback.print_exc()
 
     # Load ALL profiler strategies
     try:
