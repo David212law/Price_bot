@@ -3,13 +3,14 @@
 ================================================================================
 
 [1] Loading state.json...
-  ✅ Loaded 2357 from state.json (skipped 270 blacklist)
+  ✅ Loaded 2357 from state.json
+     Skipped: 270 blacklist, 269 no file, 2073 short
 
 [2] Loading Wallex merged strategies...
   ✅ Loaded 258 from wallex/returns_matrices
 
 ================================================================================
 ✅ UNIFIED DB CREATED: data/all_strategies_unified.json
-   Total strategies: 1756
-   File size: 9.7 MB
+   Total strategies: 2615
+   File size: 12.3 MB
 ================================================================================
