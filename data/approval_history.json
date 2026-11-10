@@ -7,9 +7,17 @@
     {
       "date": "2026-11-10",
       "strategy": "bb10_1.5"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "bb10_1.5"
     }
   ],
   "TMN_BULL": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
+    },
     {
       "date": "2026-11-10",
       "strategy": "bh_BTC"
@@ -27,9 +35,17 @@
     {
       "date": "2026-11-10",
       "strategy": "bb30_1.5"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "bb30_1.5"
     }
   ],
   "TMN_BEAR": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    },
     {
       "date": "2026-11-10",
       "strategy": "tether"
@@ -47,9 +63,17 @@
     {
       "date": "2026-11-10",
       "strategy": "tether"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
     }
   ],
   "USDT_BULL_STRONG": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bb10_1.5"
+    },
     {
       "date": "2026-11-10",
       "strategy": "bb10_1.5"
@@ -67,6 +91,10 @@
     {
       "date": "2026-11-10",
       "strategy": "bh_BTC"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
     }
   ],
   "USDT_FLAT": [
@@ -77,9 +105,17 @@
     {
       "date": "2026-11-10",
       "strategy": "bb40_1.5"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "bb20_1.5"
     }
   ],
   "USDT_BEAR": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    },
     {
       "date": "2026-11-10",
       "strategy": "tether"
@@ -97,6 +133,10 @@
     {
       "date": "2026-11-10",
       "strategy": "tether"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
     }
   ],
   "GLOBAL_BULL_STRONG": [
@@ -107,9 +147,17 @@
     {
       "date": "2026-11-10",
       "strategy": "bh_BTC"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
     }
   ],
   "GLOBAL_BULL": [
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
+    },
     {
       "date": "2026-11-10",
       "strategy": "bh_BTC"
@@ -127,6 +175,10 @@
     {
       "date": "2026-11-10",
       "strategy": "bh_BTC"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "bh_BTC"
     }
   ],
   "GLOBAL_BEAR": [
@@ -137,9 +189,17 @@
     {
       "date": "2026-11-10",
       "strategy": "tether"
+    },
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
     }
   ],
   "GLOBAL_CRASH": [
+    {
+      "date": "2026-11-10",
+      "strategy": "tether"
+    },
     {
       "date": "2026-11-10",
       "strategy": "tether"
