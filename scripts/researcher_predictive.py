@@ -302,7 +302,7 @@ def process_market(name, df, fee):
     if len(df) < 200: return None
     S = build_strategies(df)
     market_rets = df.pct_change().fillna(0)
-    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+    strat_rets_dict = {k: (v.shift(1) * market_rets).sum(axis=1) for k, v in S.items()}
     strat_rets = pd.DataFrame(strat_rets_dict)
     if not isinstance(strat_rets, pd.DataFrame):
         strat_rets = pd.DataFrame(strat_rets)
