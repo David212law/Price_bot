@@ -1,16 +1,16 @@
 ================================================================================
- BUILDING UNIFIED STRATEGY DATABASE (ALL SOURCES)
+ BUILDING UNIFIED STRATEGY DATABASE
 ================================================================================
 
-[1] Loading state.json...
-  ✅ Loaded 2357 from state.json
-     Skipped: 270 blacklist, 269 no file, 2073 short
+[1] Loading state.json (ALL statuses)...
+  ✅ Loaded: 2357
+     Skipped: 270 blacklist, 269 no file, 2073 short, 4066 invalid key
 
-[2] Loading Wallex merged strategies...
-  ✅ Loaded 258 from wallex/returns_matrices
+[2] Loading Wallex merged...
+  ✅ Loaded: 258
 
 ================================================================================
-✅ UNIFIED DB CREATED: data/all_strategies_unified.json
-   Total strategies: 2615
-   File size: 12.3 MB
+✅ UNIFIED DB CREATED
+   Total: 2615 strategies
+   Size: 12.3 MB
 ================================================================================
