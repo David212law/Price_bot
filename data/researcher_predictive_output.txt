@@ -2,46 +2,40 @@ Traceback (most recent call last):
   File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 423, in main
     results["TMN"] = process_market("TMN", df, FEE_TMN)
                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 354, in process_market
-    bht, bhdd, bhsh = stats(rets.loc[test_mask, "BTC"])
-                            ^^^^^^^^
-AttributeError: 'dict' object has no attribute 'loc'
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 305, in process_market
+    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 305, in <dictcomp>
+    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+                                        ^^^^
+NameError: cannot access free variable 'rets' where it is not associated with a value in enclosing scope
 Traceback (most recent call last):
   File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 433, in main
     results["USDT"] = process_market("USDT", df, FEE_USDT)
                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 354, in process_market
-    bht, bhdd, bhsh = stats(rets.loc[test_mask, "BTC"])
-                            ^^^^^^^^
-AttributeError: 'dict' object has no attribute 'loc'
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 305, in process_market
+    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 305, in <dictcomp>
+    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+                                        ^^^^
+NameError: cannot access free variable 'rets' where it is not associated with a value in enclosing scope
 Traceback (most recent call last):
   File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 443, in main
     results["GLOBAL"] = process_market("GLOBAL", df, FEE_GLOBAL)
                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 354, in process_market
-    bht, bhdd, bhsh = stats(rets.loc[test_mask, "BTC"])
-                            ^^^^^^^^
-AttributeError: 'dict' object has no attribute 'loc'
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 305, in process_market
+    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 305, in <dictcomp>
+    strat_rets_dict = {k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()}
+                                        ^^^^
+NameError: cannot access free variable 'rets' where it is not associated with a value in enclosing scope
 ================================================================================
  PREDICTIVE RESEARCHER v2 — Multi-Market
 ================================================================================
-  ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
-  📊 TMN: 518 candidates (306 + 258 unified)
-  FDR (BULL_STRONG): 487/518 passed (q=0.1)
-  FDR (BULL): 500/518 passed (q=0.1)
-  FDR (FLAT): 475/518 passed (q=0.1)
-❌ TMN: 'dict' object has no attribute 'loc'
-  ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
-  📊 USDT: 518 candidates (306 + 258 unified)
-  FDR (BULL_STRONG): 488/518 passed (q=0.1)
-  FDR (BULL): 494/518 passed (q=0.1)
-  FDR (FLAT): 498/518 passed (q=0.1)
-❌ USDT: 'dict' object has no attribute 'loc'
-  ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
-  📊 GLOBAL: 1660 candidates (306 + 1400 unified)
-  FDR (BULL_STRONG): 1528/1660 passed (q=0.05)
-  FDR (BULL): 1515/1660 passed (q=0.05)
-  FDR (FLAT): 1499/1660 passed (q=0.05)
-❌ GLOBAL: 'dict' object has no attribute 'loc'
+❌ TMN: cannot access free variable 'rets' where it is not associated with a value in enclosing scope
+❌ USDT: cannot access free variable 'rets' where it is not associated with a value in enclosing scope
+❌ GLOBAL: cannot access free variable 'rets' where it is not associated with a value in enclosing scope
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
