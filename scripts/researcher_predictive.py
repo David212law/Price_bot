@@ -156,10 +156,10 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         if len(passing_names) > 0:
             fdr_scores = {n: scores[n] for n in passing_names}
             top_3 = sorted(fdr_scores, key=fdr_scores.get, reverse=True)[:3]
-            print(f"  FDR ({regime}): {len(passing_names)}/{len(names_list)} passed (q={q_level})")
+            print(f"  FDR ({r}): {len(passing_names)}/{len(names_list)} passed (q={q_level})")
         else:
             top_3 = sorted(scores, key=scores.get, reverse=True)[:3]
-            print(f"  ⚠️ FDR ({regime}): 0 passed! Fallback to top 3.")
+            print(f"  ⚠️ FDR ({r}): 0 passed! Fallback to top 3.")
         # HOLDOUT FILTER (FDR-lite): Strategy must work on unseen Test data
         final_3 = []
         for strat in top_3:
