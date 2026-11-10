@@ -229,6 +229,20 @@ def load_profiler_returns_as_df(market, dates_index):
 
 
 
+def load_unified_db():
+    """Load all strategies from the unified database."""
+    import os
+    unified_path = "data/all_strategies_unified.json"
+    if not os.path.exists(unified_path):
+        print("  ⚠️ unified DB not found")
+        return {}
+    data = json.load(open(unified_path))
+    strats = data.get("strategies", {})
+    # Only those with returns
+    with_returns = {k: v for k, v in strats.items() if "returns" in v}
+    print(f"  ✅ Unified DB: {len(with_returns)} strategies with returns (out of {len(strats)} total)")
+    return with_returns
+
 def process_market(name, df, fee):
     df = df.copy()
     df.index = pd.to_datetime(df.index)
@@ -238,15 +252,35 @@ def process_market(name, df, fee):
     rets = df.pct_change().fillna(0)
     strat_rets = pd.DataFrame({k: (v.shift(1) * rets).sum(axis=1) for k, v in S.items()})
     
-    # Load profiler strategies (all statuses, only blacklist filtered)
+    # Load from UNIFIED DB (single source of truth)
     try:
-        profiler_df = load_profiler_returns_as_df(name, df.index)
-        if not profiler_df.empty:
-            profiler_aligned = profiler_df.reindex(df.index).fillna(0.0)
-            strat_rets = pd.concat([strat_rets, profiler_aligned], axis=1)
-            print(f"  📊 {name}: {len(strat_rets.columns)} candidates (306 + {len(profiler_df.columns)} profiler)")
+        unified = load_unified_db()
+        # Filter by market
+        rows = []
+        for sid, s in unified.items():
+            exch = s.get("exchange", "")
+            if name == "GLOBAL" and exch not in ["hyperliquid", "aster", "kucoin"]: continue
+            if name in ["TMN", "USDT"] and exch != "wallex": continue
+            rets = s.get("returns", {})
+            if not rets: continue
+            # Build aligned series
+            try:
+                series = pd.Series(rets)
+                series.index = pd.to_datetime(series.index)
+                series = series.reindex(df.index).fillna(0.0)
+                if series.abs().sum() > 0:
+                    rows.append((sid, series))
+            except: pass
+        
+        if rows:
+            profiler_df = pd.DataFrame(dict(rows))
+            profiler_df = profiler_df.reindex(df.index).fillna(0.0)
+            strat_rets = pd.concat([strat_rets, profiler_df], axis=1)
+            print(f"  📊 {name}: {len(strat_rets.columns)} candidates (306 + {len(rows)} unified)")
     except Exception as e:
-        print(f"  ⚠️ Profiler load failed: {e}")
+        print(f"  ⚠️ Unified DB load failed: {e}")
+    
+    # (Profiler loader deprecated — unified DB is used)
     
     split_idx = int(len(df) * 0.8)  # 80% Train, 20% Holdout
     train_mask = df.index < df.index[split_idx]
