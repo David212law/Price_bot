@@ -1,0 +1,26 @@
+================================================================================
+ REBUILDING ALL RETURNS FOR 9035 STRATEGIES
+================================================================================
+Total strategies: 9035
+
+Exchanges: ['hyperliquid', 'aster', 'kucoin', 'economic_v1', 'economic_v2']
+
+[hyperliquid] 1449 strategies
+  Built 260 strategies on 13 assets
+  ✅ Saved 0 return files
+
+[aster] 1623 strategies
+  Built 260 strategies on 13 assets
+  ✅ Saved 0 return files
+
+[kucoin] 1628 strategies
+  Built 260 strategies on 13 assets
+  ✅ Saved 0 return files
+
+[economic_v1] 106 strategies
+
+[economic_v2] 163 strategies
+
+================================================================================
+✅ TOTAL SAVED: 0 return files
+================================================================================
