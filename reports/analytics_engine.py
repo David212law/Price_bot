@@ -4,6 +4,7 @@ import base64
 import requests
 from contextlib import redirect_stdout
 from datetime import datetime, timezone
+import io
 
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
 GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
