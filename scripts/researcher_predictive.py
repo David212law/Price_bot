@@ -198,6 +198,9 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         for strat in passing_names:
             if strat not in df_rets.columns:
                 continue
+            # FILTER: Skip SHORT strategies in BULL/BULL_STRONG/FLAT (only allow in BEAR/CRASH)
+            if r in ["BULL_STRONG", "BULL", "FLAT"] and ("SHORT" in strat.upper() or "FLIP_SHORT" in strat.upper()):
+                continue
             t_test, d_test, sh_test = stats(df_rets.loc[test_mask & (regimes == r), strat])
             if sh_test > 0.3 and t_test > 0:
                 final_strats.append(strat)
