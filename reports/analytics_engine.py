@@ -2,6 +2,7 @@ import os
 import json
 import base64
 import requests
+from contextlib import redirect_stdout
 from datetime import datetime, timezone
 
 GH_TOKEN = os.environ.get("GH_TOKEN", "")
@@ -84,6 +85,24 @@ def analyze_bot_generic(name, path):
         print(f"  History: {len(state['history'])} closed trades")
     print()
 
+def send_bale(text):
+    token = os.environ.get("BALE_BOT_TOKEN")
+    chat_id = os.environ.get("BALE_CHAT_ID")
+    if not token or not chat_id:
+        return False
+    try:
+        # Telegram/Bale limit: 4096 chars. Truncate.
+        if len(text) > 4000:
+            text = text[:4000] + "\n...(truncated)"
+        r = requests.post(
+            f"https://tapi.bale.ai/bot{token}/sendMessage",
+            json={"chat_id": chat_id, "text": text, "parse_mode": "HTML"},
+            timeout=10
+        )
+        return r.status_code == 200
+    except Exception:
+        return False
+
 def main():
     print(f"=== Project Deep Analytics Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===\n")
     analyze_m11_hl_hyperliquid()
@@ -109,4 +128,14 @@ def main():
         print()
 
 if __name__ == "__main__":
-    main()
+    # Capture all print output
+    buf = io.StringIO()
+    with redirect_stdout(buf):
+        main()
+    output = buf.getvalue()
+    print(output)  # Still show in console
+    # Send to Bale
+    if send_bale(output):
+        print("✅ Analytics sent to Bale")
+    else:
+        print("⚠️ Bale not configured")
