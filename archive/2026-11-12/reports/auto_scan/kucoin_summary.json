@@ -1,0 +1,26 @@
+{
+  "M35": {
+    "status": "OK",
+    "n": 46,
+    "win_rate": 28.26,
+    "pf": 1.93,
+    "max_dd": 0.37,
+    "return": 1.21
+  },
+  "A8": {
+    "status": "OK",
+    "n": 22,
+    "win_rate": 68.18,
+    "pf": 0.43,
+    "max_dd": 0.46,
+    "return": -0.4
+  },
+  "A20": {
+    "status": "OK",
+    "n": 283,
+    "win_rate": 28.98,
+    "pf": 1.18,
+    "max_dd": 0.6,
+    "return": 0.52
+  }
+}
