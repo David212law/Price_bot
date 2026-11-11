@@ -61,7 +61,12 @@ def main():
         top = pending[market]["predictive"]["top"]
         for regime, strats in top.items():
             key = f"{market}_{regime}"
-            top_strat = strats[0] if strats else "NONE"
+            if isinstance(strats, dict):
+                top_strat = max(strats, key=strats.get) if strats else "NONE"
+            elif isinstance(strats, list):
+                top_strat = strats[0] if strats else "NONE"
+            else:
+                top_strat = "NONE"
             
             if key not in history: history[key] = []
             history[key].append({"date": today, "strategy": top_strat})
