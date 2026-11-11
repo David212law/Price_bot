@@ -225,10 +225,12 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             valid_strats = {df_rets.columns[0]: 1.0}
         total_w = sum(valid_strats.values())
         r_val = sum(df_rets.loc[d, s] * w for s, w in valid_strats.items()) / total_w if total_w > 0 else 0
-        if set(strats) != set(cur_strats):
+        # Use valid_strats keys instead of removed 'strats'
+        current_keys = set(valid_strats.keys())
+        if current_keys != set(cur_strats):
             r_val -= fee * 0.5
             switches += 1
-            cur_strats = strats
+            cur_strats = list(current_keys)
         regime_daily[r].append(r_val)
         combined.append(r_val)
 
