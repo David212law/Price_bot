@@ -5,7 +5,7 @@
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 574 candidates (306 + 258 unified)
   🧪 TEST (BULL_STRONG): using ALL 553 FDR-passing (q=0.1)
-    → BULL_STRONG: 87 strategies (weighted by Sharpe)
+    → BULL_STRONG: 88 strategies (weighted by Sharpe)
   🧪 TEST (BULL): using ALL 549 FDR-passing (q=0.1)
     → BULL: 273 strategies (weighted by Sharpe)
   🧪 TEST (FLAT): using ALL 544 FDR-passing (q=0.1)
@@ -13,7 +13,7 @@
   🧪 TEST (BULL_STRONG): using ALL 557 FDR-passing (q=0.1)
     → BULL_STRONG: 153 strategies (weighted by Sharpe)
   🧪 TEST (FLAT): using ALL 561 FDR-passing (q=0.1)
-    → FLAT: 67 strategies (weighted by Sharpe)
+    → FLAT: 65 strategies (weighted by Sharpe)
 ✅ TMN: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
@@ -22,10 +22,10 @@
     → BULL_STRONG: 52 strategies (weighted by Sharpe)
   🧪 TEST (BULL): using ALL 550 FDR-passing (q=0.1)
     → BULL: 138 strategies (weighted by Sharpe)
-  🧪 TEST (FLAT): using ALL 564 FDR-passing (q=0.1)
+  🧪 TEST (FLAT): using ALL 563 FDR-passing (q=0.1)
     → FLAT: 148 strategies (weighted by Sharpe)
   🧪 TEST (BULL_STRONG): using ALL 556 FDR-passing (q=0.1)
-    → BULL_STRONG: 158 strategies (weighted by Sharpe)
+    → BULL_STRONG: 157 strategies (weighted by Sharpe)
   🧪 TEST (FLAT): using ALL 569 FDR-passing (q=0.1)
     → FLAT: 45 strategies (weighted by Sharpe)
 ✅ USDT: 185 assets
