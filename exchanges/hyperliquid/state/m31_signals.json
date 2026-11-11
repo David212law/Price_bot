@@ -1,9 +1,9 @@
 {
   "signals": [
     {
-      "symbol": "XRP",
+      "symbol": "ETH",
       "action": "OPEN",
-      "time": 1794355200029
+      "time": 1794391200056
     }
   ]
 }
