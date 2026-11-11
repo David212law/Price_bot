@@ -79,6 +79,16 @@ def get_target_portfolio(df, regime):
         dips = ret[ret < -dip/100].sort_values(ascending=True).head(3)
         return list(dips.index) if not dips.empty else ["BTC"]
 
+    def get_momentum_top(period, top_n, ma_filter):
+        ret = df.pct_change(period).iloc[-1]
+        if ma_filter:
+            ma50 = df.rolling(50).mean().iloc[-1]
+            ret = ret[df.iloc[-1] > ma50]  # Only assets above MA50
+        # Only liquid assets
+        ret = ret[[c for c in ret.index if c in LIQUID_ASSETS]]
+        top = ret.sort_values(ascending=False).head(top_n)
+        return list(top.index) if not top.empty else ["BTC"]
+
     def get_rsi_oversold(p):
         delta = df.diff()
         up = delta.clip(lower=0).ewm(alpha=1/p, adjust=False).mean()
@@ -109,10 +119,30 @@ def get_target_portfolio(df, regime):
             for a in assets:
                 portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
         elif s.startswith("rsi"):
-            p = int(s.replace("rsi", "").split("_")[0])
+            parts = s.replace("rsi", "").split("_")
+            p = int(parts[0])
             assets = get_rsi_oversold(p)
             for a in assets:
                 portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+        # NEW FORMATS from v23.0 (Momentum, Profiler)
+        elif s.startswith("mom"):
+            # e.g. mom5_t2_ma -> momentum of 5 days, top 2, with MA filter
+            parts = s.split("_")
+            period = int(parts[0].replace("mom", ""))
+            top_n = int(parts[1].replace("t", ""))
+            ma_filter = parts[2] == "ma"
+            assets = get_momentum_top(period, top_n, ma_filter)
+            for a in assets:
+                portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+        elif s.startswith("P_"):
+            # Profiler format: P_STRATEGY_SYMBOL
+            parts = s.split("_")
+            if len(parts) >= 3:
+                strategy_name = parts[1]
+                asset = parts[2]
+                # For profiler strategies, just buy the specific asset if in liquid list
+                if asset in LIQUID_ASSETS and asset in df.columns:
+                    portfolio[asset] = portfolio.get(asset, 0) + w
                 
     return portfolio
 
