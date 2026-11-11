@@ -1,6 +1,6 @@
 {
-  "total_capital": 9997.88678286209,
-  "m31_capital": 4997.8867828620905,
+  "total_capital": 9997.774329355232,
+  "m31_capital": 4997.774329355232,
   "m35_capital": 0.0,
   "m40_capital": 0.0,
   "m41_capital": 0.0,
@@ -10,6 +10,9 @@
     },
     "BNB": {
       "entry_time": 1794261600063
+    },
+    "XRP": {
+      "entry_time": 1794355200029
     }
   },
   "m35_pos": {},
@@ -19,7 +22,7 @@
   "keltner_capital": 5000.0,
   "keltner_pos": {},
   "peak_equity": 10000.0,
-  "last_run": "2026-11-10T21:48:50.306219+00:00",
+  "last_run": "2026-11-11T06:25:30.348426+00:00",
   "cash_capital": 0,
   "hedge_structure": {
     "BNB": {
