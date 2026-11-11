@@ -58,12 +58,20 @@ def get_target_portfolio(df, regime):
     strats = top_per_regime.get(regime, ["bh_BTC"])
     portfolio = {}
     
+    # Top-20 liquid assets only (avoid HOT, AGLD, OSMO, etc.)
+    LIQUID_ASSETS = {"BTC", "ETH", "BNB", "SOL", "XRP", "ADA", "DOGE", "TRX", "LINK", "AVAX", "DOT", "MATIC", "LTC", "BCH", "UNI", "ATOM", "ETC", "XLM", "NEAR", "APT"}
+    
     def get_bb_oversold(p):
         ma = df.rolling(p).mean()
         sd = df.rolling(p).std()
         z = (df - ma) / sd
         z_today = z.iloc[-1]
-        oversold = z_today[z_today < -2].sort_values(ascending=True).head(3)
+        # Only liquid assets
+        liquid_cols = [c for c in z_today.index if c in LIQUID_ASSETS]
+        if not liquid_cols:
+            return ["BTC"]
+        z_liquid = z_today[liquid_cols]
+        oversold = z_liquid[z_liquid < -2].sort_values(ascending=True).head(3)
         return list(oversold.index) if not oversold.empty else ["BTC"]
 
     def get_btfd(dip):
