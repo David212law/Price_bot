@@ -119,6 +119,30 @@ def stats(daily):
     m, s = daily.mean(), daily.std()
     return (eq.iloc[-1] - 1) * 100, dd, (m / s) * np.sqrt(365) if s > 0 else 0
 
+
+def build_combo_strategies(S, top_n=8):
+    """Generate conditional combos from top base strategies."""
+    if not S or len(S) < 2:
+        return {}
+    
+    # Take top_n strategies by their standard deviation (as a proxy for signal quality)
+    # In a real scenario, we'd rank by historical Sharpe, but here we use the first N for simplicity
+    base_names = list(S.keys())[:top_n]
+    combos = {}
+    
+    import itertools
+    for (name1, name2) in itertools.combinations(base_names, 2):
+        sig1 = S[name1]
+        sig2 = S[name2]
+        
+        # Combo 1: AND (both must agree) - higher quality, fewer trades
+        combos[f"combo_AND_{name1}_{name2}"] = (sig1 * sig2)
+        
+        # Combo 2: OR (either can trigger) - lower quality, more trades
+        combos[f"combo_OR_{name1}_{name2}"] = ((sig1 + sig2) > 0).astype(float)
+        
+    return combos
+
 def detect_regime(df):
     if "BTC" not in df.columns: return pd.Series("FLAT", index=df.index)
     rets = df["BTC"].pct_change()
@@ -320,6 +344,12 @@ def process_market(name, df, fee):
     df = df.sort_index().ffill()
     if len(df) < 200: return None
     S = build_strategies(df)
+    
+    # NEW: Add conditional combo strategies
+    combos = build_combo_strategies(S, top_n=8)
+    S.update(combos)
+    print(f"  🧬 Added {len(combos)} combo strategies")
+    
     market_rets = df.pct_change().fillna(0)
     strat_rets_dict = {k: (v.shift(1) * market_rets).sum(axis=1) for k, v in S.items()}
     strat_rets = pd.DataFrame(strat_rets_dict)
