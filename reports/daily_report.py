@@ -1,5 +1,7 @@
 """Unified Daily Dashboard — Reports on ALL active bots."""
 import json
+import requests
+import os
 import glob
 import os
 from datetime import datetime
@@ -8,6 +10,22 @@ def get_eq(data, keys):
     for k in keys:
         if k in data and data[k]: return data[k]
     return 0.0
+
+def send_bale(text):
+    """Send report to Bale."""
+    token = os.environ.get("BALE_BOT_TOKEN")
+    chat_id = os.environ.get("BALE_CHAT_ID")
+    if not token or not chat_id:
+        return False
+    try:
+        r = requests.post(
+            f"https://tapi.bale.ai/bot{token}/sendMessage",
+            json={"chat_id": chat_id, "text": text, "parse_mode": "HTML"},
+            timeout=10
+        )
+        return r.status_code == 200
+    except Exception:
+        return False
 
 def main():
     print("="*70)
@@ -64,7 +82,10 @@ def main():
         for market in ["TMN", "USDT", "GLOBAL"]:
             if market in res and res[market]:
                 r = res[market]
-                print(f"  {market}: Oracle {r['oracle']['return']:+.1f}% | Pred {r['predictive']['return']:+.1f}%")
+                def safe_pct(x):
+                    if abs(x) > 10000: return "n/a"
+                    return f"{x:+.1f}%"
+                print(f"  {market}: Oracle {safe_pct(r['oracle']['return'])} | Pred {safe_pct(r['predictive']['return'])}")
                 # Show top strategy for FLAT/BULL
                 tops = r['predictive'].get('top', {})
                 if tops:
@@ -74,7 +95,19 @@ def main():
         print("  (No researcher data found)")
 
     print("\n" + "="*70)
-    print(f" GRAND TOTAL: ${m31_total + pred_total:,.2f}")
+    total = m31_total + pred_total
+    print(f" GRAND TOTAL: ${total:,.2f}")
+    
+    # Send summary to Bale
+    summary = f"""📊 PRICE_BOT DAILY
+M31: ${m31_total:,.0f}
+Predictive: ${pred_total:,.0f}
+TOTAL: ${total:,.0f}
+Time: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}"""
+    if send_bale(summary):
+        print("✅ Sent to Bale")
+    else:
+        print("⚠️ Bale not configured (BALE_BOT_TOKEN/BALE_CHAT_ID)")
 
 if __name__ == "__main__":
     main()
