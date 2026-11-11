@@ -237,11 +237,14 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
     switches = 0
     regime_daily = {r: [] for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]}
     
-    for d in df_rets.index[test_mask]:
+    # ADAPTIVE WEIGHTS: Start with train weights, update based on rolling performance
+    adaptive_weights = {r: dict(top_per_regime.get(r, {"bh_BTC": 1.0})) for r in top_per_regime}
+    rolling_window = 20  # Look back 20 days for adaptive weighting
+    
+    for i, d in enumerate(df_rets.index[test_mask]):
         r = regimes.loc[d]
-        strats_dict = top_per_regime.get(r, {"bh_BTC": 1.0})
+        strats_dict = adaptive_weights.get(r, {"bh_BTC": 1.0})
         
-        # Ensure strategies exist in columns
         valid_strats = {s: w for s, w in strats_dict.items() if s in df_rets.columns}
         if not valid_strats:
             valid_strats = {df_rets.columns[0]: 1.0}
@@ -249,7 +252,6 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         total_w = sum(valid_strats.values())
         r_val = sum(df_rets.loc[d, s] * w for s, w in valid_strats.items()) / total_w if total_w > 0 else 0
         
-        # Track daily returns per regime
         regime_daily[r].append(r_val)
         combined.append(r_val)
         
@@ -258,6 +260,24 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             r_val -= fee * 0.5
             switches += 1
             cur_strats = list(current_keys)
+        
+        # ADAPTIVE UPDATE: After 20 days, recompute weights based on recent performance
+        if i >= rolling_window and i % 10 == 0:  # Update every 10 days
+            recent_rets = df_rets.iloc[max(0, i-rolling_window):i+1]
+            recent_regime = regimes.iloc[max(0, i-rolling_window):i+1]
+            
+            new_weights = {}
+            for s in list(valid_strats.keys()):
+                if s in recent_rets.columns:
+                    mask = (recent_regime == r)
+                    if mask.sum() >= 5:
+                        _, _, sh = stats(recent_rets.loc[mask, s])
+                        if sh > 0.3:
+                            new_weights[s] = sh
+            
+            if new_weights:
+                total = sum(new_weights.values())
+                adaptive_weights[r] = {s: w/total for s, w in new_weights.items()}
 
     ct, cdd, csh = stats(pd.Series(combined, index=df_rets.index[test_mask]))
     per_regime_sharpe = {}
