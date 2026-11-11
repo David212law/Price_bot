@@ -200,13 +200,15 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
                 final_3.append(strat)
         if not final_3:
             final_3 = ["bh_BTC"]
-        # Weight by Sharpe
+        # Weight by Sharpe (filter negative and weak)
         final_scores = {s: scores[s] for s in final_3}
-        total_score = sum(final_scores.values())
-        if total_score > 0:
-            weighted = {s: round(final_scores[s] / total_score, 4) for s in final_3}
+        # Filter out negative Sharpe (short strategies not allowed in Wallex)
+        positive_scores = {s: sc for s, sc in final_scores.items() if sc > 0.3}
+        if positive_scores:
+            total_score = sum(positive_scores.values())
+            weighted = {s: round(positive_scores[s] / total_score, 4) for s in positive_scores}
         else:
-            weighted = {s: round(1.0/len(final_3), 4) for s in final_3}
+            weighted = {"bh_BTC": 1.0}
         top_per_regime[r] = weighted
         print(f"    → {r}: {len(final_3)} strategies (weighted by Sharpe)")
         
