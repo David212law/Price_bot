@@ -59,15 +59,67 @@ def get_target_portfolio(df, regime):
         
     strats = top_per_regime.get(regime, ["bh_BTC"])
     portfolio = {}
+
+    def get_bb_oversold_h(p):
+        ma = df.rolling(p).mean()
+        sd = df.rolling(p).std()
+        z = (df - ma) / sd
+        z_today = z.iloc[-1]
+        oversold = z_today[z_today < -2].sort_values(ascending=True).head(2)
+        return list(oversold.index) if not oversold.empty else ["BTC"]
+
+    def get_rsi_oversold_h(p):
+        delta = df.diff()
+        up = delta.clip(lower=0).ewm(alpha=1/p, adjust=False).mean()
+        down = -delta.clip(upper=0).ewm(alpha=1/p, adjust=False).mean()
+        rsi = 100 - 100/(1 + up/down)
+        rsi_today = rsi.iloc[-1]
+        oversold = rsi_today[rsi_today < 30].sort_values(ascending=True).head(2)
+        return list(oversold.index) if not oversold.empty else ["BTC"]
+
+    def get_momentum_top_h(period, top_n, ma_filter):
+        ret = df.pct_change(period).iloc[-1]
+        if ma_filter:
+            ma50 = df.rolling(50).mean().iloc[-1]
+            ret = ret[df.iloc[-1] > ma50]
+        top = ret.sort_values(ascending=False).head(top_n)
+        return list(top.index) if not top.empty else ["BTC"]
+
     for s in strats:
         w = 1.0 / len(strats)
         if s.startswith("bh_"):
-            portfolio[s.replace("bh_", "")] = portfolio.get(s.replace("bh_", ""), 0) + w
+            asset = s.replace("bh_", "")
+            portfolio[asset] = portfolio.get(asset, 0) + w
         elif s.startswith("eq"):
             n = int(s.replace("eq", ""))
             for a in df.columns[:n]: portfolio[a] = portfolio.get(a, 0) + (w/n)
+        elif s.startswith("bb"):
+            p = int(s.replace("bb", "").split("_")[0])
+            assets = get_bb_oversold_h(p)
+            for a in assets:
+                portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+        elif s.startswith("rsi"):
+            p = int(s.replace("rsi", "").split("_")[0])
+            assets = get_rsi_oversold_h(p)
+            for a in assets:
+                portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+        elif s.startswith("mom"):
+            parts = s.split("_")
+            period = int(parts[0].replace("mom", ""))
+            top_n = int(parts[1].replace("t", ""))
+            ma_filter = parts[2] == "ma" if len(parts) > 2 else False
+            assets = get_momentum_top_h(period, top_n, ma_filter)
+            for a in assets:
+                portfolio[a] = portfolio.get(a, 0) + (w / len(assets))
+        elif s.startswith("P_"):
+            # P_STRATEGY_SYMBOL
+            parts = s.split("_")
+            if len(parts) >= 3:
+                asset = parts[2]
+                if asset in df.columns:
+                    portfolio[asset] = portfolio.get(asset, 0) + w
         else:
-            portfolio["BTC"] = portfolio.get("BTC", 0) + w # fallback
+            portfolio["BTC"] = portfolio.get("BTC", 0) + w
     return portfolio
 
 def main():
