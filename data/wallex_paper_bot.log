@@ -90,3 +90,18 @@ Saved state to data/wallex_paper_bot_state.json
  WALLEX PAPER BOT — EXECUTION (Active Strategies)
 ================================================================================
 ❌ KILL SWITCH TRIGGERED: Equity 2691.10 < 90% of 10000.00
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-11
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-9.4%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'BTC': 0.09999999999999999, 'UNI': 0.06666666666666667, 'XRP': 0.06666666666666667, 'ETH': 0.06666666666666667, 'TETHER': 0.7}
+Current Equity: $10000.00
+🔄 REBALANCING... (Regime: None -> FLAT, Assets: set() -> {'XRP', 'TETHER', 'BTC', 'ETH', 'UNI'})
+  Bought 0.000000 BTC @ 19,365,532,874 TMN ($994.00)
+  Bought 0.000391 UNI @ 1,694,681 TMN ($662.67)
+  Bought 0.002377 XRP @ 278,738 TMN ($662.67)
+  Bought 0.000001 ETH @ 539,513,700 TMN ($662.67)
+Saved state to data/wallex_paper_bot_state.json
