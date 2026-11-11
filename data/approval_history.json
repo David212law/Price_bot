@@ -5,10 +5,6 @@
       "strategy": "wallex::bb15_1.5::ALL"
     },
     {
-      "date": "2026-11-10",
-      "strategy": "wallex::bb15_1.5::ALL"
-    },
-    {
       "date": "2026-11-11",
       "strategy": "wallex::bb40_1.5::ALL"
     },
@@ -27,6 +23,10 @@
     {
       "date": "2026-11-11",
       "strategy": "mom20_t4_ma"
+    },
+    {
+      "date": "2026-11-11",
+      "strategy": "bb10_1.5"
     }
   ],
   "TMN_BULL": [
@@ -35,7 +35,7 @@
       "strategy": "bh_BTC"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "bh_BTC"
     },
     {
@@ -65,10 +65,6 @@
       "strategy": "bh_BTC"
     },
     {
-      "date": "2026-11-10",
-      "strategy": "bh_BTC"
-    },
-    {
       "date": "2026-11-11",
       "strategy": "bb20_1.5"
     },
@@ -87,6 +83,10 @@
     {
       "date": "2026-11-11",
       "strategy": "mom180_t3_no"
+    },
+    {
+      "date": "2026-11-11",
+      "strategy": "bb20_1.5"
     }
   ],
   "TMN_BEAR": [
@@ -95,7 +95,7 @@
       "strategy": "tether"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "tether"
     },
     {
@@ -125,7 +125,7 @@
       "strategy": "tether"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "tether"
     },
     {
@@ -155,10 +155,6 @@
       "strategy": "bb10_1.5"
     },
     {
-      "date": "2026-11-10",
-      "strategy": "bb10_1.5"
-    },
-    {
       "date": "2026-11-11",
       "strategy": "wallex::bb10_1.5::ALL"
     },
@@ -177,6 +173,10 @@
     {
       "date": "2026-11-11",
       "strategy": "mom5_t2_no"
+    },
+    {
+      "date": "2026-11-11",
+      "strategy": "wallex::bb10_1.5::ALL"
     }
   ],
   "USDT_BULL": [
@@ -185,7 +185,7 @@
       "strategy": "bh_BTC"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "bh_BTC"
     },
     {
@@ -215,10 +215,6 @@
       "strategy": "bb40_1.5"
     },
     {
-      "date": "2026-11-10",
-      "strategy": "bb40_1.5"
-    },
-    {
       "date": "2026-11-11",
       "strategy": "bb40_1.5"
     },
@@ -237,6 +233,10 @@
     {
       "date": "2026-11-11",
       "strategy": "mom90_t1_no"
+    },
+    {
+      "date": "2026-11-11",
+      "strategy": "bb40_1.5"
     }
   ],
   "USDT_BEAR": [
@@ -245,7 +245,7 @@
       "strategy": "tether"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "tether"
     },
     {
@@ -275,7 +275,7 @@
       "strategy": "tether"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "tether"
     },
     {
@@ -305,10 +305,6 @@
       "strategy": "eq3"
     },
     {
-      "date": "2026-11-10",
-      "strategy": "eq3"
-    },
-    {
       "date": "2026-11-11",
       "strategy": "eq3"
     },
@@ -327,6 +323,10 @@
     {
       "date": "2026-11-11",
       "strategy": "mom5_t2_no"
+    },
+    {
+      "date": "2026-11-11",
+      "strategy": "eq3"
     }
   ],
   "GLOBAL_BULL": [
@@ -335,7 +335,7 @@
       "strategy": "bh_BTC"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "bh_BTC"
     },
     {
@@ -365,10 +365,6 @@
       "strategy": "kucoin::VC_CMF_10_S::ETHUSDTM"
     },
     {
-      "date": "2026-11-10",
-      "strategy": "kucoin::VC_CMF_10_S::ETHUSDTM"
-    },
-    {
       "date": "2026-11-11",
       "strategy": "kucoin::VC_CMF_10_S::ETHUSDTM"
     },
@@ -387,6 +383,10 @@
     {
       "date": "2026-11-11",
       "strategy": "rsi28_20"
+    },
+    {
+      "date": "2026-11-11",
+      "strategy": "hyperliquid::T_PSAR_FLIP_SHORT::ETH"
     }
   ],
   "GLOBAL_BEAR": [
@@ -395,7 +395,7 @@
       "strategy": "tether"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "tether"
     },
     {
@@ -425,7 +425,7 @@
       "strategy": "tether"
     },
     {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "strategy": "tether"
     },
     {

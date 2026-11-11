@@ -1,59 +1,34 @@
-Traceback (most recent call last):
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 483, in main
-    results["TMN"] = process_market("TMN", df, FEE_TMN)
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 413, in process_market
-    _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
-                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 228, in run_ensemble
-    if set(strats) != set(cur_strats):
-           ^^^^^^
-NameError: name 'strats' is not defined
-Traceback (most recent call last):
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 493, in main
-    results["USDT"] = process_market("USDT", df, FEE_USDT)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 413, in process_market
-    _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
-                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 228, in run_ensemble
-    if set(strats) != set(cur_strats):
-           ^^^^^^
-NameError: name 'strats' is not defined
-Traceback (most recent call last):
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 503, in main
-    results["GLOBAL"] = process_market("GLOBAL", df, FEE_GLOBAL)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 413, in process_market
-    _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
-                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 228, in run_ensemble
-    if set(strats) != set(cur_strats):
-           ^^^^^^
-NameError: name 'strats' is not defined
 ================================================================================
  PREDICTIVE RESEARCHER v2 — Multi-Market
 ================================================================================
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
-  📊 TMN: 573 candidates (306 + 258 unified)
-  🧪 TEST (BULL_STRONG): using ALL 552 FDR-passing (q=0.1)
+  📊 TMN: 574 candidates (306 + 258 unified)
+  🧪 TEST (BULL_STRONG): using ALL 553 FDR-passing (q=0.1)
     → BULL_STRONG: 87 strategies (weighted by Sharpe)
-  🧪 TEST (BULL): using ALL 547 FDR-passing (q=0.1)
-    → BULL: 271 strategies (weighted by Sharpe)
-  🧪 TEST (FLAT): using ALL 542 FDR-passing (q=0.1)
-    → FLAT: 59 strategies (weighted by Sharpe)
-❌ TMN: name 'strats' is not defined
+  🧪 TEST (BULL): using ALL 549 FDR-passing (q=0.1)
+    → BULL: 273 strategies (weighted by Sharpe)
+  🧪 TEST (FLAT): using ALL 544 FDR-passing (q=0.1)
+    → FLAT: 58 strategies (weighted by Sharpe)
+  🧪 TEST (BULL_STRONG): using ALL 557 FDR-passing (q=0.1)
+    → BULL_STRONG: 153 strategies (weighted by Sharpe)
+  🧪 TEST (FLAT): using ALL 561 FDR-passing (q=0.1)
+    → FLAT: 67 strategies (weighted by Sharpe)
+✅ TMN: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 574 candidates (306 + 258 unified)
-  🧪 TEST (BULL_STRONG): using ALL 537 FDR-passing (q=0.1)
+  🧪 TEST (BULL_STRONG): using ALL 538 FDR-passing (q=0.1)
     → BULL_STRONG: 52 strategies (weighted by Sharpe)
-  🧪 TEST (BULL): using ALL 550 FDR-passing (q=0.1)
+  🧪 TEST (BULL): using ALL 549 FDR-passing (q=0.1)
     → BULL: 138 strategies (weighted by Sharpe)
   🧪 TEST (FLAT): using ALL 564 FDR-passing (q=0.1)
     → FLAT: 148 strategies (weighted by Sharpe)
-❌ USDT: name 'strats' is not defined
+  🧪 TEST (BULL_STRONG): using ALL 556 FDR-passing (q=0.1)
+    → BULL_STRONG: 158 strategies (weighted by Sharpe)
+  🧪 TEST (FLAT): using ALL 569 FDR-passing (q=0.1)
+    → FLAT: 45 strategies (weighted by Sharpe)
+✅ USDT: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1716 candidates (306 + 1400 unified)
@@ -63,6 +38,19 @@ NameError: name 'strats' is not defined
     → BULL: 289 strategies (weighted by Sharpe)
   🧪 TEST (FLAT): using ALL 1569 FDR-passing (q=0.05)
     → FLAT: 696 strategies (weighted by Sharpe)
-❌ GLOBAL: name 'strats' is not defined
+  🧪 TEST (BULL_STRONG): using ALL 1574 FDR-passing (q=0.05)
+    → BULL_STRONG: 506 strategies (weighted by Sharpe)
+  🧪 TEST (FLAT): using ALL 1582 FDR-passing (q=0.05)
+    → FLAT: 396 strategies (weighted by Sharpe)
+✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
-✅ Bale message sent.
+Traceback (most recent call last):
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 534, in <module>
+    main()
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 529, in main
+    msg += "Top: " + ", ".join([f"{k}:{v[0]}" for k,v in r['predictive']['top'].items()]) + "\n\n"
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 529, in <listcomp>
+    msg += "Top: " + ", ".join([f"{k}:{v[0]}" for k,v in r['predictive']['top'].items()]) + "\n\n"
+                                       ~^^^
+KeyError: 0
