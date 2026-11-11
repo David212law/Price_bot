@@ -3,27 +3,42 @@
 ================================================================================
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 518 candidates (306 + 258 unified)
-  FDR (BULL_STRONG): 485/518 passed (q=0.1)
-  FDR (BULL): 498/518 passed (q=0.1)
-  FDR (FLAT): 480/518 passed (q=0.1)
-  FDR (BULL_STRONG): 492/518 passed (q=0.1)
-  FDR (FLAT): 492/518 passed (q=0.1)
+  🧪 TEST (BULL_STRONG): using ALL 485 FDR-passing (q=0.1)
+    → BULL_STRONG: 87 strategies after Holdout filter
+  🧪 TEST (BULL): using ALL 498 FDR-passing (q=0.1)
+    → BULL: 157 strategies after Holdout filter
+  🧪 TEST (FLAT): using ALL 480 FDR-passing (q=0.1)
+    → FLAT: 53 strategies after Holdout filter
+  🧪 TEST (BULL_STRONG): using ALL 492 FDR-passing (q=0.1)
+    → BULL_STRONG: 119 strategies after Holdout filter
+  🧪 TEST (FLAT): using ALL 492 FDR-passing (q=0.1)
+    → FLAT: 47 strategies after Holdout filter
 ✅ TMN: 185 assets
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 518 candidates (306 + 258 unified)
-  FDR (BULL_STRONG): 486/518 passed (q=0.1)
-  FDR (BULL): 500/518 passed (q=0.1)
-  FDR (FLAT): 498/518 passed (q=0.1)
-  FDR (BULL_STRONG): 498/518 passed (q=0.1)
-  FDR (FLAT): 510/518 passed (q=0.1)
+  🧪 TEST (BULL_STRONG): using ALL 486 FDR-passing (q=0.1)
+    → BULL_STRONG: 27 strategies after Holdout filter
+  🧪 TEST (BULL): using ALL 500 FDR-passing (q=0.1)
+    → BULL: 80 strategies after Holdout filter
+  🧪 TEST (FLAT): using ALL 498 FDR-passing (q=0.1)
+    → FLAT: 125 strategies after Holdout filter
+  🧪 TEST (BULL_STRONG): using ALL 498 FDR-passing (q=0.1)
+    → BULL_STRONG: 116 strategies after Holdout filter
+  🧪 TEST (FLAT): using ALL 510 FDR-passing (q=0.1)
+    → FLAT: 44 strategies after Holdout filter
 ✅ USDT: 185 assets
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1660 candidates (306 + 1400 unified)
-  FDR (BULL_STRONG): 1528/1660 passed (q=0.05)
-  FDR (BULL): 1515/1660 passed (q=0.05)
-  FDR (FLAT): 1499/1660 passed (q=0.05)
-  FDR (BULL_STRONG): 1545/1660 passed (q=0.05)
-  FDR (FLAT): 1534/1660 passed (q=0.05)
+  🧪 TEST (BULL_STRONG): using ALL 1528 FDR-passing (q=0.05)
+    → BULL_STRONG: 171 strategies after Holdout filter
+  🧪 TEST (BULL): using ALL 1515 FDR-passing (q=0.05)
+    → BULL: 306 strategies after Holdout filter
+  🧪 TEST (FLAT): using ALL 1499 FDR-passing (q=0.05)
+    → FLAT: 716 strategies after Holdout filter
+  🧪 TEST (BULL_STRONG): using ALL 1545 FDR-passing (q=0.05)
+    → BULL_STRONG: 510 strategies after Holdout filter
+  🧪 TEST (FLAT): using ALL 1534 FDR-passing (q=0.05)
+    → FLAT: 424 strategies after Holdout filter
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
