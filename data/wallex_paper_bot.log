@@ -137,3 +137,18 @@ Current Equity: $10000.00
   Bought 0.000001 ETH @ 552,571,377 TMN ($662.67)
 🧪 DRY RUN: Would save state to data/wallex_paper_bot_state.json
 Target Portfolio: {'BTC': 0.09999999999999999, 'XRP': 0.06666666666666667, 'BCH': 0.06666666666666667, 'ETH': 0.06666666666666667, 'TETHER': 0.7}
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-11
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-7.8%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'BTC': 0.09999999999999999, 'XRP': 0.06666666666666667, 'BCH': 0.06666666666666667, 'ETH': 0.06666666666666667, 'TETHER': 0.7}
+Current Equity: $10000.00
+🔄 REBALANCING... (Regime: None -> FLAT, Assets: set() -> {'ETH', 'XRP', 'BTC', 'TETHER', 'BCH'})
+  Bought 0.000000 BTC @ 19,710,031,251 TMN ($994.00)
+  Bought 0.002330 XRP @ 284,426 TMN ($662.67)
+  Bought 0.000011 BCH @ 61,183,000 TMN ($662.67)
+  Bought 0.000001 ETH @ 552,571,377 TMN ($662.67)
+Saved state to data/wallex_paper_bot_state.json
