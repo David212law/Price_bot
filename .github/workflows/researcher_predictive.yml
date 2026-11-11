@@ -20,8 +20,6 @@ jobs:
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-      - name: Auto-approve stable strategies
-        run: python scripts/auto_approve_v4.py
       - name: Commit Results
         run: |
           git config user.name "github-actions[bot]"
