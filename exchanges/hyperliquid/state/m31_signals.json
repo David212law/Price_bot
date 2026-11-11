@@ -1,9 +1,9 @@
 {
   "signals": [
     {
-      "symbol": "ETH",
+      "symbol": "SOL",
       "action": "OPEN",
-      "time": 1794391200056
+      "time": 1794416400044
     }
   ]
 }
