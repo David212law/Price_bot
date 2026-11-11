@@ -209,9 +209,22 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         # Weight by Train Sharpe (only positive)
         final_scores = {s: scores[s] for s in final_strats}
         positive_scores = {s: sc for s, sc in final_scores.items() if sc > 0.3}
+        
         if positive_scores:
-            total_score = sum(positive_scores.values())
-            weighted = {s: round(positive_scores[s] / total_score, 4) for s in positive_scores}
+            # CONCENTRATION FILTER: If top strategy is 2x better than 2nd, pick only top
+            sorted_scores = sorted(positive_scores.items(), key=lambda x: -x[1])
+            top_sharpe = sorted_scores[0][1]
+            second_sharpe = sorted_scores[1][1] if len(sorted_scores) > 1 else 0
+            
+            if second_sharpe == 0 or top_sharpe > 2 * second_sharpe:
+                # Top is dominant → single strategy
+                weighted = {sorted_scores[0][0]: 1.0}
+                print(f"  🎯 {r}: SINGLE strategy ({sorted_scores[0][0]}, sharpe {top_sharpe:.2f}) — dominant")
+            else:
+                # Multiple strategies → weighted ensemble
+                total_score = sum(positive_scores.values())
+                weighted = {s: round(positive_scores[s] / total_score, 4) for s in positive_scores}
+                print(f"  🧬 {r}: ENSEMBLE ({len(weighted)} strategies, top sharpe {top_sharpe:.2f})")
         else:
             weighted = {"bh_BTC": 1.0}
         
