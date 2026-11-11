@@ -113,7 +113,7 @@ def benjamini_hochberg(p_values, q=0.10):
 def stats(daily):
     if len(daily) == 0: return 0, 0, 0
     # Clip extreme daily returns (Wallex Iran can have >100% daily moves)
-    daily = daily.clip(lower=-0.5, upper=0.5)
+    daily = daily.clip(lower=-0.1, upper=0.1)
     eq = (1 + daily).cumprod()
     dd = ((eq.cummax() - eq) / eq.cummax()).max() * 100
     m, s = daily.mean(), daily.std()
