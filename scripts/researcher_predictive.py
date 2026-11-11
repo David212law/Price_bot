@@ -271,6 +271,24 @@ def load_profiler_returns_as_df(market, dates_index):
         except: 
             skipped_no_file += 1
     
+    # ── NEW: Load ALL files directly from returns_matrices/wallex (for strategies not in state.json)
+    if market in ["TMN", "USDT"]:
+        import glob
+        wallex_dir = "research_lab/logs/profiles/returns_matrices/wallex"
+        for fpath in glob.glob(f"{wallex_dir}/*_WALLEX.json"):
+            fname = os.path.basename(fpath).replace("_WALLEX.json", "")
+            if fname in cols: continue
+            if any(bl in fname for bl in BLACKLIST): continue
+            try:
+                rets = json.load(open(fpath))
+                if len(rets) < 60: continue
+                s = pd.Series(rets)
+                s.index = pd.to_datetime(s.index)
+                s = s.reindex(dates_index).fillna(0.0)
+                if s.abs().sum() > 0:
+                    cols[fname] = s
+            except: pass
+
     if cols:
         df = pd.DataFrame(cols)
         print(f"  ✅ Loaded {len(cols)} profiler strategies for {market}")
@@ -450,7 +468,7 @@ def main():
 
     # Load ALL profiler strategies
     try:
-        profiler_df = load_profiler_returns_as_df("GLOBAL", df.index) if "GLOBAL" in "name" else None
+        profiler_df = load_profiler_returns_as_df(name, df.index) if name in ["GLOBAL", "TMN", "USDT"] else None
     except: pass
     
     # Save to pending (requires human approval)
