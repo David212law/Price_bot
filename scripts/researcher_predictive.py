@@ -526,7 +526,16 @@ def main():
         msg += f"├ Oracle: {r['oracle']['return']:+.1f}% (DD {r['oracle']['dd']:.1f}%, Sh {r['oracle']['sharpe']:.2f})\n"
         msg += f"├ Predicted: {r['predictive']['return']:+.1f}% (DD {r['predictive']['dd']:.1f}%, Sh {r['predictive']['sharpe']:.2f})\n"
         msg += f"└ B&H BTC: {r['bnh_btc']['return']:+.1f}%\n"
-        msg += "Top: " + ", ".join([f"{k}:{v[0]}" for k,v in r['predictive']['top'].items()]) + "\n\n"
+        top_items = []
+        for k, v in r['predictive']['top'].items():
+            if isinstance(v, dict):
+                best = max(v, key=v.get) if v else "NONE"
+            elif isinstance(v, list):
+                best = v[0] if v else "NONE"
+            else:
+                best = str(v)
+            top_items.append(f"{k}:{best}")
+        msg += "Top: " + ", ".join(top_items) + "\n\n"
     msg += "\n✅ برای تأیید: در ترموس دستور python3 scripts/approve_strategies.py را اجرا کنید."
     send_bale(msg)
 
