@@ -261,7 +261,17 @@
       "diff_pct": 0.0035,
       "keltner_daily_avg": 0.1278,
       "dual_daily_avg": 0.0882
+    },
+    {
+      "time_iso": "2026-11-11T04:34:32.065467+00:00",
+      "m31_real_equity": 10000.45,
+      "m31_real_ret_pct": 0.0045,
+      "combo_hypo_equity": 10000.8,
+      "combo_hypo_ret_pct": 0.008,
+      "diff_pct": 0.0035,
+      "keltner_daily_avg": 0.1278,
+      "dual_daily_avg": 0.0882
     }
   ],
-  "last_run": "2026-11-10T22:48:09.575910+00:00"
+  "last_run": "2026-11-11T04:34:32.065467+00:00"
 }
