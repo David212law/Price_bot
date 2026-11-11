@@ -98,16 +98,43 @@ def main():
     total = m31_total + pred_total
     print(f" GRAND TOTAL: ${total:,.2f}")
     
-    # Send summary to Bale
-    summary = f"""📊 PRICE_BOT DAILY
-M31: ${m31_total:,.0f}
-Predictive: ${pred_total:,.0f}
-TOTAL: ${total:,.0f}
-Time: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}"""
+    # Build comprehensive summary for Bale
+    lines = ["📊 PRICE_BOT DAILY REPORT", "=" * 30]
+    lines.append(f"M31 Total: ${m31_total:,.2f}")
+    lines.append(f"Predictive: ${pred_total:,.2f}")
+    lines.append(f"GRAND TOTAL: ${total:,.2f}")
+    lines.append("")
+    lines.append("🚀 PREDICTIVE BOTS:")
+    for fname, label in bots:
+        path = f"data/{fname}"
+        if os.path.exists(path):
+            d = json.load(open(path))
+            regime = d.get("last_regime", "?")
+            n_hold = len(d.get("holdings", {}))
+            lines.append(f"  {label}: {regime} ({n_hold} pos)")
+    lines.append("")
+    lines.append("🧠 RESEARCHER:")
+    if os.path.exists(res_path):
+        res = json.load(open(res_path))
+        for market in ["TMN", "USDT", "GLOBAL"]:
+            if market in res and res[market]:
+                r = res[market]
+                pred = r['predictive']
+                sharpe = pred.get('sharpe', 0)
+                lines.append(f"  {market}: Sharpe {sharpe:.2f}")
+                tops = pred.get('top', {})
+                if tops.get('BULL_STRONG'):
+                    lines.append(f"    BULL: {tops['BULL_STRONG'][0]}")
+                if tops.get('FLAT'):
+                    lines.append(f"    FLAT: {tops['FLAT'][0]}")
+    lines.append("")
+    lines.append(f"⏰ {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
+    
+    summary = "\n".join(lines)
     if send_bale(summary):
         print("✅ Sent to Bale")
     else:
-        print("⚠️ Bale not configured (BALE_BOT_TOKEN/BALE_CHAT_ID)")
+        print("⚠️ Bale not configured")
 
 if __name__ == "__main__":
     main()
