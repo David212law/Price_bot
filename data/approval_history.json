@@ -2,11 +2,11 @@
   "TMN_BULL_STRONG": [
     {
       "date": "2026-11-11",
-      "strategy": "mom5_t2_ma"
+      "strategy": "mom20_t4_ma"
     },
     {
       "date": "2026-11-11",
-      "strategy": "mom20_t4_ma"
+      "strategy": "bb10_1.5"
     },
     {
       "date": "2026-11-11",
@@ -62,11 +62,11 @@
   "TMN_FLAT": [
     {
       "date": "2026-11-11",
-      "strategy": "mom120_t1_no"
+      "strategy": "mom180_t3_no"
     },
     {
       "date": "2026-11-11",
-      "strategy": "mom180_t3_no"
+      "strategy": "bb20_1.5"
     },
     {
       "date": "2026-11-11",
@@ -152,11 +152,11 @@
   "USDT_BULL_STRONG": [
     {
       "date": "2026-11-11",
-      "strategy": "mom5_t1_ma"
+      "strategy": "mom5_t2_no"
     },
     {
       "date": "2026-11-11",
-      "strategy": "mom5_t2_no"
+      "strategy": "wallex::bb10_1.5::ALL"
     },
     {
       "date": "2026-11-11",
@@ -216,7 +216,7 @@
     },
     {
       "date": "2026-11-11",
-      "strategy": "mom90_t1_no"
+      "strategy": "bb40_1.5"
     },
     {
       "date": "2026-11-11",
@@ -306,7 +306,7 @@
     },
     {
       "date": "2026-11-11",
-      "strategy": "mom5_t2_no"
+      "strategy": "eq3"
     },
     {
       "date": "2026-11-11",
@@ -366,7 +366,7 @@
     },
     {
       "date": "2026-11-11",
-      "strategy": "rsi28_20"
+      "strategy": "hyperliquid::T_PSAR_FLIP_SHORT::ETH"
     },
     {
       "date": "2026-11-11",
