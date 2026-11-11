@@ -5,43 +5,43 @@
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 574 candidates (306 + 258 unified)
   🧬 BULL_STRONG: ENSEMBLE (45 strategies, top sharpe 8.27)
-  FDR (BULL_STRONG): 553/574 passed, 86 after Holdout, 45 weighted
-  🧬 BULL: ENSEMBLE (125 strategies, top sharpe 6.93)
-  FDR (BULL): 549/574 passed, 273 after Holdout, 125 weighted
+  FDR (BULL_STRONG): 553/574 passed, 88 after Holdout, 45 weighted
+  🧬 BULL: ENSEMBLE (126 strategies, top sharpe 6.93)
+  FDR (BULL): 549/574 passed, 273 after Holdout, 126 weighted
   🧬 FLAT: ENSEMBLE (33 strategies, top sharpe 7.02)
   FDR (FLAT): 544/574 passed, 58 after Holdout, 33 weighted
-  🧬 BULL_STRONG: ENSEMBLE (84 strategies, top sharpe 6.05)
-  FDR (BULL_STRONG): 557/574 passed, 153 after Holdout, 84 weighted
+  🧬 BULL_STRONG: ENSEMBLE (83 strategies, top sharpe 6.05)
+  FDR (BULL_STRONG): 557/574 passed, 153 after Holdout, 83 weighted
   🧬 FLAT: ENSEMBLE (42 strategies, top sharpe 5.41)
-  FDR (FLAT): 561/574 passed, 64 after Holdout, 42 weighted
+  FDR (FLAT): 561/574 passed, 65 after Holdout, 42 weighted
 ✅ TMN: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 574 candidates (306 + 258 unified)
   🧬 BULL_STRONG: ENSEMBLE (29 strategies, top sharpe 7.34)
-  FDR (BULL_STRONG): 537/574 passed, 52 after Holdout, 29 weighted
-  🧬 BULL: ENSEMBLE (67 strategies, top sharpe 5.11)
-  FDR (BULL): 550/574 passed, 138 after Holdout, 67 weighted
-  🧬 FLAT: ENSEMBLE (91 strategies, top sharpe 6.70)
-  FDR (FLAT): 564/574 passed, 143 after Holdout, 91 weighted
-  🧬 BULL_STRONG: ENSEMBLE (130 strategies, top sharpe 6.96)
-  FDR (BULL_STRONG): 556/574 passed, 158 after Holdout, 130 weighted
-  🧬 FLAT: ENSEMBLE (34 strategies, top sharpe 4.53)
-  FDR (FLAT): 569/574 passed, 45 after Holdout, 34 weighted
-✅ USDT: 185 assets
+  FDR (BULL_STRONG): 540/574 passed, 52 after Holdout, 29 weighted
+  🧬 BULL: ENSEMBLE (67 strategies, top sharpe 5.07)
+  FDR (BULL): 553/574 passed, 138 after Holdout, 67 weighted
+  🧬 FLAT: ENSEMBLE (92 strategies, top sharpe 6.70)
+  FDR (FLAT): 564/574 passed, 144 after Holdout, 92 weighted
+  🧬 BULL_STRONG: ENSEMBLE (128 strategies, top sharpe 6.96)
+  FDR (BULL_STRONG): 556/574 passed, 159 after Holdout, 128 weighted
+  🧬 FLAT: ENSEMBLE (33 strategies, top sharpe 4.44)
+  FDR (FLAT): 569/574 passed, 45 after Holdout, 33 weighted
+✅ USDT: 184 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1716 candidates (306 + 1400 unified)
   🧬 BULL_STRONG: ENSEMBLE (135 strategies, top sharpe 1.61)
   FDR (BULL_STRONG): 1581/1716 passed, 189 after Holdout, 135 weighted
-  🧬 BULL: ENSEMBLE (144 strategies, top sharpe 2.74)
-  FDR (BULL): 1541/1716 passed, 289 after Holdout, 144 weighted
+  🧬 BULL: ENSEMBLE (139 strategies, top sharpe 2.39)
+  FDR (BULL): 1541/1716 passed, 282 after Holdout, 139 weighted
   🧬 FLAT: ENSEMBLE (266 strategies, top sharpe 2.84)
-  FDR (FLAT): 1569/1716 passed, 696 after Holdout, 266 weighted
+  FDR (FLAT): 1569/1716 passed, 693 after Holdout, 266 weighted
   🧬 BULL_STRONG: ENSEMBLE (326 strategies, top sharpe 4.33)
-  FDR (BULL_STRONG): 1574/1716 passed, 506 after Holdout, 326 weighted
-  🧬 FLAT: ENSEMBLE (190 strategies, top sharpe 1.98)
-  FDR (FLAT): 1582/1716 passed, 396 after Holdout, 190 weighted
+  FDR (BULL_STRONG): 1574/1716 passed, 504 after Holdout, 326 weighted
+  🧬 FLAT: ENSEMBLE (180 strategies, top sharpe 1.93)
+  FDR (FLAT): 1582/1716 passed, 386 after Holdout, 180 weighted
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
