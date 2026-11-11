@@ -159,21 +159,23 @@ def detect_regime(df):
     return regs
 
 def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
-    # Force DataFrame/Series types (guard against pandas edge cases)
+    # Force DataFrame/Series types
     if not isinstance(df_rets, pd.DataFrame):
         df_rets = pd.DataFrame(df_rets)
     if not isinstance(regimes, pd.Series):
         regimes = pd.Series(regimes)
+    
     top_per_regime = {}
     for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
-        # SURVIVAL MODE: In BEAR/CRASH, always use Tether (no active strategies)
         if r in ["BEAR", "CRASH"]:
-            top_per_regime[r] = ["tether"]
+            top_per_regime[r] = {"tether": 1.0}
             continue
+        
         r_train = train_mask & (regimes == r)
         if r_train.sum() < 15:
-            top_per_regime[r] = ["bh_BTC"]
+            top_per_regime[r] = {"bh_BTC": 1.0}
             continue
+        
         scores = {}
         p_values = []
         names_list = list(df_rets.columns)
@@ -181,60 +183,68 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             t, d, sh = stats(df_rets.loc[r_train, name])
             scores[name] = sh
             p_values.append(sharpe_to_pvalue(sh, int(r_train.sum())))
-        # FDR filter (q=0.10 for Iran markets, q=0.05 for GLOBAL)
+        
+        # FDR filter
         q_level = 0.05 if market == "GLOBAL" else 0.10
         passing_idx = benjamini_hochberg(p_values, q=q_level)
         passing_names = [names_list[i] for i in passing_idx]
-        if len(passing_names) > 0:
-            top_3 = passing_names[:]
-            print(f"  🧪 TEST ({r}): using ALL {len(passing_names)} FDR-passing (q={q_level})")
-        else:
-            top_3 = sorted(scores, key=scores.get, reverse=True)[:5]
-            print(f"  ⚠️ FDR ({r}): 0 passed! Fallback to top 5.")
-        # HOLDOUT FILTER (FDR-lite): Strategy must work on unseen Test data
-        final_3 = []
-        for strat in top_3:
-            if strat not in df_rets.columns: continue
+        
+        if not passing_names:
+            top_per_regime[r] = {"bh_BTC": 1.0}
+            continue
+        
+        # Holdout filter: Strategy must work on unseen Test data
+        final_strats = []
+        for strat in passing_names:
+            if strat not in df_rets.columns:
+                continue
             t_test, d_test, sh_test = stats(df_rets.loc[test_mask & (regimes == r), strat])
             if sh_test > 0.3 and t_test > 0:
-                final_3.append(strat)
-        if not final_3:
-            final_3 = ["bh_BTC"]
-        # Weight by Sharpe (filter negative and weak)
-        final_scores = {s: scores[s] for s in final_3}
-        # Filter out negative Sharpe (short strategies not allowed in Wallex)
+                final_strats.append(strat)
+        
+        if not final_strats:
+            top_per_regime[r] = {"bh_BTC": 1.0}
+            continue
+        
+        # Weight by Train Sharpe (only positive)
+        final_scores = {s: scores[s] for s in final_strats}
         positive_scores = {s: sc for s, sc in final_scores.items() if sc > 0.3}
         if positive_scores:
             total_score = sum(positive_scores.values())
             weighted = {s: round(positive_scores[s] / total_score, 4) for s in positive_scores}
         else:
             weighted = {"bh_BTC": 1.0}
-        top_per_regime[r] = weighted
-        print(f"    → {r}: {len(final_3)} strategies (weighted by Sharpe)")
         
+        top_per_regime[r] = weighted
+        print(f"  FDR ({r}): {len(passing_names)}/{len(names_list)} passed, "
+              f"{len(final_strats)} after Holdout, {len(weighted)} weighted")
+
     combined = []
     cur_strats = []
     switches = 0
     regime_daily = {r: [] for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]}
+    
     for d in df_rets.index[test_mask]:
         r = regimes.loc[d]
         strats_dict = top_per_regime.get(r, {"bh_BTC": 1.0})
-        if isinstance(strats_dict, list):
-            strats_dict = {s: 1.0/len(strats_dict) for s in strats_dict}
-        # ensure strats are in columns
+        
+        # Ensure strategies exist in columns
         valid_strats = {s: w for s, w in strats_dict.items() if s in df_rets.columns}
         if not valid_strats:
             valid_strats = {df_rets.columns[0]: 1.0}
+        
         total_w = sum(valid_strats.values())
         r_val = sum(df_rets.loc[d, s] * w for s, w in valid_strats.items()) / total_w if total_w > 0 else 0
-        # Use valid_strats keys instead of removed 'strats'
+        
+        # Track daily returns per regime
+        regime_daily[r].append(r_val)
+        combined.append(r_val)
+        
         current_keys = set(valid_strats.keys())
         if current_keys != set(cur_strats):
             r_val -= fee * 0.5
             switches += 1
             cur_strats = list(current_keys)
-        regime_daily[r].append(r_val)
-        combined.append(r_val)
 
     ct, cdd, csh = stats(pd.Series(combined, index=df_rets.index[test_mask]))
     per_regime_sharpe = {}
