@@ -276,10 +276,8 @@ def main():
         print("No regime change or asset rotation. Holding current portfolio.")
         
     state["last_date"] = today
-    # DRY RUN: Do not save state for testing
-    # json.dump(state, open(STATE_FILE, "w"), indent=2)
-    print(f"🧪 DRY RUN: Would save state to {STATE_FILE}")
-    print(f"Target Portfolio: {target_port}")
+    json.dump(state, open(STATE_FILE, "w"), indent=2)
+    print(f"Saved state to {STATE_FILE}")
 
 if __name__ == "__main__":
     main()
