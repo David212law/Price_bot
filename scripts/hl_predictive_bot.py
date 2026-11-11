@@ -57,7 +57,11 @@ def get_target_portfolio(df, regime):
     except:
         top_per_regime = {"FLAT": ["bh_BTC"]}
         
-    strats = top_per_regime.get(regime, ["bh_BTC"])
+    strats_raw = top_per_regime.get(regime, {"bh_BTC": 1.0})
+    if isinstance(strats_raw, list):
+        strats = {s: 1.0/len(strats_raw) for s in strats_raw}
+    else:
+        strats = strats_raw
     portfolio = {}
 
     def get_bb_oversold_h(p):
@@ -85,8 +89,7 @@ def get_target_portfolio(df, regime):
         top = ret.sort_values(ascending=False).head(top_n)
         return list(top.index) if not top.empty else ["BTC"]
 
-    for s in strats:
-        w = 1.0 / len(strats)
+    for s, w in strats.items():
         if s.startswith("bh_"):
             asset = s.replace("bh_", "")
             portfolio[asset] = portfolio.get(asset, 0) + w

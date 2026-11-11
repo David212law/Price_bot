@@ -55,7 +55,12 @@ def get_target_portfolio(df, regime):
         print("   Exiting to avoid trading with fallback.")
         return None
     
-    strats = top_per_regime.get(regime, ["bh_BTC"])
+    strats_raw = top_per_regime.get(regime, {"bh_BTC": 1.0})
+    if isinstance(strats_raw, list):
+        # legacy list format
+        strats = {s: 1.0/len(strats_raw) for s in strats_raw}
+    else:
+        strats = strats_raw
     portfolio = {}
     
     # Top-20 liquid assets only (avoid HOT, AGLD, OSMO, etc.)
@@ -98,8 +103,7 @@ def get_target_portfolio(df, regime):
         oversold = rsi_today[rsi_today < 30].sort_values(ascending=True).head(3)
         return list(oversold.index) if not oversold.empty else ["BTC"]
 
-    for s in strats:
-        w = 1.0 / len(strats)  # Equal weight per strategy
+    for s, w in strats.items():
         # Parse new unified DB format: wallex::strategy::SYMBOL
         if s.startswith("wallex::"):
             parts = s.split("::")
@@ -147,6 +151,18 @@ def get_target_portfolio(df, regime):
     return portfolio
 
 def main():
+    # Auto-recover corrupted state
+    import os as _os
+    _state_path = "data/wallex_paper_bot_state.json"
+    if _os.path.exists(_state_path):
+        try:
+            _tmp = json.load(open(_state_path))
+            if not isinstance(_tmp, dict) or "holdings" not in _tmp:
+                raise ValueError("bad structure")
+        except Exception:
+            print(f"⚠️ Corrupted state — resetting {_state_path}")
+            _os.remove(_state_path)
+    
     print("="*80)
     print(" WALLEX PAPER BOT — EXECUTION (Active Strategies)")
     print("="*80)

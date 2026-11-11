@@ -200,8 +200,15 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
                 final_3.append(strat)
         if not final_3:
             final_3 = ["bh_BTC"]
-        top_per_regime[r] = final_3
-        print(f"    → {r}: {len(final_3)} strategies after Holdout filter")
+        # Weight by Sharpe
+        final_scores = {s: scores[s] for s in final_3}
+        total_score = sum(final_scores.values())
+        if total_score > 0:
+            weighted = {s: round(final_scores[s] / total_score, 4) for s in final_3}
+        else:
+            weighted = {s: round(1.0/len(final_3), 4) for s in final_3}
+        top_per_regime[r] = weighted
+        print(f"    → {r}: {len(final_3)} strategies (weighted by Sharpe)")
         
     combined = []
     cur_strats = []
@@ -209,11 +216,15 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
     regime_daily = {r: [] for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]}
     for d in df_rets.index[test_mask]:
         r = regimes.loc[d]
-        strats = top_per_regime.get(r, ["bh_BTC"])
+        strats_dict = top_per_regime.get(r, {"bh_BTC": 1.0})
+        if isinstance(strats_dict, list):
+            strats_dict = {s: 1.0/len(strats_dict) for s in strats_dict}
         # ensure strats are in columns
-        strats = [s for s in strats if s in df_rets.columns]
-        if not strats: strats = [df_rets.columns[0]]
-        r_val = df_rets.loc[d, strats].mean()
+        valid_strats = {s: w for s, w in strats_dict.items() if s in df_rets.columns}
+        if not valid_strats:
+            valid_strats = {df_rets.columns[0]: 1.0}
+        total_w = sum(valid_strats.values())
+        r_val = sum(df_rets.loc[d, s] * w for s, w in valid_strats.items()) / total_w if total_w > 0 else 0
         if set(strats) != set(cur_strats):
             r_val -= fee * 0.5
             switches += 1
