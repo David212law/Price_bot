@@ -162,23 +162,22 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         passing_idx = benjamini_hochberg(p_values, q=q_level)
         passing_names = [names_list[i] for i in passing_idx]
         if len(passing_names) > 0:
-            fdr_scores = {n: scores[n] for n in passing_names}
-            top_3 = sorted(fdr_scores, key=fdr_scores.get, reverse=True)[:5]
-            print(f"  FDR ({r}): {len(passing_names)}/{len(names_list)} passed (q={q_level})")
+            top_3 = passing_names[:]
+            print(f"  🧪 TEST ({r}): using ALL {len(passing_names)} FDR-passing (q={q_level})")
         else:
             top_3 = sorted(scores, key=scores.get, reverse=True)[:5]
-            print(f"  ⚠️ FDR ({r}): 0 passed! Fallback to top 3.")
+            print(f"  ⚠️ FDR ({r}): 0 passed! Fallback to top 5.")
         # HOLDOUT FILTER (FDR-lite): Strategy must work on unseen Test data
         final_3 = []
         for strat in top_3:
             if strat not in df_rets.columns: continue
-            # Check on Holdout (Test mask)
             t_test, d_test, sh_test = stats(df_rets.loc[test_mask & (regimes == r), strat])
             if sh_test > 0.3 and t_test > 0:
                 final_3.append(strat)
         if not final_3:
-            final_3 = ["bh_BTC"] # Fallback to BTC if everything fails Holdout
+            final_3 = ["bh_BTC"]
         top_per_regime[r] = final_3
+        print(f"    → {r}: {len(final_3)} strategies after Holdout filter")
         
     combined = []
     cur_strats = []
