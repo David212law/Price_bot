@@ -752,9 +752,18 @@ def main():
         aggressive_results[market_name] = {**base, "predictive": market_data["predictive_aggressive"]}
     
     if conservative_results:
-        with open("data/researcher_conservative.json", "w") as f:
-            json.dump(conservative_results, f, indent=2)
-        print(f"✅ Saved Conservative ({len(conservative_results)} markets)")
+        print(f"=== DEBUG: conservative_results type: {type(conservative_results)} ===")
+        print(f"=== DEBUG: keys: {list(conservative_results.keys())} ===")
+        try:
+            test_json = json.dumps(conservative_results, indent=2, default=str)
+            print(f"=== DEBUG: json size: {len(test_json)} chars ===")
+            with open("data/researcher_conservative.json", "w") as f:
+                f.write(test_json)
+            print(f"✅ Saved Conservative ({len(conservative_results)} markets)")
+        except Exception as e:
+            print(f"❌ json.dump failed: {e}")
+            import traceback
+            traceback.print_exc()
     else:
         print("❌ No conservative results")
     
