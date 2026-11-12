@@ -164,18 +164,18 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         df_rets = pd.DataFrame(df_rets)
     if not isinstance(regimes, pd.Series):
         regimes = pd.Series(regimes)
-    
+
     top_per_regime = {}
     for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
         if r in ["BEAR", "CRASH"]:
             top_per_regime[r] = {"tether": 1.0}
             continue
-        
+
         r_train = train_mask & (regimes == r)
         if r_train.sum() < 15:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
-        
+
         scores = {}
         p_values = []
         names_list = list(df_rets.columns)
@@ -183,104 +183,103 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             t, d, sh = stats(df_rets.loc[r_train, name])
             scores[name] = sh
             p_values.append(sharpe_to_pvalue(sh, int(r_train.sum())))
-        
+
         # FDR filter
         q_level = 0.05 if market == "GLOBAL" else 0.10
         passing_idx = benjamini_hochberg(p_values, q=q_level)
         passing_names = [names_list[i] for i in passing_idx]
-        
+
         if not passing_names:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
-        
-        # Holdout filter: Strategy must work on unseen Test data
+
+        # Holdout filter
         final_strats = []
         for strat in passing_names:
             if strat not in df_rets.columns:
                 continue
-            # FILTER: Skip SHORT strategies in BULL/BULL_STRONG/FLAT (only allow in BEAR/CRASH)
             if r in ["BULL_STRONG", "BULL", "FLAT"] and ("SHORT" in strat.upper() or "FLIP_SHORT" in strat.upper()):
                 continue
             t_test, d_test, sh_test = stats(df_rets.loc[test_mask & (regimes == r), strat])
             if sh_test > 0.3 and t_test > 0:
                 final_strats.append(strat)
-        
+
         if not final_strats:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
+
+        # ═══ COMPLEMENTARY SELECTION ═══
+        # Group strategies by family
+        families = {
+            "bb": [],       # Bollinger Bands
+            "mom": [],      # Momentum
+            "rsi": [],      # RSI Mean Reversion
+            "btfd": [],     # Buy The F*cking Dip
+            "brk": [],      # Breakout
+            "combo": [],    # Combo strategies
+            "P_": [],       # Profiler strategies
+            "bh_": [],      # Buy & Hold
+        }
         
-        # Weight by Train Sharpe (only positive)
-        final_scores = {s: scores[s] for s in final_strats}
-        positive_scores = {s: sc for s, sc in final_scores.items() if sc > 0.3}
+        for strat in final_strats:
+            placed = False
+            for prefix in families:
+                if strat.startswith(prefix):
+                    families[prefix].append(strat)
+                    placed = True
+                    break
+            if not placed:
+                families["P_"].append(strat)  # fallback
         
-        if positive_scores:
-            # CONCENTRATION FILTER: If top strategy is 2x better than 2nd, pick only top
-            sorted_scores = sorted(positive_scores.items(), key=lambda x: -x[1])
-            top_sharpe = sorted_scores[0][1]
-            second_sharpe = sorted_scores[1][1] if len(sorted_scores) > 1 else 0
-            
-            if second_sharpe == 0 or top_sharpe > 2 * second_sharpe:
-                # Top is dominant → single strategy
-                weighted = {sorted_scores[0][0]: 1.0}
-                print(f"  🎯 {r}: SINGLE strategy ({sorted_scores[0][0]}, sharpe {top_sharpe:.2f}) — dominant")
-            else:
-                # Multiple strategies → weighted ensemble
-                total_score = sum(positive_scores.values())
-                weighted = {s: round(positive_scores[s] / total_score, 4) for s in positive_scores}
-                print(f"  🧬 {r}: ENSEMBLE ({len(weighted)} strategies, top sharpe {top_sharpe:.2f})")
+        # Pick best from each family (sorted by Train Sharpe)
+        selected = []
+        for family, strats in families.items():
+            if not strats:
+                continue
+            sorted_family = sorted(strats, key=lambda s: scores[s], reverse=True)
+            best_of_family = sorted_family[0]
+            selected.append((best_of_family, scores[best_of_family]))
+        
+        # Take top 5 from selected families, weight by Sharpe
+        selected.sort(key=lambda x: -x[1])  # sort by sharpe
+        selected = selected[:5]  # top 5 families
+        
+        if not selected:
+            top_per_regime[r] = {"bh_BTC": 1.0}
+            continue
+        
+        # Weight equally (or by Sharpe)
+        total = sum(s for _, s in selected)
+        if total > 0:
+            weighted = {s: round(sh / total, 4) for s, sh in selected}
         else:
-            weighted = {"bh_BTC": 1.0}
+            weighted = {s: round(1.0 / len(selected), 4) for s, _ in selected}
         
         top_per_regime[r] = weighted
-        print(f"  FDR ({r}): {len(passing_names)}/{len(names_list)} passed, "
-              f"{len(final_strats)} after Holdout, {len(weighted)} weighted")
+        print(f"  🧬 {r}: {len(weighted)} complementary strategies (from {len(final_strats)} final)")
+        for s, w in weighted.items():
+            print(f"      {s}: {w:.3f}")
 
     combined = []
     cur_strats = []
     switches = 0
     regime_daily = {r: [] for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]}
-    
-    # ADAPTIVE WEIGHTS: Start with train weights, update based on rolling performance
-    adaptive_weights = {r: dict(top_per_regime.get(r, {"bh_BTC": 1.0})) for r in top_per_regime}
-    rolling_window = 20  # Look back 20 days for adaptive weighting
-    
+
     for i, d in enumerate(df_rets.index[test_mask]):
         r = regimes.loc[d]
-        strats_dict = adaptive_weights.get(r, {"bh_BTC": 1.0})
-        
+        strats_dict = top_per_regime.get(r, {"bh_BTC": 1.0})
         valid_strats = {s: w for s, w in strats_dict.items() if s in df_rets.columns}
         if not valid_strats:
             valid_strats = {df_rets.columns[0]: 1.0}
-        
         total_w = sum(valid_strats.values())
         r_val = sum(df_rets.loc[d, s] * w for s, w in valid_strats.items()) / total_w if total_w > 0 else 0
-        
         regime_daily[r].append(r_val)
         combined.append(r_val)
-        
         current_keys = set(valid_strats.keys())
         if current_keys != set(cur_strats):
             r_val -= fee * 0.5
             switches += 1
             cur_strats = list(current_keys)
-        
-        # ADAPTIVE UPDATE: After 20 days, recompute weights based on recent performance
-        if i >= rolling_window and i % 10 == 0:  # Update every 10 days
-            recent_rets = df_rets.iloc[max(0, i-rolling_window):i+1]
-            recent_regime = regimes.iloc[max(0, i-rolling_window):i+1]
-            
-            new_weights = {}
-            for s in list(valid_strats.keys()):
-                if s in recent_rets.columns:
-                    mask = (recent_regime == r)
-                    if mask.sum() >= 5:
-                        _, _, sh = stats(recent_rets.loc[mask, s])
-                        if sh > 0.3:
-                            new_weights[s] = sh
-            
-            if new_weights:
-                total = sum(new_weights.values())
-                adaptive_weights[r] = {s: w/total for s, w in new_weights.items()}
 
     ct, cdd, csh = stats(pd.Series(combined, index=df_rets.index[test_mask]))
     per_regime_sharpe = {}
