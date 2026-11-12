@@ -1,0 +1,1327 @@
+{
+  "mom250_t5_ma": {
+    "file": "mom250_t5_ma_WALLEX.json",
+    "trades": 542,
+    "avg_daily_return": -0.1414728374538732
+  },
+  "bb15_2": {
+    "file": "bb15_2_WALLEX.json",
+    "trades": 425,
+    "avg_daily_return": 2.118684410978906
+  },
+  "mom30_t1_no": {
+    "file": "mom30_t1_no_WALLEX.json",
+    "trades": 683,
+    "avg_daily_return": -1.0920334245701477
+  },
+  "mom5_t2_no": {
+    "file": "mom5_t2_no_WALLEX.json",
+    "trades": 778,
+    "avg_daily_return": -0.560756913011486
+  },
+  "rsi7_35": {
+    "file": "rsi7_35_WALLEX.json",
+    "trades": 521,
+    "avg_daily_return": 1.0373718273032646
+  },
+  "rsi7_25": {
+    "file": "rsi7_25_WALLEX.json",
+    "trades": 449,
+    "avg_daily_return": 0.980778063660428
+  },
+  "mom30_t5_ma": {
+    "file": "mom30_t5_ma_WALLEX.json",
+    "trades": 745,
+    "avg_daily_return": -0.6878718006742366
+  },
+  "brk50_t5": {
+    "file": "brk50_t5_WALLEX.json",
+    "trades": 543,
+    "avg_daily_return": -1.0204960382234913
+  },
+  "mom15_t3_no": {
+    "file": "mom15_t3_no_WALLEX.json",
+    "trades": 778,
+    "avg_daily_return": -0.6669057571717097
+  },
+  "mom30_t5_no": {
+    "file": "mom30_t5_no_WALLEX.json",
+    "trades": 764,
+    "avg_daily_return": -0.6732637231624128
+  },
+  "mom45_t1_ma": {
+    "file": "mom45_t1_ma_WALLEX.json",
+    "trades": 658,
+    "avg_daily_return": -0.684134696688443
+  },
+  "mom20_t2_ma": {
+    "file": "mom20_t2_ma_WALLEX.json",
+    "trades": 729,
+    "avg_daily_return": -0.4679932068595259
+  },
+  "zscore_20": {
+    "file": "zscore_20_WALLEX.json",
+    "trades": 557,
+    "avg_daily_return": 16777.206141756487
+  },
+  "mom45_t3_ma": {
+    "file": "mom45_t3_ma_WALLEX.json",
+    "trades": 739,
+    "avg_daily_return": -0.6942426544415807
+  },
+  "brk10_t4": {
+    "file": "brk10_t4_WALLEX.json",
+    "trades": 735,
+    "avg_daily_return": -1.0436172153249244
+  },
+  "bb15_3.5": {
+    "file": "bb15_3.5_WALLEX.json",
+    "trades": 68,
+    "avg_daily_return": 17.617559626216078
+  },
+  "bb20_2": {
+    "file": "bb20_2_WALLEX.json",
+    "trades": 425,
+    "avg_daily_return": 1.752513361883728
+  },
+  "ma100_200_t3": {
+    "file": "ma100_200_t3_WALLEX.json",
+    "trades": 587,
+    "avg_daily_return": 0.340810122828108
+  },
+  "bh_XRP": {
+    "file": "bh_XRP_WALLEX.json",
+    "trades": 793,
+    "avg_daily_return": 0.17497204510096082
+  },
+  "rsi14_30": {
+    "file": "rsi14_30_WALLEX.json",
+    "trades": 471,
+    "avg_daily_return": 0.4584349149683524
+  },
+  "btfd15_h5": {
+    "file": "btfd15_h5_WALLEX.json",
+    "trades": 593,
+    "avg_daily_return": 1.8074735464349212
+  },
+  "mom120_t4_no": {
+    "file": "mom120_t4_no_WALLEX.json",
+    "trades": 667,
+    "avg_daily_return": -0.03349567988423201
+  },
+  "mom10_t1_ma": {
+    "file": "mom10_t1_ma_WALLEX.json",
+    "trades": 679,
+    "avg_daily_return": -0.280282053570783
+  },
+  "mom90_t4_ma": {
+    "file": "mom90_t4_ma_WALLEX.json",
+    "trades": 699,
+    "avg_daily_return": -0.7140393848901229
+  },
+  "brk10_t3": {
+    "file": "brk10_t3_WALLEX.json",
+    "trades": 734,
+    "avg_daily_return": -1.0927836328099212
+  },
+  "ma10_30_t1": {
+    "file": "ma10_30_t1_WALLEX.json",
+    "trades": 693,
+    "avg_daily_return": -0.9299513450096372
+  },
+  "mom30_t2_no": {
+    "file": "mom30_t2_no_WALLEX.json",
+    "trades": 743,
+    "avg_daily_return": -0.9690865745341107
+  },
+  "mom10_t3_ma": {
+    "file": "mom10_t3_ma_WALLEX.json",
+    "trades": 741,
+    "avg_daily_return": -0.68518636819608
+  },
+  "mom120_t2_no": {
+    "file": "mom120_t2_no_WALLEX.json",
+    "trades": 627,
+    "avg_daily_return": -0.503459529075058
+  },
+  "mom5_t3_ma": {
+    "file": "mom5_t3_ma_WALLEX.json",
+    "trades": 741,
+    "avg_daily_return": -0.6825476074365826
+  },
+  "mom5_t3_no": {
+    "file": "mom5_t3_no_WALLEX.json",
+    "trades": 785,
+    "avg_daily_return": -0.8044529485729048
+  },
+  "rsi28_30": {
+    "file": "rsi28_30_WALLEX.json",
+    "trades": 515,
+    "avg_daily_return": 0.12720449180005503
+  },
+  "mom15_t1_ma": {
+    "file": "mom15_t1_ma_WALLEX.json",
+    "trades": 681,
+    "avg_daily_return": -0.48549972517240664
+  },
+  "mom10_t4_ma": {
+    "file": "mom10_t4_ma_WALLEX.json",
+    "trades": 742,
+    "avg_daily_return": -0.6879821872774483
+  },
+  "mom5_t1_ma": {
+    "file": "mom5_t1_ma_WALLEX.json",
+    "trades": 686,
+    "avg_daily_return": 0.11409637409890144
+  },
+  "mom15_t5_ma": {
+    "file": "mom15_t5_ma_WALLEX.json",
+    "trades": 745,
+    "avg_daily_return": -0.5276256353404897
+  },
+  "ma10_30_t4": {
+    "file": "ma10_30_t4_WALLEX.json",
+    "trades": 762,
+    "avg_daily_return": -0.31300388672044466
+  },
+  "btfd5_h20": {
+    "file": "btfd5_h20_WALLEX.json",
+    "trades": 736,
+    "avg_daily_return": 1.5765922811828585
+  },
+  "rsi21_30": {
+    "file": "rsi21_30_WALLEX.json",
+    "trades": 490,
+    "avg_daily_return": 0.2627088686591771
+  },
+  "mom60_t2_ma": {
+    "file": "mom60_t2_ma_WALLEX.json",
+    "trades": 721,
+    "avg_daily_return": -0.5606395546272919
+  },
+  "mom250_t2_ma": {
+    "file": "mom250_t2_ma_WALLEX.json",
+    "trades": 515,
+    "avg_daily_return": -0.3921367368818291
+  },
+  "brk200_t4": {
+    "file": "brk200_t4_WALLEX.json",
+    "trades": 256,
+    "avg_daily_return": -0.2293698272194952
+  },
+  "mom180_t5_no": {
+    "file": "mom180_t5_no_WALLEX.json",
+    "trades": 618,
+    "avg_daily_return": 0.05086982467803412
+  },
+  "mom60_t1_no": {
+    "file": "mom60_t1_no_WALLEX.json",
+    "trades": 623,
+    "avg_daily_return": -0.13089918850181273
+  },
+  "ma20_50_t4": {
+    "file": "ma20_50_t4_WALLEX.json",
+    "trades": 741,
+    "avg_daily_return": -0.28898370367656157
+  },
+  "bb30_2": {
+    "file": "bb30_2_WALLEX.json",
+    "trades": 425,
+    "avg_daily_return": 1.425035353025237
+  },
+  "btfd30_h20": {
+    "file": "btfd30_h20_WALLEX.json",
+    "trades": 210,
+    "avg_daily_return": 5.449941655340721
+  },
+  "mom10_t4_no": {
+    "file": "mom10_t4_no_WALLEX.json",
+    "trades": 783,
+    "avg_daily_return": -0.7757137808497883
+  },
+  "bh_SOL": {
+    "file": "bh_SOL_WALLEX.json",
+    "trades": 795,
+    "avg_daily_return": 0.02592805940647125
+  },
+  "brk30_t3": {
+    "file": "brk30_t3_WALLEX.json",
+    "trades": 621,
+    "avg_daily_return": -1.0662179618917134
+  },
+  "ma5_20_t4": {
+    "file": "ma5_20_t4_WALLEX.json",
+    "trades": 772,
+    "avg_daily_return": -0.41435201494367396
+  },
+  "brk20_t4": {
+    "file": "brk20_t4_WALLEX.json",
+    "trades": 690,
+    "avg_daily_return": -1.0102231463639473
+  },
+  "bb20_2.5": {
+    "file": "bb20_2.5_WALLEX.json",
+    "trades": 288,
+    "avg_daily_return": 2.254232068503495
+  },
+  "mom45_t1_no": {
+    "file": "mom45_t1_no_WALLEX.json",
+    "trades": 663,
+    "avg_daily_return": -0.5928242421929995
+  },
+  "mom20_t3_no": {
+    "file": "mom20_t3_no_WALLEX.json",
+    "trades": 770,
+    "avg_daily_return": -0.8082624671894766
+  },
+  "brk30_t2": {
+    "file": "brk30_t2_WALLEX.json",
+    "trades": 614,
+    "avg_daily_return": -1.0771596497742417
+  },
+  "brk10_t2": {
+    "file": "brk10_t2_WALLEX.json",
+    "trades": 726,
+    "avg_daily_return": -0.9990703775748309
+  },
+  "mom10_t5_no": {
+    "file": "mom10_t5_no_WALLEX.json",
+    "trades": 783,
+    "avg_daily_return": -0.69565559374511
+  },
+  "mom20_t5_no": {
+    "file": "mom20_t5_no_WALLEX.json",
+    "trades": 774,
+    "avg_daily_return": -0.5464643102616402
+  },
+  "ma100_200_t1": {
+    "file": "ma100_200_t1_WALLEX.json",
+    "trades": 486,
+    "avg_daily_return": -0.30874286669790707
+  },
+  "brk30_t5": {
+    "file": "brk30_t5_WALLEX.json",
+    "trades": 625,
+    "avg_daily_return": -1.0042325361366613
+  },
+  "mom45_t2_no": {
+    "file": "mom45_t2_no_WALLEX.json",
+    "trades": 733,
+    "avg_daily_return": -0.7900734540150269
+  },
+  "brk30_t1": {
+    "file": "brk30_t1_WALLEX.json",
+    "trades": 569,
+    "avg_daily_return": -0.9640469768701199
+  },
+  "mom60_t5_ma": {
+    "file": "mom60_t5_ma_WALLEX.json",
+    "trades": 733,
+    "avg_daily_return": -0.5781568575930074
+  },
+  "mom60_t3_ma": {
+    "file": "mom60_t3_ma_WALLEX.json",
+    "trades": 728,
+    "avg_daily_return": -0.5509612409500831
+  },
+  "rsi21_25": {
+    "file": "rsi21_25_WALLEX.json",
+    "trades": 459,
+    "avg_daily_return": 0.29469906070028445
+  },
+  "mom60_t1_ma": {
+    "file": "mom60_t1_ma_WALLEX.json",
+    "trades": 639,
+    "avg_daily_return": -0.31101685016452324
+  },
+  "mom5_t4_ma": {
+    "file": "mom5_t4_ma_WALLEX.json",
+    "trades": 743,
+    "avg_daily_return": -0.47075618696025334
+  },
+  "mom180_t4_no": {
+    "file": "mom180_t4_no_WALLEX.json",
+    "trades": 618,
+    "avg_daily_return": 0.08194620042578236
+  },
+  "bb10_2.5": {
+    "file": "bb10_2.5_WALLEX.json",
+    "trades": 208,
+    "avg_daily_return": 3.4129071461896405
+  },
+  "ma20_100_t2": {
+    "file": "ma20_100_t2_WALLEX.json",
+    "trades": 661,
+    "avg_daily_return": -0.28794539327724356
+  },
+  "mom120_t1_no": {
+    "file": "mom120_t1_no_WALLEX.json",
+    "trades": 570,
+    "avg_daily_return": -0.5772809212974148
+  },
+  "ma5_20_t5": {
+    "file": "ma5_20_t5_WALLEX.json",
+    "trades": 774,
+    "avg_daily_return": -0.4437607019438117
+  },
+  "mom45_t5_ma": {
+    "file": "mom45_t5_ma_WALLEX.json",
+    "trades": 744,
+    "avg_daily_return": -0.7421430155221564
+  },
+  "btfd5_h5": {
+    "file": "btfd5_h5_WALLEX.json",
+    "trades": 736,
+    "avg_daily_return": 1.5765922811828585
+  },
+  "btfd30_h10": {
+    "file": "btfd30_h10_WALLEX.json",
+    "trades": 210,
+    "avg_daily_return": 5.449941655340721
+  },
+  "bb15_3": {
+    "file": "bb15_3_WALLEX.json",
+    "trades": 140,
+    "avg_daily_return": 9.139864199658822
+  },
+  "mom45_t5_no": {
+    "file": "mom45_t5_no_WALLEX.json",
+    "trades": 748,
+    "avg_daily_return": -0.6524712028484987
+  },
+  "eq2": {
+    "file": "eq2_WALLEX.json",
+    "trades": 334,
+    "avg_daily_return": -0.18116651777408307
+  },
+  "mom90_t5_ma": {
+    "file": "mom90_t5_ma_WALLEX.json",
+    "trades": 701,
+    "avg_daily_return": -0.6862389744596953
+  },
+  "ma20_100_t5": {
+    "file": "ma20_100_t5_WALLEX.json",
+    "trades": 696,
+    "avg_daily_return": -0.30834554034321465
+  },
+  "bb10_1.5": {
+    "file": "bb10_1.5_WALLEX.json",
+    "trades": 579,
+    "avg_daily_return": 1.885754289369316
+  },
+  "mom90_t4_no": {
+    "file": "mom90_t4_no_WALLEX.json",
+    "trades": 698,
+    "avg_daily_return": -0.7315278240414848
+  },
+  "mom60_t4_ma": {
+    "file": "mom60_t4_ma_WALLEX.json",
+    "trades": 730,
+    "avg_daily_return": -0.5505229185082949
+  },
+  "mom250_t1_ma": {
+    "file": "mom250_t1_ma_WALLEX.json",
+    "trades": 467,
+    "avg_daily_return": -0.6908468058316597
+  },
+  "rsi28_20": {
+    "file": "rsi28_20_WALLEX.json",
+    "trades": 440,
+    "avg_daily_return": 0.3222115834858616
+  },
+  "mom180_t2_ma": {
+    "file": "mom180_t2_ma_WALLEX.json",
+    "trades": 585,
+    "avg_daily_return": -0.5827753120170506
+  },
+  "mom30_t4_no": {
+    "file": "mom30_t4_no_WALLEX.json",
+    "trades": 761,
+    "avg_daily_return": -0.7699604127312752
+  },
+  "brk200_t1": {
+    "file": "brk200_t1_WALLEX.json",
+    "trades": 246,
+    "avg_daily_return": -0.05382954743063928
+  },
+  "mom10_t2_no": {
+    "file": "mom10_t2_no_WALLEX.json",
+    "trades": 771,
+    "avg_daily_return": -0.5928756146110473
+  },
+  "brk50_t1": {
+    "file": "brk50_t1_WALLEX.json",
+    "trades": 502,
+    "avg_daily_return": -1.6847667147882524
+  },
+  "ma100_200_t2": {
+    "file": "ma100_200_t2_WALLEX.json",
+    "trades": 543,
+    "avg_daily_return": 0.546231972065437
+  },
+  "ma10_30_t3": {
+    "file": "ma10_30_t3_WALLEX.json",
+    "trades": 757,
+    "avg_daily_return": -0.345208771868483
+  },
+  "keltner_rev": {
+    "file": "keltner_rev_WALLEX.json",
+    "trades": 58,
+    "avg_daily_return": 16762.621907642584
+  },
+  "brk100_t5": {
+    "file": "brk100_t5_WALLEX.json",
+    "trades": 399,
+    "avg_daily_return": -0.6342984016696843
+  },
+  "ma30_90_t1": {
+    "file": "ma30_90_t1_WALLEX.json",
+    "trades": 611,
+    "avg_daily_return": -0.9687809939164242
+  },
+  "mom120_t3_no": {
+    "file": "mom120_t3_no_WALLEX.json",
+    "trades": 656,
+    "avg_daily_return": 0.031150602979454656
+  },
+  "mom120_t3_ma": {
+    "file": "mom120_t3_ma_WALLEX.json",
+    "trades": 659,
+    "avg_daily_return": -0.4677687101480761
+  },
+  "btfd30_h5": {
+    "file": "btfd30_h5_WALLEX.json",
+    "trades": 210,
+    "avg_daily_return": 5.449941655340721
+  },
+  "bb15_1.5": {
+    "file": "bb15_1.5_WALLEX.json",
+    "trades": 589,
+    "avg_daily_return": 2.089165865524452
+  },
+  "bb30_1.5": {
+    "file": "bb30_1.5_WALLEX.json",
+    "trades": 566,
+    "avg_daily_return": 1.4819882913259794
+  },
+  "bh_BNB": {
+    "file": "bh_BNB_WALLEX.json",
+    "trades": 796,
+    "avg_daily_return": 0.0697132358721717
+  },
+  "mom20_t2_no": {
+    "file": "mom20_t2_no_WALLEX.json",
+    "trades": 757,
+    "avg_daily_return": -0.6818968565971164
+  },
+  "bb40_2.5": {
+    "file": "bb40_2.5_WALLEX.json",
+    "trades": 259,
+    "avg_daily_return": 1.8791424150651739
+  },
+  "mom15_t4_ma": {
+    "file": "mom15_t4_ma_WALLEX.json",
+    "trades": 744,
+    "avg_daily_return": -0.5465960956392242
+  },
+  "mom20_t3_ma": {
+    "file": "mom20_t3_ma_WALLEX.json",
+    "trades": 741,
+    "avg_daily_return": -0.6299440572767183
+  },
+  "rsi7_20": {
+    "file": "rsi7_20_WALLEX.json",
+    "trades": 404,
+    "avg_daily_return": 0.9398529905611738
+  },
+  "eq10": {
+    "file": "eq10_WALLEX.json",
+    "trades": 793,
+    "avg_daily_return": 0.04960651114746762
+  },
+  "mom250_t4_ma": {
+    "file": "mom250_t4_ma_WALLEX.json",
+    "trades": 542,
+    "avg_daily_return": -0.1561752087944671
+  },
+  "brk150_t5": {
+    "file": "brk150_t5_WALLEX.json",
+    "trades": 327,
+    "avg_daily_return": -0.6757477105013221
+  },
+  "bb10_2": {
+    "file": "bb10_2_WALLEX.json",
+    "trades": 383,
+    "avg_daily_return": 2.381437313272779
+  },
+  "mom20_t1_ma": {
+    "file": "mom20_t1_ma_WALLEX.json",
+    "trades": 684,
+    "avg_daily_return": -1.0537952023830208
+  },
+  "mom120_t2_ma": {
+    "file": "mom120_t2_ma_WALLEX.json",
+    "trades": 628,
+    "avg_daily_return": -0.49149642852596576
+  },
+  "mom90_t3_ma": {
+    "file": "mom90_t3_ma_WALLEX.json",
+    "trades": 692,
+    "avg_daily_return": -0.7909350778718198
+  },
+  "mom45_t3_no": {
+    "file": "mom45_t3_no_WALLEX.json",
+    "trades": 743,
+    "avg_daily_return": -0.7395852079006722
+  },
+  "ma50_200_t4": {
+    "file": "ma50_200_t4_WALLEX.json",
+    "trades": 599,
+    "avg_daily_return": 0.13249269344632567
+  },
+  "mom45_t4_no": {
+    "file": "mom45_t4_no_WALLEX.json",
+    "trades": 747,
+    "avg_daily_return": -0.6090105370439778
+  },
+  "mom180_t1_ma": {
+    "file": "mom180_t1_ma_WALLEX.json",
+    "trades": 536,
+    "avg_daily_return": -0.9850706426680746
+  },
+  "mom5_t2_ma": {
+    "file": "mom5_t2_ma_WALLEX.json",
+    "trades": 736,
+    "avg_daily_return": -0.5698554350699616
+  },
+  "mom45_t4_ma": {
+    "file": "mom45_t4_ma_WALLEX.json",
+    "trades": 743,
+    "avg_daily_return": -0.6883284464457705
+  },
+  "mom90_t3_no": {
+    "file": "mom90_t3_no_WALLEX.json",
+    "trades": 694,
+    "avg_daily_return": -0.8052632968212577
+  },
+  "btfd20_h20": {
+    "file": "btfd20_h20_WALLEX.json",
+    "trades": 457,
+    "avg_daily_return": 2.4285829602141504
+  },
+  "mom15_t5_no": {
+    "file": "mom15_t5_no_WALLEX.json",
+    "trades": 779,
+    "avg_daily_return": -0.5675248472436639
+  },
+  "ma50_200_t5": {
+    "file": "ma50_200_t5_WALLEX.json",
+    "trades": 599,
+    "avg_daily_return": 0.15609528222713506
+  },
+  "mom60_t5_no": {
+    "file": "mom60_t5_no_WALLEX.json",
+    "trades": 733,
+    "avg_daily_return": -0.5350536451131125
+  },
+  "brk200_t5": {
+    "file": "brk200_t5_WALLEX.json",
+    "trades": 256,
+    "avg_daily_return": -0.29572771994154323
+  },
+  "ma20_100_t3": {
+    "file": "ma20_100_t3_WALLEX.json",
+    "trades": 685,
+    "avg_daily_return": -0.2927085536142692
+  },
+  "mom180_t3_ma": {
+    "file": "mom180_t3_ma_WALLEX.json",
+    "trades": 602,
+    "avg_daily_return": -0.4227640954810964
+  },
+  "brk10_t5": {
+    "file": "brk10_t5_WALLEX.json",
+    "trades": 737,
+    "avg_daily_return": -0.9978437547918997
+  },
+  "bb20_1.5": {
+    "file": "bb20_1.5_WALLEX.json",
+    "trades": 581,
+    "avg_daily_return": 1.342324256043035
+  },
+  "mom90_t2_ma": {
+    "file": "mom90_t2_ma_WALLEX.json",
+    "trades": 675,
+    "avg_daily_return": -0.8539343003468483
+  },
+  "brk10_t1": {
+    "file": "brk10_t1_WALLEX.json",
+    "trades": 667,
+    "avg_daily_return": -0.7606067003087518
+  },
+  "bb40_3": {
+    "file": "bb40_3_WALLEX.json",
+    "trades": 132,
+    "avg_daily_return": 1.4411984567016805
+  },
+  "ma5_20_t1": {
+    "file": "ma5_20_t1_WALLEX.json",
+    "trades": 703,
+    "avg_daily_return": -1.096969077271314
+  },
+  "eq3": {
+    "file": "eq3_WALLEX.json",
+    "trades": 706,
+    "avg_daily_return": -0.04210594305141084
+  },
+  "bh_BTC": {
+    "file": "bh_BTC_WALLEX.json",
+    "trades": 794,
+    "avg_daily_return": 0.05707609276280992
+  },
+  "mom15_t4_no": {
+    "file": "mom15_t4_no_WALLEX.json",
+    "trades": 778,
+    "avg_daily_return": -0.6063952652689554
+  },
+  "brk100_t1": {
+    "file": "brk100_t1_WALLEX.json",
+    "trades": 371,
+    "avg_daily_return": -0.8168308497769874
+  },
+  "ma30_90_t2": {
+    "file": "ma30_90_t2_WALLEX.json",
+    "trades": 677,
+    "avg_daily_return": -0.5090802445727723
+  },
+  "mom250_t4_no": {
+    "file": "mom250_t4_no_WALLEX.json",
+    "trades": 548,
+    "avg_daily_return": -0.06851951531577168
+  },
+  "mom120_t1_ma": {
+    "file": "mom120_t1_ma_WALLEX.json",
+    "trades": 575,
+    "avg_daily_return": -0.4755962096602395
+  },
+  "btfd15_h10": {
+    "file": "btfd15_h10_WALLEX.json",
+    "trades": 593,
+    "avg_daily_return": 1.8074735464349212
+  },
+  "btfd15_h20": {
+    "file": "btfd15_h20_WALLEX.json",
+    "trades": 593,
+    "avg_daily_return": 1.8074735464349212
+  },
+  "rsi35_30": {
+    "file": "rsi35_30_WALLEX.json",
+    "trades": 549,
+    "avg_daily_return": 0.09332970361780014
+  },
+  "ma20_50_t1": {
+    "file": "ma20_50_t1_WALLEX.json",
+    "trades": 670,
+    "avg_daily_return": -0.7211378576915929
+  },
+  "brk30_t4": {
+    "file": "brk30_t4_WALLEX.json",
+    "trades": 623,
+    "avg_daily_return": -1.0799850704186982
+  },
+  "rsi35_40": {
+    "file": "rsi35_40_WALLEX.json",
+    "trades": 606,
+    "avg_daily_return": 0.13388200810340842
+  },
+  "mom20_t1_no": {
+    "file": "mom20_t1_no_WALLEX.json",
+    "trades": 714,
+    "avg_daily_return": -1.4002972085670933
+  },
+  "mom20_t4_no": {
+    "file": "mom20_t4_no_WALLEX.json",
+    "trades": 774,
+    "avg_daily_return": -0.6451345079893278
+  },
+  "rsi7_30": {
+    "file": "rsi7_30_WALLEX.json",
+    "trades": 489,
+    "avg_daily_return": 1.0844837357550494
+  },
+  "rsi14_25": {
+    "file": "rsi14_25_WALLEX.json",
+    "trades": 434,
+    "avg_daily_return": 0.5191243636084885
+  },
+  "zscore_10": {
+    "file": "zscore_10_WALLEX.json",
+    "trades": 595,
+    "avg_daily_return": 16777.119372366506
+  },
+  "bb40_2": {
+    "file": "bb40_2_WALLEX.json",
+    "trades": 409,
+    "avg_daily_return": 1.3520574248616088
+  },
+  "ma20_50_t3": {
+    "file": "ma20_50_t3_WALLEX.json",
+    "trades": 740,
+    "avg_daily_return": -0.2591184806696578
+  },
+  "eq8": {
+    "file": "eq8_WALLEX.json",
+    "trades": 789,
+    "avg_daily_return": -0.08001493001013682
+  },
+  "ma30_90_t4": {
+    "file": "ma30_90_t4_WALLEX.json",
+    "trades": 703,
+    "avg_daily_return": -0.3102876907230235
+  },
+  "mom60_t2_no": {
+    "file": "mom60_t2_no_WALLEX.json",
+    "trades": 719,
+    "avg_daily_return": -0.4915466605432804
+  },
+  "vwap_20": {
+    "file": "vwap_20_WALLEX.json",
+    "trades": 758,
+    "avg_daily_return": 16774.07824126999
+  },
+  "mom30_t4_ma": {
+    "file": "mom30_t4_ma_WALLEX.json",
+    "trades": 742,
+    "avg_daily_return": -0.7524879447280339
+  },
+  "mom5_t1_no": {
+    "file": "mom5_t1_no_WALLEX.json",
+    "trades": 732,
+    "avg_daily_return": 0.30356198160315917
+  },
+  "brk200_t3": {
+    "file": "brk200_t3_WALLEX.json",
+    "trades": 256,
+    "avg_daily_return": -0.3505469404761884
+  },
+  "mom30_t1_ma": {
+    "file": "mom30_t1_ma_WALLEX.json",
+    "trades": 666,
+    "avg_daily_return": -1.077771035126111
+  },
+  "mom15_t1_no": {
+    "file": "mom15_t1_no_WALLEX.json",
+    "trades": 714,
+    "avg_daily_return": -0.9707510911142824
+  },
+  "brk100_t4": {
+    "file": "brk100_t4_WALLEX.json",
+    "trades": 399,
+    "avg_daily_return": -0.6942110386950678
+  },
+  "ma50_200_t2": {
+    "file": "ma50_200_t2_WALLEX.json",
+    "trades": 568,
+    "avg_daily_return": 0.26308232163114
+  },
+  "bh_ADA": {
+    "file": "bh_ADA_WALLEX.json",
+    "trades": 790,
+    "avg_daily_return": 0.04778116838356396
+  },
+  "mom60_t3_no": {
+    "file": "mom60_t3_no_WALLEX.json",
+    "trades": 730,
+    "avg_daily_return": -0.43905847435051043
+  },
+  "mom5_t4_no": {
+    "file": "mom5_t4_no_WALLEX.json",
+    "trades": 790,
+    "avg_daily_return": -0.9025966536701613
+  },
+  "bb20_3.5": {
+    "file": "bb20_3.5_WALLEX.json",
+    "trades": 76,
+    "avg_daily_return": 4.209311191764917
+  },
+  "mom10_t5_ma": {
+    "file": "mom10_t5_ma_WALLEX.json",
+    "trades": 742,
+    "avg_daily_return": -0.6563943008429277
+  },
+  "btfd5_h10": {
+    "file": "btfd5_h10_WALLEX.json",
+    "trades": 736,
+    "avg_daily_return": 1.5765922811828585
+  },
+  "bh_ETH": {
+    "file": "bh_ETH_WALLEX.json",
+    "trades": 798,
+    "avg_daily_return": 0.042305898817907354
+  },
+  "mom250_t3_ma": {
+    "file": "mom250_t3_ma_WALLEX.json",
+    "trades": 542,
+    "avg_daily_return": -0.11922537318828118
+  },
+  "brk50_t2": {
+    "file": "brk50_t2_WALLEX.json",
+    "trades": 535,
+    "avg_daily_return": -1.2784857274892478
+  },
+  "bb30_3": {
+    "file": "bb30_3_WALLEX.json",
+    "trades": 138,
+    "avg_daily_return": 2.7329990064747074
+  },
+  "brk150_t1": {
+    "file": "brk150_t1_WALLEX.json",
+    "trades": 309,
+    "avg_daily_return": -0.4780971157877109
+  },
+  "bb40_3.5": {
+    "file": "bb40_3.5_WALLEX.json",
+    "trades": 64,
+    "avg_daily_return": 2.7860657785364844
+  },
+  "bh_TRX": {
+    "file": "bh_TRX_WALLEX.json",
+    "trades": 798,
+    "avg_daily_return": 0.1379515355683998
+  },
+  "mom5_t5_ma": {
+    "file": "mom5_t5_ma_WALLEX.json",
+    "trades": 744,
+    "avg_daily_return": -0.3586335256322791
+  },
+  "ma20_100_t1": {
+    "file": "ma20_100_t1_WALLEX.json",
+    "trades": 590,
+    "avg_daily_return": -0.4155743819248982
+  },
+  "rsi14_40": {
+    "file": "rsi14_40_WALLEX.json",
+    "trades": 555,
+    "avg_daily_return": 0.6336049782843369
+  },
+  "rsi28_40": {
+    "file": "rsi28_40_WALLEX.json",
+    "trades": 571,
+    "avg_daily_return": 0.24144509662711897
+  },
+  "mom180_t3_no": {
+    "file": "mom180_t3_no_WALLEX.json",
+    "trades": 615,
+    "avg_daily_return": 0.17970508847628636
+  },
+  "ma50_200_t3": {
+    "file": "ma50_200_t3_WALLEX.json",
+    "trades": 593,
+    "avg_daily_return": 0.06869401558859183
+  },
+  "btfd20_h10": {
+    "file": "btfd20_h10_WALLEX.json",
+    "trades": 457,
+    "avg_daily_return": 2.4285829602141504
+  },
+  "ma5_20_t2": {
+    "file": "ma5_20_t2_WALLEX.json",
+    "trades": 757,
+    "avg_daily_return": -0.5944974558349146
+  },
+  "mom120_t5_ma": {
+    "file": "mom120_t5_ma_WALLEX.json",
+    "trades": 674,
+    "avg_daily_return": -0.35452260705130545
+  },
+  "mom180_t1_no": {
+    "file": "mom180_t1_no_WALLEX.json",
+    "trades": 536,
+    "avg_daily_return": -0.8075346293491287
+  },
+  "rsi35_20": {
+    "file": "rsi35_20_WALLEX.json",
+    "trades": 488,
+    "avg_daily_return": -0.0013429210703307126
+  },
+  "mom250_t5_no": {
+    "file": "mom250_t5_no_WALLEX.json",
+    "trades": 548,
+    "avg_daily_return": 0.27043718686423307
+  },
+  "mom10_t2_ma": {
+    "file": "mom10_t2_ma_WALLEX.json",
+    "trades": 731,
+    "avg_daily_return": -0.5348100179969234
+  },
+  "mom120_t5_no": {
+    "file": "mom120_t5_no_WALLEX.json",
+    "trades": 678,
+    "avg_daily_return": -0.08249972748504437
+  },
+  "mom5_t5_no": {
+    "file": "mom5_t5_no_WALLEX.json",
+    "trades": 791,
+    "avg_daily_return": -0.6560049278232234
+  },
+  "bh_AVAX": {
+    "file": "bh_AVAX_WALLEX.json",
+    "trades": 791,
+    "avg_daily_return": -0.009469361162169022
+  },
+  "ma10_30_t2": {
+    "file": "ma10_30_t2_WALLEX.json",
+    "trades": 738,
+    "avg_daily_return": -0.43234970635759795
+  },
+  "mom15_t3_ma": {
+    "file": "mom15_t3_ma_WALLEX.json",
+    "trades": 742,
+    "avg_daily_return": -0.6144177294545313
+  },
+  "mom250_t1_no": {
+    "file": "mom250_t1_no_WALLEX.json",
+    "trades": 469,
+    "avg_daily_return": -0.7235452066359688
+  },
+  "brk100_t3": {
+    "file": "brk100_t3_WALLEX.json",
+    "trades": 399,
+    "avg_daily_return": -0.753760461485454
+  },
+  "btfd20_h5": {
+    "file": "btfd20_h5_WALLEX.json",
+    "trades": 457,
+    "avg_daily_return": 2.4285829602141504
+  },
+  "ma20_100_t4": {
+    "file": "ma20_100_t4_WALLEX.json",
+    "trades": 692,
+    "avg_daily_return": -0.3051608710729185
+  },
+  "rsi28_25": {
+    "file": "rsi28_25_WALLEX.json",
+    "trades": 481,
+    "avg_daily_return": 0.12198703316192479
+  },
+  "brk50_t4": {
+    "file": "brk50_t4_WALLEX.json",
+    "trades": 543,
+    "avg_daily_return": -1.0999461046329337
+  },
+  "btfd10_h10": {
+    "file": "btfd10_h10_WALLEX.json",
+    "trades": 679,
+    "avg_daily_return": 1.6644121667227012
+  },
+  "mom180_t4_ma": {
+    "file": "mom180_t4_ma_WALLEX.json",
+    "trades": 605,
+    "avg_daily_return": -0.4205704230524762
+  },
+  "btfd10_h5": {
+    "file": "btfd10_h5_WALLEX.json",
+    "trades": 679,
+    "avg_daily_return": 1.6644121667227012
+  },
+  "ma20_50_t2": {
+    "file": "ma20_50_t2_WALLEX.json",
+    "trades": 723,
+    "avg_daily_return": -0.415269448050988
+  },
+  "donchian_20": {
+    "file": "donchian_20_WALLEX.json",
+    "trades": 711,
+    "avg_daily_return": 6.580460977490729
+  },
+  "rsi14_20": {
+    "file": "rsi14_20_WALLEX.json",
+    "trades": 392,
+    "avg_daily_return": 0.23337291238023852
+  },
+  "ma50_200_t1": {
+    "file": "ma50_200_t1_WALLEX.json",
+    "trades": 511,
+    "avg_daily_return": 1.2133518571838537
+  },
+  "mom60_t4_no": {
+    "file": "mom60_t4_no_WALLEX.json",
+    "trades": 732,
+    "avg_daily_return": -0.4758169309081821
+  },
+  "rsi35_35": {
+    "file": "rsi35_35_WALLEX.json",
+    "trades": 586,
+    "avg_daily_return": -0.005386577487702951
+  },
+  "bb30_2.5": {
+    "file": "bb30_2.5_WALLEX.json",
+    "trades": 265,
+    "avg_daily_return": 1.9883774878725198
+  },
+  "mom90_t1_no": {
+    "file": "mom90_t1_no_WALLEX.json",
+    "trades": 583,
+    "avg_daily_return": -0.3054296774005646
+  },
+  "mom90_t1_ma": {
+    "file": "mom90_t1_ma_WALLEX.json",
+    "trades": 588,
+    "avg_daily_return": -0.2428258050293495
+  },
+  "mom30_t3_no": {
+    "file": "mom30_t3_no_WALLEX.json",
+    "trades": 754,
+    "avg_daily_return": -0.7786878671614925
+  },
+  "rsi14_35": {
+    "file": "rsi14_35_WALLEX.json",
+    "trades": 510,
+    "avg_daily_return": 0.7995763644194723
+  },
+  "bb15_2.5": {
+    "file": "bb15_2.5_WALLEX.json",
+    "trades": 247,
+    "avg_daily_return": 3.8885763889387865
+  },
+  "rsi7_40": {
+    "file": "rsi7_40_WALLEX.json",
+    "trades": 557,
+    "avg_daily_return": 0.9440308004933174
+  },
+  "eq5": {
+    "file": "eq5_WALLEX.json",
+    "trades": 757,
+    "avg_daily_return": -0.052699749716342614
+  },
+  "brk100_t2": {
+    "file": "brk100_t2_WALLEX.json",
+    "trades": 397,
+    "avg_daily_return": -0.809922360091423
+  },
+  "brk20_t1": {
+    "file": "brk20_t1_WALLEX.json",
+    "trades": 624,
+    "avg_daily_return": -1.0859082365428903
+  },
+  "mom250_t2_no": {
+    "file": "mom250_t2_no_WALLEX.json",
+    "trades": 528,
+    "avg_daily_return": -0.32309437613023767
+  },
+  "mom180_t2_no": {
+    "file": "mom180_t2_no_WALLEX.json",
+    "trades": 599,
+    "avg_daily_return": -0.5095323535294267
+  },
+  "mom15_t2_no": {
+    "file": "mom15_t2_no_WALLEX.json",
+    "trades": 764,
+    "avg_daily_return": -0.7263471056135762
+  },
+  "mom20_t5_ma": {
+    "file": "mom20_t5_ma_WALLEX.json",
+    "trades": 744,
+    "avg_daily_return": -0.46618826381356004
+  },
+  "mom90_t2_no": {
+    "file": "mom90_t2_no_WALLEX.json",
+    "trades": 681,
+    "avg_daily_return": -0.6886936592070871
+  },
+  "brk20_t2": {
+    "file": "brk20_t2_WALLEX.json",
+    "trades": 682,
+    "avg_daily_return": -0.9072678683493235
+  },
+  "mom15_t2_ma": {
+    "file": "mom15_t2_ma_WALLEX.json",
+    "trades": 731,
+    "avg_daily_return": -0.5942327746755792
+  },
+  "mom180_t5_ma": {
+    "file": "mom180_t5_ma_WALLEX.json",
+    "trades": 605,
+    "avg_daily_return": -0.3380587537832544
+  },
+  "bb30_3.5": {
+    "file": "bb30_3.5_WALLEX.json",
+    "trades": 62,
+    "avg_daily_return": 2.5060358495629442
+  },
+  "mom20_t4_ma": {
+    "file": "mom20_t4_ma_WALLEX.json",
+    "trades": 744,
+    "avg_daily_return": -0.5299756852125858
+  },
+  "rsi21_40": {
+    "file": "rsi21_40_WALLEX.json",
+    "trades": 549,
+    "avg_daily_return": 0.4942617956663102
+  },
+  "brk20_t3": {
+    "file": "brk20_t3_WALLEX.json",
+    "trades": 689,
+    "avg_daily_return": -1.015083464442306
+  },
+  "rsi28_35": {
+    "file": "rsi28_35_WALLEX.json",
+    "trades": 545,
+    "avg_daily_return": 0.2853191907011191
+  },
+  "mom45_t2_ma": {
+    "file": "mom45_t2_ma_WALLEX.json",
+    "trades": 728,
+    "avg_daily_return": -0.7331969735042316
+  },
+  "mom30_t3_ma": {
+    "file": "mom30_t3_ma_WALLEX.json",
+    "trades": 736,
+    "avg_daily_return": -0.8089203900461027
+  },
+  "rsi21_35": {
+    "file": "rsi21_35_WALLEX.json",
+    "trades": 517,
+    "avg_daily_return": 0.4324515638218347
+  },
+  "mom90_t5_no": {
+    "file": "mom90_t5_no_WALLEX.json",
+    "trades": 702,
+    "avg_daily_return": -0.6106457188097614
+  },
+  "mom30_t2_ma": {
+    "file": "mom30_t2_ma_WALLEX.json",
+    "trades": 725,
+    "avg_daily_return": -0.962529356260714
+  },
+  "ma30_90_t5": {
+    "file": "ma30_90_t5_WALLEX.json",
+    "trades": 705,
+    "avg_daily_return": -0.05529323264346348
+  },
+  "brk150_t3": {
+    "file": "brk150_t3_WALLEX.json",
+    "trades": 327,
+    "avg_daily_return": -0.6856673470850807
+  },
+  "bb40_1.5": {
+    "file": "bb40_1.5_WALLEX.json",
+    "trades": 540,
+    "avg_daily_return": 1.5277145728354602
+  },
+  "brk150_t2": {
+    "file": "brk150_t2_WALLEX.json",
+    "trades": 326,
+    "avg_daily_return": -0.657591695421698
+  },
+  "donchian_50": {
+    "file": "donchian_50_WALLEX.json",
+    "trades": 610,
+    "avg_daily_return": 4.819453978644636
+  },
+  "mom10_t3_no": {
+    "file": "mom10_t3_no_WALLEX.json",
+    "trades": 782,
+    "avg_daily_return": -0.6723247109225521
+  },
+  "ma10_30_t5": {
+    "file": "ma10_30_t5_WALLEX.json",
+    "trades": 763,
+    "avg_daily_return": -0.3180487408195092
+  },
+  "mom120_t4_ma": {
+    "file": "mom120_t4_ma_WALLEX.json",
+    "trades": 667,
+    "avg_daily_return": -0.3861793265088864
+  },
+  "brk150_t4": {
+    "file": "brk150_t4_WALLEX.json",
+    "trades": 327,
+    "avg_daily_return": -0.6305412685600101
+  },
+  "brk50_t3": {
+    "file": "brk50_t3_WALLEX.json",
+    "trades": 542,
+    "avg_daily_return": -1.0671214654945442
+  },
+  "ma100_200_t4": {
+    "file": "ma100_200_t4_WALLEX.json",
+    "trades": 592,
+    "avg_daily_return": 0.23290057261096372
+  },
+  "ma20_50_t5": {
+    "file": "ma20_50_t5_WALLEX.json",
+    "trades": 743,
+    "avg_daily_return": -0.30905178538876715
+  },
+  "ma5_20_t3": {
+    "file": "ma5_20_t3_WALLEX.json",
+    "trades": 769,
+    "avg_daily_return": -0.4347161628109685
+  },
+  "rsi21_20": {
+    "file": "rsi21_20_WALLEX.json",
+    "trades": 402,
+    "avg_daily_return": 0.2673826465257523
+  },
+  "zscore_30": {
+    "file": "zscore_30_WALLEX.json",
+    "trades": 539,
+    "avg_daily_return": 16772.84939488519
+  },
+  "ma100_200_t5": {
+    "file": "ma100_200_t5_WALLEX.json",
+    "trades": 597,
+    "avg_daily_return": 0.10316557950222757
+  },
+  "brk20_t5": {
+    "file": "brk20_t5_WALLEX.json",
+    "trades": 691,
+    "avg_daily_return": -0.9290462131695506
+  },
+  "mom250_t3_no": {
+    "file": "mom250_t3_no_WALLEX.json",
+    "trades": 548,
+    "avg_daily_return": -0.14213169323282387
+  },
+  "bh_LINK": {
+    "file": "bh_LINK_WALLEX.json",
+    "trades": 795,
+    "avg_daily_return": 0.11266719229430745
+  },
+  "bb20_3": {
+    "file": "bb20_3_WALLEX.json",
+    "trades": 145,
+    "avg_daily_return": 2.3282810374282636
+  },
+  "mom10_t1_no": {
+    "file": "mom10_t1_no_WALLEX.json",
+    "trades": 713,
+    "avg_daily_return": -0.45080105833263295
+  },
+  "ma30_90_t3": {
+    "file": "ma30_90_t3_WALLEX.json",
+    "trades": 698,
+    "avg_daily_return": -0.41192887017483587
+  },
+  "btfd10_h20": {
+    "file": "btfd10_h20_WALLEX.json",
+    "trades": 679,
+    "avg_daily_return": 1.6644121667227012
+  },
+  "rsi35_25": {
+    "file": "rsi35_25_WALLEX.json",
+    "trades": 521,
+    "avg_daily_return": -0.0014295280373500963
+  },
+  "bh_DOGE": {
+    "file": "bh_DOGE_WALLEX.json",
+    "trades": 794,
+    "avg_daily_return": 0.06101324600126593
+  },
+  "brk200_t2": {
+    "file": "brk200_t2_WALLEX.json",
+    "trades": 255,
+    "avg_daily_return": -0.31213372111330734
+  }
+}
