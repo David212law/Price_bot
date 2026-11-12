@@ -288,8 +288,21 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
 
-        # Sort by Sharpe
-        sorted_final = sorted(final_strats, key=lambda s: scores[s], reverse=True)
+        # Sort by Sharpe (using recent 90-day window for high-frequency strategies)
+        recent_window = 90  # 90 days
+        recent_scores = {}
+        for strat in final_strats:
+            if strat not in df_rets.columns: continue
+            # Calculate Sharpe on recent 90 days
+            recent_data = df_rets.loc[r_train, strat].tail(recent_window)
+            if len(recent_data) > 10:
+                _, _, recent_sharpe = stats(recent_data)
+                recent_scores[strat] = recent_sharpe
+            else:
+                recent_scores[strat] = scores[strat]  # fallback to full
+        
+        # Use recent scores for sorting (more weight to recent performance)
+        sorted_final = sorted(final_strats, key=lambda s: recent_scores.get(s, 0), reverse=True)
         
         # Family mapping (for P_ strategies, we don't know, so they go to "other")
         def get_family(name):
@@ -305,9 +318,9 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
 
         # 🔥 Market-specific filters (commission-aware)
         if market == "TMN":
-            max_per_family = 2
-            corr_threshold = 0.7
-            max_strategies = 5    # کارمزد ۰.۶٪ → محافظه‌کار
+            max_per_family = 3     # Increased from 2
+            corr_threshold = 0.75   # Slightly looser
+            max_strategies = 15    # Increased from 5
         elif market == "USDT":
             max_per_family = 5
             corr_threshold = 0.9

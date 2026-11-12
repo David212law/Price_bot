@@ -199,6 +199,7 @@ def main():
         or regime != state["last_regime"]
         or curr_keys != set(state["last_port_keys"])):
         fee = val * 0.00035 # HL taker fee ~0.035%
+        print(f"  💰 Fee: 0.035% = ${fee:.2f}")
         val -= fee; state["capital"] = 0.0; state["holdings"] = {}
         for a, w in target.items():
             if a in df.columns:

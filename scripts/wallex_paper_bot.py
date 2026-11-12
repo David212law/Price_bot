@@ -278,9 +278,14 @@ def main():
         print(f"🔄 REBALANCING... (Regime: {state['last_regime']} -> {regime}, Assets: {prev_keys} -> {curr_keys})")
         
         # Fee: 0.6% for regime change, 0.2% for daily active rotation
+        # Commission only on rebalance (not per signal)
+        # If regime changes: 0.6% (full rebalance)
+        # If only asset change: 0.2% (partial rebalance)
+        # If no change: 0% (no trade)
         fee_pct = 0.006 if regime != state["last_regime"] else 0.002
         fee = current_val * fee_pct
         current_val -= fee
+        print(f"  💰 Fee: {fee_pct*100:.1f}% = ${fee:.2f}")
         state["capital"] = 0.0  # Fully invested (no cash left)
         state["holdings"] = {}
         
