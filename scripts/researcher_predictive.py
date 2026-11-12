@@ -752,14 +752,20 @@ def main():
         aggressive_results[market_name] = {**base, "predictive": market_data["predictive_aggressive"]}
     
     if conservative_results:
-        print(f"=== DEBUG: conservative_results type: {type(conservative_results)} ===")
-        print(f"=== DEBUG: keys: {list(conservative_results.keys())} ===")
         try:
             test_json = json.dumps(conservative_results, indent=2, default=str)
             print(f"=== DEBUG: json size: {len(test_json)} chars ===")
             with open("data/researcher_conservative.json", "w") as f:
                 f.write(test_json)
             print(f"✅ Saved Conservative ({len(conservative_results)} markets)")
+            
+            # بلافاصله چک کن که فایل درست نوشته شد
+            import os
+            size = os.path.getsize("data/researcher_conservative.json")
+            print(f"=== DEBUG: file size on disk: {size} bytes ===")
+            if size < 10:
+                print(f"❌ File is too small ({size} bytes)! json.dump failed silently.")
+                print(f"=== DEBUG: content: {test_json[:200]} ===")
         except Exception as e:
             print(f"❌ json.dump failed: {e}")
             import traceback
