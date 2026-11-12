@@ -85,6 +85,89 @@ def build_strategies(df):
             w = pd.DataFrame(0.0, index=df.index, columns=df.columns)
             w[a] = 1.0
             S[f"bh_{a}"] = w
+    
+    # ═══════════════════════════════════════════════════════════════════
+    # HIGH-FREQUENCY STRATEGIES (for more trades per regime)
+    # ═══════════════════════════════════════════════════════════════════
+    def equal_weight_portfolio(selected_assets):
+        w = pd.DataFrame(0.0, index=df.index, columns=df.columns)
+        valid = [a for a in selected_assets if a in df.columns]
+        if valid:
+            for a in valid:
+                w[a] = 1.0 / len(valid)
+        return w
+    
+    # 1. GRID Trading (BTC & ETH only, high liquidity)
+    for col in ["BTC", "ETH"]:
+        if col not in df.columns: continue
+        prices = df[col]
+        low = prices.rolling(20).min()
+        high = prices.rolling(20).max()
+        mid = (low + high) / 2
+        # Buy when price < 90% of mid (support)
+        for pct in [0.90, 0.95]:
+            sig = (prices < mid * pct).astype(float)
+            w = pd.DataFrame(0.0, index=df.index, columns=df.columns)
+            w[col] = sig
+            S[f'grid_{col}_{int(pct*100)}'] = w
+    
+    # 2. FAST RSI Mean Reversion
+    for p in [5, 7, 10, 14]:
+        delta = df.diff()
+        up = delta.clip(lower=0).ewm(alpha=1/p, adjust=False).mean()
+        down = -delta.clip(upper=0).ewm(alpha=1/p, adjust=False).mean()
+        rsi = 100 - 100/(1 + up/down)
+        for th in [25, 30]:
+            sig = (rsi < th).astype(float)
+            # Apply to all assets (oversold)
+            top = sig.rank(axis=1, ascending=False).le(3).astype(float)
+            w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
+            S[f'rsi_fast_{p}_{th}'] = w
+    
+    # 3. Bollinger Breakout (for trends)
+    for n in [10, 20]:
+        ma = df.rolling(n).mean()
+        sd = df.rolling(n).std()
+        for mult in [1.5, 2.0]:
+            sig = (df > ma + mult*sd).astype(float)
+            top = sig.rank(axis=1, ascending=False).le(3).astype(float)
+            w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
+            S[f'bb_breakout_{n}_{mult}'] = w
+    
+    # 4. Donchian Breakout
+    for n in [10, 20, 50]:
+        sig = (df > df.rolling(n).max().shift(1)).astype(float)
+        top = sig.rank(axis=1, ascending=False).le(3).astype(float)
+        w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
+        S[f'donchian_breakout_{n}'] = w
+    
+    # 5. Z-Score Mean Reversion
+    for n in [10, 20]:
+        ma = df.rolling(n).mean()
+        sd = df.rolling(n).std()
+        z = (df - ma) / sd
+        for th in [-1.5, -2.0]:
+            sig = (z < th).astype(float)
+            top = sig.rank(axis=1, ascending=False).le(3).astype(float)
+            w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
+            S[f'zscore_{n}_{abs(th)}'] = w
+    
+    # 6. VWAP Reversion
+    vol = pd.DataFrame(1.0, index=df.index, columns=df.columns)
+    vwap = (df * vol).rolling(20).sum() / vol.rolling(20).sum()
+    sig = (df < vwap * 0.98).astype(float)
+    top = sig.rank(axis=1, ascending=False).le(3).astype(float)
+    w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
+    S['vwap_rev_20'] = w
+    
+    # 7. Fast Momentum (for BULL_STRONG)
+    for n in [3, 5, 7]:
+        for th in [0.02, 0.03]:
+            sig = (df.pct_change(n) > th).astype(float)
+            top = sig.rank(axis=1, ascending=False).le(3).astype(float)
+            w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
+            S[f'mom_fast_{n}_{int(th*100)}'] = w
+    
     return S
 
 def sharpe_to_pvalue(sharpe, n_days):
