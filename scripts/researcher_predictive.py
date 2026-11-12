@@ -241,7 +241,7 @@ def detect_regime(df):
     regs[cond2 & (vol >= 2.0)] = "CRASH"
     return regs
 
-def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
+def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max_strat_override=None):
     if not isinstance(df_rets, pd.DataFrame):
         df_rets = pd.DataFrame(df_rets)
     if not isinstance(regimes, pd.Series):
