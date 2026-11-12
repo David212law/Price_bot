@@ -217,8 +217,16 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         selected = []
         selected_returns = []
         
+        # Family tracking to prevent 5x BB
+        used_families = {}
+        
         for strat in sorted_final:
             if len(selected) >= 5: break
+            
+            # Check family count (max 2 per family)
+            fam = get_family(strat)
+            if used_families.get(fam, 0) >= 2:
+                continue
             
             # Check correlation with already selected strategies
             is_complementary = True
@@ -227,13 +235,14 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
                 for prev_ret in selected_returns:
                     if recent.std() > 0 and prev_ret.std() > 0:
                         corr = recent.corr(prev_ret)
-                        if corr > 0.8:  # Too similar
+                        if corr > 0.7:  # Too similar
                             is_complementary = False
                             break
             
             if is_complementary:
                 selected.append((strat, scores[strat]))
                 selected_returns.append(df_rets.loc[r_train, strat])
+                used_families[fam] = used_families.get(fam, 0) + 1
 
         if not selected:
             top_per_regime[r] = {"bh_BTC": 1.0}
