@@ -1,0 +1,15 @@
+{
+  "capital": 0.0,
+  "holdings": {
+    "BTC": 0.03841825779604498,
+    "XRP": 171.16455247206787
+  },
+  "last_regime": "FLAT",
+  "last_port_keys": [
+    "TETHER",
+    "BTC",
+    "XRP"
+  ],
+  "initialized": true,
+  "last_date": "2026-11-12"
+}
