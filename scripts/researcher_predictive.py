@@ -512,7 +512,7 @@ def load_unified_db():
     print(f"  ✅ Unified DB: {len(with_returns)} strategies with returns (out of {len(strats)} total)")
     return with_returns
 
-def process_market(name, df, fee):
+def process_market(name, df, fee, max_strat_override=None):
     df = df.copy()
     df.index = pd.to_datetime(df.index)
     df = df.sort_index().ffill()
@@ -579,7 +579,10 @@ def process_market(name, df, fee):
         ct_o, cdd_o, csh_o, bht, bhdd, bhsh = 0, 0, 0, 0, 0, 0
 
     pred_regs = detect_regime(df)
-    top_p, ct_p, cdd_p, csh_p, sw_p, sh_per_regime = run_ensemble(strat_rets, pred_regs, train_mask, test_mask, fee, market=name)
+    top_p, ct_p, cdd_p, csh_p, sw_p, sh_per_regime = run_ensemble(
+        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
+        max_strat_override=max_strat_override
+    )
 
     return {
         "market": name, "assets": len(df.columns), "days": len(df),
