@@ -814,8 +814,15 @@ def main():
         if not isinstance(r, dict): continue
         msg += f"📊 *{m}* ({r.get('assets', 0)} assets, {r.get('days', 0)}d)\n"
         msg += f"├ Oracle: {r['oracle']['return']:+.1f}% (DD {r['oracle']['dd']:.1f}%, Sh {r['oracle']['sharpe']:.2f})\n"
-        msg += f"├ Predicted: {r['predictive']['return']:+.1f}% (DD {r['predictive']['dd']:.1f}%, Sh {r['predictive']['sharpe']:.2f})\n"
-        msg += f"└ B&H BTC: {r['bnh_btc']['return']:+.1f}%\n"
+        # A/B Test: use conservative for the main message
+        cons = r.get('predictive_conservative', {})
+        aggr = r.get('predictive_aggressive', {})
+        if cons:
+            msg += f"├ Cons: {cons.get('return', 0):+.1f}% (Sh {cons.get('sharpe', 0):.2f})\n"
+        if aggr:
+            msg += f"├ Aggr: {aggr.get('return', 0):+.1f}% (Sh {aggr.get('sharpe', 0):.2f})\n"
+        if 'bnh_btc' in r:
+            msg += f"└ B&H BTC: {r['bnh_btc']['return']:+.1f}%\n"
         top_items = []
         for k, v in r['predictive']['top'].items():
             if isinstance(v, dict):
