@@ -759,24 +759,66 @@ def main():
                 f.write(test_json)
             print(f"✅ Saved Conservative ({len(conservative_results)} markets)")
             
-            # بلافاصله چک کن که فایل درست نوشته شد
+            # 🔴 DIRECT UPLOAD TO GITHUB API (before anything can overwrite)
             import os
-            size = os.path.getsize("data/researcher_conservative.json")
-            print(f"=== DEBUG: file size on disk: {size} bytes ===")
-            if size < 10:
-                print(f"❌ File is too small ({size} bytes)! json.dump failed silently.")
-                print(f"=== DEBUG: content: {test_json[:200]} ===")
+            GH_TOKEN = os.environ.get("GH_TOKEN")
+            if GH_TOKEN:
+                import base64
+                import requests
+                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_conservative.json"
+                headers = {"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+                r = requests.get(url, headers=headers)
+                sha = r.json().get("sha") if r.status_code == 200 else None
+                data = {
+                    "message": "Auto: upload conservative [skip ci]",
+                    "content": base64.b64encode(test_json.encode()).decode(),
+                    "branch": "main"
+                }
+                if sha: data["sha"] = sha
+                r = requests.put(url, headers=headers, json=data)
+                print(f"=== DEBUG: GitHub upload status: {r.status_code} ===")
+                if r.status_code in [200, 201]:
+                    print(f"✅ Uploaded conservative to GitHub!")
+                else:
+                    print(f"❌ Upload failed: {r.text[:200]}")
         except Exception as e:
-            print(f"❌ json.dump failed: {e}")
+            print(f"❌ json.dump/upload failed: {e}")
             import traceback
             traceback.print_exc()
     else:
         print("❌ No conservative results")
     
     if aggressive_results:
-        with open("data/researcher_aggressive.json", "w") as f:
-            json.dump(aggressive_results, f, indent=2)
-        print(f"✅ Saved Aggressive ({len(aggressive_results)} markets)")
+        try:
+            test_json_a = json.dumps(aggressive_results, indent=2, default=str)
+            with open("data/researcher_aggressive.json", "w") as f:
+                f.write(test_json_a)
+            print(f"✅ Saved Aggressive ({len(aggressive_results)} markets)")
+            
+            # DIRECT UPLOAD TO GITHUB API
+            import os
+            GH_TOKEN = os.environ.get("GH_TOKEN")
+            if GH_TOKEN:
+                import base64
+                import requests
+                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_aggressive.json"
+                headers = {"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+                r = requests.get(url, headers=headers)
+                sha = r.json().get("sha") if r.status_code == 200 else None
+                data = {
+                    "message": "Auto: upload aggressive [skip ci]",
+                    "content": base64.b64encode(test_json_a.encode()).decode(),
+                    "branch": "main"
+                }
+                if sha: data["sha"] = sha
+                r = requests.put(url, headers=headers, json=data)
+                print(f"=== DEBUG: GitHub upload status: {r.status_code} ===")
+                if r.status_code in [200, 201]:
+                    print(f"✅ Uploaded aggressive to GitHub!")
+                else:
+                    print(f"❌ Upload failed: {r.text[:200]}")
+        except Exception as e:
+            print(f"❌ Failed: {e}")
     else:
         print("❌ No aggressive results")
 
