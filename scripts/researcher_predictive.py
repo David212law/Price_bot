@@ -824,7 +824,9 @@ def main():
         if 'bnh_btc' in r:
             msg += f"└ B&H BTC: {r['bnh_btc']['return']:+.1f}%\n"
         top_items = []
-        for k, v in r['predictive']['top'].items():
+        # Use conservative top (or fallback to first available)
+        top_source = r.get('predictive_conservative', r.get('predictive', {}))
+        for k, v in top_source.get('top', {}).items():
             if isinstance(v, dict):
                 best = max(v, key=v.get) if v else "NONE"
             elif isinstance(v, list):
