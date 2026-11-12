@@ -438,3 +438,32 @@ Date: 2026-11-12 | Regime: FLAT | Target: {'BTC': 0.28637999999999997, 'XRP': 0.
   Bought 0.0389 BTC @ $73,522
   Bought 128.8124 XRP @ $1
 Equity: $9996.50
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+/home/runner/work/Price_bot/Price_bot/scripts/hl_predictive_bot.py:24: Pandas4Warning: The inplace keyword in DataFrame.set_index is deprecated and will be removed in a future version (PDEP-8).
+See https://pandas.pydata.org/docs/dev/whatsnew/v3.1.0.html#deprecation-inplace for more details.
+  df.set_index("date", inplace=True)
+Fetching live data from Hyperliquid...
+❌ KILL SWITCH TRIGGERED: Equity 2976.06 < 90% of 10000.00
