@@ -15,7 +15,7 @@
       wallex::bb10_2.5::ALL: 0.086
       rsi_fast_7_30: 0.065
       bh_BNB: 0.090
-  🧬 FLAT: 5 uncorrelated (from 88 final)
+  🧬 FLAT: 5 uncorrelated (from 89 final)
       bb15_1.5: 0.426
       bb20_2: 0.369
       zscore_10_1.5: 0.151
@@ -24,7 +24,7 @@
   🧬 BULL_STRONG: 2 uncorrelated (from 158 final)
       rsi7_40: 0.347
       bb10_1.5: 0.653
-  🧬 FLAT: 4 uncorrelated (from 81 final)
+  🧬 FLAT: 4 uncorrelated (from 80 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
@@ -42,7 +42,7 @@
       bh_BNB: 0.062
       mom_fast_5_2: 0.002
       mom_fast_7_2: 0.007
-  🧬 FLAT: 4 uncorrelated (from 81 final)
+  🧬 FLAT: 4 uncorrelated (from 80 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
@@ -50,7 +50,7 @@
   🧬 BULL_STRONG: 2 uncorrelated (from 158 final)
       rsi7_40: 0.347
       bb10_1.5: 0.653
-  🧬 FLAT: 4 uncorrelated (from 81 final)
+  🧬 FLAT: 4 uncorrelated (from 80 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
@@ -68,7 +68,7 @@
       bh_BNB: 0.062
       mom_fast_5_2: 0.002
       mom_fast_7_2: 0.007
-  🧬 FLAT: 4 uncorrelated (from 81 final)
+  🧬 FLAT: 4 uncorrelated (from 80 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
