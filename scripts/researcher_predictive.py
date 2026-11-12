@@ -723,17 +723,22 @@ def main():
     except: pass
     
     # Save to pending (requires human approval)
+    # ۱. ذخیره pending (برای approve)
     with open("data/researcher_pending.json", "w") as f:
         json.dump(results, f, indent=2)
     print("✅ Saved results to PENDING. Human approval required.")
 
-    # A/B Test: ذخیره فایل‌های جداگانه
+    # ۲. A/B Test: ذخیره فایل‌های جداگانه (برای ربات‌های Paper)
     conservative_results = {}
     aggressive_results = {}
     
     for market_name, market_data in results.items():
-        if market_data is None: continue
-        if "predictive_conservative" not in market_data: continue
+        if market_data is None: 
+            print(f"⚠️ {market_name}: market_data is None")
+            continue
+        if "predictive_conservative" not in market_data: 
+            print(f"⚠️ {market_name}: no predictive_conservative")
+            continue
         
         base = {
             "market": market_data["market"],
@@ -746,13 +751,19 @@ def main():
         conservative_results[market_name] = {**base, "predictive": market_data["predictive_conservative"]}
         aggressive_results[market_name] = {**base, "predictive": market_data["predictive_aggressive"]}
     
-    with open("data/researcher_conservative.json", "w") as f:
-        json.dump(conservative_results, f, indent=2)
-    print("✅ Saved Conservative (max 5)")
+    if conservative_results:
+        with open("data/researcher_conservative.json", "w") as f:
+            json.dump(conservative_results, f, indent=2)
+        print(f"✅ Saved Conservative ({len(conservative_results)} markets)")
+    else:
+        print("❌ No conservative results")
     
-    with open("data/researcher_aggressive.json", "w") as f:
-        json.dump(aggressive_results, f, indent=2)
-    print("✅ Saved Aggressive (max 15)")
+    if aggressive_results:
+        with open("data/researcher_aggressive.json", "w") as f:
+            json.dump(aggressive_results, f, indent=2)
+        print(f"✅ Saved Aggressive ({len(aggressive_results)} markets)")
+    else:
+        print("❌ No aggressive results")
 
     # ═══════════════════════════════════════════════════════════════
     # A/B Test: ذخیره هر دو نسخه Conservative و Aggressive
