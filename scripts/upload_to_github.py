@@ -27,9 +27,17 @@ def upload_file(path, content):
     else:
         print(f"❌ Failed {path}: {r.status_code} {r.text[:200]}")
 
+import subprocess
 for f in ["data/researcher_conservative.json", "data/researcher_aggressive.json"]:
     if os.path.exists(f):
         content = open(f).read()
+        print(f"=== {f} size: {len(content)} chars ===")
+        print(f"=== first 50: {content[:50]} ===")
+        
+        # Debug: git status
+        result = subprocess.run(["git", "status", f], capture_output=True, text=True)
+        print(f"=== git status: {result.stdout} ===")
+        
         if len(content) > 2:
             upload_file(f, content)
         else:
