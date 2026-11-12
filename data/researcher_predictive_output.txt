@@ -25,7 +25,7 @@
       rsi7_40: 0.293
       bb10_1.5: 0.551
       wallex::bb20_2::ALL: 0.157
-  🧬 FLAT: 3 uncorrelated (from 83 final)
+  🧬 FLAT: 3 uncorrelated (from 81 final)
       bb30_2: 0.829
       wallex::bb20_3::ALL: 0.122
       wallex::bb30_3.5::ALL: 0.050
@@ -66,7 +66,7 @@
       grid_ETH_95: 0.011
       rsi7_40: 0.007
       rsi7_25: 0.004
-  🧬 FLAT: 18 uncorrelated (from 180 final)
+  🧬 FLAT: 18 uncorrelated (from 179 final)
       bb15_3.5: 0.061
       wallex::bb10_1.5::ALL: 0.230
       wallex::bb10_2.5::ALL: 0.064
@@ -165,4 +165,6 @@
       btfd30_h5: 0.344
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
+✅ Saved Conservative (5 strategies)
+✅ Saved Aggressive (15 strategies)
 ✅ Bale message sent.
