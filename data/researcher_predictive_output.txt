@@ -4,44 +4,102 @@
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 574 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: ENSEMBLE (44 strategies, top sharpe 8.27)
-  FDR (BULL_STRONG): 552/574 passed, 87 after Holdout, 44 weighted
-  🧬 BULL: ENSEMBLE (126 strategies, top sharpe 6.93)
-  FDR (BULL): 549/574 passed, 273 after Holdout, 126 weighted
-  🧬 FLAT: ENSEMBLE (33 strategies, top sharpe 7.02)
-  FDR (FLAT): 544/574 passed, 58 after Holdout, 33 weighted
-  🧬 BULL_STRONG: ENSEMBLE (84 strategies, top sharpe 6.05)
-  FDR (BULL_STRONG): 557/574 passed, 153 after Holdout, 84 weighted
-  🧬 FLAT: ENSEMBLE (42 strategies, top sharpe 5.41)
-  FDR (FLAT): 561/574 passed, 64 after Holdout, 42 weighted
+  🧬 BULL_STRONG: 5 complementary strategies (from 85 final)
+      bb30_1.5: 0.430
+      wallex::bb40_1.5::ALL: 0.289
+      bh_DOGE: 0.160
+      brk200_t2: 0.090
+      rsi35_30: 0.030
+  🧬 BULL: 5 complementary strategies (from 273 final)
+      wallex::bb10_1.5::ALL: 0.309
+      bb10_1.5: 0.248
+      rsi7_40: 0.170
+      btfd5_h5: 0.138
+      bh_BNB: 0.136
+  🧬 FLAT: 5 complementary strategies (from 77 final)
+      bb15_1.5: 0.436
+      wallex::bb20_2.5::ALL: 0.241
+      mom250_t4_no: 0.115
+      rsi7_40: 0.111
+      bh_TRX: 0.097
+  🧬 BULL_STRONG: 5 complementary strategies (from 152 final)
+      bb10_1.5: 0.287
+      wallex::bb40_1.5::ALL: 0.253
+      rsi7_40: 0.209
+      bh_BTC: 0.159
+      mom250_t5_no: 0.091
+  🧬 FLAT: 5 complementary strategies (from 76 final)
+      bb30_1.5: 0.554
+      wallex::bb20_1.5::ALL: 0.369
+      btfd10_h5: 0.111
+      bh_TRX: -0.016
+      rsi14_40: -0.018
 ✅ TMN: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 574 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: ENSEMBLE (29 strategies, top sharpe 7.34)
-  FDR (BULL_STRONG): 537/574 passed, 52 after Holdout, 29 weighted
-  🧬 BULL: ENSEMBLE (67 strategies, top sharpe 5.11)
-  FDR (BULL): 550/574 passed, 138 after Holdout, 67 weighted
-  🧬 FLAT: ENSEMBLE (91 strategies, top sharpe 6.70)
-  FDR (FLAT): 564/574 passed, 143 after Holdout, 91 weighted
-  🧬 BULL_STRONG: ENSEMBLE (130 strategies, top sharpe 6.96)
-  FDR (BULL_STRONG): 556/574 passed, 158 after Holdout, 130 weighted
-  🧬 FLAT: ENSEMBLE (34 strategies, top sharpe 4.53)
-  FDR (FLAT): 569/574 passed, 45 after Holdout, 34 weighted
+  🧬 BULL_STRONG: 5 complementary strategies (from 53 final)
+      wallex::bb20_2.5::ALL: 0.404
+      bb40_1.5: 0.400
+      bh_DOGE: 0.106
+      rsi7_40: 0.078
+      combo_AND_mom5_t2_no_mom5_t4_no: 0.012
+  🧬 BULL: 5 complementary strategies (from 139 final)
+      wallex::bb15_1.5::ALL: 0.331
+      bb30_1.5: 0.323
+      btfd5_h5: 0.216
+      rsi7_30: 0.079
+      combo_AND_mom5_t1_no_mom5_t4_ma: 0.051
+  🧬 FLAT: 5 complementary strategies (from 171 final)
+      wallex::bb10_1.5::ALL: 0.324
+      bb10_1.5: 0.259
+      btfd10_h5: 0.176
+      rsi7_35: 0.161
+      bh_BNB: 0.080
+  🧬 BULL_STRONG: 5 complementary strategies (from 157 final)
+      wallex::bb10_1.5::ALL: 0.289
+      bb15_1.5: 0.263
+      rsi7_35: 0.171
+      bh_BTC: 0.169
+      mom250_t4_no: 0.108
+  🧬 FLAT: 4 complementary strategies (from 54 final)
+      bb40_1.5: 0.687
+      wallex::bb40_1.5::ALL: 0.569
+      rsi7_30: 0.185
+      mom180_t3_no: -0.441
 ✅ USDT: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1716 candidates (306 + 1400 unified)
-  🧬 BULL_STRONG: ENSEMBLE (135 strategies, top sharpe 1.61)
-  FDR (BULL_STRONG): 1581/1716 passed, 189 after Holdout, 135 weighted
-  🧬 BULL: ENSEMBLE (139 strategies, top sharpe 2.39)
-  FDR (BULL): 1541/1716 passed, 282 after Holdout, 139 weighted
-  🧬 FLAT: ENSEMBLE (266 strategies, top sharpe 2.84)
-  FDR (FLAT): 1569/1716 passed, 693 after Holdout, 266 weighted
-  🧬 BULL_STRONG: ENSEMBLE (326 strategies, top sharpe 4.33)
-  FDR (BULL_STRONG): 1574/1716 passed, 504 after Holdout, 326 weighted
-  🧬 FLAT: ENSEMBLE (180 strategies, top sharpe 1.93)
-  FDR (FLAT): 1582/1716 passed, 386 after Holdout, 180 weighted
+  🧬 BULL_STRONG: 5 complementary strategies (from 189 final)
+      mom120_t3_ma: 0.302
+      ma30_90_t1: 0.218
+      combo_AND_mom5_t2_ma_mom5_t3_no: 0.184
+      brk20_t4: 0.173
+      bh_SOL: 0.122
+  🧬 BULL: 5 complementary strategies (from 282 final)
+      kucoin::MR_CCI_30::ETHUSDTM: 0.374
+      mom120_t2_ma: 0.276
+      rsi21_25: 0.218
+      bb40_1.5: 0.210
+      btfd30_h5: -0.077
+  🧬 FLAT: 5 complementary strategies (from 693 final)
+      kucoin::VOL_DONCHIAN::AVAXUSDTM: 0.355
+      mom15_t4_no: 0.203
+      bh_XRP: 0.165
+      bb40_3.5: 0.163
+      rsi35_25: 0.113
+  🧬 BULL_STRONG: 5 complementary strategies (from 504 final)
+      eq3: 0.230
+      bh_BTC: 0.220
+      mom10_t4_no: 0.204
+      combo_AND_mom5_t2_ma_mom5_t3_ma: 0.174
+      rsi21_40: 0.172
+  🧬 FLAT: 4 complementary strategies (from 386 final)
+      kucoin::VOL_ATRB_40_S::BNBUSDTM: 0.526
+      btfd30_h5: 0.456
+      bb40_3.5: 0.095
+      rsi35_25: -0.076
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
