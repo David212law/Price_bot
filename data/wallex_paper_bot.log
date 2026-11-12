@@ -178,3 +178,17 @@ Current Equity: $10000.00
   Bought 0.002495 XRP @ 278,681 TMN ($695.40)
   Bought 0.000000 BTC @ 19,563,696,378 TMN ($1591.20)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-12
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-8.9%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'UNI': 0.06996, 'XRP': 0.06996, 'BTC': 0.16007999999999997, 'TETHER': 0.7}
+Current Equity: $10000.00
+🔄 REBALANCING... (Regime: None -> FLAT, Assets: set() -> {'UNI', 'TETHER', 'XRP', 'BTC'})
+  Bought 0.000421 UNI @ 1,650,170 TMN ($695.40)
+  Bought 0.002486 XRP @ 279,672 TMN ($695.40)
+  Bought 0.000000 BTC @ 19,577,842,036 TMN ($1591.20)
+Saved state to data/wallex_paper_bot_state.json
