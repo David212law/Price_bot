@@ -85,12 +85,23 @@ def main():
                 def safe_pct(x):
                     if abs(x) > 10000: return "n/a"
                     return f"{x:+.1f}%"
-                print(f"  {market}: Oracle {safe_pct(r['oracle']['return'])} | Pred {safe_pct(r['predictive']['return'])}")
-                # Show top strategy for FLAT/BULL
-                tops = r['predictive'].get('top', {})
-                if tops:
-                    print(f"    BULL_STRONG -> {tops.get('BULL_STRONG', [])[0]}")
-                    print(f"    FLAT        -> {tops.get('FLAT', [])[0]}")
+                # Handle both old 'predictive' and new 'predictive_conservative'
+                pred = r.get('predictive', r.get('predictive_conservative', {}))
+                if not pred:
+                    continue
+                oracle_ret = r.get('oracle', {}).get('return', 0)
+                pred_ret = pred.get('return', 0)
+                print(f"  {market}: Oracle {safe_pct(oracle_ret)} | Pred {safe_pct(pred_ret)}")
+                tops = pred.get('top', {})
+                for regime in ["BULL_STRONG", "FLAT"]:
+                    reg_data = tops.get(regime, {})
+                    if isinstance(reg_data, dict):
+                        best = max(reg_data, key=reg_data.get) if reg_data else "NONE"
+                    elif isinstance(reg_data, list):
+                        best = reg_data[0] if reg_data else "NONE"
+                    else:
+                        best = "NONE"
+                    print(f"    {regime} -> {best}")
     else:
         print("  (No researcher data found)")
 
