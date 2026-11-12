@@ -130,14 +130,23 @@ def main():
         for market in ["TMN", "USDT", "GLOBAL"]:
             if market in res and res[market]:
                 r = res[market]
-                pred = r['predictive']
+                # Handle both old 'predictive' and new 'predictive_conservative'
+                pred = r.get('predictive', r.get('predictive_conservative', {}))
+                if not pred:
+                    continue
                 sharpe = pred.get('sharpe', 0)
-                lines.append(f"  {market}: Sharpe {sharpe:.2f}")
+                pred_ret = pred.get('return', 0)
+                lines.append(f"  {market}: Sharpe {sharpe:.2f} | Ret {pred_ret:+.1f}%")
                 tops = pred.get('top', {})
-                if tops.get('BULL_STRONG'):
-                    lines.append(f"    BULL: {tops['BULL_STRONG'][0]}")
-                if tops.get('FLAT'):
-                    lines.append(f"    FLAT: {tops['FLAT'][0]}")
+                for regime in ["BULL_STRONG", "FLAT"]:
+                    reg_data = tops.get(regime, {})
+                    if isinstance(reg_data, dict):
+                        best = max(reg_data, key=reg_data.get) if reg_data else "NONE"
+                    elif isinstance(reg_data, list):
+                        best = reg_data[0] if reg_data else "NONE"
+                    else:
+                        best = "NONE"
+                    lines.append(f"    {regime}: {best}")
     lines.append("")
     lines.append(f"⏰ {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
     
