@@ -248,12 +248,15 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
         
-        # Weight equally (or by Sharpe)
-        total = sum(s for _, s in selected)
+        # Weight by Sharpe (filter negative)
+        positive = [(s, sh) for s, sh in selected if sh > 0]
+        if not positive:
+            positive = selected  # fallback
+        total = sum(sh for _, sh in positive)
         if total > 0:
-            weighted = {s: round(sh / total, 4) for s, sh in selected}
+            weighted = {s: round(sh / total, 4) for s, sh in positive}
         else:
-            weighted = {s: round(1.0 / len(selected), 4) for s, _ in selected}
+            weighted = {s: round(1.0 / len(positive), 4) for s, _ in positive}
         
         top_per_regime[r] = weighted
         print(f"  🧬 {r}: {len(weighted)} complementary strategies (from {len(final_strats)} final)")
