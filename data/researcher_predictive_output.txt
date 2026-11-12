@@ -15,7 +15,7 @@
       wallex::bb10_2.5::ALL: 0.086
       rsi_fast_7_30: 0.065
       bh_BNB: 0.090
-  🧬 FLAT: 5 uncorrelated (from 89 final)
+  🧬 FLAT: 5 uncorrelated (from 88 final)
       bb15_1.5: 0.426
       bb20_2: 0.369
       zscore_10_1.5: 0.151
@@ -289,6 +289,9 @@
       btfd30_h5: 0.344
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
+=== DEBUG: conservative_results type: <class 'dict'> ===
+=== DEBUG: keys: ['TMN', 'USDT', 'GLOBAL'] ===
+=== DEBUG: json size: 3920 chars ===
 ✅ Saved Conservative (3 markets)
 ✅ Saved Aggressive (3 markets)
 ✅ Saved Conservative (5 strategies)
