@@ -4,32 +4,30 @@
     "assets": 185,
     "days": 799,
     "oracle": {
-      "return": 869.6436661634519,
-      "dd": 47.60506035017775,
-      "sharpe": 4.420934278618053
+      "return": 3117.8488369989495,
+      "dd": 54.628361756029086,
+      "sharpe": 5.924655031780682
     },
     "predictive": {
-      "return": 1841.8260728406253,
-      "dd": 58.80814229101111,
-      "sharpe": 5.017307971994277,
+      "return": 2667.7767667575913,
+      "dd": 45.43126535612939,
+      "sharpe": 5.66505746066889,
       "switches": 7,
       "top": {
         "BULL_STRONG": {
-          "bb10_1.5": 0.2295,
-          "wallex::bb40_1.5::ALL": 0.2027,
-          "wallex::bb10_1.5::ALL": 0.1972,
-          "wallex::bb15_1.5::ALL": 0.1861,
-          "bb30_1.5": 0.1845
+          "bb10_1.5": 0.2339,
+          "wallex::bb40_1.5::ALL": 0.2066,
+          "wallex::bb10_1.5::ALL": 0.201,
+          "bb30_1.5": 0.188,
+          "rsi7_40": 0.1706
         },
         "BULL": {
           "bh_BTC": 1.0
         },
         "FLAT": {
-          "bb30_1.5": 0.3307,
-          "wallex::bb20_1.5::ALL": 0.2206,
-          "wallex::bb20_2.5::ALL": 0.1853,
-          "wallex::bb15_2.5::ALL": 0.1577,
-          "wallex::bb20_3::ALL": 0.1057
+          "bb30_1.5": 0.4664,
+          "wallex::bb20_1.5::ALL": 0.3111,
+          "wallex::bb15_2.5::ALL": 0.2225
         },
         "BEAR": {
           "tether": 1.0
@@ -40,13 +38,13 @@
       },
       "metrics": {
         "BULL_STRONG": {
-          "sharpe": 5.253
+          "sharpe": 5.6599
         },
         "BULL": {
           "sharpe": 0.0
         },
         "FLAT": {
-          "sharpe": 4.273
+          "sharpe": 5.6576
         },
         "BEAR": {
           "sharpe": 0.0
@@ -57,42 +55,42 @@
       }
     },
     "bnh_btc": {
-      "return": 79.8417912569123,
+      "return": 80.88194444517033,
       "dd": 20.04360909624795,
-      "sharpe": 3.412035409065906
+      "sharpe": 3.445329295969646
     }
   },
   "USDT": {
     "market": "USDT",
-    "assets": 184,
+    "assets": 185,
     "days": 799,
     "oracle": {
-      "return": 125.70563226462869,
-      "dd": 60.06725612742739,
-      "sharpe": 1.978623264126339
+      "return": 80.89441120097459,
+      "dd": 59.751224836274055,
+      "sharpe": 1.6454901484523858
     },
     "predictive": {
-      "return": 777.0545835117847,
-      "dd": 38.91980570107524,
-      "sharpe": 4.529459361134553,
+      "return": 945.3457066960574,
+      "dd": 44.28225112685184,
+      "sharpe": 4.236374506542521,
       "switches": 9,
       "top": {
         "BULL_STRONG": {
-          "wallex::bb10_1.5::ALL": 0.2549,
-          "bb15_1.5": 0.2319,
-          "wallex::bb30_1.5::ALL": 0.1872,
-          "bb10_2": 0.1655,
-          "wallex::bb15_2::ALL": 0.1605
+          "wallex::bb10_1.5::ALL": 0.2947,
+          "wallex::bb30_1.5::ALL": 0.2164,
+          "rsi7_35": 0.1744,
+          "bh_BTC": 0.1727,
+          "bh_BNB": 0.1416
         },
         "BULL": {
           "bh_BTC": 1.0
         },
         "FLAT": {
-          "bb40_1.5": 0.3023,
-          "bb20_1.5": 0.2601,
-          "bb15_1.5": 0.2345,
-          "bb30_2.5": 0.1217,
-          "rsi7_30": 0.0814
+          "bb40_1.5": 0.3559,
+          "bb20_1.5": 0.3011,
+          "wallex::bb10_2::ALL": 0.1453,
+          "wallex::bb30_3::ALL": 0.1019,
+          "rsi7_30": 0.0959
         },
         "BEAR": {
           "tether": 1.0
@@ -103,13 +101,13 @@
       },
       "metrics": {
         "BULL_STRONG": {
-          "sharpe": 5.4556
+          "sharpe": 6.2938
         },
         "BULL": {
           "sharpe": 0.0
         },
         "FLAT": {
-          "sharpe": 3.7456
+          "sharpe": 1.2026
         },
         "BEAR": {
           "sharpe": 0.0
@@ -120,9 +118,9 @@
       }
     },
     "bnh_btc": {
-      "return": 17.961797752808927,
-      "dd": 14.988939569435022,
-      "sharpe": 1.2108829013635074
+      "return": 17.37088282504007,
+      "dd": 15.41479188425942,
+      "sharpe": 1.1792211350703696
     }
   },
   "GLOBAL": {
@@ -130,32 +128,31 @@
     "assets": 13,
     "days": 1827,
     "oracle": {
-      "return": -32.4712066245243,
-      "dd": 40.467596674374406,
-      "sharpe": -1.3618960616799047
+      "return": -33.11855162132652,
+      "dd": 37.21157419592467,
+      "sharpe": -1.2691981205204588
     },
     "predictive": {
-      "return": 74.33716913673838,
-      "dd": 11.127390914712924,
-      "sharpe": 2.5196694555673833,
+      "return": 74.92573732296842,
+      "dd": 10.428099949368743,
+      "sharpe": 2.5218127469595144,
       "switches": 23,
       "top": {
         "BULL_STRONG": {
-          "eq3": 0.2399,
-          "mom10_t4_no": 0.2132,
-          "bh_SOL": 0.1862,
-          "combo_AND_mom5_t2_ma_mom5_t3_ma": 0.181,
-          "rsi21_40": 0.1796
+          "eq3": 0.2431,
+          "mom10_t3_no": 0.2105,
+          "bh_SOL": 0.1887,
+          "rsi21_40": 0.182,
+          "combo_AND_mom5_t3_ma_mom5_t4_ma": 0.1758
         },
         "BULL": {
           "bh_BTC": 1.0
         },
         "FLAT": {
-          "kucoin::VOL_ATRB_40_S::BNBUSDTM": 0.2085,
-          "kucoin::VOL_ATRB_20_S::ETHUSDTM": 0.2013,
-          "kucoin::VOL_DONCHIAN::AVAXUSDTM": 0.198,
-          "kucoin::T_KAMA_10_PRICE::ETHUSDTM": 0.1964,
-          "aster::PAIRS_RELATIVE::ETHUSDT": 0.1958
+          "kucoin::VOL_ATRB_40_S::BNBUSDTM": 0.332,
+          "kucoin::VOL_ATRB_20_S::ETHUSDTM": 0.3205,
+          "btfd30_h5": 0.2878,
+          "bb40_3.5": 0.0596
         },
         "BEAR": {
           "tether": 1.0
@@ -166,13 +163,13 @@
       },
       "metrics": {
         "BULL_STRONG": {
-          "sharpe": 2.9485
+          "sharpe": 2.9272
         },
         "BULL": {
           "sharpe": 0.0
         },
         "FLAT": {
-          "sharpe": 3.1094
+          "sharpe": 2.7417
         },
         "BEAR": {
           "sharpe": 0
