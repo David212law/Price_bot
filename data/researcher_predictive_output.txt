@@ -9,71 +9,71 @@
       wallex::bb30_1.5::ALL: 0.172
       wallex::bb15_1.5::ALL: 0.238
       bh_ETH: 0.019
-  🧬 BULL: 5 uncorrelated (from 289 final)
-      wallex::bb10_1.5::ALL: 0.457
-      bb10_1.5: 0.305
-      wallex::bb10_2.5::ALL: 0.085
-      rsi_fast_7_30: 0.064
-      bh_BNB: 0.089
-  🧬 FLAT: 5 uncorrelated (from 91 final)
+  🧬 BULL: 5 uncorrelated (from 286 final)
+      wallex::bb10_1.5::ALL: 0.462
+      bb10_1.5: 0.298
+      wallex::bb10_2.5::ALL: 0.086
+      rsi_fast_7_30: 0.065
+      bh_BNB: 0.090
+  🧬 FLAT: 5 uncorrelated (from 88 final)
       bb15_1.5: 0.426
-      bb20_2: 0.368
-      zscore_10_1.5: 0.152
-      wallex::bb30_3::ALL: 0.033
+      bb20_2: 0.369
+      zscore_10_1.5: 0.151
+      wallex::bb30_3::ALL: 0.032
       bh_TRX: 0.021
-  🧬 BULL_STRONG: 2 uncorrelated (from 156 final)
-      rsi7_40: 0.345
-      bb10_1.5: 0.655
-  🧬 FLAT: 4 uncorrelated (from 80 final)
+  🧬 BULL_STRONG: 2 uncorrelated (from 158 final)
+      rsi7_40: 0.347
+      bb10_1.5: 0.653
+  🧬 FLAT: 4 uncorrelated (from 81 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
       wallex::bb20_1.5::ALL: 0.346
-  🧬 BULL_STRONG: 12 uncorrelated (from 156 final)
+  🧬 BULL_STRONG: 12 uncorrelated (from 158 final)
       rsi7_40: 0.134
-      bb10_1.5: 0.255
-      wallex::bb20_2::ALL: 0.071
+      bb10_1.5: 0.253
+      wallex::bb20_2::ALL: 0.072
       wallex::rsi21_35::ALL: 0.001
       bb40_1.5: 0.140
-      bb30_1.5: 0.164
-      bh_TRX: 0.061
-      mom250_t5_no: 0.025
-      bh_BTC: 0.077
+      bb30_1.5: 0.163
+      bh_TRX: 0.062
+      mom250_t5_no: 0.026
+      bh_BTC: 0.078
       bh_BNB: 0.062
       mom_fast_5_2: 0.002
       mom_fast_7_2: 0.007
-  🧬 FLAT: 4 uncorrelated (from 80 final)
+  🧬 FLAT: 4 uncorrelated (from 81 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
       wallex::bb20_1.5::ALL: 0.346
-  🧬 BULL_STRONG: 2 uncorrelated (from 156 final)
-      rsi7_40: 0.345
-      bb10_1.5: 0.655
-  🧬 FLAT: 4 uncorrelated (from 80 final)
+  🧬 BULL_STRONG: 2 uncorrelated (from 158 final)
+      rsi7_40: 0.347
+      bb10_1.5: 0.653
+  🧬 FLAT: 4 uncorrelated (from 81 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
       wallex::bb20_1.5::ALL: 0.346
-  🧬 BULL_STRONG: 12 uncorrelated (from 156 final)
+  🧬 BULL_STRONG: 12 uncorrelated (from 158 final)
       rsi7_40: 0.134
-      bb10_1.5: 0.255
-      wallex::bb20_2::ALL: 0.071
+      bb10_1.5: 0.253
+      wallex::bb20_2::ALL: 0.072
       wallex::rsi21_35::ALL: 0.001
       bb40_1.5: 0.140
-      bb30_1.5: 0.164
-      bh_TRX: 0.061
-      mom250_t5_no: 0.025
-      bh_BTC: 0.077
+      bb30_1.5: 0.163
+      bh_TRX: 0.062
+      mom250_t5_no: 0.026
+      bh_BTC: 0.078
       bh_BNB: 0.062
       mom_fast_5_2: 0.002
       mom_fast_7_2: 0.007
-  🧬 FLAT: 4 uncorrelated (from 80 final)
+  🧬 FLAT: 4 uncorrelated (from 81 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
       wallex::bb20_1.5::ALL: 0.346
-✅ TMN: 184 assets
+✅ TMN: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 604 candidates (306 + 258 unified)
@@ -289,10 +289,21 @@
       btfd30_h5: 0.344
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
-=== DEBUG: json size: 3916 chars ===
+=== DEBUG: json size: 3919 chars ===
 ✅ Saved Conservative (3 markets)
-=== DEBUG: file size on disk: 3916 bytes ===
+=== DEBUG: GitHub upload status: 401 ===
+❌ Upload failed: {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
 ✅ Saved Aggressive (3 markets)
+=== DEBUG: GitHub upload status: 401 ===
+❌ Upload failed: {
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
 ✅ Saved Conservative (5 strategies)
 ✅ Saved Aggressive (15 strategies)
 ✅ Bale message sent.
