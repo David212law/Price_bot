@@ -4,7 +4,7 @@
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 604 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: 4 uncorrelated (from 92 final)
+  🧬 BULL_STRONG: 4 uncorrelated (from 91 final)
       bb30_1.5: 0.571
       wallex::bb30_1.5::ALL: 0.172
       wallex::bb15_1.5::ALL: 0.238
@@ -24,7 +24,7 @@
   🧬 BULL_STRONG: 2 uncorrelated (from 158 final)
       rsi7_40: 0.347
       bb10_1.5: 0.653
-  🧬 FLAT: 4 uncorrelated (from 82 final)
+  🧬 FLAT: 4 uncorrelated (from 83 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
@@ -42,7 +42,7 @@
       bh_BNB: 0.062
       mom_fast_5_2: 0.002
       mom_fast_7_2: 0.007
-  🧬 FLAT: 4 uncorrelated (from 82 final)
+  🧬 FLAT: 4 uncorrelated (from 83 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
@@ -50,7 +50,7 @@
   🧬 BULL_STRONG: 2 uncorrelated (from 158 final)
       rsi7_40: 0.347
       bb10_1.5: 0.653
-  🧬 FLAT: 4 uncorrelated (from 82 final)
+  🧬 FLAT: 4 uncorrelated (from 83 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
@@ -68,7 +68,7 @@
       bh_BNB: 0.062
       mom_fast_5_2: 0.002
       mom_fast_7_2: 0.007
-  🧬 FLAT: 4 uncorrelated (from 82 final)
+  🧬 FLAT: 4 uncorrelated (from 83 final)
       bb30_2: 0.542
       wallex::bb20_3::ALL: 0.080
       wallex::bb30_3.5::ALL: 0.033
@@ -293,10 +293,4 @@
 ✅ Saved Aggressive (max 15)
 ✅ Saved Conservative (5 strategies)
 ✅ Saved Aggressive (15 strategies)
-Traceback (most recent call last):
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 840, in <module>
-    main()
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 827, in main
-    for k, v in r['predictive']['top'].items():
-                ~^^^^^^^^^^^^^^
-KeyError: 'predictive'
+✅ Bale message sent.
