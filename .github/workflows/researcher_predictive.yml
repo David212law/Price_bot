@@ -20,15 +20,20 @@ jobs:
         env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+      - name: Verify Files
+        run: |
+          echo "=== FILE SIZES BEFORE COMMIT ==="
+          wc -c data/researcher_conservative.json data/researcher_aggressive.json
+          echo "=== CONTENT ==="
+          head -5 data/researcher_conservative.json
+          head -5 data/researcher_aggressive.json
       - name: Commit Results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          ls -la data/researcher_conservative.json data/researcher_aggressive.json
-          cat data/researcher_conservative.json | head -3
-          git add -A data/
           git add -f data/researcher_conservative.json data/researcher_aggressive.json
+          git add data/researcher_pending.json data/researcher_predictive_output.txt data/wallex_tmn_all.json data/wallex_usdt_all.json
           git status
-          git diff --cached --stat
           git commit -m "Auto: Researcher PENDING + A/B versions [skip ci]" || echo "nothing to commit"
+          git pull --rebase origin main --no-edit
           git push origin main
