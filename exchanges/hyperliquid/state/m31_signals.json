@@ -1,9 +1,19 @@
 {
   "signals": [
     {
+      "symbol": "BTC",
+      "action": "CLOSE",
+      "time": 1794463200013
+    },
+    {
       "symbol": "SOL",
-      "action": "OPEN",
-      "time": 1794416400044
+      "action": "CLOSE",
+      "time": 1794456000012
+    },
+    {
+      "symbol": "XRP",
+      "action": "CLOSE",
+      "time": 1794456000012
     }
   ]
 }

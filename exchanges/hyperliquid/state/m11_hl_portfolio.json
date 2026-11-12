@@ -1,24 +1,15 @@
 {
-  "total_capital": 9992.400528993536,
-  "m31_capital": 6492.400528993536,
+  "total_capital": 9991.885100662017,
+  "m31_capital": 6491.885100662018,
   "m35_capital": 0.0,
   "m40_capital": 364.5,
   "m41_capital": 0.0,
   "m31_pos": {
-    "BTC": {
-      "entry_time": 1793869200042
-    },
     "BNB": {
       "entry_time": 1794261600063
     },
-    "XRP": {
-      "entry_time": 1794355200029
-    },
     "ETH": {
       "entry_time": 1794391200056
-    },
-    "SOL": {
-      "entry_time": 1794416400044
     }
   },
   "m35_pos": {},
@@ -49,7 +40,7 @@
   "history": [],
   "cash_capital": 3000.0,
   "peak_equity": 9998.705508417668,
-  "last_run": "2026-11-11T22:39:57.619102+00:00",
+  "last_run": "2026-11-12T07:00:36.370503+00:00",
   "hedge_structure": {
     "XRP": {
       "spot_pct": 0.45,
