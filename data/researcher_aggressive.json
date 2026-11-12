@@ -1,0 +1,220 @@
+{
+  "TMN": {
+    "market": "TMN",
+    "assets": 185,
+    "days": 799,
+    "oracle": {
+      "return": 1760.7155417473266,
+      "dd": 48.023520633398384,
+      "sharpe": 5.216801353735478
+    },
+    "predictive": {
+      "return": 1114.7773321671946,
+      "dd": 28.26313635680085,
+      "sharpe": 5.186422369302003,
+      "switches": 7,
+      "top": {
+        "BULL_STRONG": {
+          "rsi7_40": 0.1231,
+          "bb10_1.5": 0.1688,
+          "wallex::bb20_2::ALL": 0.09,
+          "bb40_1.5": 0.1256,
+          "bb30_1.5": 0.1357,
+          "bh_TRX": 0.0834,
+          "mom250_t5_no": 0.0537,
+          "bh_BTC": 0.0938,
+          "bh_BNB": 0.0838,
+          "mom_fast_5_2": 0.0137,
+          "mom_fast_7_2": 0.0286
+        },
+        "BULL": {
+          "bh_BTC": 1.0
+        },
+        "FLAT": {
+          "bb30_2": 0.4119,
+          "wallex::bb20_3::ALL": 0.1578,
+          "wallex::bb30_3.5::ALL": 0.1011,
+          "wallex::bb20_1.5::ALL": 0.3293
+        },
+        "BEAR": {
+          "tether": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
+        }
+      },
+      "metrics": {
+        "BULL_STRONG": {
+          "sharpe": 5.046
+        },
+        "BULL": {
+          "sharpe": 0.0
+        },
+        "FLAT": {
+          "sharpe": 5.5004
+        },
+        "BEAR": {
+          "sharpe": 0.0
+        },
+        "CRASH": {
+          "sharpe": 0.0
+        }
+      }
+    },
+    "bnh_btc": {
+      "return": 81.54769697582445,
+      "dd": 20.04360909624795,
+      "sharpe": 3.465875206482922
+    }
+  },
+  "USDT": {
+    "market": "USDT",
+    "assets": 185,
+    "days": 799,
+    "oracle": {
+      "return": 187.01435751662956,
+      "dd": 53.540017922918956,
+      "sharpe": 2.370233541391031
+    },
+    "predictive": {
+      "return": 485.5467245026238,
+      "dd": 54.8667195738168,
+      "sharpe": 3.4889207599438605,
+      "switches": 9,
+      "top": {
+        "BULL_STRONG": {
+          "bb10_1.5": 0.1003,
+          "rsi21_25": 0.0081,
+          "rsi21_20": 0.0177,
+          "rsi14_20": 0.0135,
+          "rsi14_25": 0.0172,
+          "bb10_2.5": 0.0533,
+          "rsi14_35": 0.0266,
+          "wallex::bb20_1.5::ALL": 0.0761,
+          "bb15_1.5": 0.1025,
+          "wallex::bb20_2::ALL": 0.063,
+          "wallex::bb10_2::ALL": 0.0701,
+          "wallex::rsi21_40::ALL": 0.0461,
+          "bb30_1.5": 0.0761,
+          "bb40_1.5": 0.0764,
+          "wallex::mom180_t4_no::ALL": 0.0239,
+          "mom250_t3_no": 0.0419,
+          "bh_TRX": 0.0496,
+          "bh_BTC": 0.066,
+          "bh_BNB": 0.0542,
+          "mom120_t5_no": 0.0175
+        },
+        "BULL": {
+          "bh_BTC": 1.0
+        },
+        "FLAT": {
+          "zscore_20_2.0": 0.0643,
+          "wallex::bb30_3.5::ALL": 0.0226,
+          "bb15_3.5": 0.0713,
+          "bb40_2": 0.1348,
+          "bb40_1.5": 0.229,
+          "bb20_2": 0.185,
+          "bb30_1.5": 0.1943,
+          "wallex::bb30_3::ALL": 0.0656,
+          "rsi7_35": 0.0331
+        },
+        "BEAR": {
+          "tether": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
+        }
+      },
+      "metrics": {
+        "BULL_STRONG": {
+          "sharpe": 4.2795
+        },
+        "BULL": {
+          "sharpe": 0.0
+        },
+        "FLAT": {
+          "sharpe": 1.9574
+        },
+        "BEAR": {
+          "sharpe": 0.0
+        },
+        "CRASH": {
+          "sharpe": 0.0
+        }
+      }
+    },
+    "bnh_btc": {
+      "return": 17.84200642054572,
+      "dd": 15.075269113237205,
+      "sharpe": 1.204504392233551
+    }
+  },
+  "GLOBAL": {
+    "market": "GLOBAL",
+    "assets": 13,
+    "days": 1827,
+    "oracle": {
+      "return": -27.299500919254484,
+      "dd": 32.2670457103936,
+      "sharpe": -0.8954692518080368
+    },
+    "predictive": {
+      "return": 70.64287874068623,
+      "dd": 11.494715484534613,
+      "sharpe": 2.6530484668078507,
+      "switches": 23,
+      "top": {
+        "BULL_STRONG": {
+          "bh_BNB": 0.112,
+          "eq3": 0.1415,
+          "mom10_t2_no": 0.1123,
+          "ma50_200_t5": 0.1027,
+          "mom120_t1_ma": 0.0786,
+          "mom120_t2_no": 0.1018,
+          "combo_AND_mom5_t2_ma_mom5_t3_ma": 0.1067,
+          "bh_TRX": 0.0688,
+          "bh_LINK": 0.0907,
+          "rsi14_35": 0.0849
+        },
+        "BULL": {
+          "bh_BTC": 1.0
+        },
+        "FLAT": {
+          "aster::VOL_ATRB_50_S::XRPUSDT": 0.2383,
+          "aster::VOL_DONCHIAN::AVAXUSDT": 0.2762,
+          "kucoin::MR_CMO_20::XBTUSDTM": 0.1401,
+          "bb40_3.5": 0.0593,
+          "btfd30_h5": 0.2861
+        },
+        "BEAR": {
+          "tether": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
+        }
+      },
+      "metrics": {
+        "BULL_STRONG": {
+          "sharpe": 3.0837
+        },
+        "BULL": {
+          "sharpe": 0.0
+        },
+        "FLAT": {
+          "sharpe": 2.7509
+        },
+        "BEAR": {
+          "sharpe": 0
+        },
+        "CRASH": {
+          "sharpe": 0.0
+        }
+      }
+    },
+    "bnh_btc": {
+      "return": -24.874149077753515,
+      "dd": 43.39617801606889,
+      "sharpe": -0.46237822346027047
+    }
+  }
+}
