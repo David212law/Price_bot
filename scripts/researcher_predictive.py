@@ -164,15 +164,6 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
     if not isinstance(regimes, pd.Series):
         regimes = pd.Series(regimes)
 
-    # Regime-specific allowed families (NO P_ in FLAT)
-    ALLOWED = {
-        "BULL_STRONG": ["mom", "brk", "combo", "bh_"],
-        "BULL": ["mom", "brk", "combo", "bh_"],
-        "FLAT": ["bb", "rsi", "btfd", "bh_"],
-        "BEAR": ["bh_"],
-        "CRASH": ["bh_"],
-    }
-
     top_per_regime = {}
     for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
         if r in ["BEAR", "CRASH"]:
@@ -214,36 +205,41 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
 
-        # COMPLEMENTARY SELECTION with allowed-families filter
-        allowed = ALLOWED.get(r, ["bh_"])
-        families = {fam: [] for fam in allowed}
-        families["bh_"] = []  # always allow B&H fallback
-
-        for strat in final_strats:
-            placed = False
-            for prefix in families:
-                if strat.startswith(prefix):
-                    families[prefix].append(strat)
-                    placed = True
-                    break
-            if not placed:
-                continue  # skip strategies not in allowed families
+        # Sort by Sharpe
+        sorted_final = sorted(final_strats, key=lambda s: scores[s], reverse=True)
+        
+        # Family mapping (for P_ strategies, we don't know, so they go to "other")
+        def get_family(name):
+            for p in ["bb", "mom", "rsi", "btfd", "brk", "bh_"]:
+                if name.startswith(p): return p
+            return "other"
 
         selected = []
-        for family, strats in families.items():
-            if not strats:
-                continue
-            sorted_family = sorted(strats, key=lambda s: scores[s], reverse=True)
-            selected.append((sorted_family[0], scores[sorted_family[0]]))
+        selected_returns = []
+        
+        for strat in sorted_final:
+            if len(selected) >= 5: break
+            
+            # Check correlation with already selected strategies
+            is_complementary = True
+            if selected_returns:
+                recent = df_rets.loc[r_train, strat]
+                for prev_ret in selected_returns:
+                    if recent.std() > 0 and prev_ret.std() > 0:
+                        corr = recent.corr(prev_ret)
+                        if corr > 0.8:  # Too similar
+                            is_complementary = False
+                            break
+            
+            if is_complementary:
+                selected.append((strat, scores[strat]))
+                selected_returns.append(df_rets.loc[r_train, strat])
 
         if not selected:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
 
-        selected.sort(key=lambda x: -x[1])
-        selected = selected[:5]
-
-        # Weight by positive Sharpe only
+        # Weight by positive Sharpe
         positive = [(s, sh) for s, sh in selected if sh > 0.3]
         if not positive:
             top_per_regime[r] = {"bh_BTC": 1.0}
@@ -252,7 +248,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         weighted = {s: round(sh / total, 4) for s, sh in positive}
 
         top_per_regime[r] = weighted
-        print(f"  🧬 {r}: {len(weighted)} complementary (from {len(final_strats)} final)")
+        print(f"  🧬 {r}: {len(weighted)} uncorrelated (from {len(final_strats)} final)")
         for s, w in weighted.items():
             print(f"      {s}: {w:.3f}")
 
