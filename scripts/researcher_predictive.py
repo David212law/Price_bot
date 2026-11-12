@@ -588,12 +588,34 @@ def process_market(name, df, fee, max_strat_override=None):
         max_strat_override=max_strat_override
     )
 
-    return {
+    result = {
         "market": name, "assets": len(df.columns), "days": len(df),
         "oracle": {"return": ct_o, "dd": cdd_o, "sharpe": csh_o},
         "predictive": {"return": ct_p, "dd": cdd_p, "sharpe": csh_p, "switches": sw_p, "top": top_p, "metrics": {r: {"sharpe": sh} for r, sh in sh_per_regime.items()}},
         "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
     }
+    
+    # Save conservative version (5 strategies max)
+    conservative_top = {}
+    for reg, strats in top_p.items():
+        if isinstance(strats, dict):
+            sorted_strats = sorted(strats.items(), key=lambda x: -x[1])[:5]
+            conservative_top[reg] = dict(sorted_strats)
+        else:
+            conservative_top[reg] = strats[:5] if isinstance(strats, list) else strats
+    result["conservative"] = {"predictive": {"top": conservative_top}}
+    
+    # Save aggressive version (15 strategies max)
+    aggressive_top = {}
+    for reg, strats in top_p.items():
+        if isinstance(strats, dict):
+            sorted_strats = sorted(strats.items(), key=lambda x: -x[1])[:15]
+            aggressive_top[reg] = dict(sorted_strats)
+        else:
+            aggressive_top[reg] = strats[:15] if isinstance(strats, list) else strats
+    result["aggressive"] = {"predictive": {"top": aggressive_top}}
+    
+    return result
 
 
 def load_all_profiler_strategies():
@@ -685,6 +707,60 @@ def main():
     with open("data/researcher_pending.json", "w") as f:
         json.dump(results, f, indent=2)
     print("✅ Saved results to PENDING. Human approval required.")
+
+    # ═══════════════════════════════════════════════════════════════
+    # A/B Test: ذخیره هر دو نسخه Conservative و Aggressive
+    # ═══════════════════════════════════════════════════════════════
+    
+    conservative_results = {}
+    aggressive_results = {}
+    
+    for market_name, market_data in results.items():
+        if market_data is None: continue
+        
+        # Conservative
+        if "conservative" in market_data:
+            conservative_results[market_name] = {
+                "market": market_data["market"],
+                "assets": market_data["assets"],
+                "days": market_data["days"],
+                "oracle": market_data["oracle"],
+                "predictive": {
+                    "return": market_data["predictive"]["return"],
+                    "dd": market_data["predictive"]["dd"],
+                    "sharpe": market_data["predictive"]["sharpe"],
+                    "switches": market_data["predictive"]["switches"],
+                    "top": market_data["conservative"]["predictive"]["top"],
+                    "metrics": market_data["predictive"]["metrics"]
+                },
+                "bnh_btc": market_data["bnh_btc"]
+            }
+        
+        # Aggressive
+        if "aggressive" in market_data:
+            aggressive_results[market_name] = {
+                "market": market_data["market"],
+                "assets": market_data["assets"],
+                "days": market_data["days"],
+                "oracle": market_data["oracle"],
+                "predictive": {
+                    "return": market_data["predictive"]["return"],
+                    "dd": market_data["predictive"]["dd"],
+                    "sharpe": market_data["predictive"]["sharpe"],
+                    "switches": market_data["predictive"]["switches"],
+                    "top": market_data["aggressive"]["predictive"]["top"],
+                    "metrics": market_data["predictive"]["metrics"]
+                },
+                "bnh_btc": market_data["bnh_btc"]
+            }
+    
+    with open("data/researcher_conservative.json", "w") as f:
+        json.dump(conservative_results, f, indent=2)
+    print("✅ Saved Conservative (5 strategies)")
+    
+    with open("data/researcher_aggressive.json", "w") as f:
+        json.dump(aggressive_results, f, indent=2)
+    print("✅ Saved Aggressive (15 strategies)")
 
     # Bale
     msg = "🤖 *Predictive Researcher — PENDING APPROVAL*\n\n"
