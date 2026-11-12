@@ -116,3 +116,17 @@ Exposure rules:
 - CRASH: 0% BTC (full tether)
 
 This combines defensive protection in bear markets with aggressive capture in bull markets.
+
+## GLOBAL Sharpe: 3.67 (v23.5) vs 2.98 (v29.0)
+- v23.5 (3.67) was OVERFITTING (no correlation filter).
+- v29.0 (2.98) is REALISTIC (with correlation filter + max 10 strategies).
+- Lesson: High Sharpe without correlation filter is a mirage.
+
+## Kill Switch Auto-Reset (v28.8)
+- Resets ONLY if: state file missing + capital=10000 + holdings={} + last_date=None.
+- If any of these is not true, Kill Switch is NOT reset.
+
+## BULL = 1 (bh_BTC)
+- In BULL (without STRONG), Researcher finds no winning strategy.
+- Falls back to bh_BTC. This is a REAL finding, not a bug.
+- Live Gate should account for this (BULL returns ~ B&H).

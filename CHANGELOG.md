@@ -74,3 +74,10 @@ All significant changes to strategies, thresholds, and architecture.
   - Syntax check + health check on every push/PR
 - RESTORED: iran_data_fetch.yml from archive (weekly TGJU update)
 - AUDIT: Full code audit vs reports (v19.0) revealed 5 gaps, all now fixed.
+
+## 2026-11-12 — v29.0: Final Paper Ready
+- ARCHIVED: build_wallex_strategies.py (moved to build_strategies in Researcher)
+- ADDED: build_highfreq.py + data/high_freq_strategies.json (265 strategies for reference)
+- CHANGED: TMN max 5 strategies, USDT max 20, GLOBAL max 10 (commission-aware)
+- FIXED: Kill Switch auto-reset on fresh state (v28.8)
+- NOTE: GLOBAL 3.67 (v23.5) was overfitting; 2.98 (v29.0) is realistic.
