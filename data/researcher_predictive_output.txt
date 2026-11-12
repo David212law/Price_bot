@@ -4,7 +4,7 @@
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 604 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: 5 uncorrelated (from 96 final)
+  🧬 BULL_STRONG: 5 uncorrelated (from 95 final)
       bb30_1.5: 0.338
       wallex::bb40_1.5::ALL: 0.228
       wallex::bb15_1.5::ALL: 0.219
@@ -28,7 +28,7 @@
       wallex::bb10_1.5::ALL: 0.201
       bb30_1.5: 0.188
       rsi7_40: 0.171
-  🧬 FLAT: 3 uncorrelated (from 81 final)
+  🧬 FLAT: 3 uncorrelated (from 83 final)
       bb30_1.5: 0.466
       wallex::bb20_1.5::ALL: 0.311
       wallex::bb15_2.5::ALL: 0.223
@@ -36,96 +36,184 @@
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 604 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: 8 uncorrelated (from 55 final)
-      wallex::bb20_2.5::ALL: 0.221
-      bb40_1.5: 0.219
-      bb30_2: 0.188
-      bb40_2.5: 0.140
-      wallex::bb15_3::ALL: 0.075
-      bh_DOGE: 0.058
-      bh_SOL: 0.054
-      rsi7_40: 0.043
-  🧬 BULL: 8 uncorrelated (from 147 final)
-      wallex::bb15_1.5::ALL: 0.189
-      bb30_1.5: 0.184
-      btfd5_h5: 0.123
-      bb10_1.5: 0.107
-      bb40_2: 0.105
-      zscore_10_1.5: 0.105
-      btfd20_h5: 0.097
-      zscore_20_2.0: 0.090
-  🧬 FLAT: 8 uncorrelated (from 183 final)
-      wallex::bb10_1.5::ALL: 0.200
-      bb15_1.5: 0.157
+  🧬 BULL_STRONG: 15 uncorrelated (from 55 final)
+      wallex::bb20_2.5::ALL: 0.137
+      bb40_1.5: 0.136
+      bb30_2: 0.117
+      bb40_2: 0.112
+      bb30_1.5: 0.111
+      wallex::bb15_2::ALL: 0.087
+      bb40_2.5: 0.087
+      wallex::bb15_3::ALL: 0.047
+      bh_DOGE: 0.036
+      bh_SOL: 0.034
+      rsi7_40: 0.027
+      bh_AVAX: 0.026
+      bh_BTC: 0.020
+      bh_ADA: 0.017
+      rsi7_30: 0.007
+  🧬 BULL: 17 uncorrelated (from 148 final)
+      wallex::bb15_1.5::ALL: 0.110
+      bb30_1.5: 0.107
+      bb40_1.5: 0.095
+      wallex::bb30_2::ALL: 0.085
+      btfd5_h5: 0.072
+      bb10_1.5: 0.062
+      bb40_2: 0.061
+      zscore_10_1.5: 0.061
+      btfd20_h5: 0.056
+      wallex::bb20_2.5::ALL: 0.053
+      zscore_20_2.0: 0.053
+      btfd10_h5: 0.046
+      bb10_2: 0.044
+      btfd15_h5: 0.032
+      rsi7_30: 0.026
+      rsi7_35: 0.023
+      rsi7_25: 0.015
+  🧬 FLAT: 20 uncorrelated (from 182 final)
+      wallex::bb10_1.5::ALL: 0.113
+      bb15_1.5: 0.088
+      bb30_1.5: 0.077
+      wallex::bb20_1.5::ALL: 0.073
+      btfd10_h5: 0.061
+      wallex::bb10_2.5::ALL: 0.060
+      bb15_3.5: 0.059
+      rsi7_35: 0.056
+      bb15_2: 0.052
+      bb10_2: 0.051
+      wallex::bb40_2::ALL: 0.050
+      wallex::bh_BNB::ALL: 0.049
+      btfd20_h5: 0.041
+      rsi_fast_7_25: 0.036
+      rsi7_25: 0.032
+      bh_XRP: 0.025
+      bh_LINK: 0.022
+      bh_ETH: 0.022
+      bh_AVAX: 0.018
+      rsi14_35: 0.015
+  🧬 BULL_STRONG: 20 uncorrelated (from 169 final)
+      wallex::bb10_1.5::ALL: 0.089
+      bb15_1.5: 0.081
+      wallex::bb30_1.5::ALL: 0.066
+      bb40_1.5: 0.061
+      wallex::bb20_1.5::ALL: 0.060
+      bb10_2: 0.058
+      wallex::bb15_2::ALL: 0.056
+      bb20_2: 0.053
+      rsi7_35: 0.053
+      bh_BTC: 0.052
+      wallex::bb40_2::ALL: 0.048
+      bh_ETH: 0.047
+      bh_BNB: 0.043
+      bb10_2.5: 0.042
+      bh_XRP: 0.040
+      bh_TRX: 0.039
+      mom250_t4_no: 0.033
+      rsi7_25: 0.027
+      rsi14_40: 0.026
+      rsi21_40: 0.024
+  🧬 FLAT: 11 uncorrelated (from 61 final)
+      bb40_1.5: 0.160
       bb30_1.5: 0.136
-      btfd10_h5: 0.109
-      wallex::bb10_2.5::ALL: 0.106
-      bb15_3.5: 0.104
-      rsi7_35: 0.100
-      wallex::bb40_2::ALL: 0.089
-  🧬 BULL_STRONG: 8 uncorrelated (from 169 final)
-      wallex::bb10_1.5::ALL: 0.178
-      bb15_1.5: 0.162
-      wallex::bb30_1.5::ALL: 0.131
-      bb10_2: 0.116
-      wallex::bb15_2::ALL: 0.112
-      rsi7_35: 0.105
-      bh_BTC: 0.104
-      bh_ETH: 0.093
-  🧬 FLAT: 7 uncorrelated (from 61 final)
-      bb40_1.5: 0.255
-      bb20_1.5: 0.216
-      bb15_1.5: 0.198
-      wallex::bb20_2.5::ALL: 0.110
-      wallex::bb30_2.5::ALL: 0.080
-      wallex::bb30_3::ALL: 0.073
-      rsi7_30: 0.069
+      bb20_1.5: 0.136
+      bb15_1.5: 0.124
+      bb30_2: 0.108
+      wallex::bb40_2::ALL: 0.083
+      wallex::bb20_2.5::ALL: 0.069
+      wallex::bb30_2.5::ALL: 0.050
+      wallex::bb30_3::ALL: 0.046
+      zscore_20_2.0: 0.045
+      rsi7_30: 0.043
 ✅ USDT: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1746 candidates (306 + 1400 unified)
-  🧬 BULL_STRONG: 8 uncorrelated (from 210 final)
-      mom120_t3_ma: 0.173
-      mom60_t2_no: 0.150
-      mom180_t5_no: 0.135
-      bb_breakout_20_2.0: 0.129
-      ma20_100_t1: 0.124
-      combo_AND_mom5_t2_ma_mom5_t3_no: 0.105
-      brk20_t4: 0.099
-      bb_breakout_20_1.5: 0.085
-  🧬 BULL: 8 uncorrelated (from 291 final)
-      kucoin::MR_CCI_30::ETHUSDTM: 0.166
-      hyperliquid::VOLUME_PROFILE::ETH: 0.163
-      aster::KELTNER_REV::ETHUSDT: 0.162
-      mom120_t2_ma: 0.122
-      rsi_fast_5_25: 0.102
-      rsi21_25: 0.097
-      rsi_fast_7_30: 0.095
-      bb40_1.5: 0.093
-  🧬 FLAT: 8 uncorrelated (from 708 final)
-      kucoin::VOL_DONCHIAN::AVAXUSDTM: 0.206
-      aster::MR_CCI_30::AVAXUSDT: 0.159
-      aster::MR_KELT_15::BNBUSDT: 0.129
-      mom15_t4_no: 0.118
-      mom120_t2_no: 0.110
-      bh_XRP: 0.096
-      bb40_3.5: 0.094
-      mom30_t4_ma: 0.089
-  🧬 BULL_STRONG: 8 uncorrelated (from 520 final)
-      eq3: 0.155
-      mom10_t4_no: 0.138
-      bh_BNB: 0.123
-      bh_SOL: 0.121
-      combo_AND_mom5_t2_ma_mom5_t3_ma: 0.117
-      rsi21_40: 0.116
-      mom120_t3_no: 0.116
-      rsi14_40: 0.113
-  🧬 FLAT: 5 uncorrelated (from 394 final)
-      kucoin::VOL_ATRB_40_S::BNBUSDTM: 0.252
-      kucoin::VOL_ATRB_20_S::ETHUSDTM: 0.244
-      kucoin::VOL_DONCHIAN::AVAXUSDTM: 0.240
-      btfd30_h5: 0.219
-      bb40_3.5: 0.045
+  🧬 BULL_STRONG: 20 uncorrelated (from 210 final)
+      mom120_t3_ma: 0.089
+      mom60_t2_no: 0.078
+      mom60_t5_ma: 0.077
+      mom120_t4_no: 0.076
+      mom180_t5_no: 0.070
+      bb_breakout_20_2.0: 0.067
+      ma30_90_t1: 0.065
+      ma30_90_t4: 0.057
+      combo_AND_mom5_t2_ma_mom5_t3_no: 0.054
+      brk20_t4: 0.051
+      bb_breakout_20_1.5: 0.044
+      ma20_50_t3: 0.039
+      bh_SOL: 0.036
+      bh_BTC: 0.035
+      brk20_t1: 0.035
+      ma50_200_t2: 0.034
+      btfd10_h5: 0.026
+      bh_TRX: 0.026
+      brk10_t5: 0.022
+      bb15_2.5: 0.020
+  🧬 BULL: 14 uncorrelated (from 291 final)
+      kucoin::MR_CCI_30::ETHUSDTM: 0.107
+      hyperliquid::VOLUME_PROFILE::ETH: 0.105
+      aster::KELTNER_REV::ETHUSDT: 0.104
+      aster::MR_CCI_30::ETHUSDT: 0.090
+      kucoin::MR_Z_30_15::ETHUSDTM: 0.090
+      mom120_t2_ma: 0.079
+      rsi_fast_5_25: 0.066
+      rsi21_25: 0.062
+      rsi_fast_7_30: 0.062
+      bb40_1.5: 0.060
+      rsi_fast_5_30: 0.056
+      mom180_t4_ma: 0.051
+      mom180_t1_ma: 0.040
+      rsi35_30: 0.028
+  🧬 FLAT: 20 uncorrelated (from 708 final)
+      kucoin::VOL_DONCHIAN::AVAXUSDTM: 0.112
+      aster::MR_CCI_30::AVAXUSDT: 0.086
+      aster::MR_KELT_15::BNBUSDT: 0.070
+      aster::VOL_ATRB_50_S::XRPUSDT: 0.070
+      aster::RSI_MOMENTUM::AVAXUSDT: 0.067
+      mom15_t4_no: 0.064
+      mom120_t2_no: 0.060
+      bh_XRP: 0.052
+      bb40_3.5: 0.051
+      mom30_t4_ma: 0.048
+      mom120_t1_no: 0.046
+      mom180_t2_ma: 0.043
+      bh_LINK: 0.036
+      rsi35_25: 0.036
+      bh_BNB: 0.035
+      rsi28_35: 0.034
+      rsi7_35: 0.027
+      btfd30_h5: 0.022
+      bh_ETH: 0.021
+      bh_BTC: 0.021
+  🧬 BULL_STRONG: 20 uncorrelated (from 520 final)
+      eq3: 0.066
+      bh_BTC: 0.062
+      mom10_t4_no: 0.058
+      eq8: 0.058
+      ma10_30_t5: 0.052
+      mom60_t3_no: 0.052
+      bh_BNB: 0.052
+      bh_SOL: 0.051
+      mom15_t2_no: 0.050
+      combo_AND_mom5_t2_ma_mom5_t3_ma: 0.049
+      rsi21_40: 0.049
+      mom120_t3_no: 0.049
+      mom5_t5_no: 0.048
+      rsi14_40: 0.048
+      ma50_200_t5: 0.048
+      rsi7_35: 0.047
+      bh_LINK: 0.042
+      rsi28_40: 0.041
+      bh_DOGE: 0.040
+      rsi14_35: 0.039
+  🧬 FLAT: 7 uncorrelated (from 394 final)
+      kucoin::VOL_ATRB_40_S::BNBUSDTM: 0.171
+      kucoin::VOL_ATRB_20_S::ETHUSDTM: 0.165
+      kucoin::VOL_DONCHIAN::AVAXUSDTM: 0.163
+      kucoin::T_KAMA_10_PRICE::ETHUSDTM: 0.161
+      aster::PAIRS_RELATIVE::ETHUSDT: 0.161
+      btfd30_h5: 0.148
+      bb40_3.5: 0.031
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
