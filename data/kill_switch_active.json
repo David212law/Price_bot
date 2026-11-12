@@ -1,6 +1,1 @@
-{
-  "active": true,
-  "last_triggered": "2026-11-12T12:13:32.959430",
-  "reason": "Equity 2976.06 < 90% of 10000.00",
-  "bot": "hl"
-}
+{"active": false, "last_triggered": null, "reason": null}
