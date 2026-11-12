@@ -1,200 +1,50 @@
+Traceback (most recent call last):
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 646, in main
+    results["TMN"] = process_market("TMN", df, FEE_TMN)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 576, in process_market
+    _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 320, in run_ensemble
+    if max_strat_override is not None:
+       ^^^^^^^^^^^^^^^^^^
+NameError: name 'max_strat_override' is not defined
+Traceback (most recent call last):
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 656, in main
+    results["USDT"] = process_market("USDT", df, FEE_USDT)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 576, in process_market
+    _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 320, in run_ensemble
+    if max_strat_override is not None:
+       ^^^^^^^^^^^^^^^^^^
+NameError: name 'max_strat_override' is not defined
+Traceback (most recent call last):
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 666, in main
+    results["GLOBAL"] = process_market("GLOBAL", df, FEE_GLOBAL)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 576, in process_market
+    _, ct_o, cdd_o, csh_o, _, _ = run_ensemble(strat_rets, oracle_regs, train_mask, test_mask, fee, market=name)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 320, in run_ensemble
+    if max_strat_override is not None:
+       ^^^^^^^^^^^^^^^^^^
+NameError: name 'max_strat_override' is not defined
 ================================================================================
  PREDICTIVE RESEARCHER v2 — Multi-Market
 ================================================================================
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 604 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: 8 uncorrelated (from 96 final)
-      bb30_1.5: 0.285
-      wallex::bb30_1.5::ALL: 0.157
-      wallex::bb15_1.5::ALL: 0.184
-      wallex::bb40_2.5::ALL: 0.128
-      brk200_t2: 0.060
-      bh_ETH: 0.053
-      bh_DOGE: 0.106
-      bh_LINK: 0.027
-  🧬 BULL: 14 uncorrelated (from 286 final)
-      wallex::bb10_1.5::ALL: 0.163
-      bb10_1.5: 0.131
-      wallex::bb10_2.5::ALL: 0.070
-      rsi_fast_7_30: 0.061
-      bh_BNB: 0.072
-      wallex::bb30_1.5::ALL: 0.126
-      bh_TRX: 0.068
-      btfd5_h5: 0.072
-      bh_ETH: 0.037
-      rsi7_40: 0.089
-      rsi_fast_10_30: 0.018
-      mom250_t4_ma: 0.033
-      bb15_2.5: 0.047
-      mom250_t4_no: 0.013
-  🧬 FLAT: 11 uncorrelated (from 89 final)
-      bb15_1.5: 0.198
-      bb20_2: 0.184
-      bb15_2: 0.148
-      zscore_10_1.5: 0.118
-      wallex::bb30_3::ALL: 0.054
-      bh_TRX: 0.044
-      rsi7_35: 0.050
-      wallex::bb20_2.5::ALL: 0.110
-      mom250_t4_no: 0.052
-      bh_BNB: 0.025
-      bh_ETH: 0.017
-  🧬 BULL_STRONG: 11 uncorrelated (from 165 final)
-      rsi7_40: 0.123
-      bb10_1.5: 0.169
-      wallex::bb20_2::ALL: 0.090
-      bb40_1.5: 0.126
-      bb30_1.5: 0.136
-      bh_TRX: 0.083
-      mom250_t5_no: 0.054
-      bh_BTC: 0.094
-      bh_BNB: 0.084
-      mom_fast_5_2: 0.014
-      mom_fast_7_2: 0.029
-  🧬 FLAT: 4 uncorrelated (from 83 final)
-      bb30_2: 0.412
-      wallex::bb20_3::ALL: 0.158
-      wallex::bb30_3.5::ALL: 0.101
-      wallex::bb20_1.5::ALL: 0.329
-✅ TMN: 185 assets
+❌ TMN: name 'max_strat_override' is not defined
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 604 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: 15 uncorrelated (from 55 final)
-      wallex::bb20_2.5::ALL: 0.137
-      bb40_1.5: 0.136
-      bb30_2: 0.117
-      bb40_2: 0.112
-      bb30_1.5: 0.111
-      wallex::bb15_2::ALL: 0.087
-      bb40_2.5: 0.087
-      wallex::bb15_3::ALL: 0.047
-      bh_DOGE: 0.036
-      bh_SOL: 0.034
-      rsi7_40: 0.027
-      bh_AVAX: 0.026
-      bh_BTC: 0.020
-      bh_ADA: 0.017
-      rsi7_30: 0.007
-  🧬 BULL: 16 uncorrelated (from 147 final)
-      bb30_1.5: 0.120
-      btfd5_h5: 0.080
-      bb40_1.5: 0.106
-      bb20_1.5: 0.080
-      bb30_2: 0.094
-      btfd10_h5: 0.051
-      bb10_1.5: 0.070
-      btfd15_h5: 0.035
-      btfd20_h5: 0.063
-      zscore_10_1.5: 0.068
-      wallex::bb20_2.5::ALL: 0.059
-      zscore_20_2.0: 0.059
-      zscore_10_2.0: 0.046
-      grid_ETH_95: 0.028
-      rsi7_40: 0.023
-      rsi7_25: 0.017
-  🧬 FLAT: 18 uncorrelated (from 182 final)
-      bb15_3.5: 0.065
-      wallex::bb10_1.5::ALL: 0.126
-      wallex::bb10_2.5::ALL: 0.066
-      wallex::bb15_2.5::ALL: 0.050
-      bb40_1.5: 0.074
-      bb40_3.5: 0.046
-      wallex::bb20_1.5::ALL: 0.081
-      wallex::bb15_1.5::ALL: 0.086
-      bb40_2: 0.051
-      btfd10_h5: 0.068
-      btfd20_h5: 0.045
-      bb10_2: 0.057
-      rsi21_20: 0.008
-      rsi7_20: 0.019
-      rsi7_30: 0.059
-      rsi7_40: 0.052
-      bh_BTC: 0.014
-      bh_BNB: 0.031
-  🧬 BULL_STRONG: 20 uncorrelated (from 169 final)
-      bb10_1.5: 0.100
-      rsi21_25: 0.008
-      rsi21_20: 0.018
-      rsi14_20: 0.013
-      rsi14_25: 0.017
-      bb10_2.5: 0.053
-      rsi14_35: 0.027
-      wallex::bb20_1.5::ALL: 0.076
-      bb15_1.5: 0.102
-      wallex::bb20_2::ALL: 0.063
-      wallex::bb10_2::ALL: 0.070
-      wallex::rsi21_40::ALL: 0.046
-      bb30_1.5: 0.076
-      bb40_1.5: 0.076
-      wallex::mom180_t4_no::ALL: 0.024
-      mom250_t3_no: 0.042
-      bh_TRX: 0.050
-      bh_BTC: 0.066
-      bh_BNB: 0.054
-      mom120_t5_no: 0.018
-  🧬 FLAT: 9 uncorrelated (from 61 final)
-      zscore_20_2.0: 0.064
-      wallex::bb30_3.5::ALL: 0.023
-      bb15_3.5: 0.071
-      bb40_2: 0.135
-      bb40_1.5: 0.229
-      bb20_2: 0.185
-      bb30_1.5: 0.194
-      wallex::bb30_3::ALL: 0.066
-      rsi7_35: 0.033
-✅ USDT: 185 assets
+❌ USDT: name 'max_strat_override' is not defined
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1746 candidates (306 + 1400 unified)
-  🧬 BULL_STRONG: 10 uncorrelated (from 210 final)
-      mom120_t5_ma: 0.198
-      bh_TRX: 0.059
-      mom30_t5_no: 0.087
-      mom60_t2_ma: 0.146
-      ma30_90_t5: 0.140
-      ma5_20_t4: 0.043
-      bh_BTC: 0.078
-      combo_AND_mom5_t3_ma_mom5_t3_no: 0.119
-      bh_SOL: 0.082
-      brk10_t5: 0.049
-  🧬 BULL: 8 uncorrelated (from 291 final)
-      aster::T_EMA21_PRICE::ETHUSDT: 0.157
-      hyperliquid::VOLUME_PROFILE::ETH: 0.186
-      aster::PSAR::SOLUSDT: 0.155
-      rsi_fast_5_30: 0.099
-      bb40_1.5: 0.107
-      mom180_t1_ma: 0.072
-      rsi_fast_7_30: 0.109
-      rsi_fast_5_25: 0.116
-  🧬 FLAT: 9 uncorrelated (from 708 final)
-      bh_ETH: 0.064
-      hyperliquid::MR_CMO_20::AVAX: 0.197
-      kucoin::MOM_ROC_5_1::SOLUSDTM: 0.142
-      kucoin::MR_CMO_20::AVAXUSDTM: 0.114
-      bh_BNB: 0.102
-      rsi7_35: 0.079
-      rsi14_35: 0.057
-      bh_TRX: 0.056
-      mom15_t4_no: 0.189
-  🧬 BULL_STRONG: 10 uncorrelated (from 520 final)
-      bh_BNB: 0.112
-      eq3: 0.141
-      mom10_t2_no: 0.112
-      ma50_200_t5: 0.103
-      mom120_t1_ma: 0.079
-      mom120_t2_no: 0.102
-      combo_AND_mom5_t2_ma_mom5_t3_ma: 0.107
-      bh_TRX: 0.069
-      bh_LINK: 0.091
-      rsi14_35: 0.085
-  🧬 FLAT: 5 uncorrelated (from 394 final)
-      aster::VOL_ATRB_50_S::XRPUSDT: 0.238
-      aster::VOL_DONCHIAN::AVAXUSDT: 0.276
-      kucoin::MR_CMO_20::XBTUSDTM: 0.140
-      bb40_3.5: 0.059
-      btfd30_h5: 0.286
-✅ GLOBAL: 13 assets
+❌ GLOBAL: name 'max_strat_override' is not defined
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
