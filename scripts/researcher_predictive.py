@@ -309,9 +309,9 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             corr_threshold = 0.7
             max_strategies = 5    # کارمزد ۰.۶٪ → محافظه‌کار
         else:  # USDT یا GLOBAL (کارمزد ۰.۰۳۵٪)
-            max_per_family = 3
-            corr_threshold = 0.85
-            max_strategies = 8    # کارمزد کم → پرتراکنش‌تر
+            max_per_family = 5    # اجازه ۵ استراتژی از هر خانواده
+            corr_threshold = 0.9  # اجازه همبستگی بالاتر
+            max_strategies = 20   # تعداد بسیار بیشتر برای شکار سود
 
         for strat in sorted_final:
             if len(selected) >= max_strategies: break
