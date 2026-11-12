@@ -583,39 +583,58 @@ def process_market(name, df, fee, max_strat_override=None):
         ct_o, cdd_o, csh_o, bht, bhdd, bhsh = 0, 0, 0, 0, 0, 0
 
     pred_regs = detect_regime(df)
-    top_p, ct_p, cdd_p, csh_p, sw_p, sh_per_regime = run_ensemble(
+    # ═══════════════════════════════════════════════════════════════
+    # A/B Test: دو بار run_ensemble با override های مختلف
+    # ═══════════════════════════════════════════════════════════════
+    
+    # 1. Conservative (max 5)
+    top_p_c, ct_p_c, cdd_p_c, csh_p_c, sw_p_c, sh_per_regime_c = run_ensemble(
         strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
-        max_strat_override=max_strat_override
+        max_strat_override=5
     )
+    
+    # 2. Aggressive (max 15)
+    top_p_a, ct_p_a, cdd_p_a, csh_p_a, sw_p_a, sh_per_regime_a = run_ensemble(
+        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
+        max_strat_override=15
+    )
+    
+    # استفاده از Conservative برای خروجی اصلی
+    top_p = top_p_c
+    ct_p, cdd_p, csh_p, sw_p = ct_p_c, cdd_p_c, csh_p_c, sw_p_c
+    sh_per_regime = sh_per_regime_c
 
-    result = {
+    # ═══════════════════════════════════════════════════════════════
+    # A/B Test: دو بار run_ensemble با max_strat_override مختلف
+    # ═══════════════════════════════════════════════════════════════
+    
+    # 1. Conservative (max 5)
+    top_p_c, ct_p_c, cdd_p_c, csh_p_c, sw_p_c, sh_c = run_ensemble(
+        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
+        max_strat_override=5
+    )
+    
+    # 2. Aggressive (max 15)
+    top_p_a, ct_p_a, cdd_p_a, csh_p_a, sw_p_a, sh_a = run_ensemble(
+        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
+        max_strat_override=15
+    )
+    
+    return {
         "market": name, "assets": len(df.columns), "days": len(df),
         "oracle": {"return": ct_o, "dd": cdd_o, "sharpe": csh_o},
-        "predictive": {"return": ct_p, "dd": cdd_p, "sharpe": csh_p, "switches": sw_p, "top": top_p, "metrics": {r: {"sharpe": sh} for r, sh in sh_per_regime.items()}},
+        "predictive_conservative": {
+            "return": ct_p_c, "dd": cdd_p_c, "sharpe": csh_p_c, "switches": sw_p_c, 
+            "top": top_p_c, 
+            "metrics": {r: {"sharpe": sh} for r, sh in sh_c.items()}
+        },
+        "predictive_aggressive": {
+            "return": ct_p_a, "dd": cdd_p_a, "sharpe": csh_p_a, "switches": sw_p_a, 
+            "top": top_p_a, 
+            "metrics": {r: {"sharpe": sh} for r, sh in sh_a.items()}
+        },
         "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
     }
-    
-    # Save conservative version (5 strategies max)
-    conservative_top = {}
-    for reg, strats in top_p.items():
-        if isinstance(strats, dict):
-            sorted_strats = sorted(strats.items(), key=lambda x: -x[1])[:5]
-            conservative_top[reg] = dict(sorted_strats)
-        else:
-            conservative_top[reg] = strats[:5] if isinstance(strats, list) else strats
-    result["conservative"] = {"predictive": {"top": conservative_top}}
-    
-    # Save aggressive version (15 strategies max)
-    aggressive_top = {}
-    for reg, strats in top_p.items():
-        if isinstance(strats, dict):
-            sorted_strats = sorted(strats.items(), key=lambda x: -x[1])[:15]
-            aggressive_top[reg] = dict(sorted_strats)
-        else:
-            aggressive_top[reg] = strats[:15] if isinstance(strats, list) else strats
-    result["aggressive"] = {"predictive": {"top": aggressive_top}}
-    
-    return result
 
 
 def load_all_profiler_strategies():
@@ -707,6 +726,33 @@ def main():
     with open("data/researcher_pending.json", "w") as f:
         json.dump(results, f, indent=2)
     print("✅ Saved results to PENDING. Human approval required.")
+
+    # A/B Test: ذخیره فایل‌های جداگانه
+    conservative_results = {}
+    aggressive_results = {}
+    
+    for market_name, market_data in results.items():
+        if market_data is None: continue
+        if "predictive_conservative" not in market_data: continue
+        
+        base = {
+            "market": market_data["market"],
+            "assets": market_data["assets"],
+            "days": market_data["days"],
+            "oracle": market_data["oracle"],
+            "bnh_btc": market_data["bnh_btc"]
+        }
+        
+        conservative_results[market_name] = {**base, "predictive": market_data["predictive_conservative"]}
+        aggressive_results[market_name] = {**base, "predictive": market_data["predictive_aggressive"]}
+    
+    with open("data/researcher_conservative.json", "w") as f:
+        json.dump(conservative_results, f, indent=2)
+    print("✅ Saved Conservative (max 5)")
+    
+    with open("data/researcher_aggressive.json", "w") as f:
+        json.dump(aggressive_results, f, indent=2)
+    print("✅ Saved Aggressive (max 15)")
 
     # ═══════════════════════════════════════════════════════════════
     # A/B Test: ذخیره هر دو نسخه Conservative و Aggressive
