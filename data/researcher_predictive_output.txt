@@ -4,97 +4,65 @@
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 574 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: 5 complementary strategies (from 87 final)
-      bb30_1.5: 0.430
-      wallex::bb40_1.5::ALL: 0.289
-      bh_DOGE: 0.160
-      brk200_t2: 0.090
-      rsi35_30: 0.030
-  🧬 BULL: 5 complementary strategies (from 273 final)
-      wallex::bb10_1.5::ALL: 0.309
-      bb10_1.5: 0.248
-      rsi7_40: 0.170
-      btfd5_h5: 0.138
-      bh_BNB: 0.136
-  🧬 FLAT: 5 complementary strategies (from 77 final)
-      bb15_1.5: 0.436
-      wallex::bb20_2.5::ALL: 0.241
-      mom250_t4_no: 0.115
-      rsi7_40: 0.111
-      bh_TRX: 0.097
-  🧬 BULL_STRONG: 5 complementary strategies (from 152 final)
-      bb10_1.5: 0.287
-      wallex::bb40_1.5::ALL: 0.253
-      rsi7_40: 0.209
-      bh_BTC: 0.159
-      mom250_t5_no: 0.091
-  🧬 FLAT: 3 complementary strategies (from 78 final)
-      bb30_1.5: 0.535
-      wallex::bb20_1.5::ALL: 0.357
-      btfd10_h5: 0.108
-✅ TMN: 185 assets
+  🧬 BULL_STRONG: 1 complementary (from 98 final)
+      bh_DOGE: 1.000
+  🧬 BULL: 2 complementary (from 276 final)
+      bh_BNB: 0.685
+      mom250_t4_ma: 0.315
+  🧬 FLAT: 3 complementary (from 69 final)
+      bb15_1.5: 0.660
+      rsi7_40: 0.193
+      bh_TRX: 0.146
+  🧬 BULL_STRONG: 2 complementary (from 128 final)
+      bh_BTC: 0.636
+      mom250_t5_no: 0.364
+  🧬 FLAT: 2 complementary (from 68 final)
+      bb30_1.5: 0.920
+      rsi35_30: 0.080
+✅ TMN: 184 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 574 candidates (306 + 258 unified)
-  🧬 BULL_STRONG: 5 complementary strategies (from 53 final)
-      wallex::bb20_2.5::ALL: 0.404
-      bb40_1.5: 0.400
-      bh_DOGE: 0.106
-      rsi7_40: 0.078
-      combo_AND_mom5_t2_no_mom5_t4_no: 0.012
-  🧬 BULL: 5 complementary strategies (from 139 final)
-      wallex::bb15_1.5::ALL: 0.331
-      bb30_1.5: 0.323
-      btfd5_h5: 0.216
-      rsi7_30: 0.079
-      combo_AND_mom5_t1_no_mom5_t4_ma: 0.051
-  🧬 FLAT: 5 complementary strategies (from 170 final)
-      wallex::bb10_1.5::ALL: 0.324
-      bb10_1.5: 0.259
-      btfd10_h5: 0.176
-      rsi7_35: 0.161
-      bh_BNB: 0.080
-  🧬 BULL_STRONG: 5 complementary strategies (from 157 final)
-      wallex::bb10_1.5::ALL: 0.289
-      bb15_1.5: 0.263
-      rsi7_35: 0.171
-      bh_BTC: 0.169
-      mom250_t4_no: 0.108
-  🧬 FLAT: 3 complementary strategies (from 54 final)
-      bb40_1.5: 0.477
-      wallex::bb40_1.5::ALL: 0.395
-      rsi7_30: 0.129
+  🧬 BULL_STRONG: 1 complementary (from 53 final)
+      bh_DOGE: 1.000
+  🧬 BULL: 1 complementary (from 139 final)
+      combo_AND_mom5_t1_no_mom5_t4_ma: 1.000
+  🧬 FLAT: 4 complementary (from 170 final)
+      bb10_1.5: 0.383
+      btfd10_h5: 0.260
+      rsi7_35: 0.239
+      bh_BNB: 0.118
+  🧬 BULL_STRONG: 3 complementary (from 157 final)
+      bh_BTC: 0.569
+      mom250_t4_no: 0.363
+      combo_AND_mom5_t1_ma_mom5_t4_ma: 0.068
+  🧬 FLAT: 2 complementary (from 54 final)
+      bb40_1.5: 0.788
+      rsi7_30: 0.212
 ✅ USDT: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 GLOBAL: 1716 candidates (306 + 1400 unified)
-  🧬 BULL_STRONG: 5 complementary strategies (from 189 final)
-      mom120_t3_ma: 0.302
-      ma30_90_t1: 0.218
-      combo_AND_mom5_t2_ma_mom5_t3_no: 0.184
-      brk20_t4: 0.173
-      bh_SOL: 0.122
-  🧬 BULL: 4 complementary strategies (from 282 final)
-      kucoin::MR_CCI_30::ETHUSDTM: 0.347
-      mom120_t2_ma: 0.256
-      rsi21_25: 0.202
-      bb40_1.5: 0.195
-  🧬 FLAT: 5 complementary strategies (from 693 final)
-      kucoin::VOL_DONCHIAN::AVAXUSDTM: 0.355
-      mom15_t4_no: 0.203
-      bh_XRP: 0.165
-      bb40_3.5: 0.163
-      rsi35_25: 0.113
-  🧬 BULL_STRONG: 5 complementary strategies (from 504 final)
-      eq3: 0.230
-      bh_BTC: 0.220
-      mom10_t4_no: 0.204
-      combo_AND_mom5_t2_ma_mom5_t3_ma: 0.174
-      rsi21_40: 0.172
-  🧬 FLAT: 3 complementary strategies (from 386 final)
-      kucoin::VOL_ATRB_40_S::BNBUSDTM: 0.489
-      btfd30_h5: 0.424
-      bb40_3.5: 0.088
+  🧬 BULL_STRONG: 4 complementary (from 194 final)
+      mom120_t3_ma: 0.387
+      combo_AND_mom5_t2_ma_mom5_t3_no: 0.235
+      brk20_t4: 0.222
+      bh_SOL: 0.156
+  🧬 BULL: 1 complementary (from 287 final)
+      mom120_t2_ma: 1.000
+  🧬 FLAT: 4 complementary (from 699 final)
+      bh_XRP: 0.323
+      bb40_3.5: 0.319
+      rsi35_25: 0.222
+      btfd30_h5: 0.136
+  🧬 BULL_STRONG: 4 complementary (from 504 final)
+      bh_BTC: 0.300
+      mom10_t4_no: 0.280
+      combo_AND_mom5_t2_ma_mom5_t3_ma: 0.237
+      brk10_t4: 0.183
+  🧬 FLAT: 2 complementary (from 394 final)
+      btfd30_h5: 0.828
+      bb40_3.5: 0.172
 ✅ GLOBAL: 13 assets
 ✅ Saved results to PENDING. Human approval required.
 ✅ Bale message sent.
