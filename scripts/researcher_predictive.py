@@ -159,11 +159,19 @@ def detect_regime(df):
     return regs
 
 def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
-    # Force DataFrame/Series types
     if not isinstance(df_rets, pd.DataFrame):
         df_rets = pd.DataFrame(df_rets)
     if not isinstance(regimes, pd.Series):
         regimes = pd.Series(regimes)
+
+    # Regime-specific allowed families (NO P_ in FLAT)
+    ALLOWED = {
+        "BULL_STRONG": ["mom", "brk", "combo", "bh_"],
+        "BULL": ["mom", "brk", "combo", "bh_"],
+        "FLAT": ["bb", "rsi", "btfd", "bh_"],
+        "BEAR": ["bh_"],
+        "CRASH": ["bh_"],
+    }
 
     top_per_regime = {}
     for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
@@ -184,8 +192,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             scores[name] = sh
             p_values.append(sharpe_to_pvalue(sh, int(r_train.sum())))
 
-        # FDR filter
-        q_level = 0.05 if market == "GLOBAL" else 0.10
+        q_level = 0.10
         passing_idx = benjamini_hochberg(p_values, q=q_level)
         passing_names = [names_list[i] for i in passing_idx]
 
@@ -193,7 +200,6 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
 
-        # Holdout filter
         final_strats = []
         for strat in passing_names:
             if strat not in df_rets.columns:
@@ -208,19 +214,11 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
 
-        # ═══ COMPLEMENTARY SELECTION ═══
-        # Group strategies by family
-        families = {
-            "bb": [],       # Bollinger Bands
-            "mom": [],      # Momentum
-            "rsi": [],      # RSI Mean Reversion
-            "btfd": [],     # Buy The F*cking Dip
-            "brk": [],      # Breakout
-            "combo": [],    # Combo strategies
-            "P_": [],       # Profiler strategies
-            "bh_": [],      # Buy & Hold
-        }
-        
+        # COMPLEMENTARY SELECTION with allowed-families filter
+        allowed = ALLOWED.get(r, ["bh_"])
+        families = {fam: [] for fam in allowed}
+        families["bh_"] = []  # always allow B&H fallback
+
         for strat in final_strats:
             placed = False
             for prefix in families:
@@ -229,37 +227,32 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
                     placed = True
                     break
             if not placed:
-                families["P_"].append(strat)  # fallback
-        
-        # Pick best from each family (sorted by Train Sharpe)
+                continue  # skip strategies not in allowed families
+
         selected = []
         for family, strats in families.items():
             if not strats:
                 continue
             sorted_family = sorted(strats, key=lambda s: scores[s], reverse=True)
-            best_of_family = sorted_family[0]
-            selected.append((best_of_family, scores[best_of_family]))
-        
-        # Take top 5 from selected families, weight by Sharpe
-        selected.sort(key=lambda x: -x[1])  # sort by sharpe
-        selected = selected[:5]  # top 5 families
-        
+            selected.append((sorted_family[0], scores[sorted_family[0]]))
+
         if not selected:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
-        
-        # Weight by Sharpe (filter negative)
-        positive = [(s, sh) for s, sh in selected if sh > 0]
+
+        selected.sort(key=lambda x: -x[1])
+        selected = selected[:5]
+
+        # Weight by positive Sharpe only
+        positive = [(s, sh) for s, sh in selected if sh > 0.3]
         if not positive:
-            positive = selected  # fallback
+            top_per_regime[r] = {"bh_BTC": 1.0}
+            continue
         total = sum(sh for _, sh in positive)
-        if total > 0:
-            weighted = {s: round(sh / total, 4) for s, sh in positive}
-        else:
-            weighted = {s: round(1.0 / len(positive), 4) for s, _ in positive}
-        
+        weighted = {s: round(sh / total, 4) for s, sh in positive}
+
         top_per_regime[r] = weighted
-        print(f"  🧬 {r}: {len(weighted)} complementary strategies (from {len(final_strats)} final)")
+        print(f"  🧬 {r}: {len(weighted)} complementary (from {len(final_strats)} final)")
         for s, w in weighted.items():
             print(f"      {s}: {w:.3f}")
 
