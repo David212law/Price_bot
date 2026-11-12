@@ -300,28 +300,36 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         selected = []
         selected_returns = []
         
-        # Family tracking to prevent 5x BB
+        # Family tracking
         used_families = {}
-        
+
+        # 🔥 Market-specific filters (commission-aware)
+        if market == "TMN":
+            max_per_family = 2
+            corr_threshold = 0.7
+            max_strategies = 5    # کارمزد ۰.۶٪ → محافظه‌کار
+        else:  # USDT یا GLOBAL (کارمزد ۰.۰۳۵٪)
+            max_per_family = 3
+            corr_threshold = 0.85
+            max_strategies = 8    # کارمزد کم → پرتراکنش‌تر
+
         for strat in sorted_final:
-            if len(selected) >= 5: break
-            
-            # Check family count (max 2 per family)
+            if len(selected) >= max_strategies: break
+
             fam = get_family(strat)
-            if used_families.get(fam, 0) >= 2:
+            if used_families.get(fam, 0) >= max_per_family:
                 continue
-            
-            # Check correlation with already selected strategies
+
             is_complementary = True
             if selected_returns:
                 recent = df_rets.loc[r_train, strat]
                 for prev_ret in selected_returns:
                     if recent.std() > 0 and prev_ret.std() > 0:
                         corr = recent.corr(prev_ret)
-                        if corr > 0.7:  # Too similar
+                        if corr > corr_threshold:
                             is_complementary = False
                             break
-            
+
             if is_complementary:
                 selected.append((strat, scores[strat]))
                 selected_returns.append(df_rets.loc[r_train, strat])
