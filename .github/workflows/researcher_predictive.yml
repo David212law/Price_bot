@@ -24,6 +24,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A data/ || true
-          git add -f data/researcher_conservative.json data/researcher_aggressive.json || true
-          git diff --cached --quiet || (git commit -m "Auto: Researcher PENDING + A/B versions [skip ci]" && git pull --rebase --autostash origin main && git push)
+          ls -la data/researcher_conservative.json data/researcher_aggressive.json
+          cat data/researcher_conservative.json | head -3
+          git add -A data/
+          git add -f data/researcher_conservative.json data/researcher_aggressive.json
+          git status
+          git diff --cached --stat
+          git commit -m "Auto: Researcher PENDING + A/B versions [skip ci]" || echo "nothing to commit"
+          git push origin main
