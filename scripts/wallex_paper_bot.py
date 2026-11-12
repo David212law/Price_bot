@@ -170,6 +170,13 @@ def main():
     df = load_data()
     today = df.index[-1].strftime("%Y-%m-%d")
     
+    # AUTO-RESET KILL SWITCH IF STATE MISSING (fresh start)
+    if not os.path.exists(STATE_FILE):
+        if os.path.exists("data/kill_switch_active.json"):
+            json.dump({"active": False, "last_triggered": None, "reason": None}, 
+                      open("data/kill_switch_active.json", "w"), indent=2)
+            print("🔄 Fresh start: Kill Switch auto-reset")
+
     # KILL SWITCH CHECK
     if os.path.exists(STATE_FILE):
         tmp_state = json.load(open(STATE_FILE))
