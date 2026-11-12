@@ -316,19 +316,24 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN"):
         # Family tracking
         used_families = {}
 
-        # 🔥 Market-specific filters (commission-aware)
-        if market == "TMN":
-            max_per_family = 3     # Increased from 2
-            corr_threshold = 0.75   # Slightly looser
-            max_strategies = 15    # Increased from 5
+        # Market-specific filters (commission-aware) + A/B Test override
+        if max_strat_override is not None:
+            # A/B Test: use override value
+            max_strategies = max_strat_override
+            max_per_family = 3
+            corr_threshold = 0.75
+        elif market == "TMN":
+            max_per_family = 2
+            corr_threshold = 0.7
+            max_strategies = 5    # Conservative default
         elif market == "USDT":
             max_per_family = 5
             corr_threshold = 0.9
-            max_strategies = 20   # کارمزد کم + داده بیشتر → پرتراکنش
+            max_strategies = 20
         else:  # GLOBAL
             max_per_family = 3
             corr_threshold = 0.85
-            max_strategies = 10   # تعادل: بیشتر از ۸، کمتر از ۲۰
+            max_strategies = 10
 
         for strat in sorted_final:
             if len(selected) >= max_strategies: break
