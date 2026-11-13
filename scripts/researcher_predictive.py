@@ -168,6 +168,47 @@ def build_strategies(df):
             w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
             S[f'mom_fast_{n}_{int(th*100)}'] = w
     
+    # ═══════════════════════════════════════════════════════════════
+    # ARCHIVED STRATEGIES (from find_best_per_regime.py, vectorized)
+    # ═══════════════════════════════════════════════════════════════
+    def _normalize_top(w, top_n=3):
+        rank = w.rank(axis=1, ascending=False)
+        top = (rank <= top_n).astype(float)
+        return top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
+    
+    # MOMENTUM (mom_nd)
+    for n in [10, 20, 30, 60]:
+        ret = df.pct_change(n)
+        ma50 = df.rolling(50).mean()
+        sig = ((ret > 0) & (df > ma50))
+        scored = ret.where(sig)
+        S[f'mom_nd_{n}'] = _normalize_top(scored.fillna(-999), top_n=3)
+    
+    # BREAKOUT (breakout_n)
+    for n in [20, 50]:
+        prev_max = df.rolling(n).max().shift(1)
+        sig = (df > prev_max)
+        scored = df.pct_change(n).where(sig)
+        S[f'break_n_{n}'] = _normalize_top(scored.fillna(-999), top_n=3)
+    
+    # MA CROSS (ma_cross)
+    for fast, slow in [(20, 50), (50, 200)]:
+        mf = df.rolling(fast).mean()
+        ms = df.rolling(slow).mean()
+        sig = (mf > ms)
+        scored = (mf / ms - 1).where(sig)
+        S[f'ma_cross_{fast}_{slow}'] = _normalize_top(scored.fillna(-999), top_n=3)
+    
+    # RSI MEAN REVERSION (rsi_mr)
+    for period in [14, 21]:
+        delta = df.diff()
+        up = delta.clip(lower=0).ewm(alpha=1/period, adjust=False).mean()
+        down = -delta.clip(upper=0).ewm(alpha=1/period, adjust=False).mean()
+        rsi = 100 - 100/(1 + up/down)
+        sig = (rsi < 30)
+        scored = rsi.where(sig)
+        S[f'rsi_mr_{period}'] = _normalize_top(scored.fillna(999), top_n=3)
+
     return S
 
 def sharpe_to_pvalue(sharpe, n_days):
