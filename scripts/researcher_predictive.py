@@ -282,6 +282,48 @@ def detect_regime(df):
     regs[cond2 & (vol >= 2.0)] = "CRASH"
     return regs
 
+
+def detect_regime_15(df):
+    """15-regime detection: trend × volatility matrix."""
+    import numpy as np
+    if "BTC" not in df.columns:
+        return pd.Series("FLAT_NORMAL", index=df.index, dtype=object)
+    btc = df["BTC"]
+    rets = btc.pct_change()
+    vol = rets.rolling(14).std() * np.sqrt(365)
+    ma50 = btc.rolling(50).mean()
+    ma200 = btc.rolling(200).mean()
+    trend = (ma50 - ma200) / ma200
+    
+    conditions = [
+        (btc < ma50 * 0.85) & (vol > 2.5),  # CRASH
+        (trend < -0.15) & (vol > 2.0),       # BEAR_STRONG
+        (trend < -0.15) & (vol > 1.0),       # BEAR_VOLATILE
+        (trend < -0.15),                     # BEAR_CALM
+        (trend < -0.05) & (vol > 1.5),       # BEAR_MILD
+        (trend < -0.05),                     # BEAR_NORMAL
+        (trend < 0.05) & (vol > 1.5),        # FLAT_VOLATILE
+        (trend < 0.05) & (vol < 0.5),        # RANGE_TIGHT
+        (trend < 0.05),                      # FLAT_NORMAL
+        (trend < 0.15) & (vol > 1.5),        # BULL_VOLATILE
+        (trend < 0.15) & (vol < 0.5),        # BULL_CALM
+        (trend < 0.15),                      # BULL_NORMAL
+        (vol > 2.0),                         # BULL_BLOWOFF
+        (vol > 1.0),                         # BULL_PARABOLIC
+        (trend >= 0.15),                     # BULL_STRONG
+    ]
+    choices = [
+        "CRASH", "BEAR_STRONG", "BEAR_VOLATILE", "BEAR_CALM",
+        "BEAR_MILD", "BEAR_NORMAL",
+        "FLAT_VOLATILE", "RANGE_TIGHT", "FLAT_NORMAL",
+        "BULL_VOLATILE", "BULL_CALM", "BULL_NORMAL",
+        "BULL_BLOWOFF", "BULL_PARABOLIC", "BULL_STRONG",
+    ]
+    safe_conds = [c.fillna(False) if hasattr(c, 'fillna') else c for c in conditions]
+    result = np.select(safe_conds, choices, default="FLAT_NORMAL")
+    return pd.Series(result, index=df.index)
+
+
 def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max_strat_override=None):
     if not isinstance(df_rets, pd.DataFrame):
         df_rets = pd.DataFrame(df_rets)
@@ -289,8 +331,8 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
         regimes = pd.Series(regimes)
 
     top_per_regime = {}
-    for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]:
-        if r in ["BEAR", "CRASH"]:
+    for r in sorted(regimes.unique()):
+        if r in ["BEAR", "CRASH", "BEAR_STRONG", "BEAR_VOLATILE"]:
             top_per_regime[r] = {"tether": 1.0}
             continue
 
@@ -423,7 +465,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
     combined = []
     cur_strats = []
     switches = 0
-    regime_daily = {r: [] for r in ["BULL_STRONG", "BULL", "FLAT", "BEAR", "CRASH"]}
+    regime_daily = {r: [] for r in regimes.unique()}
 
     for i, d in enumerate(df_rets.index[test_mask]):
         r = regimes.loc[d]
@@ -625,6 +667,7 @@ def process_market(name, df, fee, max_strat_override=None):
         ct_o, cdd_o, csh_o, bht, bhdd, bhsh = 0, 0, 0, 0, 0, 0
 
     pred_regs = detect_regime(df)
+    pred_regs_15 = detect_regime_15(df)
     # ═══════════════════════════════════════════════════════════════
     # A/B Test: دو بار run_ensemble با override های مختلف
     # ═══════════════════════════════════════════════════════════════
@@ -658,7 +701,7 @@ def process_market(name, df, fee, max_strat_override=None):
     
     # 2. Aggressive (max 15)
     top_p_a, ct_p_a, cdd_p_a, csh_p_a, sw_p_a, sh_a = run_ensemble(
-        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
+        strat_rets, pred_regs_15, train_mask, test_mask, fee, market=name, 
         max_strat_override=20
     )
     
