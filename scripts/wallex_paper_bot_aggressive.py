@@ -265,25 +265,49 @@ def main():
     if len(btc_series) >= 31:
         mom_30 = (btc_series.iloc[-1] / btc_series.iloc[-31] - 1) * 100
 
-    if regime == "BULL_STRONG":
+    # 15-regime exposure logic
+    if regime in ["BULL_STRONG", "BULL_PARABOLIC"]:
         exposure, mode = 1.0, "AGGRESSIVE"
-    elif regime == "BULL":
+    elif regime == "BULL_BLOWOFF":
+        exposure, mode = 0.3, "BLOWOFF-DEF"  # top of bubble
+    elif regime in ["BULL_NORMAL", "BULL_VOLATILE"]:
         exposure, mode = 0.8, "BULL-MILD"
-    elif regime == "FLAT":
+    elif regime == "BULL_CALM":
+        exposure, mode = 0.7, "BULL-CALM"
+    elif regime in ["FLAT_NORMAL", "FLAT_VOLATILE"]:
         if mom_30 < -5:
             exposure, mode = 0.3, "FLAT->BEAR"
         elif mom_30 > 5:
-            exposure, mode = 0.8, "FLAT->BULL"
+            exposure, mode = 0.7, "FLAT->BULL"
         else:
             exposure, mode = 0.5, "BALANCED"
-    elif regime == "BEAR":
+    elif regime == "RANGE_TIGHT":
+        exposure, mode = 0.4, "RANGE"
+    elif regime in ["BEAR_NORMAL", "BEAR_MILD", "BEAR_CALM"]:
         if iran_crisis:
             exposure, mode = 0.7, "IRAN-CRISIS-BTC"
         else:
             exposure, mode = 0.3, "BEAR-DEF"
-    else:  # CRASH
+    elif regime == "BEAR_VOLATILE":
         if iran_crisis:
             exposure, mode = 0.7, "IRAN-CRISIS-BTC"
+        else:
+            exposure, mode = 0.2, "BEAR-VOL"
+    elif regime in ["BEAR_STRONG", "CRASH"]:
+        if iran_crisis:
+            exposure, mode = 0.7, "IRAN-CRISIS-BTC"
+        else:
+            exposure, mode = 0.0, "DEFENSIVE"
+    else:
+        # Fallback for 5-regime values (if any leak through)
+        if regime == "BULL_STRONG":
+            exposure, mode = 1.0, "AGGRESSIVE"
+        elif regime == "BULL":
+            exposure, mode = 0.8, "BULL-MILD"
+        elif regime == "FLAT":
+            exposure, mode = 0.5, "BALANCED"
+        elif regime == "BEAR":
+            exposure, mode = 0.3, "BEAR-DEF"
         else:
             exposure, mode = 0.0, "DEFENSIVE"
 
