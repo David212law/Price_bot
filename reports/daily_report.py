@@ -81,33 +81,31 @@ def main():
     res_path = "data/researcher_predictive_results.json"
     aggr_path = "data/researcher_aggressive_best.json"
     lab_path = "data/researcher_lab.json"
-    if os.path.exists(res_path):
-        res = json.load(open(res_path))
+    researcher_files = [
+        ("data/researcher_predictive_results.json", "Conservative"),
+        ("data/researcher_aggressive_best.json", "Aggressive Best"),
+        ("data/researcher_lab.json", "Lab"),
+    ]
+    for res_file, version_label in researcher_files:
+        if not os.path.exists(res_file):
+            continue
+        print(f"  [{version_label}]")
+        try:
+            res = json.load(open(res_file))
+        except:
+            continue
         for market in ["TMN", "USDT", "GLOBAL"]:
             if market in res and res[market]:
                 r = res[market]
                 def safe_pct(x):
                     if abs(x) > 10000: return "n/a"
                     return f"{x:+.1f}%"
-                # Handle both old 'predictive' and new 'predictive_conservative'
                 pred = r.get('predictive', r.get('predictive_conservative', {}))
-                if not pred:
-                    continue
+                if not pred: continue
                 oracle_ret = r.get('oracle', {}).get('return', 0)
                 pred_ret = pred.get('return', 0)
-                print(f"  {market}: Oracle {safe_pct(oracle_ret)} | Pred {safe_pct(pred_ret)}")
-                tops = pred.get('top', {})
-                for regime in ["BULL_STRONG", "FLAT"]:
-                    reg_data = tops.get(regime, {})
-                    if isinstance(reg_data, dict):
-                        best = max(reg_data, key=reg_data.get) if reg_data else "NONE"
-                    elif isinstance(reg_data, list):
-                        best = reg_data[0] if reg_data else "NONE"
-                    else:
-                        best = "NONE"
-                    print(f"    {regime} -> {best}")
-    else:
-        print("  (No researcher data found)")
+                sharpe = pred.get('sharpe', 0)
+                print(f"    {market}: Oracle {safe_pct(oracle_ret)} | Pred {safe_pct(pred_ret)} | Sh {sharpe:.2f}")
 
     print("\n" + "="*70)
     total = m31_total + pred_total
