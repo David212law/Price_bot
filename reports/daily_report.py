@@ -51,8 +51,10 @@ def main():
     print("-" * 70)
     pred_total = 0
     bots = [
-        ("wallex_paper_bot_state.json", "Wallex (Iran)"),
-        ("hl_predictive_bot_state.json", "Hyperliquid (Global)")
+        ("wallex_paper_bot_state.json", "Wallex Conservative"),
+        ("wallex_paper_bot_aggressive_state.json", "Wallex Aggressive"),
+        ("hl_predictive_bot_state.json", "Hyperliquid (Global)"),
+        ("wallex_lab_state.json", "Wallex Lab"),
     ]
     for fname, label in bots:
         path = f"data/{fname}"
@@ -77,6 +79,8 @@ def main():
     print("\n🧠 RESEARCHER LATEST")
     print("-" * 70)
     res_path = "data/researcher_predictive_results.json"
+    aggr_path = "data/researcher_aggressive_best.json"
+    lab_path = "data/researcher_lab.json"
     if os.path.exists(res_path):
         res = json.load(open(res_path))
         for market in ["TMN", "USDT", "GLOBAL"]:
