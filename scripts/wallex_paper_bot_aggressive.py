@@ -238,7 +238,8 @@ def main():
             return
     print(f"Date: {today}")
     
-    regime = detect_regime_15(df)
+    regime_series = detect_regime_15(df)
+    regime = regime_series.iloc[-1] if len(regime_series) > 0 else "FLAT_NORMAL"
     print(f"Detected Regime: {regime}")
 
     # ── IRAN CURRENCY CRISIS DETECTION (Survival Mode 2D) ──
