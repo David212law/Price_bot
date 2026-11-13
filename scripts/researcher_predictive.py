@@ -1,4 +1,4 @@
-"""PREDICTIVE RESEARCHER v2 — Multi-Market + Bale Report + Save."""
+"""🎯🔒 RESEARCHER PRODUCTION (frozen — both) + Bale Report + Save."""
 import math
 import traceback
 import sys, os, json
@@ -760,7 +760,7 @@ def load_all_profiler_strategies():
 
 def main():
     print("="*80)
-    print(" PREDICTIVE RESEARCHER v2 — Multi-Market")
+    print(" 🎯🔒 RESEARCHER PRODUCTION (frozen — both)")
     print("="*80)
     results = {}
 
