@@ -4,10 +4,10 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-STATE_FILE = "data/wallex_paper_bot_aggressive_state.json"
-# DYNAMIC: reads researcher_aggressive.json (updates monthly from Researcher)
+STATE_FILE = "data/wallex_aggressive_best_state.json"
+# FROZEN: reads researcher_aggressive_best.json (best TMN+USDT from history)
 # This file is UPDATED by build_aggressive.py after each Researcher run
-RESEARCHER_FILE = "data/researcher_aggressive.json"
+RESEARCHER_FILE = "data/researcher_aggressive_best.json"
 CAPITAL = 10000.0  # 10,000 USDT equivalent
 
 def load_data():
@@ -88,12 +88,12 @@ def get_target_portfolio(df, regime):
     """Executes the actual active strategies chosen by Oracle for this regime"""
     # Read dynamically from Researcher's output
     # GUARD: If Researcher JSON doesn't exist, exit — do NOT use fallback
-    if not os.path.exists("data/researcher_aggressive.json"):
+    if not os.path.exists("data/researcher_aggressive_best.json"):
         print("❌ CRITICAL: researcher_predictive_results.json not found.")
         print("   Run researcher_predictive.py first. Exiting to avoid trading with fallback.")
         return None
     try:
-        res = json.load(open("data/researcher_aggressive.json"))
+        res = json.load(open("data/researcher_aggressive_best.json"))
         top_per_regime = res["TMN"]["predictive"]["top"]
         print("✅ Loaded dynamic strategies from Researcher JSON.")
     except Exception as e:
@@ -199,7 +199,7 @@ def get_target_portfolio(df, regime):
 def main():
     # Auto-recover corrupted state
     import os as _os
-    _state_path = "data/wallex_paper_bot_aggressive_state.json"
+    _state_path = "data/wallex_aggressive_best_state.json"
     if _os.path.exists(_state_path):
         try:
             _tmp = json.load(open(_state_path))
