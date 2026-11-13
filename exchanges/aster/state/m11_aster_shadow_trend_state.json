@@ -1,17 +1,10 @@
 {
-  "total_equity": 9945.942662722468,
-  "m31_capital": 5009.668957838364,
+  "total_equity": 9937.907565737472,
+  "m31_capital": 5009.8165088705955,
   "a8_capital": 0.0,
   "a20_capital": 0.0,
-  "keltner_capital": 3647.362468378828,
+  "keltner_capital": 4285.694131832335,
   "keltner_pos": {
-    "BTCUSDT": {
-      "side": "LONG",
-      "entry": 71701.8,
-      "invested": 645.2590362031295,
-      "sl": 70982.214987913,
-      "tp": 73743.49364567059
-    },
     "BNBUSDT": {
       "side": "LONG",
       "entry": 656.33,
@@ -22,11 +15,11 @@
   },
   "cash_capital": 0.0,
   "m31_last_funding_time": {
-    "BTCUSDT": 1794499200000,
-    "ETHUSDT": 1794499200000,
-    "SOLUSDT": 1794441600002,
+    "BTCUSDT": 1794528000000,
+    "ETHUSDT": 1794528000000,
+    "SOLUSDT": 1794528000000,
     "BNBUSDT": 1794441600002,
-    "XRPUSDT": 1794499200000,
+    "XRPUSDT": 1794528000000,
     "AVAXUSDT": 1794412800000
   },
   "a8_positions": {},
@@ -67,8 +60,14 @@
       "strat": "KELTNER_COMBO",
       "sym": "ETHUSDT",
       "pnl": -11.9527
+    },
+    {
+      "time": 1794528000000,
+      "strat": "KELTNER_COMBO",
+      "sym": "BTCUSDT",
+      "pnl": -6.9274
     }
   ],
   "peak_equity": 10005.917143736522,
-  "last_run": "2026-11-12T16:49:52.806626+00:00"
+  "last_run": "2026-11-13T01:06:17.688700+00:00"
 }
