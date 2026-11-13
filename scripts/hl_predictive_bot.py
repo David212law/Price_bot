@@ -4,6 +4,9 @@ import pandas as pd
 import numpy as np
 
 STATE_FILE = "data/hl_predictive_bot_state.json"
+# FROZEN: reads researcher_predictive_results.json (v28.7: GLOBAL 2.98)
+# GLOBAL is not as important as TMN/USDT — frozen at v28.7
+RESEARCHER_FILE = "data/researcher_predictive_results.json"
 CAPITAL = 10000.0
 COINS = ["BTC", "ETH", "SOL", "XRP", "BNB", "DOGE", "ADA", "AVAX", "LINK", "MATIC"]
 

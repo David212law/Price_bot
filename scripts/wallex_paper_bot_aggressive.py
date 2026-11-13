@@ -5,6 +5,9 @@ import numpy as np
 from datetime import datetime
 
 STATE_FILE = "data/wallex_paper_bot_aggressive_state.json"
+# DYNAMIC: reads researcher_aggressive.json (updates monthly from Researcher)
+# This file is UPDATED by build_aggressive.py after each Researcher run
+RESEARCHER_FILE = "data/researcher_aggressive.json"
 CAPITAL = 10000.0  # 10,000 USDT equivalent
 
 def load_data():

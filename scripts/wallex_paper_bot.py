@@ -5,6 +5,9 @@ import numpy as np
 from datetime import datetime
 
 STATE_FILE = "data/wallex_paper_bot_state.json"
+# FROZEN: reads researcher_predictive_results.json (v28.7: TMN 5.66, USDT 4.76)
+# This file is NEVER auto-updated (frozen to best performance)
+RESEARCHER_FILE = "data/researcher_predictive_results.json"
 CAPITAL = 10000.0  # 10,000 USDT equivalent
 
 def load_data():
