@@ -322,7 +322,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             if r in ["BULL_STRONG", "BULL", "FLAT"] and ("SHORT" in strat.upper() or "FLIP_SHORT" in strat.upper()):
                 continue
             t_test, d_test, sh_test = stats(df_rets.loc[test_mask & (regimes == r), strat])
-            if sh_test > 0.5 and t_test > 0:
+            if sh_test > 0.3 and t_test > 0:
                 final_strats.append(strat)
 
         if not final_strats:
@@ -407,10 +407,9 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
         if not positive:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
-        scores_sq = [(s, sh**2) for s, sh in positive]
-        total_sq = sum(sh_sq for _, sh_sq in scores_sq)
-        if total_sq > 0:
-            weighted = {s: round(sh_sq / total_sq, 4) for s, sh_sq in scores_sq}
+        total = sum(sh for _, sh in positive)
+        if total > 0:
+            weighted = {s: round(sh / total, 4) for s, sh in positive}
         else:
             weighted = {s: round(1.0/len(positive), 4) for s, _ in positive}
 
