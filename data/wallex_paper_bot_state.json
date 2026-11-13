@@ -1,0 +1,17 @@
+{
+  "capital": 0.0,
+  "holdings": {
+    "UNI": 0.0008887105959610429,
+    "BTC": 6.047007666234621e-08,
+    "ETH": 8.837014467452896e-07
+  },
+  "last_regime": "FLAT",
+  "last_date": "2026-11-13",
+  "last_port_keys": [
+    "TETHER",
+    "ETH",
+    "UNI",
+    "BTC"
+  ],
+  "initialized": true
+}

@@ -266,3 +266,19 @@ Current Equity: $10000.00
   Bought 0.000000 BTC @ 18,567,363,615 TMN ($1590.95)
   Bought 0.000001 ETH @ 520,485,382 TMN ($463.60)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+🔄 Fresh start: Kill Switch auto-reset
+Date: 2026-11-13
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-13.7%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'UNI': 0.13997, 'BTC': 0.11338999999999999, 'ETH': 0.04664, 'TETHER': 0.7}
+Current Equity: $10000.00
+🔄 REBALANCING... (Regime: None -> FLAT, Assets: set() -> {'TETHER', 'ETH', 'UNI', 'BTC'})
+  💰 Fee: 0.6% = $60.00
+  Bought 0.000889 UNI @ 1,565,529 TMN ($1391.30)
+  Bought 0.000000 BTC @ 18,638,914,687 TMN ($1127.10)
+  Bought 0.000001 ETH @ 524,613,377 TMN ($463.60)
+Saved state to data/wallex_paper_bot_state.json
