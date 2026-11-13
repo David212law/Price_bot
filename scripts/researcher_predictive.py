@@ -450,12 +450,24 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
         # هر دو Sharpe² (برای بازگشت به v28.7)
-        scores_sq = [(s, sh**2) for s, sh in positive]
-        total_sq = sum(sh_sq for _, sh_sq in scores_sq)
-        if total_sq > 0:
-            weighted = {s: round(sh_sq / total_sq, 4) for s, sh_sq in scores_sq}
+        # EXPONENTIAL WEIGHTING: top-5 dominate
+        positive_sorted = sorted(positive, key=lambda x: -x[1])
+        n = len(positive_sorted)
+        
+        if n <= 5:
+            scores_sq = [(s, sh**2) for s, sh in positive_sorted]
+            total_sq = sum(sh_sq for _, sh_sq in scores_sq)
+            weighted = {s: sh_sq / total_sq for s, sh_sq in scores_sq} if total_sq > 0 else {s: 1.0/n for s, _ in positive_sorted}
         else:
-            weighted = {s: round(1.0/len(positive), 4) for s, _ in positive}
+            if n >= 10:
+                top_weights = [0.30, 0.20, 0.15, 0.10, 0.10]
+                rest_each = 0.15 / (n - 5)
+                weights_list = top_weights + [rest_each] * (n - 5)
+            else:
+                weights_list = [0.30, 0.20, 0.15, 0.10, 0.10] + [0.15/(n-5)] * (n-5)
+            weighted = {s: w for (s, _), w in zip(positive_sorted, weights_list)}
+        
+        weighted = {s: round(w, 4) for s, w in weighted.items()}
 
         top_per_regime[r] = weighted
         print(f"  🧬 {r}: {len(weighted)} uncorrelated (from {len(final_strats)} final)")
