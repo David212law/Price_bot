@@ -1,0 +1,13 @@
+{
+  "capital": 0.0,
+  "holdings": {
+    "BTC": 5.332359817818485e-07
+  },
+  "last_regime": "BULL_PARABOLIC",
+  "last_date": "2026-11-13",
+  "last_port_keys": [
+    "BTC",
+    "TETHER"
+  ],
+  "initialized": true
+}
