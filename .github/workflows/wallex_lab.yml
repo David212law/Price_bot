@@ -1,6 +1,7 @@
 name: Wallex Lab (Research)
 on:
   workflow_dispatch:
+permissions: { contents: write }
 jobs:
   run:
     runs-on: ubuntu-latest
