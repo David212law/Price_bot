@@ -27,7 +27,8 @@ jobs:
           
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A data/
+          # فقط pending — فایل‌های A/B در Termux ساخته می‌شوند
+          git add data/researcher_pending.json data/researcher_predictive_output.txt data/wallex_tmn_all.json data/wallex_usdt_all.json
           
           echo "═══ GIT STATUS AFTER ADD ═══"
           git status --short
