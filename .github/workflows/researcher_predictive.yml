@@ -19,10 +19,8 @@ jobs:
         run: |
           python scripts/researcher_predictive.py 2>&1 | tee data/researcher_predictive_output.txt
           
-          echo "═══ FILES AFTER RUN ═══"
-          ls -la data/researcher_conservative.json data/researcher_aggressive.json
-          echo "═══ CONTENT SAMPLE ═══"
-          head -c 300 data/researcher_conservative.json || echo "no conservative"
+          echo "═══ PENDING CREATED ═══"
+          ls -la data/researcher_pending.json
           echo ""
           echo "═══ GIT STATUS BEFORE ADD ═══"
           git status --short
