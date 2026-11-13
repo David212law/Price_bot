@@ -41,6 +41,49 @@ def detect_regime(df):
     if price <= ma and v >= 1.0 and v < 2.0: return "BEAR"
     return "CRASH"
 
+
+def detect_regime_15(df):
+    """15-regime detection: trend × volatility matrix."""
+    import numpy as np
+    if "BTC" not in df.columns:
+        return pd.Series("FLAT_NORMAL", index=df.index, dtype=object)
+    btc = df["BTC"]
+    rets = btc.pct_change()
+    vol = rets.rolling(14).std() * np.sqrt(365)
+    ma50 = btc.rolling(50).mean()
+    ma200 = btc.rolling(200).mean()
+    trend = (ma50 - ma200) / ma200
+    
+    conditions = [
+        (btc < ma50 * 0.85) & (vol > 0.9),  # CRASH
+        (trend < -0.15) & (vol > 0.7),       # BEAR_STRONG
+        (trend < -0.15) & (vol > 0.4),       # BEAR_VOLATILE
+        (trend < -0.15),                     # BEAR_CALM
+        (trend < -0.05) & (vol > 0.6),       # BEAR_MILD
+        (trend < -0.05),                     # BEAR_NORMAL
+        (trend < 0.05) & (vol > 0.6),        # FLAT_VOLATILE
+        (trend < 0.05) & (vol < 0.2),        # RANGE_TIGHT
+        (trend < 0.05),                      # FLAT_NORMAL
+        (trend < 0.15) & (vol > 0.6),        # BULL_VOLATILE
+        (trend < 0.15) & (vol < 0.2),        # BULL_CALM
+        (trend < 0.15),                      # BULL_NORMAL
+        (vol > 0.9),                         # BULL_BLOWOFF
+        (vol > 0.5),                         # BULL_PARABOLIC
+        (trend >= 0.15),                     # BULL_STRONG
+    ]
+    choices = [
+        "CRASH", "BEAR_STRONG", "BEAR_VOLATILE", "BEAR_CALM",
+        "BEAR_MILD", "BEAR_NORMAL",
+        "FLAT_VOLATILE", "RANGE_TIGHT", "FLAT_NORMAL",
+        "BULL_VOLATILE", "BULL_CALM", "BULL_NORMAL",
+        "BULL_BLOWOFF", "BULL_PARABOLIC", "BULL_STRONG",
+    ]
+    safe_conds = [c.fillna(False) if hasattr(c, 'fillna') else c for c in conditions]
+    result = np.select(safe_conds, choices, default="FLAT_NORMAL")
+    return pd.Series(result, index=df.index)
+
+
+
 def get_target_portfolio(df, regime):
     """Executes the actual active strategies chosen by Oracle for this regime"""
     # Read dynamically from Researcher's output
@@ -195,7 +238,7 @@ def main():
             return
     print(f"Date: {today}")
     
-    regime = detect_regime(df)
+    regime = detect_regime_15(df)
     print(f"Detected Regime: {regime}")
 
     # ── IRAN CURRENCY CRISIS DETECTION (Survival Mode 2D) ──

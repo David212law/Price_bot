@@ -296,20 +296,20 @@ def detect_regime_15(df):
     trend = (ma50 - ma200) / ma200
     
     conditions = [
-        (btc < ma50 * 0.85) & (vol > 2.5),  # CRASH
-        (trend < -0.15) & (vol > 2.0),       # BEAR_STRONG
-        (trend < -0.15) & (vol > 1.0),       # BEAR_VOLATILE
+        (btc < ma50 * 0.85) & (vol > 0.9),  # CRASH
+        (trend < -0.15) & (vol > 0.7),       # BEAR_STRONG
+        (trend < -0.15) & (vol > 0.4),       # BEAR_VOLATILE
         (trend < -0.15),                     # BEAR_CALM
-        (trend < -0.05) & (vol > 1.5),       # BEAR_MILD
+        (trend < -0.05) & (vol > 0.6),       # BEAR_MILD
         (trend < -0.05),                     # BEAR_NORMAL
-        (trend < 0.05) & (vol > 1.5),        # FLAT_VOLATILE
-        (trend < 0.05) & (vol < 0.5),        # RANGE_TIGHT
+        (trend < 0.05) & (vol > 0.6),        # FLAT_VOLATILE
+        (trend < 0.05) & (vol < 0.2),        # RANGE_TIGHT
         (trend < 0.05),                      # FLAT_NORMAL
-        (trend < 0.15) & (vol > 1.5),        # BULL_VOLATILE
-        (trend < 0.15) & (vol < 0.5),        # BULL_CALM
+        (trend < 0.15) & (vol > 0.6),        # BULL_VOLATILE
+        (trend < 0.15) & (vol < 0.2),        # BULL_CALM
         (trend < 0.15),                      # BULL_NORMAL
-        (vol > 2.0),                         # BULL_BLOWOFF
-        (vol > 1.0),                         # BULL_PARABOLIC
+        (vol > 0.9),                         # BULL_BLOWOFF
+        (vol > 0.5),                         # BULL_PARABOLIC
         (trend >= 0.15),                     # BULL_STRONG
     ]
     choices = [
