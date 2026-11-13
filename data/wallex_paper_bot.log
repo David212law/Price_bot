@@ -242,3 +242,7 @@ Current Equity: $10000.00
   Bought 0.002484 XRP @ 279,946 TMN ($695.40)
   Bought 0.000000 BTC @ 19,508,350,833 TMN ($1591.20)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+❌ KILL SWITCH TRIGGERED: Equity 2973.08 < 90% of 10000.00
