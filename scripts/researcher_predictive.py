@@ -680,26 +680,6 @@ def process_market(name, df, fee, max_strat_override=None):
 
     pred_regs = detect_regime(df)
     pred_regs_15 = detect_regime_15(df)
-    # ═══════════════════════════════════════════════════════════════
-    # A/B Test: دو بار run_ensemble با override های مختلف
-    # ═══════════════════════════════════════════════════════════════
-    
-    # 1. Conservative (max 5)
-    top_p_c, ct_p_c, cdd_p_c, csh_p_c, sw_p_c, sh_per_regime_c = run_ensemble(
-        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
-        max_strat_override=5
-    )
-    
-    # 2. Aggressive (max 15)
-    top_p_a, ct_p_a, cdd_p_a, csh_p_a, sw_p_a, sh_per_regime_a = run_ensemble(
-        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
-        max_strat_override=20
-    )
-    
-    # استفاده از Conservative برای خروجی اصلی
-    top_p = top_p_c
-    ct_p, cdd_p, csh_p, sw_p = ct_p_c, cdd_p_c, csh_p_c, sw_p_c
-    sh_per_regime = sh_per_regime_c
 
     # ═══════════════════════════════════════════════════════════════
     # A/B Test: دو بار run_ensemble با max_strat_override مختلف
