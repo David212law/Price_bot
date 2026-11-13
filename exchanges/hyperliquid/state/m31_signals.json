@@ -1,9 +1,14 @@
 {
   "signals": [
     {
-      "symbol": "ETH",
+      "symbol": "BNB",
       "action": "CLOSE",
-      "time": 1794470400033
+      "time": 1794506400037
+    },
+    {
+      "symbol": "XRP",
+      "action": "OPEN",
+      "time": 1794506400037
     }
   ]
 }
