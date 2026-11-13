@@ -1,0 +1,10 @@
+{
+  "capital": 0.0,
+  "holdings": {},
+  "last_regime": "BULL_PARABOLIC",
+  "last_date": "2026-11-13",
+  "last_port_keys": [
+    "TETHER"
+  ],
+  "initialized": true
+}
