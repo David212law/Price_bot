@@ -801,7 +801,7 @@ def main():
     
     # Save to pending (requires human approval)
     # ۱. ذخیره pending (برای approve)
-    with open("data/researcher_pending.json", "w") as f:
+    with open("data/researcher_aggressive_pending.json", "w") as f:
         json.dump(results, f, indent=2)
     print("✅ Saved results to PENDING. Human approval required.")
 
@@ -868,7 +868,7 @@ def main():
     if aggressive_results:
         try:
             test_json_a = json.dumps(aggressive_results, indent=2, default=str)
-            with open("data/researcher_aggressive.json", "w") as f:
+            with open("data/researcher_aggressive_full.json", "w") as f:
                 f.write(test_json_a)
             print(f"✅ Saved Aggressive ({len(aggressive_results)} markets)")
             
@@ -878,7 +878,7 @@ def main():
             if GH_TOKEN:
                 import base64
                 import requests
-                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_aggressive.json"
+                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_aggressive_full.json"
                 headers = {"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
                 r = requests.get(url, headers=headers)
                 sha = r.json().get("sha") if r.status_code == 200 else None
@@ -949,7 +949,7 @@ def main():
         json.dump(conservative_results, f, indent=2)
     print("✅ Saved Conservative (5 strategies)")
     
-    with open("data/researcher_aggressive.json", "w") as f:
+    with open("data/researcher_aggressive_full.json", "w") as f:
         json.dump(aggressive_results, f, indent=2)
     print("✅ Saved Aggressive (15 strategies)")
 

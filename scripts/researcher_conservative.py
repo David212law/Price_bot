@@ -801,7 +801,7 @@ def main():
     
     # Save to pending (requires human approval)
     # ۱. ذخیره pending (برای approve)
-    with open("data/researcher_pending.json", "w") as f:
+    with open("data/researcher_conservative_pending.json", "w") as f:
         json.dump(results, f, indent=2)
     print("✅ Saved results to PENDING. Human approval required.")
 
@@ -832,7 +832,7 @@ def main():
         try:
             test_json = json.dumps(conservative_results, indent=2, default=str)
             print(f"=== DEBUG: json size: {len(test_json)} chars ===")
-            with open("data/researcher_conservative.json", "w") as f:
+            with open("data/researcher_conservative_full.json", "w") as f:
                 f.write(test_json)
             print(f"✅ Saved Conservative ({len(conservative_results)} markets)")
             
@@ -842,7 +842,7 @@ def main():
             if GH_TOKEN:
                 import base64
                 import requests
-                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_conservative.json"
+                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_conservative_full.json"
                 headers = {"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
                 r = requests.get(url, headers=headers)
                 sha = r.json().get("sha") if r.status_code == 200 else None
@@ -945,7 +945,7 @@ def main():
                 "bnh_btc": market_data["bnh_btc"]
             }
     
-    with open("data/researcher_conservative.json", "w") as f:
+    with open("data/researcher_conservative_full.json", "w") as f:
         json.dump(conservative_results, f, indent=2)
     print("✅ Saved Conservative (5 strategies)")
     
