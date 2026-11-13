@@ -1,1 +1,185 @@
-{}
+{
+  "TMN": {
+    "market": "TMN",
+    "assets": 185,
+    "days": 799,
+    "oracle": {
+      "return": 451.1481758774581,
+      "dd": 50.24780054859548,
+      "sharpe": 3.551591234982904
+    },
+    "bnh_btc": {
+      "return": 75.17373665592612,
+      "dd": 20.043609096247962,
+      "sharpe": 3.2438232712334747
+    },
+    "predictive": {
+      "return": 221.07133007269732,
+      "dd": 33.60064311002201,
+      "sharpe": 3.5911450761938775,
+      "switches": 7,
+      "top": {
+        "BULL_STRONG": {
+          "rsi7_40": 0.4222,
+          "bb10_1.5": 0.5778
+        },
+        "BULL": {
+          "bh_BTC": 1.0
+        },
+        "FLAT": {
+          "bb30_2": 0.4131,
+          "wallex::bb20_3::ALL": 0.165,
+          "wallex::bb30_3.5::ALL": 0.0951,
+          "wallex::bb20_1.5::ALL": 0.3269
+        },
+        "BEAR": {
+          "tether": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
+        }
+      },
+      "metrics": {
+        "BULL_STRONG": {
+          "sharpe": 3.1411
+        },
+        "BULL": {
+          "sharpe": 0.0
+        },
+        "FLAT": {
+          "sharpe": 5.0072
+        },
+        "BEAR": {
+          "sharpe": 0.0
+        },
+        "CRASH": {
+          "sharpe": 0.0
+        }
+      }
+    }
+  },
+  "USDT": {
+    "market": "USDT",
+    "assets": 184,
+    "days": 799,
+    "oracle": {
+      "return": 173.10642598374756,
+      "dd": 54.341335636507814,
+      "sharpe": 2.2599609855240117
+    },
+    "bnh_btc": {
+      "return": 14.367575971325518,
+      "dd": 19.857599631500143,
+      "sharpe": 1.0119491266301393
+    },
+    "predictive": {
+      "return": 74.13313017915625,
+      "dd": 30.722849578321217,
+      "sharpe": 2.3934746679660317,
+      "switches": 9,
+      "top": {
+        "BULL_STRONG": {
+          "bb10_1.5": 0.5037,
+          "rsi21_25": 0.0501,
+          "rsi21_20": 0.0993,
+          "rsi14_20": 0.0789,
+          "bb10_2.5": 0.2681
+        },
+        "BULL": {
+          "bh_BTC": 1.0
+        },
+        "FLAT": {
+          "zscore_20_2.0": 0.2121,
+          "wallex::bb30_3.5::ALL": 0.0777,
+          "bb15_3.5": 0.2447,
+          "bb40_2": 0.4655
+        },
+        "BEAR": {
+          "tether": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
+        }
+      },
+      "metrics": {
+        "BULL_STRONG": {
+          "sharpe": 2.7873
+        },
+        "BULL": {
+          "sharpe": 0.0
+        },
+        "FLAT": {
+          "sharpe": 2.2056
+        },
+        "BEAR": {
+          "sharpe": 0.0
+        },
+        "CRASH": {
+          "sharpe": 0.0
+        }
+      }
+    }
+  },
+  "GLOBAL": {
+    "market": "GLOBAL",
+    "assets": 13,
+    "days": 1827,
+    "oracle": {
+      "return": -27.299500919254484,
+      "dd": 32.2670457103936,
+      "sharpe": -0.8954692518080368
+    },
+    "bnh_btc": {
+      "return": -24.874149077753515,
+      "dd": 43.39617801606889,
+      "sharpe": -0.46237822346027047
+    },
+    "predictive": {
+      "return": 80.74679708478783,
+      "dd": 12.883541670596072,
+      "sharpe": 2.400303450280206,
+      "switches": 23,
+      "top": {
+        "BULL_STRONG": {
+          "bh_BNB": 0.2124,
+          "mom10_t2_no": 0.213,
+          "ma50_200_t5": 0.1949,
+          "mom120_t1_ma": 0.1492,
+          "bh_ETH": 0.2305
+        },
+        "BULL": {
+          "bh_BTC": 1.0
+        },
+        "FLAT": {
+          "aster::VOL_ATRB_50_S::XRPUSDT": 0.3338,
+          "aster::VOL_DONCHIAN::AVAXUSDT": 0.3869,
+          "kucoin::MR_CMO_20::XBTUSDTM": 0.1963,
+          "bb40_3.5": 0.083
+        },
+        "BEAR": {
+          "tether": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
+        }
+      },
+      "metrics": {
+        "BULL_STRONG": {
+          "sharpe": 2.7599
+        },
+        "BULL": {
+          "sharpe": 0.0
+        },
+        "FLAT": {
+          "sharpe": 2.4159
+        },
+        "BEAR": {
+          "sharpe": 0
+        },
+        "CRASH": {
+          "sharpe": 0.0
+        }
+      }
+    }
+  }
+}

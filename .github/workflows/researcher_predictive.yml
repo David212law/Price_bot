@@ -36,6 +36,9 @@ jobs:
           
           git commit -m "Auto: Researcher + A/B files [skip ci]" || echo "nothing to commit"
           
+          echo "═══ PULL BEFORE PUSH (avoid conflict) ═══"
+          git pull --rebase origin main || echo "pull failed"
+          
           echo "═══ PUSH ═══"
           git push origin main || echo "push failed"
         env:
