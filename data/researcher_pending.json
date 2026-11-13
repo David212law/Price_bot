@@ -1,39 +1,39 @@
 {
   "TMN": {
     "market": "TMN",
-    "assets": 185,
+    "assets": 184,
     "days": 799,
     "oracle": {
-      "return": 452.8514037401364,
-      "dd": 51.04654132817236,
-      "sharpe": 3.545539428913511
+      "return": 455.8851458679399,
+      "dd": 50.999924117656704,
+      "sharpe": 3.554630543682828
     },
     "predictive_conservative": {
-      "return": 231.0682961541447,
-      "dd": 33.60840632982914,
-      "sharpe": 3.629221664796189,
+      "return": 262.02328771897083,
+      "dd": 33.60833798756085,
+      "sharpe": 3.8427299546338785,
       "switches": 7,
       "top": {
         "BEAR": {
           "tether": 1.0
         },
         "BULL_STRONG": {
-          "bb10_1.5": 0.6519,
-          "rsi7_40": 0.3481
+          "bb10_1.5": 0.6514,
+          "rsi7_40": 0.3486
         },
         "FLAT": {
-          "bb30_2": 0.5438,
-          "wallex::bb20_1.5::ALL": 0.3406,
-          "wallex::bb20_3::ALL": 0.0868,
-          "wallex::bb30_3.5::ALL": 0.0288
+          "bb30_1.5": 0.6284,
+          "wallex::bb20_1.5::ALL": 0.2774,
+          "wallex::bb20_3::ALL": 0.0707,
+          "wallex::bb30_3.5::ALL": 0.0235
         }
       },
       "metrics": {
         "FLAT": {
-          "sharpe": 5.1237
+          "sharpe": 5.6432
         },
         "BULL_STRONG": {
-          "sharpe": 3.0941
+          "sharpe": 3.0945
         },
         "BEAR": {
           "sharpe": 0.0
@@ -41,10 +41,10 @@
       }
     },
     "predictive_aggressive": {
-      "return": 2095.7656442565826,
-      "dd": 34.868067999830096,
-      "sharpe": 5.568218841618664,
-      "switches": 12,
+      "return": 1722.060493852288,
+      "dd": 36.16096259423292,
+      "sharpe": 5.096592349795636,
+      "switches": 17,
       "top": {
         "BEAR_NORMAL": {
           "ma20_50_t1": 0.3,
@@ -63,87 +63,102 @@
           "rsi_fast_10_25": 0.015,
           "rsi14_25": 0.015
         },
-        "BULL_CALM": {
-          "bb30_1.5": 0.3,
-          "rsi7_40": 0.2,
-          "rsi_fast_5_30": 0.15,
-          "bh_TRX": 0.1,
-          "vwap_rev_20": 0.1,
-          "ma100_200_t4": 0.0214,
-          "bh_ETH": 0.0214,
-          "wallex::bh_TRX::ALL": 0.0214,
-          "bh_XRP": 0.0214,
-          "mom250_t2_no": 0.0214,
-          "mom20_t5_ma": 0.0214,
-          "bb40_3": 0.0214
-        },
         "BULL_NORMAL": {
-          "bb15_1.5": 0.3,
-          "wallex::bb30_3.5::ALL": 0.2,
-          "wallex::bb30_2.5::ALL": 0.15,
-          "wallex::bb40_1.5::ALL": 0.1,
-          "rsi_fast_7_30": 0.1,
-          "brk200_t2": 0.15
+          "bb30_1.5": 0.3,
+          "rsi_fast_7_30": 0.2,
+          "rsi7_40": 0.15,
+          "wallex::bb20_1.5::ALL": 0.1,
+          "bb20_3": 0.1,
+          "rsi_fast_5_30": 0.0187,
+          "bh_TRX": 0.0187,
+          "wallex::bh_TRX::ALL": 0.0187,
+          "bh_ETH": 0.0187,
+          "wallex::rsi7_40::ALL": 0.0187,
+          "bh_BNB": 0.0187,
+          "mom250_t5_no": 0.0187,
+          "mom180_t5_no": 0.0187
+        },
+        "BULL_PARABOLIC": {
+          "wallex::bb15_1.5::ALL": 0.3,
+          "wallex::bb20_1.5::ALL": 0.2,
+          "bb20_2.5": 0.15,
+          "bb10_2": 0.1,
+          "bb40_1.5": 0.1,
+          "bh_XRP": 0.0214,
+          "rsi7_40": 0.0214,
+          "eq5": 0.0214,
+          "rsi14_40": 0.0214,
+          "bh_DOGE": 0.0214,
+          "bh_SOL": 0.0214,
+          "rsi14_35": 0.0214
         },
         "BULL_STRONG": {
-          "wallex::bb20_1.5::ALL": 0.3,
-          "wallex::bb10_2::ALL": 0.2,
+          "bb15_1.5": 0.3,
+          "wallex::bb10_1.5::ALL": 0.2,
           "bb10_2": 0.15,
-          "bb20_2.5": 0.1,
-          "rsi7_40": 0.1,
-          "bb30_3.5": 0.025,
-          "grid_ETH_90": 0.025,
-          "rsi14_20": 0.025,
-          "bh_BNB": 0.025,
-          "rsi21_30": 0.025,
-          "mom250_t4_no": 0.025
+          "zscore_20_2.0": 0.1,
+          "wallex::bb20_2.5::ALL": 0.1,
+          "bb20_1.5": 0.0187,
+          "mom250_t4_ma": 0.0187,
+          "rsi7_30": 0.0187,
+          "bh_BNB": 0.0187,
+          "bh_TRX": 0.0187,
+          "rsi_fast_14_30": 0.0187,
+          "rsi14_20": 0.0187,
+          "bh_AVAX": 0.0187
+        },
+        "BULL_VOLATILE": {
+          "bh_BTC": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
         },
         "FLAT_NORMAL": {
-          "wallex::bb40_1.5::ALL": 0.3,
-          "wallex::bb10_1.5::ALL": 0.2,
-          "wallex::bb20_2::ALL": 0.15,
+          "wallex::bb15_1.5::ALL": 0.3,
+          "wallex::bb40_1.5::ALL": 0.2,
+          "wallex::bb10_1.5::ALL": 0.15,
+          "bh_BTC": 0.1,
           "bb10_1.5": 0.1,
-          "bb40_1.5": 0.1,
-          "btfd10_h5": 0.0187,
+          "bb30_1.5": 0.0187,
+          "bb40_1.5": 0.0187,
           "bh_BNB": 0.0187,
-          "rsi7_40": 0.0187,
           "bh_TRX": 0.0187,
-          "bh_LINK": 0.0187,
-          "mom250_t5_no": 0.0187,
-          "brk200_t4": 0.0187,
-          "rsi7_25": 0.0187
+          "mom250_t4_no": 0.0187,
+          "rsi7_35": 0.0187,
+          "mom250_t2_ma": 0.0187,
+          "mom180_t2_no": 0.0187
+        },
+        "FLAT_VOLATILE": {
+          "bh_BTC": 1.0
         },
         "RANGE_TIGHT": {
-          "bh_TRX": 0.3,
-          "bh_BTC": 0.2,
-          "wallex::bb15_1.5::ALL": 0.15,
-          "wallex::bb10_1.5::ALL": 0.1,
-          "ma100_200_t3": 0.1,
-          "rsi21_40": 0.0187,
-          "bb30_1.5": 0.0187,
-          "bb15_2.5": 0.0187,
-          "bb30_2": 0.0187,
-          "bh_AVAX": 0.0187,
-          "rsi_fast_10_25": 0.0187,
-          "mom250_t5_no": 0.0187,
-          "mom250_t3_ma": 0.0187
+          "bh_BTC": 1.0
         }
       },
       "metrics": {
         "FLAT_NORMAL": {
-          "sharpe": 0.0
+          "sharpe": 1.6642
+        },
+        "BULL_PARABOLIC": {
+          "sharpe": 28.2887
         },
         "BULL_STRONG": {
-          "sharpe": 6.5853
+          "sharpe": 6.1972
+        },
+        "BULL_VOLATILE": {
+          "sharpe": 0.0
         },
         "BULL_NORMAL": {
-          "sharpe": 10.0789
-        },
-        "BULL_CALM": {
-          "sharpe": 5.6966
+          "sharpe": 5.8621
         },
         "RANGE_TIGHT": {
-          "sharpe": 2.7513
+          "sharpe": 5.0619
+        },
+        "FLAT_VOLATILE": {
+          "sharpe": 0.0
+        },
+        "CRASH": {
+          "sharpe": 0.0
         },
         "BEAR_NORMAL": {
           "sharpe": 5.0844
@@ -151,9 +166,9 @@
       }
     },
     "bnh_btc": {
-      "return": 73.94329797610229,
-      "dd": 20.280759908716114,
-      "sharpe": 3.1954688731304803
+      "return": 74.50166517920012,
+      "dd": 20.043609096247962,
+      "sharpe": 3.217596674881236
     }
   },
   "USDT": {
@@ -161,9 +176,9 @@
     "assets": 185,
     "days": 799,
     "oracle": {
-      "return": 179.47622437892298,
+      "return": 179.4764165820019,
       "dd": 57.75791059131644,
-      "sharpe": 2.287485737855599
+      "sharpe": 2.2874867560494416
     },
     "predictive_conservative": {
       "return": 59.13053328804088,
@@ -201,101 +216,126 @@
       }
     },
     "predictive_aggressive": {
-      "return": 734.8465173529793,
-      "dd": 35.69563899999998,
-      "sharpe": 3.9519101565477937,
+      "return": 1337.0081674419084,
+      "dd": 34.19639067071527,
+      "sharpe": 4.832215675458081,
       "switches": 8,
       "top": {
         "BEAR_CALM": {
           "bh_BTC": 1.0
         },
+        "BEAR_MILD": {
+          "bh_BTC": 1.0
+        },
         "BEAR_NORMAL": {
-          "bb30_3.5": 0.3,
-          "wallex::bb30_1.5::ALL": 0.2,
-          "bb10_2.5": 0.15,
-          "zscore_10_2.0": 0.1,
-          "rsi21_20": 0.1,
-          "wallex::bh_TRX::ALL": 0.075,
-          "rsi7_20": 0.075
+          "bb10_2.5": 0.3,
+          "bb30_3.5": 0.2,
+          "zscore_10_2.0": 0.15,
+          "wallex::bb30_1.5::ALL": 0.1,
+          "combo_AND_mom5_t1_no_mom5_t4_no": 0.1,
+          "rsi21_20": 0.05,
+          "bh_TRX": 0.05,
+          "rsi7_20": 0.05
+        },
+        "BEAR_STRONG": {
+          "tether": 1.0
         },
         "BEAR_VOLATILE": {
           "tether": 1.0
         },
+        "BULL_BLOWOFF": {
+          "bh_BTC": 1.0
+        },
         "BULL_CALM": {
-          "wallex::bb10_1.5::ALL": 0.3,
-          "wallex::bb20_1.5::ALL": 0.2,
-          "zscore_10_1.5": 0.15,
-          "bb40_3.5": 0.1,
-          "bb20_3": 0.1,
-          "rsi_fast_14_30": 0.05,
-          "bb20_3.5": 0.05,
-          "mom_fast_7_3": 0.05
+          "bb15_1.5": 0.3,
+          "brk20_t1": 0.2,
+          "brk20_t5": 0.15,
+          "wallex::rsi35_35::ALL": 0.1,
+          "bh_AVAX": 0.1,
+          "break_n_20": 0.075,
+          "ma100_200_t1": 0.075
         },
         "BULL_NORMAL": {
+          "wallex::bb20_1.5::ALL": 0.3,
+          "bb10_1.5": 0.2,
+          "zscore_10_1.5": 0.15,
+          "rsi7_40": 0.1,
+          "bb40_3.5": 0.1,
+          "wallex::ma50_200_t5::ALL": 0.03,
+          "bb20_3": 0.03,
+          "rsi_fast_14_30": 0.03,
+          "mom_fast_7_3": 0.03,
+          "rsi_fast_7_25": 0.03
+        },
+        "BULL_PARABOLIC": {
           "bh_BTC": 1.0
         },
         "BULL_STRONG": {
           "bh_BTC": 1.0
         },
-        "FLAT_NORMAL": {
-          "bb40_1.5": 0.3,
-          "bb30_1.5": 0.2,
-          "wallex::bb40_2::ALL": 0.15,
-          "bb20_2": 0.1,
-          "btfd5_h5": 0.1,
-          "wallex::bb30_2.5::ALL": 0.0125,
-          "rsi7_40": 0.0125,
-          "bh_XRP": 0.0125,
-          "bh_BTC": 0.0125,
-          "btfd30_h5": 0.0125,
-          "wallex::bb10_2.5::ALL": 0.0125,
-          "mom180_t4_ma": 0.0125,
-          "rsi7_20": 0.0125,
-          "mom180_t3_no": 0.0125,
-          "bh_LINK": 0.0125,
-          "mom250_t3_no": 0.0125,
-          "rsi_fast_10_25": 0.0125
+        "CRASH": {
+          "tether": 1.0
         },
-        "RANGE_TIGHT": {
-          "wallex::bb20_1.5::ALL": 0.3,
-          "rsi_fast_10_30": 0.2,
-          "zscore_10_1.5": 0.15,
-          "zscore_20_2.0": 0.1,
-          "btfd15_h5": 0.1,
-          "rsi7_40": 0.15
+        "FLAT_NORMAL": {
+          "wallex::bb10_1.5::ALL": 0.3,
+          "wallex::bb20_1.5::ALL": 0.2,
+          "bb40_1.5": 0.15,
+          "wallex::bb30_2::ALL": 0.1,
+          "bb15_2.5": 0.1,
+          "bb20_2.5": 0.05,
+          "btfd15_h5": 0.05,
+          "rsi7_40": 0.05
+        },
+        "FLAT_VOLATILE": {
+          "bh_BTC": 1.0
         }
       },
       "metrics": {
         "FLAT_NORMAL": {
-          "sharpe": 11.622
+          "sharpe": 5.7937
+        },
+        "BULL_PARABOLIC": {
+          "sharpe": 0.0
+        },
+        "BULL_BLOWOFF": {
+          "sharpe": 0.0
         },
         "BULL_NORMAL": {
-          "sharpe": -11.7278
+          "sharpe": 6.2622
+        },
+        "FLAT_VOLATILE": {
+          "sharpe": 0.0
         },
         "BULL_CALM": {
-          "sharpe": 4.1538
-        },
-        "RANGE_TIGHT": {
-          "sharpe": 2.307
+          "sharpe": 0.0
         },
         "BULL_STRONG": {
           "sharpe": 0.0
         },
         "BEAR_NORMAL": {
-          "sharpe": 3.8115
+          "sharpe": 2.8486
         },
         "BEAR_CALM": {
           "sharpe": 0.0
         },
+        "BEAR_MILD": {
+          "sharpe": 0.0
+        },
+        "CRASH": {
+          "sharpe": 0.0
+        },
         "BEAR_VOLATILE": {
+          "sharpe": 0.0
+        },
+        "BEAR_STRONG": {
           "sharpe": 0.0
         }
       }
     },
     "bnh_btc": {
-      "return": 14.008318890471294,
-      "dd": 20.109346899591728,
-      "sharpe": 0.9913935596822849
+      "return": 14.015433709285263,
+      "dd": 20.104361232516982,
+      "sharpe": 0.9918014213382954
     }
   },
   "GLOBAL": {
@@ -349,48 +389,57 @@
       }
     },
     "predictive_aggressive": {
-      "return": 42.350719514241874,
-      "dd": 9.471894267316951,
-      "sharpe": 2.514258359274858,
-      "switches": 17,
+      "return": -6.656647791111925,
+      "dd": 36.41670944440572,
+      "sharpe": -0.16224119053653815,
+      "switches": 24,
       "top": {
         "BEAR_CALM": {
-          "zscore_10_2.0": 1.0
+          "bh_DOGE": 0.3652,
+          "rsi35_35": 0.2913,
+          "bh_ETH": 0.2824,
+          "bh_BNB": 0.0611
+        },
+        "BEAR_MILD": {
+          "bh_BTC": 1.0
         },
         "BEAR_NORMAL": {
           "kucoin::MR_CCI_25::XRPUSDTM": 0.3,
           "kucoin::MR_Z_30_15::XRPUSDTM": 0.2,
           "kucoin::MR_CCI_30::XRPUSDTM": 0.15,
-          "mom_fast_7_3": 0.1,
-          "mom5_t5_no": 0.1,
-          "rsi14_25": 0.03,
-          "bh_TRX": 0.03,
-          "mom_fast_7_2": 0.03,
-          "bb30_3": 0.03,
-          "brk20_t1": 0.03
+          "rsi14_25": 0.1,
+          "bh_TRX": 0.1,
+          "bb10_2.5": 0.025,
+          "mom5_t5_no": 0.025,
+          "rsi_fast_14_30": 0.025,
+          "brk20_t1": 0.025,
+          "mom_fast_7_3": 0.025,
+          "mom_fast_7_2": 0.025
+        },
+        "BEAR_STRONG": {
+          "tether": 1.0
         },
         "BEAR_VOLATILE": {
           "tether": 1.0
         },
+        "BULL_BLOWOFF": {
+          "bh_BTC": 1.0
+        },
         "BULL_CALM": {
-          "btfd15_h5": 0.5842,
-          "rsi21_35": 0.3216,
-          "grid_ETH_95": 0.0555,
-          "btfd10_h5": 0.0217,
-          "bb40_2.5": 0.017
+          "brk20_t1": 0.6583,
+          "combo_OR_mom5_t1_no_mom5_t2_ma": 0.2979,
+          "combo_AND_mom5_t2_ma_mom5_t4_ma": 0.0309,
+          "mom60_t3_no": 0.0129
         },
         "BULL_NORMAL": {
-          "bb20_1.5": 0.3,
-          "ma100_200_t3": 0.2,
-          "rsi_fast_5_25": 0.15,
-          "bb_breakout_20_2.0": 0.1,
-          "zscore_20_1.5": 0.1,
-          "btfd5_h5": 0.025,
-          "mom250_t1_no": 0.025,
-          "bh_SOL": 0.025,
-          "mom180_t2_ma": 0.025,
-          "bb_breakout_20_1.5": 0.025,
-          "rsi_fast_5_30": 0.025
+          "btfd15_h5": 0.3,
+          "rsi21_35": 0.2,
+          "rsi14_35": 0.15,
+          "bb40_3": 0.1,
+          "bb30_2.5": 0.1,
+          "grid_ETH_95": 0.05,
+          "bb15_2.5": 0.05,
+          "btfd10_h5": 0.05
         },
         "BULL_PARABOLIC": {
           "bh_BTC": 1.0
@@ -398,53 +447,72 @@
         "BULL_STRONG": {
           "bh_BTC": 1.0
         },
+        "BULL_VOLATILE": {
+          "bh_BTC": 1.0
+        },
+        "CRASH": {
+          "tether": 1.0
+        },
         "FLAT_NORMAL": {
-          "ma50_200_t4": 0.3,
-          "brk150_t1": 0.2,
-          "btfd15_h5": 0.15,
-          "mom60_t2_no": 0.1,
-          "combo_OR_mom5_t3_no_mom5_t4_ma": 0.1,
-          "brk10_t4": 0.03,
-          "brk30_t4": 0.03,
-          "rsi35_35": 0.03,
-          "rsi_fast_5_30": 0.03,
-          "rsi_fast_10_30": 0.03
+          "kucoin::VOL_DONCHIAN::AVAXUSDTM": 0.3,
+          "hyperliquid::MOM_ELDER_20::ETH": 0.2,
+          "kucoin::VOL_DONCHIAN::XBTUSDTM": 0.15,
+          "brk50_t2": 0.1,
+          "brk150_t2": 0.1,
+          "bb_breakout_10_2.0": 0.075,
+          "mom90_t3_ma": 0.075
+        },
+        "FLAT_VOLATILE": {
+          "bh_BTC": 1.0
         },
         "RANGE_TIGHT": {
-          "kucoin::VOL_DONCHIAN::XBTUSDTM": 0.3,
-          "hyperliquid::MOM_ELDER_20::ETH": 0.2,
-          "aster::T_ST_20_2_SHORT::AVAXUSDT": 0.15,
-          "mom90_t3_ma": 0.1,
-          "brk50_t2": 0.1,
-          "bb_breakout_10_2.0": 0.15
+          "bh_BTC": 1.0
         }
       },
       "metrics": {
         "FLAT_NORMAL": {
-          "sharpe": 5.4145
+          "sharpe": 4.3069
         },
         "BULL_PARABOLIC": {
           "sharpe": 0.0
         },
-        "BEAR_CALM": {
-          "sharpe": 1.4705
+        "BULL_BLOWOFF": {
+          "sharpe": 0.0
         },
-        "BEAR_VOLATILE": {
+        "CRASH": {
           "sharpe": 0
         },
-        "BEAR_NORMAL": {
-          "sharpe": 1.6431
+        "BEAR_VOLATILE": {
+          "sharpe": -3.8104
         },
-        "RANGE_TIGHT": {
-          "sharpe": 3.5677
+        "BEAR_STRONG": {
+          "sharpe": 0.0
+        },
+        "BEAR_CALM": {
+          "sharpe": 1.6167
+        },
+        "BEAR_MILD": {
+          "sharpe": 0.0
+        },
+        "BEAR_NORMAL": {
+          "sharpe": 2.0053
+        },
+        "BULL_VOLATILE": {
+          "sharpe": 0.0
         },
         "BULL_NORMAL": {
-          "sharpe": 9.4875
-        },
-        "BULL_CALM": {
-          "sharpe": 5.5976
+          "sharpe": 5.4477
         },
         "BULL_STRONG": {
+          "sharpe": 0.0
+        },
+        "BULL_CALM": {
+          "sharpe": 0.0
+        },
+        "RANGE_TIGHT": {
+          "sharpe": 0.0
+        },
+        "FLAT_VOLATILE": {
           "sharpe": 0.0
         }
       }
