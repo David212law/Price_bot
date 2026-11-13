@@ -407,11 +407,21 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
         if not positive:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
-        total = sum(sh for _, sh in positive)
-        if total > 0:
-            weighted = {s: round(sh / total, 4) for s, sh in positive}
+        # Aggressive (>10) → Sharpe² (متمرکز روی برنده‌ها)
+        # Conservative (≤10) → Sharpe (متنوع)
+        if max_strat_override is not None and max_strat_override > 10:
+            scores_sq = [(s, sh**2) for s, sh in positive]
+            total_sq = sum(sh_sq for _, sh_sq in scores_sq)
+            if total_sq > 0:
+                weighted = {s: round(sh_sq / total_sq, 4) for s, sh_sq in scores_sq}
+            else:
+                weighted = {s: round(1.0/len(positive), 4) for s, _ in positive}
         else:
-            weighted = {s: round(1.0/len(positive), 4) for s, _ in positive}
+            total = sum(sh for _, sh in positive)
+            if total > 0:
+                weighted = {s: round(sh / total, 4) for s, sh in positive}
+            else:
+                weighted = {s: round(1.0/len(positive), 4) for s, _ in positive}
 
         top_per_regime[r] = weighted
         print(f"  🧬 {r}: {len(weighted)} uncorrelated (from {len(final_strats)} final)")
@@ -636,7 +646,7 @@ def process_market(name, df, fee, max_strat_override=None):
     # 2. Aggressive (max 15)
     top_p_a, ct_p_a, cdd_p_a, csh_p_a, sw_p_a, sh_per_regime_a = run_ensemble(
         strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
-        max_strat_override=15
+        max_strat_override=20
     )
     
     # استفاده از Conservative برای خروجی اصلی
@@ -657,7 +667,7 @@ def process_market(name, df, fee, max_strat_override=None):
     # 2. Aggressive (max 15)
     top_p_a, ct_p_a, cdd_p_a, csh_p_a, sw_p_a, sh_a = run_ensemble(
         strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
-        max_strat_override=15
+        max_strat_override=20
     )
     
     return {
