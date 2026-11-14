@@ -320,3 +320,21 @@ Current Equity: $10000.00
   Bought 402.455027 AVAX @ 2,053,155 TMN ($0.77 USD, $309.23 alloc)
   Bought 4585.771013 APT @ 128,871 TMN ($0.05 USD, $221.17 alloc)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+🔄 Fresh start: Kill Switch auto-reset
+Date: 2026-11-14
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-18.7%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'UNI': 0.09999999999999999, 'BNB': 0.09999999999999999, 'BTC': 0.04664, 'AVAX': 0.03111, 'APT': 0.022250000000000002, 'TETHER': 0.7}
+Current Equity: $10000.00
+🔄 REBALANCING... (Regime: None -> FLAT, Assets: set() -> {'UNI', 'APT', 'AVAX', 'TETHER', 'BNB', 'BTC'})
+  💰 Fee: 0.6% = $60.00
+  Bought 1964.091017 UNI @ 1,352,314 TMN ($0.51 USD, $994.00 alloc)
+  Bought 16.586728 BNB @ 160,132,089 TMN ($59.93 USD, $994.00 alloc)
+  Bought 0.069424 BTC @ 17,843,944,273 TMN ($6,677.87 USD, $463.60 alloc)
+  Bought 402.455027 AVAX @ 2,053,155 TMN ($0.77 USD, $309.23 alloc)
+  Bought 4585.771013 APT @ 128,871 TMN ($0.05 USD, $221.17 alloc)
+Saved state to data/wallex_paper_bot_state.json

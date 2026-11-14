@@ -1,0 +1,21 @@
+{
+  "capital": 6958.0,
+  "holdings": {
+    "UNI": 1964.091016634869,
+    "BNB": 16.586727932657993,
+    "BTC": 0.06942354316011247,
+    "AVAX": 402.4550271347701,
+    "APT": 4585.771013004292
+  },
+  "last_regime": "FLAT",
+  "last_date": "2026-11-14",
+  "last_port_keys": [
+    "UNI",
+    "APT",
+    "AVAX",
+    "TETHER",
+    "BNB",
+    "BTC"
+  ],
+  "initialized": true
+}
