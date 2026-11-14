@@ -207,3 +207,29 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - GLOBAL در Lab = -0.16 (منفی)
 - GLOBAL در v28.7 = 2.98 (مثبت)
 - **نتیجه**: regime_15 برای GLOBAL مناسب نیست، فقط ۵ regime خوب کار می‌کند
+
+## v56.3 — قانون طلایی: Production فقط پایش، Lab فقط آزمایش (2026-11-15)
+
+### قانون
+1. **Production Bots** (wallex_paper_bot.py, wallex_paper_bot_aggressive.py, hl_predictive_bot.py):
+   - فقط پایش (monitoring)
+   - هیچ تغییری در کد یا استراتژی داده نمی‌شود
+   - مگر در موارد بحرانی (باگ امنیتی یا فنی)
+
+2. **Lab Bot** (wallex_lab.py):
+   - تنها محل آزمایش ایده‌های جدید
+   - می‌تواند Pairs Trading, Funding Carry, Risk Parity و ... داشته باشد
+   - نتایج با Production مقایسه می‌شود
+
+3. **Researcher های Production**:
+   - فقط داده تولید می‌کنند (pending)
+   - کدشان تغییر نمی‌کند
+
+4. **researcher_lab.py**:
+   - آزاد برای هر آزمایش
+   - تنها فایلی که می‌تواند استراتژی جدید اضافه کند
+
+### چرا؟
+- ۵۶ جلسه تغییرات مکرر در Production، باعث بی‌ثباتی شد
+- از این به بعد: Production = Frozen، Lab = آزمایش
+- ارتقا فقط بعد از تأیید Lab در Paper (۳-۶ ماه)
