@@ -298,18 +298,23 @@ def main():
         fee = current_val * fee_pct
         current_val -= fee
         print(f"  💰 Fee: {fee_pct*100:.1f}% = ${fee:.2f}")
-        state["capital"] = 0.0  # Fully invested (no cash left)
+        state["capital"] = 0.0  # TETHER will accumulate here
         state["holdings"] = {}
-        
+        usd_rate = get_usd_rate()
+
         for asset, weight in target_port.items():
+            alloc = current_val * weight
+            if asset == "TETHER":  # TETHER goes to cash
+                state["capital"] += alloc
+                continue
             if asset in df.columns:
-                price_rial = df[asset].iloc[-1] * 1.003 # 0.3% Slippage
-                usd_rate = get_usd_rate()
-                price_usd = price_rial / usd_rate  # تبدیل ریال به دلار
-                alloc = current_val * weight
+                price_rial = df[asset].iloc[-1] * 1.003  # 0.3% Slippage
+                price_usd = price_rial / usd_rate
                 qty = alloc / price_usd
                 state["holdings"][asset] = qty
                 print(f"  Bought {qty:.6f} {asset} @ {price_rial:,.0f} TMN (${price_usd:,.2f} USD, ${alloc:.2f} alloc)")
+            else:  # Asset not in df, goes to cash
+                state["capital"] += alloc
                 
         state["last_regime"] = regime
         state["last_port_keys"] = list(curr_keys)
