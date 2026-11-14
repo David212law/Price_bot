@@ -1,0 +1,15 @@
+{
+  "capital": 6997.549999999999,
+  "holdings": {
+    "BTC": 0.04469030713611942,
+    "BNB": 0.11562364180827607
+  },
+  "last_regime": "FLAT",
+  "last_port_keys": [
+    "TETHER",
+    "BTC",
+    "BNB"
+  ],
+  "initialized": true,
+  "last_date": "2026-11-14"
+}
