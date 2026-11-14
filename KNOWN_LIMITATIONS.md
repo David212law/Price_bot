@@ -167,3 +167,43 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - `researcher_predictive_results.json` هنوز v28.7 است (Nov 12)
 - اگر `researcher_predictive.py` اجرا شود، فرمت `predictive` را از دست می‌دهد و HL/Conservative bots می‌شکنند
 - تا fix format، این workflow را trigger نکنید
+
+## v55.3 — Frozen Reality Check (2026-11-14)
+
+### کشف: v28.7 بازتولیدپذیر نیست
+- v28.7 Sharpe 5.66 از کد commit 2977f501 آمده
+- آن کد: بدون rsi_mr، بدون ۱۰ استراتژی آرشیو، با Sharpe² weighting
+- Researcher فعلی: rsi_mr fix شده، +۱۰ استراتژی، exponential weighting
+- **نتیجه**: 5.66 را نمی‌توان با کد فعلی بازتولید کرد
+
+### v28.7 واقعاً rsi_mr ندارد (تأیید قطعی)
+- TMN v28.7: 9 استراتژی، 0 rsi_mr → 5.66
+- USDT v28.7: 29 استراتژی، 0 rsi_mr → 4.76
+- GLOBAL v28.7: 17 استراتژی، 0 rsi_mr → 2.98
+- **افت Conservative به 3.57 از RSI fix نیامده — از تغییرات v36-v43 آمده**
+
+### Conservative جدید (3.57) واقعی است
+- TMN: 8 استراتژی، بدون rsi_mr → 3.57
+- USDT: 10 استراتژی، ۲ rsi_mr (fix شده) → 2.01
+- GLOBAL: 11 استراتژی، بدون rsi_mr → 2.41
+- **پس rsi_mr حتی fix شده، در pool با ۱۰ استراتژی دیگر، عملکرد ضعیفی دارد**
+
+### Lab واقعاً مستقل است (به‌جز GLOBAL)
+| بازار | Lab | Aggressive | مستقل؟ |
+|-------|-----|------------|--------|
+| TMN | 4.87 | 5.02 | ✅ |
+| USDT | **5.20** | 4.79 | ✅ (بهتر!) |
+| GLOBAL | -0.16 | -0.16 | 🔴 کپی |
+
+### وضعیت نهایی Production (v55.3)
+| Bot | منبع | Sharpe | وضعیت |
+|-----|------|--------|--------|
+| Conservative | v28.7 | 5.66/4.76 | 🔒 Frozen |
+| Aggressive | new aggressive_best | 5.02/4.79 | ✅ Dynamic |
+| HL | v28.7 | 2.98 | 🔒 Frozen |
+| Lab | new lab | 4.87/5.20 | 🧪 Lab |
+
+### نکته: Lab GLOBAL منفی است
+- GLOBAL در Lab = -0.16 (منفی)
+- GLOBAL در v28.7 = 2.98 (مثبت)
+- **نتیجه**: regime_15 برای GLOBAL مناسب نیست، فقط ۵ regime خوب کار می‌کند
