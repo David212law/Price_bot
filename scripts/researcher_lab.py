@@ -234,6 +234,31 @@ def build_strategies(df):
             S[f"pairs_{a}_{b}"] = pairs_df
             print(f"  🧬 Added pairs_{a}_{b}")
 
+
+    # ═══════════════════════════════════════════════════════════════
+    # LAB EXPERIMENT: Defensive strategies (for BEAR/CRASH)
+    # ═══════════════════════════════════════════════════════════════
+    # Short strategies (inverted momentum) — work in bear
+    for n in [10, 20, 30]:
+        ret = df.pct_change(n)
+        sig = (ret < 0)  # فقط کسانی که در n روز اخیر افت کرده‌اند
+        scored = ret.where(sig)
+        rank = scored.rank(axis=1, ascending=True)  # کمترین بازده = بهترین short
+        top = (rank <= 3).astype(float)
+        w = -top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)  # منفی!
+        S[f"short_{n}"] = w
+    
+    # Inverted BB (short when overbought)
+    for p in [15, 30]:
+        ma = df.rolling(p).mean()
+        sd = df.rolling(p).std()
+        sig = df > (ma + 2 * sd)  # overbought
+        z = (df - ma) / sd
+        rank = z.where(sig).rank(axis=1, ascending=False)
+        top = (rank <= 3).astype(float)
+        w = -top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)  # منفی!
+        S[f"short_bb_{p}"] = w
+
     return S
 
 def sharpe_to_pvalue(sharpe, n_days):
