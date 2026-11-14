@@ -52,7 +52,7 @@ def main():
     pred_total = 0
     bots = [
         ("wallex_paper_bot_state.json", "Wallex Conservative"),
-        ("wallex_paper_bot_aggressive_state.json", "Wallex Aggressive"),
+        ("wallex_aggressive_best_state.json", "Wallex Aggressive"),
         ("hl_predictive_bot_state.json", "Hyperliquid (Global)"),
         ("wallex_lab_state.json", "Wallex Lab"),
     ]

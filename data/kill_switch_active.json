@@ -1,6 +1,6 @@
 {
-  "active": true,
-  "last_triggered": "2026-11-14T17:26:44.139724",
-  "reason": "Equity 2930.50 < 90% of 10000.00",
-  "bot": "wallex"
+  "active": false,
+  "last_triggered": null,
+  "reason": null,
+  "note": "Reset at 2026-11-14T23:15:46.188944 \u2014 pending equity verification"
 }
