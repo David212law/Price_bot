@@ -130,3 +130,40 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - In BULL (without STRONG), Researcher finds no winning strategy.
 - Falls back to bh_BTC. This is a REAL finding, not a bug.
 - Live Gate should account for this (BULL returns ~ B&H).
+
+## v55.0 — Pipeline Rebuild + RSI Fix (2026-11-14)
+
+### باگ RSI اصلاح شد
+- قبل: `scored.fillna(999)` → معکوس (خرید غیر-oversold)
+- بعد: `(30 - scored).fillna(-999)` → inversion کامل (خرید بیشترین oversold)
+- اعمال در همه ۴ researcher (predictive، conservative، aggressive، lab)
+
+### main() ها جدا شدند (بدون collision)
+- `researcher_predictive.py` → فقط `researcher_predictive_results.json`
+- `researcher_conservative.py` → فقط `researcher_conservative_pending.json`
+- `researcher_aggressive.py` → فقط `researcher_aggressive_pending.json`
+- `researcher_lab.py` → فقط `researcher_lab_pending.json`
+
+### Builders
+- `build_conservative.py` ساخته شد (new)
+- `build_aggressive.py` path fix: PENDING=aggressive_pending، AGGR=aggressive_best
+- `build_lab.py` دست‌نخورده
+
+### نتایج پس از fix (مقایسه با Frozen):
+| Bot | نسخه Frozen | نسخه جدید | تصمیم |
+|-----|-------------|-----------|--------|
+| Conservative | v28.7: 5.66/4.76 | 3.57/2.01 | ❌ **افت 37%** — استفاده از v28.7 (Frozen) |
+| Aggressive | v47.3: 5.03/4.83 | 5.02/4.79 | ✅ **برابر** — استفاده از جدید |
+| GLOBAL | v28.7: 2.98 | -0.16 | ❌ **منفی** — استفاده از v28.7 (Frozen) |
+| Lab | v47.3: 5.03/4.83 | 4.87/5.20 | 🧪 **آزمایشی** — جدید |
+
+### علت افت Conservative (نیاز به بررسی):
+- v28.7 احتمالاً با آستانه‌های قدیمی regime (1.0/2.0) Overfit شده بود
+- آستانه‌های جدید (0.4/0.7) رژیم‌های بیشتری تشخیص می‌دهند
+- با max_strat=5، ۵ استراتژی برای همه رژیم‌ها کافی نیست
+- تصمیم: بررسی در جلسه ۵۶ قبل از هر تغییری در Conservative bot
+
+### نکته مهم:
+- `researcher_predictive_results.json` هنوز v28.7 است (Nov 12)
+- اگر `researcher_predictive.py` اجرا شود، فرمت `predictive` را از دست می‌دهد و HL/Conservative bots می‌شکنند
+- تا fix format، این workflow را trigger نکنید
