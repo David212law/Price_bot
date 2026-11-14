@@ -22,7 +22,7 @@ jobs:
         run: pip install pandas numpy
       
       - name: Run reproducibility test
-        run: python scripts/reproducibility_test.py
+        run: python scripts/reproducibility_test_v2.py
       
       - name: Commit results
         run: |
