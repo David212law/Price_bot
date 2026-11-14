@@ -8,7 +8,16 @@ STATE_FILE = "data/wallex_aggressive_best_state.json"
 # FROZEN: reads researcher_aggressive_best.json (best TMN+USDT from history)
 # This file is UPDATED by build_aggressive.py after each Researcher run
 RESEARCHER_FILE = "data/researcher_aggressive_best.json"
-CAPITAL = 10000.0  # 10,000 USDT equivalent
+CAPITAL = 10000.0  # 10,000 USD
+
+def get_usd_rate():
+    """آخرین نرخ ریال/دلار از TGJU"""
+    try:
+        tgju = json.load(open("data/usd_irr_tgju.json"))
+        dates = sorted(tgju.keys())
+        return tgju[dates[-1]]
+    except Exception:
+        return 2_672_100  # fallback
 
 def load_data():
     raw = json.load(open("data/wallex_tmn_all.json"))
@@ -362,11 +371,13 @@ def main():
         
         for asset, weight in target_port.items():
             if asset in df.columns:
-                price = df[asset].iloc[-1] * 1.003 # 0.3% Slippage
+                price_rial = df[asset].iloc[-1] * 1.003 # 0.3% Slippage
+                usd_rate = get_usd_rate()
+                price_usd = price_rial / usd_rate
                 alloc = current_val * weight
-                qty = alloc / price
+                qty = alloc / price_usd
                 state["holdings"][asset] = qty
-                print(f"  Bought {qty:.6f} {asset} @ {price:,.0f} TMN (${alloc:.2f})")
+                print(f"  Bought {qty:.6f} {asset} @ {price_rial:,.0f} TMN (${price_usd:,.2f} USD)")
                 
         state["last_regime"] = regime
         state["last_port_keys"] = list(curr_keys)

@@ -203,13 +203,23 @@ def main():
         or curr_keys != set(state["last_port_keys"])):
         fee = val * 0.00035 # HL taker fee ~0.035%
         print(f"  💰 Fee: 0.035% = ${fee:.2f}")
-        val -= fee; state["capital"] = 0.0; state["holdings"] = {}
+        val -= fee
+        state["holdings"] = {}
+        new_capital = 0.0  # ← NEW: accumulate TETHER and missing assets
         for a, w in target.items():
+            alloc = val * w
+            if a == "TETHER":  # ← NEW: TETHER goes to cash
+                new_capital += alloc
+                continue
             if a in df.columns:
                 price = df[a].iloc[-1] * 1.001 # 0.1% Slippage
-                qty = (val * w) / price
+                qty = alloc / price  # ← clearer (same as (val*w)/price)
                 state["holdings"][a] = qty
-                print(f"  Bought {qty:.4f} {a} @ ${df[a].iloc[-1]:,.0f}")
+                print(f"  Bought {qty:.6f} {a} @ ${df[a].iloc[-1]:,.2f}")
+            else:
+                # Asset not in df — treat as cash
+                new_capital += alloc
+        state["capital"] = new_capital  # ← NEW: preserve TETHER
         state["last_regime"] = regime; state["last_port_keys"] = list(curr_keys); state["initialized"] = True
     
     state["last_date"] = df.index[-1].strftime("%Y-%m-%d")
