@@ -116,7 +116,7 @@ def build_strategies(df):
         delta = df.diff()
         up = delta.clip(lower=0).ewm(alpha=1/p, adjust=False).mean()
         down = -delta.clip(upper=0).ewm(alpha=1/p, adjust=False).mean()
-        rsi = 100 - 100/(1 + up/down)
+        rsi = 100 - 100/(1 + up/(down + 1e-9))
         for th in [25, 30]:
             sig = (rsi < th).astype(float)
             # Apply to all assets (oversold)
@@ -204,10 +204,10 @@ def build_strategies(df):
         delta = df.diff()
         up = delta.clip(lower=0).ewm(alpha=1/period, adjust=False).mean()
         down = -delta.clip(upper=0).ewm(alpha=1/period, adjust=False).mean()
-        rsi = 100 - 100/(1 + up/down)
+        rsi = 100 - 100/(1 + up/(down + 1e-9))
         sig = (rsi < 30)
         scored = rsi.where(sig)
-        S[f'rsi_mr_{period}'] = _normalize_top(scored.fillna(999), top_n=3)
+        S[f'rsi_mr_{period}'] = _normalize_top((30 - scored).fillna(-999), top_n=3)
 
     return S
 
@@ -764,7 +764,6 @@ def main():
     print("="*80)
     results = {}
 
-    # 1. TMN
     try:
         raw = json.load(open("data/wallex_tmn_all.json"))
         df = pd.DataFrame({k[:-3]: v for k,v in raw.items() if k != "USDTTMN" and k.endswith("TMN") and len(v)>=100})
@@ -774,7 +773,6 @@ def main():
         print(f"❌ TMN: {e}")
         traceback.print_exc()
 
-    # 2. USDT
     try:
         raw = json.load(open("data/wallex_usdt_all.json"))
         df = pd.DataFrame({k[:-4]: v for k,v in raw.items() if k != "USDTUSDT" and k.endswith("USDT") and len(v)>=100})
@@ -784,7 +782,6 @@ def main():
         print(f"❌ USDT: {e}")
         traceback.print_exc()
 
-    # 3. GLOBAL
     try:
         raw = json.load(open("data/crypto_5y_usd.json"))
         df = pd.DataFrame({k[:-4]: v for k,v in raw.items() if k.endswith("-USD")})
@@ -794,194 +791,22 @@ def main():
         print(f"❌ GLOBAL: {e}")
         traceback.print_exc()
 
-    # Load ALL profiler strategies
-    try:
-        profiler_df = load_profiler_returns_as_df(name, df.index) if name in ["GLOBAL", "TMN", "USDT"] else None
-    except: pass
-    
-    # Save to pending (requires human approval)
-    # ۱. ذخیره pending (برای approve)
     with open("data/researcher_lab_pending.json", "w") as f:
         json.dump(results, f, indent=2)
-    print("✅ Saved results to PENDING. Human approval required.")
+    print(f"✅ Saved to researcher_lab_pending.json")
 
-    # ۲. A/B Test: ذخیره فایل‌های جداگانه (برای ربات‌های Paper)
-    conservative_results = {}
-    aggressive_results = {}
-    
-    for market_name, market_data in results.items():
-        if market_data is None: 
-            print(f"⚠️ {market_name}: market_data is None")
-            continue
-        if "predictive_conservative" not in market_data: 
-            print(f"⚠️ {market_name}: no predictive_conservative")
-            continue
-        
-        base = {
-            "market": market_data["market"],
-            "assets": market_data["assets"],
-            "days": market_data["days"],
-            "oracle": market_data["oracle"],
-            "bnh_btc": market_data["bnh_btc"]
-        }
-        
-        conservative_results[market_name] = {**base, "predictive": market_data["predictive_conservative"]}
-        aggressive_results[market_name] = {**base, "predictive": market_data["predictive_aggressive"]}
-    
-    if conservative_results:
-        try:
-            test_json = json.dumps(conservative_results, indent=2, default=str)
-            print(f"=== DEBUG: json size: {len(test_json)} chars ===")
-            with open("data/researcher_lab_conservative.json", "w") as f:
-                f.write(test_json)
-            print(f"✅ Saved Conservative ({len(conservative_results)} markets)")
-            
-            # 🔴 DIRECT UPLOAD TO GITHUB API (before anything can overwrite)
-            import os
-            GH_TOKEN = os.environ.get("GH_TOKEN")
-            if GH_TOKEN:
-                import base64
-                import requests
-                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_lab_conservative.json"
-                headers = {"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
-                r = requests.get(url, headers=headers)
-                sha = r.json().get("sha") if r.status_code == 200 else None
-                data = {
-                    "message": "Auto: upload conservative [skip ci]",
-                    "content": base64.b64encode(test_json.encode()).decode(),
-                    "branch": "main"
-                }
-                if sha: data["sha"] = sha
-                r = requests.put(url, headers=headers, json=data)
-                print(f"=== DEBUG: GitHub upload status: {r.status_code} ===")
-                if r.status_code in [200, 201]:
-                    print(f"✅ Uploaded conservative to GitHub!")
-                else:
-                    print(f"❌ Upload failed: {r.text[:200]}")
-        except Exception as e:
-            print(f"❌ json.dump/upload failed: {e}")
-            import traceback
-            traceback.print_exc()
-    else:
-        print("❌ No conservative results")
-    
-    if aggressive_results:
-        try:
-            test_json_a = json.dumps(aggressive_results, indent=2, default=str)
-            with open("data/researcher_lab_aggressive.json", "w") as f:
-                f.write(test_json_a)
-            print(f"✅ Saved Aggressive ({len(aggressive_results)} markets)")
-            
-            # DIRECT UPLOAD TO GITHUB API
-            import os
-            GH_TOKEN = os.environ.get("GH_TOKEN")
-            if GH_TOKEN:
-                import base64
-                import requests
-                url = "https://api.github.com/repos/David212law/Price_bot/contents/data/researcher_lab_aggressive.json"
-                headers = {"Authorization": f"token {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
-                r = requests.get(url, headers=headers)
-                sha = r.json().get("sha") if r.status_code == 200 else None
-                data = {
-                    "message": "Auto: upload aggressive [skip ci]",
-                    "content": base64.b64encode(test_json_a.encode()).decode(),
-                    "branch": "main"
-                }
-                if sha: data["sha"] = sha
-                r = requests.put(url, headers=headers, json=data)
-                print(f"=== DEBUG: GitHub upload status: {r.status_code} ===")
-                if r.status_code in [200, 201]:
-                    print(f"✅ Uploaded aggressive to GitHub!")
-                else:
-                    print(f"❌ Upload failed: {r.text[:200]}")
-        except Exception as e:
-            print(f"❌ Failed: {e}")
-    else:
-        print("❌ No aggressive results")
-
-    # ═══════════════════════════════════════════════════════════════
-    # A/B Test: ذخیره هر دو نسخه Conservative و Aggressive
-    # ═══════════════════════════════════════════════════════════════
-    
-    conservative_results = {}
-    aggressive_results = {}
-    
-    for market_name, market_data in results.items():
-        if market_data is None: continue
-        
-        # Conservative
-        if "conservative" in market_data:
-            conservative_results[market_name] = {
-                "market": market_data["market"],
-                "assets": market_data["assets"],
-                "days": market_data["days"],
-                "oracle": market_data["oracle"],
-                "predictive": {
-                    "return": market_data["predictive"]["return"],
-                    "dd": market_data["predictive"]["dd"],
-                    "sharpe": market_data["predictive"]["sharpe"],
-                    "switches": market_data["predictive"]["switches"],
-                    "top": market_data["conservative"]["predictive"]["top"],
-                    "metrics": market_data["predictive"]["metrics"]
-                },
-                "bnh_btc": market_data["bnh_btc"]
-            }
-        
-        # Aggressive
-        if "aggressive" in market_data:
-            aggressive_results[market_name] = {
-                "market": market_data["market"],
-                "assets": market_data["assets"],
-                "days": market_data["days"],
-                "oracle": market_data["oracle"],
-                "predictive": {
-                    "return": market_data["predictive"]["return"],
-                    "dd": market_data["predictive"]["dd"],
-                    "sharpe": market_data["predictive"]["sharpe"],
-                    "switches": market_data["predictive"]["switches"],
-                    "top": market_data["aggressive"]["predictive"]["top"],
-                    "metrics": market_data["predictive"]["metrics"]
-                },
-                "bnh_btc": market_data["bnh_btc"]
-            }
-    
-    with open("data/researcher_lab_conservative.json", "w") as f:
-        json.dump(conservative_results, f, indent=2)
-    print("✅ Saved Conservative (5 strategies)")
-    
-    with open("data/researcher_lab_aggressive.json", "w") as f:
-        json.dump(aggressive_results, f, indent=2)
-    print("✅ Saved Aggressive (15 strategies)")
-
-    # Bale
-    msg = "🤖 *Predictive Researcher — PENDING APPROVAL*\n\n"
+    msg = "🔬 *Researcher LAB — Complete*\n\n"
     for m, r in results.items():
-        if not isinstance(r, dict): continue
-        msg += f"📊 *{m}* ({r.get('assets', 0)} assets, {r.get('days', 0)}d)\n"
-        msg += f"├ Oracle: {r['oracle']['return']:+.1f}% (DD {r['oracle']['dd']:.1f}%, Sh {r['oracle']['sharpe']:.2f})\n"
-        # A/B Test: use conservative for the main message
-        cons = r.get('predictive_conservative', {})
-        aggr = r.get('predictive_aggressive', {})
-        if cons:
-            msg += f"├ Cons: {cons.get('return', 0):+.1f}% (Sh {cons.get('sharpe', 0):.2f})\n"
-        if aggr:
-            msg += f"├ Aggr: {aggr.get('return', 0):+.1f}% (Sh {aggr.get('sharpe', 0):.2f})\n"
-        if 'bnh_btc' in r:
-            msg += f"└ B&H BTC: {r['bnh_btc']['return']:+.1f}%\n"
-        top_items = []
-        # Use conservative top (or fallback to first available)
-        top_source = r.get('predictive_conservative', r.get('predictive', {}))
-        for k, v in top_source.get('top', {}).items():
-            if isinstance(v, dict):
-                best = max(v, key=v.get) if v else "NONE"
-            elif isinstance(v, list):
-                best = v[0] if v else "NONE"
-            else:
-                best = str(v)
-            top_items.append(f"{k}:{best}")
-        msg += "Top: " + ", ".join(top_items) + "\n\n"
-    msg += "\n✅ برای تأیید: در ترموس دستور python3 scripts/approve_strategies.py را اجرا کنید."
+        if not isinstance(r, dict):
+            continue
+        pc = r.get('predictive_conservative', {})
+        pa = r.get('predictive_aggressive', {})
+        msg += f"📊 *{m}*\n"
+        msg += f"  Cons: Sh {pc.get('sharpe', 0):.2f}\n"
+        msg += f"  Aggr: Sh {pa.get('sharpe', 0):.2f}\n\n"
     send_bale(msg)
+
+
 
 if __name__ == "__main__":
     main()

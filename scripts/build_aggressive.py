@@ -2,8 +2,8 @@
 import json
 import os
 
-PENDING = "data/researcher_pending.json"
-AGGR = "data/researcher_aggressive.json"
+PENDING = "data/researcher_aggressive_pending.json"
+AGGR = "data/researcher_aggressive_best.json"
 
 if not os.path.exists(PENDING):
     print("❌ No pending file")
