@@ -19,6 +19,18 @@ def get_usd_rate():
     except Exception:
         return 2_672_100  # fallback (آخرین نرخ شناخته‌شده)
 
+
+def is_price_fresh(df, asset, max_age_days=7):
+    """چک می‌کند آخرین قیمت asset کمتر از max_age_days روز پیش باشد."""
+    if asset not in df.columns:
+        return False
+    series = df[asset].dropna()
+    if len(series) == 0:
+        return False
+    last_date = series.index[-1]
+    age = (df.index[-1] - last_date).days
+    return age <= max_age_days
+
 def load_data():
     raw = json.load(open("data/wallex_tmn_all.json"))
     data = {}
@@ -307,13 +319,19 @@ def main():
             if asset == "TETHER":  # TETHER goes to cash
                 state["capital"] += alloc
                 continue
-            if asset in df.columns:
+            if asset in df.columns and is_price_fresh(df, asset, max_age_days=7):
                 price_rial = df[asset].iloc[-1] * 1.003  # 0.3% Slippage
                 price_usd = price_rial / usd_rate
                 qty = alloc / price_usd
                 state["holdings"][asset] = qty
                 print(f"  Bought {qty:.6f} {asset} @ {price_rial:,.0f} TMN (${price_usd:,.2f} USD, ${alloc:.2f} alloc)")
-            else:  # Asset not in df, goes to cash
+            else:  # Asset not in df OR price stale, goes to cash
+                if asset not in df.columns:
+                    print(f"  ⚠️ {asset}: not in data → TETHER")
+                else:
+                    last_date = df[asset].dropna().index[-1]
+                    age = (df.index[-1] - last_date).days
+                    print(f"  ⚠️ {asset}: price {age}d old → TETHER (avoid delisted)")
                 state["capital"] += alloc
                 
         state["last_regime"] = regime
