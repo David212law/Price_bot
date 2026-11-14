@@ -1,3 +1,19 @@
 {
-  "signals": []
+  "signals": [
+    {
+      "symbol": "BTC",
+      "action": "CLOSE",
+      "time": 1794628800004
+    },
+    {
+      "symbol": "ETH",
+      "action": "CLOSE",
+      "time": 1794614400006
+    },
+    {
+      "symbol": "BNB",
+      "action": "OPEN",
+      "time": 1794607200084
+    }
+  ]
 }
