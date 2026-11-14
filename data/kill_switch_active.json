@@ -1,6 +1,6 @@
 {
   "active": true,
-  "last_triggered": "2026-11-14T00:32:41.958026",
-  "reason": "Equity 2930.50 < 90% of 10000.00",
-  "bot": "wallex"
+  "last_triggered": "2026-11-14T05:02:22.261362",
+  "reason": "Equity 2913.54 < 90% of 10000.00",
+  "bot": "hl"
 }
