@@ -209,6 +209,31 @@ def build_strategies(df):
         scored = rsi.where(sig)
         S[f'rsi_mr_{period}'] = _normalize_top((30 - scored).fillna(-999), top_n=3)
 
+
+    # ═══════════════════════════════════════════════════════════════
+    # LAB EXPERIMENT: Pairs Trading (delta-neutral, works in bear)
+    # ═══════════════════════════════════════════════════════════════
+    for a, b in [("BTC", "ETH"), ("BTC", "SOL"), ("ETH", "SOL")]:
+        if a in df.columns and b in df.columns:
+            ratio = df[a] / df[b]
+            ma = ratio.rolling(30).mean()
+            sd = ratio.rolling(30).std()
+            z = (ratio - ma) / sd
+            
+            # Long-short: if z > 2 → short a, long b
+            #            if z < -2 → long a, short b
+            w_a = pd.Series(0.0, index=df.index)
+            w_b = pd.Series(0.0, index=df.index)
+            
+            w_a[z > 2] = -0.5
+            w_a[z < -2] = 0.5
+            w_b[z > 2] = 0.5
+            w_b[z < -2] = -0.5
+            
+            pairs_df = pd.DataFrame({a: w_a, b: w_b}, index=df.index).fillna(0)
+            S[f"pairs_{a}_{b}"] = pairs_df
+            print(f"  🧬 Added pairs_{a}_{b}")
+
     return S
 
 def sharpe_to_pvalue(sharpe, n_days):
