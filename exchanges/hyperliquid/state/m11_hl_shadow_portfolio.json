@@ -1,15 +1,12 @@
 {
-  "total_capital": 9996.309088929678,
-  "m31_capital": 4996.309088929678,
+  "total_capital": 9995.866525262936,
+  "m31_capital": 4995.866525262937,
   "m35_capital": 0.0,
   "m40_capital": 0.0,
   "m41_capital": 0.0,
   "m31_pos": {
-    "BTC": {
-      "entry_time": 1794535200054
-    },
-    "ETH": {
-      "entry_time": 1794538800011
+    "BNB": {
+      "entry_time": 1794607200084
     }
   },
   "m35_pos": {},
@@ -19,7 +16,7 @@
   "keltner_capital": 5000.0,
   "keltner_pos": {},
   "peak_equity": 10000.0,
-  "last_run": "2026-11-14T00:53:43.075063+00:00",
+  "last_run": "2026-11-14T11:30:29.237616+00:00",
   "cash_capital": 0,
   "hedge_structure": {
     "BNB": {
