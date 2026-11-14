@@ -382,7 +382,28 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
 
     top_per_regime = {}
     for r in sorted(regimes.unique()):
+        # LAB EXPERIMENT: Try defensive strategies for BEAR/CRASH
         if r in ["BEAR", "CRASH", "BEAR_STRONG", "BEAR_VOLATILE"]:
+            # Try defensive strategies (short, inverted BB)
+            defensive_candidates = [s for s in df_rets.columns if s.startswith("short_")]
+            if defensive_candidates:
+                r_train = train_mask & (regimes == r)
+                if r_train.sum() >= 15:
+                    scores_d = {}
+                    for name in defensive_candidates:
+                        _, _, sh = stats(df_rets.loc[r_train, name])
+                        scores_d[name] = sh
+                    # انتخاب بهترین‌ها با Sharpe مثبت
+                    positive_def = {s: sh for s, sh in scores_d.items() if sh > 0.3}
+                    if positive_def:
+                        # ترکیب ۲-۳ استراتژی defensive
+                        sorted_def = sorted(positive_def.items(), key=lambda x: -x[1])[:3]
+                        total_sh = sum(sh for _, sh in sorted_def)
+                        weighted = {s: sh / total_sh for s, sh in sorted_def}
+                        top_per_regime[r] = weighted
+                        print(f"  🛡️  {r}: {len(weighted)} defensive strategies")
+                        continue
+            # Fallback: tether
             top_per_regime[r] = {"tether": 1.0}
             continue
 
