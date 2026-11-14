@@ -367,3 +367,7 @@ Current Equity: $10000.00
   Bought 402.455027 AVAX @ 2,053,155 TMN ($0.77 USD, $309.23 alloc)
   Bought 4585.771013 APT @ 128,871 TMN ($0.05 USD, $221.17 alloc)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+❌ KILL SWITCH TRIGGERED: Equity 8900.00 < 90% of 10000.00

@@ -1,6 +1,6 @@
 {
-  "active": false,
-  "last_triggered": null,
-  "reason": null,
-  "note": "pre-Kill-Switch-test"
+  "active": true,
+  "last_triggered": "2026-11-14T22:23:38.543630",
+  "reason": "Equity 8900.00 < 90% of 10000.00",
+  "bot": "wallex"
 }
