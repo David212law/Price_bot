@@ -118,9 +118,11 @@ def build_strategies(df):
         down = -delta.clip(upper=0).ewm(alpha=1/p, adjust=False).mean()
         rsi = 100 - 100/(1 + up/(down + 1e-9))
         for th in [25, 30]:
-            sig = (rsi < th).astype(float)
-            # Apply to all assets (oversold)
-            top = sig.rank(axis=1, ascending=False).le(3).astype(float)
+            # FIX: فقط RSI های oversold را در نظر بگیر
+            sig = (rsi < th)
+            scored = rsi.where(sig)
+            # کمترین RSI = بهترین (بیشترین oversold)
+            top = scored.rank(axis=1, ascending=True).le(3).astype(float)
             w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
             S[f'rsi_fast_{p}_{th}'] = w
     
@@ -393,7 +395,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             continue
 
         r_train = train_mask & (regimes == r)
-        if r_train.sum() < 15:
+        if r_train.sum() < 5:
             top_per_regime[r] = {"bh_BTC": 0.5, "tether": 0.5}
             continue
 
@@ -445,7 +447,15 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
         
         # Family mapping (for P_ strategies, we don't know, so they go to "other")
         def get_family(name):
-            for p in ["bb", "mom", "rsi", "btfd", "brk", "bh_"]:
+            # FIX: handle wallex:: prefix
+            if name.startswith("wallex::"):
+                parts = name.split("::")
+                if len(parts) >= 2:
+                    return get_family(parts[1])
+            # FIX: extended family list
+            for p in ["bb_breakout", "bb", "mom_fast", "mom_nd", "mom", "rsi_fast", "rsi_mr", "rsi",
+                      "btfd", "break_n", "brk", "bh_", "grid", "donchian", "zscore", "vwap",
+                      "combo", "eq", "ma_cross", "ma", "short"]:
                 if name.startswith(p): return p
             return "other"
 
@@ -541,7 +551,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
 
     for i, d in enumerate(df_rets.index[test_mask]):
         r = regimes.loc[d]
-        strats_dict = top_per_regime.get(r, {"bh_BTC": 1.0})
+        strats_dict = top_per_regime.get(r, {"bh_BTC": 0.5, "tether": 0.5})
         valid_strats = {s: w for s, w in strats_dict.items() if s in df_rets.columns}
         if not valid_strats:
             valid_strats = {df_rets.columns[0]: 1.0}
@@ -551,7 +561,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
         combined.append(r_val)
         current_keys = set(valid_strats.keys())
         if current_keys != set(cur_strats):
-            r_val -= fee * 0.5
+            r_val -= fee
             switches += 1
             cur_strats = list(current_keys)
 
