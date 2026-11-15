@@ -70,7 +70,7 @@
       rsi14_40: 0.050
       grid_BTC_95: 0.050
       rsi14_35: 0.050
-  🧬 BULL_STRONG: 12 uncorrelated (from 125 final)
+  🧬 BULL_STRONG: 12 uncorrelated (from 124 final)
       bb15_1.5: 0.300
       wallex::bb10_1.5::ALL: 0.200
       bb10_2: 0.150
@@ -101,7 +101,7 @@
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 614 candidates (306 + 258 unified)
-  🧬 BULL: 15 uncorrelated (from 158 final)
+  🧬 BULL: 15 uncorrelated (from 157 final)
       wallex::bb15_1.5::ALL: 0.300
       bb30_1.5: 0.200
       bb40_1.5: 0.150
@@ -133,7 +133,7 @@
       bh_AVAX: 0.015
       bh_ADA: 0.015
       rsi7_30: 0.015
-  🧬 FLAT: 17 uncorrelated (from 167 final)
+  🧬 FLAT: 17 uncorrelated (from 168 final)
       wallex::bb10_1.5::ALL: 0.300
       bb15_1.5: 0.200
       wallex::bb20_1.5::ALL: 0.150
@@ -151,7 +151,7 @@
       bh_ETH: 0.013
       bh_BTC: 0.013
       rsi7_20: 0.013
-  🧬 BULL_STRONG: 5 uncorrelated (from 158 final)
+  🧬 BULL_STRONG: 5 uncorrelated (from 159 final)
       wallex::bb10_1.5::ALL: 0.552
       wallex::bb20_1.5::ALL: 0.289
       wallex::bb10_2.5::ALL: 0.114
@@ -162,7 +162,7 @@
       bb20_2.5: 0.251
       bb30_3.5: 0.132
       zscore_20_2.0: 0.097
-  🧬 BEAR_NORMAL: 8 uncorrelated (from 132 final)
+  🧬 BEAR_NORMAL: 8 uncorrelated (from 133 final)
       bb10_2.5: 0.300
       bb30_3.5: 0.200
       zscore_10_2.0: 0.150
@@ -179,7 +179,7 @@
       bh_AVAX: 0.100
       break_n_20: 0.075
       ma100_200_t1: 0.075
-  🧬 BULL_NORMAL: 9 uncorrelated (from 65 final)
+  🧬 BULL_NORMAL: 9 uncorrelated (from 64 final)
       wallex::bb20_1.5::ALL: 0.300
       bb10_1.5: 0.200
       zscore_10_1.5: 0.150
@@ -283,10 +283,6 @@
       bb_breakout_10_2.0: 0.075
       mom90_t3_ma: 0.075
 ✅ GLOBAL: 13 assets
-Traceback (most recent call last):
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 832, in <module>
-    main()
-  File "/home/runner/work/Price_bot/Price_bot/scripts/researcher_predictive.py", line 807, in main
-    ts = time.strftime("%Y%m%d_%H%M")
-         ^^^^
-NameError: name 'time' is not defined
+✅ Archived previous results
+✅ Saved to researcher_predictive_fresh.json (v28.7 frozen preserved)
+✅ Bale message sent.
