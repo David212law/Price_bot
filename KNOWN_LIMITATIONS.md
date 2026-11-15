@@ -357,3 +357,43 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - Production Frozen — هیچ تغییری ندهید
 - Lab آزاد — فقط آزمایش
 - پایش هفتگی — daily_report.py
+
+## v58.14 — FULL SYNC + PAPER OFFICIAL START (2026-11-15) 🎉
+
+### هماهنگی کامل Researcher + Bot
+- هر ۴ Researcher: Fast Momentum (vectorized در 5-regime، regular در 15-regime)
+- هر ۵ Bot: Fast Momentum
+- Reports: Combined اضافه شد
+- Sharpe نهایی (واقعی، نه توهمی):
+  - Conservative/HL (5-regime): TMN 3.62، USDT 2.04، GLOBAL 2.41
+  - Aggressive/Lab/Combined (15-regime): TMN 5.02، USDT 4.73، GLOBAL 0.84
+
+### نتیجه اجرای واقعی (2026-11-15، bear -18.7%)
+| ربات | Regime | Capital | Holdings |
+|------|--------|---------|----------|
+| Conservative | CRASH | $9,940.00 | 0 |
+| Aggressive | CRASH | $9,940.00 | 0 |
+| HL | CRASH | $9,996.50 | 0 |
+| Combined | CRASH | $9,940.00 | 0 |
+
+سرمایه کل: $39,816.50 (۱۰۰٪ TETHER، بدون ریسک)
+
+### درس بزرگ جلسه ۵۸
+- Sharpe 5.66 یک توهم Overfit بود (RSI bug + بدون Fast Momentum)
+- Sharpe 3.62 واقعی است (RSI fix + Fast Momentum)
+- 5.66 در Paper bear = -28%
+- 3.62 + Fast Momentum در Paper bear = -0.6%
+- **۳.۶۲ واقعی + حفاظت > ۵.۶۶ توهمی + ضرر**
+
+### Paper ۶ ماه رسمی
+- تاریخ: 2026-11-15 → 2027-05-15
+- Live Gate: Sharpe > 1.5, DD < 15%
+- ۴ ربات Production Frozen
+- ۱ ربات Lab آزاد
+- پایش هفتگی: هر شنبه
+
+### چه کاری نکن
+- Production Frozen — هیچ تغییری نده (تا 2027-05-15)
+- Lab آزاد — فقط آزمایش
+- به Sharpe 5.66 اعتماد نکن — 3.62 واقعی است
+- فرض نکن Backtest = Paper بدون Fast Momentum
