@@ -287,8 +287,21 @@ def main():
         mom_30 = (btc_series.iloc[-1] / btc_series.iloc[-31] - 1) * 100
 
     # 15-regime exposure logic
-    if regime in ["BULL_STRONG", "BULL_PARABOLIC"]:
+    if regime == "BULL_STRONG":
         exposure, mode = 1.0, "AGGRESSIVE"
+    elif regime == "BULL_PARABOLIC":
+        # FIX 3: Conviction sizing (distance from MA50)
+        btc_s = df["BTC"]
+        ma50_s = btc_s.rolling(50).mean()
+        price_now = btc_s.iloc[-1]
+        ma50_now = ma50_s.iloc[-1] if not pd.isna(ma50_s.iloc[-1]) else price_now
+        distance = (price_now - ma50_now) / ma50_now if ma50_now > 0 else 0
+        if distance > 0.20:
+            exposure, mode = 1.0, "BULL-PARABOLIC-STRONG"
+        elif distance > 0.10:
+            exposure, mode = 0.7, "BULL-PARABOLIC-MED"
+        else:
+            exposure, mode = 0.5, "BULL-PARABOLIC-WEAK"
     elif regime == "BULL_BLOWOFF":
         exposure, mode = 0.3, "BLOWOFF-DEF"  # top of bubble
     elif regime in ["BULL_NORMAL", "BULL_VOLATILE"]:
@@ -359,6 +372,14 @@ def main():
             current_val += qty * df[asset].iloc[-1]
             
     print(f"Current Equity: ${current_val:.2f}")
+    # FIX 2: Daily loss limit
+    prev_equity = state.get("last_equity", current_val)
+    today_loss = (current_val / prev_equity - 1) if prev_equity > 0 else 0
+    if today_loss < -0.05:
+        exposure *= 0.5
+        print(f"⚠️ Daily loss {today_loss*100:.1f}% → exposure halved to {exposure:.0%}")
+    state["last_equity"] = current_val
+
     
     curr_keys = set(target_port.keys())
     prev_keys = set(state.get("last_port_keys", []))
