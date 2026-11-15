@@ -343,6 +343,11 @@ def main():
         # Scale to exposure
         scaled = {k: v * exposure for k, v in target_port.items()}
         scaled["TETHER"] = scaled.get("TETHER", 0) + (1.0 - exposure)
+        # FIX: normalize weights to sum to 1.0
+        total_w = sum(scaled.values())
+        if total_w > 0 and abs(total_w - 1.0) > 0.001:
+            print(f"⚠️ Normalizing weights: sum={total_w:.4f} → 1.0")
+            scaled = {k: v / total_w for k, v in scaled.items()}
         target_port = scaled
     else:
         target_port = {"TETHER": 1.0}
