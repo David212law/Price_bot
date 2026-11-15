@@ -421,3 +421,14 @@ Current Equity: $10000.00
   Bought 7.691216 BNB @ 161,065,539 TMN ($60.28 USD, $463.60 alloc)
   Bought 627.384773 AVAX @ 1,975,588 TMN ($0.74 USD, $463.85 alloc)
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-15
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-18.7%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'UNI': 0.093305, 'BTC': 0.11338999999999999, 'BNB': 0.04664, 'AVAX': 0.046665, 'TETHER': 0.7}
+Current Equity: $7944376050.72
+No regime change or asset rotation. Holding current portfolio.
+Saved state to data/wallex_paper_bot_state.json
