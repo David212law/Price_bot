@@ -101,6 +101,14 @@ def detect_regime_15(df):
     ]
     safe_conds = [c.fillna(False) if hasattr(c, 'fillna') else c for c in conditions]
     result = np.select(safe_conds, choices, default="FLAT_NORMAL")
+    # FIX 1: Fast momentum override
+    mom_14 = btc.pct_change(14)
+    mom_30 = btc.pct_change(30)
+    force_crash = (mom_14 < -0.10) | (mom_30 < -0.15)
+    force_bear = ((mom_14 < -0.05) | (mom_30 < -0.08)) & ~force_crash
+    result = pd.Series(result, index=df.index)
+    result[force_bear] = "BEAR_STRONG"
+    result[force_crash] = "CRASH"
     return pd.Series(result, index=df.index)
 
 
