@@ -4,14 +4,14 @@
     "assets": 185,
     "days": 799,
     "oracle": {
-      "return": 785.9125191456394,
+      "return": 785.6015587994115,
       "dd": 37.502405307923794,
-      "sharpe": 4.040274456858034
+      "sharpe": 4.039759642820915
     },
     "predictive_conservative": {
-      "return": 150.22579936554337,
+      "return": 150.17654269408803,
       "dd": 33.70329989755812,
-      "sharpe": 3.048917095212235,
+      "sharpe": 3.0483537538668686,
       "switches": 7,
       "top": {
         "BEAR": {
@@ -32,7 +32,7 @@
       },
       "metrics": {
         "FLAT": {
-          "sharpe": 3.6765
+          "sharpe": 3.6752
         },
         "BULL_STRONG": {
           "sharpe": 3.0933
@@ -43,9 +43,9 @@
       }
     },
     "predictive_aggressive": {
-      "return": 1611.8743408260711,
+      "return": 1612.8349528477884,
       "dd": 36.17472153209447,
-      "sharpe": 5.017942844948552,
+      "sharpe": 5.018812421631726,
       "switches": 17,
       "top": {
         "BEAR_NORMAL": {
@@ -136,7 +136,7 @@
           "sharpe": 1.6642
         },
         "BULL_PARABOLIC": {
-          "sharpe": 19.5341
+          "sharpe": 19.5897
         },
         "BULL_STRONG": {
           "sharpe": 6.1606
@@ -172,14 +172,14 @@
     "assets": 185,
     "days": 799,
     "oracle": {
-      "return": 649.8866218598974,
+      "return": 649.7146861128373,
       "dd": 31.718044504953212,
-      "sharpe": 3.8251064533679697
+      "sharpe": 3.82474865609776
     },
     "predictive_conservative": {
-      "return": 64.64842631594404,
+      "return": 64.64404647451055,
       "dd": 23.76950399423326,
-      "sharpe": 2.8428517959308928,
+      "sharpe": 2.842709639576329,
       "switches": 9,
       "top": {
         "BEAR": {
@@ -200,7 +200,7 @@
       },
       "metrics": {
         "FLAT": {
-          "sharpe": 2.7543
+          "sharpe": 2.7538
         },
         "BULL_STRONG": {
           "sharpe": 2.9707
@@ -211,9 +211,9 @@
       }
     },
     "predictive_aggressive": {
-      "return": 876.5333320965001,
+      "return": 876.3327015107784,
       "dd": 28.103311925574832,
-      "sharpe": 4.727316799457812,
+      "sharpe": 4.726932316134234,
       "switches": 8,
       "top": {
         "BEAR_CALM": {
@@ -298,7 +298,7 @@
           "sharpe": 0.0
         },
         "BULL_NORMAL": {
-          "sharpe": 6.07
+          "sharpe": 6.0691
         },
         "FLAT_VOLATILE": {
           "sharpe": 0.0
@@ -330,9 +330,9 @@
       }
     },
     "bnh_btc": {
-      "return": 3.123205259600703,
+      "return": 2.9175299929875775,
       "dd": 25.91910656846016,
-      "sharpe": 0.3716776479398283
+      "sharpe": 0.35961899195618274
     }
   },
   "GLOBAL": {

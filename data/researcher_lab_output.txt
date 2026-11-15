@@ -20,7 +20,7 @@
       wallex::bb30_1.5::ALL: 0.175
       brk200_t2: 0.026
   🛡️  CRASH: 2 defensive strategies
-  🧬 FLAT: 5 uncorrelated (from 69 final)
+  🧬 FLAT: 5 uncorrelated (from 70 final)
       bb15_1.5: 0.451
       bb15_2: 0.258
       zscore_10_1.5: 0.153
@@ -65,7 +65,7 @@
       bh_BNB: 0.021
       rsi28_40: 0.021
       mom250_t2_no: 0.021
-  🧬 BULL_PARABOLIC: 8 uncorrelated (from 55 final)
+  🧬 BULL_PARABOLIC: 8 uncorrelated (from 52 final)
       wallex::bb15_1.5::ALL: 0.300
       wallex::bb20_1.5::ALL: 0.200
       bb20_2.5: 0.150
@@ -74,7 +74,7 @@
       rsi7_40: 0.050
       rsi14_40: 0.050
       rsi14_35: 0.050
-  🧬 BULL_STRONG: 12 uncorrelated (from 127 final)
+  🧬 BULL_STRONG: 12 uncorrelated (from 126 final)
       bb15_1.5: 0.300
       wallex::bb10_1.5::ALL: 0.200
       bb10_2: 0.150
@@ -166,11 +166,11 @@
       rsi_mr_14: 0.059
       rsi14_20: 0.023
       rsi_mr_21: 0.011
-  🧬 FLAT: 3 uncorrelated (from 51 final)
+  🧬 FLAT: 3 uncorrelated (from 50 final)
       bb15_3.5: 0.517
       zscore_20_2.0: 0.439
       bb30_3.5: 0.044
-  🧬 BEAR_NORMAL: 9 uncorrelated (from 138 final)
+  🧬 BEAR_NORMAL: 9 uncorrelated (from 139 final)
       short_bb_15: 0.300
       bb10_2.5: 0.200
       short_bb_30: 0.150
@@ -181,7 +181,7 @@
       bh_TRX: 0.037
       rsi7_20: 0.037
   🛡️  BEAR_VOLATILE: 2 defensive strategies
-  🧬 BULL_CALM: 7 uncorrelated (from 164 final)
+  🧬 BULL_CALM: 7 uncorrelated (from 163 final)
       short_30: 0.300
       bb15_1.5: 0.200
       brk20_t1: 0.150
@@ -189,7 +189,7 @@
       wallex::rsi35_35::ALL: 0.100
       bh_AVAX: 0.075
       break_n_20: 0.075
-  🧬 BULL_NORMAL: 10 uncorrelated (from 75 final)
+  🧬 BULL_NORMAL: 10 uncorrelated (from 74 final)
       wallex::bb20_1.5::ALL: 0.300
       bb10_1.5: 0.200
       zscore_10_1.5: 0.150
