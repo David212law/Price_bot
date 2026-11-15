@@ -54,6 +54,7 @@ def main():
         ("wallex_paper_bot_state.json", "Wallex Conservative"),
         ("wallex_aggressive_best_state.json", "Wallex Aggressive"),
         ("hl_predictive_bot_state.json", "Hyperliquid (Global)"),
+        ("wallex_combined_state.json", "Wallex Combined"),
         ("wallex_lab_state.json", "Wallex Lab"),
     ]
     for fname, label in bots:

@@ -280,6 +280,14 @@ def detect_regime(df):
     regs[cond2 & (vol < 1.0)] = "FLAT"
     regs[cond2 & (vol >= 1.0) & (vol < 2.0)] = "BEAR"
     regs[cond2 & (vol >= 2.0)] = "CRASH"
+    # FIX: Fast momentum override (vectorized)
+    mom_14 = df["BTC"].pct_change(14)
+    mom_30 = df["BTC"].pct_change(30)
+    force_crash = (mom_14 < -0.10) | (mom_30 < -0.15)
+    force_bear = ((mom_14 < -0.05) | (mom_30 < -0.08)) & ~force_crash
+    regs[force_bear] = "BEAR"  # در 5-regime به BEAR
+    regs[force_crash] = "CRASH"
+
     return regs
 
 
