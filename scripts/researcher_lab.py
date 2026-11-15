@@ -418,8 +418,8 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             continue
 
         r_train = train_mask & (regimes == r)
-        if r_train.sum() < 10:
-            top_per_regime[r] = {"bh_BTC": 1.0}
+        if r_train.sum() < 5:
+            top_per_regime[r] = {"bh_BTC": 0.5, "tether": 0.5}
             continue
 
         scores = {}
@@ -430,12 +430,12 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             scores[name] = sh
             p_values.append(sharpe_to_pvalue(sh, int(r_train.sum())))
 
-        q_level = 0.10
+        q_level = 0.15
         passing_idx = benjamini_hochberg(p_values, q=q_level)
         passing_names = [names_list[i] for i in passing_idx]
 
         if not passing_names:
-            top_per_regime[r] = {"bh_BTC": 1.0}
+            top_per_regime[r] = {"bh_BTC": 0.5, "tether": 0.5}
             continue
 
         final_strats = []
@@ -524,13 +524,13 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
                 used_families[fam] = used_families.get(fam, 0) + 1
 
         if not selected:
-            top_per_regime[r] = {"bh_BTC": 1.0}
+            top_per_regime[r] = {"bh_BTC": 0.5, "tether": 0.5}
             continue
 
         # Weight by Sharpe (squared - more weight to top performers)
         positive = [(s, sh) for s, sh in selected if sh > 0.3]
         if not positive:
-            top_per_regime[r] = {"bh_BTC": 1.0}
+            top_per_regime[r] = {"bh_BTC": 0.5, "tether": 0.5}
             continue
         # هر دو Sharpe² (برای بازگشت به v28.7)
         # EXPONENTIAL WEIGHTING: top-5 dominate
@@ -550,7 +550,11 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
                 weights_list = [0.30, 0.20, 0.15, 0.10, 0.10] + [0.15/(n-5)] * (n-5)
             weighted = {s: w for (s, _), w in zip(positive_sorted, weights_list)}
         
-        weighted = {s: round(w, 4) for s, w in weighted.items()}
+        # Cap weight at 40% (bug 5 fix)
+        weighted = {s: min(0.4, w) for s, w in weighted.items()}
+        total_w = sum(weighted.values())
+        if total_w > 0:
+            weighted = {s: round(w/total_w, 4) for s, w in weighted.items()}
 
         top_per_regime[r] = weighted
         print(f"  🧬 {r}: {len(weighted)} uncorrelated (from {len(final_strats)} final)")
