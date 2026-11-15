@@ -1,4 +1,4 @@
-"""WALLEX COMBINED BOT — Live execution of Vol+Trend Ensemble with Active Strategies."""
+"""WALLEX PAPER BOT — Live execution of Vol+Trend Ensemble with Active Strategies."""
 import os, json
 import pandas as pd
 import numpy as np
@@ -101,6 +101,14 @@ def detect_regime_15(df):
     ]
     safe_conds = [c.fillna(False) if hasattr(c, 'fillna') else c for c in conditions]
     result = np.select(safe_conds, choices, default="FLAT_NORMAL")
+    # FIX 1: Fast momentum override
+    mom_14 = btc.pct_change(14)
+    mom_30 = btc.pct_change(30)
+    force_crash = (mom_14 < -0.10) | (mom_30 < -0.15)
+    force_bear = ((mom_14 < -0.05) | (mom_30 < -0.08)) & ~force_crash
+    result = pd.Series(result, index=df.index)
+    result[force_bear] = "BEAR_STRONG"
+    result[force_crash] = "CRASH"
     return pd.Series(result, index=df.index)
 
 
@@ -231,7 +239,7 @@ def main():
             _os.remove(_state_path)
     
     print("="*80)
-    print(" WALLEX COMBINED BOT — EXECUTION (Active Strategies)")
+    print(" WALLEX PAPER BOT — EXECUTION (Active Strategies)")
     print("="*80)
     
     df = load_data()
@@ -287,8 +295,21 @@ def main():
         mom_30 = (btc_series.iloc[-1] / btc_series.iloc[-31] - 1) * 100
 
     # 15-regime exposure logic
-    if regime in ["BULL_STRONG", "BULL_PARABOLIC"]:
+    if regime == "BULL_STRONG":
         exposure, mode = 1.0, "AGGRESSIVE"
+    elif regime == "BULL_PARABOLIC":
+        # FIX 3: Conviction sizing (distance from MA50)
+        btc_s = df["BTC"]
+        ma50_s = btc_s.rolling(50).mean()
+        price_now = btc_s.iloc[-1]
+        ma50_now = ma50_s.iloc[-1] if not pd.isna(ma50_s.iloc[-1]) else price_now
+        distance = (price_now - ma50_now) / ma50_now if ma50_now > 0 else 0
+        if distance > 0.20:
+            exposure, mode = 1.0, "BULL-PARABOLIC-STRONG"
+        elif distance > 0.10:
+            exposure, mode = 0.7, "BULL-PARABOLIC-MED"
+        else:
+            exposure, mode = 0.5, "BULL-PARABOLIC-WEAK"
     elif regime == "BULL_BLOWOFF":
         exposure, mode = 0.3, "BLOWOFF-DEF"  # top of bubble
     elif regime in ["BULL_NORMAL", "BULL_VOLATILE"]:
@@ -343,11 +364,6 @@ def main():
         # Scale to exposure
         scaled = {k: v * exposure for k, v in target_port.items()}
         scaled["TETHER"] = scaled.get("TETHER", 0) + (1.0 - exposure)
-        # FIX: normalize weights to sum to 1.0
-        total_w = sum(scaled.values())
-        if total_w > 0 and abs(total_w - 1.0) > 0.001:
-            print(f"⚠️ Normalizing weights: sum={total_w:.4f} → 1.0")
-            scaled = {k: v / total_w for k, v in scaled.items()}
         target_port = scaled
     else:
         target_port = {"TETHER": 1.0}
@@ -364,6 +380,14 @@ def main():
             current_val += qty * df[asset].iloc[-1]
             
     print(f"Current Equity: ${current_val:.2f}")
+    # FIX 2: Daily loss limit
+    prev_equity = state.get("last_equity", current_val)
+    today_loss = (current_val / prev_equity - 1) if prev_equity > 0 else 0
+    if today_loss < -0.05:
+        exposure *= 0.5
+        print(f"⚠️ Daily loss {today_loss*100:.1f}% → exposure halved to {exposure:.0%}")
+    state["last_equity"] = current_val
+
     
     curr_keys = set(target_port.keys())
     prev_keys = set(state.get("last_port_keys", []))
