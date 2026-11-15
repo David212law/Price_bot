@@ -279,3 +279,37 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - آستانه: 90% از capital (10% ضرر)
 - تست شده: PASS (equity $8,900 → stop)
 - هر ۴ ربات Production فعال
+
+## v58.6 — Combined v58.5 SUCCESS (2026-11-15)
+
+### Fast Momentum در عمل
+تاریخ: 2026-11-15 (اولین اجرا)
+- BTC 30 روز: -18.7%
+- Mom_14: منفی
+- **Fast momentum → CRASH فوری**
+- Bot: ۱۰۰٪ TETHER، ۰٪ exposure
+- ضرر: $60 (فقط fee)
+
+### مقایسه با بدون Fast Momentum
+- قبل: BULL_PARABOLIC → 100% crypto → -28% در bear
+- بعد: CRASH → 100% TETHER → -0.6%
+- **بهبود: ۲۷٪ (از -28% به -0.6%)**
+
+### ۳ Fix اجرایی که کار کرد
+1. **Fast Momentum** — در bear، CRASH فوری
+2. **Daily Loss Limit** — اگر یک روز > 5% ضرر، exposure نصف
+3. **Conviction Sizing** — در BULL_PARABOLIC، بر اساس فاصله از MA50
+
+### ۵ ربات Paper Frozen
+| ربات | استراتژی | وضعیت |
+|------|-----------|--------|
+| Conservative | v28.7 | 🔒 Frozen |
+| Aggressive | v47.3 | 🔒 Frozen |
+| HL | v28.7 | 🔒 Frozen |
+| Combined v58.5 | Lab v57.0 + ۳ fix | 🔒 Frozen |
+| Lab | آزاد | 🧪 |
+
+### Paper Start
+- تاریخ: 2026-11-15
+- Live Gate: 2027-05-15
+- Sharpe > 1.5, DD < 15%
