@@ -1,0 +1,8 @@
+{
+  "capital": 10000.0,
+  "holdings": {},
+  "last_regime": null,
+  "last_date": null,
+  "last_port_keys": [],
+  "initialized": false
+}
