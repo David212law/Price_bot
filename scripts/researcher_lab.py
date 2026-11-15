@@ -873,9 +873,9 @@ def main():
         print(f"✅ Archived previous results")
 
     # Write to _fresh.json — v28.7 frozen preserved for HL/Conservative bots
-    with open("data/researcher_predictive_fresh.json", "w") as f:
+    with open("data/researcher_lab_pending.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"✅ Saved to researcher_predictive_fresh.json (v28.7 frozen preserved)")
+    print(f"✅ Saved to researcher_lab_pending.json")
 
     # Bale
     msg = "🎯 *Researcher PRODUCTION — Complete*\n\n"
