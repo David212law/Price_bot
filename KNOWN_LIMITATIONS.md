@@ -233,3 +233,49 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - ۵۶ جلسه تغییرات مکرر در Production، باعث بی‌ثباتی شد
 - از این به بعد: Production = Frozen، Lab = آزمایش
 - ارتقا فقط بعد از تأیید Lab در Paper (۳-۶ ماه)
+
+## v58.2 — ۵ ربات Paper Frozen (2026-11-15)
+
+### Production (Frozen — هیچ تغییری نده)
+1. **Wallex Conservative** (TMN) — `wallex_paper_bot.py`
+   - منبع: `researcher_predictive_results.json` (v28.7)
+   - Sharpe: 5.66 / 4.76 / 2.98
+   - Cron: هر ۴ ساعت
+
+2. **Wallex Aggressive** (TMN/USDT) — `wallex_paper_bot_aggressive.py`
+   - منبع: `researcher_aggressive_best.json` (v47.3)
+   - Sharpe: 5.03 / 4.83 / -0.16
+   - Cron: روزی یک‌بار (12:00 UTC)
+
+3. **HL Predictive** (GLOBAL) — `hl_predictive_bot.py`
+   - منبع: `researcher_predictive_results.json` (v28.7)
+   - Sharpe: 2.98 (GLOBAL)
+   - Cron: هر ۴ ساعت
+
+4. **Wallex Combined** (TMN/USDT) — `wallex_combined_bot.py` ← جدید
+   - منبع: `researcher_combined.json` (Lab v57.0 TMN+USDT)
+   - Sharpe: 5.02 / 4.73
+   - Cron: هر ۴ ساعت
+   - Equity اول: $9,910.27 (بعد از Fee + Slippage)
+
+### Lab (آزاد — فقط آزمایش)
+5. **Wallex Lab** — `wallex_lab.py`
+   - منبع: `researcher_lab.json`
+   - آزاد برای هر آزمایش جدید
+   - فقط دستی
+
+### قوانین طلایی
+- **Production Frozen** — هیچ تغییری در کد یا استراتژی، مگر باگ بحرانی
+- **Lab آزاد** — هر ایده جدید اینجا تست می‌شود
+- **ارتقا** — بعد از ۳-۶ ماه Paper، اگر Lab بهتر بود
+- **Live Gate** (2027-05-15): Sharpe > 1.5, DD < 15%
+
+### Paper Start
+- تاریخ: 2026-11-15
+- ۶ ماه Paper
+- Live Gate: 2027-05-15
+
+### Kill Switch
+- آستانه: 90% از capital (10% ضرر)
+- تست شده: PASS (equity $8,900 → stop)
+- هر ۴ ربات Production فعال
