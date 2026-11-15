@@ -313,3 +313,47 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - تاریخ: 2026-11-15
 - Live Gate: 2027-05-15
 - Sharpe > 1.5, DD < 15%
+
+## v58.8 — ALL BOTS PROTECTED (2026-11-15) 🎉
+
+### Fast Momentum در همه ۴ ربات اعمال شد
+- Conservative (5-regime): خط ۵۸
+- Aggressive (15-regime): خط ۱۰۴
+- HL (5-regime): خط ۴۹
+- Combined (Lab): خط ۱۰۳
+
+### نتیجه اجرای 2026-11-15 (bear واقعی: BTC -18.7% در ۳۰ روز)
+| ربات | Regime | Capital | ضرر |
+|------|--------|---------|------|
+| Conservative | CRASH | $9,940 | -0.6% |
+| Aggressive | CRASH | $9,940 | -0.6% |
+| HL | CRASH | $9,996.50 | -0.035% |
+| Combined | CRASH | $9,940 | -0.6% |
+
+### مقایسه با قبل از Fast Momentum
+- Aggressive (بدون Fast Mom): BULL_PARABOLIC → 100% crypto → -28%
+- Aggressive (با Fast Mom): CRASH → 100% TETHER → -0.6%
+- **بهبود: ۲۷٪**
+
+### ۳ Fix اجرایی
+1. Fast Momentum — CRASH فوری در bear
+2. Daily Loss Limit — exposure کاهش در -5% روزانه
+3. Conviction Sizing — exposure بر اساس فاصله MA50
+
+### ۵ ربات Paper (Frozen)
+| ربات | استراتژی | وضعیت |
+|------|-----------|--------|
+| Conservative | v28.7 | 🔒 |
+| Aggressive | v47.3 | 🔒 |
+| HL | v28.7 | 🔒 |
+| Combined | Lab v57.0 + ۳ fix | 🔒 |
+| Lab | آزاد | 🧪 |
+
+### Paper Start
+- 2026-11-15 → 2027-05-15 (۶ ماه)
+- Live Gate: Sharpe > 1.5, DD < 15%
+
+### از این لحظه
+- Production Frozen — هیچ تغییری ندهید
+- Lab آزاد — فقط آزمایش
+- پایش هفتگی — daily_report.py
