@@ -1,5 +1,6 @@
 """🎯🔒 RESEARCHER PRODUCTION (frozen — both) + Bale Report + Save."""
 import math
+import time
 import traceback
 import sys, os, json
 import pandas as pd
