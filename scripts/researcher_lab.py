@@ -382,6 +382,16 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
 
     top_per_regime = {}
     for r in sorted(regimes.unique()):
+        # DEBUG pairs (فقط چاپ می‌کند، انتخاب نمی‌کند)
+        r_train_dbg = train_mask & (regimes == r)
+        if r_train_dbg.sum() >= 10:
+            pairs_candidates = [s for s in df_rets.columns if s.startswith("pairs_")]
+            for p in pairs_candidates[:2]:
+                if p in df_rets.columns:
+                    _, _, sh_p = stats(df_rets.loc[r_train_dbg, p])
+                    if sh_p > 0:
+                        print(f"  🔍 {r} pairs: {p} Sharpe={sh_p:.2f}")
+        
         # LAB EXPERIMENT: Try defensive strategies for BEAR/CRASH
         if r in ["BEAR", "CRASH", "BEAR_STRONG", "BEAR_VOLATILE"]:
             # Try defensive strategies (short, inverted BB)
@@ -408,7 +418,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             continue
 
         r_train = train_mask & (regimes == r)
-        if r_train.sum() < 15:
+        if r_train.sum() < 10:
             top_per_regime[r] = {"bh_BTC": 1.0}
             continue
 
@@ -439,7 +449,9 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
                 final_strats.append(strat)
 
         if not final_strats:
-            top_per_regime[r] = {"bh_BTC": 1.0}
+            # Better fallback: 50% BTC + 50% tether
+            top_per_regime[r] = {"bh_BTC": 0.5, "tether": 0.5}
+            print(f"  ⚠️ {r}: fallback to 50/50")
             continue
 
         # Sort by Sharpe (using recent 90-day window for high-frequency strategies)
