@@ -404,3 +404,20 @@ Target Portfolio: {'UNI': 0.07775, 'BNB': 0.09999999999999999, 'BTC': 0.04664, '
 Current Equity: $7944376050.72
 No regime change or asset rotation. Holding current portfolio.
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+🔄 Fresh start: Kill Switch auto-reset
+Date: 2026-11-15
+Detected Regime: FLAT
+📊 Adaptive: Regime=FLAT, Mom30=-18.7%, Mode=FLAT->BEAR, Exposure=30%
+✅ Loaded dynamic strategies from Researcher JSON.
+Target Portfolio: {'UNI': 0.093305, 'BTC': 0.11338999999999999, 'BNB': 0.04664, 'AVAX': 0.046665, 'TETHER': 0.7}
+Current Equity: $10000.00
+🔄 REBALANCING... (Regime: None -> FLAT, Assets: set() -> {'TETHER', 'UNI', 'BNB', 'BTC', 'AVAX'})
+  💰 Fee: 0.6% = $60.00
+  Bought 1808.275452 UNI @ 1,370,501 TMN ($0.51 USD, $927.45 alloc)
+  Bought 0.171435 BTC @ 17,567,717,926 TMN ($6,574.50 USD, $1127.10 alloc)
+  Bought 7.691216 BNB @ 161,065,539 TMN ($60.28 USD, $463.60 alloc)
+  Bought 627.384773 AVAX @ 1,975,588 TMN ($0.74 USD, $463.85 alloc)
+Saved state to data/wallex_paper_bot_state.json
