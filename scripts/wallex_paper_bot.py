@@ -55,6 +55,13 @@ def detect_regime(df):
     ma = ma50.loc[today]
     
     if pd.isna(v) or pd.isna(ma): return "FLAT"
+    # FIX: Fast momentum override
+    if len(btc) >= 30:
+        mom_14 = btc.iloc[-1] / btc.iloc[-15] - 1 if len(btc) >= 15 else 0
+        mom_30 = btc.iloc[-1] / btc.iloc[-31] - 1 if len(btc) >= 31 else 0
+        if mom_14 < -0.10 or mom_30 < -0.15: return "CRASH"
+        if mom_14 < -0.05 or mom_30 < -0.08: return "BEAR"
+    
     
     if price > ma and v < 1.0: return "BULL_STRONG"
     if price > ma and v >= 1.0: return "BULL"
