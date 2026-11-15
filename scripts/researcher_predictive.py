@@ -818,10 +818,10 @@ def main():
         os.rename("data/researcher_predictive_results.json", f"archive/auto_baseline/researcher_predictive_results_{ts}.json")
         print(f"✅ Archived previous results")
 
-    # Write to _fresh.json — v28.7 frozen preserved for HL/Conservative bots
-    with open("data/researcher_predictive_fresh.json", "w") as f:
+    # Write to _pending.json (v58.17: back to standard output)
+    with open("data/researcher_pending.json", "w") as f:
         json.dump(results, f, indent=2)
-    print(f"✅ Saved to researcher_predictive_fresh.json (v28.7 frozen preserved)")
+    print(f"✅ Saved to researcher_pending.json")
 
     # Bale
     msg = "🎯 *Researcher PRODUCTION — Complete*\n\n"

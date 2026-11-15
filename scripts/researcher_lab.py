@@ -1,3 +1,4 @@
+import time
 """🎯🔒 RESEARCHER LAB (Conservative + defensive + diversity) + Bale Report + Save."""
 import math
 import traceback
