@@ -17,7 +17,7 @@
       wallex::bb30_1.5::ALL: 0.208
       brk200_t2: 0.030
   🛡️  CRASH: 2 defensive strategies
-  🧬 FLAT: 5 uncorrelated (from 68 final)
+  🧬 FLAT: 5 uncorrelated (from 71 final)
       bb15_1.5: 0.422
       bb15_2: 0.272
       zscore_10_1.5: 0.161
@@ -48,7 +48,7 @@
       bh_BNB: 0.021
       rsi28_40: 0.021
       mom250_t2_no: 0.021
-  🧬 BULL_PARABOLIC: 8 uncorrelated (from 51 final)
+  🧬 BULL_PARABOLIC: 8 uncorrelated (from 52 final)
       wallex::bb15_1.5::ALL: 0.300
       wallex::bb20_1.5::ALL: 0.200
       bb20_2.5: 0.150
@@ -122,7 +122,7 @@
       bh_ADA: 0.015
       rsi7_30: 0.015
   🛡️  CRASH: 2 defensive strategies
-  🧬 FLAT: 17 uncorrelated (from 168 final)
+  🧬 FLAT: 17 uncorrelated (from 170 final)
       wallex::bb10_1.5::ALL: 0.300
       bb15_1.5: 0.200
       wallex::bb20_1.5::ALL: 0.150
@@ -147,7 +147,7 @@
       rsi_mr_14: 0.086
       rsi14_20: 0.034
       rsi_mr_21: 0.016
-  🧬 FLAT: 3 uncorrelated (from 47 final)
+  🧬 FLAT: 3 uncorrelated (from 48 final)
       bb15_3.5: 0.474
       zscore_20_2.0: 0.474
       bb30_3.5: 0.052
@@ -163,12 +163,12 @@
       bh_AVAX: 0.050
       break_n_20: 0.050
       mom250_t1_no: 0.050
-  🧬 BULL_NORMAL: 10 uncorrelated (from 72 final)
+  🧬 BULL_NORMAL: 10 uncorrelated (from 73 final)
       wallex::bb20_1.5::ALL: 0.300
       bb10_1.5: 0.200
       zscore_10_1.5: 0.150
-      bb40_3.5: 0.100
       rsi7_40: 0.100
+      bb40_3: 0.100
       wallex::ma50_200_t5::ALL: 0.030
       bb20_3: 0.030
       mom_fast_7_3: 0.030
