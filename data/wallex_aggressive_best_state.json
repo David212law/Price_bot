@@ -1,0 +1,25 @@
+{
+  "capital": 0.0,
+  "holdings": {
+    "BTC": 0.6614572777066258,
+    "UNI": 3391.546048738027,
+    "AVAX": 2352.7769266401974,
+    "NEXO": 8055.33011428466,
+    "WBTC": 0.07764927829707657,
+    "CVX": 2247.367893417316,
+    "VIRTUAL": 5667.392245165986
+  },
+  "last_regime": "BULL_PARABOLIC",
+  "last_date": "2026-11-15",
+  "last_port_keys": [
+    "AVAX",
+    "NEXO",
+    "BTC",
+    "CVX",
+    "TETHER",
+    "WBTC",
+    "VIRTUAL",
+    "UNI"
+  ],
+  "initialized": true
+}
