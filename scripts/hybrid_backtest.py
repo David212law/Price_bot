@@ -15,6 +15,14 @@ Output: data/hybrid_strategy_scores.json
 
 import json
 import sys
+import os as _os
+from pathlib import Path
+
+# PROJECT-ROOT-INJECT (D-356 fix) — اجازه import از ریشه پروژه
+_project_root = str(Path(__file__).resolve().parent.parent)
+if _project_root not in sys.path:
+    sys.path.insert(0, _project_root)
+
 import pandas as pd
 from strategies.library.trend import (
     strat_ema_cross, strat_macd, strat_adx_trend, strat_supertrend,
