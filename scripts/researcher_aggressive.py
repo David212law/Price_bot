@@ -347,7 +347,11 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             continue
 
         r_train = train_mask & (regimes == r)
-        if r_train.sum() < 5:
+        # FIX: min_train بر اساس override
+        # Conservative (max<=5): 15 روز (نیاز داده بیشتر)
+        # Aggressive (max>5): 5 روز (20 استراتژی averaging)
+        min_train = 15 if (max_strat_override is not None and max_strat_override <= 5) else 5
+        if r_train.sum() < min_train:
             top_per_regime[r] = {"bh_BTC": 0.5, "tether": 0.5}
             continue
 
