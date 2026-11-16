@@ -418,7 +418,7 @@ def main():
                 continue
             if asset in df.columns and is_price_fresh(df, asset, max_age_days=7):
                 price_rial = df[asset].iloc[-1] * 1.003  # 0.3% Slippage
-                price_usd = price_rial / usd_rate
+                price_usd = price_rial * 10 / usd_rate  # BTCTMN به تومان، تبدیل به ریال
                 qty = alloc / price_usd
                 state["holdings"][asset] = qty
                 print(f"  Bought {qty:.6f} {asset} @ {price_rial:,.0f} TMN (${price_usd:,.2f} USD, ${alloc:.2f} alloc)")
