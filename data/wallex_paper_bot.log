@@ -510,3 +510,13 @@ Current Equity: $10000.00
 🔄 REBALANCING... (Regime: None -> CRASH, Assets: set() -> {'TETHER'})
   💰 Fee: 0.6% = $60.00
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-16
+Detected Regime: CRASH
+📊 Adaptive: Regime=CRASH, Mom30=-18.7%, Mode=DEFENSIVE, Exposure=0%
+Target Portfolio: {'TETHER': 1.0}
+Current Equity: $9940.00
+No regime change or asset rotation. Holding current portfolio.
+Saved state to data/wallex_paper_bot_state.json
