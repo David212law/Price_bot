@@ -1,0 +1,188 @@
+{
+  "ema_cross_20_50": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  },
+  "ema_cross_50_200": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  },
+  "macd_12_26": {
+    "sharpe": 6.886,
+    "dd": -0.102,
+    "n": 27
+  },
+  "adx_trend": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0,
+    "error": "list index out of range"
+  },
+  "supertrend": {
+    "sharpe": 6.959,
+    "dd": -0.124,
+    "n": 37
+  },
+  "donchian_20": {
+    "sharpe": 8.268,
+    "dd": -0.211,
+    "n": 16
+  },
+  "ichimoku": {
+    "sharpe": 4.19,
+    "dd": -0.193,
+    "n": 20
+  },
+  "price_sma_50": {
+    "sharpe": 5.053,
+    "dd": -0.053,
+    "n": 12
+  },
+  "dual_momentum": {
+    "sharpe": 4.987,
+    "dd": -0.36,
+    "n": 11
+  },
+  "triple_ema": {
+    "sharpe": 5.916,
+    "dd": -0.208,
+    "n": 21
+  },
+  "parabolic_sar": {
+    "sharpe": 5.866,
+    "dd": -0.363,
+    "n": 47
+  },
+  "bb_20_2": {
+    "sharpe": -3.393,
+    "dd": -0.408,
+    "n": 37
+  },
+  "bb_30_2.5": {
+    "sharpe": 4.524,
+    "dd": -0.216,
+    "n": 21
+  },
+  "rsi_14_30_70": {
+    "sharpe": -0.014,
+    "dd": -0.155,
+    "n": 27
+  },
+  "rsi_21_25_75": {
+    "sharpe": -4.489,
+    "dd": -0.146,
+    "n": 13
+  },
+  "zscore_20": {
+    "sharpe": -3.393,
+    "dd": -0.408,
+    "n": 37
+  },
+  "keltner_rev": {
+    "sharpe": 14.516,
+    "dd": -0.037,
+    "n": 204
+  },
+  "rsi_divergence": {
+    "sharpe": -25.092,
+    "dd": -0.289,
+    "n": 13
+  },
+  "mean_rev_sma_50": {
+    "sharpe": -0.329,
+    "dd": -0.464,
+    "n": 66
+  },
+  "connors_rsi": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  },
+  "rsi_mean": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  },
+  "roc_10": {
+    "sharpe": 6.013,
+    "dd": -0.321,
+    "n": 46
+  },
+  "roc_20": {
+    "sharpe": 3.887,
+    "dd": -0.334,
+    "n": 48
+  },
+  "momentum_sma_20": {
+    "sharpe": 7.023,
+    "dd": -0.176,
+    "n": 72
+  },
+  "momentum_ema": {
+    "sharpe": 4.696,
+    "dd": -0.32,
+    "n": 43
+  },
+  "elder_impulse": {
+    "sharpe": 6.441,
+    "dd": -0.243,
+    "n": 67
+  },
+  "rsi_momentum_14": {
+    "sharpe": 4.619,
+    "dd": -0.267,
+    "n": 35
+  },
+  "price_momentum_20": {
+    "sharpe": 4.179,
+    "dd": -0.334,
+    "n": 49
+  },
+  "bb_squeeze_20": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  },
+  "atr_breakout_14": {
+    "sharpe": 0.561,
+    "dd": -0.333,
+    "n": 74
+  },
+  "keltner_squeeze": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  },
+  "vol_breakout_donch": {
+    "sharpe": -4.505,
+    "dd": -0.818,
+    "n": 47
+  },
+  "nr_breakout": {
+    "sharpe": -3.216,
+    "dd": -0.685,
+    "n": 52
+  },
+  "obv": {
+    "sharpe": 1.869,
+    "dd": -0.289,
+    "n": 28
+  },
+  "vwap": {
+    "sharpe": -3.343,
+    "dd": -0.628,
+    "n": 96
+  },
+  "mfi": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  },
+  "volume_breakout": {
+    "sharpe": 0,
+    "dd": 0,
+    "n": 0
+  }
+}
