@@ -526,3 +526,31 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - Combined TMN: 3.40 (عالی)
 - Combined USDT: 4.15 (عالی)
 - Conservative: 1.76 / 1.77 (خوب)
+
+## v59.0-v59.2 — Hybrid-Wallex v1 (2026-11-16)
+
+### معماری
+- ۱۲ استراتژی از library (TREND/MEAN_REV/MOMENTUM/BREAKOUT)
+- ۱۲ رژیم (BULL_STRONG تا CRASH)
+- وزن ثابت (بدون FDR، بدون Overfit)
+- Fee: Maker 0.01٪ / Taker 0.05٪
+- Slippage: 0.3٪
+- Kill Switch: 90٪
+
+### ماتریس تخصیص
+- BULL_STRONG: 40٪ Trend + 30٪ Mom + 20٪ Breakout + 10٪ Cash
+- BULL_NORMAL: 30٪ + 30٪ + 20٪ + 20٪ MeanRev + 10٪ Cash
+- FLAT_VOLATILE: 50٪ MeanRev + 30٪ Breakout + 10٪ Mom + 10٪ Cash
+- BEAR_NORMAL: 70٪ Funding (placeholder) + 20٪ MeanRev + 10٪ Cash
+- CRASH: 100٪ Cash
+
+### v1 limitation
+- Cash 100٪ در BEAR_VOLATILE و CRASH
+- Signals فقط در BULL/FLAT اجرا می‌شوند
+- برای تست واقعی، باید Regime به BULL_* تغییر کند
+
+### فایل‌ها
+- scripts/hybrid_signals.py (۱۷۰ خط)
+- scripts/hybrid_researcher.py (۲۰۸ خط)
+- scripts/hybrid_bot.py (۳۳۴ خط)
+- .github/workflows/wallex_hybrid.yml (۵۰ خط)
