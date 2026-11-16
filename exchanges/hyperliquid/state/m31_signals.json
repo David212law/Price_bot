@@ -1,9 +1,9 @@
 {
   "signals": [
     {
-      "symbol": "BNB",
-      "action": "OPEN",
-      "time": 1794776400053
+      "symbol": "BTC",
+      "action": "CLOSE",
+      "time": 1794826800006
     }
   ]
 }
