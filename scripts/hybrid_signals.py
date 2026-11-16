@@ -168,3 +168,128 @@ SIGNAL_FUNCTIONS = {
     "bb_squeeze_20": signal_bb_squeeze_20,
     "donchian_break_20": signal_donchian_break_20,
 }
+
+
+# ═══════════════════════════════════════════════════════════════════
+# v2 ADDITIONS — ۱۰ تابع جدید برای Hybrid v2
+# ═══════════════════════════════════════════════════════════════════
+
+def signal_keltner_rev(df, period=20, mult=2.0):
+    """Price < EMA20 - 2*ATR (oversold) → 1 (LONG only)."""
+    if len(df) < 25:
+        return pd.Series(0, index=df.columns)
+    ema = df.ewm(span=period, adjust=False).mean().iloc[-1]
+    atr = df.diff().abs().rolling(period).mean().iloc[-1]
+    return (df.iloc[-1] < ema - mult * atr).astype(int)
+
+
+def signal_supertrend(df, period=10, mult=3.0):
+    """Simplified supertrend bullish → 1."""
+    if len(df) < 15:
+        return pd.Series(0, index=df.columns)
+    atr = df.diff().abs().rolling(period).mean().iloc[-1]
+    mid = (df.rolling(period).max().iloc[-1] + df.rolling(period).min().iloc[-1]) / 2
+    return (df.iloc[-1] > mid - mult * atr).astype(int)
+
+
+def signal_parabolic_sar(df, step=0.02, max_step=0.2):
+    """Simplified parabolic SAR: price > prev price → 1 (bullish)."""
+    if len(df) < 5:
+        return pd.Series(0, index=df.columns)
+    return (df.iloc[-1] > df.iloc[-5]).astype(int)
+
+
+def signal_bb_30_2_5(df, period=30, mult=2.5):
+    """Price < BB(30, 2.5σ) lower → 1 (oversold)."""
+    if len(df) < 35:
+        return pd.Series(0, index=df.columns)
+    ma = df.rolling(period).mean().iloc[-1]
+    sd = df.rolling(period).std().iloc[-1]
+    return (df.iloc[-1] < ma - mult * sd).astype(int)
+
+
+def signal_triple_ema(df):
+    """EMA10 > EMA20 > EMA50 → 1."""
+    if len(df) < 55:
+        return pd.Series(0, index=df.columns)
+    e10 = df.ewm(span=10, adjust=False).mean().iloc[-1]
+    e20 = df.ewm(span=20, adjust=False).mean().iloc[-1]
+    e50 = df.ewm(span=50, adjust=False).mean().iloc[-1]
+    return ((e10 > e20) & (e20 > e50)).astype(int)
+
+
+def signal_ichimoku(df, tenkan=9, kijun=26):
+    """Price > tenkan AND price > kijun → 1."""
+    if len(df) < 30:
+        return pd.Series(0, index=df.columns)
+    t = (df.rolling(tenkan).max().iloc[-1] + df.rolling(tenkan).min().iloc[-1]) / 2
+    k = (df.rolling(kijun).max().iloc[-1] + df.rolling(kijun).min().iloc[-1]) / 2
+    return ((df.iloc[-1] > t) & (df.iloc[-1] > k)).astype(int)
+
+
+def signal_price_sma_50(df, period=50):
+    """Price > SMA50 → 1."""
+    if len(df) < 55:
+        return pd.Series(0, index=df.columns)
+    return (df.iloc[-1] > df.rolling(period).mean().iloc[-1]).astype(int)
+
+
+def signal_dual_momentum(df, fast=20, slow=50):
+    """Return20 > 0 AND price > MA50 → 1."""
+    if len(df) < 55:
+        return pd.Series(0, index=df.columns)
+    ret = df.pct_change(fast).iloc[-1]
+    ma = df.rolling(slow).mean().iloc[-1]
+    return ((ret > 0) & (df.iloc[-1] > ma)).astype(int)
+
+
+def signal_obv(df, period=20):
+    """OBV trend up (OBV > OBV MA20) → 1."""
+    if len(df) < period + 5:
+        return pd.Series(0, index=df.columns)
+    obv_vals = (df.diff().fillna(0) > 0).astype(int).cumsum()
+    obv_ma = obv_vals.rolling(period).mean().iloc[-1]
+    return (obv_vals.iloc[-1] > obv_ma).astype(int)
+
+
+def signal_mfi(df, period=14, low=20, high=80):
+    """Simplified MFI < 20 → 1 (oversold)."""
+    if len(df) < period + 5:
+        return pd.Series(0, index=df.columns)
+    delta = df.diff()
+    pos = delta.clip(lower=0).rolling(period).sum()
+    neg = (-delta.clip(upper=0)).rolling(period).sum()
+    mfi = 100 - 100 / (1 + pos / neg.replace(0, 1e-9))
+    return (mfi.iloc[-1] < low).astype(int)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# v2 UPDATE — MAP کامل ۱۶ استراتژی
+# ═══════════════════════════════════════════════════════════════════
+
+SIGNAL_FUNCTIONS_V2 = {
+    # Original 12 (v1)
+    "ema_cross_20_50": signal_ema_cross_20_50,
+    "macd_12_26": signal_macd_12_26,
+    "donchian_20": signal_donchian_20,
+    "bb_20_2": signal_bb_20_2,
+    "rsi_14": signal_rsi_14,
+    "zscore_20": signal_zscore_20,
+    "roc_10": signal_roc_10,
+    "momentum_sma_20": signal_momentum_sma_20,
+    "rsi_momentum_14": signal_rsi_momentum_14,
+    "atr_breakout_14": signal_atr_breakout_14,
+    "bb_squeeze_20": signal_bb_squeeze_20,
+    "donchian_break_20": signal_donchian_break_20,
+    # New 10 (v2)
+    "keltner_rev": signal_keltner_rev,
+    "supertrend": signal_supertrend,
+    "parabolic_sar": signal_parabolic_sar,
+    "bb_30_2.5": signal_bb_30_2_5,
+    "triple_ema": signal_triple_ema,
+    "ichimoku": signal_ichimoku,
+    "price_sma_50": signal_price_sma_50,
+    "dual_momentum": signal_dual_momentum,
+    "obv": signal_obv,
+    "mfi": signal_mfi,
+}

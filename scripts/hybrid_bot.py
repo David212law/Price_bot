@@ -38,6 +38,13 @@ WEIGHTS_FILE = "data/hybrid_weights.json"
 PRICES_FILE = "data/wallex_tmn_all.json"
 TGJU_FILE = "data/usd_irr_tgju.json"
 LOG_FILE = "data/hybrid.log"
+V2_CONFIG_FILE = "data/hybrid_v2_config.json"
+
+sys.path.insert(0, "scripts")
+try:
+    from hybrid_signals import SIGNAL_FUNCTIONS_V2
+except ImportError:
+    SIGNAL_FUNCTIONS_V2 = {}
 
 MAX_ASSETS_PER_STRATEGY = 3          # top N assets per strategy
 
@@ -256,6 +263,54 @@ def rebalance(state, target_weights, prices, usd_rate):
 # MAIN
 # ═══════════════════════════════════════════════════════════════════
 
+
+# ═══════════════════════════════════════════════════════════════════
+# V2 — Build target portfolio from config (top 3 per strategy)
+# ═══════════════════════════════════════════════════════════════════
+
+def build_target_portfolio_v2(config, df, prices):
+    """V2: read config strategies, compute signals, top 3 assets per strategy."""
+    from pathlib import Path
+    try:
+        import pandas as pd
+        df_pd = pd.read_json(Path("data/wallex_tmn_all.json").resolve(), orient="columns").T
+    except Exception:
+        # fallback: use dict-of-lists
+        import json as _j
+        raw = _j.load(open("data/wallex_tmn_all.json"))
+        cols = {k[:-3]: v for k, v in raw.items() if k != "USDTTMN" and k.endswith("TMN") and len(v) >= 100}
+        import pandas as _pd
+        df_pd = _pd.DataFrame(cols)
+        df_pd.index = _pd.to_datetime(df_pd.index)
+        df_pd = df_pd.sort_index().ffill()
+    
+    target = {}
+    total_weight = 0.0
+    
+    for strategy_name, strategy_info in config.get("strategies", {}).items():
+        weight = strategy_info["weight"]
+        fn = SIGNAL_FUNCTIONS_V2.get(strategy_name)
+        if fn is None:
+            continue
+        try:
+            signals = fn(df_pd)
+            # فقط liquid assets
+            liquid_sig = signals[[c for c in signals.index if c in LIQUID_ASSETS]]
+            # top 3 assets با signal=1
+            active = liquid_sig[liquid_sig == 1].head(3)
+            if len(active) == 0:
+                continue
+            per_asset = weight / len(active)
+            for asset in active.index:
+                if asset in prices:
+                    target[asset] = target.get(asset, 0) + per_asset
+                    total_weight += per_asset
+        except Exception as e:
+            log(f"  ⚠️ {strategy_name}: {e}")
+    
+    return target, total_weight
+
+
 def main():
     log("=" * 80)
     log(" 🤖 HYBRID BOT — Paper execution")
@@ -275,13 +330,22 @@ def main():
     log(f"📊 Weights: {len(weights)} strategies")
     log(f"💰 Cash target: {cash_weight:.2%}")
 
-    # 2. Load prices
+    # 2. Load prices + v2 config
     prices = load_prices()
     latest_dates = load_latest_dates()
     usd_rate = get_usd_rate()
     log(f"💵 USD rate: {usd_rate:,.0f} Rial")
     log(f"🪙 Prices: {len(prices)} assets")
     log(f"📅 Fresh assets (≤7 days): {sum(1 for a in prices if is_price_fresh(a, latest_dates))}")
+    
+    # Check v2 config
+    use_v2 = os.path.exists(V2_CONFIG_FILE)
+    if use_v2:
+        with open(V2_CONFIG_FILE) as f:
+            v2_config = json.load(f)
+        log(f"🆕 Using HYBRID V2 config: {v2_config['selected_count']} strategies, backtest Sharpe {v2_config['backtest_sharpe']:.2f}")
+    else:
+        log(f"⚠️ No v2 config — falling back to v1 (equal-weight)")
 
     # 3. Load state
     state = load_state()
@@ -304,7 +368,11 @@ def main():
         return
 
     # 6. Build target portfolio
-    target = build_target_portfolio(weights, active_signals, prices)
+    if use_v2:
+        target, target_weight = build_target_portfolio_v2(v2_config, None, prices)
+        log(f"🎯 V2 target: {len(target)} assets, total weight: {target_weight:.2%}")
+    else:
+        target = build_target_portfolio(weights, active_signals, prices)
     log(f"🎯 Target: {len(target)} assets, total weight: {sum(target.values()):.2%}")
 
     # 7. Rebalance decision
