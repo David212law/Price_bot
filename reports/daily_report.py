@@ -56,6 +56,7 @@ def main():
         ("hl_predictive_bot_state.json", "Hyperliquid (Global)"),
         ("wallex_combined_state.json", "Wallex Combined"),
         ("wallex_lab_state.json", "Wallex Lab"),
+        ("hybrid_state.json", "Wallex Hybrid"),
     ]
     for fname, label in bots:
         path = f"data/{fname}"
