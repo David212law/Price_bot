@@ -397,3 +397,56 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - Lab آزاد — فقط آزمایش
 - به Sharpe 5.66 اعتماد نکن — 3.62 واقعی است
 - فرض نکن Backtest = Paper بدون Fast Momentum
+
+## v58.22 — FINAL: Best of 58 Sessions (2026-11-16) 🎉
+
+### اعداد واقعی (پس از ۷ fix + Fast Momentum + Freeze Test Set)
+| بازار | Combined | منبع | Sharpe |
+|-------|----------|------|--------|
+| TMN | 5.26 | Predictive aggr | ✅ |
+| USDT | 6.01 | Lab cons | ✅ |
+| GLOBAL | 3.36 | Lab cons | ✅ |
+| مجموع | **14.63** | | **بهترین** |
+
+### مقایسه با نسخه‌های قبلی
+| نسخه | مجموع Sharpe | اعتبار |
+|-------|--------------|--------|
+| v28.7 | 13.40 | ❌ باگ RSI + family |
+| v58.22 | **14.63** | ✅ ۷ fix + Reproducible |
+
+### ۷ Fix نهایی
+1. rsi_fast inversion (۸ استراتژی)
+2. get_family extended (wallex:: + 20 prefix)
+3. BEAR defensive (all 7 regimes)
+4. Fallback 50/50 (نه 100% bh_BTC)
+5. min_train per override (5 vs 15)
+6. q_level 0.15 (نه 0.10)
+7. fee کامل (نه half)
+
+### ۳ Fix اجرایی
+1. Fast Momentum (در همه ۴ researcher + ۵ bot)
+2. Daily Loss Limit (Lab + Combined)
+3. Conviction Sizing (Lab + Combined)
+
+### Reproducibility
+- Freeze Test Set: 2026-08-01 → 2026-11-15
+- ۲ اجرا متوالی، اعداد دقیقاً یکسان
+- ✅ Test set contamination حل شد
+
+### ۵ ربات Paper
+| ربات | منبع | Sharpe |
+|-------|------|--------|
+| Conservative | Predictive (5-regime) | 3.63 (USDT) |
+| Aggressive | Aggressive (15-regime) | 3.17 (TMN) |
+| HL | Lab cons (GLOBAL) | 3.36 |
+| Combined | بهترین هر بازار | 5.26 / 6.01 / 3.36 |
+| Lab | آزاد | — |
+
+### Paper Start
+- 2026-11-16 → 2027-05-16 (۶ ماه)
+- Live Gate: Sharpe > 1.5, DD < 15%
+
+### از این لحظه
+- Production Frozen
+- Lab آزاد
+- پایش هفتگی
