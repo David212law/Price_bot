@@ -163,16 +163,20 @@ def main():
     # === A/B test: چند ترکیب مختلف ===
     print(f"\n  🧪 A/B Test — ترکیب‌های مختلف:")
 
-    # ترکیب ۲
-    combo2 = (all_rets[selected[:2]] * pd.Series([weights[s] for s in selected[:2]])).sum(axis=1)
-    if abs(sum(weights[s] for s in selected[:2]) - 1.0) > 0.01:
-        combo2 = (all_rets[selected[:2]] * pd.Series([weights[s]/sum(weights[s] for s in selected[:2]) for s in selected[:2]])).sum(axis=1)
+    # ترکیب ۲ (با index صحیح)
+    top2 = selected[:2]
+    w2 = [weights[s] for s in top2]
+    w2_norm = [w/sum(w2) for w in w2]
+    combo2 = (all_rets[top2] * pd.Series(w2_norm, index=top2)).sum(axis=1)
     s2 = stats(combo2.tolist())
     print(f"    Top 2 استراتژی: Sharpe={s2['sharpe']:>6.2f}, DD={s2['dd']:>6.1%}")
 
     # ترکیب ۵
     if len(selected) >= 5:
-        combo5 = (all_rets[selected[:5]] * pd.Series([weights[s]/sum(weights[s] for s in selected[:5]) for s in selected[:5]])).sum(axis=1)
+        top5 = selected[:5]
+        w5 = [weights[s] for s in top5]
+        w5_norm = [w/sum(w5) for w in w5]
+        combo5 = (all_rets[top5] * pd.Series(w5_norm, index=top5)).sum(axis=1)
         s5 = stats(combo5.tolist())
         print(f"    Top 5 استراتژی: Sharpe={s5['sharpe']:>6.2f}, DD={s5['dd']:>6.1%}")
 
