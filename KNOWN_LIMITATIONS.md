@@ -488,3 +488,41 @@ This combines defensive protection in bear markets with aggressive capture in bu
 - Lab آزاد — فقط آزمایش
 - پایش هفتگی: هر شنبه
 - Trigger ۴ Bot هر ۴ ساعت (خودکار)
+
+## v58.24 — Paper 6-Month Rules (2026-11-16)
+
+### قوانین از ۳ مشورت AI (Claude, AI فارسی, AI پایه)
+
+#### قوانین Production (Frozen)
+1. تا 2027-05-16 هیچ تغییری در ۴ Production نده
+2. فقط پایش هفتگی
+3. اگر Regime به BULL/BULL_STRONG برگشت → Bot با کد صحیح (۱۰x fix شده) معامله می‌کند
+4. Kill Switch 90% فعال
+
+#### قوانین Lab (آزاد)
+1. Lab می‌تواند هر استراتژی جدید تست کند
+2. هر تست جدید = یک commit جداگانه
+3. نتایج فقط در Lab، نه Production
+
+#### آگاهی مهم — Paper در TETHER
+- اگر بازار bear بماند، Paper = TETHER = هیچ استراتژی تست نمی‌شود
+- ۶ ماه Paper فقط وقتی معنی دارد که حداقل ۳ ماه آن BULL باشد
+- اگر تا 2027-05-16 بازار bear ماند → Live Gate تمدید می‌شود
+
+#### اقدامات باقی‌مانده (برای Lab)
+1. Slippage Stress Test (0.3% تا 5%)
+2. True OOS Split (Train/Val/Test سه‌گانه)
+3. ADX + BB Width برای Regime Detection بهتر
+4. Correlation Monitor (در Runtime)
+
+#### باگ واحد (تأیید شده)
+- BTCTMN به تومان است، نه ریال
+- Fix: price_usd = price_toman * 10 / usd_rate_rial
+- ۴ Wallex bot fix شدند
+- تأیید ریاضی: BTC = $64,442 (درست)
+
+#### DSR (Deflated Sharpe)
+- Sharpe واقعی همه ربات‌ها مثبت
+- Combined TMN: 3.40 (عالی)
+- Combined USDT: 4.15 (عالی)
+- Conservative: 1.76 / 1.77 (خوب)
