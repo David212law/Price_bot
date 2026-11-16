@@ -12,6 +12,7 @@ def strat_bollinger(candles, period=20, mult=2.0, fee_multiplier=1.0):
     at = atr(candles, 14)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(period, len(candles)):
         if None in (up[i], lo[i], mid[i], at[i-1]): continue
         if not pos:
@@ -39,6 +40,7 @@ def strat_rsi_reversal(candles, period=14, low=30, high=70, fee_multiplier=1.0):
     at = atr(candles, 14)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(period+1, len(candles)):
         if None in (rv[i], rv[i-1], at[i-1]): continue
         if not pos:
@@ -66,6 +68,7 @@ def strat_zscore(candles, period=20, threshold=2.0, fee_multiplier=1.0):
     at = atr(candles, 14)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(period, len(candles)):
         if None in (mv[i], sv[i], at[i-1]): continue
         std = max(sv[i] - mv[i]*mv[i], 0) ** 0.5
@@ -96,6 +99,7 @@ def strat_keltner_reversion(candles, period=20, mult=2.0, fee_multiplier=1.0):
     at = atr(candles, period)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(period+1, len(candles)):
         if None in (m[i], at[i]): continue
         up = m[i] + mult * at[i]
@@ -103,8 +107,7 @@ def strat_keltner_reversion(candles, period=20, mult=2.0, fee_multiplier=1.0):
         if not pos:
             if candles[i]["c"] < lo:
                 pos = {"side":"LONG","entry":candles[i]["c"],"sl":lo-at[i],"tp":m[i]}
-            elif candles[i]["c"] > up:
-                pos = {"side":"SHORT","entry":candles[i]["c"],"sl":up+at[i],"tp":m[i]}
+            # SHORT حذف شد — Wallex Spot نمی‌تواند short کند
         elif pos:
             ex = None
             if pos["side"]=="LONG":
@@ -125,6 +128,7 @@ def strat_rsi_divergence(candles, period=14, lookback=10, fee_multiplier=1.0):
     at = atr(candles, 14)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(period + lookback, len(candles)):
         if rv[i] is None or rv[i-lookback] is None or at[i-1] is None: continue
         if not pos:
@@ -156,6 +160,7 @@ def strat_mean_rev_sma(candles, period=50, deviation=0.02, fee_multiplier=1.0):
     at = atr(candles, 14)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(period, len(candles)):
         if None in (sv[i], at[i-1]): continue
         if not pos:
@@ -184,6 +189,7 @@ def strat_connors_rsi(candles, rsi_period=3, sma_period=200, fee_multiplier=1.0)
     at = atr(candles, 14)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(sma_period, len(candles)):
         if None in (rv[i], sv[i], at[i-1]): continue
         if not pos:
@@ -205,6 +211,7 @@ def strat_rsi_mean(candles, period=14, low=40, high=60, fee_multiplier=1.0):
     ef = ema(closes, 50)
     trades, pos = [], None
     fee = 0.0006 * fee_multiplier
+    SLIPPAGE = 0.003  # 0.3% Wallex
     for i in range(period+1, len(candles)):
         if None in (rv[i], ef[i]): continue
         if not pos:
