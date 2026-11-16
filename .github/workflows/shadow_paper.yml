@@ -68,6 +68,24 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: python exchanges/aster/m11_aster_shadow_trend_allocator.py
 
+      - name: Aster Shadow LV (Low Vol)
+        continue-on-error: true
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python exchanges/aster/m11_aster_shadow_lv_allocator.py
+
+      - name: Aster Shadow RP (Risk Parity)
+        continue-on-error: true
+        env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: python exchanges/aster/m11_aster_shadow_rp_allocator.py
+
       - name: Commit shadow states
         if: always()
         run: |
@@ -78,6 +96,8 @@ jobs:
           git add exchanges/hyperliquid/state/m11_hl_shadow_mom_portfolio.json 2>/dev/null || true
           git add exchanges/hyperliquid/state/m11_hl_shadow_mlp_portfolio.json 2>/dev/null || true
           git add exchanges/aster/state/m11_aster_shadow_trend_state.json 2>/dev/null || true
+          git add exchanges/aster/state/m11_aster_shadow_lv_state.json 2>/dev/null || true
+          git add exchanges/aster/state/m11_aster_shadow_rp_state.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "Auto: shadow states $(date -u +%Y-%m-%d-%H) [skip ci]" || true
           git pull --rebase origin main || true
           git push || echo "push failed"
