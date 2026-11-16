@@ -68,7 +68,7 @@ def load_state():
             "initial_capital": INITIAL_CAPITAL,
             "equity": INITIAL_CAPITAL,
             "peak_equity": INITIAL_CAPITAL,
-            "cash_tmn": INITIAL_CAPITAL * 50_000,  # placeholder, updated on first run
+            "cash_tmn": INITIAL_CAPITAL * 2_713_800,  # 10K USD × ~Rial rate (updated on run)
             "usdt_amount": 0.0,
             "holdings": {},
             "last_regime": None,
@@ -90,7 +90,7 @@ def load_state_fresh():
         "initial_capital": INITIAL_CAPITAL,
         "equity": INITIAL_CAPITAL,
         "peak_equity": INITIAL_CAPITAL,
-        "cash_tmn": INITIAL_CAPITAL * 50_000,
+        "cash_tmn": INITIAL_CAPITAL * 2_713_800,
         "usdt_amount": 0.0,
         "holdings": {},
         "last_regime": None,
