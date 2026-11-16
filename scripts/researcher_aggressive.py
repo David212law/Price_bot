@@ -681,9 +681,22 @@ def process_market(name, df, fee, max_strat_override=None):
     
     # (Profiler loader deprecated — unified DB is used)
     
-    split_idx = int(len(df) * 0.8)  # 80% Train, 20% Holdout
-    train_mask = df.index < df.index[split_idx]
-    test_mask = df.index >= df.index[split_idx]
+    # ═══════════════════════════════════════════════════════════════
+    # FIX: Freeze test set (Nov 15, 2026 — fixed period)
+    # این کار برای Reproducibility ضروری است
+    # ═══════════════════════════════════════════════════════════════
+    TEST_SET_START = "2026-08-01"
+    TEST_SET_END = "2026-11-15"
+    train_mask = df.index < TEST_SET_START
+    test_mask = (df.index >= TEST_SET_START) & (df.index <= TEST_SET_END)
+    if test_mask.sum() < 10:
+        # اگر داده کافی نبود، از حالت قبلی استفاده کن
+        split_idx = int(len(df) * 0.8)
+        train_mask = df.index < df.index[split_idx]
+        test_mask = df.index >= df.index[split_idx]
+        print(f"  ⚠️ Not enough data in fixed test set — using 80/20 fallback")
+    else:
+        print(f"  ✅ Fixed test set: {TEST_SET_START} → {TEST_SET_END} ({test_mask.sum()} days)")
     
     # Oracle
     if "BTC" in df.columns:
