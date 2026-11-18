@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "price_momentum_20",
+  "regime": "FLAT",
+  "n": 298,
+  "win_rate": 0.2785,
+  "avg_ret": -0.032033
+}

@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "parabolic_sar",
+  "regime": "CRASH",
+  "n": 8,
+  "win_rate": 1.0,
+  "avg_ret": 0.230994
+}

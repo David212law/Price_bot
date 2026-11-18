@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "vol_breakout_donch",
+  "regime": "BEAR",
+  "n": 131,
+  "win_rate": 0.7481,
+  "avg_ret": 0.021195
+}

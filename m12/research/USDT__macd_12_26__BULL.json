@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "macd_12_26",
+  "regime": "BULL",
+  "n": 387,
+  "win_rate": 0.2739,
+  "avg_ret": 0.039021
+}

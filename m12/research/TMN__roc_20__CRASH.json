@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "roc_20",
+  "regime": "CRASH",
+  "n": 12,
+  "win_rate": 0.5833,
+  "avg_ret": 0.051121
+}

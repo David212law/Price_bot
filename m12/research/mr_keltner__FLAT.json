@@ -1,0 +1,7 @@
+{
+  "strategy": "mr_keltner",
+  "regime": "FLAT",
+  "n": 134,
+  "win_rate": 0.2761,
+  "avg_ret": -0.011587
+}

@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "bb_squeeze_20",
+  "regime": "FLAT",
+  "n": 38,
+  "win_rate": 0.3684,
+  "avg_ret": -0.014319
+}

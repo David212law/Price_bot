@@ -1,0 +1,25 @@
+name: M12 Paper
+on:
+  schedule: [{cron: '20 */4 * * *'}]
+  workflow_dispatch:
+permissions: {contents: write}
+concurrency: {group: m12-paper, cancel-in-progress: false}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install requests
+      - env:
+          BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
+          BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
+        run: cd m12 && python3 bot.py
+      - if: always()
+        run: |
+          git config user.name bot; git config user.email bot@bot
+          git add m12/state.json || true
+          git diff --staged --quiet || git commit -m "Auto: M12 [skip ci]"
+          git pull --rebase origin main || true
+          git push || echo fail

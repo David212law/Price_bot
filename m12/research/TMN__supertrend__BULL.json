@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "supertrend",
+  "regime": "BULL",
+  "n": 449,
+  "win_rate": 0.2094,
+  "avg_ret": 0.052815
+}

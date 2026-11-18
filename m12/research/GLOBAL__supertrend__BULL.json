@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "supertrend",
+  "regime": "BULL",
+  "n": 182,
+  "win_rate": 0.1703,
+  "avg_ret": 0.041585
+}

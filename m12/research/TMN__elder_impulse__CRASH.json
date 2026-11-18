@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "elder_impulse",
+  "regime": "CRASH",
+  "n": 17,
+  "win_rate": 0.7059,
+  "avg_ret": 0.060578
+}

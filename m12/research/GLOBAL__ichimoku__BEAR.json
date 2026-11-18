@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "ichimoku",
+  "regime": "BEAR",
+  "n": 24,
+  "win_rate": 0.4583,
+  "avg_ret": 0.012589
+}

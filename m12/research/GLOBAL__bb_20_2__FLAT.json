@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "bb_20_2",
+  "regime": "FLAT",
+  "n": 136,
+  "win_rate": 0.4632,
+  "avg_ret": 0.016114
+}

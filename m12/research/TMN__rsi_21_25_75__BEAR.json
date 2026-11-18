@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "rsi_21_25_75",
+  "regime": "BEAR",
+  "n": 5,
+  "win_rate": 0.4,
+  "avg_ret": -0.0187
+}

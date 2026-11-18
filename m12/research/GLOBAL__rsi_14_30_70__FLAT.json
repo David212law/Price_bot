@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "rsi_14_30_70",
+  "regime": "FLAT",
+  "n": 66,
+  "win_rate": 0.4091,
+  "avg_ret": -0.003996
+}

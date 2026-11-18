@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "bb_20_2",
+  "regime": "CRASH",
+  "n": 20,
+  "win_rate": 0.05,
+  "avg_ret": -0.044506
+}

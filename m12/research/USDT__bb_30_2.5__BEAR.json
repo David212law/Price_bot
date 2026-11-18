@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "bb_30_2.5",
+  "regime": "BEAR",
+  "n": 73,
+  "win_rate": 0.3288,
+  "avg_ret": 0.04266
+}

@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "rsi_momentum_14",
+  "regime": "BULL",
+  "n": 204,
+  "win_rate": 0.402,
+  "avg_ret": 0.006117
+}

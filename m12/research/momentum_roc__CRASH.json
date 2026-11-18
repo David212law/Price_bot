@@ -1,0 +1,7 @@
+{
+  "strategy": "momentum_roc",
+  "regime": "CRASH",
+  "n": 5,
+  "win_rate": 0.2,
+  "avg_ret": -0.014911
+}

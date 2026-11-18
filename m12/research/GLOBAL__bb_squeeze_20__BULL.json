@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "bb_squeeze_20",
+  "regime": "BULL",
+  "n": 21,
+  "win_rate": 0.1905,
+  "avg_ret": -0.035391
+}

@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "keltner_rev",
+  "regime": "CRASH",
+  "n": 78,
+  "win_rate": 0.6154,
+  "avg_ret": 0.016375
+}

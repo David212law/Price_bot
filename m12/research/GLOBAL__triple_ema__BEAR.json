@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "triple_ema",
+  "regime": "BEAR",
+  "n": 31,
+  "win_rate": 0.129,
+  "avg_ret": -0.046661
+}

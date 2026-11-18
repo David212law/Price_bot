@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "rsi_14_30_70",
+  "regime": "BEAR",
+  "n": 57,
+  "win_rate": 0.193,
+  "avg_ret": -0.060787
+}

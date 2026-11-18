@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "rsi_21_25_75",
+  "regime": "BEAR",
+  "n": 7,
+  "win_rate": 0.1429,
+  "avg_ret": -0.05768
+}

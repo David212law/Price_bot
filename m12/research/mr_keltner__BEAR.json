@@ -1,0 +1,7 @@
+{
+  "strategy": "mr_keltner",
+  "regime": "BEAR",
+  "n": 58,
+  "win_rate": 0.4138,
+  "avg_ret": -0.006653
+}

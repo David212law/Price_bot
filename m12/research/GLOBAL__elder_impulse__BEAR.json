@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "elder_impulse",
+  "regime": "BEAR",
+  "n": 60,
+  "win_rate": 0.4667,
+  "avg_ret": 0.028256
+}

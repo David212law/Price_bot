@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "ema_cross_20_50",
+  "regime": "BULL",
+  "n": 46,
+  "win_rate": 0.3696,
+  "avg_ret": 0.028603
+}

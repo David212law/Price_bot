@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "ema_cross_20_50",
+  "regime": "BEAR",
+  "n": 7,
+  "win_rate": 0.0,
+  "avg_ret": -0.174668
+}

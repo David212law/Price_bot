@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "zscore_20",
+  "regime": "BEAR",
+  "n": 141,
+  "win_rate": 0.2482,
+  "avg_ret": -0.021103
+}

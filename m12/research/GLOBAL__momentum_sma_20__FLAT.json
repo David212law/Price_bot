@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "momentum_sma_20",
+  "regime": "FLAT",
+  "n": 247,
+  "win_rate": 0.3441,
+  "avg_ret": -0.000482
+}

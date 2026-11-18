@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "vwap",
+  "regime": "CRASH",
+  "n": 38,
+  "win_rate": 0.2368,
+  "avg_ret": -0.022628
+}

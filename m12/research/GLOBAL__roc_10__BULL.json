@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "roc_10",
+  "regime": "BULL",
+  "n": 196,
+  "win_rate": 0.3622,
+  "avg_ret": 0.00055
+}

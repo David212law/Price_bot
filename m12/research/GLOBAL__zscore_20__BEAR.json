@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "zscore_20",
+  "regime": "BEAR",
+  "n": 53,
+  "win_rate": 0.2264,
+  "avg_ret": -0.018545
+}

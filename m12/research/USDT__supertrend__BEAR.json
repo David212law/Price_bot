@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "supertrend",
+  "regime": "BEAR",
+  "n": 84,
+  "win_rate": 0.2619,
+  "avg_ret": 0.020218
+}

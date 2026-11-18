@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "supertrend",
+  "regime": "FLAT",
+  "n": 432,
+  "win_rate": 0.162,
+  "avg_ret": 0.004854
+}

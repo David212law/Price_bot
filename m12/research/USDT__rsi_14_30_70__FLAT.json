@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "rsi_14_30_70",
+  "regime": "FLAT",
+  "n": 160,
+  "win_rate": 0.3875,
+  "avg_ret": -0.017035
+}

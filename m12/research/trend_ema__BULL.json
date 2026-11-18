@@ -1,0 +1,7 @@
+{
+  "strategy": "trend_ema",
+  "regime": "BULL",
+  "n": 175,
+  "win_rate": 0.4229,
+  "avg_ret": -0.002202
+}

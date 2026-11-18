@@ -1,0 +1,7 @@
+{
+  "strategy": "trend_ema",
+  "regime": "FLAT",
+  "n": 36,
+  "win_rate": 0.4167,
+  "avg_ret": -0.001394
+}

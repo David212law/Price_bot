@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "connors_rsi",
+  "regime": "FLAT",
+  "n": 24,
+  "win_rate": 0.5417,
+  "avg_ret": 0.016488
+}

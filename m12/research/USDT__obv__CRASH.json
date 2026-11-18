@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "obv",
+  "regime": "CRASH",
+  "n": 14,
+  "win_rate": 0.3571,
+  "avg_ret": 0.028738
+}

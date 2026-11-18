@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "momentum_ema",
+  "regime": "BEAR",
+  "n": 85,
+  "win_rate": 0.5765,
+  "avg_ret": 0.113642
+}

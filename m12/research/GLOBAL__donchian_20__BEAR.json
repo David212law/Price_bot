@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "donchian_20",
+  "regime": "BEAR",
+  "n": 25,
+  "win_rate": 0.4,
+  "avg_ret": 0.030584
+}

@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "dual_momentum",
+  "regime": "FLAT",
+  "n": 66,
+  "win_rate": 0.5152,
+  "avg_ret": 0.093263
+}

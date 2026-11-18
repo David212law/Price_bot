@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "momentum_ema",
+  "regime": "CRASH",
+  "n": 11,
+  "win_rate": 0.6364,
+  "avg_ret": 0.078491
+}

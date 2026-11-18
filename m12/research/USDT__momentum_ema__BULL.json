@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "momentum_ema",
+  "regime": "BULL",
+  "n": 418,
+  "win_rate": 0.3589,
+  "avg_ret": -0.000184
+}

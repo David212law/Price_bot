@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "ichimoku",
+  "regime": "FLAT",
+  "n": 377,
+  "win_rate": 0.4164,
+  "avg_ret": 0.014411
+}

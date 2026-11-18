@@ -1,0 +1,7 @@
+{
+  "strategy": "momentum_roc",
+  "regime": "BULL",
+  "n": 85,
+  "win_rate": 0.4118,
+  "avg_ret": -0.002064
+}

@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "triple_ema",
+  "regime": "BEAR",
+  "n": 57,
+  "win_rate": 0.3333,
+  "avg_ret": 0.08425
+}

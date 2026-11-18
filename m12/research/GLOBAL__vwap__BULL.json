@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "vwap",
+  "regime": "BULL",
+  "n": 418,
+  "win_rate": 0.4426,
+  "avg_ret": 0.001683
+}

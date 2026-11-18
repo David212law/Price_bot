@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "vol_breakout_donch",
+  "regime": "BULL",
+  "n": 475,
+  "win_rate": 0.6947,
+  "avg_ret": -0.028423
+}

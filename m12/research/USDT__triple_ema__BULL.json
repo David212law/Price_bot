@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "triple_ema",
+  "regime": "BULL",
+  "n": 467,
+  "win_rate": 0.2527,
+  "avg_ret": -0.000779
+}

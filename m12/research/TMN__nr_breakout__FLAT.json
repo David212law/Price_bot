@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "nr_breakout",
+  "regime": "FLAT",
+  "n": 13,
+  "win_rate": 0.4615,
+  "avg_ret": -0.105288
+}

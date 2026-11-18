@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "connors_rsi",
+  "regime": "FLAT",
+  "n": 38,
+  "win_rate": 0.2368,
+  "avg_ret": -0.042993
+}

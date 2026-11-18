@@ -1,0 +1,12 @@
+{
+  "equity": 10000.0,
+  "trades": [
+    {
+      "time": 798,
+      "market": "USDT",
+      "strategy": "keltner_rev",
+      "weight": 0.1027,
+      "ret": 0.03184230798708052
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "roc_10",
+  "regime": "BULL",
+  "n": 480,
+  "win_rate": 0.4167,
+  "avg_ret": 0.003498
+}

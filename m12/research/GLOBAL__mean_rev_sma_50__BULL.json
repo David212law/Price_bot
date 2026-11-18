@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "mean_rev_sma_50",
+  "regime": "BULL",
+  "n": 242,
+  "win_rate": 0.3512,
+  "avg_ret": 0.015218
+}

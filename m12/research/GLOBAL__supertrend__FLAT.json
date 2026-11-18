@@ -1,0 +1,8 @@
+{
+  "market": "GLOBAL",
+  "strategy": "supertrend",
+  "regime": "FLAT",
+  "n": 178,
+  "win_rate": 0.1854,
+  "avg_ret": 0.01486
+}

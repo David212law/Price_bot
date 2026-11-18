@@ -1,0 +1,7 @@
+{
+  "strategy": "mr_keltner",
+  "regime": "CRASH",
+  "n": 10,
+  "win_rate": 0.5,
+  "avg_ret": 0.003038
+}
