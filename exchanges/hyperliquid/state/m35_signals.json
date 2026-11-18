@@ -1,3 +1,10 @@
 {
-  "signals": []
+  "signals": [
+    {
+      "symbol": "ETH",
+      "action": "OPEN_SHORT",
+      "price": 1824.3,
+      "atr": 122.56428571428569
+    }
+  ]
 }
