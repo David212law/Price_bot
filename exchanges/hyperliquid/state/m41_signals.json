@@ -1,18 +1,3 @@
 {
-  "signals": [
-    {
-      "symbol": "BTC",
-      "action": "OPEN_SHORT",
-      "price": 63112.0,
-      "sl": 65314.142857142855,
-      "tp": 58707.71428571428
-    },
-    {
-      "symbol": "ETH",
-      "action": "OPEN_SHORT",
-      "price": 1768.4,
-      "sl": 1847.6142857142859,
-      "tp": 1609.9714285714285
-    }
-  ]
+  "signals": []
 }

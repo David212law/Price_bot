@@ -1,10 +1,16 @@
 {
   "signals": [
     {
-      "symbol": "ETH",
+      "symbol": "SOL",
       "action": "OPEN_SHORT",
-      "price": 1824.3,
-      "atr": 122.56428571428569
+      "price": 73.604,
+      "atr": 4.739428571428568
+    },
+    {
+      "symbol": "AVAX",
+      "action": "OPEN_SHORT",
+      "price": 7.028,
+      "atr": 0.5847357142857142
     }
   ]
 }
