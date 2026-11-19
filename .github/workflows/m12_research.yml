@@ -12,6 +12,7 @@ jobs:
         with: {python-version: '3.11'}
       - run: pip install requests
       - run: python3 m12/calc_test.py
+        - run: cd m12/researcher && python3 prefilter.py
       - run: cd m12/researcher && python3 researcher.py
       - run: cd m12/researcher && python3 verify.py
       - if: always()
