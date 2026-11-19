@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "momentum_ema",
   "regime": "CRASH",
-  "n": 17,
-  "win_rate": 0.7647,
-  "avg_ret": 0.167965
+  "n": 29,
+  "win_rate": 0.6552,
+  "avg_ret": 0.104575
 }

@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "keltner_rev",
   "regime": "CRASH",
-  "n": 165,
-  "win_rate": 0.6182,
-  "avg_ret": 0.020515
+  "n": 219,
+  "win_rate": 0.5845,
+  "avg_ret": 0.017406
 }

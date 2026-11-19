@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "obv",
   "regime": "BEAR",
-  "n": 161,
-  "win_rate": 0.5217,
-  "avg_ret": 0.063111
+  "n": 312,
+  "win_rate": 0.4872,
+  "avg_ret": 0.049198
 }

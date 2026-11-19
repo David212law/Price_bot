@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "ichimoku",
   "regime": "FLAT",
-  "n": 385,
-  "win_rate": 0.439,
-  "avg_ret": 0.025486
+  "n": 1334,
+  "win_rate": 0.4055,
+  "avg_ret": 0.025189
 }

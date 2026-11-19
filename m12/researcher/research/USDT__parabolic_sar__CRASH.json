@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "parabolic_sar",
   "regime": "CRASH",
-  "n": 20,
-  "win_rate": 0.3,
-  "avg_ret": 0.040204
+  "n": 52,
+  "win_rate": 0.3654,
+  "avg_ret": 0.039384
 }

@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "mean_rev_sma_50",
   "regime": "CRASH",
-  "n": 47,
-  "win_rate": 0.2553,
-  "avg_ret": -0.010171
+  "n": 80,
+  "win_rate": 0.2375,
+  "avg_ret": -0.020482
 }

@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "macd_12_26",
   "regime": "BEAR",
-  "n": 165,
-  "win_rate": 0.4424,
-  "avg_ret": 0.006037
+  "n": 494,
+  "win_rate": 0.3947,
+  "avg_ret": 0.002187
 }

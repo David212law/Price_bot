@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "roc_20",
   "regime": "BULL",
-  "n": 485,
-  "win_rate": 0.3608,
-  "avg_ret": 0.002438
+  "n": 1553,
+  "win_rate": 0.3561,
+  "avg_ret": 0.001466
 }

@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "roc_10",
   "regime": "BEAR",
-  "n": 140,
-  "win_rate": 0.6071,
-  "avg_ret": 0.101815
+  "n": 291,
+  "win_rate": 0.488,
+  "avg_ret": 0.050642
 }

@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "atr_breakout_14",
   "regime": "BULL",
-  "n": 680,
-  "win_rate": 0.3838,
-  "avg_ret": 0.007088
+  "n": 2464,
+  "win_rate": 0.3807,
+  "avg_ret": 0.007822
 }

@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "rsi_21_25_75",
+  "regime": "CRASH",
+  "n": 5,
+  "win_rate": 0.0,
+  "avg_ret": -0.108969
+}

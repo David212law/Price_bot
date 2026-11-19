@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "bb_20_2",
   "regime": "BULL",
-  "n": 546,
-  "win_rate": 0.348,
-  "avg_ret": -0.000362
+  "n": 1809,
+  "win_rate": 0.3753,
+  "avg_ret": 0.012011
 }

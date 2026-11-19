@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "rsi_divergence",
+  "regime": "CRASH",
+  "n": 5,
+  "win_rate": 0.0,
+  "avg_ret": -0.069464
+}

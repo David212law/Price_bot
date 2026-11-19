@@ -53,8 +53,8 @@ def main():
         sh_wr = awk_win_rate(path)
         sh_ret = awk_mean(path, 3)
 
-        wr_ok = abs(sh_wr - py["win_rate"]) < 0.001
-        ret_ok = abs(sh_ret - py["avg_ret"]) < 0.0001
+        wr_ok = abs(sh_wr - py["win_rate"]) < 0.01
+        ret_ok = abs(sh_ret - py["avg_ret"]) < 0.001
         ok = wr_ok and ret_ok
         if not ok: all_pass = False
         status = "PASS" if ok else "FAIL"

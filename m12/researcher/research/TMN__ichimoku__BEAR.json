@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "ichimoku",
   "regime": "BEAR",
-  "n": 100,
-  "win_rate": 0.46,
-  "avg_ret": 0.041162
+  "n": 275,
+  "win_rate": 0.4655,
+  "avg_ret": 0.038459
 }

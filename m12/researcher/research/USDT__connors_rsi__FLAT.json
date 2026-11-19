@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "connors_rsi",
   "regime": "FLAT",
-  "n": 30,
-  "win_rate": 0.3667,
-  "avg_ret": -0.006777
+  "n": 90,
+  "win_rate": 0.3333,
+  "avg_ret": -0.019363
 }

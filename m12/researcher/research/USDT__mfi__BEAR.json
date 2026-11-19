@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "mfi",
   "regime": "BEAR",
-  "n": 13,
-  "win_rate": 0.1538,
-  "avg_ret": -0.057536
+  "n": 148,
+  "win_rate": 0.3919,
+  "avg_ret": -0.006184
 }

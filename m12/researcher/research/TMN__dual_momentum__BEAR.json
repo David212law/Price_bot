@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "dual_momentum",
   "regime": "BEAR",
-  "n": 58,
-  "win_rate": 0.3448,
-  "avg_ret": 0.172162
+  "n": 161,
+  "win_rate": 0.4099,
+  "avg_ret": 0.086237
 }

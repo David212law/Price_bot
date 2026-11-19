@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "bb_squeeze_20",
   "regime": "FLAT",
-  "n": 51,
-  "win_rate": 0.1961,
-  "avg_ret": -0.041373
+  "n": 178,
+  "win_rate": 0.2865,
+  "avg_ret": -0.011186
 }

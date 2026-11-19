@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "rsi_21_25_75",
   "regime": "BEAR",
-  "n": 14,
-  "win_rate": 0.2143,
-  "avg_ret": -0.031413
+  "n": 76,
+  "win_rate": 0.3026,
+  "avg_ret": -0.013885
 }

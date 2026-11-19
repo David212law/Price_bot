@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "connors_rsi",
   "regime": "BEAR",
-  "n": 53,
-  "win_rate": 0.1321,
-  "avg_ret": -0.062344
+  "n": 84,
+  "win_rate": 0.1071,
+  "avg_ret": -0.0719
 }

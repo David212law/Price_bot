@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "keltner_rev",
   "regime": "BEAR",
-  "n": 635,
-  "win_rate": 0.5528,
-  "avg_ret": 0.019102
+  "n": 1606,
+  "win_rate": 0.5722,
+  "avg_ret": 0.034436
 }

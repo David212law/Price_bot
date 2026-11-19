@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "price_momentum_20",
   "regime": "BULL",
-  "n": 809,
-  "win_rate": 0.4858,
-  "avg_ret": 0.025432
+  "n": 1735,
+  "win_rate": 0.4311,
+  "avg_ret": 0.010097
 }

@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "obv",
   "regime": "FLAT",
-  "n": 294,
-  "win_rate": 0.381,
-  "avg_ret": 0.008736
+  "n": 1060,
+  "win_rate": 0.3764,
+  "avg_ret": 0.010125
 }

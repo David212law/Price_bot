@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "atr_breakout_14",
   "regime": "FLAT",
-  "n": 837,
-  "win_rate": 0.3297,
-  "avg_ret": -0.008597
+  "n": 2381,
+  "win_rate": 0.3578,
+  "avg_ret": -0.002852
 }

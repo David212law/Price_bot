@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "dual_momentum",
   "regime": "BULL",
-  "n": 289,
-  "win_rate": 0.4014,
-  "avg_ret": 0.020609
+  "n": 704,
+  "win_rate": 0.3551,
+  "avg_ret": -0.014616
 }

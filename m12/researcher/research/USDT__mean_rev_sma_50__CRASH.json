@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "mean_rev_sma_50",
   "regime": "CRASH",
-  "n": 24,
-  "win_rate": 0.125,
-  "avg_ret": -0.047616
+  "n": 55,
+  "win_rate": 0.2545,
+  "avg_ret": -0.018552
 }

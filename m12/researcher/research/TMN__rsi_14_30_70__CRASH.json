@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "rsi_14_30_70",
   "regime": "CRASH",
-  "n": 22,
-  "win_rate": 0.0909,
-  "avg_ret": -0.074053
+  "n": 30,
+  "win_rate": 0.1333,
+  "avg_ret": -0.05951
 }

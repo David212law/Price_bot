@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "macd_12_26",
   "regime": "CRASH",
-  "n": 19,
-  "win_rate": 0.7368,
-  "avg_ret": 0.16948
+  "n": 42,
+  "win_rate": 0.619,
+  "avg_ret": 0.132965
 }

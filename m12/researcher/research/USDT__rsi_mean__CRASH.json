@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "rsi_mean",
+  "regime": "CRASH",
+  "n": 10,
+  "win_rate": 0.3,
+  "avg_ret": -0.0058
+}

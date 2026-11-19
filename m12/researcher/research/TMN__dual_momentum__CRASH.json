@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "dual_momentum",
   "regime": "CRASH",
-  "n": 10,
-  "win_rate": 0.3,
-  "avg_ret": -0.061779
+  "n": 21,
+  "win_rate": 0.4286,
+  "avg_ret": 0.044992
 }

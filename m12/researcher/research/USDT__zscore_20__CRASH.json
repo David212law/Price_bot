@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "zscore_20",
   "regime": "CRASH",
-  "n": 23,
-  "win_rate": 0.0435,
-  "avg_ret": -0.049447
+  "n": 46,
+  "win_rate": 0.1739,
+  "avg_ret": -0.021324
 }

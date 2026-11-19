@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "zscore_20",
   "regime": "BULL",
-  "n": 984,
-  "win_rate": 0.2571,
-  "avg_ret": -0.012935
+  "n": 2219,
+  "win_rate": 0.3051,
+  "avg_ret": -0.001113
 }

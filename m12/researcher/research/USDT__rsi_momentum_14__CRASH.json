@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "rsi_momentum_14",
   "regime": "CRASH",
-  "n": 9,
-  "win_rate": 0.8889,
-  "avg_ret": 0.111316
+  "n": 28,
+  "win_rate": 0.6071,
+  "avg_ret": 0.064731
 }

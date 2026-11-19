@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "obv",
   "regime": "CRASH",
-  "n": 16,
-  "win_rate": 0.375,
-  "avg_ret": 0.027873
+  "n": 28,
+  "win_rate": 0.3571,
+  "avg_ret": 0.009844
 }

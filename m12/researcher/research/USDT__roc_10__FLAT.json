@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "roc_10",
   "regime": "FLAT",
-  "n": 274,
-  "win_rate": 0.3577,
-  "avg_ret": 0.008545
+  "n": 1088,
+  "win_rate": 0.3621,
+  "avg_ret": 0.016403
 }

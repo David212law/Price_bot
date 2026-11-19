@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "donchian_20",
   "regime": "FLAT",
-  "n": 278,
-  "win_rate": 0.3885,
-  "avg_ret": 0.007326
+  "n": 942,
+  "win_rate": 0.3726,
+  "avg_ret": -0.000842
 }

@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "rsi_divergence",
   "regime": "BULL",
-  "n": 227,
-  "win_rate": 0.2996,
-  "avg_ret": -0.016791
+  "n": 502,
+  "win_rate": 0.3307,
+  "avg_ret": -0.015645
 }

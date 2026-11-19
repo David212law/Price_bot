@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "macd_12_26",
   "regime": "CRASH",
-  "n": 10,
-  "win_rate": 0.6,
-  "avg_ret": 0.112607
+  "n": 36,
+  "win_rate": 0.4444,
+  "avg_ret": 0.043691
 }

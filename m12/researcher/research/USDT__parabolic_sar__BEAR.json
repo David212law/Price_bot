@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "parabolic_sar",
   "regime": "BEAR",
-  "n": 264,
-  "win_rate": 0.4508,
-  "avg_ret": 0.020157
+  "n": 738,
+  "win_rate": 0.397,
+  "avg_ret": -0.000173
 }

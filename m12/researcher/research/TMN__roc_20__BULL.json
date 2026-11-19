@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "roc_20",
   "regime": "BULL",
-  "n": 806,
-  "win_rate": 0.4901,
-  "avg_ret": 0.026875
+  "n": 1734,
+  "win_rate": 0.4302,
+  "avg_ret": 0.009988
 }

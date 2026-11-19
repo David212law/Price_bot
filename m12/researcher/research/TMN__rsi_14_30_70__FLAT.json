@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "rsi_14_30_70",
   "regime": "FLAT",
-  "n": 310,
-  "win_rate": 0.5226,
-  "avg_ret": 0.012048
+  "n": 994,
+  "win_rate": 0.4064,
+  "avg_ret": -0.006877
 }

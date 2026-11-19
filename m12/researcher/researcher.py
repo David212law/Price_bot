@@ -21,7 +21,7 @@ def _load(path, suffix=None):
     raw = json.load(open(path))
     out = {}
     for k, v in raw.items():
-        if not isinstance(v, (list, dict)) or len(v) < 100: continue
+        if not isinstance(v, (list, dict)) or len(v) < 300: continue
         if suffix:
             if not k.endswith(suffix): continue
             sym = k[:-len(suffix)]
@@ -32,7 +32,7 @@ def _load(path, suffix=None):
             prices = [float(x) for _, x in items]
         else:
             prices = [float(x) for x in v]
-        if len(prices) >= 100: out[sym] = prices
+        if len(prices) >= 300: out[sym] = prices
     return out
 
 def label_regimes(prices):
@@ -52,7 +52,8 @@ def evaluate(symbols, btc_regimes, fee, n_btc):
     n_ok = 0
     for sym, prices in symbols.items():
         prices = prices[-n_btc:]
-        if len(prices) != n_btc: continue
+        if len(prices) < 300: continue
+        if len(prices) > n_btc: prices = prices[-n_btc:]
         n_ok += 1
         candles = to_candles(prices)
         for sname, sfn in STRATEGIES.items():

@@ -1,0 +1,8 @@
+{
+  "market": "TMN",
+  "strategy": "ema_cross_50_200",
+  "regime": "CRASH",
+  "n": 7,
+  "win_rate": 0.0,
+  "avg_ret": -0.121061
+}

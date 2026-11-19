@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "mfi",
   "regime": "BULL",
-  "n": 120,
-  "win_rate": 0.425,
-  "avg_ret": 0.000353
+  "n": 321,
+  "win_rate": 0.4548,
+  "avg_ret": 0.011332
 }

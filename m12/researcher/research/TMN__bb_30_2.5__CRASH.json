@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "bb_30_2.5",
   "regime": "CRASH",
-  "n": 10,
-  "win_rate": 0.3,
-  "avg_ret": 0.003599
+  "n": 16,
+  "win_rate": 0.25,
+  "avg_ret": 0.002353
 }

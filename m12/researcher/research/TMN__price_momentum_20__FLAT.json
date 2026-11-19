@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "price_momentum_20",
   "regime": "FLAT",
-  "n": 495,
-  "win_rate": 0.2747,
-  "avg_ret": -0.032941
+  "n": 1266,
+  "win_rate": 0.3476,
+  "avg_ret": -0.005923
 }

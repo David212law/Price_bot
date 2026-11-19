@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "supertrend",
   "regime": "BEAR",
-  "n": 98,
-  "win_rate": 0.2551,
-  "avg_ret": 0.019033
+  "n": 371,
+  "win_rate": 0.283,
+  "avg_ret": 0.028402
 }

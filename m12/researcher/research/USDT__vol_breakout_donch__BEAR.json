@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "vol_breakout_donch",
   "regime": "BEAR",
-  "n": 160,
-  "win_rate": 0.7562,
-  "avg_ret": 0.029138
+  "n": 405,
+  "win_rate": 0.6938,
+  "avg_ret": 0.006832
 }
