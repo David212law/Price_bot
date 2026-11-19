@@ -1,21 +1,12 @@
 {
-  "total_capital": 9988.30856664708,
-  "m31_capital": 6488.308566647081,
+  "total_capital": 9986.911074904685,
+  "m31_capital": 6486.911074904684,
   "m35_capital": 0.0,
   "m40_capital": 364.5,
   "m41_capital": 0.0,
   "m31_pos": {
-    "BTC": {
-      "entry_time": 1794862800033
-    },
-    "ETH": {
-      "entry_time": 1795082400016
-    },
-    "SOL": {
-      "entry_time": 1795082400016
-    },
-    "AVAX": {
-      "entry_time": 1795078800036
+    "BNB": {
+      "entry_time": 1795100400029
     }
   },
   "m35_pos": {},
@@ -46,7 +37,7 @@
   "history": [],
   "cash_capital": 3000.0,
   "peak_equity": 9998.705508417668,
-  "last_run": "2026-11-19T12:52:21.747979+00:00",
+  "last_run": "2026-11-19T23:00:25.809106+00:00",
   "hedge_structure": {
     "XRP": {
       "spot_pct": 0.45,
@@ -81,6 +72,14 @@
       "migrated_D557": true
     },
     "SOL": {
+      "spot_pct": 0.45,
+      "perp_pct": 0.45,
+      "cash_pct": 0.1,
+      "leverage": 1,
+      "delta_neutral": true,
+      "migrated_D557": true
+    },
+    "AVAX": {
       "spot_pct": 0.45,
       "perp_pct": 0.45,
       "cash_pct": 0.1,
