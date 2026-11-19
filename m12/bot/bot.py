@@ -4,6 +4,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _CORE = os.path.dirname(_HERE)
 _ROOT = os.path.dirname(_CORE)
 sys.path.insert(0, _CORE)
+from data_fetcher import load_market
 from calc import regime_label, cost_basis, pnl_long, pnl_short, position_qty, sl_tp, should_close, should_kill
 from m12_strategies import STRATEGIES
 
@@ -144,11 +145,19 @@ def main():
     if state.get("kill_switch"): print("Kill switch active"); return
 
     # Load ALL markets
-    markets_data = {
+    from data_fetcher import load_market as _load_live
+    _hist = {
         "TMN": load_market("wallex_tmn_all.json", "TMN"),
         "USDT": load_market("wallex_usdt_all.json", "USDT"),
         "GLOBAL": load_market("crypto_5y_usd.json"),
     }
+    markets_data = {}
+    for m, syms in _hist.items():
+        try:
+            markets_data[m] = _load_live(m, syms, prefer_live=True)
+        except Exception as e:
+            print(f"[{m}] live failed ({e}) — using historical")
+            markets_data[m] = syms
     for m, d in markets_data.items(): print(f"[{m}] {len(d)} symbols")
 
     # Use BTC (TMN) for regime
