@@ -15,11 +15,11 @@ jobs:
       - env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-        run: cd m12 && python3 bot.py
+        run: cd m12/bot && python3 bot.py
       - if: always()
         run: |
           git config user.name bot; git config user.email bot@bot
-          git add m12/state.json || true
+          git add m12/bot/state.json || true
           git diff --staged --quiet || git commit -m "Auto: M12 [skip ci]"
           git pull --rebase origin main || true
           git push || echo fail

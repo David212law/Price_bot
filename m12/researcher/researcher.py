@@ -4,6 +4,8 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path: sys.path.insert(0, _CORE)
 _CORE = os.path.dirname(_HERE)
 _ROOT = os.path.dirname(_CORE)
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from calc import regime_label, win_rate, mean, correlation, normalize
 from m12_strategies import STRATEGIES
 
