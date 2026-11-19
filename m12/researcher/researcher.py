@@ -9,7 +9,7 @@ from m12_strategies import STRATEGIES
 
 CSV_DIR = os.path.join(_HERE, "research")
 CONFIG_FILE = os.path.join(_CORE, "config.json")
-DATA_DIR = os.path.join(_ROOT, "data")
+DATA_DIR = os.path.join(os.path.dirname(_ROOT), "data")
 
 FEE = {"TMN": 0.006, "USDT": 0.0026, "GLOBAL": 0.001}
 MAX_SYMBOLS = 30
