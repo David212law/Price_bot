@@ -2,13 +2,18 @@
   "signals": [
     {
       "symbol": "ETH",
-      "action": "CLOSE",
-      "time": 1795028400042
+      "action": "OPEN",
+      "time": 1795082400016
     },
     {
-      "symbol": "BNB",
-      "action": "CLOSE",
-      "time": 1795024800060
+      "symbol": "SOL",
+      "action": "OPEN",
+      "time": 1795082400016
+    },
+    {
+      "symbol": "AVAX",
+      "action": "OPEN",
+      "time": 1795078800036
     }
   ]
 }
