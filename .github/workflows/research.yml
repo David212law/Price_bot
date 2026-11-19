@@ -1,0 +1,26 @@
+name: M12 Research
+on: [workflow_dispatch, push]
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install --quiet numpy pandas
+      - name: Prefilter
+        run: python3 m12/researcher/prefilter.py
+      - name: Researcher
+        run: python3 m12/researcher/researcher.py
+      - name: Verify
+        run: python3 m12/researcher/verify.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: m12-results
+          path: |
+            m12/config.json
+            m12/researcher/research/
+            m12/researcher/prefilter_keep.json
+            m12/researcher/prefilter_scores.json
