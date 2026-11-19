@@ -1,19 +1,15 @@
-"""M12 Bot v2 — trades ALL symbols, tracks real positions, no fake accounting."""
 import json, os, sys
 from datetime import datetime, timezone
 _HERE = os.path.dirname(os.path.abspath(__file__))
-if _HERE not in sys.path: sys.path.insert(0, _CORE)
 _CORE = os.path.dirname(_HERE)
 _ROOT = os.path.dirname(_CORE)
-
-import sys, os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, _CORE)
 from calc import regime_label
 from m12_strategies import STRATEGIES
 
 CONFIG = os.path.join(_CORE, "config.json")
 STATE = os.path.join(_HERE, "state.json")
-DATA_DIR = os.path.join(os.path.dirname(_ROOT), "data")
+DATA_DIR = os.path.join(_ROOT, "data")
 
 INITIAL = 10000.0
 MAX_POS = 5
