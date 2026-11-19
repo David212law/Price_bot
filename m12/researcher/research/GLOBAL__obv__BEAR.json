@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "obv",
   "regime": "BEAR",
-  "n": 36,
-  "win_rate": 0.2778,
-  "avg_ret": -0.031776
+  "n": 42,
+  "win_rate": 0.2381,
+  "avg_ret": -0.050989
 }

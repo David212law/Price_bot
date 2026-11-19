@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "triple_ema",
   "regime": "FLAT",
-  "n": 442,
-  "win_rate": 0.3122,
-  "avg_ret": 0.00629
+  "n": 518,
+  "win_rate": 0.3031,
+  "avg_ret": 0.002911
 }

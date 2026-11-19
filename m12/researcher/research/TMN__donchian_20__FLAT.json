@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "donchian_20",
   "regime": "FLAT",
-  "n": 303,
-  "win_rate": 0.3861,
-  "avg_ret": 0.025565
+  "n": 519,
+  "win_rate": 0.3931,
+  "avg_ret": 0.024676
 }

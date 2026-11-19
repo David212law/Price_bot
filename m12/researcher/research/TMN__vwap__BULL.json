@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "vwap",
   "regime": "BULL",
-  "n": 1083,
-  "win_rate": 0.3841,
-  "avg_ret": -0.012138
+  "n": 1893,
+  "win_rate": 0.3708,
+  "avg_ret": -0.013165
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "elder_impulse",
   "regime": "FLAT",
-  "n": 195,
-  "win_rate": 0.359,
-  "avg_ret": 0.005236
+  "n": 196,
+  "win_rate": 0.2653,
+  "avg_ret": -0.01547
 }

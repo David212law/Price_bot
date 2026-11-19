@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "parabolic_sar",
   "regime": "BEAR",
-  "n": 97,
-  "win_rate": 0.3402,
-  "avg_ret": 0.002946
+  "n": 98,
+  "win_rate": 0.4592,
+  "avg_ret": 0.033275
 }

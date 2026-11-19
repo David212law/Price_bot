@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "vwap",
   "regime": "BEAR",
-  "n": 285,
-  "win_rate": 0.3263,
-  "avg_ret": -0.026355
+  "n": 343,
+  "win_rate": 0.3207,
+  "avg_ret": -0.026707
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "roc_20",
   "regime": "BEAR",
-  "n": 36,
-  "win_rate": 0.5,
-  "avg_ret": 0.053129
+  "n": 38,
+  "win_rate": 0.5263,
+  "avg_ret": 0.066671
 }

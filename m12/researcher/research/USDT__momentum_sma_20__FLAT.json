@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "momentum_sma_20",
   "regime": "FLAT",
-  "n": 564,
-  "win_rate": 0.3635,
-  "avg_ret": 0.004836
+  "n": 656,
+  "win_rate": 0.3582,
+  "avg_ret": 0.005018
 }

@@ -11,7 +11,7 @@ CONFIG_FILE = os.path.join(_CORE, "config.json")
 DATA_DIR = os.path.join(_ROOT, "data")
 
 FEE = {"TMN": 0.006, "USDT": 0.0026, "GLOBAL": 0.001}
-MAX_SYMBOLS = 30
+MAX_SYMBOLS = 185
 SPREAD = 0.005
 START_MS = 1700000000000
 DAY_MS = 86400000

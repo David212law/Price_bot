@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "donchian_20",
   "regime": "FLAT",
-  "n": 86,
-  "win_rate": 0.3953,
-  "avg_ret": -0.000597
+  "n": 96,
+  "win_rate": 0.5104,
+  "avg_ret": 0.070609
 }

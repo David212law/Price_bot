@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "momentum_ema",
   "regime": "CRASH",
-  "n": 7,
-  "win_rate": 0.8571,
-  "avg_ret": 0.204774
+  "n": 5,
+  "win_rate": 0.8,
+  "avg_ret": 0.189571
 }

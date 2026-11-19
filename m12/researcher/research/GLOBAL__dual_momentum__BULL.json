@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "dual_momentum",
   "regime": "BULL",
-  "n": 73,
-  "win_rate": 0.3699,
-  "avg_ret": 0.043809
+  "n": 72,
+  "win_rate": 0.4444,
+  "avg_ret": 0.070374
 }

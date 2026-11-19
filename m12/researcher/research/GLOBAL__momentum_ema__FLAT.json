@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "momentum_ema",
   "regime": "FLAT",
-  "n": 108,
-  "win_rate": 0.2778,
-  "avg_ret": -0.016746
+  "n": 114,
+  "win_rate": 0.2018,
+  "avg_ret": -0.044813
 }

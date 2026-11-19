@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "vwap",
   "regime": "CRASH",
-  "n": 24,
-  "win_rate": 0.25,
-  "avg_ret": -0.016462
+  "n": 26,
+  "win_rate": 0.2308,
+  "avg_ret": -0.02287
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "rsi_divergence",
   "regime": "BEAR",
-  "n": 11,
-  "win_rate": 0.0909,
-  "avg_ret": -0.070516
+  "n": 9,
+  "win_rate": 0.0,
+  "avg_ret": -0.08982
 }

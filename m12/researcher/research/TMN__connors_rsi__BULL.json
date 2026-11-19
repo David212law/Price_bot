@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "connors_rsi",
   "regime": "BULL",
-  "n": 30,
-  "win_rate": 0.6667,
-  "avg_ret": 0.045747
+  "n": 57,
+  "win_rate": 0.7368,
+  "avg_ret": 0.053645
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "vwap",
   "regime": "CRASH",
-  "n": 15,
-  "win_rate": 0.0667,
-  "avg_ret": -0.059382
+  "n": 14,
+  "win_rate": 0.0,
+  "avg_ret": -0.064604
 }

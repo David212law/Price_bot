@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "nr_breakout",
   "regime": "BEAR",
-  "n": 10,
+  "n": 11,
   "win_rate": 1.0,
-  "avg_ret": 0.115046
+  "avg_ret": 0.109688
 }

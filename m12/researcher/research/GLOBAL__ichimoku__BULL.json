@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "ichimoku",
   "regime": "BULL",
-  "n": 161,
-  "win_rate": 0.3727,
-  "avg_ret": 0.033486
+  "n": 169,
+  "win_rate": 0.3787,
+  "avg_ret": 0.032855
 }

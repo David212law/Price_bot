@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "roc_20",
   "regime": "FLAT",
-  "n": 104,
-  "win_rate": 0.2885,
-  "avg_ret": -0.011256
+  "n": 119,
+  "win_rate": 0.2773,
+  "avg_ret": -0.018626
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "rsi_14_30_70",
   "regime": "BULL",
-  "n": 118,
-  "win_rate": 0.4237,
-  "avg_ret": 0.006257
+  "n": 97,
+  "win_rate": 0.3711,
+  "avg_ret": -0.00124
 }

@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "ichimoku",
   "regime": "BEAR",
-  "n": 65,
-  "win_rate": 0.4923,
-  "avg_ret": 0.043701
+  "n": 71,
+  "win_rate": 0.4648,
+  "avg_ret": 0.037162
 }

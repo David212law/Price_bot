@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "mfi",
   "regime": "FLAT",
-  "n": 31,
-  "win_rate": 0.4839,
-  "avg_ret": 0.015561
+  "n": 37,
+  "win_rate": 0.4595,
+  "avg_ret": 0.005904
 }

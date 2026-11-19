@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "mean_rev_sma_50",
   "regime": "FLAT",
-  "n": 156,
-  "win_rate": 0.391,
-  "avg_ret": 0.00409
+  "n": 170,
+  "win_rate": 0.4588,
+  "avg_ret": 0.029647
 }

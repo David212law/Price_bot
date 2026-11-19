@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "rsi_divergence",
   "regime": "CRASH",
-  "n": 8,
-  "win_rate": 0.125,
-  "avg_ret": -0.048969
+  "n": 11,
+  "win_rate": 0.2727,
+  "avg_ret": -0.019885
 }

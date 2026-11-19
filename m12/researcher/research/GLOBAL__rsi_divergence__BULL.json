@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "rsi_divergence",
   "regime": "BULL",
-  "n": 35,
-  "win_rate": 0.3143,
-  "avg_ret": -0.013628
+  "n": 34,
+  "win_rate": 0.3529,
+  "avg_ret": -0.010141
 }

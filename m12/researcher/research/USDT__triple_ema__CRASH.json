@@ -1,0 +1,8 @@
+{
+  "market": "USDT",
+  "strategy": "triple_ema",
+  "regime": "CRASH",
+  "n": 5,
+  "win_rate": 0.4,
+  "avg_ret": -0.004842
+}

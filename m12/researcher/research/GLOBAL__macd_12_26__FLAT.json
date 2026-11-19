@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "macd_12_26",
   "regime": "FLAT",
-  "n": 166,
-  "win_rate": 0.2831,
-  "avg_ret": -0.022181
+  "n": 183,
+  "win_rate": 0.3333,
+  "avg_ret": 0.008356
 }

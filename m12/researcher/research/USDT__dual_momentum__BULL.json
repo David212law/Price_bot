@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "dual_momentum",
   "regime": "BULL",
-  "n": 186,
-  "win_rate": 0.3172,
-  "avg_ret": -0.018429
+  "n": 213,
+  "win_rate": 0.3146,
+  "avg_ret": -0.026791
 }

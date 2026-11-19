@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "rsi_momentum_14",
   "regime": "BEAR",
-  "n": 44,
-  "win_rate": 0.5455,
-  "avg_ret": 0.041172
+  "n": 56,
+  "win_rate": 0.6071,
+  "avg_ret": 0.048847
 }

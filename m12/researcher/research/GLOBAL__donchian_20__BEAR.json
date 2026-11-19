@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "donchian_20",
   "regime": "BEAR",
-  "n": 25,
-  "win_rate": 0.4,
-  "avg_ret": 0.030584
+  "n": 26,
+  "win_rate": 0.2308,
+  "avg_ret": -0.058522
 }

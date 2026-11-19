@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "rsi_divergence",
   "regime": "FLAT",
-  "n": 86,
-  "win_rate": 0.4651,
-  "avg_ret": 0.008205
+  "n": 96,
+  "win_rate": 0.4583,
+  "avg_ret": 0.003295
 }

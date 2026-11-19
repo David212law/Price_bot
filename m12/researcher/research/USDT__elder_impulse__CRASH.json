@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "elder_impulse",
   "regime": "CRASH",
-  "n": 16,
-  "win_rate": 0.875,
-  "avg_ret": 0.108731
+  "n": 21,
+  "win_rate": 0.7619,
+  "avg_ret": 0.08425
 }

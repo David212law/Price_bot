@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "zscore_20",
   "regime": "CRASH",
-  "n": 23,
-  "win_rate": 0.2609,
-  "avg_ret": -0.001559
+  "n": 35,
+  "win_rate": 0.2,
+  "avg_ret": -0.023276
 }

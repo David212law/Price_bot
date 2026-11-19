@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "bb_squeeze_20",
   "regime": "BULL",
-  "n": 31,
-  "win_rate": 0.2581,
-  "avg_ret": -0.050588
+  "n": 62,
+  "win_rate": 0.4032,
+  "avg_ret": -0.013822
 }

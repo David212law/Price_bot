@@ -3,6 +3,6 @@
   "strategy": "roc_10",
   "regime": "BEAR",
   "n": 42,
-  "win_rate": 0.5476,
-  "avg_ret": 0.067858
+  "win_rate": 0.619,
+  "avg_ret": 0.103944
 }

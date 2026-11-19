@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "roc_10",
   "regime": "BULL",
-  "n": 196,
-  "win_rate": 0.3622,
-  "avg_ret": 0.00055
+  "n": 185,
+  "win_rate": 0.373,
+  "avg_ret": 0.004263
 }

@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "supertrend",
   "regime": "BEAR",
-  "n": 99,
-  "win_rate": 0.2323,
-  "avg_ret": 0.007853
+  "n": 180,
+  "win_rate": 0.2556,
+  "avg_ret": 0.00834
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "vol_breakout_donch",
   "regime": "FLAT",
-  "n": 97,
-  "win_rate": 0.7732,
-  "avg_ret": 0.002893
+  "n": 113,
+  "win_rate": 0.708,
+  "avg_ret": -0.013483
 }

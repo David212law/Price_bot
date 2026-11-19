@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "mean_rev_sma_50",
   "regime": "BULL",
-  "n": 759,
-  "win_rate": 0.3241,
-  "avg_ret": -0.003361
+  "n": 1336,
+  "win_rate": 0.3031,
+  "avg_ret": -0.006923
 }

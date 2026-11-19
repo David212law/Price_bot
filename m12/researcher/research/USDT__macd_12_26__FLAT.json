@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "macd_12_26",
   "regime": "FLAT",
-  "n": 399,
-  "win_rate": 0.2732,
-  "avg_ret": -0.027174
+  "n": 458,
+  "win_rate": 0.2882,
+  "avg_ret": -0.022005
 }

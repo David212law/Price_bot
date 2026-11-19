@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "macd_12_26",
   "regime": "BULL",
-  "n": 367,
-  "win_rate": 0.3678,
-  "avg_ret": 0.070204
+  "n": 641,
+  "win_rate": 0.3339,
+  "avg_ret": 0.033054
 }

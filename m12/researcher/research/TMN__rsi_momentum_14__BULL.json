@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "rsi_momentum_14",
   "regime": "BULL",
-  "n": 452,
-  "win_rate": 0.3761,
-  "avg_ret": -0.011091
+  "n": 784,
+  "win_rate": 0.4145,
+  "avg_ret": -0.003019
 }

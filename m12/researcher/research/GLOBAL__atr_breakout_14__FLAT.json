@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "atr_breakout_14",
   "regime": "FLAT",
-  "n": 183,
-  "win_rate": 0.2896,
-  "avg_ret": -0.007636
+  "n": 177,
+  "win_rate": 0.2994,
+  "avg_ret": -0.004985
 }

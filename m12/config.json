@@ -1,57 +1,58 @@
 {
   "TMN": {
     "BULL": {
-      "connors_rsi": 0.5188,
-      "keltner_rev": 0.4812
+      "connors_rsi": 0.54,
+      "keltner_rev": 0.46
     },
     "FLAT": {
-      "rsi_21_25_75": 0.3729,
-      "mfi": 0.3281,
-      "vwap": 0.299
+      "rsi_21_25_75": 0.2199,
+      "mfi": 0.2099,
+      "vwap": 0.1934,
+      "rsi_divergence": 0.1889,
+      "rsi_14_30_70": 0.188
     },
     "BEAR": {
-      "vol_breakout_donch": 0.1724,
-      "rsi_momentum_14": 0.1556,
-      "roc_10": 0.1472,
-      "elder_impulse": 0.1402,
-      "obv": 0.1301,
-      "momentum_sma_20": 0.1277,
-      "price_momentum_20": 0.1268
+      "roc_10": 0.1824,
+      "elder_impulse": 0.1731,
+      "momentum_ema": 0.1674,
+      "momentum_sma_20": 0.1623,
+      "price_momentum_20": 0.158,
+      "obv": 0.1568
     },
     "CRASH": {}
   },
   "USDT": {
-    "BULL": {
-      "connors_rsi": 1.0
-    },
+    "BULL": {},
     "FLAT": {},
     "BEAR": {
-      "vol_breakout_donch": 0.1441,
-      "rsi_momentum_14": 0.1144,
-      "momentum_ema": 0.111,
-      "roc_10": 0.1091,
-      "price_momentum_20": 0.1087,
-      "roc_20": 0.1048,
-      "donchian_20": 0.1029,
-      "keltner_rev": 0.1027,
-      "elder_impulse": 0.1022
+      "vol_breakout_donch": 0.1287,
+      "rsi_momentum_14": 0.1048,
+      "momentum_ema": 0.1011,
+      "roc_10": 0.098,
+      "price_momentum_20": 0.0977,
+      "roc_20": 0.0947,
+      "elder_impulse": 0.0942,
+      "keltner_rev": 0.0941,
+      "momentum_sma_20": 0.0937,
+      "donchian_20": 0.0928
     },
     "CRASH": {}
   },
   "GLOBAL": {
     "BULL": {},
     "FLAT": {
-      "vol_breakout_donch": 0.3237,
-      "connors_rsi": 0.2268,
-      "keltner_rev": 0.2265,
-      "vwap": 0.2231
+      "vwap": 1.0
     },
     "BEAR": {
-      "vol_breakout_donch": 0.2589,
-      "keltner_rev": 0.1966,
-      "roc_10": 0.1823,
-      "rsi_momentum_14": 0.1816,
-      "price_momentum_20": 0.1807
+      "vol_breakout_donch": 0.1454,
+      "elder_impulse": 0.1198,
+      "roc_10": 0.112,
+      "keltner_rev": 0.1103,
+      "rsi_momentum_14": 0.1098,
+      "momentum_ema": 0.1052,
+      "momentum_sma_20": 0.1034,
+      "price_momentum_20": 0.0991,
+      "roc_20": 0.0952
     },
     "CRASH": {}
   }

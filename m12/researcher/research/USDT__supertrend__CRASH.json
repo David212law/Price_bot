@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "supertrend",
   "regime": "CRASH",
-  "n": 6,
-  "win_rate": 0.1667,
-  "avg_ret": 0.005359
+  "n": 7,
+  "win_rate": 0.2857,
+  "avg_ret": 0.029727
 }

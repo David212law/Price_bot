@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "parabolic_sar",
   "regime": "FLAT",
-  "n": 718,
-  "win_rate": 0.2981,
-  "avg_ret": -0.040861
+  "n": 1230,
+  "win_rate": 0.2984,
+  "avg_ret": -0.04154
 }

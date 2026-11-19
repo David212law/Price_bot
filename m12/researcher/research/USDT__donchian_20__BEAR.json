@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "donchian_20",
   "regime": "BEAR",
-  "n": 58,
-  "win_rate": 0.5345,
-  "avg_ret": 0.08731
+  "n": 66,
+  "win_rate": 0.5455,
+  "avg_ret": 0.098581
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "price_momentum_20",
   "regime": "BULL",
-  "n": 189,
-  "win_rate": 0.381,
-  "avg_ret": 0.002733
+  "n": 176,
+  "win_rate": 0.392,
+  "avg_ret": 0.007124
 }

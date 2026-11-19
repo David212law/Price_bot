@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "mfi",
   "regime": "FLAT",
-  "n": 15,
-  "win_rate": 0.5333,
-  "avg_ret": 0.019997
+  "n": 13,
+  "win_rate": 0.4615,
+  "avg_ret": 0.010185
 }

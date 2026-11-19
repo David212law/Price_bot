@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "rsi_momentum_14",
   "regime": "BULL",
-  "n": 419,
-  "win_rate": 0.3389,
-  "avg_ret": -0.007362
+  "n": 492,
+  "win_rate": 0.3293,
+  "avg_ret": -0.009281
 }

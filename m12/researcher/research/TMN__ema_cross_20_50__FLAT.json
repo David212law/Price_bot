@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "ema_cross_20_50",
   "regime": "FLAT",
-  "n": 109,
-  "win_rate": 0.2844,
-  "avg_ret": 0.024702
+  "n": 171,
+  "win_rate": 0.3216,
+  "avg_ret": 0.034589
 }

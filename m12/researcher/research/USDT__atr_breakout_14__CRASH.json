@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "atr_breakout_14",
   "regime": "CRASH",
-  "n": 20,
-  "win_rate": 0.75,
-  "avg_ret": 0.071247
+  "n": 23,
+  "win_rate": 0.7391,
+  "avg_ret": 0.064162
 }

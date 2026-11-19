@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "momentum_ema",
   "regime": "BEAR",
-  "n": 73,
-  "win_rate": 0.4932,
-  "avg_ret": 0.055745
+  "n": 131,
+  "win_rate": 0.5573,
+  "avg_ret": 0.08402
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "dual_momentum",
   "regime": "BEAR",
-  "n": 8,
-  "win_rate": 0.125,
-  "avg_ret": 0.009783
+  "n": 12,
+  "win_rate": 0.25,
+  "avg_ret": 0.185765
 }

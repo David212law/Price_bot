@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "vol_breakout_donch",
   "regime": "FLAT",
-  "n": 229,
-  "win_rate": 0.6376,
-  "avg_ret": -0.047975
+  "n": 393,
+  "win_rate": 0.6539,
+  "avg_ret": -0.048871
 }

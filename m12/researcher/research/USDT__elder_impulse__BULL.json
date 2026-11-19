@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "elder_impulse",
   "regime": "BULL",
-  "n": 761,
-  "win_rate": 0.3522,
-  "avg_ret": -0.002457
+  "n": 875,
+  "win_rate": 0.3486,
+  "avg_ret": -0.00294
 }

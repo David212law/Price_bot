@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "price_sma_50",
   "regime": "BEAR",
-  "n": 48,
-  "win_rate": 0.2917,
-  "avg_ret": 0.05774
+  "n": 49,
+  "win_rate": 0.2653,
+  "avg_ret": 0.048434
 }

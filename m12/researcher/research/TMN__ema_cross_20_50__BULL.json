@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "ema_cross_20_50",
   "regime": "BULL",
-  "n": 106,
-  "win_rate": 0.3019,
-  "avg_ret": -0.001529
+  "n": 185,
+  "win_rate": 0.3568,
+  "avg_ret": 0.012526
 }

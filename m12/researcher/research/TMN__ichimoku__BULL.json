@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "ichimoku",
   "regime": "BULL",
-  "n": 289,
-  "win_rate": 0.3356,
-  "avg_ret": 0.064678
+  "n": 486,
+  "win_rate": 0.3457,
+  "avg_ret": 0.060418
 }

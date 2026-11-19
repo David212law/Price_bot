@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "roc_20",
   "regime": "BEAR",
-  "n": 90,
-  "win_rate": 0.5444,
-  "avg_ret": 0.099526
+  "n": 106,
+  "win_rate": 0.5566,
+  "avg_ret": 0.099521
 }

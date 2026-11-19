@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "ema_cross_50_200",
   "regime": "BULL",
-  "n": 28,
-  "win_rate": 0.2857,
-  "avg_ret": -0.003509
+  "n": 32,
+  "win_rate": 0.3125,
+  "avg_ret": 0.007012
 }

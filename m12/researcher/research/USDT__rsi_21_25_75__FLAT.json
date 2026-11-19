@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "rsi_21_25_75",
   "regime": "FLAT",
-  "n": 13,
-  "win_rate": 0.6154,
-  "avg_ret": 0.012949
+  "n": 17,
+  "win_rate": 0.5882,
+  "avg_ret": 0.005122
 }

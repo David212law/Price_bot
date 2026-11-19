@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "elder_impulse",
   "regime": "BULL",
-  "n": 322,
-  "win_rate": 0.4037,
-  "avg_ret": 0.009076
+  "n": 304,
+  "win_rate": 0.4211,
+  "avg_ret": 0.012205
 }

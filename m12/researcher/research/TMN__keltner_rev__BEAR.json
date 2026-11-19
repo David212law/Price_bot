@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "keltner_rev",
   "regime": "BEAR",
-  "n": 497,
-  "win_rate": 0.4145,
-  "avg_ret": 0.008394
+  "n": 925,
+  "win_rate": 0.4378,
+  "avg_ret": 0.009278
 }

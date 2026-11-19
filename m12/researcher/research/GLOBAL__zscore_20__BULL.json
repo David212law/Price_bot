@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "zscore_20",
   "regime": "BULL",
-  "n": 233,
-  "win_rate": 0.3391,
-  "avg_ret": 0.007208
+  "n": 215,
+  "win_rate": 0.293,
+  "avg_ret": -0.000259
 }

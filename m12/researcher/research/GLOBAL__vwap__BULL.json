@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "vwap",
   "regime": "BULL",
-  "n": 418,
-  "win_rate": 0.4426,
-  "avg_ret": 0.001683
+  "n": 401,
+  "win_rate": 0.4289,
+  "avg_ret": -0.001417
 }

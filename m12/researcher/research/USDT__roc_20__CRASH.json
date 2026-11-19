@@ -2,7 +2,7 @@
   "market": "USDT",
   "strategy": "roc_20",
   "regime": "CRASH",
-  "n": 17,
-  "win_rate": 0.7059,
-  "avg_ret": 0.148818
+  "n": 20,
+  "win_rate": 0.65,
+  "avg_ret": 0.129297
 }

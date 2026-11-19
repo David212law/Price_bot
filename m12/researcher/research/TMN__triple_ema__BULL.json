@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "triple_ema",
   "regime": "BULL",
-  "n": 370,
-  "win_rate": 0.2865,
-  "avg_ret": 0.004749
+  "n": 658,
+  "win_rate": 0.272,
+  "avg_ret": 0.013564
 }

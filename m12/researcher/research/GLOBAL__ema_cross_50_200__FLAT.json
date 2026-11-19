@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "ema_cross_50_200",
   "regime": "FLAT",
-  "n": 15,
-  "win_rate": 0.0667,
-  "avg_ret": -0.079137
+  "n": 12,
+  "win_rate": 0.0,
+  "avg_ret": -0.090118
 }

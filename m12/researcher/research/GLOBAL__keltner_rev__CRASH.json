@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "keltner_rev",
   "regime": "CRASH",
-  "n": 45,
-  "win_rate": 0.6444,
-  "avg_ret": 0.033994
+  "n": 43,
+  "win_rate": 0.6744,
+  "avg_ret": 0.057761
 }

@@ -2,7 +2,7 @@
   "market": "GLOBAL",
   "strategy": "rsi_momentum_14",
   "regime": "FLAT",
-  "n": 168,
-  "win_rate": 0.2679,
-  "avg_ret": -0.013896
+  "n": 160,
+  "win_rate": 0.225,
+  "avg_ret": -0.020314
 }

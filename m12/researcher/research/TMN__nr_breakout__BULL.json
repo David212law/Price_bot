@@ -2,7 +2,7 @@
   "market": "TMN",
   "strategy": "nr_breakout",
   "regime": "BULL",
-  "n": 5,
-  "win_rate": 0.4,
-  "avg_ret": -0.297921
+  "n": 13,
+  "win_rate": 0.3846,
+  "avg_ret": -0.21113
 }

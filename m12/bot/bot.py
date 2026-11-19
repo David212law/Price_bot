@@ -1,4 +1,4 @@
-import json, os, sys
+import json, os, sys, hashlib
 from datetime import datetime, timezone
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _CORE = os.path.dirname(_HERE)
@@ -40,6 +40,11 @@ def load_market(fname, suffix=None):
 def to_candles(prices, spread=0.005):
     return [{"t": i, "o": p, "h": p*(1+spread), "l": p*(1-spread), "c": p, "v": 1.0}
             for i, p in enumerate(prices)]
+
+def config_hash():
+    try:
+        with open(CONFIG) as f: return hashlib.md5(f.read().encode()).hexdigest()[:8]
+    except: return "unknown"
 
 def load_state():
     if os.path.exists(STATE):
@@ -151,6 +156,10 @@ def main():
     btc = markets_data["TMN"]["BTC"]
     regime = regime_label(btc[-1] / btc[-31] - 1)
     state["last_regime"] = regime
+    _h = config_hash()
+    if state.get("config_hash") and state["config_hash"] != _h:
+        print("⚠️ CONFIG CHANGED — new entries will use new strategies")
+    state["config_hash"] = _h
     print(f"\nRegime: {regime}")
 
     # ── CLOSE: check all existing positions ──
