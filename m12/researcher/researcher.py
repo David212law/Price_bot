@@ -5,6 +5,9 @@ _ROOT = os.path.dirname(_CORE)
 sys.path.insert(0, _CORE)
 from calc import regime_label, win_rate, mean, correlation, normalize
 from m12_strategies import STRATEGIES
+_PF = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prefilter_keep.json")
+_keep = set(json.load(open(_PF))["keep"]) if os.path.exists(_PF) else None
+STRATEGIES = {k: v for k, v in STRATEGIES.items() if _keep is None or k in _keep}
 
 CSV_DIR = os.path.join(_HERE, "research")
 CONFIG_FILE = os.path.join(_CORE, "config.json")
