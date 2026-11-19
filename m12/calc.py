@@ -51,3 +51,39 @@ def correlation(x, y):
     sy = (sum((v-my)**2 for v in y) / (n-1)) ** 0.5
     if sx == 0 or sy == 0: return 0.0
     return round(cov / (sx * sy), 4)
+
+
+# ═════ Bot position math (testable) ═════
+
+def cost_basis(qty, entry):
+    return round(qty * entry, 4)
+
+def pnl_long(qty, entry, exit_price, fee):
+    notional = qty * entry + qty * exit_price
+    return round(qty * (exit_price - entry) - notional * fee / 2, 4)
+
+def pnl_short(qty, entry, exit_price, fee):
+    notional = qty * entry + qty * exit_price
+    return round(qty * (entry - exit_price) - notional * fee / 2, 4)
+
+def position_qty(capital, size_pct, price):
+    if capital <= 0 or price <= 0 or size_pct <= 0:
+        return 0.0
+    return round((capital * size_pct) / price, 8)
+
+def sl_tp(entry, side, sl_pct=0.05, tp_pct=0.10):
+    if side == "LONG":
+        return round(entry*(1-sl_pct),6), round(entry*(1+tp_pct),6)
+    return round(entry*(1+sl_pct),6), round(entry*(1-tp_pct),6)
+
+def should_close(side, cur, sl, tp):
+    if side == "LONG":
+        if cur <= sl: return "SL"
+        if cur >= tp: return "TP"
+    else:
+        if cur >= sl: return "SL"
+        if cur <= tp: return "TP"
+    return None
+
+def should_kill(equity, initial, threshold=0.85):
+    return equity < initial * threshold

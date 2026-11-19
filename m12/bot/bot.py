@@ -4,7 +4,7 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 _CORE = os.path.dirname(_HERE)
 _ROOT = os.path.dirname(_CORE)
 sys.path.insert(0, _CORE)
-from calc import regime_label
+from calc import regime_label, cost_basis, pnl_long, pnl_short, position_qty, sl_tp, should_close, should_kill
 from m12_strategies import STRATEGIES
 
 CONFIG = os.path.join(_CORE, "config.json")
@@ -82,54 +82,40 @@ def score(symbol, candles, active, fee):
     return total_sig / total_w if total_w > 0 else 0.0
 
 def open_position(state, market, sym, price, side, size_pct, fee):
-    alloc = state["capital"] * size_pct
-    if alloc < 10: return False
-    qty = alloc / price
-    cost = alloc * (1 + fee / 2)  # half fee on entry
+    qty = position_qty(state["capital"], size_pct, price)
+    if qty == 0: return False
+    cost = cost_basis(qty, price)
     if cost > state["capital"]: return False
     state["capital"] -= cost
+    sl, tp = sl_tp(price, side)
     state["positions"][f"{market}:{sym}"] = {
         "market": market, "symbol": sym, "side": side, "qty": qty,
         "entry": price, "cost": cost, "fee": fee,
         "opened": datetime.now(timezone.utc).isoformat(),
-        "sl": price * (0.95 if side == "LONG" else 1.05),
-        "tp": price * (1.10 if side == "LONG" else 0.90),
+        "sl": sl, "tp": tp,
     }
-    state["history"].append({
-        "time": datetime.now(timezone.utc).isoformat(),
-        "action": "OPEN", "market": market, "symbol": sym, "side": side,
-        "price": round(price, 6), "qty": round(qty, 8), "cost": round(cost, 4),
-        "pnl": 0,
-    })
+    state["history"].append({"time": datetime.now(timezone.utc).isoformat(),
+        "action":"OPEN","market":market,"symbol":sym,"side":side,
+        "price":round(price,6),"qty":round(qty,8),"cost":round(cost,4),"pnl":0})
     send_bale(f"🟢 OPEN {market}:{sym} {side} @ {price:.4f} | cost=${cost:.2f}")
     return True
 
 def close_position(state, key, price, reason):
     pos = state["positions"].get(key)
     if not pos: return False
-    fee = pos["fee"]
-    entry_value = pos["qty"] * pos["entry"]
     if pos["side"] == "LONG":
-        exit_value = pos["qty"] * price * (1 - fee / 2)
-        pnl = exit_value - pos["cost"]
-        state["capital"] += exit_value
-    else:  # SHORT
-        exit_value = pos["qty"] * price
-        entry_fee = entry_value * (fee / 2)
-        exit_fee = exit_value * (fee / 2)
-        pnl = entry_value - exit_value - entry_fee - exit_fee
-        returned_capital = entry_value + pnl
-        state["capital"] += returned_capital
-
+        pnl = pnl_long(pos["qty"], pos["entry"], price, pos["fee"])
+    else:
+        pnl = pnl_short(pos["qty"], pos["entry"], price, pos["fee"])
+    state["capital"] += pos["cost"] + pnl
     del state["positions"][key]
-    state["history"].append({
-        "time": datetime.now(timezone.utc).isoformat(),
-        "action": "CLOSE", "market": pos["market"], "symbol": pos["symbol"],
-        "side": pos["side"], "price": round(price, 6),
-        "qty": round(pos["qty"], 8), "pnl": round(pnl, 4), "reason": reason,
-    })
+    state["history"].append({"time": datetime.now(timezone.utc).isoformat(),
+        "action":"CLOSE","market":pos["market"],"symbol":pos["symbol"],
+        "side":pos["side"],"price":round(price,6),
+        "qty":round(pos["qty"],8),"pnl":round(pnl,4),"reason":reason})
     send_bale(f"🔴 CLOSE {pos['market']}:{pos['symbol']} @ {price:.4f} | PnL: {pnl:+.4f} ({reason})")
     return True
+
 def update_equity(state, markets_data):
     eq = state["capital"]
     for key, pos in state["positions"].items():
@@ -207,7 +193,7 @@ def main():
 
     # ── Equity ──
     update_equity(state, markets_data)
-    if state["equity"] < INITIAL * KILL:
+    if should_kill(state["equity"], INITIAL, KILL):
         send_bale(f"🚨 KILL: ${state['equity']:.2f} < ${INITIAL*KILL:.2f}")
         state["kill_switch"] = True
 

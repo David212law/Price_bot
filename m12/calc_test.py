@@ -1,3 +1,25 @@
+
+def test_bot_math():
+    from calc import cost_basis, pnl_long, pnl_short, position_qty, sl_tp, should_close, should_kill
+    assert pnl_long(1, 100, 110, 0.02) == 7.9
+    assert pnl_long(1, 100, 90, 0.02) == -11.9
+    assert pnl_short(1, 100, 90, 0.02) == 8.1
+    assert pnl_short(1, 100, 110, 0.02) == -12.1
+    assert cost_basis(1.5, 100) == 150.0
+    assert position_qty(1000, 0.15, 100) == 1.5
+    assert position_qty(0, 0.15, 100) == 0.0
+    assert sl_tp(100, "LONG") == (95.0, 110.0)
+    assert sl_tp(100, "SHORT") == (105.0, 90.0)
+    assert should_close("LONG", 94, 95, 110) == "SL"
+    assert should_close("LONG", 111, 95, 110) == "TP"
+    assert should_close("LONG", 100, 95, 110) is None
+    assert should_close("SHORT", 106, 105, 90) == "SL"
+    assert should_close("SHORT", 89, 105, 90) == "TP"
+    assert should_close("SHORT", 100, 105, 90) is None
+    assert should_kill(8400, 10000) is True
+    assert should_kill(8600, 10000) is False
+    print("✅ bot math: 17 cases")
+
 """M12 Calc Test — MUST pass before any research."""
 from calc import regime_label, win_rate, mean, sharpe, bootstrap_ci, normalize
 
@@ -32,6 +54,7 @@ def test_all():
     assert normalize({"a": 2, "b": 1}) == {"a": 0.6667, "b": 0.3333}
     assert normalize({}) == {}
     print("✅ normalize: 2 cases")
+    test_bot_math()
 
     print()
     print("=" * 50)
