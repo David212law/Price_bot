@@ -119,12 +119,12 @@ def load_market(market, symbols, prefer_live=True):
         if prefer_live:
             if market in ("TMN", "USDT"):
                 cd = fetch_wallex_candles(f"{sym}{market}")
-                if cd and len(cd) >= 100: prices = [c["c"] for c in cd]
+                if cd and len(cd) >= 100: prices = [float(c["c"]) for c in cd]
             elif market == "GLOBAL":
                 cd = fetch_hl(sym, "1d", 500)
-                if cd and len(cd) >= 100: prices = [c["c"] for c in cd]
+                if cd and len(cd) >= 100: prices = [float(c["c"]) for c in cd]
         if prices is None:
-            prices = symbols[sym]  # fallback
+            prices = [float(x) for x in symbols[sym]]  # fallback
         out[sym] = prices
     return out
 
