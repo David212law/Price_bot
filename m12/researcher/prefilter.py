@@ -12,7 +12,7 @@ OUT = os.path.join(_HERE, "prefilter_keep.json")
 FEE = {"TMN": 0.006, "USDT": 0.0026, "GLOBAL": 0.001}
 SPREAD = 0.005
 START_MS = 1700000000000; DAY_MS = 86400000
-SUBSET = 25          # representative symbols
+SUBSET = 8          # representative symbols
 MIN_TRADES = 15      # min total trades across all regimes
 MIN_WR = 0.50        # raw bar
 
