@@ -106,11 +106,21 @@ def open_position(state, market, sym, price, side, size_pct, fee):
 
 def close_position(state, key, price, reason):
     pos = state["positions"].get(key)
-    if not pos: return False  # ← NO FAKE CLOSE (unlike M31)
+    if not pos: return False
     fee = pos["fee"]
-    exit_value = pos["qty"] * price * (1 - fee / 2)
-    pnl = exit_value - pos["cost"]
-    state["capital"] += exit_value
+    entry_value = pos["qty"] * pos["entry"]
+    if pos["side"] == "LONG":
+        exit_value = pos["qty"] * price * (1 - fee / 2)
+        pnl = exit_value - pos["cost"]
+        state["capital"] += exit_value
+    else:  # SHORT
+        exit_value = pos["qty"] * price
+        entry_fee = entry_value * (fee / 2)
+        exit_fee = exit_value * (fee / 2)
+        pnl = entry_value - exit_value - entry_fee - exit_fee
+        returned_capital = entry_value + pnl
+        state["capital"] += returned_capital
+
     del state["positions"][key]
     state["history"].append({
         "time": datetime.now(timezone.utc).isoformat(),
@@ -120,7 +130,6 @@ def close_position(state, key, price, reason):
     })
     send_bale(f"🔴 CLOSE {pos['market']}:{pos['symbol']} @ {price:.4f} | PnL: {pnl:+.4f} ({reason})")
     return True
-
 def update_equity(state, markets_data):
     eq = state["capital"]
     for key, pos in state["positions"].items():
@@ -131,11 +140,11 @@ def update_equity(state, markets_data):
         if pos["side"] == "LONG":
             eq += pos["qty"] * cur * (1 - pos["fee"] / 2)
         else:  # SHORT
-            unrealized = pos["cost"] * (2 * pos["entry"] - cur) / pos["entry"]
-            eq += max(0, unrealized)
+            entry_value = pos["qty"] * pos["entry"]
+            unrealized = entry_value * (pos["entry"] - cur) / pos["entry"]
+            eq += pos["cost"] + unrealized
     state["equity"] = round(eq, 2)
     state["peak"] = max(state.get("peak", eq), eq)
-
 def main():
     print("=" * 70); print(" M12 Bot v2 — all symbols, real positions"); print("=" * 70)
     if not os.path.exists(CONFIG): print("No config. Run researcher first."); return
