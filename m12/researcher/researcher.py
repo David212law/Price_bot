@@ -88,7 +88,6 @@ def export_csv(market, name, regime, won, ret):
 def select(agg):
     config = {}
     for regime in ["BULL","FLAT","BEAR","CRASH"]:
-        if regime == "CRASH": config[regime] = {}; continue
         cands = []
         for sname in STRATEGIES:
             won = agg[sname][regime]["won"]; ret = agg[sname][regime]["ret"]
