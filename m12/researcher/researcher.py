@@ -139,8 +139,6 @@ def main():
                 wr = win_rate(won); mr = mean(ret)
                 wr_thresh = 0.50 if regime=="CRASH" else 0.52
                 if wr >= wr_thresh and mr > 0: cands.append((sname, wr, mr, ret))
-                    cnt += 1
-                    if best is None or wr > best[1]: best = (sn, wr, mr)
             bs = f"best={best[0]} wr={best[1]:.3f} ret={best[2]:+.4f}" if best else "-"
             print(f"  {regime:6s}: {cnt:2d} valid | {bs}")
         for sn in STRATEGIES:
