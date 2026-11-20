@@ -91,9 +91,11 @@ def select(agg):
         cands = []
         for sname in STRATEGIES:
             won = agg[sname][regime]["won"]; ret = agg[sname][regime]["ret"]
-            if len(won) < 20: continue
+            min_trades = 5 if regime=="CRASH" else 20
+            if len(won) < min_trades: continue
             wr = win_rate(won); mr = mean(ret)
-            if wr >= 0.52 and mr > 0: cands.append((sname, wr, mr, ret))
+            wr_thresh = 0.50 if regime=="CRASH" else 0.52
+            if wr >= wr_thresh and mr > 0: cands.append((sname, wr, mr, ret))
         if not cands: config[regime] = {}; continue
         cands.sort(key=lambda x: -x[1])
         picked, picked_rets = [], []
@@ -132,9 +134,11 @@ def main():
             cnt, best = 0, None
             for sn in STRATEGIES:
                 won = agg[sn][regime]["won"]; ret = agg[sn][regime]["ret"]
-                if len(won) < 20: continue
+                min_trades = 5 if regime=="CRASH" else 20
+                if len(won) < min_trades: continue
                 wr = win_rate(won); mr = mean(ret)
-                if wr >= 0.52 and mr > 0:
+                wr_thresh = 0.50 if regime=="CRASH" else 0.52
+                if wr >= wr_thresh and mr > 0: cands.append((sname, wr, mr, ret))
                     cnt += 1
                     if best is None or wr > best[1]: best = (sn, wr, mr)
             bs = f"best={best[0]} wr={best[1]:.3f} ret={best[2]:+.4f}" if best else "-"
