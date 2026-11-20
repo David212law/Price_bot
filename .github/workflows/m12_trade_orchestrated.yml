@@ -1,0 +1,18 @@
+name: M12 Trade (orchestrated)
+
+on:
+  schedule: [{ cron: '10 3 * * 6' }]   # 10 دقیقه بعد از تحقیق هفتگی (که config تازه باشد)
+  workflow_dispatch:
+
+permissions: { contents: read }
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+
+      - name: Run orchestrated trade (Gate -> bot.py)
+        run: python3 m12/bot/run_trade_orchestrated.py
