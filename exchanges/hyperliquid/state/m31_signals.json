@@ -1,9 +1,3 @@
 {
-  "signals": [
-    {
-      "symbol": "BNB",
-      "action": "CLOSE",
-      "time": 1795150800045
-    }
-  ]
+  "signals": []
 }
