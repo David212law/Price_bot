@@ -1,3 +1,11 @@
 {
-  "signals": []
+  "signals": [
+    {
+      "symbol": "BNB",
+      "action": "OPEN_SHORT",
+      "price": 574.47,
+      "sl": 591.3228571428572,
+      "tp": 540.7642857142857
+    }
+  ]
 }

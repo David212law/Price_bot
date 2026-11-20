@@ -1,39 +1,9 @@
 {
   "signals": [
     {
-      "symbol": "BTC",
-      "action": "CLOSE",
-      "time": 1795096800051
-    },
-    {
-      "symbol": "ETH",
-      "action": "CLOSE",
-      "time": 1795125600011
-    },
-    {
-      "symbol": "SOL",
-      "action": "CLOSE",
-      "time": 1795111200030
-    },
-    {
       "symbol": "BNB",
-      "action": "OPEN",
-      "time": 1795100400029
-    },
-    {
-      "symbol": "XRP",
-      "action": "OPEN",
-      "time": 1795104000000
-    },
-    {
-      "symbol": "XRP",
       "action": "CLOSE",
-      "time": 1795129200017
-    },
-    {
-      "symbol": "AVAX",
-      "action": "CLOSE",
-      "time": 1795118400016
+      "time": 1795150800045
     }
   ]
 }
