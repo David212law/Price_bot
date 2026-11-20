@@ -44,3 +44,6 @@ reports/auto_scan/*.json
 m12/cache/
 m12/bot/state.json
 m12/researcher/research/
+
+# M12 cache (do not commit)
+m12/cache/
