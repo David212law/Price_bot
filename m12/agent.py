@@ -1,5 +1,10 @@
-"""M12 Manager Agent — L1 observer + L2 auto-fix (loose scope mode)."""
-import ast, builtins, datetime, json, pathlib, subprocess, sys, argparse
+"""M12 Manager Agent v2 — L1+L2+L3, project-wide checks, Bale alerts.
+
+L1 observe: syntax, undefined names, config/state validity, YAML, file sizes
+L2 auto-fix: add missing imports, strip trailing whitespace (safe only)
+L3 act: auto-commit if safe changes + calc_test passes, Bale alert on critical
+"""
+import ast, builtins, datetime, json, pathlib, subprocess, sys, argparse, os, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent
 REPO = ROOT.parent
@@ -7,45 +12,39 @@ REPORT = ROOT / "agent_report.txt"
 NOW = datetime.datetime.now().isoformat(timespec="seconds")
 BUILTINS = set(dir(builtins))
 
-FILES = sorted(
-    str(p.relative_to(ROOT))
-    for p in ROOT.rglob("*.py")
-    if "__pycache__" not in str(p)
-    and "cache" not in p.parts
-    and not p.name.startswith("agent")
-)
+# ─── Scope: پروژه کامل، با skip پوشه‌های حجیم/سنتی ───
+SKIP_DIRS = {"__pycache__", ".git", "cache", "node_modules", "archive", ".venv", "venv"}
+SKIP_FILES_PREFIX = {"agent"}  # agent.py خودش
 
-KNOWN_MODULES = {
-    "random": "import random", "statistics": "import statistics",
-    "math": "import math", "re": "import re", "json": "import json",
-    "os": "import os", "sys": "import sys", "csv": "import csv",
-    "subprocess": "import subprocess", "hashlib": "import hashlib",
-    "argparse": "import argparse", "pathlib": "import pathlib",
-    "urllib": "import urllib.request",
-}
+def find_py_files():
+    out = []
+    for p in REPO.rglob("*.py"):
+        if any(s in p.parts for s in SKIP_DIRS): continue
+        if p.name.startswith("agent"): continue
+        out.append(p)
+    return sorted(out)
+
+KNOWN_MODULES = {"random":"import random","statistics":"import statistics",
+    "math":"import math","re":"import re","json":"import json","os":"import os",
+    "sys":"import sys","csv":"import csv","subprocess":"import subprocess",
+    "hashlib":"import hashlib","argparse":"import argparse","pathlib":"import pathlib",
+    "urllib":"import urllib.request","time":"import time"}
 
 def sh(cmd, cwd=None):
     p = subprocess.run(cmd, cwd=str(cwd or ROOT), capture_output=True, text=True)
     return {"rc": p.returncode, "out": p.stdout, "err": p.stderr}
 
 def py_compile(path):
-    p = ROOT / path
-    if not p.exists():
-        return {"ok": False, "why": "missing file"}
-    r = sh([sys.executable, "-m", "py_compile", str(p)])
-    return {"ok": r["rc"] == 0,
-            "why": (r["err"] or r["out"]).strip().splitlines()[-1:] if r["rc"] else ""}
+    r = sh([sys.executable, "-m", "py_compile", str(path)])
+    return r["rc"] == 0, ((r["err"] or r["out"]).strip().splitlines()[-1:] or [""])[0]
 
 def _target_names(n):
-    if isinstance(n, ast.Name):
-        return {n.id}
+    if isinstance(n, ast.Name): return {n.id}
     ids = set()
-    for c in ast.iter_child_nodes(n):
-        ids |= _target_names(c)
+    for c in ast.iter_child_nodes(n): ids |= _target_names(c)
     return ids
 
 def collect_all_names(tree):
-    """Loose scope: all names bound anywhere in the file."""
     names = set()
     for n in ast.walk(tree):
         if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
@@ -65,105 +64,184 @@ def collect_all_names(tree):
     return names
 
 def undefined_names(path):
-    """Loose detection: flag names used-but-never-bound anywhere in the file."""
     try:
-        tree = ast.parse(pathlib.Path(path).read_text())
+        tree = ast.parse(path.read_text())
     except SyntaxError:
         return []
-    all_bound = collect_all_names(tree)
+    bound = collect_all_names(tree)
     out = []
     for node in ast.walk(tree):
-        if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-            continue
+        if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)): continue
         for n in ast.walk(node):
             if (isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load)
-                    and n.id not in all_bound
-                    and n.id not in BUILTINS):
+                    and n.id not in bound and n.id not in BUILTINS):
                 out.append((node.name, n.id, n.lineno))
     return out
 
-def auto_fix_missing_imports(path):
-    p = ROOT / path
-    if not p.exists(): return []
-    code = p.read_text()
-    seen = set()
-    for func, name, line in undefined_names(str(p)):
+def fix_missing_imports(path):
+    if not path.exists(): return []
+    code = path.read_text(); seen = []
+    for func, name, line in undefined_names(path):
         if name in KNOWN_MODULES and name not in seen:
             if f"import {name}" in code: continue
             lines = code.splitlines(keepends=True)
-            insert_at = 0
-            if lines and lines[0].startswith("#!"): insert_at = 1
+            insert_at = 1 if (lines and lines[0].startswith("#!")) else 0
             if insert_at < len(lines):
                 ls = lines[insert_at].lstrip()
                 if ls.startswith('"""') or ls.startswith("'''"):
                     delim = ls[:3]
                     for j in range(insert_at+1, min(insert_at+30, len(lines))):
-                        if delim in lines[j]:
-                            insert_at = j + 1
-                            break
+                        if delim in lines[j]: insert_at = j + 1; break
             code = "".join(lines[:insert_at]) + KNOWN_MODULES[name] + "\n" + "".join(lines[insert_at:])
-            p.write_text(code)
-            seen.add(name)
-    return list(seen)
+            path.write_text(code); seen.append(name)
+    return seen
 
-def config_crash():
-    cfg = ROOT / "config.json"
-    if not cfg.exists():
-        return ("config.json CRASH", False, "missing config.json")
-    try:
-        d = json.loads(cfg.read_text())
-    except Exception as e:
-        return ("config.json CRASH", False, f"JSON parse: {e}")
-    parts = [f"{m}={len(d.get(m, {}).get('CRASH', {}))}" for m in ["TMN","USDT","GLOBAL"]]
-    ok = all(len(d.get(m, {}).get("CRASH", {})) > 0 for m in d.keys())
-    return ("config.json CRASH", ok, ", ".join(parts))
+def fix_trailing_whitespace(path):
+    code = path.read_text()
+    new = "\n".join(line.rstrip() for line in code.split("\n"))
+    if new != code:
+        path.write_text(new); return True
+    return False
 
-def git_tracked_dirty():
+def check_json_file(path, required_keys=None):
+    if not path.exists(): return False, f"missing {path.name}"
+    try: data = json.loads(path.read_text())
+    except Exception as e: return False, f"parse: {e}"
+    if required_keys:
+        missing = [k for k in required_keys if k not in data]
+        if missing: return False, f"missing keys: {missing}"
+    return True, "ok"
+
+def check_config_crash():
+    ok, _ = check_json_file(ROOT/"config.json")
+    if not ok: return False, "config invalid"
+    d = json.loads((ROOT/"config.json").read_text())
+    parts, all_ok = [], True
+    for m in ["TMN","USDT","GLOBAL"]:
+        n = len(d.get(m, {}).get("CRASH", {}))
+        parts.append(f"{m}={n}")
+        if n == 0: all_ok = False
+    return all_ok, ", ".join(parts)
+
+def check_workflows():
+    wf_dir = REPO/".github"/"workflows"
+    if not wf_dir.exists(): return True, "no workflows"
+    bad = []
+    for f in wf_dir.glob("*.yml"):
+        try:
+            txt = f.read_text()
+            if "jobs:" not in txt: bad.append(f.name)
+        except: bad.append(f.name)
+    return (not bad), (f"invalid: {bad}" if bad else f"{len(list(wf_dir.glob('*.yml')))} files ok")
+
+def check_large_files(threshold=1500):
+    big = [str(p.relative_to(REPO)) for p in find_py_files() if len(p.read_text().splitlines()) > threshold]
+    return (not big), (f"large: {big[:3]}" if big else "ok")
+
+def check_bale_env():
+    return bool(os.environ.get("BALE_BOT_TOKEN")), "BALE_BOT_TOKEN" if os.environ.get("BALE_BOT_TOKEN") else "not set (skip alerts)"
+
+def git_dirty():
     r = sh(["git", "status", "--short"], cwd=REPO)
-    dirty = [l for l in r["out"].splitlines() if l.strip() and not l.startswith("?? ")]
-    return ("git tracked-state", not dirty, (", ".join(dirty) if dirty else "clean"))
+    return [l for l in r["out"].splitlines() if l.strip() and not l.startswith("?? ")]
+
+def send_bale(msg):
+    tok = os.environ.get("BALE_BOT_TOKEN",""); ch = os.environ.get("BALE_CHAT_ID","")
+    if not tok or not ch: print(f"[BALE-SKIP] {msg}"); return
+    try:
+        req = urllib.request.Request(f"https://tapi.bale.ai/bot{tok}/sendMessage",
+            data=json.dumps({"chat_id": ch, "text": msg}).encode(),
+            headers={"Content-Type":"application/json"})
+        urllib.request.urlopen(req, timeout=10)
+    except Exception as e: print(f"[BALE-ERR] {e}")
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--allow-dirty", action="store_true")
     ap.add_argument("--auto-fix", action="store_true")
+    ap.add_argument("--auto-commit", action="store_true", help="L3: commit safe fixes")
+    ap.add_argument("--bale", action="store_true", help="Send critical alerts to Bale")
+    ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--fast", action="store_true", help="Only m12 core files (Termux)")
     args = ap.parse_args()
 
-    print("=" * 62)
-    print(" M12 MANAGER AGENT  started: " + NOW)
-    print("=" * 62)
+    if args.fast:
+        py_files = sorted([ROOT/f for f in ["calc.py","calc_test.py","m12_strategies.py","data_fetcher.py"]
+                           if (ROOT/f).exists()])
+    else:
+        py_files = find_py_files()
+    if not args.quiet:
+        print(f"=== M12 Agent v2 | {len(py_files)} py files | {NOW} ===")
 
+    # ═══ L2: auto-fix ═══
+    fixed_files = []
     if args.auto_fix:
-        print("[L2] auto-fix enabled")
-        for f in FILES:
-            fixed = auto_fix_missing_imports(f)
-            for fx in fixed: print(f"  FIXED: added '{fx}' in {f}")
+        for p in py_files:
+            imports_added = fix_missing_imports(p)
+            if imports_added: fixed_files.append(f"{p.name}: +{imports_added}")
+            if fix_trailing_whitespace(p): fixed_files.append(f"{p.name}: ws")
 
-    lines = [f"MANAGER AGENT REPORT ({NOW})"]
-    all_ok = True
-    for f in FILES:
-        c = py_compile(f)
-        if not c["ok"]:
-            all_ok = False
-            lines.append(f"   [FLAG] syntax {f}: {c['why']}")
-        for func, name, line in undefined_names(str(ROOT / f)):
-            all_ok = False
-            lines.append(f"   [FLAG] undefined-name {f}:{line} — {func}() uses '{name}'")
-    checks = [config_crash()]
-    if not args.allow_dirty:
-        checks.append(git_tracked_dirty())
-    for name, ok, why in checks:
+    # ═══ L1: checks ═══
+    flags = []
+    syntax_errors = []
+    for p in py_files:
+        ok, why = py_compile(p)
         if not ok:
-            all_ok = False
-            lines.append(f"   [FLAG] {name}: {why}")
+            syntax_errors.append(f"{p.relative_to(REPO)}: {why}")
+            flags.append(("CRITICAL", f"syntax {p.relative_to(REPO)}: {why}"))
+        for func, name, line in undefined_names(p):
+            flags.append(("HIGH", f"{p.relative_to(REPO)}:{line} {func}() → '{name}' undefined"))
+    
+    checks = {
+        "config_crash": check_config_crash(),
+        "workflows": check_workflows(),
+        "large_files": check_large_files(),
+        "state": check_json_file(ROOT/"bot"/"state.json"),
+    }
+    for name, (ok, why) in checks.items():
+        if not ok: flags.append(("HIGH" if name=="config_crash" else "LOW", f"{name}: {why}"))
+
+    dirty = git_dirty()
+    if dirty and not args.allow_dirty:
+        flags.append(("INFO", f"git dirty: {len(dirty)} files"))
+
+    # ═══ Report ═══
+    lines = [f"AGENT REPORT ({NOW})", f"Files: {len(py_files)}", ""]
+    if fixed_files:
+        lines.append("AUTO-FIXED:")
+        for f in fixed_files: lines.append(f"  ✓ {f}")
+        lines.append("")
+    if flags:
+        lines.append("FLAGS:")
+        for sev, msg in flags: lines.append(f"  [{sev}] {msg}")
+    else:
+        lines.append("ALL CHECKS PASSED")
 
     REPORT.write_text("\n".join(lines))
-    print("\n".join(lines))
+    if not args.quiet: print("\n".join(lines))
 
-    if not all_ok:
-        print("\nFLAGGED — run with --auto-fix to try L2 fixes")
-        sys.exit(1)
-    print("\nALL CHECKS PASSED")
+    # ═══ Bale for critical ═══
+    if args.bale:
+        critical = [f for sev, f in flags if sev == "CRITICAL"]
+        if critical:
+            send_bale(f"🚨 M12 Agent: {len(critical)} critical\n" + "\n".join(critical[:3]))
+
+    # ═══ L3: auto-commit ═══
+    has_critical = any(sev == "CRITICAL" for sev, _ in flags)
+    if args.auto_commit and fixed_files and not has_critical:
+        # sanity: calc test
+        ct = sh([sys.executable, str(ROOT/"calc_test.py")])
+        if ct["rc"] != 0:
+            print("❌ calc_test failed — no auto-commit")
+            return 1
+        # only commit py fixes
+        sh(["git", "add", "-u", "*.py"], cwd=REPO)
+        stat = sh(["git", "diff", "--cached", "--stat"], cwd=REPO)
+        if stat["out"].strip():
+            sh(["git", "commit", "-m", f"auto(agent): {len(fixed_files)} files fixed"], cwd=REPO)
+            print(f"✅ auto-committed {len(fixed_files)} files")
+
+    return 1 if has_critical or any(sev == "HIGH" for sev, _ in flags) else 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
