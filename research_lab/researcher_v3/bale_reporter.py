@@ -25,7 +25,7 @@ def format_report(combos, pareto, live_data, per_exchange):
     """Format research report for Bale."""
     lines = ["📊 Researcher v3 Report"]
     lines.append("")
-    
+
     # Live data status
     live_ok = sum(1 for d in live_data.values() if "error" not in d)
     lines.append(f"📡 Live: {live_ok}/4 exchanges OK")
@@ -34,13 +34,13 @@ def format_report(combos, pareto, live_data, per_exchange):
             lines.append(f"  ❌ {exch}: {d['error'][:40]}")
         else:
             lines.append(f"  ✅ {exch}: {len(d['prices'])} days")
-    
+
     # Pareto front
     lines.append("")
     lines.append(f"🎯 Pareto: {len(pareto)} strategies")
     for p in pareto[:5]:
         lines.append(f"  • {p[:40]}")
-    
+
     # Combos per regime
     lines.append("")
     lines.append(f"🔧 Combos: {len(combos)} regimes")
@@ -49,7 +49,7 @@ def format_report(combos, pareto, live_data, per_exchange):
             comps = ", ".join(f"{c['strategy']}@{c['weight']:.0%}" for c in combo["components"])
             cov = combo.get("coverage", "?")
             lines.append(f"  {regime}: {comps[:60]} [{cov}/16]")
-    
+
     # Per-exchange
     if per_exchange:
         lines.append("")
@@ -58,7 +58,7 @@ def format_report(combos, pareto, live_data, per_exchange):
             n = info.get("n_strategies", 0)
             best = info.get("best", "?")
             lines.append(f"  {exch}: {n} strategies, best={best[:30]}")
-    
+
     return "\n".join(lines)
 
 

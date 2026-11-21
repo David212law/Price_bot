@@ -38,7 +38,7 @@ def metrics(history, days=30):
     wins = sum(1 for h in recent if h.get("pnl", 0) > 0)
     gp = sum(h.get("pnl", 0) for h in recent if h.get("pnl", 0) > 0)
     gl = abs(sum(h.get("pnl", 0) for h in recent if h.get("pnl", 0) <= 0))
-    
+
     # فیکس باگ: PF می‌تواند رشته باشد
     if gl > 0:
         pf = round(gp/gl, 2)
@@ -46,7 +46,7 @@ def metrics(history, days=30):
         pf = "N/A" if len(recent) < 3 else 99.99
     else:
         pf = 0
-    
+
     return {"n": len(recent), "wr": round(wins/len(recent)*100, 1), "pf": pf, "pnl": round(gp-gl, 2)}
 
 def get_equity(st):
@@ -72,11 +72,11 @@ def main():
         if not st:
             report.append(f"🔹 {name}: State not found")
             continue
-        
+
         equity = get_equity(st)
         history = st.get("history", [])
         m = metrics(history)
-        
+
         # شمارش پوزیشن‌های باز
         open_count = 0
         for k in ["m31_pos", "m35_pos", "m40_pos", "m41_pos", "a8_positions", "a20_pos", "a20_positions", "m40_positions"]:
@@ -91,10 +91,10 @@ def main():
                         open_count += 1
             elif isinstance(positions, list):
                 open_count += len(positions)
-                
+
         report.append(f"🌐 **{name.upper()}** — Equity: ${equity:.2f}")
         report.append(f"   Open Positions: {open_count}")
-        
+
         if m:
             # هندل کردن pf رشته‌ای
             pf_val = m["pf"]
@@ -104,7 +104,7 @@ def main():
             report.append(f"   Closed 30d: n={m['n']} | WR={m['wr']}% | PF={pf_val} | PnL=${m['pnl']}{warn}")
         else:
             report.append(f"   Closed 30d: No trades closed in last 30 days")
-            
+
     msg = "\n".join(report)
     print(msg)
     send_bale(msg)

@@ -34,39 +34,39 @@ def simulate(df, bot, days=30):
     prev_regime = None
     prev_keys = set()
     history = []
-    
+
     tgju = json.load(open("data/usd_irr_tgju.json"))
     usd_rate = tgju[sorted(tgju.keys())[-1]]
-    
+
     for i, date in enumerate(df.index[-days:]):
         df_today = df.loc[:date]
-        
+
         if i == 0:
             history.append({"date": str(date.date()), "equity": capital})
             continue
-        
+
         try:
             regime = bot.detect_regime(df_today)
             target = bot.get_target_portfolio(df_today, regime)
         except Exception:
             history.append({"date": str(date.date()), "equity": capital})
             continue
-        
+
         if target is None:
             history.append({"date": str(date.date()), "equity": capital})
             continue
-        
+
         curr_keys = set(target.keys())
-        
+
         if regime != prev_regime or curr_keys != prev_keys:
             equity = capital
             for a, q in holdings.items():
                 if a in df_today.columns:
                     equity += q * df_today[a].iloc[-1] / usd_rate
-            
+
             fee_pct = 0.006 if regime != prev_regime else 0.002
             equity -= equity * fee_pct
-            
+
             capital = 0
             holdings = {}
             for a, w in target.items():
@@ -79,17 +79,17 @@ def simulate(df, bot, days=30):
                     holdings[a] = alloc / p_usd
                 else:
                     capital += alloc
-            
+
             prev_regime = regime
             prev_keys = curr_keys
-        
+
         eq = capital
         for a, q in holdings.items():
             if a in df_today.columns:
                 eq += q * df_today[a].iloc[-1] / usd_rate
-        
+
         history.append({"date": str(date.date()), "equity": round(eq, 2)})
-    
+
     return history
 
 
@@ -117,21 +117,21 @@ def main():
     print("="*60)
     print("  REPRODUCIBILITY v2 — Using ACTUAL bot code")
     print("="*60)
-    
+
     bot = load_bot("scripts/wallex_paper_bot.py")
     print(f"\n✅ Bot loaded (CAPITAL=${bot.CAPITAL})")
-    
+
     df = load_market("TMN")
     print(f"✅ Data: {len(df.columns)} assets, {len(df)} days")
-    
+
     history = simulate(df, bot, days=30)
     s = stats(history)
-    
+
     if s:
         print(f"\n  Results:")
         for k, v in s.items():
             print(f"    {k}: {v}")
-    
+
     os.makedirs("archive/reproducibility", exist_ok=True)
     ts = datetime.now().strftime("%Y%m%d_%H%M")
     with open(f"archive/reproducibility/latest_v2.json", "w") as f:

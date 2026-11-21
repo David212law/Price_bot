@@ -30,7 +30,7 @@ def main():
             if data and len(data) >= 30:
                 if sym.endswith("TMN"): tmn[sym] = data
                 elif sym.endswith("USDT"): usdt[sym] = data
-                
+
     os.makedirs("data", exist_ok=True)
     json.dump(tmn, open("data/wallex_tmn_all.json", "w"))
     json.dump(usdt, open("data/wallex_usdt_all.json", "w"))

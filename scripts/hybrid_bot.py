@@ -283,10 +283,10 @@ def build_target_portfolio_v2(config, df, prices):
         df_pd = _pd.DataFrame(cols)
         df_pd.index = _pd.to_datetime(df_pd.index)
         df_pd = df_pd.sort_index().ffill()
-    
+
     target = {}
     total_weight = 0.0
-    
+
     for strategy_name, strategy_info in config.get("strategies", {}).items():
         weight = strategy_info["weight"]
         fn = SIGNAL_FUNCTIONS_V2.get(strategy_name)
@@ -307,7 +307,7 @@ def build_target_portfolio_v2(config, df, prices):
                     total_weight += per_asset
         except Exception as e:
             log(f"  ⚠️ {strategy_name}: {e}")
-    
+
     return target, total_weight
 
 
@@ -337,7 +337,7 @@ def main():
     log(f"💵 USD rate: {usd_rate:,.0f} Rial")
     log(f"🪙 Prices: {len(prices)} assets")
     log(f"📅 Fresh assets (≤7 days): {sum(1 for a in prices if is_price_fresh(a, latest_dates))}")
-    
+
     # Check v2 config
     use_v2 = os.path.exists(V2_CONFIG_FILE)
     if use_v2:

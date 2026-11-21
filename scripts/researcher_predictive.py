@@ -86,7 +86,7 @@ def build_strategies(df):
             w = pd.DataFrame(0.0, index=df.index, columns=df.columns)
             w[a] = 1.0
             S[f"bh_{a}"] = w
-    
+
     # ═══════════════════════════════════════════════════════════════════
     # HIGH-FREQUENCY STRATEGIES (for more trades per regime)
     # ═══════════════════════════════════════════════════════════════════
@@ -97,7 +97,7 @@ def build_strategies(df):
             for a in valid:
                 w[a] = 1.0 / len(valid)
         return w
-    
+
     # 1. GRID Trading (BTC & ETH only, high liquidity)
     for col in ["BTC", "ETH"]:
         if col not in df.columns: continue
@@ -111,7 +111,7 @@ def build_strategies(df):
             w = pd.DataFrame(0.0, index=df.index, columns=df.columns)
             w[col] = sig
             S[f'grid_{col}_{int(pct*100)}'] = w
-    
+
     # 2. FAST RSI Mean Reversion
     for p in [5, 7, 10, 14]:
         delta = df.diff()
@@ -125,7 +125,7 @@ def build_strategies(df):
             top = scored.rank(axis=1, ascending=True).le(3).astype(float)
             w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
             S[f'rsi_fast_{p}_{th}'] = w
-    
+
     # 3. Bollinger Breakout (for trends)
     for n in [10, 20]:
         ma = df.rolling(n).mean()
@@ -135,14 +135,14 @@ def build_strategies(df):
             top = sig.rank(axis=1, ascending=False).le(3).astype(float)
             w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
             S[f'bb_breakout_{n}_{mult}'] = w
-    
+
     # 4. Donchian Breakout
     for n in [10, 20, 50]:
         sig = (df > df.rolling(n).max().shift(1)).astype(float)
         top = sig.rank(axis=1, ascending=False).le(3).astype(float)
         w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
         S[f'donchian_breakout_{n}'] = w
-    
+
     # 5. Z-Score Mean Reversion
     for n in [10, 20]:
         ma = df.rolling(n).mean()
@@ -153,7 +153,7 @@ def build_strategies(df):
             top = sig.rank(axis=1, ascending=False).le(3).astype(float)
             w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
             S[f'zscore_{n}_{abs(th)}'] = w
-    
+
     # 6. VWAP Reversion
     vol = pd.DataFrame(1.0, index=df.index, columns=df.columns)
     vwap = (df * vol).rolling(20).sum() / vol.rolling(20).sum()
@@ -161,7 +161,7 @@ def build_strategies(df):
     top = sig.rank(axis=1, ascending=False).le(3).astype(float)
     w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
     S['vwap_rev_20'] = w
-    
+
     # 7. Fast Momentum (for BULL_STRONG)
     for n in [3, 5, 7]:
         for th in [0.02, 0.03]:
@@ -169,7 +169,7 @@ def build_strategies(df):
             top = sig.rank(axis=1, ascending=False).le(3).astype(float)
             w = top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
             S[f'mom_fast_{n}_{int(th*100)}'] = w
-    
+
     # ═══════════════════════════════════════════════════════════════
     # ARCHIVED STRATEGIES (from find_best_per_regime.py, vectorized)
     # ═══════════════════════════════════════════════════════════════
@@ -177,7 +177,7 @@ def build_strategies(df):
         rank = w.rank(axis=1, ascending=False)
         top = (rank <= top_n).astype(float)
         return top.div(top.sum(axis=1).replace(0, 1), axis=0).fillna(0)
-    
+
     # MOMENTUM (mom_nd)
     for n in [10, 20, 30, 60]:
         ret = df.pct_change(n)
@@ -185,14 +185,14 @@ def build_strategies(df):
         sig = ((ret > 0) & (df > ma50))
         scored = ret.where(sig)
         S[f'mom_nd_{n}'] = _normalize_top(scored.fillna(-999), top_n=3)
-    
+
     # BREAKOUT (breakout_n)
     for n in [20, 50]:
         prev_max = df.rolling(n).max().shift(1)
         sig = (df > prev_max)
         scored = df.pct_change(n).where(sig)
         S[f'break_n_{n}'] = _normalize_top(scored.fillna(-999), top_n=3)
-    
+
     # MA CROSS (ma_cross)
     for fast, slow in [(20, 50), (50, 200)]:
         mf = df.rolling(fast).mean()
@@ -200,7 +200,7 @@ def build_strategies(df):
         sig = (mf > ms)
         scored = (mf / ms - 1).where(sig)
         S[f'ma_cross_{fast}_{slow}'] = _normalize_top(scored.fillna(-999), top_n=3)
-    
+
     # RSI MEAN REVERSION (rsi_mr)
     for period in [14, 21]:
         delta = df.diff()
@@ -250,23 +250,23 @@ def build_combo_strategies(S, top_n=8):
     """Generate conditional combos from top base strategies."""
     if not S or len(S) < 2:
         return {}
-    
+
     # Take top_n strategies by their standard deviation (as a proxy for signal quality)
     # In a real scenario, we'd rank by historical Sharpe, but here we use the first N for simplicity
     base_names = list(S.keys())[:top_n]
     combos = {}
-    
+
     import itertools
     for (name1, name2) in itertools.combinations(base_names, 2):
         sig1 = S[name1]
         sig2 = S[name2]
-        
+
         # Combo 1: AND (both must agree) - higher quality, fewer trades
         combos[f"combo_AND_{name1}_{name2}"] = (sig1 * sig2)
-        
+
         # Combo 2: OR (either can trigger) - lower quality, more trades
         combos[f"combo_OR_{name1}_{name2}"] = ((sig1 + sig2) > 0).astype(float)
-        
+
     return combos
 
 def detect_regime(df):
@@ -304,7 +304,7 @@ def detect_regime_15(df):
     ma50 = btc.rolling(50).mean()
     ma200 = btc.rolling(200).mean()
     trend = (ma50 - ma200) / ma200
-    
+
     conditions = [
         (btc < ma50 * 0.85) & (vol > 0.9),  # CRASH
         (trend < -0.15) & (vol > 0.7),       # BEAR_STRONG
@@ -397,10 +397,10 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
                 recent_scores[strat] = recent_sharpe
             else:
                 recent_scores[strat] = scores[strat]  # fallback to full
-        
+
         # Use recent scores for sorting (more weight to recent performance)
         sorted_final = sorted(final_strats, key=lambda s: recent_scores.get(s, 0), reverse=True)
-        
+
         # Family mapping (for P_ strategies, we don't know, so they go to "other")
         def get_family(name):
             # FIX: handle wallex:: prefix
@@ -416,7 +416,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
 
         selected = []
         selected_returns = []
-        
+
         # Family tracking
         used_families = {}
 
@@ -474,7 +474,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
         # EXPONENTIAL WEIGHTING: top-5 dominate
         positive_sorted = sorted(positive, key=lambda x: -x[1])
         n = len(positive_sorted)
-        
+
         if n <= 5:
             scores_sq = [(s, sh**2) for s, sh in positive_sorted]
             total_sq = sum(sh_sq for _, sh_sq in scores_sq)
@@ -487,7 +487,7 @@ def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max
             else:
                 weights_list = [0.30, 0.20, 0.15, 0.10, 0.10] + [0.15/(n-5)] * (n-5)
             weighted = {s: w for (s, _), w in zip(positive_sorted, weights_list)}
-        
+
         weighted = {s: round(w, 4) for s, w in weighted.items()}
 
         top_per_regime[r] = weighted
@@ -532,39 +532,39 @@ def load_profiler_returns_as_df(market, dates_index):
     path = "research_lab/logs/profiles/state.json"
     if not os.path.exists(path):
         return pd.DataFrame()
-    
+
     state = json.load(open(path))
     done = state.get("done", {})
-    
+
     # Load blacklist
     try:
         from research_lab.pipeline_contract import BLACKLIST
     except:
         BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"]
-    
+
     cols = {}
     skipped_blacklist = 0
     skipped_no_file = 0
     skipped_short = 0
     loaded_by_status = {"validated": 0, "profiled": 0, "other": 0}
-    
+
     for key, v in done.items():
         if not isinstance(v, dict): continue
         parts = key.split(":")
         if len(parts) < 4: continue
         exch, strat, h, sym = parts[0], parts[1], parts[2], parts[3]
-        
+
         # Skip blacklist (artifact strategies)
         if any(bl in strat for bl in BLACKLIST):
             skipped_blacklist += 1
             continue
-        
+
         # Filter by market
         if market == "GLOBAL":
             if exch not in ["hyperliquid", "aster", "kucoin"]: continue
         else:  # TMN / USDT
             if exch != "wallex": continue
-        
+
         ret_file = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{h}_{sym}.json"
         if not os.path.exists(ret_file):
             skipped_no_file += 1
@@ -580,15 +580,15 @@ def load_profiler_returns_as_df(market, dates_index):
             if s.abs().sum() > 0:
                 name = f"P_{strat}_{sym}"
                 cols[name] = s
-                
+
                 status = v.get("status", "other")
                 if status in loaded_by_status:
                     loaded_by_status[status] += 1
                 else:
                     loaded_by_status["other"] += 1
-        except: 
+        except:
             skipped_no_file += 1
-    
+
     # ── NEW: Load ALL files directly from returns_matrices/wallex (for strategies not in state.json)
     if market in ["TMN", "USDT"]:
         import glob
@@ -639,18 +639,18 @@ def process_market(name, df, fee, max_strat_override=None):
     df = df.sort_index().ffill()
     if len(df) < 200: return None
     S = build_strategies(df)
-    
+
     # NEW: Add conditional combo strategies
     combos = build_combo_strategies(S, top_n=8)
     S.update(combos)
     print(f"  🧬 Added {len(combos)} combo strategies")
-    
+
     market_rets = df.pct_change().fillna(0)
     strat_rets_dict = {k: (v.shift(1) * market_rets).sum(axis=1) for k, v in S.items()}
     strat_rets = pd.DataFrame(strat_rets_dict)
     if not isinstance(strat_rets, pd.DataFrame):
         strat_rets = pd.DataFrame(strat_rets)
-    
+
     # Load from UNIFIED DB (single source of truth)
     try:
         unified = load_unified_db()
@@ -670,7 +670,7 @@ def process_market(name, df, fee, max_strat_override=None):
                 if series.abs().sum() > 0:
                     rows.append((sid, series))
             except: pass
-        
+
         if rows:
             profiler_df = pd.DataFrame(dict(rows))
             profiler_df = profiler_df.reindex(df.index).fillna(0.0)
@@ -678,9 +678,9 @@ def process_market(name, df, fee, max_strat_override=None):
             print(f"  📊 {name}: {len(strat_rets.columns)} candidates (306 + {len(rows)} unified)")
     except Exception as e:
         print(f"  ⚠️ Unified DB load failed: {e}")
-    
+
     # (Profiler loader deprecated — unified DB is used)
-    
+
     # ═══════════════════════════════════════════════════════════════
     # FIX: Freeze test set (Nov 15, 2026 — fixed period)
     # این کار برای Reproducibility ضروری است
@@ -697,7 +697,7 @@ def process_market(name, df, fee, max_strat_override=None):
         print(f"  ⚠️ Not enough data in fixed test set — using 80/20 fallback")
     else:
         print(f"  ✅ Fixed test set: {TEST_SET_START} → {TEST_SET_END} ({test_mask.sum()} days)")
-    
+
     # Oracle
     if "BTC" in df.columns:
         btc_fut = df["BTC"].shift(-30) / df["BTC"] - 1
@@ -718,30 +718,30 @@ def process_market(name, df, fee, max_strat_override=None):
     # ═══════════════════════════════════════════════════════════════
     # A/B Test: دو بار run_ensemble با max_strat_override مختلف
     # ═══════════════════════════════════════════════════════════════
-    
+
     # 1. Conservative (max 5)
     top_p_c, ct_p_c, cdd_p_c, csh_p_c, sw_p_c, sh_c = run_ensemble(
-        strat_rets, pred_regs, train_mask, test_mask, fee, market=name, 
+        strat_rets, pred_regs, train_mask, test_mask, fee, market=name,
         max_strat_override=5
     )
-    
+
     # 2. Aggressive (max 15)
     top_p_a, ct_p_a, cdd_p_a, csh_p_a, sw_p_a, sh_a = run_ensemble(
-        strat_rets, pred_regs_15, train_mask, test_mask, fee, market=name, 
+        strat_rets, pred_regs_15, train_mask, test_mask, fee, market=name,
         max_strat_override=20
     )
-    
+
     return {
         "market": name, "assets": len(df.columns), "days": len(df),
         "oracle": {"return": ct_o, "dd": cdd_o, "sharpe": csh_o},
         "predictive_conservative": {
-            "return": ct_p_c, "dd": cdd_p_c, "sharpe": csh_p_c, "switches": sw_p_c, 
-            "top": top_p_c, 
+            "return": ct_p_c, "dd": cdd_p_c, "sharpe": csh_p_c, "switches": sw_p_c,
+            "top": top_p_c,
             "metrics": {r: {"sharpe": sh} for r, sh in sh_c.items()}
         },
         "predictive_aggressive": {
-            "return": ct_p_a, "dd": cdd_p_a, "sharpe": csh_p_a, "switches": sw_p_a, 
-            "top": top_p_a, 
+            "return": ct_p_a, "dd": cdd_p_a, "sharpe": csh_p_a, "switches": sw_p_a,
+            "top": top_p_a,
             "metrics": {r: {"sharpe": sh} for r, sh in sh_a.items()}
         },
         "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
@@ -755,28 +755,28 @@ def load_all_profiler_strategies():
     if not os.path.exists(path):
         print("  ⚠️ Profiler state not found")
         return {}
-    
+
     state = json.load(open(path))
     done = state.get("done", {})
     loaded = {}
     skipped_no_file = 0
     skipped_short = 0
-    
+
     for key, v in done.items():
         if not isinstance(v, dict): continue
         val = v.get("validation", {})
         sr = val.get("sharpe_ann", 0)
         if v.get("status") != "profiled": continue
-        
+
         parts = key.split(":")
         if len(parts) < 4: continue
         exch, strat, h, sym = parts[0], parts[1], parts[2], parts[3]
         ret_file = f"research_lab/logs/profiles/returns_matrices/{exch}/{strat}_{h}_{sym}.json"
-        
+
         if not os.path.exists(ret_file):
             skipped_no_file += 1
             continue
-        
+
         try:
             rets = json.load(open(ret_file))
             if len(rets) < 60:
@@ -785,7 +785,7 @@ def load_all_profiler_strategies():
             name = f"P_{strat}_{sym}"
             loaded[name] = {"returns": rets, "sharpe_historical": sr}
         except: pass
-    
+
     print(f"  ✅ Loaded {len(loaded)} profiler strategies (NO filter)")
     print(f"     Skipped: {skipped_no_file} (no file), {skipped_short} (too short)")
     return loaded

@@ -100,7 +100,7 @@ def simulate_hedge(funding, prices, fee_rt=0.0007, rebalance_days=30):
     common = sorted(set(funding.keys()) & set(prices.keys()))
     if len(common) < 60:
         return [], {}
-    
+
     spot_w = 0.45
     perp_w = 0.45
     returns = []
@@ -110,28 +110,28 @@ def simulate_hedge(funding, prices, fee_rt=0.0007, rebalance_days=30):
     last_rebalance = 0
     fee_events = 0
     funding_total = 0.0
-    
+
     for i in range(1, len(common)):
         d = common[i]
         p_today = prices[d]
         p_yest = prices[common[i-1]]
-        
+
         # funding (sum of 3 per day)
         funding_inc = perp_units * funding[d] * p_yest
         spot_pnl = spot_units * (p_today - p_yest)
         perp_pnl = -perp_units * (p_today - p_yest)
-        
+
         daily_ret = (funding_inc + spot_pnl + perp_pnl) / equity if equity > 0 else 0
-        
+
         if i - last_rebalance >= rebalance_days:
             daily_ret -= fee_rt
             fee_events += 1
             last_rebalance = i
-        
+
         returns.append(daily_ret)
         funding_total += funding_inc / equity if equity > 0 else 0
         equity *= (1 + daily_ret)
-    
+
     s = stats(returns)
     s["funding_contrib"] = funding_total * 100
     s["fee_events"] = fee_events
@@ -143,23 +143,23 @@ def simulate_m31_alone(funding, prices):
     common = sorted(set(funding.keys()) & set(prices.keys()))
     if len(common) < 60:
         return [], {}
-    
+
     returns = []
     equity = 1.0
     perp_units = 1.0 / prices[common[0]]
-    
+
     for i in range(1, len(common)):
         d = common[i]
         p_today = prices[d]
         p_yest = prices[common[i-1]]
-        
+
         funding_inc = perp_units * funding[d] * p_yest
         perp_pnl = -perp_units * (p_today - p_yest)
-        
+
         daily_ret = (funding_inc + perp_pnl) / equity if equity > 0 else 0
         returns.append(daily_ret)
         equity *= (1 + daily_ret)
-    
+
     return returns, stats(returns)
 
 
@@ -170,54 +170,54 @@ def main():
     print(" Note: funding records are every 8h → sum per day is correct")
     print(" Real HL fees: perp taker 0.035% + spot taker 0.035% = 0.07%/rebalance")
     print("=" * 72)
-    
+
     exchanges = [
         ("hyperliquid", "BTC", "BTC"),
         ("kucoin", "XBTUSDTM", "XBTUSDTM"),
         ("aster", "BTCUSDT", "BTCUSDT"),
     ]
-    
+
     for exchange, sym_f, sym_p in exchanges:
         funding = load_funding_daily(exchange, sym_f)
         prices = load_prices_daily(exchange, sym_p)
-        
+
         if not funding or not prices:
             print(f"\n{exchange}: NO DATA (funding={len(funding)}, prices={len(prices)})")
             continue
-        
+
         common = sorted(set(funding) & set(prices))
         print(f"\n{exchange.upper()} {sym_f}:")
         print(f"  funding days: {len(funding)}, price days: {len(prices)}, common: {len(common)}")
-        
+
         if len(common) < 100:
             print(f"  too few common days")
             continue
-        
+
         # Verify funding magnitude
         funding_vals = [funding[d] for d in common]
         avg_funding = sum(funding_vals) / len(funding_vals)
         print(f"  avg daily funding: {avg_funding*100:.4f}%")
         print(f"  annualized funding: {avg_funding * 365 * 100:.2f}%")
-        
+
         hedge_rets, hedge_stats = simulate_hedge(funding, prices)
         m31_rets, m31_stats = simulate_m31_alone(funding, prices)
-        
+
         if not hedge_stats or not m31_stats:
             continue
-        
+
         print(f"\n  {'Metric':<20} {'M31 alone':>14} {'Hedged':>14}")
         print(f"  {'-' * 50}")
         print(f"  {'Days':<20} {m31_stats['n']:>14} {hedge_stats['n']:>14}")
         print(f"  {'Total return':<20} {m31_stats['ret']:>+13.2f}% {hedge_stats['ret']:>+13.2f}%")
         print(f"  {'Sharpe':<20} {m31_stats['sr']:>14.2f} {hedge_stats['sr']:>14.2f}")
         print(f"  {'Max DD':<20} {m31_stats['dd']:>13.2f}% {hedge_stats['dd']:>13.2f}%")
-        
+
         print(f"\n  Hedged breakdown:")
         print(f"    Funding:  {hedge_stats['funding_contrib']:+.2f}%")
         print(f"    Fees:     -{hedge_stats['fee_total']:.2f}% ({hedge_stats['fee_events']} events)")
         price_contrib = hedge_stats['ret'] - hedge_stats['funding_contrib'] + hedge_stats['fee_total']
         print(f"    Price:    {price_contrib:+.2f}% (should be ~0 for delta neutral)")
-        
+
         print(f"\n  Verdict:")
         if hedge_stats['dd'] < m31_stats['dd'] * 0.5:
             print(f"    ✅ DD reduced by {m31_stats['dd'] - hedge_stats['dd']:.2f}pp")

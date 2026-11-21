@@ -27,16 +27,16 @@ def main():
             "history": [],
             "last_run": None,
         }
-    
+
     # Load current M31 Paper equity (real)
     paper = load_state(PAPER_STATE)
     if not paper:
         print("[D-485] WARN: kucoin paper state not found")
         return
-    
+
     m31_real_eq = paper.get("total_equity", paper.get("equity", INITIAL))
     m31_real_ret = (m31_real_eq - INITIAL) / INITIAL
-    
+
     # Load profiler data for Keltner/Dual (proxy from backtest)
     try:
         profiler = json.load(open("research_lab/logs/profiles/state.json"))
@@ -51,14 +51,14 @@ def main():
                 if m and m.get("mean_pct"):
                     return m["mean_pct"] / 100.0
             return 0.0
-        
+
         keltner_daily = find_daily_ret("KELTNER_REV", "ETHUSDTM")
         dual_daily = find_daily_ret("DUAL_MOMENTUM", "XBTUSDTM")
     except Exception as e:
         print(f"[D-485] profiler load err: {e}")
         keltner_daily = 0.0
         dual_daily = 0.0
-    
+
     # Hypothetical: combo equity = weighted
     # Since M31 is real, others are daily-avg proxy
     # m31 contributes: W_M31 * m31_real_ret
@@ -71,14 +71,14 @@ def main():
                 last_dt = datetime.fromisoformat(last_ts.replace("Z","+00:00"))
                 days_held = max(1, (datetime.now(timezone.utc) - last_dt).total_seconds() / 86400)
             except: pass
-    
+
     combo_ret = (
         W_M31 * m31_real_ret
         + W_KELTNER * (keltner_daily * days_held)
         + W_DUAL * (dual_daily * days_held)
     )
     combo_eq = INITIAL * (1 + combo_ret)
-    
+
     # Snapshot
     snapshot = {
         "time_iso": datetime.now(timezone.utc).isoformat(),
@@ -92,14 +92,14 @@ def main():
     }
     state["history"].append(snapshot)
     state["last_run"] = snapshot["time_iso"]
-    
+
     # Keep only last 200 snapshots
     if len(state["history"]) > 200:
         state["history"] = state["history"][-200:]
-    
+
     os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
     json.dump(state, open(STATE_FILE, "w"), indent=2)
-    
+
     print(f"[D-485] M31 real: ${m31_real_eq:.2f} ({m31_real_ret*100:+.3f}%)")
     print(f"[D-485] Combo hypo: ${combo_eq:.2f} ({combo_ret*100:+.3f}%)")
     print(f"[D-485] Diff: {(combo_eq - m31_real_eq):+.2f} USD")

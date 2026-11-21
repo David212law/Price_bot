@@ -104,7 +104,7 @@ def main():
     else:
         state = {
             "total_capital": INITIAL_CAPITAL,
-            "m31_capital": INITIAL_CAPITAL * M31_PCT, "m35_capital": INITIAL_CAPITAL * M35_PCT, 
+            "m31_capital": INITIAL_CAPITAL * M31_PCT, "m35_capital": INITIAL_CAPITAL * M35_PCT,
             "m40_capital": INITIAL_CAPITAL * M40_PCT, "m41_capital": INITIAL_CAPITAL * M41_PCT,
             "m31_pos": {}, "m35_pos": {}, "m40_pos": {}, "m41_pos": {}, "history": []
         }
@@ -246,7 +246,7 @@ def main():
     state["peak_equity"] = max(state.get("peak_equity", _cur), _cur)
     state["last_run"] = datetime.now(timezone.utc).isoformat()
 
-    
+
     with open(STATE_FILE, 'w') as f: json.dump(state, f, indent=2)
     print(f"Allocator Updated. Total Equity: ${state['total_capital']:.2f}")
     print(f"  M31: ${state['m31_capital']:.2f} | M35: ${state['m35_capital']:.2f} | M40: ${state['m40_capital']:.2f} | M41: ${state['m41_capital']:.2f} | Cash: ${state.get('cash_capital', 0):.2f}")

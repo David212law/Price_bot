@@ -123,7 +123,7 @@ def main():
         for name, r in sorted(good.items(), key=lambda x: -x[1]["wf_sharpe_mean"]):
             print(f"   {name:25s}: WF={r['wf_sharpe_mean']:>6.2f}, n={r['n']:>4}")
         # آستانه پایین‌تر — همه استراتژی‌های با WF>0.2 و n>=20
-        relaxed = {n: r for n, r in results.items() 
+        relaxed = {n: r for n, r in results.items()
                    if r.get("wf_sharpe_mean", 0) > 0.2 and r.get("n", 0) >= 20}
         print(f"\n🔓 استراتژی‌های با WF>0.2 و n>=20 (relaxed): {len(relaxed)}")
         for name, r in sorted(relaxed.items(), key=lambda x: -x[1]["wf_sharpe_mean"])[:15]:

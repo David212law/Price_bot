@@ -65,7 +65,7 @@ def main():
             cash = d.get("capital", 0)
             holdings = d.get("holdings", {})
             # Rough equity calc if cash is 0 (fully invested)
-            eq = cash if cash > 0 else 10000.0 
+            eq = cash if cash > 0 else 10000.0
             if cash > 0 and holdings:
                  # if partially invested
                  eq = cash + sum(d.get("holdings_values", {}).values())
@@ -112,7 +112,7 @@ def main():
     print("\n" + "="*70)
     total = m31_total + pred_total
     print(f" GRAND TOTAL: ${total:,.2f}")
-    
+
     # Build comprehensive summary for Bale
     lines = ["📊 PRICE_BOT DAILY REPORT", "=" * 30]
     lines.append(f"M31 Total: ${m31_total:,.2f}")
@@ -153,7 +153,7 @@ def main():
                     lines.append(f"    {regime}: {best}")
     lines.append("")
     lines.append(f"⏰ {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
-    
+
     summary = "\n".join(lines)
     if send_bale(summary):
         print("✅ Sent to Bale")

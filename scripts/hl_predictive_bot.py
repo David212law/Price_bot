@@ -52,7 +52,7 @@ def detect_regime(df):
         mom_30 = btc.iloc[-1] / btc.iloc[-31] - 1 if len(btc) >= 31 else 0
         if mom_14 < -0.10 or mom_30 < -0.15: return "CRASH"
         if mom_14 < -0.05 or mom_30 < -0.08: return "BEAR"
-    
+
     if price > ma and v < 1.0: return "BULL_STRONG"
     if price > ma and v >= 1.0: return "BULL"
     if price <= ma and v < 1.0: return "FLAT"
@@ -66,7 +66,7 @@ def get_target_portfolio(df, regime):
         print("✅ Loaded GLOBAL strategies.")
     except:
         top_per_regime = {"FLAT": ["bh_BTC"]}
-        
+
     strats_raw = top_per_regime.get(regime, {"bh_BTC": 1.0})
     if isinstance(strats_raw, list):
         strats = {s: 1.0/len(strats_raw) for s in strats_raw}
@@ -140,11 +140,11 @@ def main():
     if df is None:
         print("❌ Failed to fetch live data.")
         return
-        
+
     # AUTO-RESET KILL SWITCH IF STATE MISSING (fresh start)
     if not os.path.exists(STATE_FILE):
         if os.path.exists("data/kill_switch_active.json"):
-            json.dump({"active": False, "last_triggered": None, "reason": None}, 
+            json.dump({"active": False, "last_triggered": None, "reason": None},
                       open("data/kill_switch_active.json", "w"), indent=2)
             print("🔄 Fresh start: Kill Switch auto-reset")
 
@@ -162,7 +162,7 @@ def main():
                 "bot": "hl"
             }, open("data/kill_switch_active.json", "w"), indent=2)
             return
-            
+
     regime = detect_regime(df)
     # ADAPTIVE MODE
     btc_series = df["BTC"]
@@ -196,14 +196,14 @@ def main():
     else:
         target = {"TETHER": 1.0}
     print(f"Date: {df.index[-1].date()} | Regime: {regime} | Target: {target}")
-    
+
     if os.path.exists(STATE_FILE): state = json.load(open(STATE_FILE))
     else: state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_port_keys": [], "initialized": False}
-        
+
     val = state["capital"]
     for a, q in state["holdings"].items():
         if a in df.columns: val += q * df[a].iloc[-1]
-            
+
     curr_keys = set(target.keys())
     if (not state.get("initialized", False)
         or regime != state["last_regime"]
@@ -228,7 +228,7 @@ def main():
                 new_capital += alloc
         state["capital"] = new_capital  # ← NEW: preserve TETHER
         state["last_regime"] = regime; state["last_port_keys"] = list(curr_keys); state["initialized"] = True
-    
+
     state["last_date"] = df.index[-1].strftime("%Y-%m-%d")
     json.dump(state, open(STATE_FILE, "w"), indent=2)
     print(f"Equity: ${val:.2f}")

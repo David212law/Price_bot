@@ -328,7 +328,7 @@ def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_ful
         return None  # M31 negative → no meaningful combo
     if not m31_rets or not complements_rets:
         return None
-    
+
     # Family diversity: max 1 per family
     selected = []
     seen_families = set()
@@ -338,7 +338,7 @@ def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_ful
         selected.append(comp)
         if len(selected) >= max_components - 1:  # -1 for M31
             break
-    
+
     if not selected:
         return None
 
@@ -379,13 +379,13 @@ def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_ful
     # Pad with 0.0 for missing days
     all_rets = [{d: r.get(d, 0.0) for d in common_dates} for r in all_rets]
     m31_rets = all_rets[0]
-    
+
     # D-440: Risk-parity weights (inverse-vol)
     weights = _compute_risk_parity_weights(all_rets, common_dates)
     combined = {}
     for d in common_dates:
         combined[d] = sum(w * r[d] for w, r in zip(weights, all_rets))
-    
+
     combined_sr = sharpe(list(combined.values()))
     m31_sr = sharpe([m31_rets[d] for d in common_dates])
 
@@ -1005,7 +1005,7 @@ def main():
                           f"SR_val={comp['ann_sr_validation']:5.2f} "
                           f"corr={comp['corr_m31']:+.2f} q={comp['quartiles_pass']}/4"
                           f"{cov_str}")
-                
+
                 # D-407: Try to BUILD a real combination
                 comps_with_rets = []
                 for comp in comps:
@@ -1018,7 +1018,7 @@ def main():
                     reg_filtered = {d: x for d, x in _pooled.items() if reg_by_date.get(d) == regime}
                     if len(reg_filtered) >= 30:
                         comps_with_rets.append({**comp, "rets": reg_filtered, "rets_full": _pooled})
-                
+
                 if comps_with_rets:
                     combo = build_combination(m31_reg, comps_with_rets, m31_rets_full=m31_rets)
                     if combo:

@@ -44,25 +44,25 @@ def main():
         path = f"{DATA_DIR}/{sym}_4h.json"
         if not os.path.exists(path): continue
         with open(path, 'r') as f: candles = json.load(f)
-        
+
         if len(candles) < EMA_TREND + 2: continue
         closes = [c["c"] for c in candles]
-        
+
         # Use last closed candle (-2)
         ema_val = calc_ema(closes[:-1], EMA_TREND)
         rsi_val = calc_rsi(closes[:-1], RSI_PERIOD)
         atr_val = calc_atr(candles[:-1], ATR_PERIOD)
         current_price = candles[-2]["c"]
-        
+
         if None in [ema_val, rsi_val, atr_val]: continue
-        
+
         side = None
         if current_price > ema_val and rsi_val < RSI_LONG: side = "LONG"
         elif current_price < ema_val and rsi_val > RSI_SHORT: side = "SHORT"
-        
+
         if side:
             signals.append({
-                "symbol": sym, "action": f"OPEN_{side}", "price": current_price, 
+                "symbol": sym, "action": f"OPEN_{side}", "price": current_price,
                 "atr": atr_val, "tp": current_price + (TP_ATR * atr_val) if side == "LONG" else current_price - (TP_ATR * atr_val),
                 "sl": current_price - (SL_ATR * atr_val) if side == "LONG" else current_price + (SL_ATR * atr_val)
             })

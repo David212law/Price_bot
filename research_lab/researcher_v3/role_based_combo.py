@@ -197,7 +197,7 @@ def find_champion(regime, strategies, per_regime_metrics, roles):
     target_thesis = REGIME_CHAMPION_THESIS.get(regime, "cash")
     if target_thesis == "cash":
         return "CASH"
-    
+
     candidates = []
     for name in strategies:
         role = roles.get(name)
@@ -206,13 +206,13 @@ def find_champion(regime, strategies, per_regime_metrics, roles):
         m = per_regime_metrics[name].get(regime)
         if m and m["sr"] >= 2:
             candidates.append((name, m["sr"]))
-    
+
     if not candidates:
         for name in strategies:
             m = per_regime_metrics[name].get(regime)
             if m and m["sr"] >= 3:
                 candidates.append((name, m["sr"]))
-    
+
     if not candidates: return "CASH"
     candidates.sort(key=lambda x: -x[1])
     return candidates[0][0]
@@ -262,12 +262,12 @@ def build_combo(regime, strategies, per_regime_metrics, roles):
             "components": [{"strategy": "CASH", "weight": 1.0, "role": "champion"}],
             "fallback": "cash_only",
         }
-    
+
     # D-568: structure depends on regime type
     # TREND: concentrated (champion + buffer, no supporting)
     # RANGE: diversified (champion + supporting)
     is_trend = regime.startswith("TREND")
-    
+
     if is_trend:
         # TREND: champion only + cash buffer
         components = [
@@ -288,7 +288,7 @@ def build_combo(regime, strategies, per_regime_metrics, roles):
         if cash_w > 0.01:
             components.append({"strategy": "CASH", "weight": cash_w, "role": "buffer"})
         structure = "diversified"
-    
+
     return {
         "champion": champion,
         "champion_thesis": roles[champion]["thesis"],
@@ -304,7 +304,7 @@ def validate_combo(combo, strategies, regime_map, regime):
     if len(regime_dates) < 60: return None
     split = int(len(regime_dates) * 0.7)
     test_dates = regime_dates[split:]
-    
+
     combo_rets = {}
     for d in test_dates:
         ret = 0
@@ -315,10 +315,10 @@ def validate_combo(combo, strategies, regime_map, regime):
             if s in strategies:
                 ret += w * strategies[s].get(d, 0)
         combo_rets[d] = ret
-    
+
     m = compute_metrics_on_subset(combo_rets)
     if not m: return None
-    
+
     # Compare to champion alone on same test dates
     champ = combo["champion"]
     if champ != "CASH" and champ in strategies:
@@ -328,7 +328,7 @@ def validate_combo(combo, strategies, regime_map, regime):
             m["champion_sr"] = cm["sr"]
             m["champion_dd"] = cm["dd"]
             m["combo_vs_champion"] = round(m["sr"] / cm["sr"], 2) if cm["sr"] > 0 else 0
-    
+
     return m
 
 
@@ -336,23 +336,23 @@ def main():
     print("=" * 72)
     print(" D-566: Role-Based Combo")
     print("=" * 72)
-    
+
     print("\n[1] Loading strategies + prices...")
     strategies = load_strategies()
     prices = load_btc_prices()
     print(f"  {len(strategies)} strategies, {len(prices)} price days")
-    
+
     print("\n[2] Detecting regimes...")
     regime_map = build_regime_map(prices)
     counts = defaultdict(int)
     for r in regime_map.values(): counts[r] += 1
     for r, c in sorted(counts.items(), key=lambda x: -x[1]):
         print(f"  {r}: {c} days")
-    
+
     print("\n[3] Computing per-regime metrics...")
     per_regime = compute_per_regime_metrics(strategies, regime_map)
     print(f"  done for {len(per_regime)} strategies")
-    
+
     print("\n[4] Assigning roles (thesis-based)...")
     roles = {}
     for name in strategies:
@@ -367,17 +367,17 @@ def main():
             "srs": srs,
         }
     print(f"  {len(roles)} roles assigned")
-    
+
     print("\n[5] Building role-based combos...")
     combos = {}
     for regime in REGIMES:
         combo = build_combo(regime, strategies, per_regime, roles)
         combos[regime] = combo
-    
+
     print("\n" + "=" * 72)
     print(" 📊 RESULT — Role-Based Combos")
     print("=" * 72)
-    
+
     for regime in REGIMES:
         if regime not in combos: continue
         c = combos[regime]
@@ -388,7 +388,7 @@ def main():
             print(f"    fallback: cash_only (no strategy works in crisis)")
         else:
             print(f"    champion thesis: {c['champion_thesis']}")
-    
+
     print("\n[6] Validating on holdout...")
     for regime in REGIMES:
         if regime not in combos: continue
@@ -400,7 +400,7 @@ def main():
                 marker = "✅" if ratio >= 1.0 else "⚠️"
                 print(f"    {marker} combo/champion: {ratio:.2f} (champion SR={v['champion_sr']:.2f})")
             combos[regime]["validation"] = v
-    
+
     # Save
     out = Path("research_lab/logs/researcher_v3/role_combos.json")
     out.write_text(json.dumps({
@@ -410,7 +410,7 @@ def main():
         "combos": combos,
     }, indent=2, ensure_ascii=False))
     print(f"\n💾 saved: {out}")
-    
+
     return combos
 
 

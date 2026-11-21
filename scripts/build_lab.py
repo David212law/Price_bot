@@ -20,7 +20,7 @@ for market_name, market_data in pending.items():
     if not pred:
         print(f"⚠️ {market_name}: no predictive data")
         continue
-    
+
     base = {
         "market": market_data["market"],
         "assets": market_data["assets"],

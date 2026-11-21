@@ -67,15 +67,15 @@ def main():
                 top_strat = strats[0] if strats else "NONE"
             else:
                 top_strat = "NONE"
-            
+
             if key not in history: history[key] = []
             history[key].append({"date": today, "strategy": top_strat})
             history[key] = history[key][-MIN_STABLE_DAYS:]
 
             records = history[key]
-            if len(records) < MIN_STABLE_DAYS: 
+            if len(records) < MIN_STABLE_DAYS:
                 continue
-            if len(set(r["strategy"] for r in records)) != 1: 
+            if len(set(r["strategy"] for r in records)) != 1:
                 continue
 
             # NEW: Check Sharpe
@@ -94,7 +94,7 @@ def main():
         os.remove(PENDING)
         append_changelog(f"AUTO-APPROVED ({len(auto_approved)}):\n- " + "\n- ".join(auto_approved))
         print(f"✅ Auto-approved {len(auto_approved)} (Sharpe > {AUTO_SHARPE_THRESHOLD})")
-    
+
     if human_required:
         append_changelog(f"HUMAN REQUIRED ({len(human_required)}):\n- " + "\n- ".join(human_required))
         print(f"⏸ {len(human_required)} require human approval (Sharpe < {AUTO_SHARPE_THRESHOLD})")

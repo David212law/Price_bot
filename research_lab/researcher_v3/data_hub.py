@@ -56,7 +56,7 @@ def fetch_kucoin(symbol="XBTUSDTM"):
     """Fetch KuCoin prices."""
     url = f"https://api-futures.kucoin.com/api/v1/kline/query?symbol={symbol}&granularity=1440"
     data = _fetch(url)
-    if not data or data.get("code") != "200000": 
+    if not data or data.get("code") != "200000":
         return {"error": "no data", "exchange": "kucoin", "symbol": symbol}
     prices = {}
     try:

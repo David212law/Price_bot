@@ -48,14 +48,14 @@ def detect_regime(df):
     rets = btc.pct_change()
     vol = rets.rolling(14).std() * np.sqrt(365)
     ma50 = btc.rolling(50).mean()
-    
+
     today = df.index[-1]
     price = btc.loc[today]
     v = vol.loc[today]
     ma = ma50.loc[today]
-    
+
     if pd.isna(v) or pd.isna(ma): return "FLAT"
-    
+
     if price > ma and v < 1.0: return "BULL_STRONG"
     if price > ma and v >= 1.0: return "BULL"
     if price <= ma and v < 1.0: return "FLAT"
@@ -74,7 +74,7 @@ def detect_regime_15(df):
     ma50 = btc.rolling(50).mean()
     ma200 = btc.rolling(200).mean()
     trend = (ma50 - ma200) / ma200
-    
+
     conditions = [
         (btc < ma50 * 0.85) & (vol > 0.9),  # CRASH
         (trend < -0.15) & (vol > 0.7),       # BEAR_STRONG
@@ -129,7 +129,7 @@ def get_target_portfolio(df, regime):
         print(f"❌ CRITICAL: Failed to parse Researcher JSON: {e}")
         print("   Exiting to avoid trading with fallback.")
         return None
-    
+
     strats_raw = top_per_regime.get(regime, {"bh_BTC": 1.0})
     if isinstance(strats_raw, list):
         # legacy list format
@@ -137,10 +137,10 @@ def get_target_portfolio(df, regime):
     else:
         strats = strats_raw
     portfolio = {}
-    
+
     # Top-20 liquid assets only (avoid HOT, AGLD, OSMO, etc.)
     LIQUID_ASSETS = {"BTC", "ETH", "BNB", "SOL", "XRP", "ADA", "DOGE", "TRX", "LINK", "AVAX", "DOT", "MATIC", "LTC", "BCH", "UNI", "ATOM", "ETC", "XLM", "NEAR", "APT"}
-    
+
     def get_bb_oversold(p):
         ma = df.rolling(p).mean()
         sd = df.rolling(p).std()
@@ -222,7 +222,7 @@ def get_target_portfolio(df, regime):
                 # For profiler strategies, just buy the specific asset if in liquid list
                 if asset in LIQUID_ASSETS and asset in df.columns:
                     portfolio[asset] = portfolio.get(asset, 0) + w
-                
+
     return portfolio
 
 def main():
@@ -237,18 +237,18 @@ def main():
         except Exception:
             print(f"⚠️ Corrupted state — resetting {_state_path}")
             _os.remove(_state_path)
-    
+
     print("="*80)
     print(" WALLEX PAPER BOT — EXECUTION (Active Strategies)")
     print("="*80)
-    
+
     df = load_data()
     today = df.index[-1].strftime("%Y-%m-%d")
-    
+
     # AUTO-RESET KILL SWITCH IF STATE MISSING (fresh start)
     if not os.path.exists(STATE_FILE):
         if os.path.exists("data/kill_switch_active.json"):
-            json.dump({"active": False, "last_triggered": None, "reason": None}, 
+            json.dump({"active": False, "last_triggered": None, "reason": None},
                       open("data/kill_switch_active.json", "w"), indent=2)
             print("🔄 Fresh start: Kill Switch auto-reset")
 
@@ -266,7 +266,7 @@ def main():
             }, open("data/kill_switch_active.json", "w"), indent=2)
             return
     print(f"Date: {today}")
-    
+
     regime_series = detect_regime_15(df)
     regime = regime_series.iloc[-1] if len(regime_series) > 0 else "FLAT_NORMAL"
     print(f"Detected Regime: {regime}")
@@ -286,7 +286,7 @@ def main():
     except Exception as e:
         print(f"⚠️ Iran crisis check failed: {e}")
 
-    
+
     # ADAPTIVE MODE: exposure based on regime + 30d momentum
     # 30d momentum
     btc_series = df["BTC"]
@@ -368,17 +368,17 @@ def main():
     else:
         target_port = {"TETHER": 1.0}
     print(f"Target Portfolio: {target_port}")
-    
+
     if os.path.exists(STATE_FILE):
         state = json.load(open(STATE_FILE))
     else:
         state = {"capital": CAPITAL, "holdings": {}, "last_regime": None, "last_date": None, "last_port_keys": [], "initialized": False}
-        
+
     current_val = state["capital"]
     for asset, qty in state["holdings"].items():
         if asset in df.columns:
             current_val += qty * df[asset].iloc[-1]
-            
+
     print(f"Current Equity: ${current_val:.2f}")
     # FIX 2: Daily loss limit
     prev_equity = state.get("last_equity", current_val)
@@ -388,16 +388,16 @@ def main():
         print(f"⚠️ Daily loss {today_loss*100:.1f}% → exposure halved to {exposure:.0%}")
     state["last_equity"] = current_val
 
-    
+
     curr_keys = set(target_port.keys())
     prev_keys = set(state.get("last_port_keys", []))
-    
+
     # Rebalance if regime changes OR if the target assets change
     if (not state.get("initialized", False)
         or regime != state["last_regime"]
         or curr_keys != prev_keys):
         print(f"🔄 REBALANCING... (Regime: {state['last_regime']} -> {regime}, Assets: {prev_keys} -> {curr_keys})")
-        
+
         # Fee: 0.6% for regime change, 0.2% for daily active rotation
         # Commission only on rebalance (not per signal)
         # If regime changes: 0.6% (full rebalance)
@@ -430,13 +430,13 @@ def main():
                     age = (df.index[-1] - last_date).days
                     print(f"  ⚠️ {asset}: price {age}d old → TETHER (avoid delisted)")
                 state["capital"] += alloc
-                
+
         state["last_regime"] = regime
         state["last_port_keys"] = list(curr_keys)
         state["initialized"] = True
     else:
         print("No regime change or asset rotation. Holding current portfolio.")
-        
+
     state["last_date"] = today
     json.dump(state, open(STATE_FILE, "w"), indent=2)
     print(f"Saved state to {STATE_FILE}")

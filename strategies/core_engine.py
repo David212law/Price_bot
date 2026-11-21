@@ -55,7 +55,7 @@ def load_data(exchange, symbol):
     elif exchange == "hyperliquid": path = f"data/hyperliquid/{symbol}_4h.json"
     else: return None
     if not os.path.exists(path): return None
-    with open(path, 'r') as f: 
+    with open(path, 'r') as f:
         data = json.load(f)
         return data.get("candles", data) if isinstance(data, dict) else data
 
@@ -65,7 +65,7 @@ def strategy_m35(candles, fast=50, slow=200, fee_multiplier=1.0):
     ema_f, ema_s = calc_ema(closes, fast), calc_ema(closes, slow)
     atr = calc_atr(candles, 14)
     trades, in_pos = [], None
-    base_fee = 0.0006 * fee_multiplier 
+    base_fee = 0.0006 * fee_multiplier
     for i in range(slow, len(candles)):
         if None in [ema_f[i], ema_s[i], atr[i-1]]: continue
         if not in_pos:
@@ -163,7 +163,7 @@ def calculate_metrics(trades, initial_capital=10000):
     gross_profit = sum(t["ret"] for t in trades if t["ret"] > 0)
     gross_loss = abs(sum(t["ret"] for t in trades if t["ret"] <= 0))
     pf = gross_profit / gross_loss if gross_loss > 0 else 99.99
-    
+
     equity, peak, max_dd = initial_capital, initial_capital, 0
     for t in trades:
         equity += equity * t["ret"] * 0.01
@@ -191,21 +191,21 @@ def strategy_m50_regime_bh(candles, fee_multiplier=1.0):
     closes = [c["c"] for c in candles]
     ema_200 = calc_ema(closes, 200)
     if len(candles) < 250: return []
-    
+
     trades, in_pos = [], None
     base_fee = 0.0006 * fee_multiplier
-    
+
     for i in range(200, len(candles)):
         if ema_200[i] is None: continue
         uptrend = closes[i] > ema_200[i]
-        
+
         if in_pos and not uptrend:
             ret = (candles[i]["c"] - in_pos["entry"]) / in_pos["entry"] - 2*base_fee
             trades.append({"t": candles[i]["t"], "ret": ret})
             in_pos = None
         elif not in_pos and uptrend:
             in_pos = {"entry": candles[i]["c"]}
-    
+
     if in_pos:
         ret = (candles[-1]["c"] - in_pos["entry"]) / in_pos["entry"] - 2*base_fee
         trades.append({"t": candles[-1]["t"], "ret": ret})
@@ -217,13 +217,13 @@ def strategy_m51_extreme_rev(candles, fee_multiplier=1.0):
     bb_l = calc_bb(closes, 20, 2.0)[1]
     rsi2 = calc_rsi(closes, 2)
     if len(candles) < 30: return []
-    
+
     trades, in_pos, entry_idx = [], None, 0
     base_fee = 0.0006 * fee_multiplier
-    
+
     for i in range(20, len(candles)):
         if None in [bb_l[i], rsi2[i]]: continue
-        
+
         if in_pos:
             if (i - entry_idx) >= 5:  # خروج پس از ۵ کندل
                 ret = (candles[i]["c"] - in_pos["entry"]) / in_pos["entry"] - 2*base_fee
@@ -232,7 +232,7 @@ def strategy_m51_extreme_rev(candles, fee_multiplier=1.0):
         elif closes[i] <= bb_l[i] and rsi2[i] < 5:
             in_pos = {"entry": closes[i]}
             entry_idx = i
-    
+
     if in_pos:
         ret = (candles[-1]["c"] - in_pos["entry"]) / in_pos["entry"] - 2*base_fee
         trades.append({"t": candles[-1]["t"], "ret": ret})
@@ -242,13 +242,13 @@ def strategy_m52_xsect_momentum(candles, fee_multiplier=1.0):
     """Cross-Sectional Momentum: نسخه تک‌دارایی (لانگ برندگان ۳۰ روزه)"""
     closes = [c["c"] for c in candles]
     if len(candles) < 35: return []
-    
+
     trades, in_pos = [], None
     base_fee = 0.0006 * fee_multiplier
-    
+
     for i in range(30, len(candles)):
         past_ret = (closes[i-1] - closes[i-30]) / closes[i-30]
-        
+
         if in_pos:
             if (i - in_pos["idx"]) >= 10:  # نگه‌داری ۱۰ کندل
                 ret = (closes[i] - in_pos["entry"]) / in_pos["entry"] - 2*base_fee
@@ -256,7 +256,7 @@ def strategy_m52_xsect_momentum(candles, fee_multiplier=1.0):
                 in_pos = None
         elif past_ret > 0.05:  # ۵٪ رشد در ۳۰ روز اخیر
             in_pos = {"entry": closes[i], "idx": i}
-    
+
     if in_pos:
         ret = (closes[-1] - in_pos["entry"]) / in_pos["entry"] - 2*base_fee
         trades.append({"t": candles[-1]["t"], "ret": ret})
@@ -268,13 +268,13 @@ def strategy_m53_vol_breakout(candles, fee_multiplier=1.0):
     vols = [c["v"] for c in candles]
     vol_sma = calc_sma_vol(vols, 20)
     if len(candles) < 25: return []
-    
+
     trades, in_pos = [], None
     base_fee = 0.0006 * fee_multiplier
-    
+
     for i in range(20, len(candles)):
         if vol_sma[i] is None: continue
-        
+
         if in_pos:
             # خروج: SL 2% یا TP 5%
             if candles[i]["l"] <= in_pos["entry"] * 0.98:
@@ -289,7 +289,7 @@ def strategy_m53_vol_breakout(candles, fee_multiplier=1.0):
                 in_pos = None
         elif candles[i]["v"] > 3 * vol_sma[i] and closes[i] > closes[i-1]:
             in_pos = {"entry": closes[i], "idx": i}
-    
+
     if in_pos:
         ret = (closes[-1] - in_pos["entry"]) / in_pos["entry"] - 2*base_fee
         trades.append({"t": candles[-1]["t"], "ret": ret})

@@ -128,7 +128,7 @@ def main():
     # Build candles (for library functions that expect candles)
     btc = df["BTC"] if "BTC" in df.columns else df.iloc[:, 0]
     candles = [
-        {"t": int(t.timestamp() * 1000), "o": float(p), "h": float(p), 
+        {"t": int(t.timestamp() * 1000), "o": float(p), "h": float(p),
          "l": float(p), "c": float(p), "v": 1.0}
         for t, p in zip(btc.index, btc.values)
     ]

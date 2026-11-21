@@ -56,7 +56,7 @@ def analyze_aster_m11_aster():
     m31_cap = state.get("m31_capital", 5000.0)
     a8_cap = state.get("a8_capital", 2500.0)
     a20_cap = state.get("a20_capital", 2500.0)
-    
+
     roi = ((total_eq - 10000.0) / 10000.0) * 100
     print(f"Total Equity: ${total_eq:.2f} (ROI: {roi:+.2f}%)")
     print(f"\n  [M31 Funding] Cash: ${m31_cap:.2f}")

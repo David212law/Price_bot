@@ -53,20 +53,20 @@ def main():
     for sym in SYMBOLS:
         candles = fetch_ohlcv(sym, limit=50)
         if len(candles) < 30: continue
-        
+
         closes = [c["c"] for c in candles]
         vols = [c["v"] for c in candles]
-        
+
         # Use last closed candle (-2) for breakout, and prior 4 for squeeze
-        idx = len(candles) - 2 
-        
+        idx = len(candles) - 2
+
         bb_u, bb_l = calc_bb(closes[:idx+1], BB_PERIOD, 2.0)
         ema20 = calc_ema(closes[:idx+1], EMA_PERIOD)
         atr14 = calc_atr(candles[:idx+1], ATR_PERIOD)
         vol_sma = sum(vols[idx-VOL_SMA_PERIOD:idx]) / VOL_SMA_PERIOD
-        
+
         if None in [bb_u, bb_l, ema20, atr14]: continue
-        
+
         # Check squeeze in last 4 candles
         squeeze_active = True
         for k in range(1, MIN_SQUEEZE_CANDLES + 1):
@@ -76,13 +76,13 @@ def main():
             if None in [b_u, b_l, e, a] or not (b_u < e + (KC_MULT * a) and b_l > e - (KC_MULT * a)):
                 squeeze_active = False
                 break
-                
+
         if squeeze_active:
             c = candles[idx]
             side = None
             if c["c"] > bb_u and c["v"] > (1.2 * vol_sma): side = "LONG"
             elif c["c"] < bb_l and c["v"] > (1.2 * vol_sma): side = "SHORT"
-            
+
             if side:
                 tp = c["c"] + (TP_ATR * atr14) if side == "LONG" else c["c"] - (TP_ATR * atr14)
                 sl = c["c"] - (SL_ATR * atr14) if side == "LONG" else c["c"] + (SL_ATR * atr14)

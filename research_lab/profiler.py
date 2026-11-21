@@ -181,7 +181,7 @@ def main():
         strategies = [(n, k) for n, k in strategies if STRATEGY_FAMILY.get(n) == args.family]
         print(f"[FILTER] --family={args.family}: {len(strategies)}/{before} strategies")
     print(f"[INFO] {len(strategies)} strategies × 3 exchanges × 6 symbols")
-    
+
     print("\n[PREP] precomputing regime series...")
     t0 = time.time()
     regime_cache = defaultdict(dict)
@@ -197,7 +197,7 @@ def main():
         btc_cache[ex] = {"candles": load_data(ex, btc_sym), "regime": regime_cache[ex].get(btc_sym, [])}
         print(f"  ✓ {ex}: {len(regime_cache[ex])} symbols")
     print(f"  ({time.time()-t0:.1f}s)")
-    
+
     profiled = validated = rejects = 0
     total = 0
     try:
@@ -211,13 +211,13 @@ def main():
                         key = f"{ex}:{name}:{ph}:{sym}"
                         total += 1
                         if key in state["done"]: continue
-                        
+
                         try:
                             candles = load_data(ex, sym)
                             if not candles or len(candles) < 200:
                                 state["done"][key] = "reject:no_data"; rejects += 1; continue
                             train_c = candles[:int(len(candles)*CONFIG["train_split"])]
-                            
+
                             if kind == "candle":
                                 trades = run_candle(func, params, train_c)
                                 if len(trades) < CONFIG["l1_min_n"]:
@@ -233,27 +233,27 @@ def main():
                                 daily = run_funding(func, params, train_f)
                                 if not daily or len(daily) < CONFIG["l1_min_n"]:
                                     state["done"][key] = "reject:low_n"; rejects += 1; continue
-                            
+
                             if kind == "candle":
                                 tagged = tag_candle_trades(trades, candles, regime_cache[ex][sym])
                             else:
                                 tagged = tag_funding_daily(daily, btc_cache[ex]["candles"], btc_cache[ex]["regime"])
                             if not tagged:
                                 state["done"][key] = "reject:no_tagged"; rejects += 1; continue
-                            
+
                             rm = per_regime_metrics(tagged)
                             dr = to_daily_returns(tagged)
                             rp = os.path.join(RETURNS_DIR, ex, f"{name}_{ph}_{sym}.json")
                             _ensure(os.path.dirname(rp))
                             with open(rp, "w") as f: json.dump(dr, f)
-                            
+
                             entry = {
                                 "strategy": name, "params": params, "kind": kind,
                                 "exchange": ex, "symbol": sym,
                                 "metrics_by_regime": rm, "n_total": len(tagged),
                                 "status": "profiled",
                             }
-                            
+
                             strong = [r for r,m in rm.items() if m["pf"] >= CONFIG["l3_strong_pf"] and m["sufficient"]]
                             if strong:
                                 val = validate_test(func, params, kind, candles,
@@ -275,10 +275,10 @@ def main():
                                     _ensure(os.path.dirname(vp))
                                     with open(vp, "w") as f:
                                         json.dump({"key": key, "validation": val}, f, indent=2)
-                            
+
                             state["done"][key] = entry
                             profiled += 1
-                            
+
                             if (profiled + rejects) % 20 == 0:
                                 _save_state(state)
                                 print(f"  [{total}] profiled={profiled} validated={validated} rejected={rejects}")
@@ -290,10 +290,10 @@ def main():
     finally:
         _save_state(state)
         print(f"\n[SAVE] state.json ({len(state['done'])} entries)")
-    
+
     print(f"\n{'='*60}\n  COMPLETE\n{'='*60}")
     print(f"  Profiled: {profiled} | Validated: {validated} | Rejected: {rejects}")
-    
+
     print(f"\n{'='*60}\n  TOP per regime\n{'='*60}")
     print("\n" + "="*80)
     print("  RANKING BY SHARPE (not PF — PF is misleading for funding)")

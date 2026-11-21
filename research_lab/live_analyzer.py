@@ -267,7 +267,7 @@ def get_historical_sr(state, exchange, strategy, symbol):
             syms = ["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT","XRPUSDT","AVAXUSDT"]
         elif exchange == "kucoin":
             syms = ["XBTUSDTM","ETHUSDTM","SOLUSDTM","BNBUSDTM","XRPUSDTM","AVAXUSDTM"]
-        
+
         try:
             port = dict(portfolio_daily_returns(exchange, syms))
             fees = apply_m31_fees(port)
@@ -275,7 +275,7 @@ def get_historical_sr(state, exchange, strategy, symbol):
         except Exception as e:
             print(f"  [DEBUG] M31 historical error: {e}")
             return None
-            
+
     best = None
     for key, entry in state.get("done", {}).items():
         if not isinstance(entry, dict): continue

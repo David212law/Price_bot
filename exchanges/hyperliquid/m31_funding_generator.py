@@ -33,13 +33,13 @@ def main():
         if not recs: continue
         st = state[sym]
         new_recs = [r for r in recs if r["t"] > st["last_processed_time"]]
-        
+
         for rec in new_recs:
             rate = rec["rate"]
             st["hist"].append(rate)
             if len(st["hist"]) > M31_SMA_PERIODS: st["hist"].pop(0)
             avg_rate = sum(st["hist"]) / len(st["hist"])
-            
+
             if st["in_pos"]:
                 if avg_rate < M31_EXIT_THRESHOLD:
                     st["in_pos"] = False
@@ -50,7 +50,7 @@ def main():
                 if avg_rate > M31_ENTRY_THRESHOLD and rate > 0 and time_since_exit >= M31_COOLDOWN:
                     st["in_pos"] = True
                     signals.append({"symbol": sym, "action": "OPEN", "time": rec["t"]})
-                    
+
         if new_recs:
             st["last_processed_time"] = new_recs[-1]["t"]
 

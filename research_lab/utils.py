@@ -50,7 +50,7 @@ def load_returns_file(exchange, strategy, hash_val, symbol):
 def send_bale(msg):
     token = os.environ.get("BALE_BOT_TOKEN")
     chat_id = os.environ.get("BALE_CHAT_ID")
-    if not token or not chat_id: 
+    if not token or not chat_id:
         print(f"[BALE] Skipped: {msg[:80]}")
         return
     url = f"https://tapi.bale.ai/bot{token}/sendMessage"

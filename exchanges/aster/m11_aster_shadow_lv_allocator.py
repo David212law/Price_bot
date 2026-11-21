@@ -41,7 +41,7 @@ TAKER_FEE = 0.00035
 MAKER_FEE = 0.0001
 
 def send_bale(msg):
-    if not BALE_TOKEN or not BALE_CHAT: 
+    if not BALE_TOKEN or not BALE_CHAT:
         print(f"[BALE] Skipped: {msg[:80]}")
         return
     url = f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage"
@@ -144,7 +144,7 @@ def calc_supertrend(candles, period=10, multiplier=3.0):
     atr[period] = sum(trs[1:period+1]) / period
     for i in range(period + 1, len(candles)):
         atr[i] = (atr[i - 1] * (period - 1) + trs[i]) / period
-        
+
     st = [None] * len(candles)
     direction = [1] * len(candles)
     for i in range(period, len(candles)):
@@ -215,7 +215,7 @@ def main():
 
 
     print(f"=== M11-Aster SHADOW-LV ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
-    
+
     # LOAD ACTIVE WEIGHTS (D-389: before state init)
     _current_regime = globals().get('_CURRENT_REGIME', 'UNKNOWN')
 
@@ -267,7 +267,7 @@ def main():
     data_4h = {}
     data_1d = {}
     current_prices = {}
-    
+
     for sym in SYMBOLS:
         k4 = fetch_klines(sym, "4h", 300)
         k1 = fetch_klines(sym, "1d", 300)
@@ -276,7 +276,7 @@ def main():
             data_1d[sym] = k1
             current_prices[sym] = k4[-1]["c"]
 
-    if len(data_4h) < len(SYMBOLS): 
+    if len(data_4h) < len(SYMBOLS):
         print(f"⚠️ Data missing. Proceeding with {len(data_4h)} symbols.")
         send_bale(f"⚠️ Aster Data missing. Proceeding with {len(data_4h)} symbols.")
 
@@ -492,7 +492,7 @@ def main():
     equity = state["m31_capital"] + state["a8_capital"] + state["a20_capital"] + state.get("keltner_capital", 0) + _ktm + state.get("cash_capital", 0)
 
     equity += state.get("low_vol_capital", 0) + _lvtm
-    
+
     for sym, pos in list(state["a8_positions"].items()):
         equity += pos["units"] * current_prices[sym]
     for sym, pos in list(state["a20_positions"].items()):
@@ -501,7 +501,7 @@ def main():
         else:
             pnl_pct = (pos["entry_price"] - current_prices[sym]) / pos["entry_price"]
             equity += pos["invested"] + (pos["invested"] * pnl_pct)
-            
+
     state["total_equity"] = equity
     # D-392: track peak equity for Kill Switch
     _cur = state["total_equity"]
@@ -517,14 +517,14 @@ def main():
         c = data_4h[sym][-1]
         exited = False
         exit_price = c["c"]
-        
+
         if (len(data_4h[sym]) - pos["entry_idx"]) >= A8_TIME_STOP:
             exited, reason = True, "TIME_STOP"
         elif c["l"] <= pos["initial"] * (1 - A8_SL):
             exited, exit_price, reason = True, pos["initial"] * (1 - A8_SL), "SL"
         elif c["h"] >= pos["avg"] * (1 + A8_TP):
             exited, exit_price, reason = True, pos["avg"] * (1 + A8_TP), "TP"
-            
+
         if exited:
             exit_val = pos["units"] * exit_price * (1 - TAKER_FEE)
             pnl = exit_val - pos["invested"]
@@ -540,7 +540,7 @@ def main():
         st_dir = calc_supertrend(data_4h[sym])[1][-1]
         exited = False
         exit_price = c["c"]
-        
+
         if pos["side"] == "LONG":
             if c["l"] <= pos["sl"]:
                 exited, exit_price, reason = True, pos["sl"], "SL"
@@ -551,7 +551,7 @@ def main():
                 exited, exit_price, reason = True, pos["sl"], "SL"
             elif st_dir == 1:
                 exited, reason = True, "ST_FLIP"
-                
+
         if exited:
             if pos["side"] == "LONG":
                 ret = (exit_price * (1 - TAKER_FEE) - pos["entry_price"] * (1 + TAKER_FEE)) / (pos["entry_price"] * (1 + TAKER_FEE))
@@ -574,7 +574,7 @@ def main():
             _, bb_l = calc_bb(closes, 20, 2.0)
             rsi = calc_rsi_arr(closes, 14)
             ema_1d = calc_ema([x["c"] for x in data_1d[sym]], 200)
-            
+
             if None not in [bb_l[-1], rsi[-1], ema_1d[-1]]:
                 if c["c"] > ema_1d[-1] and c["c"] <= bb_l[-1] and rsi[-1] < 35:
                     alloc = a8_equity * A8_RISK
@@ -582,7 +582,7 @@ def main():
                         state["a8_capital"] -= alloc
                         units = (alloc * (1 - MAKER_FEE)) / c["c"]
                         state["a8_positions"][sym] = {
-                            "initial": c["c"], "avg": c["c"], "units": units, 
+                            "initial": c["c"], "avg": c["c"], "units": units,
                             "invested": alloc, "entry_idx": len(data_4h[sym]) - 1
                         }
                         print(f"[A8] {sym} OPENED at {c['c']:.2f}")
@@ -598,14 +598,14 @@ def main():
                 risk_amount = a20_equity * A20_RISK
                 sl = st[-1]
                 risk_per_unit = abs(c["c"] - sl)
-                
+
                 if risk_per_unit > 0:
                     alloc = min((risk_amount / risk_per_unit) * c["c"], a20_equity * A20_MAX_ALLOC)
                     if alloc > 10 and state["a20_capital"] >= alloc:
                         state["a20_capital"] -= alloc
                         units = alloc / c["c"]
                         state["a20_positions"][sym] = {
-                            "side": side, "entry_price": c["c"], 
+                            "side": side, "entry_price": c["c"],
                             "units": units, "invested": alloc, "sl": sl
                         }
                         print(f"[A20] {sym} OPENED {side} at {c['c']:.2f}")

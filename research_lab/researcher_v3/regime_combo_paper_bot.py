@@ -82,7 +82,7 @@ def get_combo_for_bot(bot_name, regime, researcher_combos):
     """Return combo dict based on bot type."""
     cfg = CONFIGS.get(bot_name, {})
     btype = cfg.get("type", "cash_only")
-    
+
     if btype == "cash_only":
         return {"CASH": 1.0}
     if btype == "static_m31":
@@ -143,24 +143,24 @@ def main():
     current_price = prices[max(prices.keys())]
     regime = detect_regime(prices)
     print(f"BTC: {current_price:.0f} | Regime: {regime}")
-    
+
     combos = load_researcher_combos()
     print(f"Researcher combos: {list(combos.keys())}")
     print()
-    
+
     # Simulate daily return (proxy: BTC return for M31, small fraction for Keltner, 0 for cash)
     btc_ret = get_btc_return(prices)
     # M31 hedged = funding only (~0.15%/day proxy) - not BTC return
     m31_daily = 0.0015  # 0.15% per 4h = ~0.15%/day conservative
     keltner_daily = btc_ret * 0.5  # Keltner partial exposure
-    
+
     print(f"{'Bot':<20} {'Regime':<15} {'Equity':>10} {'Combo'}")
     print("-" * 70)
-    
+
     for bot_name in CONFIGS:
         state = load_state(bot_name)
         combo = get_combo_for_bot(bot_name, regime, combos)
-        
+
         # Compute daily return based on combo
         daily_ret = 0
         for strat, weight in combo.items():
@@ -174,7 +174,7 @@ def main():
                 daily_ret += weight * btc_ret * 0.3
             else:
                 daily_ret += weight * btc_ret * 0.5
-        
+
         state["equity"] *= (1 + daily_ret)
         state["current_combo"] = combo
         state["history"].append({
@@ -186,10 +186,10 @@ def main():
         })
         state["history"] = state["history"][-100:]
         save_state(state)
-        
+
         combo_str = ", ".join(f"{k}@{v:.0%}" for k, v in combo.items())
         print(f"{bot_name:<20} {regime:<15} ${state['equity']:>9.2f} {combo_str[:40]}")
-    
+
     print()
     print("Next run in 4h. Compare equity after 30/60/90 days.")
 

@@ -33,7 +33,7 @@ SYMBOLS = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDT
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 def send_bale(msg):
-    if not BALE_TOKEN or not BALE_CHAT: 
+    if not BALE_TOKEN or not BALE_CHAT:
         print(f"[BALE] {msg[:80]}")
         return
     try: requests.post(f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage", json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
@@ -172,26 +172,26 @@ def check_config_drift(state):
     """اگر total capital از INITIAL_CAPITAL منحرف شد، state را بازسازی کن"""
     if not state or "m31_capital" not in state:
         return state
-    
-    current_total = (state.get("m31_capital", 0) + state.get("a20_capital", 0) + 
+
+    current_total = (state.get("m31_capital", 0) + state.get("a20_capital", 0) +
                      state.get("m40_capital", 0) + state.get("cash_capital", 0))
-    
+
     # اگر total خیلی از INITIAL_CAPITAL فاصله دارد، state قدیمی/ناسازگار است
     if current_total < 100 or abs(current_total - INITIAL_CAPITAL) > 500:
         print(f"[RESET] State inconsistent (total=${current_total:.0f}, expected=${INITIAL_CAPITAL:.0f}). Re-initializing.")
         return {}  # force re-init
-    
+
     # بررسی drift نسبی (اگر total درست است، ولی توزیع اشتباه)
     desired_m31 = current_total * M31_ALLOC
     drift = abs(state.get("m31_capital", 0) - desired_m31)
-    
+
     if drift > 500:
         print(f"[DRIFT] M31 rebalance: {state['m31_capital']:.0f} → {desired_m31:.0f}")
         state["m31_capital"] = desired_m31
         state["a20_capital"] = current_total * A20_ALLOC
         state["m40_capital"] = current_total * M40_ALLOC
         state["cash_capital"] = current_total * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC)
-    
+
     return state
 
 
@@ -226,7 +226,7 @@ def main():
         globals()['_CURRENT_REGIME'] = 'UNKNOWN'
 
     print(f"=== M11-KuCoin Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
-    
+
     # LOAD ACTIVE WEIGHTS (D-389: before state init)
     _current_regime = globals().get('_CURRENT_REGIME', 'UNKNOWN')
     _w = load_active_weights("kucoin", regime=_current_regime)
@@ -257,11 +257,11 @@ def main():
         if tp == 0:
             state["m31_pos"][sym] = st
             continue
-            
+
         st["hist"].append(rate)
         if len(st["hist"]) > SMA_PERIODS: st["hist"].pop(0)
         avg = sum(st["hist"]) / len(st["hist"])
-        
+
         if tp > st.get("last_processed", 0):
             st["last_processed"] = tp
             if st["in_pos"]:
@@ -287,7 +287,7 @@ def main():
         if len(k) < 20: continue
         st, dirs = calc_supertrend(k)
         if st[-1] is None: continue
-        
+
         pos = state["a20_pos"].get(sym)
         if pos:
             exit_ = (pos["side"]=="LONG" and (k[-1]["c"] < st[-1] or dirs[-1]==-1)) or \
@@ -316,7 +316,7 @@ def main():
         rsi = calc_rsi(closes, 14)
         atr = calc_atr(k, 14)
         if None in [ema200[-1], rsi[-1], atr[-2]]: continue
-        
+
         pos = state["m40_pos"].get(sym)
         if pos:
             exit_ = (pos["side"]=="LONG" and (k[-1]["l"] <= pos["sl"] or k[-1]["h"] >= pos["tp"])) or \
@@ -348,7 +348,7 @@ def main():
     state["peak_equity"] = max(state.get("peak_equity", _cur), _cur)
 
     state["last_run"] = datetime.now(timezone.utc).isoformat()
-    
+
     if save_to_github(STATE_FILE, state, sha):
         roi = ((state["total_equity"] - INITIAL_CAPITAL) / INITIAL_CAPITAL) * 100
         print(f"✅ Equity: {state['total_equity']:.2f} USDT | ROI: {roi:+.2f}%")

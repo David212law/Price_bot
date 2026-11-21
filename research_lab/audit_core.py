@@ -112,7 +112,7 @@ def deflated_sharpe(sharpe_input, n_obs, n_trials, annualized=True,
                        skew=None, kurt=None):
     """
     Bailey & Lopez de Prado (2014) Deflated Sharpe Ratio.
-    
+
     Args:
         sharpe_input: observed Sharpe. If annualized=True (default), this is
                       Sharpe*sqrt(365). If False, per-period.
@@ -120,7 +120,7 @@ def deflated_sharpe(sharpe_input, n_obs, n_trials, annualized=True,
         n_trials: number of independent trials
         annualized: if True, convert to per-period internally
         skew, kurt: optional moments for higher-order correction
-    
+
     Returns:
         {"sharpe_per_period", "sharpe_annualized", "E_max_null",
          "n_obs", "n_trials", "DSR", "verdict"}
@@ -132,17 +132,17 @@ def deflated_sharpe(sharpe_input, n_obs, n_trials, annualized=True,
         print(f"[WARN] deflated_sharpe: per-period Sharpe={sharpe_input:.2f} "
               f"seems very high — did you pass annualized by mistake?",
               file=sys.stderr)
-    
+
     sr = sharpe_input / math.sqrt(365) if annualized else sharpe_input
     gamma = 0.5772156649
     E_max = (1-gamma)*Z_inv(1-1/n_trials) + gamma*Z_inv(1-1/(n_trials*math.e))
-    
+
     if skew is not None and kurt is not None:
         var_term = max(1 - skew*sr + (kurt-1)/4 * sr**2, 0.01)
         se = math.sqrt(var_term / (n_obs-1))
     else:
         se = math.sqrt(1 / (n_obs-1))
-    
+
     # D-484-fix: E_max is in SE units, not raw Sharpe. Use sr/se - E_max.
     # Old: (sr - E_max)/se was wrong unit mixing.
     z = (sr / se) - E_max if se > 0 else 0
@@ -201,11 +201,11 @@ def spa_multi(candidate_returns_dict, benchmark_returns=None,
     min_len = min(len(v) for v in candidate_returns_dict.values())
     if min_len < 30:
         return {"error": f"n={min_len} < 30", "n_obs": min_len}
-    
+
     cands = {k: v[:min_len] for k, v in candidate_returns_dict.items()}
     bench = [0.0]*min_len if benchmark_returns is None else benchmark_returns[:min_len]
     diffs = {k: [cands[k][i] - bench[i] for i in range(min_len)] for k in names}
-    
+
     means, stds = {}, {}
     for k in names:
         d = diffs[k]
@@ -213,18 +213,18 @@ def spa_multi(candidate_returns_dict, benchmark_returns=None,
         v = sum((x-m)**2 for x in d)/(len(d)-1) if len(d) > 1 else 0
         means[k] = m
         stds[k] = math.sqrt(v)
-    
+
     t_stats = {k: (means[k]/stds[k] if stds[k] > 0 else 0) for k in names}
     T_obs = max(0, max(t_stats.values()))
     if T_obs == 0:
         return {"T_SPA": 0.0, "p_value": 1.0, "verdict": "FAIL",
                 "n_obs": min_len, "n_candidates": len(names),
                 "best_candidate": max(means, key=means.get)}
-    
+
     rng = random.Random(seed)
     centered = {k: [diffs[k][i] - means[k] for i in range(min_len)] for k in names}
     block_size = min(block_size, max(2, min_len // 10))
-    
+
     t_boots = []
     for _ in range(n_boot):
         idx = []
@@ -235,7 +235,7 @@ def spa_multi(candidate_returns_dict, benchmark_returns=None,
         boot_t = {k: (sum(centered[k][i] for i in idx)/min_len)/stds[k]
                   if stds[k] > 0 else 0 for k in names}
         t_boots.append(max(0, max(boot_t.values())))
-    
+
     p_value = sum(1 for t in t_boots if t >= T_obs) / n_boot
     verdict = "STRONG_PASS" if p_value < 0.01 else \
               "PASS" if p_value < 0.05 else \
@@ -275,36 +275,36 @@ if __name__ == "__main__":
     print("=" * 60)
     print("  audit_core.py self-test (D-398)")
     print("=" * 60)
-    
+
     rng = random.Random(42)
     rets = [rng.gauss(0.0005, 0.01) for _ in range(500)]
     m = sum(rets)/len(rets)
     s = math.sqrt(sum((r-m)**2 for r in rets)/(len(rets)-1))
     sr_per = m/s
-    
+
     print(f"\n[Test 1] DSR consistency")
     d1 = deflated_sharpe(sr_per*math.sqrt(365), 500, 54, annualized=True)
     d2 = deflated_sharpe(sr_per, 500, 54, annualized=False)
     print(f"  annualized-input DSR: {d1['DSR']}")
     print(f"  per-period-input DSR: {d2['DSR']}")
     print(f"  Match: {abs(d1['DSR']-d2['DSR']) < 0.001} ← must be True")
-    
+
     print(f"\n[Test 2] Bootstrap CI")
     ci = sharpe_bootstrap_ci(rets, n_boot=500)
     print(f"  annualized Sharpe: {ci['sharpe_annualized']}")
     print(f"  95% CI: [{ci['ci_low_annualized']}, {ci['ci_high_annualized']}]")
     print(f"  significant: {ci['significant']}")
-    
+
     print(f"\n[Test 3] SPA multi")
     strong = [rng.gauss(0.001, 0.01) for _ in range(500)]
     weak = [rng.gauss(0.0001, 0.01) for _ in range(500)]
     sp = spa_multi({"strong": strong, "weak": weak}, n_boot=500)
     print(f"  best: {sp['best_candidate']}, p={sp['p_value']}, verdict={sp['verdict']}")
-    
+
     print(f"\n[Test 4] Walk-forward")
     for f in walk_forward_folds(500, 4):
         print(f"  train=[0,{f[1]}), test=[{f[2]},{f[3]})")
-    
+
     print("\n" + "=" * 60)
     print("  ✅ Self-test complete")
     print("=" * 60)

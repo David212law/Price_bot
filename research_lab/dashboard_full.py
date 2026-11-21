@@ -72,21 +72,21 @@ def gather():
             "delta_pct": round(delta, 3), "last_run": lr, "age": age,
             "trades": hist, "status": status
         })
-    
+
     # Pending approvals
     pend = load_json("exchanges/pending_approvals.json") or {}
-    
+
     # Profiler stats
     prof = load_json("research_lab/logs/profiles/state.json") or {}
     prof_total = len(prof.get("done", {}))
     prof_stressed = sum(1 for v in prof.get("done", {}).values()
                         if isinstance(v, dict) and v.get("validation", {}).get("stress"))
-    
+
     # Combo tracker
     tracker = load_json("exchanges/kucoin/state/m11_kucoin_shadow_combo_state.json") or {}
     tracker_hist = tracker.get("history", [])
     last_tracker = tracker_hist[-1] if tracker_hist else None
-    
+
     return {
         "timestamp": now.isoformat(),
         "timestamp_display": now.strftime("%Y-%m-%d %H:%M UTC"),
@@ -101,7 +101,7 @@ def print_text(data):
     print("=" * 90)
     print(f"  PRICE_BOT — FULL DASHBOARD  |  {data['timestamp_display']}")
     print("=" * 90)
-    
+
     print(f"\n{'Bot':<22} {'Equity':>12} {'vs Base':>10} {'Age':>8} {'Trades':>8} {'Status':>10}")
     print("-" * 90)
     total_eq = 0
@@ -114,18 +114,18 @@ def print_text(data):
         print(f"{b['name']:<22} {b['equity']:>10.2f} {b['delta_pct']:>+8.2f}% {b['age']:>8} {b['trades']:>8} {status_marker} {b['status']}")
     print("-" * 90)
     print(f"{'TOTAL':<22} {total_eq:>10.2f}")
-    
+
     # Pending
     print(f"\n📋 Pending approvals: {len(data['pending'])}")
     for k, v in data["pending"].items():
         status = v.get("status", "?")
         combo = v.get("combo", {})
         print(f"   {k}: {status} | SR={combo.get('combined_sharpe','?')} | n={combo.get('n_days','?')}")
-    
+
     # Profiler
     p = data["profiler"]
     print(f"\n🔬 Profiler: {p['total']} entries ({p['stressed']} stressed)")
-    
+
     # Tracker
     t = data["tracker_last"]
     if t:
@@ -133,7 +133,7 @@ def print_text(data):
         print(f"   M31 real:     ${t['m31_real_equity']:.2f} ({t['m31_real_ret_pct']:+.3f}%)")
         print(f"   Combo hypo:   ${t['combo_hypo_equity']:.2f} ({t['combo_hypo_ret_pct']:+.3f}%)")
         print(f"   Diff:         {t['diff_pct']:+.4f}%")
-    
+
     # Issues
     print()
     if data["issues"]:
@@ -157,14 +157,14 @@ def print_html(data):
                  f"<td>{b['age']}</td>"
                  f"<td style='color:{color};font-weight:bold'>{b['status']}</td>"
                  f"</tr>")
-    
+
     pending_html = ""
     for k, v in data["pending"].items():
         combo = v.get("combo", {})
         pending_html += f"<li><b>{k}</b>: {v.get('status','?')} — SR={combo.get('combined_sharpe','?')}, n={combo.get('n_days','?')}</li>"
     if not pending_html:
         pending_html = "<li>None (صادقانه — هیچ کامبوی واقعی فعال نیست)</li>"
-    
+
     tracker_html = ""
     t = data["tracker_last"]
     if t:
@@ -175,9 +175,9 @@ def print_html(data):
             <p>Combo hypo: <b>${t['combo_hypo_equity']:.2f}</b> ({t['combo_hypo_ret_pct']:+.3f}%)</p>
             <p>Diff: <b>{t['diff_pct']:+.4f}%</b></p>
         </div>"""
-    
+
     issues_html = "".join(f"<li>{i}</li>" for i in data["issues"]) or "<li>None ✅</li>"
-    
+
     html = f"""<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -236,7 +236,7 @@ def print_html(data):
 </p>
 </body>
 </html>"""
-    
+
     out_path = "reports/dashboard.html"
     os.makedirs("reports", exist_ok=True)
     open(out_path, "w").write(html)

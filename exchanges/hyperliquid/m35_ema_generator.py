@@ -40,7 +40,7 @@ def main():
     for sym in SYMBOLS:
         candles = fetch_ohlcv(sym)
         if len(candles) < EMA_SLOW + 2: continue
-        
+
         closes = [c["c"] for c in candles]
         ef = calc_ema(closes[:-1], EMA_FAST)
         es = calc_ema(closes[:-1], EMA_SLOW)
@@ -48,14 +48,14 @@ def main():
         es_prev = calc_ema(closes[:-2], EMA_SLOW)
         atr_val = calc_atr(candles[:-1], ATR_PERIOD)
         current_price = candles[-2]["c"]
-        
+
         if None in [ef, es, ef_prev, es_prev, atr_val]: continue
-        
+
         if ef > es and ef_prev <= es_prev:
             signals.append({"symbol": sym, "action": "OPEN_LONG", "price": current_price, "atr": atr_val})
         elif ef < es and ef_prev >= es_prev:
             signals.append({"symbol": sym, "action": "OPEN_SHORT", "price": current_price, "atr": atr_val})
-            
+
     with open(SIGNAL_FILE, 'w') as f: json.dump({"signals": signals}, f, indent=2)
     print(f"M35 Generator: {len(signals)} signals generated.")
 

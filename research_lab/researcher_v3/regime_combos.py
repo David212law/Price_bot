@@ -12,7 +12,7 @@ from collections import defaultdict
 RETURNS_DIR = Path("research_lab/logs/profiles/returns_matrices")
 STATE_PATH = Path("research_lab/logs/profiles/state.json")
 
-REGIMES = ["TREND_UP", "TREND_DOWN", "RANGE_LOW", "RANGE_MED", 
+REGIMES = ["TREND_UP", "TREND_DOWN", "RANGE_LOW", "RANGE_MED",
            "RANGE_HIGH", "CRISIS_NEGATIVE", "CRISIS_VOL"]
 
 BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE",
@@ -62,14 +62,14 @@ def detect_regime_from_prices(prices, lookback=14, ma_period=50):
     """Detect regime per day from prices (per-asset)."""
     dates = sorted(prices.keys())
     if len(dates) < ma_period + lookback: return {}
-    
+
     # Daily returns
     rets = {}
     for i in range(1, len(dates)):
         p0 = prices[dates[i-1]]
         p1 = prices[dates[i]]
         if p0 > 0: rets[dates[i]] = (p1-p0)/p0
-    
+
     regimes = {}
     for i in range(ma_period + lookback, len(dates)):
         d = dates[i]
@@ -79,15 +79,15 @@ def detect_regime_from_prices(prices, lookback=14, ma_period=50):
         mean_r = sum(recent_rets)/len(recent_rets)
         var = sum((r-mean_r)**2 for r in recent_rets)/len(recent_rets)
         vol = var**0.5
-        
+
         # Trend (7-day)
         trend = sum(recent_rets[-7:]) if len(recent_rets) >= 7 else 0
-        
+
         # MA50
         ma50 = sum([prices[dates[j]] for j in range(i-ma_period, i)])/ma_period
         price = prices[dates[i-1]]
         below_ma = price < ma50 if ma50 > 0 else False
-        
+
         # D-562: classify with crisis detection (vol threshold lower)
         if vol > 0.045:  # was 0.06 — too high, LUNA was ~5%
             r = "CRISIS_VOL"
@@ -101,7 +101,7 @@ def detect_regime_from_prices(prices, lookback=14, ma_period=50):
             r = "RANGE_MED"
         else:
             r = "RANGE_HIGH"
-        
+
         regimes[d] = r
     return regimes
 
@@ -118,7 +118,7 @@ def load_all_strategies():
                     strategies[f"M31_{exch}"] = {"returns": rets, "exchange": exch}
                     break
             except: pass
-    
+
     # From profiler
     if STATE_PATH.exists():
         state = json.loads(STATE_PATH.read_text())
@@ -158,7 +158,7 @@ def load_prices_from_cache():
 def rank_strategies_per_regime(strategies, regime_map):
     """Rank strategies ONLY on days of each regime."""
     rankings = defaultdict(list)
-    
+
     for name, data in strategies.items():
         rets = data["returns"]
         for regime in REGIMES:
@@ -169,16 +169,16 @@ def rank_strategies_per_regime(strategies, regime_map):
             if m:
                 rankings[regime].append({"name": name, "sr": m["sr"], "dd": m["dd"],
                                           "ret": m["ret"], "wr": m["wr"], "n": m["n"]})
-    
+
     for regime in rankings:
         rankings[regime].sort(key=lambda x: -x["sr"])
-    
+
     # D-562: family diversity per regime (M31 only once)
     def get_family(name):
         if name.startswith("M31"): return "M31"
         if name.startswith("KELTNER"): return "KELTNER"
         return name.split("_")[0]
-    
+
     for regime in rankings:
         family_seen = {}
         deduped = []
@@ -188,7 +188,7 @@ def rank_strategies_per_regime(strategies, regime_map):
                 family_seen[fam] = item["name"]
                 deduped.append(item)
         rankings[regime] = deduped
-    
+
     return rankings
 
 
@@ -225,7 +225,7 @@ def build_combos(rankings, top_n=3):
             "top_strategies": top[:3],
             "total_sr_sum": round(total_sr, 2),
         }
-    
+
     # D-563: CRISIS fallback (0-1 strategy → Cash)
     for regime in ["CRISIS_NEGATIVE", "CRISIS_VOL"]:
         if regime not in combos:
@@ -237,7 +237,7 @@ def build_combos(rankings, top_n=3):
                 "fallback": "cash_only",
                 "reason": "insufficient strategies in crisis (D-548: only 2 real edges)",
             }
-    
+
     return combos
 
 
@@ -245,18 +245,18 @@ def main():
     print("=" * 72)
     print(" D-561: True regime-aware evaluation")
     print("=" * 72)
-    
+
     print("\n[1] Loading strategies...")
     strategies = load_all_strategies()
     print(f"  {len(strategies)} strategies")
-    
+
     print("\n[2] Loading prices for regime detection...")
     prices = load_prices_from_cache()
     if not prices:
         print("  ❌ no prices in cache")
         return
     print(f"  {len(prices)} days")
-    
+
     print("\n[3] Detecting regimes per day...")
     regime_map = detect_regime_from_prices(prices)
     print(f"  {len(regime_map)} days with regime")
@@ -265,20 +265,20 @@ def main():
         counts[r] += 1
     for r, c in sorted(counts.items(), key=lambda x: -x[1]):
         print(f"    {r}: {c} days")
-    
+
     print("\n[4] Ranking strategies PER REGIME...")
     rankings = rank_strategies_per_regime(strategies, regime_map)
     for regime in REGIMES:
         n = len(rankings.get(regime, []))
         print(f"  {regime}: {n} strategies")
-    
+
     print("\n[5] Building DIFFERENT combos per regime...")
     combos = build_combos(rankings)
-    
+
     print("\n" + "=" * 72)
     print(" 📊 RESULT — Different combos per regime")
     print("=" * 72)
-    
+
     for regime in REGIMES:
         if regime not in combos:
             continue
@@ -291,7 +291,7 @@ def main():
             print(f"    (top SR: {combo['top_strategies'][0]['sr']:.2f})")
         elif combo.get("fallback"):
             print(f"    (fallback: {combo['fallback']} — {combo.get('reason', '')})")
-    
+
     # Save
     out = Path("research_lab/logs/researcher_v3/regime_combos.json")
     out.write_text(json.dumps({
@@ -300,7 +300,7 @@ def main():
         "combos": combos,
     }, indent=2, ensure_ascii=False))
     print(f"\n💾 saved: {out}")
-    
+
     return combos
 
 

@@ -34,7 +34,7 @@ def load_profiler_strategies():
     state = json.loads(STATE_PATH.read_text())
     done = state.get("done", {})
     strategies = {}
-    
+
     # Load M31 hedged as base
     for exch in ["hyperliquid", "aster", "kucoin"]:
         for f in (RETURNS_DIR / exch).glob("M31_EMA_*_BTC*.json"):
@@ -44,7 +44,7 @@ def load_profiler_strategies():
                     strategies[f"M31_HEDGED_{exch}"] = {"returns": rets, "exchange": exch}
                     break
             except: pass
-    
+
     # Load all valid from profiler
     for key, v in done.items():
         if not isinstance(v, dict): continue
@@ -86,7 +86,7 @@ def main():
     print("=" * 72)
     print(f" D-558: Researcher v3 — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print("=" * 72)
-    
+
     # Phase 1: Live data
     print("\n[1] Live data from exchanges...")
     live_data = fetch_all()
@@ -95,21 +95,21 @@ def main():
     for exch, d in live_data.items():
         status = "✅" if "error" not in d else f"❌ {d['error'][:30]}"
         print(f"  {exch}: {status}")
-    
+
     # Phase 2: Generate candidates
     print("\n[2] Generating strategy candidates...")
     candidates = generate_strategies()
     print(f"  {len(candidates)} candidates generated")
-    
+
     # Phase 3: Load profiler + metrics
     print("\n[3] Loading profiler strategies...")
     strategies = load_profiler_strategies()
     print(f"  {len(strategies)} valid strategies")
-    
+
     print("\n[4] Computing metrics...")
     metrics = compute_all_metrics(strategies)
     print(f"  {len(metrics)} metrics computed")
-    
+
     # Phase 4: Pareto
     print("\n[5] Pareto filter...")
     pareto = []
@@ -122,7 +122,7 @@ def main():
             pareto.extend(_exch_pareto)
             print(f"  per-exchange Pareto [{_exch}]: {len(_exch_pareto)}")
     print(f"  {len(pareto)} strategies on Pareto front")
-    
+
     # Phase 5: Family diversity (PER-EXCHANGE)
     _pareto_by_exch = {}
     for _s in pareto:
@@ -138,13 +138,13 @@ def main():
         _final_pareto.extend(_fam_best.values())
     pareto = _final_pareto
     print(f'  {len(pareto)} after family diversity (per-exchange): {pareto}')
-    
+
     # Phase 6: Per-exchange
     print("\n[6] Per-exchange testing...")
     per_exchange = test_per_exchange()
     for exch, info in per_exchange.items():
         print(f"  {exch}: {info['n_strategies']} strategies (best: {info['best'][:40]})")
-    
+
     # Phase 7: Combos per regime
     print("\n[7] Building combos per regime...")
     all_returns = {name: data["returns"] for name, data in strategies.items()}
@@ -169,18 +169,18 @@ def main():
             combos[regime] = combo
             comps = ", ".join(f"{c['strategy']}@{c['weight']:.0%}" for c in combo["components"])
             print(f"  {regime}: {comps[:70]} [{combo.get('coverage', '?')}/16]")
-    
+
     # Phase 8: Save
     print("\n[8] Saving results...")
     save_results({"combos": combos, "pareto": pareto, "per_exchange": per_exchange})
     print(f"  ✅ saved")
-    
+
     # Phase 9: Bale notification
     print("\n[9] Sending Bale notification...")
     report = format_report(combos, pareto, live_data, per_exchange)
     bale_ok = send_bale(report)
     print(f"  {'✅ sent' if bale_ok else '⚠️ failed'}")
-    
+
     return combos
 
 
