@@ -13,6 +13,20 @@ DATA_DIR = os.path.join(_ROOT, "data")
 CONFIG = os.path.join(_CORE, "config.json")
 
 DEFAULT_FEE = {"TMN": 0.006, "USDT": 0.0026, "GLOBAL": 0.001}
+
+def _calc_sharpe(equity_curve):
+    """Daily Sharpe from equity curve (each step = 1 day)."""
+    if len(equity_curve) < 3: return 0.0
+    rets = [(equity_curve[i] / equity_curve[i-1] - 1)
+            for i in range(1, len(equity_curve)) if equity_curve[i-1] > 0]
+    if len(rets) < 2: return 0.0
+    import statistics
+    m = statistics.mean(rets)
+    s = statistics.stdev(rets)
+    if s == 0: return 0.0
+    return round(m / s * (365 ** 0.5), 3)
+
+
 SPREAD = 0.005
 
 
@@ -86,7 +100,7 @@ def run_papersim(start_idx, end_idx, markets_data, config, fee_map, max_pos=5, p
     # State
     state = {
         "capital": initial_capital,
-        "equity": initial_capital,
+        "equity": initial_capital, "_equity_curve": [],
         "peak": initial_capital,
         "positions": {},   # key -> pos
         "history": [],
@@ -214,6 +228,7 @@ def run_papersim(start_idx, end_idx, markets_data, config, fee_map, max_pos=5, p
                 eq += pos["cost"] + unreal
 
         state["equity"] = round(eq, 2)
+        state["_equity_curve"].append(state["equity"])
         state["peak"] = max(state["peak"], state["equity"])
 
         if should_kill(state["equity"], initial_capital, kill):
@@ -232,6 +247,7 @@ def run_papersim(start_idx, end_idx, markets_data, config, fee_map, max_pos=5, p
         "regime_start": regime_label(btc_series[start_idx] / btc_series[start_idx - 30] - 1) if start_idx >= 31 else None,
         "end_t": t if 't' in locals() else end_idx,
         "equity": state["equity"],
+        "_equity_curve_count": len(state.get("_equity_curve", [])),
         "peak": state["peak"],
         "kill": state["kill_switch"],
         "open_final": len(state["positions"]),
@@ -240,6 +256,9 @@ def run_papersim(start_idx, end_idx, markets_data, config, fee_map, max_pos=5, p
         "losses": len(closes) - wins,
         "total_pnl": round(total_pnl, 4),
         "dd_ratio": dd,
+        "sharpe": _calc_sharpe(state.get("_equity_curve", [])),
+        "pnl_per_day": round(total_pnl / max(1, end_idx - start_idx), 4),
+        "window_days": end_idx - start_idx,
     }
 
 
