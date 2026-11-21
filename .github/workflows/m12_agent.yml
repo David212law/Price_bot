@@ -18,10 +18,13 @@ jobs:
       - env:
           BALE_BOT_TOKEN: ${{ secrets.BALE_BOT_TOKEN }}
           BALE_CHAT_ID: ${{ secrets.BALE_CHAT_ID }}
-        run: python3 -u m12/agent.py --auto-fix --auto-commit --bale
+        run: |
+          python3 -u m12/agent.py --auto-fix --auto-commit --bale
+          python3 -u m12/agent.py --health --next --bale --quiet
       - if: always()
         run: |
           git config user.name bot; git config user.email bot@bot
-          git diff --staged --quiet || git commit -m "auto(agent) [skip ci]"
+          git add m12/agent_health.json m12/agent_report.txt 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "auto(agent-health) [skip ci]"
           git pull --rebase origin main || true
           git push || echo fail

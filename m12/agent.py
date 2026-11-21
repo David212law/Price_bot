@@ -155,6 +155,93 @@ def send_bale(msg):
         urllib.request.urlopen(req, timeout=10)
     except Exception as e: print(f"[BALE-ERR] {e}")
 
+
+
+# ═══════════════ Health & Next-Action ═══════════════
+HEALTH_FILE = ROOT / "agent_health.json"
+
+def _health_load():
+    if HEALTH_FILE.exists():
+        try: return json.loads(HEALTH_FILE.read_text())
+        except: pass
+    return {"config_history": [], "last_check": None, "known_issues": []}
+
+def _health_save(d): HEALTH_FILE.write_text(json.dumps(d, indent=2))
+
+def _within_hours(iso, h=24):
+    try:
+        t = datetime.datetime.fromisoformat(iso)
+        return (datetime.datetime.now() - t).total_seconds() < h*3600
+    except: return False
+
+def check_project_health():
+    """Detect known project issues (config instability, dead bots, etc)."""
+    issues = []
+    warns = []
+
+    # 1. Config stability
+    cfg = ROOT / "config.json"
+    if cfg.exists():
+        import hashlib
+        h = hashlib.md5(cfg.read_bytes()).hexdigest()[:8]
+        hist = _health_load()
+        hist["config_history"].append({"hash": h, "time": NOW})
+        hist["config_history"] = hist["config_history"][-20:]
+        _health_save(hist)
+        recent = [e for e in hist["config_history"] if _within_hours(e["time"], 24)]
+        unique = len(set(e["hash"] for e in recent))
+        if unique >= 3:
+            issues.append(f"CONFIG UNSTABLE: {unique} hashes in 24h (overfit risk)")
+        elif unique == 2:
+            warns.append(f"config changed once in 24h")
+
+    # 2. Calc tests
+    ct = sh([sys.executable, str(ROOT/"calc_test.py")])
+    if ct["rc"] != 0:
+        issues.append("CALC TESTS FAILED")
+
+    # 3. Bot state health
+    st = ROOT/"bot"/"state.json"
+    if st.exists():
+        try:
+            d = json.loads(st.read_text())
+            eq = d.get("equity", 0)
+            if eq < 9500:
+                issues.append(f"BOT EQUITY LOW: ${eq:.0f}")
+            hist = d.get("history", [])
+            recent = [h for h in hist if _within_hours(
+                datetime.datetime.fromtimestamp(h["time"]/1000).isoformat() if isinstance(h.get("time"), (int,float))
+                else str(h.get("time","")), 48)]
+            if len(hist) > 0 and len(recent) == 0:
+                warns.append("no trades in 48h (regime=BEAR?)")
+        except: pass
+
+    # 4. M31 silent check
+    m31_file = REPO/"exchanges"/"aster"/"state"/"m11_aster_paper_state.json"
+    if m31_file.exists():
+        try:
+            d = json.loads(m31_file.read_text())
+            if len(d.get("history", [])) == 0:
+                warns.append("M31 never traded (legacy dead)")
+        except: pass
+
+    return issues, warns
+
+def suggest_next(issues, warns):
+    """Suggest prioritized next actions."""
+    actions = []
+    if any("CONFIG UNSTABLE" in i for i in issues):
+        actions.append("P0: Freeze config + add OOS split (in-sample overfit)")
+    if any("CALC TESTS FAILED" in i for i in issues):
+        actions.append("P0: Fix calc.py before anything")
+    if any("BOT EQUITY LOW" in i for i in issues):
+        actions.append("P0: Kill switch check — reduce max_pos or pause")
+    if any("M31 never traded" in w for w in warns):
+        actions.append("P1: M31 dead — extract capital or implement Delta-Neutral")
+    if not actions:
+        actions.append("OK: project healthy, monitor 48h")
+    return actions
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--allow-dirty", action="store_true")
@@ -162,7 +249,9 @@ def main():
     ap.add_argument("--auto-commit", action="store_true", help="L3: commit safe fixes")
     ap.add_argument("--bale", action="store_true", help="Send critical alerts to Bale")
     ap.add_argument("--quiet", action="store_true")
-    ap.add_argument("--fast", action="store_true", help="Only m12 core files (Termux)")
+    ap.add_argument("--fast", action="store_true", help="Only m12 core files")
+    ap.add_argument("--health", action="store_true", help="Full project health (GitHub)")
+    ap.add_argument("--next", action="store_true", help="Suggest next action")
     args = ap.parse_args()
 
     if args.fast:
@@ -216,6 +305,22 @@ def main():
         for sev, msg in flags: lines.append(f"  [{sev}] {msg}")
     else:
         lines.append("ALL CHECKS PASSED")
+
+    if args.health or args.next:
+        issues, warns = check_project_health()
+        lines.append("")
+        lines.append("PROJECT HEALTH:")
+        if issues:
+            for i in issues: lines.append(f"  🚨 {i}")
+            flags += [("CRITICAL", i) for i in issues]
+        if warns:
+            for w in warns: lines.append(f"  ⚠️  {w}")
+        if not issues and not warns:
+            lines.append("  ✅ healthy")
+        if args.next:
+            lines.append("")
+            lines.append("NEXT ACTIONS:")
+            for a in suggest_next(issues, warns): lines.append(f"  → {a}")
 
     REPORT.write_text("\n".join(lines))
     if not args.quiet: print("\n".join(lines))
