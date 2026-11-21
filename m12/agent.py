@@ -1,92 +1,95 @@
-"""M12 Project Manager Agent (diagnose-only for now).
+"""M12 Manager Agent - SEPARATE supervisor.
 
-Scope today: only the M12 researcher module is watched.
-Future: more modules (other bots/files) plug in here.
+This agent does NOT run heavy tools (researcher/verify/paper_sim).
+It only:
+  1. reads the repo's own reports / config / source,
+  2. checks for known bug patterns,
+  3. writes a FIX-SUGGESTION (with code) for anything it flags.
+
+Real number-crunching stays in the dedicated workflows/tools.
 """
-import datetime, json, pathlib, subprocess, sys
+import datetime, pathlib, re, subprocess, sys
 
-ROOT = pathlib.Path(__file__).resolve().parent        # m12/
-REPO = ROOT.parent                                     # Price_bot/
+ROOT = pathlib.Path(__file__).resolve().parent
 REPORT = ROOT / "agent_report.txt"
-STATE = ROOT / "agent_state.json"
 NOW = datetime.datetime.now().isoformat(timespec="seconds")
 
-# ---------------------------------------------------------------- core
-def run(cmd, cwd=None, timeout=None):
-    p = subprocess.run(cmd, cwd=str(cwd or ROOT), text=True,
-                       stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                       timeout=timeout)
-    return {"rc": p.returncode, "out": p.stdout, "err": p.stderr}
+# ---- light, local-only checks (no heavy execution) ----
+def check(name, ok, detail="", fix_code=""):
+    return {"name": name, "ok": ok, "detail": detail, "fix": fix_code}
 
-def tail(t, n=15):
-    ls = (t or "").strip().splitlines()
-    return "\n".join(ls[-n:]) if ls else "(empty)"
+def compile_check(path):
+    p = ROOT / path
+    if not p.exists():
+        return check(f"exists {path}", False, "file missing",
+                     f"# create or restore {path}")
+    r = subprocess.run([sys.executable, "-m", "py_compile", str(p)],
+                       capture_output=True, text=True)
+    return check(f"compile {path}", r.returncode == 0,
+                 (r.stderr or r.stdout).strip().splitlines()[-1:] or ["ok"],
+                 "# fix indentation/syntax in the reported line")
 
-def check_exists(rel, label=None):
-    p = ROOT / rel
-    return {"name": label or rel, "ok": p.exists(), "path": str(p)}
+def undefined_name_check(path):
+    """Scan source for 'NameError: X not defined' candidates (light)."""
+    p = ROOT / path
+    if not p.exists():
+        return None
+    src = p.read_text()
+    # crude: report lines that use a bare var inside main() but look off
+    issues = []
+    for i, line in enumerate(src.splitlines(), 1):
+        m = re.search(r"cands\.append\(\(sname", line)
+        if m and "def " not in line and "cands = []" not in src:
+            issues.append(i)
+    if not issues:
+        return None
+    return check(f"undefined-name {path}", False,
+                 "uses cands/sname without defining cands in this scope",
+                 "# inside main(): replace cands.append(...) with cnt/best bookkeeping")
 
-# ---------------------------------------------------------------- module: m12_researcher
-def module_m12_researcher():
-    """Watch the M12 researcher module. Read-only. No fix."""
-    checks = [
-        check_exists("researcher/prefilter.py"),
-        check_exists("researcher/researcher.py"),
-        check_exists("researcher/verify.py"),
-        check_exists("researcher/run_pipeline.py"),
-        check_exists("config.json"),
-        check_exists("calc.py"),
-        check_exists("calc_test.py"),
-    ]
-    # config sanity
+def config_crash():
     cfg = ROOT / "config.json"
-    detail = ""
-    if cfg.exists():
-        try:
-            d = json.loads(cfg.read_text())
-            detail = "markets=" + str(list(d.keys()))
-        except Exception as e:
-            detail = f"parse error: {e}"
-    checks.append({"name": "config.json sanity", "ok": not detail.startswith("parse"),
-                   "detail": detail})
+    if not cfg.exists():
+        return check("config.json CRASH", False, "missing",
+                     "# run researcher (separate workflow) to generate config.json")
+    try:
+        import json
+        d = json.loads(cfg.read_text())
+    except Exception as e:
+        return check("config.json CRASH", False, f"parse: {e}", "# fix JSON")
+    parts = [f"{m}={len(d.get(m, {}).get('CRASH', {}))}" for m in ["TMN","USDT","GLOBAL"]]
+    ok = all(len(d.get(m, {}).get("CRASH", {})) > 0 for m in d.keys())
+    return check("config.json CRASH", ok, ", ".join(parts),
+                 "# soften CRASH selection in researcher.py if entries stay 0")
 
-    # quick health: compile the researcher module files
-    for rel in ["researcher/prefilter.py", "researcher/researcher.py",
-                "researcher/verify.py", "researcher/run_pipeline.py"]:
-        r = run([sys.executable, "-m", "py_compile", str(ROOT / rel)])
-        checks.append({"name": f"compile {rel}", "ok": r["rc"] == 0,
-                       "err": tail(r["err"]) if r["rc"] else ""})
-
-    return {"module": "m12_researcher", "checks": checks}
-
-# ---------------------------------------------------------------- main
 def main():
-    print("=" * 62)
-    print(" M12 PROJECT MANAGER AGENT  (diagnose-only)")
-    print(" scope today: m12_researcher  |  started: " + NOW)
-    print("=" * 62)
+    print("=" * 60)
+    print(" M12 MANAGER AGENT (separate supervisor, no heavy runs)")
+    print(" started: " + NOW)
+    print("=" * 60)
 
-    modules = [module_m12_researcher]
-    all_ok = True
-    lines = [f"PROJECT MANAGER AGENT REPORT  ({NOW})"]
-    for mod_fn in modules:
-        mod = mod_fn()
-        mok = all(c["ok"] for c in mod["checks"])
-        all_ok = all_ok and mok
-        lines.append(f"\n[MODULE] {mod['module']}  -> {'OK' if mok else 'ISSUES'}")
-        for c in mod["checks"]:
-            mark = "OK" if c["ok"] else "MISS"
-            lines.append(f"   [{mark}] {c['name']}  {c.get('path','')}")
-            if c.get("detail"): lines.append(f"          {c['detail']}")
-            if c.get("err"):    lines.append(f"          {c['err']}")
+    results = []
+    for f in ["researcher/researcher.py", "researcher/prefilter.py",
+              "researcher/verify.py", "researcher/run_pipeline.py",
+              "calc.py", "calc_test.py"]:
+        results.append(compile_check(f))
+        u = undefined_name_check(f)
+        if u: results.append(u)
+    results.append(config_crash())
 
+    lines = [f"MANAGER AGENT REPORT (separate supervisor)  ({NOW})"]
+    for r in results:
+        mark = "PASS" if r["ok"] else "FLAG"
+        lines.append(f"   [{mark}] {r['name']}")
+        if r["detail"]: lines.append(f"          {r['detail']}")
+        if r["fix"]:    lines.append(f"          FIX-CODE: {r['fix']}")
     REPORT.write_text("\n".join(lines))
     print("\n".join(lines))
     print("\nreport saved ->", REPORT)
-    if not all_ok:
-        print("ISSUES FOUND (read-only; no auto-fix yet)")
+    if any(not r["ok"] for r in results):
+        print("FLAGGED items (supervisor only; apply fixes manually or in L2)")
         sys.exit(1)
-    print("ALL WATCHED MODULES OK (read-only)")
+    print("ALL CHECKS PASSED (supervisor)")
 
 if __name__ == "__main__":
     main()

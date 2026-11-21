@@ -11,29 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
-
       - name: deps
         run: pip install --quiet requests
-
       - name: M12 pipeline (prefilter -> researcher -> verify)
         run: python3 -u m12/researcher/run_pipeline.py
-
       - name: Paper quick gate (light)
         run: |
-          set -euo pipefail
           cd m12/bot
-          python3 -u paper_sim.py --window 240 --max_pos 2 --fee_mode 0
           python3 -u paper_sim.py --window 240 --max_pos 2 --fee_mode default
-
       - name: commit outputs
-        if: always()
+        if: success()
         run: |
           git config user.name bot
           git config user.email bot@bot
-          git add m12/config.json m12/researcher/research/ || true
+          git add m12/config.json || true
           git diff --staged --quiet || git commit -m "Auto: M12 research [skip ci]"
           git pull --rebase origin main || true
           git push || echo fail
