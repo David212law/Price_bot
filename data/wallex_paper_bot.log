@@ -620,3 +620,13 @@ Target Portfolio: {'TETHER': 1.0}
 Current Equity: $9940.00
 No regime change or asset rotation. Holding current portfolio.
 Saved state to data/wallex_paper_bot_state.json
+================================================================================
+ WALLEX PAPER BOT — EXECUTION (Active Strategies)
+================================================================================
+Date: 2026-11-19
+Detected Regime: CRASH
+📊 Adaptive: Regime=CRASH, Mom30=-19.9%, Mode=DEFENSIVE, Exposure=0%
+Target Portfolio: {'TETHER': 1.0}
+Current Equity: $9940.00
+No regime change or asset rotation. Holding current portfolio.
+Saved state to data/wallex_paper_bot_state.json
