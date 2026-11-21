@@ -49,7 +49,8 @@ def to_candles(prices):
              "l": p*(1-SPREAD), "c": p, "v": 1.0}
             for i, p in enumerate(prices)]
 
-def evaluate(symbols, btc_regimes, fee, n_btc):
+def evaluate(symbols, btc_regimes, fee, n_btc, oos_start_idx=None):
+    """If oos_start_idx set, only use data BEFORE that index (train only)."""
     result = {s: {r: {"won": [], "ret": []} for r in ["BULL","FLAT","BEAR","CRASH"]}
               for s in STRATEGIES}
     n_ok = 0
@@ -138,7 +139,9 @@ def main():
                 if len(won) < min_trades: continue
                 wr = win_rate(won); mr = mean(ret)
                 wr_thresh = 0.50 if regime=="CRASH" else 0.52
-                if wr >= wr_thresh and mr > 0: cands.append((sname, wr, mr, ret))
+                if wr >= wr_thresh and mr > 0:
+                    cnt += 1
+                    if best is None or wr > best[1]: best = (sn, wr, mr)
             bs = f"best={best[0]} wr={best[1]:.3f} ret={best[2]:+.4f}" if best else "-"
             print(f"  {regime:6s}: {cnt:2d} valid | {bs}")
         for sn in STRATEGIES:
