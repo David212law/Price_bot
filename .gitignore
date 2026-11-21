@@ -47,3 +47,9 @@ m12/researcher/research/
 
 # M12 cache (do not commit)
 m12/cache/
+
+# M12 agent outputs
+m12/agent_report.txt
+m12/agent_state.json
+m12/researcher/prefilter_keep.json
+m12/researcher/prefilter_scores.json
