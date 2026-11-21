@@ -1,3 +1,10 @@
 {
-  "signals": []
+  "signals": [
+    {
+      "symbol": "BTC",
+      "action": "OPEN_SHORT",
+      "price": 58923.0,
+      "atr": 2890.4285714285716
+    }
+  ]
 }
