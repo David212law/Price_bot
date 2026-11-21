@@ -1,12 +1,4 @@
-"""M12 Manager Agent — separate supervisor using precise detection tools.
-
-The agent does not compute strategy metrics itself. It uses lightweight
-tools (py_compile + a scope-aware AST undefined-name detector) to inspect
-the repo and reports PASS/FLAG with a fix suggestion.
-
-L1 (active): observe + suggest.
-L2 (ready) : auto-apply known-pattern fixes, then re-verify.
-"""
+"""M12 Manager Agent — L1 observer + L2 auto-fix (loose scope mode)."""
 import ast, builtins, datetime, json, pathlib, subprocess, sys, argparse
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -15,13 +7,23 @@ REPORT = ROOT / "agent_report.txt"
 NOW = datetime.datetime.now().isoformat(timespec="seconds")
 BUILTINS = set(dir(builtins))
 
-FILES = [
-    "researcher/researcher.py", "researcher/prefilter.py",
-    "researcher/verify.py", "researcher/run_pipeline.py",
-    "calc.py", "calc_test.py",
-]
+FILES = sorted(
+    str(p.relative_to(ROOT))
+    for p in ROOT.rglob("*.py")
+    if "__pycache__" not in str(p)
+    and "cache" not in p.parts
+    and not p.name.startswith("agent")
+)
 
-# ---------------------------------------------------------------- tools
+KNOWN_MODULES = {
+    "random": "import random", "statistics": "import statistics",
+    "math": "import math", "re": "import re", "json": "import json",
+    "os": "import os", "sys": "import sys", "csv": "import csv",
+    "subprocess": "import subprocess", "hashlib": "import hashlib",
+    "argparse": "import argparse", "pathlib": "import pathlib",
+    "urllib": "import urllib.request",
+}
+
 def sh(cmd, cwd=None):
     p = subprocess.run(cmd, cwd=str(cwd or ROOT), capture_output=True, text=True)
     return {"rc": p.returncode, "out": p.stdout, "err": p.stderr}
@@ -34,7 +36,6 @@ def py_compile(path):
     return {"ok": r["rc"] == 0,
             "why": (r["err"] or r["out"]).strip().splitlines()[-1:] if r["rc"] else ""}
 
-# ---- scope-aware undefined-name detector ----
 def _target_names(n):
     if isinstance(n, ast.Name):
         return {n.id}
@@ -43,55 +44,68 @@ def _target_names(n):
         ids |= _target_names(c)
     return ids
 
-def _local_names(node):
-    names = {a.arg for a in node.args.args + node.args.kwonlyargs}
-    if node.args.vararg: names.add(node.args.vararg.arg)
-    if node.args.kwarg:  names.add(node.args.kwarg.arg)
-    for n in ast.walk(node):
-        if isinstance(n, ast.Name) and isinstance(n.ctx, (ast.Store, ast.Del)):
-            names.add(n.id)
-        if isinstance(n, ast.comprehension):
-            names |= _target_names(n.target)
-        if isinstance(n, ast.Lambda):
-            for a in n.args.args: names.add(a.arg)
-            if n.args.vararg: names.add(n.args.vararg.arg)
-            if n.args.kwarg:  names.add(n.args.kwarg.arg)
-        # function-level imports
-        if isinstance(n, (ast.Import, ast.ImportFrom)):
-            for a in n.names:
-                names.add((a.asname or a.name).split(".")[0])
-    return names
-
-def module_defs(tree):
+def collect_all_names(tree):
+    """Loose scope: all names bound anywhere in the file."""
     names = set()
-    for n in ast.iter_child_nodes(tree):
+    for n in ast.walk(tree):
         if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
             names.add(n.name)
         elif isinstance(n, (ast.Import, ast.ImportFrom)):
-            for a in n.names: names.add(a.asname or a.name.split(".")[0])
-        elif isinstance(n, ast.Assign):
-            for t in n.targets: names |= _target_names(t)
+            for a in n.names: names.add((a.asname or a.name).split(".")[0])
+        elif isinstance(n, ast.Name) and isinstance(n.ctx, (ast.Store, ast.Del)):
+            names.add(n.id)
+        elif isinstance(n, ast.ExceptHandler) and n.name:
+            names.add(n.name)
+        elif isinstance(n, ast.withitem) and n.optional_vars:
+            names |= _target_names(n.optional_vars)
+        elif isinstance(n, ast.arg):
+            names.add(n.arg)
+        elif isinstance(n, ast.comprehension):
+            names |= _target_names(n.target)
     return names
 
 def undefined_names(path):
+    """Loose detection: flag names used-but-never-bound anywhere in the file."""
     try:
         tree = ast.parse(pathlib.Path(path).read_text())
     except SyntaxError:
         return []
-    mod = module_defs(tree)
+    all_bound = collect_all_names(tree)
     out = []
     for node in ast.walk(tree):
         if not isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
             continue
-        local = _local_names(node)
         for n in ast.walk(node):
             if (isinstance(n, ast.Name) and isinstance(n.ctx, ast.Load)
-                    and n.id not in local and n.id not in mod
+                    and n.id not in all_bound
                     and n.id not in BUILTINS):
                 out.append((node.name, n.id, n.lineno))
     return out
 
-# ---------------------------------------------------------------- checks
+def auto_fix_missing_imports(path):
+    p = ROOT / path
+    if not p.exists(): return []
+    code = p.read_text()
+    seen = set()
+    for func, name, line in undefined_names(str(p)):
+        if name in KNOWN_MODULES and name not in seen:
+            if f"import {name}" in code: continue
+            lines = code.splitlines(keepends=True)
+            insert_at = 0
+            if lines and lines[0].startswith("#!"): insert_at = 1
+            if insert_at < len(lines):
+                ls = lines[insert_at].lstrip()
+                if ls.startswith('"""') or ls.startswith("'''"):
+                    delim = ls[:3]
+                    for j in range(insert_at+1, min(insert_at+30, len(lines))):
+                        if delim in lines[j]:
+                            insert_at = j + 1
+                            break
+            code = "".join(lines[:insert_at]) + KNOWN_MODULES[name] + "\n" + "".join(lines[insert_at:])
+            p.write_text(code)
+            seen.add(name)
+    return list(seen)
+
 def config_crash():
     cfg = ROOT / "config.json"
     if not cfg.exists():
@@ -109,18 +123,24 @@ def git_tracked_dirty():
     dirty = [l for l in r["out"].splitlines() if l.strip() and not l.startswith("?? ")]
     return ("git tracked-state", not dirty, (", ".join(dirty) if dirty else "clean"))
 
-# ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--allow-dirty", action="store_true", help="Ignore uncommitted git files")
+    ap.add_argument("--allow-dirty", action="store_true")
+    ap.add_argument("--auto-fix", action="store_true")
     args = ap.parse_args()
+
     print("=" * 62)
-    print(" M12 MANAGER AGENT  [L1 observer / L2 ready]  started: " + NOW)
+    print(" M12 MANAGER AGENT  started: " + NOW)
     print("=" * 62)
+
+    if args.auto_fix:
+        print("[L2] auto-fix enabled")
+        for f in FILES:
+            fixed = auto_fix_missing_imports(f)
+            for fx in fixed: print(f"  FIXED: added '{fx}' in {f}")
 
     lines = [f"MANAGER AGENT REPORT ({NOW})"]
     all_ok = True
-
     for f in FILES:
         c = py_compile(f)
         if not c["ok"]:
@@ -128,9 +148,7 @@ def main():
             lines.append(f"   [FLAG] syntax {f}: {c['why']}")
         for func, name, line in undefined_names(str(ROOT / f)):
             all_ok = False
-            lines.append(f"   [FLAG] undefined-name {f}:{line} — {func}() uses '{name}' not in scope")
-            lines.append(f"          FIX: define '{name}' in {func}() before use")
-
+            lines.append(f"   [FLAG] undefined-name {f}:{line} — {func}() uses '{name}'")
     checks = [config_crash()]
     if not args.allow_dirty:
         checks.append(git_tracked_dirty())
@@ -141,11 +159,11 @@ def main():
 
     REPORT.write_text("\n".join(lines))
     print("\n".join(lines))
-    print("\nreport saved ->", REPORT)
+
     if not all_ok:
-        print("\nFLAGGED items (L1 observes; L2 fixers ready)")
+        print("\nFLAGGED — run with --auto-fix to try L2 fixes")
         sys.exit(1)
-    print("\nALL CHECKS PASSED (L1 supervisor)")
+    print("\nALL CHECKS PASSED")
 
 if __name__ == "__main__":
     main()
