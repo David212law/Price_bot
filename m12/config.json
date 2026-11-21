@@ -55,14 +55,15 @@
       "MR_BB_10_15__fee_multiplier1.0": 0.0694
     },
     "CRASH": {
-      "WEEKLY_PIVOT__week_candles42__fee_multiplier1.0": 0.1497,
-      "T_KST_NEG__fee_multiplier1.0": 0.1494,
-      "T_KAMA_10_PRICE__fee_multiplier1.0": 0.134,
-      "T_PSAR_FLIP_SHORT__fee_multiplier1.0": 0.1324,
-      "T_ST_20_2_SHORT__fee_multiplier1.0": 0.1267,
-      "KELTNER_REV__period20__mult1.5": 0.1147,
-      "KELTNER_REV__period20__mult2.0": 0.0987,
-      "T_VORTEX_SHORT__fee_multiplier1.0": 0.0944
+      "WEEKLY_PIVOT__week_candles42__fee_multiplier1.0": 0.1259,
+      "T_KST_NEG__fee_multiplier1.0": 0.1256,
+      "LOW_VOL_CARRY__vol_pct_threshold0.4": 0.1217,
+      "NR_BREAKOUT__nr_period5__entry_period10": 0.1136,
+      "T_KAMA_10_PRICE__fee_multiplier1.0": 0.1126,
+      "T_PSAR_FLIP_SHORT__fee_multiplier1.0": 0.1113,
+      "T_ST_20_2_SHORT__fee_multiplier1.0": 0.1065,
+      "T_ST_FLIP_SHORT__fee_multiplier1.0": 0.1033,
+      "T_VORTEX_SHORT__fee_multiplier1.0": 0.0794
     }
   },
   "USDT": {
@@ -157,28 +158,23 @@
       "MR_BB_15_20__fee_multiplier1.0": 0.0352
     },
     "CRASH": {
-      "VOL_DONCHIAN__period40__atr_mult0.5": 0.0532,
-      "VOL_DONCHIAN__period20__atr_mult0.5": 0.0529,
-      "T_VORTEX_SHORT__fee_multiplier1.0": 0.0526,
-      "MOM_ELDER_13__fee_multiplier1.0": 0.0498,
-      "KELTNER_REV__period20__mult2.0": 0.0494,
-      "MOM_ELDER_30__fee_multiplier1.0": 0.0493,
-      "MOM_ELDER_20__fee_multiplier1.0": 0.0487,
-      "T_EMA9_PRICE__fee_multiplier1.0": 0.0486,
-      "MOM_ELDER_40__fee_multiplier1.0": 0.0484,
-      "WEEKLY_PIVOT__week_candles42__fee_multiplier1.0": 0.0478,
-      "KELTNER_REV__period20__mult1.5": 0.0468,
-      "MOM_ELDER_25__fee_multiplier1.0": 0.0467,
-      "T_EMA21_PRICE__fee_multiplier1.0": 0.0458,
-      "T_ST_20_2_SHORT__fee_multiplier1.0": 0.0438,
-      "T_KAMA_10_PRICE__fee_multiplier1.0": 0.0438,
-      "MR_CCI_20__fee_multiplier1.0": 0.0419,
-      "T_PSAR_FLIP_SHORT__fee_multiplier1.0": 0.0411,
-      "MR_CCI_14__fee_multiplier1.0": 0.0402,
-      "MR_Z_15_15__fee_multiplier1.0": 0.0386,
-      "MR_CCI_25__fee_multiplier1.0": 0.0372,
-      "MR_Z_20_15__fee_multiplier1.0": 0.037,
-      "MR_WR_30__fee_multiplier1.0": 0.0365
+      "T_KST_NEG__fee_multiplier1.0": 0.0751,
+      "VOL_DONCHIAN__period40__atr_mult0.5": 0.0663,
+      "VOL_DONCHIAN__period20__atr_mult0.5": 0.0659,
+      "VOL_BBSQ_15_15__fee_multiplier1.0": 0.0644,
+      "MOM_ELDER_13__fee_multiplier1.0": 0.0621,
+      "KELTNER_REV__period20__mult2.0": 0.0616,
+      "NR_BREAKOUT__nr_period5__entry_period10": 0.0615,
+      "MOM_ELDER_30__fee_multiplier1.0": 0.0615,
+      "MOM_ELDER_40__fee_multiplier1.0": 0.0603,
+      "WEEKLY_PIVOT__week_candles42__fee_multiplier1.0": 0.0595,
+      "KELTNER_REV__period20__mult1.5": 0.0583,
+      "T_EMA21_PRICE__fee_multiplier1.0": 0.057,
+      "T_KAMA_10_PRICE__fee_multiplier1.0": 0.0546,
+      "MR_CCI_20__fee_multiplier1.0": 0.0522,
+      "MR_Z_15_15__fee_multiplier1.0": 0.048,
+      "MR_Z_20_15__fee_multiplier1.0": 0.0461,
+      "MR_WR_30__fee_multiplier1.0": 0.0455
     }
   },
   "GLOBAL": {
@@ -284,8 +280,17 @@
       "MR_Z_15_15__fee_multiplier1.0": 0.0331
     },
     "CRASH": {
-      "KELTNER_REV__period20__mult1.5": 0.5318,
-      "KELTNER_REV__period20__mult2.0": 0.4682
+      "LOW_VOL_CARRY__vol_pct_threshold0.4": 0.1127,
+      "T_KST_NEG__fee_multiplier1.0": 0.1127,
+      "MOM_KST_S__fee_multiplier1.0": 0.1127,
+      "T_KAMA_10_PRICE__fee_multiplier1.0": 0.0939,
+      "WEEKLY_PIVOT__week_candles42__fee_multiplier1.0": 0.0928,
+      "VOL_DONCHIAN__period20__atr_mult0.5": 0.0876,
+      "KELTNER_REV__period20__mult1.5": 0.0863,
+      "KELTNER_REV__period20__mult2.0": 0.076,
+      "VOL_BBSQ_15_15__fee_multiplier1.0": 0.0751,
+      "VOL_BBSQ_15_20__fee_multiplier1.0": 0.0751,
+      "VOL_BBSQ_15_25__fee_multiplier1.0": 0.0751
     }
   }
 }
