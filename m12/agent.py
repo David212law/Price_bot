@@ -64,6 +64,7 @@ def collect_all_names(tree):
     return names
 
 def undefined_names(path):
+    path = pathlib.Path(path)
     try:
         tree = ast.parse(path.read_text())
     except SyntaxError:
@@ -326,11 +327,35 @@ def fix_bare_except(path):
     except SyntaxError: return False
     path.write_text(nc); return True
 
+
+def fix_dict_keys_membership(path):
+    """'a' in d.keys() → 'a' in d (safe, faster)."""
+    original = path.read_text()
+    new = re.sub(r'(\bin\s+[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*)\.keys\(\)', r'\1', original)
+    new = re.sub(r'(\bnot\s+in\s+[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*)\.keys\(\)', r'\1', new)
+    if new != original:
+        try: ast.parse(new)
+        except SyntaxError: return False
+        path.write_text(new); return True
+    return False
+
+def fix_not_in(path):
+    """not x in y → x not in y (PEP-8)."""
+    original = path.read_text()
+    new = re.sub(r'\bnot\s+([A-Za-z_][A-Za-z0-9_]*(?:\[[^\]]+\])?)\s+in\s+', r'\1 not in ', original)
+    if new != original:
+        try: ast.parse(new)
+        except SyntaxError: return False
+        path.write_text(new); return True
+    return False
+
 SAFE_FIXERS = [
     ("eof_newline", fix_eof_newline),
     ("blank_lines", fix_blank_lines),
     ("none_comparison", fix_none_comparison),
     ("bare_except", fix_bare_except),
+    ("dict_keys", fix_dict_keys_membership),
+    ("not_in", fix_not_in),
 ]
 
 def apply_safe_fixers(path):
@@ -348,6 +373,15 @@ def apply_safe_fixers(path):
     return applied
 
 
+
+
+# dry-run guard: patch Path.write_text to no-op
+_orig_write = pathlib.Path.write_text
+def _make_dry_run_noop():
+    def noop(self, *a, **k): return len(a[0]) if a else 0
+    pathlib.Path.write_text = noop
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--allow-dirty", action="store_true")
@@ -360,13 +394,23 @@ def main():
     ap.add_argument("--next", action="store_true")
     ap.add_argument("--safe-fix", action="store_true")
     ap.add_argument("--rollback", action="store_true")
+    ap.add_argument("--dry-run", action="store_true", help="No writes, preview only")
+    ap.add_argument("--staged", action="store_true", help="Check only git-staged .py + m12 core")
     args = ap.parse_args()
+    if args.dry_run:
+        print("[DRY-RUN] no writes will happen")
+        _make_dry_run_noop()
     if args.rollback:
         n = _rollback_all()
         print(f"Restored {n} files")
         return 0
 
-    if args.fast:
+    if args.staged:
+        r = sh(["git", "diff", "--cached", "--name-only", "--diff-filter=ACM"], cwd=REPO)
+        staged = [REPO/f for f in r["out"].splitlines() if f.endswith(".py") and (REPO/f).exists()]
+        core = [ROOT/f for f in ["calc.py","calc_test.py","m12_strategies.py","data_fetcher.py"] if (ROOT/f).exists()]
+        py_files = sorted(set(staged + core))
+    elif args.fast:
         py_files = sorted([ROOT/f for f in ["calc.py","calc_test.py","m12_strategies.py","data_fetcher.py"]
                            if (ROOT/f).exists()])
     else:
@@ -450,6 +494,16 @@ def main():
             lines.append("NEXT ACTIONS:")
             for a in suggest_next(issues, warns): lines.append(f"  → {a}")
 
+    ROTATE_KEEP = 5
+    if REPORT.exists():
+        try:
+            hist_dir = ROOT / "agent_reports"
+            hist_dir.mkdir(exist_ok=True)
+            ts = NOW.replace(":","").replace("-","")
+            (hist_dir / f"report_{ts}.txt").write_text("\n".join(lines))
+            hist = sorted(hist_dir.glob("report_*.txt"), key=lambda x: x.stat().st_mtime, reverse=True)
+            for old in hist[ROTATE_KEEP:]: old.unlink()
+        except Exception: pass
     REPORT.write_text("\n".join(lines))
     if not args.quiet: print("\n".join(lines))
 
