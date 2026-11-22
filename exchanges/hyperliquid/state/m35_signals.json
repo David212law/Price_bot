@@ -1,10 +1,10 @@
 {
   "signals": [
     {
-      "symbol": "BTC",
+      "symbol": "BNB",
       "action": "OPEN_SHORT",
-      "price": 58923.0,
-      "atr": 2890.4285714285716
+      "price": 548.29,
+      "atr": 29.91642857142858
     }
   ]
 }
