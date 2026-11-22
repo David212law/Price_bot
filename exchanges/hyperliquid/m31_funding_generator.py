@@ -17,7 +17,7 @@ def fetch_funding(symbol):
         r = requests.post(url, json=payload, timeout=15)
         if r.status_code == 200:
             return [{"t": int(rec["time"]), "rate": float(rec["fundingRate"])} for rec in r.json()]
-    except: pass
+    except Exception: pass
     return []
 
 def main():

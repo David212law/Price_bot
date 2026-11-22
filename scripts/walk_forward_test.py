@@ -50,7 +50,7 @@ def build_strat_rets(df, name):
                 series = series.reindex(df.index).fillna(0.0)
                 if series.abs().sum() > 0:
                     rows.append((sid, series))
-            except: pass
+            except Exception: pass
         if rows:
             profiler_df = pd.DataFrame(dict(rows)).reindex(df.index).fillna(0.0)
             strat_rets = pd.concat([strat_rets, profiler_df], axis=1)

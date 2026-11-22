@@ -39,7 +39,6 @@ COMPONENTS = [
 ]
 CASH_WEIGHT = 0.0254
 
-
 def fetch_hl_funding(symbol):
     now_ms = int(time.time() * 1000)
     start_ms = now_ms - (4 * 3600 * 1000)
@@ -53,7 +52,6 @@ def fetch_hl_funding(symbol):
         print(f"[HL {symbol}] {e}")
     return 0.0
 
-
 def fetch_aster_funding_history(symbol, n_periods=12):
     now_ms = int(time.time() * 1000)
     start_ms = now_ms - (n_periods * 8 * 3600 * 1000) - (2 * 3600 * 1000)
@@ -66,14 +64,12 @@ def fetch_aster_funding_history(symbol, n_periods=12):
         print(f"[Aster {symbol}] {e}")
     return []
 
-
 def compute_momentum(history, lookback=LOOKBACK):
     if len(history) < lookback * 2:
         return None
     recent = [r["rate"] for r in history[-lookback:]]
     older = [r["rate"] for r in history[:lookback]]
     return sum(recent) / len(recent), sum(older) / len(older), history[-1]["rate"]
-
 
 def load_state():
     if os.path.exists(STATE_FILE):
@@ -96,12 +92,10 @@ def load_state():
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
 
-
 def save_state(state):
     os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
     with open(STATE_FILE, "w") as f:
         json.dump(state, f, indent=2)
-
 
 def process_hl_component(comp_state, symbols):
     """M31 on HL: capture funding on all symbols."""
@@ -116,7 +110,6 @@ def process_hl_component(comp_state, symbols):
             print(f"  [HL/{sym}] funding +{income:.4f} ({rate*100:+.4f}%)")
     return income_total
 
-
 def process_aster_m31_component(comp_state, symbol):
     """Base M31 on Aster: capture all positive funding."""
     history = fetch_aster_funding_history(symbol)
@@ -129,7 +122,6 @@ def process_aster_m31_component(comp_state, symbol):
         print(f"  [Aster/{symbol}] funding +{income:.4f} ({rate*100:+.4f}%)")
         return income
     return 0.0
-
 
 def process_aster_m31_ema_component(comp_state, symbol):
     """M31_EMA: capture funding only when momentum positive."""
@@ -161,7 +153,6 @@ def process_aster_m31_ema_component(comp_state, symbol):
     comp_state["positions"][symbol] = pos
     return 0.0
 
-
 def process_baseline_m31(state):
     """Track M31-only baseline on HL."""
     total = 0.0
@@ -173,7 +164,6 @@ def process_baseline_m31(state):
             state["baseline_m31_only_equity"] += income
             total += income
     return total
-
 
 def main():
     try:
@@ -223,7 +213,6 @@ def main():
 
     save_state(state)
     print(f"[SAVE] {STATE_FILE}")
-
 
 if __name__ == "__main__":
     main()

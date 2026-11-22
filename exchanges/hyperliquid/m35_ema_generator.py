@@ -15,7 +15,7 @@ def fetch_ohlcv(symbol):
         r = requests.post(url, json=payload, timeout=15)
         if r.status_code == 200:
             return [{"t": int(c["t"]), "o": float(c["o"]), "h": float(c["h"]), "l": float(c["l"]), "c": float(c["c"])} for c in r.json()]
-    except: pass
+    except Exception: pass
     return []
 
 def calc_ema(closes, period):

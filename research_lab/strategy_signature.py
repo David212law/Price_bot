@@ -47,7 +47,6 @@ def market_vol_by_date(exchange):
     _vol_cache[exchange] = result
     return result
 
-
 def compute_signature(entry, returns_dict):
     """Compute strategy signature from profiler entry + returns."""
     sig = {
@@ -119,7 +118,6 @@ def compute_signature(entry, returns_dict):
 
     return sig
 
-
 def signature_for_entry(entry):
     """Load returns matrix and compute signature."""
     exchange = entry["exchange"]
@@ -144,7 +142,6 @@ def signature_for_entry(entry):
         return compute_signature(entry, rets)
     except Exception:
         return compute_signature(entry, {})
-
 
 def signature_for_m31(exchange, m31_rets):
     """D-441b: M31 signature with regime-conditional sharpe computed."""
@@ -189,7 +186,6 @@ def signature_for_m31(exchange, m31_rets):
     }
     return compute_signature(entry, m31_rets)
 
-
 def find_m31_weaknesses(m31_sig):
     """D-441c: All thresholds are ANNUALIZED. Weak = Sharpe<2. Underperform = <50% of best."""
     weaknesses = []
@@ -219,7 +215,6 @@ def find_m31_weaknesses(m31_sig):
             weaknesses.append("underperform_in_high_vol")
 
     return weaknesses
-
 
 def covers_weakness(candidate_sig, m31_sig, weakness):
     """D-441c: Candidate must BEAT M31 in the weak condition, not just be >2.0.

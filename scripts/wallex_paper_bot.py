@@ -19,7 +19,6 @@ def get_usd_rate():
     except Exception:
         return 2_672_100  # fallback (آخرین نرخ شناخته‌شده)
 
-
 def is_price_fresh(df, asset, max_age_days=7):
     """چک می‌کند آخرین قیمت asset کمتر از max_age_days روز پیش باشد."""
     if asset not in df.columns:
@@ -61,7 +60,6 @@ def detect_regime(df):
         mom_30 = btc.iloc[-1] / btc.iloc[-31] - 1 if len(btc) >= 31 else 0
         if mom_14 < -0.10 or mom_30 < -0.15: return "CRASH"
         if mom_14 < -0.05 or mom_30 < -0.08: return "BEAR"
-
 
     if price > ma and v < 1.0: return "BULL_STRONG"
     if price > ma and v >= 1.0: return "BULL"
@@ -240,7 +238,6 @@ def main():
                 print(f"🇮🇷 Iran currency crisis detected: USD/IRR +{change_30d*100:.1f}% in 30d")
     except Exception as e:
         print(f"⚠️ Iran crisis check failed: {e}")
-
 
     # ADAPTIVE MODE: exposure based on regime + 30d momentum
     # 30d momentum

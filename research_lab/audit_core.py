@@ -5,7 +5,7 @@ from collections import defaultdict
 
 def normalize_ms(t):
     try: t = int(float(t))
-    except: return 0
+    except Exception: return 0
     if t > 10**14: return t // 1000
     if t > 10**11: return t
     if t > 10**9: return t * 1000
@@ -24,7 +24,7 @@ def extract_rates(data):
         for key in ["fundingRate","rate","funding_rate","value","funding"]:
             if key in r:
                 try: rate = float(r[key]); break
-                except: pass
+                except Exception: pass
         t = 0
         for key in ["time","t","fundingTime","timestamp","created_at","timepoint"]:
             if key in r:
@@ -45,7 +45,7 @@ def load_funding(exchange, symbol):
         if os.path.exists(p):
             try:
                 with open(p) as f: return extract_rates(json.load(f))
-            except: continue
+            except Exception: continue
     return []
 
 def trade_unit_stats(exchange, symbols):
@@ -157,7 +157,6 @@ def deflated_sharpe(sharpe_input, n_obs, n_trials, annualized=True,
         "verdict": "PASS" if dsr >= 0.95 else "WEAK" if dsr >= 0.80 else "FAIL"
     }
 
-
 # ═══════════════ D-398: Bootstrap Sharpe CI ═══════════════
 def sharpe_bootstrap_ci(daily_rets, ppy=365, n_boot=1000, alpha=0.05, seed=42):
     """Bootstrap 95% CI for Sharpe (per-period and annualized)."""
@@ -186,7 +185,6 @@ def sharpe_bootstrap_ci(daily_rets, ppy=365, n_boot=1000, alpha=0.05, seed=42):
         "n_obs": n,
         "n_boot": n_boot,
     }
-
 
 # ═══════════════ D-398: Multi-candidate SPA ═══════════════
 def spa_multi(candidate_returns_dict, benchmark_returns=None,
@@ -253,7 +251,6 @@ def spa_multi(candidate_returns_dict, benchmark_returns=None,
         "all_means_pct": {k: round(means[k]*100, 4) for k in names},
     }
 
-
 # ═══════════════ D-398: Walk-forward folds ═══════════════
 def walk_forward_folds(n_obs, n_folds=4):
     """Generate (train_start, train_end, test_start, test_end) — expanding window."""
@@ -268,7 +265,6 @@ def walk_forward_folds(n_obs, n_folds=4):
         if test_end - test_start >= 10:
             folds.append((0, train_end, test_start, test_end))
     return folds
-
 
 # ═══════════════ Self-test ═══════════════
 if __name__ == "__main__":
@@ -376,10 +372,9 @@ def no_lookahead_check():
             # Also catch any [i+N] where N>=2 (unambiguous future)
             for m in re.finditer(r'candles\[i\s*\+\s*[2-9]', content):
                 issues.append((fp, m.group()))
-        except: pass
+        except Exception: pass
     return {"files_checked": len(glob.glob("strategies/library/*.py")),
             "issues": issues, "verdict": "PASS" if not issues else "FAIL"}
-
 
 # ═══════════════════════════════════════════════════════════════════
 # D-507: Family-based DSR (N_trials per family, not global)

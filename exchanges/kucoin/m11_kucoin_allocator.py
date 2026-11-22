@@ -37,7 +37,7 @@ def send_bale(msg):
         print(f"[BALE] {msg[:80]}")
         return
     try: requests.post(f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage", json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
-    except: pass
+    except Exception: pass
 
 def load_from_github(filename):
     """D-503: local disk read (migrated from GitHub API to avoid 422/rate-limit)"""
@@ -69,7 +69,7 @@ def fetch_funding_rate(symbol):
         if r.status_code == 200:
             d = r.json().get("data", {})
             return float(d.get("value", 0)), d.get("timePoint", d.get("fundingTime", 0))
-    except: pass
+    except Exception: pass
     return 0.0, 0
 
 def fetch_klines(symbol, limit=300):
@@ -79,7 +79,7 @@ def fetch_klines(symbol, limit=300):
         r = requests.get(f"https://api-futures.kucoin.com/api/v1/kline/query?symbol={symbol}&granularity=240&from={start}&to={now}", headers=HEADERS, timeout=15)
         if r.status_code == 200:
             return [{"t": int(c[0]), "o": float(c[1]), "h": float(c[2]), "l": float(c[3]), "c": float(c[4]), "v": float(c[5])} for c in r.json().get("data", [])]
-    except: pass
+    except Exception: pass
     return []
 
 def calc_atr(candles, period=14):
@@ -141,7 +141,6 @@ def _log_close(state, sym, strat, pnl_val):
         _warmup_hist_from_data(_sym, state)
     state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
 
-
 def load_active_weights(exchange, regime=None):
     """D-401b: regime-aware. Backward-compatible."""
     import json, os
@@ -166,7 +165,6 @@ def load_active_weights(exchange, regime=None):
     except Exception as _e:
         print(f"[WEIGHTS] load error: {_e}")
         return None
-
 
 def check_config_drift(state):
     """اگر total capital از INITIAL_CAPITAL منحرف شد، state را بازسازی کن"""
@@ -193,7 +191,6 @@ def check_config_drift(state):
         state["cash_capital"] = current_total * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC)
 
     return state
-
 
 def _warmup_hist_from_data(sym, state):
     """D-390d: Load historical funding to warm up SMA (first run only)."""

@@ -179,7 +179,7 @@ def log_trial(exchange, strategy, metrics, fee_multiplier, phase="IS"):
     if os.path.exists(ledger_path):
         with open(ledger_path, "r") as f:
             try: ledger = json.load(f)
-            except: ledger = []
+            except Exception: ledger = []
     ledger.append({"timestamp": datetime.now(timezone.utc).isoformat(), "exchange": exchange, "strategy": strategy, "phase": phase, "fee_multiplier": fee_multiplier, "metrics": metrics})
     with open(ledger_path, "w") as f:
         json.dump(ledger, f, indent=2)
@@ -366,7 +366,6 @@ def strategy_m62_funding_momentum(candles, fee_multiplier=1.0):
             elif short_mom < -0.03 and short_mom < long_mom:
                 in_pos = {"side": "SHORT", "entry": closes[i], "idx": i}
     return trades
-
 
 # === Merged from indicators.py ===
 # ماژول مشترک اندیکاتورها برای استفاده در بک‌تست و اجرای زنده

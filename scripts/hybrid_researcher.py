@@ -18,7 +18,6 @@ import pandas as pd
 sys.path.insert(0, "scripts")
 from hybrid_signals import SIGNAL_FUNCTIONS
 
-
 # ═══════════════════════════════════════════════════════════════════
 # 12 REGIMES
 # ═══════════════════════════════════════════════════════════════════
@@ -28,7 +27,6 @@ REGIMES = [
     "FLAT_UP", "FLAT_DOWN", "FLAT_VOLATILE", "FLAT_CALM",
     "BEAR_MILD", "BEAR_NORMAL", "BEAR_VOLATILE", "CRASH",
 ]
-
 
 # ═══════════════════════════════════════════════════════════════════
 # 4 FAMILIES, 12 STRATEGIES (matching hybrid_signals.py)
@@ -40,7 +38,6 @@ STRATEGY_MAP = {
     "MOMENTUM": ["roc_10", "momentum_sma_20", "rsi_momentum_14"],
     "BREAKOUT": ["atr_breakout_14", "bb_squeeze_20", "donchian_break_20"],
 }
-
 
 # ═══════════════════════════════════════════════════════════════════
 # STATIC ALLOCATION MATRIX (from M31 lesson: fixed, not optimized)
@@ -64,7 +61,6 @@ REGIME_ALLOCATION = {
     "CRASH":        {"TREND": 0.00, "MEAN_REV": 0.00, "MOMENTUM": 0.00, "BREAKOUT": 0.00, "CASH": 1.00},
 }
 
-
 # ═══════════════════════════════════════════════════════════════════
 # REGIME DETECTION (12 regimes, based on ret_30d + vol_14d)
 # ═══════════════════════════════════════════════════════════════════
@@ -87,7 +83,6 @@ def detect_regime(df):
     if ret_30 > -0.25:                    return "BEAR_VOLATILE"
     return "CRASH"
 
-
 # ═══════════════════════════════════════════════════════════════════
 # COMPUTE WEIGHTS (static, from matrix)
 # ═══════════════════════════════════════════════════════════════════
@@ -107,7 +102,6 @@ def compute_weights(regime):
             weights[strat] = round(per_strat, 6)
     return weights
 
-
 # ═══════════════════════════════════════════════════════════════════
 # VALIDATION — verify matrix integrity
 # ═══════════════════════════════════════════════════════════════════
@@ -120,7 +114,6 @@ def validate_matrix():
         if abs(total - 1.0) > 0.001:
             errors.append(f"{regime}: sum={total:.4f} (expected 1.0)")
     return errors
-
 
 # ═══════════════════════════════════════════════════════════════════
 # MAIN
@@ -202,7 +195,6 @@ def main():
     with open("data/hybrid_weights.json", "w") as f:
         json.dump(output, f, indent=2)
     print("✅ Saved to data/hybrid_weights.json")
-
 
 if __name__ == "__main__":
     main()

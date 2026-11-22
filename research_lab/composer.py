@@ -31,7 +31,6 @@ for s in ["BB_SQUEEZE","KELTNER_SQUEEZE","ATR_BREAKOUT","NR_BREAKOUT","VOL_DONCH
 for s in ["OBV","MFI","VWAP","VOLUME_BREAKOUT"]: FAMILY[s]="VOLUME"
 FAMILY["PRICE_SMA"] = "PRICE"
 
-
 # ─────────── Regime by date (D-400b fix) ───────────
 from datetime import datetime, timezone
 from research_lab.regime_core import detect_regime
@@ -74,8 +73,6 @@ def load_returns(ex, st, h, sy):
     p = os.path.join(RETURNS_DIR, ex, f"{st}_{h}_{sy}.json")
     return json.load(open(p)) if os.path.exists(p) else {}
 
-
-
 def notify_strict_approval(combo, exchange, regime):
     """D-420: Always save pending approvals; only Bale for STRICT_PASS."""
     import os as _os
@@ -105,7 +102,7 @@ def notify_strict_approval(combo, exchange, regime):
     pending = {}
     if _os.path.exists(pend_path):
         try: pending = json.load(open(pend_path))
-        except: pending = {}
+        except Exception: pending = {}
 
     key = f"{exchange}/{regime}"
     pending[key] = {
@@ -139,7 +136,7 @@ def notify_strict_approval(combo, exchange, regime):
         try:
             _req.post(f"https://tapi.bale.ai/bot{tok}/sendMessage",
                      json={"chat_id": chat, "text": msg}, timeout=20)
-        except: pass
+        except Exception: pass
     return True
 
 def apply_m31_fees(daily_rets, avg_hold_days=30, taker_fee=0.0005, slip=0.0005):
@@ -147,7 +144,6 @@ def apply_m31_fees(daily_rets, avg_hold_days=30, taker_fee=0.0005, slip=0.0005):
     fee_per_day = (2 * taker_fee + 2 * slip) / avg_hold_days
     print(f"  [M31-friction] fee+slip={fee_per_day*100:.4f}%/d ({fee_per_day*365*100:.2f}%/yr)")
     return {d: r - fee_per_day for d, r in daily_rets.items()}
-
 
 def calmar_from_returns(rets_dict_or_list):
     """Compute CAGR, MaxDD, Calmar from returns (list or dict)."""
@@ -168,7 +164,6 @@ def calmar_from_returns(rets_dict_or_list):
         "cagr": round(cagr, 4), "max_dd": round(mdd, 4),
         "calmar": round(calmar, 3), "n": len(rets),
     }
-
 
 # ═══════════════════════════════════════════════════════════════
 # D-439: COMBO-SPECIFIC TESTS
@@ -206,7 +201,6 @@ def test_component_dropout(components_data, weights, base_sharpe):
     return {"pass": len(_fails) == 0,
             "issues": issues, "n_components": n}
 
-
 def test_weight_robustness(components_data, base_weights, base_sharpe, delta=0.20):
     """D-440: Perturb weights. For asymmetric weights use relative shift."""
     n = len(components_data)
@@ -238,7 +232,6 @@ def test_weight_robustness(components_data, base_weights, base_sharpe, delta=0.2
     return {"pass": worst >= 0.7, "worst_ratio": round(worst, 3),
             "note": "FAIL if ratio<0.7 (overfit weights)"}
 
-
 def test_combo_vs_best_component(components_data, base_weights,
                                   combo_oos_sharpe, comp_oos_sharpes):
     """Combo OOS Sharpe must beat best single component OOS Sharpe."""
@@ -253,7 +246,6 @@ def test_combo_vs_best_component(components_data, base_weights,
             "best_comp_oos": round(best_comp, 3),
             "combo_oos": round(combo_oos_sharpe, 3),
             "note": "FAIL if combo doesn't beat best component in OOS"}
-
 
 def test_diversification_ratio(components_data, weights):
     """DR = sum(w*sigma_i) / sigma_combo. DR > 1.05 = real diversification."""
@@ -283,7 +275,6 @@ def test_diversification_ratio(components_data, weights):
     return {"pass": dr >= 1.05, "dr": round(dr, 3),
             "note": "FAIL if DR<1.05 (no diversification)"}
 
-
 def test_regime_conditional(combo_rets, m31_rets_same_regime, regime):
     """Combo Sharpe in target regime must beat M31-only in same regime."""
     dates = set(combo_rets.keys()) & set(m31_rets_same_regime.keys())
@@ -299,8 +290,6 @@ def test_regime_conditional(combo_rets, m31_rets_same_regime, regime):
             "m31_sr": round(m31_sr, 3),
             "ratio": round(ratio, 3),
             "regime": regime}
-
-
 
 def _compute_risk_parity_weights(rets_list, dates):
     """D-440: Inverse-vol weights. Low-vol assets get higher weight."""
@@ -318,7 +307,6 @@ def _compute_risk_parity_weights(rets_list, dates):
     inv_vols = [1.0 / v for v in vols]
     total = sum(inv_vols)
     return [iv / total for iv in inv_vols]
-
 
 def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_full=None):
     """D-407: Take M31 + top N complements (family-diverse). Requires M31 positive."""
@@ -407,7 +395,6 @@ def build_combination(m31_rets, complements_rets, max_components=3, m31_rets_ful
     passes_dd = combo_stats["max_dd"] <= 0.20
     passes_calmar = calmar_val >= 0.5
     passes = passes_sharpe and passes_dd and passes_calmar
-
 
     # ═══════ D-439: 5 combo-specific tests ═══════
     components_data = [m31_rets] + [s["rets"] for s in selected]
@@ -559,7 +546,6 @@ def find_complements(state, regime, exchange, m31_rets, exclude_families=None,
     ))
     return complements
 
-
 _pooled_cache = {}
 
 def _pooled_get(exchange, strategy, state):
@@ -639,7 +625,7 @@ def filter_candidates(state, regime, exchange):
 
         try:
             h = key.split(":")[2]
-        except: continue
+        except Exception: continue
         out.append({"strategy": st, "exchange": exchange, "symbol": v["symbol"],
                     "hash": h, "family": fam, "n": m["n"], "pf": m["pf"],
                     "sr_daily": m["sharpe_daily"], "val": val})

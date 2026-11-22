@@ -44,7 +44,6 @@ THRESHOLDS = {
     "min_test_days": 30,
 }
 
-
 def send_bale(msg):
     if not BALE_TOKEN or not BALE_CHAT:
         print(f"[BALE-SKIP] {msg[:80]}")
@@ -55,14 +54,12 @@ def send_bale(msg):
     except Exception as e:
         print(f"[BALE-ERR] {e}")
 
-
 def sharpe_annual(values):
     if len(values) < 10: return 0.0
     m = sum(values) / len(values)
     v = sum((x - m) ** 2 for x in values) / len(values)
     sd = v ** 0.5
     return (m / sd) * (365 ** 0.5) if sd > 0 else 0.0
-
 
 def sharpe_with_fee(rets_dict, fee_per_transition=0.001):
     """Returns (sharpe, coverage, n_active, transitions)."""
@@ -80,7 +77,6 @@ def sharpe_with_fee(rets_dict, fee_per_transition=0.001):
         n_active,
         trans,
     )
-
 
 def load_btc_daily(exchange="hyperliquid", symbol="BTC"):
     from strategies.core_engine import load_data
@@ -102,13 +98,11 @@ def load_btc_daily(exchange="hyperliquid", symbol="BTC"):
             rets[sorted_days[i]] = (curr - prev) / prev
     return rets
 
-
 def load_returns_file(exchange, strategy, hash_val, symbol):
     p = Path(f"research_lab/logs/profiles/returns_matrices/{exchange}/{strategy}_{hash_val}_{symbol}.json")
     if not p.exists(): return {}
     try: return json.loads(p.read_text())
-    except: return {}
-
+    except Exception: return {}
 
 # ═══════════════════════════════════════════════════════════════
 # Filters
@@ -124,7 +118,6 @@ def filter_momentum(returns, lookback=20):
             out[d] = 0.0
     return out
 
-
 def filter_vol(returns, btc_daily, keep_low=True):
     if not btc_daily: return dict(returns)
     abs_btc = sorted(abs(v) for v in btc_daily.values())
@@ -137,11 +130,9 @@ def filter_vol(returns, btc_daily, keep_low=True):
         out[d] = r if keep else 0.0
     return out
 
-
 def filter_regime(returns, regime_map, keep_regime):
     return {d: (r if regime_map.get(d) == keep_regime else 0.0)
             for d, r in returns.items()}
-
 
 # ═══════════════════════════════════════════════════════════════
 # Validation
@@ -164,7 +155,6 @@ def check_quartile_4of4(filtered_rets, min_pf=1.0):
         pfs.append(round(pf, 3))
     pass_count = sum(1 for pf in pfs if pf > min_pf)
     return pass_count == 4, pfs
-
 
 def validate(returns, filtered):
     dates = sorted(returns.keys())
@@ -212,7 +202,6 @@ def validate(returns, filtered):
         "filtered_test_sr": filt_sr_te,
         "quartile_pf": q_pfs,
     }
-
 
 # ═══════════════════════════════════════════════════════════════
 # Main pipeline
@@ -342,7 +331,7 @@ def main():
         pending = {}
         if pending_path.exists():
             try: pending = json.loads(pending_path.read_text())
-            except: pending = {}
+            except Exception: pending = {}
         for imp in improvements:
             key = f"improved_{imp['strategy']}_{imp['symbol']}_{imp['filter']}"
             pending[key] = {
@@ -370,7 +359,6 @@ def main():
         print(f" ⚠️  0 improvements passed thresholds. Methods verified, data limited.")
         print(f"     ({len(near_misses)} near-misses at 5-15%)")
     print(f"{'='*78}")
-
 
 if __name__ == "__main__":
     main()

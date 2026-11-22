@@ -19,7 +19,6 @@ def get_usd_rate():
     except Exception:
         return 2_672_100  # fallback
 
-
 def is_price_fresh(df, asset, max_age_days=7):
     """چک می‌کند آخرین قیمت asset کمتر از max_age_days روز پیش باشد."""
     if asset not in df.columns:
@@ -61,7 +60,6 @@ def detect_regime(df):
     if price <= ma and v < 1.0: return "FLAT"
     if price <= ma and v >= 1.0 and v < 2.0: return "BEAR"
     return "CRASH"
-
 
 def detect_regime_15(df):
     """15-regime detection: trend × volatility matrix."""
@@ -110,8 +108,6 @@ def detect_regime_15(df):
     result[force_bear] = "BEAR_STRONG"
     result[force_crash] = "CRASH"
     return pd.Series(result, index=df.index)
-
-
 
 def get_target_portfolio(df, regime):
     """Executes the actual active strategies chosen by Oracle for this regime"""
@@ -286,7 +282,6 @@ def main():
     except Exception as e:
         print(f"⚠️ Iran crisis check failed: {e}")
 
-
     # ADAPTIVE MODE: exposure based on regime + 30d momentum
     # 30d momentum
     btc_series = df["BTC"]
@@ -387,7 +382,6 @@ def main():
         exposure *= 0.5
         print(f"⚠️ Daily loss {today_loss*100:.1f}% → exposure halved to {exposure:.0%}")
     state["last_equity"] = current_val
-
 
     curr_keys = set(target_port.keys())
     prev_keys = set(state.get("last_port_keys", []))

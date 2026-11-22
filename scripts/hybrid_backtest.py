@@ -95,7 +95,6 @@ ALL_STRATEGIES = {
     "volume_breakout":   lambda c: strat_volume_breakout(c, 20, 2.0),
 }
 
-
 def stats(returns):
     """Compute Sharpe, DD, n_trades from list of returns."""
     if not returns or len(returns) < 10:
@@ -105,7 +104,6 @@ def stats(returns):
     cum = (1 + rets).cumprod()
     dd = float((cum / cum.cummax() - 1).min())
     return {"sharpe": round(float(sharpe), 3), "dd": round(float(dd), 3), "n": len(returns)}
-
 
 def main():
     print("=" * 80)
@@ -166,7 +164,6 @@ def main():
         print(f"    {name:25s}: Sharpe={r['sharpe']:>6.2f}")
     print()
     print("✅ Saved to data/hybrid_strategy_scores.json")
-
 
 if __name__ == "__main__":
     main()

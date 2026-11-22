@@ -22,13 +22,13 @@ def load_state(path):
     if os.path.exists(path):
         try:
             with open(path, "r") as f: return json.load(f)
-        except: pass
+        except Exception: pass
     try:
         url = f"https://api.github.com/repos/{GH_REPO}/contents/{path}"
         r = requests.get(url, headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
         if r.status_code == 200:
             return json.loads(base64.b64decode(r.json()["content"]).decode("utf-8"))
-    except: pass
+    except Exception: pass
     return None
 
 def metrics(history, days=30):

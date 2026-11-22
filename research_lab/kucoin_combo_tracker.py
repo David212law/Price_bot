@@ -70,7 +70,7 @@ def main():
             try:
                 last_dt = datetime.fromisoformat(last_ts.replace("Z","+00:00"))
                 days_held = max(1, (datetime.now(timezone.utc) - last_dt).total_seconds() / 86400)
-            except: pass
+            except Exception: pass
 
     combo_ret = (
         W_M31 * m31_real_ret

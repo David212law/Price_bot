@@ -8,7 +8,6 @@ from pathlib import Path
 from datetime import datetime, timezone
 from collections import defaultdict
 
-
 RETURNS_DIR = Path("research_lab/logs/profiles/returns_matrices")
 STATE_PATH = Path("research_lab/logs/profiles/state.json")
 
@@ -25,14 +24,12 @@ CRISIS_WINDOWS = {
     "Rate_Hikes": ("2022-06-01", "2022-10-31"),
 }
 
-
 def sharpe(vals, tpy=365):
     if len(vals) < 10: return 0
     m = sum(vals)/len(vals)
     v = sum((x-m)**2 for x in vals)/len(vals)
     sd = v**0.5
     return (m/sd)*(tpy**0.5) if sd > 0 else 0
-
 
 def compute_metrics_on_subset(rets_subset):
     """Compute metrics on a subset of days."""
@@ -56,7 +53,6 @@ def compute_metrics_on_subset(rets_subset):
         if cur > dd: dd = cur
     wr = sum(1 for v in vals if v > 0)/n*100
     return {"sr": sr, "dd": dd, "ret": ret, "wr": wr, "n": n}
-
 
 def detect_regime_from_prices(prices, lookback=14, ma_period=50):
     """Detect regime per day from prices (per-asset)."""
@@ -105,7 +101,6 @@ def detect_regime_from_prices(prices, lookback=14, ma_period=50):
         regimes[d] = r
     return regimes
 
-
 def load_all_strategies():
     """Load all valid strategies + their returns."""
     strategies = {}
@@ -117,7 +112,7 @@ def load_all_strategies():
                 if len(rets) >= 60:
                     strategies[f"M31_{exch}"] = {"returns": rets, "exchange": exch}
                     break
-            except: pass
+            except Exception: pass
 
     # From profiler
     if STATE_PATH.exists():
@@ -141,9 +136,8 @@ def load_all_strategies():
                     name = f"{s}_{sym}"
                     if name not in strategies:
                         strategies[name] = {"returns": rets, "exchange": exch, "symbol": sym}
-            except: pass
+            except Exception: pass
     return strategies
-
 
 def load_prices_from_cache():
     """Load BTC prices from crisis cache for regime detection."""
@@ -152,8 +146,7 @@ def load_prices_from_cache():
     try:
         data = json.loads(cache_file.read_text())
         return data.get("BTC-USD", {})
-    except: return {}
-
+    except Exception: return {}
 
 def rank_strategies_per_regime(strategies, regime_map):
     """Rank strategies ONLY on days of each regime."""
@@ -190,7 +183,6 @@ def rank_strategies_per_regime(strategies, regime_map):
         rankings[regime] = deduped
 
     return rankings
-
 
 def build_combos(rankings, top_n=3):
     """Build DIFFERENT combos per regime."""
@@ -239,7 +231,6 @@ def build_combos(rankings, top_n=3):
             }
 
     return combos
-
 
 def main():
     print("=" * 72)
@@ -302,7 +293,6 @@ def main():
     print(f"\n💾 saved: {out}")
 
     return combos
-
 
 if __name__ == "__main__":
     main()

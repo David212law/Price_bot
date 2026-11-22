@@ -27,7 +27,7 @@ def fetch_funding(symbol):
         r = requests.post(url, json=payload, timeout=15)
         if r.status_code == 200:
             return sum(float(rec["fundingRate"]) for rec in r.json())
-    except: pass
+    except Exception: pass
     return 0.0
 
 def load_json(path):
@@ -35,11 +35,9 @@ def load_json(path):
         with open(path, 'r') as f: return json.load(f)
     return {"signals": []}
 
-
 def _log_close(state, sym, strat, pnl_val):
     if "history" not in state: state["history"] = []
     state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
-
 
 def load_active_weights(exchange, regime=None):
     """D-401: regime-aware weights loader. Backward-compatible with flat format."""
@@ -238,7 +236,6 @@ def main():
     _cur = state["total_capital"]
     state["peak_equity"] = max(state.get("peak_equity", _cur), _cur)
     state["last_run"] = datetime.now(timezone.utc).isoformat()
-
 
     with open(STATE_FILE, 'w') as f: json.dump(state, f, indent=2)
     print(f"Allocator Updated. Total Equity: ${state['total_capital']:.2f}")

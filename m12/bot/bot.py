@@ -45,7 +45,7 @@ def to_candles(prices, spread=0.005):
 def config_hash():
     try:
         with open(CONFIG) as f: return hashlib.md5(f.read().encode()).hexdigest()[:8]
-    except: return "unknown"
+    except Exception: return "unknown"
 
 def load_state():
     if os.path.exists(STATE):

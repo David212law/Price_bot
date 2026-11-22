@@ -26,7 +26,7 @@ def load_returns(exchange, strategy, hash_val, symbol):
     p = Path(f"research_lab/logs/profiles/returns_matrices/{exchange}/{strategy}_{hash_val}_{symbol}.json")
     if not p.exists(): return {}
     try: return json.loads(p.read_text())
-    except: return {}
+    except Exception: return {}
 
 def sharpe(vals):  # delegate_to_utils
     from research_lab.utils import sharpe as _u
@@ -75,7 +75,7 @@ def load_context():
                 val = v.get("validation", {})
                 if val and val.get("sharpe_ann", 0) > 4:
                     try: h = k.split(":")[2]
-                    except: continue
+                    except Exception: continue
                     keltner_rets = load_returns("hyperliquid", "KELTNER_REV", h, "ETH")
                     break
 
@@ -210,7 +210,7 @@ def main():
         exch = v.get("exchange", "")
         sym = v.get("symbol", "")
         try: h = key.split(":")[2]
-        except: continue
+        except Exception: continue
         dedupe_key = (st, h, sym, exch)
         if dedupe_key in seen: continue
         seen.add(dedupe_key)

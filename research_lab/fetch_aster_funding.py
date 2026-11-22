@@ -35,7 +35,6 @@ def fetch_funding(symbol, years=YEARS):
     out.sort(key=lambda x: x["t"])
     return out
 
-
 def main():
     if len(sys.argv) < 2:
         print("Usage: python fetch_aster_funding.py SYMBOL")
@@ -52,7 +51,6 @@ def main():
     f0 = datetime.fromtimestamp(funding[0]["t"]/1000, tz=timezone.utc).strftime("%Y-%m-%d")
     f1 = datetime.fromtimestamp(funding[-1]["t"]/1000, tz=timezone.utc).strftime("%Y-%m-%d")
     print(f"  ✅ {len(funding)} records | {f0} → {f1}")
-
 
 if __name__ == "__main__":
     main()

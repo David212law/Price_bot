@@ -17,7 +17,7 @@ BOTS = [
 def load_json(path):
     if not os.path.exists(path): return None
     try: return json.load(open(path))
-    except: return None
+    except Exception: return None
 
 def get_equity(d):
     """D-486-fix: try all possible keys, fallback to last history entry."""
@@ -41,7 +41,7 @@ def fmt_age(iso_str):
         dt = datetime.fromisoformat(iso_str.replace("Z","+00:00"))
         age = (datetime.now(timezone.utc) - dt).total_seconds() / 3600
         return f"{age:.1f}h"
-    except: return "?"
+    except Exception: return "?"
 
 def gather():
     now = datetime.now(timezone.utc)

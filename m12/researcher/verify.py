@@ -4,20 +4,17 @@ import subprocess, os, json, csv
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CSV_DIR = os.path.join(_HERE, "research")
 
-
 def awk_win_rate(csv_path):
     r = subprocess.run(
         ["awk", "-F,", "NR>1{w+=$2; n++} END{if(n>0) print w/n; else print 0}", csv_path],
         capture_output=True, text=True)
     return float(r.stdout.strip())
 
-
 def awk_mean(csv_path, col):
     r = subprocess.run(
         ["awk", "-F,", f"NR>1{{s+=${col}; n++}} END{{if(n>0) print s/n; else print 0}}", csv_path],
         capture_output=True, text=True)
     return float(r.stdout.strip())
-
 
 def main():
     print("=" * 70)
@@ -87,7 +84,6 @@ def main():
         w.writeheader()
         w.writerows(summary_rows)
     print(f"\nSUMMARY.csv written")
-
 
 if __name__ == "__main__":
     main()

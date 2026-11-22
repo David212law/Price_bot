@@ -64,7 +64,7 @@ def get_target_portfolio(df, regime):
         res = json.load(open("data/researcher_predictive_results.json"))
         top_per_regime = res["GLOBAL"]["predictive"]["top"]
         print("✅ Loaded GLOBAL strategies.")
-    except:
+    except Exception:
         top_per_regime = {"FLAT": ["bh_BTC"]}
 
     strats_raw = top_per_regime.get(regime, {"bh_BTC": 1.0})

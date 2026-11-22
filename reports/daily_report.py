@@ -43,7 +43,7 @@ def main():
             name = f.split("/")[-1].replace(".json", "")
             m31_total += eq
             print(f"  {name:<45} ${eq:>10.2f}")
-        except: pass
+        except Exception: pass
     print(f"  {'M31 Total':<45} ${m31_total:>10.2f}")
 
     # 2. Predictive Bots
@@ -94,7 +94,7 @@ def main():
         print(f"  [{version_label}]")
         try:
             res = json.load(open(res_file))
-        except:
+        except Exception:
             continue
         for market in ["TMN", "USDT", "GLOBAL"]:
             if market in res and res[market]:

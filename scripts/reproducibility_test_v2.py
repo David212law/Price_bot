@@ -7,13 +7,11 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-
 def load_bot(path):
     spec = importlib.util.spec_from_file_location("bot", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)  # __main__ guard prevents execution
     return module
-
 
 def load_market(market):
     raw = json.load(open(f"data/wallex_{market.lower()}_all.json"))
@@ -26,7 +24,6 @@ def load_market(market):
     df = pd.DataFrame(df_dict)
     df.index = pd.to_datetime(df.index)
     return df.sort_index().ffill()
-
 
 def simulate(df, bot, days=30):
     capital = bot.CAPITAL
@@ -92,7 +89,6 @@ def simulate(df, bot, days=30):
 
     return history
 
-
 def stats(history):
     eqs = [h["equity"] for h in history if h["equity"] > 0]
     if len(eqs) < 2:
@@ -111,7 +107,6 @@ def stats(history):
         "max_dd_pct": round(mdd, 2),
         "days": len(eqs),
     }
-
 
 def main():
     print("="*60)
@@ -137,7 +132,6 @@ def main():
     with open(f"archive/reproducibility/latest_v2.json", "w") as f:
         json.dump({"TMN": {**s, "history": history}}, f, indent=2, default=str)
     print(f"\n✅ Saved: archive/reproducibility/latest_v2.json")
-
 
 if __name__ == "__main__":
     main()

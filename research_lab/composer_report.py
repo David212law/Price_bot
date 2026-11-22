@@ -10,7 +10,6 @@ from research_lab.composer import (
 from research_lab.audit_core import portfolio_daily_returns
 from research_lab.strategy_signature import signature_for_m31, find_m31_weaknesses
 
-
 def _audit(v, regime, exchange, state):
     fails = []
     st = v.get("strategy", "")
@@ -49,7 +48,6 @@ def _audit(v, regime, exchange, state):
         "pooled_n": len(_pooled_get(exchange, st, state)),
     }
     return len(fails) == 0, fails, detail
-
 
 def generate():
     state = json.load(open(os.path.join(PROFILE_DIR, "state.json")))
@@ -117,7 +115,6 @@ def generate():
     except Exception as e:
         print(f"⚠️ archive error: {e}")
 
-
 def _md(r):
     L = [f"# Composer Report — {r['generated_at'][:10]}", ""]
     L.append(f"**Total entries**: {r['total_entries']}  ")
@@ -150,7 +147,6 @@ def _md(r):
                 if pc.get("reasons"):
                     L.append(f"  - Reasons: {pc['reasons']}")
     return "\n".join(L)
-
 
 if __name__ == "__main__":
     generate()

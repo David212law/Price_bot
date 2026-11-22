@@ -14,7 +14,6 @@ DD_THRESHOLD = 0.20
 MA_PERIOD = 50
 CONFIRM_DAYS = 3
 
-
 def fetch_history(days=200):
     end = int(datetime.now().timestamp())
     start = end - days * 86400
@@ -31,7 +30,6 @@ def fetch_history(days=200):
     except Exception as e:
         print(f"[ERROR] fetch: {e}")
         return {}
-
 
 def load_state():
     p = Path(STATE_FILE)
@@ -53,7 +51,6 @@ def load_state():
                 "usdt_amount": 0.0, "cash_tmn": 10000.0, "peak_equity": 10000.0,
                 "regime_history": [], "last_run": None, "trades": []}
 
-
 def save_state(state):
     p = Path(STATE_FILE)
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -61,7 +58,6 @@ def save_state(state):
     tmp = str(p) + ".tmp"
     Path(tmp).write_text(json.dumps(state, indent=2))
     Path(tmp).replace(p)
-
 
 def compute_regime(prices, history_dates):
     if len(history_dates) < MA_PERIOD + 25:
@@ -98,7 +94,6 @@ def compute_regime(prices, history_dates):
         "below_ma": current_price < ma50,
     }
 
-
 def decide(regime_data, dd, confirm_history):
     vr = regime_data.get("vol_ratio", 1.0)
     below_ma = regime_data.get("below_ma", False)
@@ -120,7 +115,6 @@ def decide(regime_data, dd, confirm_history):
     if confirmed == "defensive": return 0.80, signal, confirmed
     if confirmed == "warning":   return 0.40, signal, confirmed
     return 0.0, signal, confirmed
-
 
 def rebalance(state, target_cash_pct, current_price):
     current_equity = state["usdt_amount"] * current_price + state["cash_tmn"]
@@ -149,7 +143,6 @@ def rebalance(state, target_cash_pct, current_price):
     })
     return state, 1
 
-
 def send_bale(msg):
     token = os.environ.get("BALE_BOT_TOKEN", "")
     chat = os.environ.get("BALE_CHAT_ID", "")
@@ -163,7 +156,6 @@ def send_bale(msg):
         urllib.request.urlopen(req, timeout=10)
     except Exception as e:
         print(f"[BALE-ERR] {e}")
-
 
 def main():
     print(f"=== Hybrid_v3_Wallex — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} ===")
@@ -194,7 +186,6 @@ def main():
     if n_trades > 0:
         last = state["trades"][-1]
         send_bale(f"v3 {last['action'].upper()} | {current_price:,.0f} | {confirmed} | ROI {roi:+.2f}%")
-
 
 if __name__ == "__main__":
     main()

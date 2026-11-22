@@ -50,12 +50,9 @@ def _bootstrap_improvement_ci(port_rets, base_rets, n_iter=1000):
         "n_boot": len(ratios),
     }
 
-
-
 def sharpe(vals):  # delegate_to_utils
     from research_lab.utils import sharpe as _u
     return _u(vals)
-
 
 def corr_on_union(a, b, min_days=30):
     dates = sorted(set(a.keys()) & set(b.keys()))
@@ -67,19 +64,16 @@ def corr_on_union(a, b, min_days=30):
     sb = sum((x - mb) ** 2 for x in vb) ** 0.5
     return round(cov / (sa * sb), 3) if sa * sb > 0 else 0.0
 
-
 def load_returns_file(exchange, strategy, hash_val, symbol):
     p = Path(f"research_lab/logs/profiles/returns_matrices/{exchange}/{strategy}_{hash_val}_{symbol}.json")
     if not p.exists(): return {}
     try: return json.loads(p.read_text())
-    except: return {}
-
+    except Exception: return {}
 
 def load_m31_returns():
     from research_lab.composer import portfolio_daily_returns, apply_m31_fees
     raw = dict(portfolio_daily_returns("hyperliquid", ["BTC","ETH","SOL","BNB","XRP","AVAX"]))
     return apply_m31_fees(raw)
-
 
 def load_keltner_returns():
     for exch, strat, hash_val, sym in [
@@ -91,7 +85,6 @@ def load_keltner_returns():
         if rets and len(rets) >= 100:
             return rets
     return {}
-
 
 def filter_novel(deduped, m31, keltner, threshold=0.5):
     novel = []
@@ -117,7 +110,6 @@ def filter_novel(deduped, m31, keltner, threshold=0.5):
                 })
     return novel
 
-
 def pick_per_thesis(novel, top_n=4):
     novel_sorted = sorted(novel, key=lambda x: -x["baseline_sr"])
     picked = []
@@ -129,7 +121,6 @@ def pick_per_thesis(novel, top_n=4):
         if len(picked) >= top_n: break
     return picked
 
-
 def align_union(components):
     all_dates = set()
     for r in components:
@@ -137,7 +128,6 @@ def align_union(components):
     all_dates = sorted(all_dates)
     padded = [{d: r.get(d, 0.0) for d in all_dates} for r in components]
     return all_dates, padded
-
 
 def compute_risk_parity_weights(padded):
     stds = []
@@ -150,7 +140,6 @@ def compute_risk_parity_weights(padded):
     inv = [1 / s if s > 0 else 0 for s in stds]
     total = sum(inv)
     return [iv / total for iv in inv] if total > 0 else [1/len(padded)] * len(padded)
-
 
 def build_portfolio(m31, keltner, picks):
     components = [m31, keltner] + [p["_rets"] for p in picks]
@@ -167,7 +156,6 @@ def build_portfolio(m31, keltner, picks):
         "dates": dates,
         "components": components,
     }
-
 
 def validate_70_30(port_rets, m31_rets, holdout=0.30):
     dates = sorted(port_rets.keys())
@@ -190,7 +178,6 @@ def validate_70_30(port_rets, m31_rets, holdout=0.30):
         "improvement_pct": round(improvement, 1),
         "coverage": round(coverage, 2),
     }
-
 
 def validate_novel_candidate(item, state):
     """Check stress/DSR/quartile/calmar from state.json for the original strategy."""
@@ -253,7 +240,6 @@ def validate_novel_candidate(item, state):
         return False, f"dd_{calmar.get('max_dd_pct')}"
 
     return True, "ok"
-
 
 def combo_tests(port, m31_rets, keltner_rets):
     """5 combo-level validation tests on the final portfolio."""
@@ -339,7 +325,6 @@ def combo_tests(port, m31_rets, keltner_rets):
         "diversification": {"pass": dr >= 1.05, "dr": round(dr, 3)},
         "regime_conditional": {"pass": len(regime_issues) == 0, "issues": regime_issues},
     }
-
 
 def main():
     print("=" * 78)
@@ -449,7 +434,6 @@ def main():
         "validation": result,
     }, indent=2))
     print(f"\n[SAVE] {out}")
-
 
 if __name__ == "__main__":
     main()

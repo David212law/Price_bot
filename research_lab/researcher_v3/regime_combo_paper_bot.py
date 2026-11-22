@@ -14,7 +14,6 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-
 STATE_DIR = Path("exchanges/regime_combo_test/state")
 CONFIGS = {
     "A_researcher": {"type": "researcher_role_based", "capital": 1000.0},
@@ -23,7 +22,6 @@ CONFIGS = {
     "D_flawed_45": {"type": "flawed_45", "capital": 1000.0},
     "E_cash_only": {"type": "cash_only", "capital": 1000.0},
 }
-
 
 def fetch_btc_prices():
     """Fetch recent BTC prices from HL."""
@@ -44,8 +42,7 @@ def fetch_btc_prices():
             d = datetime.fromtimestamp(ts, tz=timezone.utc).strftime("%Y-%m-%d")
             prices[d] = float(c.get("c", 0))
         return prices
-    except: return {}
-
+    except Exception: return {}
 
 def detect_regime(prices):
     """Detect current regime from prices."""
@@ -68,15 +65,13 @@ def detect_regime(prices):
     if vol < 0.04: return "RANGE_MED"
     return "RANGE_HIGH"
 
-
 def load_researcher_combos():
     p = Path("research_lab/logs/researcher_v3/role_combos.json")
     if not p.exists(): return {}
     try:
         data = json.loads(p.read_text())
         return data.get("combos", {})
-    except: return {}
-
+    except Exception: return {}
 
 def get_combo_for_bot(bot_name, regime, researcher_combos):
     """Return combo dict based on bot type."""
@@ -102,13 +97,12 @@ def get_combo_for_bot(bot_name, regime, researcher_combos):
         return weights
     return {"CASH": 1.0}
 
-
 def load_state(bot_name):
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     f = STATE_DIR / f"{bot_name}.json"
     if f.exists():
         try: return json.loads(f.read_text())
-        except: pass
+        except Exception: pass
     return {
         "bot_name": bot_name,
         "initial_capital": CONFIGS[bot_name]["capital"],
@@ -118,12 +112,10 @@ def load_state(bot_name):
         "last_run": None,
     }
 
-
 def save_state(state):
     f = STATE_DIR / f"{state['bot_name']}.json"
     state["last_run"] = datetime.now(timezone.utc).isoformat()
     f.write_text(json.dumps(state, indent=2))
-
 
 def get_btc_return(prices):
     """Return of BTC over the last day (proxy for M31/Keltner)."""
@@ -132,7 +124,6 @@ def get_btc_return(prices):
     p0 = prices[dates[-2]]
     p1 = prices[dates[-1]]
     return (p1-p0)/p0 if p0 > 0 else 0
-
 
 def main():
     print(f"=== Regime Combo Test — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} ===")
@@ -192,7 +183,6 @@ def main():
 
     print()
     print("Next run in 4h. Compare equity after 30/60/90 days.")
-
 
 if __name__ == "__main__":
     main()

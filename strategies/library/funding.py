@@ -158,7 +158,6 @@ FUNDING_STRATEGIES = {
 # NOTE: These return dict of daily returns, NOT trade list like other strategies.
 # Screening engine must handle them separately.
 
-
 def strat_funding_mean_rev(records, lookback=30, z_threshold=2.0, fee_multiplier=1.0):
     """D-442: Funding MR — fade extreme funding rates (low vol by design)."""
     from collections import defaultdict
@@ -170,7 +169,7 @@ def strat_funding_mean_rev(records, lookback=30, z_threshold=2.0, fee_multiplier
         try:
             day = datetime.fromtimestamp(int(r["t"])/1000, tz=timezone.utc).strftime("%Y-%m-%d")
             daily_sum[day] += float(r["rate"]); daily_n[day] += 1
-        except: continue
+        except Exception: continue
     daily = {d: daily_sum[d]/daily_n[d] for d in daily_sum if daily_n[d] > 0}
     days = sorted(daily.keys())
     if len(days) < lookback + 10: return {}
@@ -194,7 +193,6 @@ def strat_funding_mean_rev(records, lookback=30, z_threshold=2.0, fee_multiplier
             if just_entered: daily_ret -= fee
             out[days[i]] = daily_ret
     return out
-
 
 FUNDING_STRATEGIES["FUNDING_MEAN_REV"] = (
     strat_funding_mean_rev,

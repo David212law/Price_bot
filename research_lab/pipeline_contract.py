@@ -72,7 +72,6 @@ STAGES_MANIFEST = {
     },
 }
 
-
 def validate():
     """Internal consistency check. Called by health_check.py."""
     issues = []
@@ -89,7 +88,6 @@ def validate():
             issues.append(f"Stage {stage} missing respects_blacklist")
     return issues
 
-
 if __name__ == "__main__":
     print(f"Pipeline Contract {CONTRACT_VERSION}")
     print(f"  Blacklist ({len(BLACKLIST)}): {BLACKLIST}")
@@ -102,7 +100,6 @@ if __name__ == "__main__":
             print(f"  - {i}")
     else:
         print("\n✅ Contract internally consistent")
-
 
 # ═══════════════════════════════════════════════════════════════════════
 # DSR E_max Reference (D-538)

@@ -4,7 +4,7 @@ L1 observe: syntax, undefined names, config/state validity, YAML, file sizes
 L2 auto-fix: add missing imports, strip trailing whitespace (safe only)
 L3 act: auto-commit if safe changes + calc_test passes, Bale alert on critical
 """
-import ast, builtins, datetime, json, pathlib, subprocess, sys, argparse, os, urllib.request
+import ast, builtins, datetime, json, pathlib, subprocess, sys, argparse, os, shutil, re, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent
 REPO = ROOT.parent
@@ -242,6 +242,112 @@ def suggest_next(issues, warns):
         actions.append("OK: project healthy, monitor 48h")
     return actions
 
+# SAFE FIXERS v3
+BACKUP_DIR = ROOT / "agent_backup"
+
+def _prepare_backup():
+    if BACKUP_DIR.exists(): shutil.rmtree(BACKUP_DIR)
+    BACKUP_DIR.mkdir(parents=True)
+
+def _backup(path):
+    rel = path.relative_to(REPO)
+    dest = BACKUP_DIR / rel
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if not dest.exists(): shutil.copy2(path, dest)
+
+def _restore(path):
+    src = BACKUP_DIR / path.relative_to(REPO)
+    if src.exists(): shutil.copy2(src, path)
+
+def _rollback_all():
+    if not BACKUP_DIR.exists(): return 0
+    n = 0
+    for f in BACKUP_DIR.rglob("*.py"):
+        target = REPO / f.relative_to(BACKUP_DIR)
+        if target.exists(): shutil.copy2(f, target); n += 1
+    return n
+
+def fix_eof_newline(path):
+    code = path.read_text()
+    if not code: return False
+    new = code.rstrip("\n") + "\n"
+    if new != code: path.write_text(new); return True
+    return False
+
+def fix_blank_lines(path):
+    code = path.read_text()
+    new = re.sub(r'\n{3,}', '\n\n', code)
+    if new != code: path.write_text(new); return True
+    return False
+
+def fix_none_comparison(path):
+    try:
+        original = path.read_text(); tree = ast.parse(original)
+    except SyntaxError: return False
+    targets = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Compare) and len(node.ops) == 1:
+            if isinstance(node.ops[0], (ast.Eq, ast.NotEq)):
+                l = node.left; r = node.comparators[0]
+                if (isinstance(l, ast.Constant) and l.value is None) or (isinstance(r, ast.Constant) and r.value is None):
+                    targets.add(node.lineno)
+    if not targets: return False
+    lines = original.split("\n"); changed = False
+    for ln in targets:
+        i = ln - 1
+        if 0 <= i < len(lines):
+            nl = re.sub(r'\s*==\s*None\b', ' is None', lines[i])
+            nl = re.sub(r'\s*!=\s*None\b', ' is not None', nl)
+            if nl != lines[i]: lines[i] = nl; changed = True
+    if not changed: return False
+    nc = "\n".join(lines)
+    try: ast.parse(nc)
+    except SyntaxError: return False
+    path.write_text(nc); return True
+
+def fix_bare_except(path):
+    try:
+        original = path.read_text(); tree = ast.parse(original)
+    except SyntaxError: return False
+    targets = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ExceptHandler) and node.type is None:
+            targets.add(node.lineno)
+    if not targets: return False
+    lines = original.split("\n"); changed = False
+    for ln in targets:
+        i = ln - 1
+        if 0 <= i < len(lines) and "except:" in lines[i]:
+            lines[i] = lines[i].replace("except:", "except Exception:")
+            changed = True
+    if not changed: return False
+    nc = "\n".join(lines)
+    try: ast.parse(nc)
+    except SyntaxError: return False
+    path.write_text(nc); return True
+
+SAFE_FIXERS = [
+    ("eof_newline", fix_eof_newline),
+    ("blank_lines", fix_blank_lines),
+    ("none_comparison", fix_none_comparison),
+    ("bare_except", fix_bare_except),
+]
+
+def apply_safe_fixers(path):
+    _backup(path)
+    applied = []
+    for name, fn in SAFE_FIXERS:
+        try:
+            if fn(path): applied.append(name)
+        except Exception as e:
+            print(f"  warn {name} {path.name}: {e}")
+    if applied:
+        try: ast.parse(path.read_text())
+        except SyntaxError:
+            print(f"  broken {path.name} restore"); _restore(path); return []
+    return applied
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--allow-dirty", action="store_true")
@@ -251,8 +357,14 @@ def main():
     ap.add_argument("--quiet", action="store_true")
     ap.add_argument("--fast", action="store_true", help="Only m12 core files")
     ap.add_argument("--health", action="store_true", help="Full project health (GitHub)")
-    ap.add_argument("--next", action="store_true", help="Suggest next action")
+    ap.add_argument("--next", action="store_true")
+    ap.add_argument("--safe-fix", action="store_true")
+    ap.add_argument("--rollback", action="store_true")
     args = ap.parse_args()
+    if args.rollback:
+        n = _rollback_all()
+        print(f"Restored {n} files")
+        return 0
 
     if args.fast:
         py_files = sorted([ROOT/f for f in ["calc.py","calc_test.py","m12_strategies.py","data_fetcher.py"]
@@ -264,6 +376,22 @@ def main():
 
     # ═══ L2: auto-fix ═══
     fixed_files = []
+    if args.safe_fix:
+        _prepare_backup()
+        print(f"[safe-fix] {len(py_files)} files")
+        total = 0
+        for pp in py_files:
+            ap_ = apply_safe_fixers(pp)
+            if ap_:
+                total += 1
+                print(f"  OK {pp.relative_to(REPO)}: {', '.join(ap_)}")
+        if total:
+            ct = sh([sys.executable, str(ROOT/"calc_test.py")])
+            if ct["rc"] != 0:
+                print("  calc_test FAIL, rollback"); _rollback_all()
+            else:
+                print(f"  PASS {total} files")
+
     if args.auto_fix:
         for p in py_files:
             imports_added = fix_missing_imports(p)

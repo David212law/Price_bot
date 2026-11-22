@@ -7,7 +7,6 @@ import json
 import os
 from datetime import datetime
 
-
 def test_1_rial_to_usd():
     """تست ۱: تبدیل ریال به دلار"""
     raw = json.load(open('data/wallex_tmn_all.json'))
@@ -27,7 +26,6 @@ def test_1_rial_to_usd():
         print(f"  🔴 FAIL: qty={qty} (باید ~0.5 BTC)")
         return False
 
-
 def test_2_tether_preserved():
     """تست ۲: TETHER حفظ می‌شود"""
     equity = 10000
@@ -44,7 +42,6 @@ def test_2_tether_preserved():
     else:
         print(f"  🔴 FAIL: TETHER={capital}")
         return False
-
 
 def test_3_rsi_inversion():
     """تست ۳: RSI معکوس نیست"""
@@ -66,7 +63,6 @@ def test_3_rsi_inversion():
         print(f"  🔴 FAIL: ranks={ranks} (باید [1,2,3,4])")
         return False
 
-
 def test_4_price_freshness():
     """تست ۴: قیمت قدیمی skip می‌شود"""
     # شبیه‌سازی: X در 51 روز پیش
@@ -80,7 +76,6 @@ def test_4_price_freshness():
     else:
         print(f"  🔴 FAIL: X ({age}d old) نباید skip شود")
         return False
-
 
 def test_5_hl_tether():
     """تست ۵: HL TETHER حفظ می‌شود"""
@@ -101,7 +96,6 @@ def test_5_hl_tether():
     else:
         print(f"  🔴 FAIL: HL TETHER = ${capital:.2f}, expected ${expected:.2f}")
         return False
-
 
 def test_6_equity_roundtrip():
     """تست ۶: equity قبل و بعد از rebalance یکسان"""
@@ -130,7 +124,6 @@ def test_6_equity_roundtrip():
     else:
         print(f"  🔴 FAIL: ${equity_after:.2f} → ${new_equity:.2f}")
         return False
-
 
 def main():
     print("=" * 60)
@@ -171,7 +164,6 @@ def main():
         exit(1)
     else:
         print("\n🎉 ALL TESTS PASSED — Paper قابل شروع است")
-
 
 if __name__ == "__main__":
     main()

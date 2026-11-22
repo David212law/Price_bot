@@ -12,7 +12,6 @@ from pathlib import Path
 from datetime import datetime, timezone
 from collections import defaultdict
 
-
 RETURNS_DIR = Path("research_lab/logs/profiles/returns_matrices")
 STATE_PATH = Path("research_lab/logs/profiles/state.json")
 
@@ -62,13 +61,11 @@ REGIME_CHAMPION_THESIS = {
     "CRISIS_VOL": "cash",
 }
 
-
 def get_thesis(name):
     for prefix, thesis in THESIS_MAP.items():
         if name.startswith(prefix):
             return thesis
     return "unknown"
-
 
 def sharpe(vals, tpy=365):
     if len(vals) < 10: return 0
@@ -76,7 +73,6 @@ def sharpe(vals, tpy=365):
     v = sum((x-m)**2 for x in vals)/len(vals)
     sd = v**0.5
     return (m/sd)*(tpy**0.5) if sd > 0 else 0
-
 
 def compute_metrics_on_subset(rets_subset):
     if len(rets_subset) < 10: return None
@@ -99,7 +95,6 @@ def compute_metrics_on_subset(rets_subset):
         if cur > dd: dd = cur
     return {"sr": sr, "dd": dd, "ret": ret, "n": n}
 
-
 def load_strategies():
     strategies = {}
     for exch in ["hyperliquid", "aster", "kucoin"]:
@@ -109,7 +104,7 @@ def load_strategies():
                 if len(rets) >= 60:
                     strategies[f"M31_{exch}"] = rets
                     break
-            except: pass
+            except Exception: pass
     if STATE_PATH.exists():
         state = json.loads(STATE_PATH.read_text())
         for key, v in state.get("done", {}).items():
@@ -132,9 +127,8 @@ def load_strategies():
                     name = f"{s}_{sym}"
                     if name not in strategies:
                         strategies[name] = rets
-            except: pass
+            except Exception: pass
     return strategies
-
 
 def load_btc_prices():
     cache = Path("data/crisis_test_cache.json")
@@ -142,8 +136,7 @@ def load_btc_prices():
     try:
         data = json.loads(cache.read_text())
         return data.get("BTC-USD", {})
-    except: return {}
-
+    except Exception: return {}
 
 def detect_regime(prices, i, ma_period=50):
     dates = sorted(prices.keys())
@@ -168,7 +161,6 @@ def detect_regime(prices, i, ma_period=50):
     if vol < 0.04: return "RANGE_MED"
     return "RANGE_HIGH"
 
-
 def build_regime_map(prices):
     dates = sorted(prices.keys())
     regime_map = {}
@@ -176,7 +168,6 @@ def build_regime_map(prices):
         r = detect_regime(prices, i)
         if r: regime_map[dates[i]] = r
     return regime_map
-
 
 def compute_per_regime_metrics(strategies, regime_map):
     results = {}
@@ -190,7 +181,6 @@ def compute_per_regime_metrics(strategies, regime_map):
             if m: per_regime[regime] = m
         results[name] = per_regime
     return results
-
 
 def find_champion(regime, strategies, per_regime_metrics, roles):
     """Find champion for regime based on THESIS (not SR)."""
@@ -217,14 +207,12 @@ def find_champion(regime, strategies, per_regime_metrics, roles):
     candidates.sort(key=lambda x: -x[1])
     return candidates[0][0]
 
-
 def _family(name):
     """D-567: family helper for diversity check."""
     if name.startswith("M31"): return "M31"
     if name.startswith("KELTNER"): return "KELTNER"
     if name.startswith("T_"): return name.split("_")[0] + "_" + name.split("_")[1] if "_" in name else name
     return name.split("_")[0]
-
 
 def find_supporting(champion, regime, strategies, per_regime_metrics, roles, max_n=2):
     """D-567: Also enforce FAMILY diversity (not just thesis)."""
@@ -251,7 +239,6 @@ def find_supporting(champion, regime, strategies, per_regime_metrics, roles, max
         result.append(name)
         if len(result) >= max_n: break
     return result
-
 
 def build_combo(regime, strategies, per_regime_metrics, roles):
     champion = find_champion(regime, strategies, per_regime_metrics, roles)
@@ -297,7 +284,6 @@ def build_combo(regime, strategies, per_regime_metrics, roles):
         "fallback": None,
     }
 
-
 def validate_combo(combo, strategies, regime_map, regime):
     """Validate on last 30% of regime days (holdout)."""
     regime_dates = sorted([d for d in regime_map if regime_map[d] == regime])
@@ -330,7 +316,6 @@ def validate_combo(combo, strategies, regime_map, regime):
             m["combo_vs_champion"] = round(m["sr"] / cm["sr"], 2) if cm["sr"] > 0 else 0
 
     return m
-
 
 def main():
     print("=" * 72)
@@ -412,7 +397,6 @@ def main():
     print(f"\n💾 saved: {out}")
 
     return combos
-
 
 if __name__ == "__main__":
     main()

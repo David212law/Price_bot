@@ -7,7 +7,6 @@ HISTORY_DIR = os.path.join(LOGS_DIR, "history")
 DISCOVERIES_PATH = os.path.join(LOGS_DIR, "discoveries.json")
 SIGNATURES_CACHE_PATH = os.path.join(LOGS_DIR, "signatures_cache.json")
 
-
 def archive_run():
     """Copy current report files into history/YYYY-MM-DD/."""
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -29,7 +28,6 @@ def archive_run():
                 print(f"  ⚠️ archive {src}: {e}")
     print(f"✅ Archived {archived} files to {day_dir}/")
     return day_dir
-
 
 def append_discoveries():
     """Append new STRICT/WEAK_PASS combos to append-only discoveries log."""
@@ -84,7 +82,6 @@ def append_discoveries():
             json.dump(existing, f, indent=2, default=str)
     print(f"✅ Discoveries: +{added} new (total {len(existing)})")
     return added
-
 
 def update_signature_cache(state):
     """D-454: Cache strategy signatures with data_hash invalidation."""

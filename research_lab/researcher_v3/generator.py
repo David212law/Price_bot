@@ -7,7 +7,6 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 
-
 # Only 2 real edges (D-543, D-552): M31 (funding) + Keltner (mean reversion)
 GENERATOR_SPECS = {
     "M31": {
@@ -34,7 +33,6 @@ GENERATOR_SPECS = {
     },
 }
 
-
 def generate_strategies():
     """Generate strategy candidates (parameter variants of 2 real edges)."""
     candidates = []
@@ -54,7 +52,6 @@ def generate_strategies():
                     })
     return candidates
 
-
 def main():
     candidates = generate_strategies()
     out = Path("research_lab/logs/researcher_v3/generated_candidates.json")
@@ -68,7 +65,6 @@ def main():
     print(f"   (M31 variants: {len([c for c in candidates if c['edge']=='M31'])})")
     print(f"   (Keltner variants: {len([c for c in candidates if c['edge']=='Keltner'])})")
     print(f"   → {out}")
-
 
 if __name__ == "__main__":
     main()

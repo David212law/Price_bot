@@ -245,7 +245,6 @@ def stats(daily):
     m, s = daily.mean(), daily.std()
     return (eq.iloc[-1] - 1) * 100, dd, (m / s) * np.sqrt(365) if s > 0 else 0
 
-
 def build_combo_strategies(S, top_n=8):
     """Generate conditional combos from top base strategies."""
     if not S or len(S) < 2:
@@ -283,7 +282,6 @@ def detect_regime(df):
     regs[cond2 & (vol >= 1.0) & (vol < 2.0)] = "BEAR"
     regs[cond2 & (vol >= 2.0)] = "CRASH"
     return regs
-
 
 def detect_regime_15(df):
     """15-regime detection: trend × volatility matrix."""
@@ -332,7 +330,6 @@ def detect_regime_15(df):
     result_s[force_bear] = "BEAR_STRONG"
     result_s[force_crash] = "CRASH"
     return result_s
-
 
 def run_ensemble(df_rets, regimes, train_mask, test_mask, fee, market="TMN", max_strat_override=None):
     if not isinstance(df_rets, pd.DataFrame):
@@ -539,7 +536,7 @@ def load_profiler_returns_as_df(market, dates_index):
     # Load blacklist
     try:
         from research_lab.pipeline_contract import BLACKLIST
-    except:
+    except Exception:
         BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE"]
 
     cols = {}
@@ -586,7 +583,7 @@ def load_profiler_returns_as_df(market, dates_index):
                     loaded_by_status[status] += 1
                 else:
                     loaded_by_status["other"] += 1
-        except:
+        except Exception:
             skipped_no_file += 1
 
     # ── NEW: Load ALL files directly from returns_matrices/wallex (for strategies not in state.json)
@@ -605,7 +602,7 @@ def load_profiler_returns_as_df(market, dates_index):
                 s = s.reindex(dates_index).fillna(0.0)
                 if s.abs().sum() > 0:
                     cols[fname] = s
-            except: pass
+            except Exception: pass
 
     if cols:
         df = pd.DataFrame(cols)
@@ -616,8 +613,6 @@ def load_profiler_returns_as_df(market, dates_index):
         df = pd.DataFrame()
         print(f"  ⚠️ No profiler strategies for {market}")
     return df
-
-
 
 def load_unified_db():
     """Load all strategies from the unified database."""
@@ -669,7 +664,7 @@ def process_market(name, df, fee, max_strat_override=None):
                 series = series.reindex(df.index).fillna(0.0)
                 if series.abs().sum() > 0:
                     rows.append((sid, series))
-            except: pass
+            except Exception: pass
 
         if rows:
             profiler_df = pd.DataFrame(dict(rows))
@@ -747,7 +742,6 @@ def process_market(name, df, fee, max_strat_override=None):
         "bnh_btc": {"return": bht, "dd": bhdd, "sharpe": bhsh}
     }
 
-
 def load_all_profiler_strategies():
     """Load ALL 8766 profiled strategies from state.json — no filter."""
     import os
@@ -784,13 +778,11 @@ def load_all_profiler_strategies():
                 continue
             name = f"P_{strat}_{sym}"
             loaded[name] = {"returns": rets, "sharpe_historical": sr}
-        except: pass
+        except Exception: pass
 
     print(f"  ✅ Loaded {len(loaded)} profiler strategies (NO filter)")
     print(f"     Skipped: {skipped_no_file} (no file), {skipped_short} (too short)")
     return loaded
-
-
 
 def main():
     print("="*80)
@@ -836,8 +828,6 @@ def main():
         pa = r.get('predictive_aggressive', {})
         msg += f"📊 *{m}*: Sh {pa.get('sharpe', 0):.2f}\n"
     send_bale(msg)
-
-
 
 if __name__ == "__main__":
     main()

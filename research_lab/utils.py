@@ -5,7 +5,6 @@ import os
 import json
 from pathlib import Path
 
-
 def sharpe(vals, periods=365):
     if not vals or len(vals) < 10:
         return 0.0
@@ -13,7 +12,6 @@ def sharpe(vals, periods=365):
     var = sum((x - m) ** 2 for x in vals) / len(vals)
     sd = var ** 0.5
     return (m / sd) * (periods ** 0.5) if sd > 0 else 0.0
-
 
 def corr(a, b, dates):
     if len(dates) < 30:
@@ -27,14 +25,12 @@ def corr(a, b, dates):
     sb = sum((x - mb) ** 2 for x in vb) ** 0.5
     return round(cov / (sa * sb), 3) if sa * sb > 0 else 0.0
 
-
 def compute_momentum(history, lookback=6):
     if len(history) < lookback * 2:
         return None
     recent = [r["rate"] for r in history[-lookback:]]
     older = [r["rate"] for r in history[:lookback]]
     return sum(recent) / len(recent), sum(older) / len(older), history[-1]["rate"]
-
 
 def load_returns_file(exchange, strategy, hash_val, symbol):
     p = Path(f"research_lab/logs/profiles/returns_matrices/{exchange}/{strategy}_{hash_val}_{symbol}.json")
@@ -44,7 +40,6 @@ def load_returns_file(exchange, strategy, hash_val, symbol):
         return json.loads(p.read_text())
     except Exception:
         return {}
-
 
 # === Merged from bale_notifier.py ===
 def send_bale(msg):
@@ -60,8 +55,6 @@ def send_bale(msg):
 # === Merged from pooled_returns.py ===
 """D-444: Aggregate returns across all symbols for a strategy."""
 
-
-
 RETURNS_DIR = "research_lab/logs/profiles/returns_matrices"
 
 def pooled_returns(exchange, strategy, state):
@@ -71,7 +64,7 @@ def pooled_returns(exchange, strategy, state):
         if v.get("exchange") != exchange: continue
         if v.get("strategy") != strategy: continue
         try: h = key.split(":")[2]
-        except: continue
+        except Exception: continue
         p = os.path.join(RETURNS_DIR, exchange, f"{strategy}_{h}_{v['symbol']}.json")
         if os.path.exists(p):
             files.append(p)
@@ -82,5 +75,5 @@ def pooled_returns(exchange, strategy, state):
             r = json.load(open(fp))
             for d, val in r.items():
                 sums[d] += val; cnts[d] += 1
-        except: pass
+        except Exception: pass
     return {d: sums[d]/cnts[d] for d in sums if cnts[d] > 0}

@@ -19,7 +19,6 @@ from datetime import datetime, timezone
 ROOT = Path(__file__).resolve().parent.parent
 LOGS = ROOT / "research_lab" / "logs"
 
-
 def check_contract():
     """Verify CONFIG is single source of truth."""
     issues = []
@@ -48,7 +47,6 @@ def check_contract():
 
     return issues
 
-
 def check_blacklist_compliance():
     """Verify MLP picks respect blacklist."""
     from research_lab.pipeline_contract import BLACKLIST
@@ -67,7 +65,6 @@ def check_blacklist_compliance():
             issues.append(f"blacklist: cannot read MLP output ({e})")
 
     return issues
-
 
 def check_stale_outputs():
     """Verify upstream outputs are not newer than downstream (which would mean stale downstream)."""
@@ -89,7 +86,6 @@ def check_stale_outputs():
                     f"(diff {int(up_mtime - down_mtime)}s)"
                 )
     return issues
-
 
 def check_profiler_schema():
     """Check that profiler has a healthy ratio of validation vs metrics_by_regime."""
@@ -122,7 +118,6 @@ def check_profiler_schema():
 
     return issues
 
-
 def check_stage_outputs():
     """Verify all expected stage outputs exist."""
     from research_lab.pipeline_contract import STAGES_MANIFEST
@@ -137,7 +132,6 @@ def check_stage_outputs():
             if not path.exists():
                 issues.append(f"missing: {stage_name} output {output} does not exist")
     return issues
-
 
 def run_all_checks():
     print(f"Pipeline Health Check — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
@@ -174,7 +168,6 @@ def run_all_checks():
     else:
         print("✅ HEALTH CHECK PASSED — pipeline is consistent")
         return 0
-
 
 if __name__ == "__main__":
     sys.exit(run_all_checks())

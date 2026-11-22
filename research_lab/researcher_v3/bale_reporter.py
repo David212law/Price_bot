@@ -1,7 +1,6 @@
 """D-558: Bale Reporter — Auto notification."""
 import os, json, urllib.request
 
-
 def send_bale(msg):
     """Send message to Bale. Returns True/False."""
     token = os.environ.get("BALE_BOT_TOKEN", "")
@@ -19,7 +18,6 @@ def send_bale(msg):
     except Exception as e:
         print(f"[BALE-ERR] {e}")
         return False
-
 
 def format_report(combos, pareto, live_data, per_exchange):
     """Format research report for Bale."""
@@ -60,7 +58,6 @@ def format_report(combos, pareto, live_data, per_exchange):
             lines.append(f"  {exch}: {n} strategies, best={best[:30]}")
 
     return "\n".join(lines)
-
 
 if __name__ == "__main__":
     ok = send_bale("🧪 Bale reporter test")

@@ -3,9 +3,7 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 
-
 RETURNS_DIR = Path("research_lab/logs/profiles/returns_matrices")
-
 
 def load_returns_for_exchange(exchange):
     """Load all returns files for an exchange."""
@@ -18,9 +16,8 @@ def load_returns_for_exchange(exchange):
             if len(rets) >= 60:
                 name = f.stem
                 result[name] = rets
-        except: pass
+        except Exception: pass
     return result
-
 
 def sharpe(vals, tpy=365):
     if len(vals) < 20: return 0
@@ -28,7 +25,6 @@ def sharpe(vals, tpy=365):
     v = sum((x-m)**2 for x in vals)/len(vals)
     sd = v**0.5
     return (m/sd)*(tpy**0.5) if sd > 0 else 0
-
 
 def compute_metrics(rets):
     if len(rets) < 20: return None
@@ -50,7 +46,6 @@ def compute_metrics(rets):
         cur = (peak-e)/peak*100
         if cur > dd: dd = cur
     return {"sr": sr, "dd": dd, "ret": ret, "n": n}
-
 
 def test_per_exchange():
     """Test all strategies per exchange. Returns per-exchange ranked list."""
@@ -74,7 +69,6 @@ def test_per_exchange():
             "best": ranked[0]["name"] if ranked else "none",
         }
     return results
-
 
 if __name__ == "__main__":
     results = test_per_exchange()

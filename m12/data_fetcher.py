@@ -14,10 +14,10 @@ def _read_cache(key, ttl=3600):
     if not os.path.exists(p): return None
     if time.time() - os.path.getmtime(p) > ttl: return None
     try: return json.load(open(p))
-    except: return None
+    except Exception: return None
 def _write_cache(key, data):
     try: json.dump(data, open(_cache_path(key), "w"))
-    except: pass
+    except Exception: pass
 
 def _to_candles(raw):
     """raw: list of {t, o, h, l, c} → normalized"""

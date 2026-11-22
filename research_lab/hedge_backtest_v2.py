@@ -9,7 +9,6 @@ HL_PERP_TAKER = 0.00035  # 0.035%
 HL_SPOT_TAKER = 0.00035  # 0.035%
 # Per rebalance: sell spot (0.035%) + adjust perp (0.035%) = ~0.07%
 
-
 def load_funding_daily(exchange, symbol):
     """Sum all funding records per day (correct method)."""
     for p in [Path(f"data/{exchange}/{symbol}_funding.json"),
@@ -42,7 +41,6 @@ def load_funding_daily(exchange, symbol):
             print(f"  [err funding] {e}")
     return {}
 
-
 def load_prices_daily(exchange, symbol):
     """Load daily close prices from 4h or 1d."""
     for p in [Path(f"data/{exchange}/{symbol}_1d.json"),
@@ -71,7 +69,6 @@ def load_prices_daily(exchange, symbol):
             print(f"  [err price] {e}")
     return {}
 
-
 def stats(vals):
     if not vals:
         return {"sr": 0, "dd": 0, "ret": 0, "n": 0}
@@ -93,7 +90,6 @@ def stats(vals):
         if cur > dd:
             dd = cur
     return {"sr": sr, "dd": dd, "ret": ret, "n": n}
-
 
 def simulate_hedge(funding, prices, fee_rt=0.0007, rebalance_days=30):
     """Long 45% spot + short 45% perp."""
@@ -138,7 +134,6 @@ def simulate_hedge(funding, prices, fee_rt=0.0007, rebalance_days=30):
     s["fee_total"] = fee_events * fee_rt * 100
     return returns, s
 
-
 def simulate_m31_alone(funding, prices):
     common = sorted(set(funding.keys()) & set(prices.keys()))
     if len(common) < 60:
@@ -161,7 +156,6 @@ def simulate_m31_alone(funding, prices):
         equity *= (1 + daily_ret)
 
     return returns, stats(returns)
-
 
 def main():
     print("=" * 72)
@@ -229,7 +223,6 @@ def main():
             print(f"    🟡 Hedged Sharpe > 80% of M31")
         else:
             print(f"    ⚠️  Hedged Sharpe lower than M31")
-
 
 if __name__ == "__main__":
     main()

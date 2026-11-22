@@ -55,7 +55,6 @@ LIQUID_ASSETS = {
     "NEAR", "APT"
 }
 
-
 # ═══════════════════════════════════════════════════════════════════
 # HELPERS
 # ═══════════════════════════════════════════════════════════════════
@@ -65,7 +64,6 @@ def log(msg):
     print(msg)
     with open(LOG_FILE, "a") as f:
         f.write(f"[{datetime.now(timezone.utc).isoformat()}] {msg}\n")
-
 
 def load_state():
     """Load state (atomic read) or fresh."""
@@ -91,7 +89,6 @@ def load_state():
         log("⚠️ State corrupted, resetting")
         return load_state_fresh()
 
-
 def load_state_fresh():
     return {
         "initial_capital": INITIAL_CAPITAL,
@@ -108,7 +105,6 @@ def load_state_fresh():
         "baseline_m31": INITIAL_CAPITAL,
     }
 
-
 def save_state(state):
     """Atomic write (tmp + replace)."""
     state["last_update"] = datetime.now(timezone.utc).isoformat()
@@ -117,7 +113,6 @@ def save_state(state):
     Path(tmp).write_text(json.dumps(state, indent=2))
     Path(tmp).replace(p)
 
-
 def get_usd_rate():
     """Latest USD/IRR rate from TGJU."""
     try:
@@ -125,7 +120,6 @@ def get_usd_rate():
         return tgju[sorted(tgju.keys())[-1]]
     except Exception:
         return 2_713_800  # fallback
-
 
 def load_prices():
     """Load TMN prices as dict: {asset: price_toman}."""
@@ -140,7 +134,6 @@ def load_prices():
             prices[asset] = v[dates[-1]]
     return prices
 
-
 def is_price_fresh(asset, dates_dict, max_age_days=7):
     """Check if asset's price is recent."""
     if asset not in dates_dict:
@@ -151,7 +144,6 @@ def is_price_fresh(asset, dates_dict, max_age_days=7):
     last_date = datetime.strptime(dates[-1], "%Y-%m-%d")
     age = (datetime.now() - last_date).days
     return age <= max_age_days
-
 
 def load_latest_dates():
     """Load latest date per asset."""
@@ -165,7 +157,6 @@ def load_latest_dates():
         if dates:
             result[asset] = {dates[-1]: v[dates[-1]]}
     return result
-
 
 # ═══════════════════════════════════════════════════════════════════
 # SIGNAL-BASED PORTFOLIO BUILDER
@@ -212,7 +203,6 @@ def build_target_portfolio(weights, signals, prices):
 
     return target
 
-
 # ═══════════════════════════════════════════════════════════════════
 # REBALANCE
 # ═══════════════════════════════════════════════════════════════════
@@ -258,11 +248,9 @@ def rebalance(state, target_weights, prices, usd_rate):
 
     return state, fee
 
-
 # ═══════════════════════════════════════════════════════════════════
 # MAIN
 # ═══════════════════════════════════════════════════════════════════
-
 
 # ═══════════════════════════════════════════════════════════════════
 # V2 — Build target portfolio from config (top 3 per strategy)
@@ -309,7 +297,6 @@ def build_target_portfolio_v2(config, df, prices):
             log(f"  ⚠️ {strategy_name}: {e}")
 
     return target, total_weight
-
 
 def main():
     log("=" * 80)
@@ -396,7 +383,6 @@ def main():
     save_state(state)
     log(f"💼 Final equity: ${state['equity']:.2f} ({((state['equity']/INITIAL_CAPITAL - 1) * 100):+.2f}%)")
     log("")
-
 
 if __name__ == "__main__":
     main()

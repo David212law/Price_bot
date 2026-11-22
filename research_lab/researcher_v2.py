@@ -24,7 +24,6 @@ import requests
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 
-
 def send_bale(msg):
     if not BALE_TOKEN or not BALE_CHAT:
         print(f"[BALE-SKIP] {msg[:80]}")
@@ -34,7 +33,6 @@ def send_bale(msg):
                       json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
     except Exception as e:
         print(f"[BALE-ERR] {e}")
-
 
 def run_stage_1():
     print("\n" + "="*70)
@@ -51,7 +49,6 @@ def run_stage_1():
     print(f"  Total candidate slots: {total}")
     return total
 
-
 def run_stage(name, module):
     print("\n" + "="*70)
     print(f" STAGE {name}")
@@ -66,7 +63,6 @@ def run_stage(name, module):
         print(f"  {line}")
     return True
 
-
 def write_pending(portfolio_data):
     if not portfolio_data:
         return
@@ -80,7 +76,7 @@ def write_pending(portfolio_data):
     if pending_path.exists():
         try:
             pending = json.loads(pending_path.read_text())
-        except:
+        except Exception:
             pending = {}
     key = f"mlp_portfolio_{datetime.now(timezone.utc).strftime('%Y%m%d')}"
     pending[key] = {
@@ -95,7 +91,6 @@ def write_pending(portfolio_data):
     send_bale(f"🔔 Researcher V2 — {verdict}\n"
               f"Improvement: {portfolio_data['validation']['improvement_pct']:+.1f}%\n"
               f"Coverage: {portfolio_data['validation']['coverage']:.0%}")
-
 
 def main():
     print("="*70)
@@ -125,7 +120,6 @@ def main():
     print(" RESEARCHER V2 — DONE")
     print("="*70)
     print("Paper bots continue unchanged. Research-only.")
-
 
 if __name__ == "__main__":
     main()

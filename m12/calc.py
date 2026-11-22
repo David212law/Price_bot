@@ -52,7 +52,6 @@ def correlation(x, y):
     if sx == 0 or sy == 0: return 0.0
     return round(cov / (sx * sy), 4)
 
-
 # ═════ Bot position math (testable) ═════
 
 def cost_basis(qty, entry):

@@ -17,7 +17,7 @@ def _fetch_kucoin():
             data = r.json().get("data", [])
             return [{"t": int(c[0]), "o": float(c[1]), "h": float(c[2]),
                      "l": float(c[3]), "c": float(c[4]), "v": float(c[5])} for c in data]
-    except: pass
+    except Exception: pass
     return []
 
 def _fetch_hyperliquid():
@@ -36,7 +36,7 @@ def _fetch_hyperliquid():
             # HL candle: {"t":..., "T":..., "s":"BTC", "i":"4h", "o":"...", "c":"...", "h":"...", "l":"...", "v":"..."}
             return [{"t": int(c["t"]), "o": float(c["o"]), "h": float(c["h"]),
                      "l": float(c["l"]), "c": float(c["c"]), "v": float(c["v"])} for c in data]
-    except: pass
+    except Exception: pass
     return []
 
 def fetch_btc_candles():

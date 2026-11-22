@@ -79,7 +79,7 @@ def fetch_klines(symbol, interval="4h", limit=300):
         r = requests.get(url, timeout=15)
         if r.status_code == 200:
             return [{"t": int(k[0]), "o": float(k[1]), "h": float(k[2]), "l": float(k[3]), "c": float(k[4]), "v": float(k[5])} for k in r.json()]
-    except: pass
+    except Exception: pass
     return []
 
 def fetch_latest_funding(symbol):
@@ -89,7 +89,7 @@ def fetch_latest_funding(symbol):
         if r.status_code == 200:
             data = r.json()
             if data: return data[0]["fundingTime"], float(data[0]["fundingRate"])
-    except: pass
+    except Exception: pass
     return 0, 0.0
 
 def calc_ema(closes, period):
@@ -164,7 +164,6 @@ def calc_supertrend(candles, period=10, multiplier=3.0):
             st[i] = min(upperband, st[i-1]) if direction[i-1] == -1 else upperband
     return st, direction
 
-
 def fetch_funding_interval(symbol):
     url = f"https://fapi.asterdex.com/fapi/v1/fundingInfo?symbol={symbol}"
     try:
@@ -173,9 +172,8 @@ def fetch_funding_interval(symbol):
             data = r.json()
             if data:
                 return int(data[0].get("fundingIntervalHours", 8))
-    except: pass
+    except Exception: pass
     return 8 # پیش‌فرض
-
 
 def load_active_weights(exchange, regime=None):
     """D-401b: regime-aware. Backward-compatible."""
@@ -213,7 +211,6 @@ def main():
         print(f"[REGIME-COMBO] detection failed: {_e}")
         globals()['_CURRENT_REGIME'] = 'UNKNOWN'
 
-
     print(f"=== M11-Aster COMBO Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
 
     # LOAD ACTIVE WEIGHTS (D-389: before state init)
@@ -227,7 +224,7 @@ def main():
         _existing = {}
         if _os.path.exists(STATE_FILE):
             try: _existing = json.load(open(STATE_FILE))
-            except: _existing = {}
+            except Exception: _existing = {}
         _existing["last_run"] = datetime.now(timezone.utc).isoformat()
         _existing["skipped_regime"] = "TREND"
         try:

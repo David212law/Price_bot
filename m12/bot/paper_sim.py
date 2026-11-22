@@ -26,9 +26,7 @@ def _calc_sharpe(equity_curve):
     if s == 0: return 0.0
     return round(m / s * (365 ** 0.5), 3)
 
-
 SPREAD = 0.005
-
 
 def load_market(fname, suffix=None, min_len=300, limit_symbols=None):
     path = os.path.join(DATA_DIR, fname)
@@ -58,19 +56,16 @@ def load_market(fname, suffix=None, min_len=300, limit_symbols=None):
         return keep
     return out
 
-
 def to_candles(prices, spread=SPREAD):
     return [{"t": i, "o": p, "h": p * (1 + spread), "l": p * (1 - spread), "c": p, "v": 1.0}
             for i, p in enumerate(prices)]
-
 
 def config_hash():
     try:
         with open(CONFIG) as f:
             return hashlib.md5(f.read().encode()).hexdigest()[:8]
-    except:
+    except Exception:
         return "unknown"
-
 
 def score(active, candles):
     """Weighted ensemble score: sign based on last trade ret (>0 -> +1 else -1)."""
@@ -93,7 +88,6 @@ def score(active, candles):
         except Exception:
             continue
     return total_sig / total_w if total_w > 0 else 0.0
-
 
 def run_papersim(start_idx, end_idx, markets_data, config, fee_map, max_pos=5, pos_pct=0.15,
                   sl_pct=0.05, tp_pct=0.10, kill=0.85, initial_capital=10000.0):
@@ -261,7 +255,6 @@ def run_papersim(start_idx, end_idx, markets_data, config, fee_map, max_pos=5, p
         "window_days": end_idx - start_idx,
     }
 
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--window", type=int, default=90, help="number of latest indices to simulate")
@@ -311,7 +304,6 @@ def main():
     for k, v in res.items():
         print(f"{k}: {v}")
     print("========================================")
-
 
 if __name__ == "__main__":
     main()

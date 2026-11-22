@@ -21,7 +21,6 @@ LIVE_REPORTS.mkdir(parents=True, exist_ok=True)
 BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
 BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
 
-
 # ═══════════════════════════════════════════════════════════════
 # WATCHLIST: استراتژی‌های مهمی که باید پایش شوند
 # ═══════════════════════════════════════════════════════════════
@@ -35,20 +34,17 @@ WATCHLIST = [
     ("kucoin", "KELTNER_REV", "ETHUSDTM", "candle", "KuCoin Combo"),
 ]
 
-
 # ═══════════════════════════════════════════════════════════════
 # Fetch functions (with cache)
 # ═══════════════════════════════════════════════════════════════
 def _cache_path(exchange, symbol, kind):
     return LIVE_CACHE / f"{exchange}_{symbol}_{kind}.json"
 
-
 def _cache_age_hours(path):
     if not path.exists():
         return 999
     mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
     return (datetime.now(timezone.utc) - mtime).total_seconds() / 3600
-
 
 def _load_cached(exchange, symbol, kind):
     p = _cache_path(exchange, symbol, kind)
@@ -59,11 +55,9 @@ def _load_cached(exchange, symbol, kind):
             return None
     return None
 
-
 def _save_cache(exchange, symbol, kind, data):
     p = _cache_path(exchange, symbol, kind)
     p.write_text(json.dumps(data, default=str))
-
 
 # ═══════════════════════════════════════════════════════════════
 # Fetch candles (live)
@@ -127,7 +121,6 @@ def fetch_candles_live(exchange, symbol, days=90):
 
     return []
 
-
 def fetch_funding_live(exchange, symbol, days=90):
     """Fetch recent funding rates. Cache 6 hours."""
     cached = _load_cached(exchange, symbol, "funding")
@@ -160,7 +153,6 @@ def fetch_funding_live(exchange, symbol, days=90):
         except Exception as e:
             print(f"[FETCH] {exchange}/{symbol} funding: {e}")
         return []
-
 
     if exchange == "kucoin":
         # Try API first
@@ -210,7 +202,6 @@ def fetch_funding_live(exchange, symbol, days=90):
 
     return []
 
-
 # ═══════════════════════════════════════════════════════════════
 # Compute metrics
 # ═══════════════════════════════════════════════════════════════
@@ -230,7 +221,6 @@ def compute_metrics(returns_list):
     return {"n": len(returns_list), "sr": round(sr, 2), "pf": round(pf, 2),
             "wr": round(wr, 1), "mean": round(mean * 100, 4)}
 
-
 def funding_to_daily_returns(funding_records):
     """Group funding by day, return list of (date, rate)."""
     by_day = {}
@@ -239,7 +229,6 @@ def funding_to_daily_returns(funding_records):
         by_day.setdefault(day, 0.0)
         by_day[day] += r["rate"]
     return sorted(by_day.items())
-
 
 def run_strategy_candles(func, candles, min_bars=200):
     """Run a candle strategy function, return list of trade returns."""
@@ -251,7 +240,6 @@ def run_strategy_candles(func, candles, min_bars=200):
     except Exception as e:
         print(f"[RUN] strategy error: {e}")
         return []
-
 
 # ═══════════════════════════════════════════════════════════════
 # Historical SR (from state.json)
@@ -288,7 +276,6 @@ def get_historical_sr(state, exchange, strategy, symbol):
         if sr is not None and (best is None or sr > best): best = float(sr)
     return best
 
-
 # ═══════════════════════════════════════════════════════════════
 # Decay classification
 # ═══════════════════════════════════════════════════════════════
@@ -302,7 +289,6 @@ def classify_health(live_sr, hist_sr):
         return "DECAYING", ratio
     return "DEAD", ratio
 
-
 # ═══════════════════════════════════════════════════════════════
 # Main analysis
 # ═══════════════════════════════════════════════════════════════
@@ -313,7 +299,6 @@ def analyze_one(exchange, strategy, symbol, kind, notes, state):
 
     hist_sr = get_historical_sr(state, exchange, strategy, symbol)
     result["historical_sr"] = hist_sr
-
 
     if kind == "funding":
         data = fetch_funding_live(exchange, symbol, days=90)
@@ -361,7 +346,6 @@ def analyze_one(exchange, strategy, symbol, kind, notes, state):
             result["windows"][window] = m
 
     return result
-
 
 def main():
     print("=" * 70)
@@ -428,7 +412,6 @@ def main():
     print("=" * 70)
     print(" DONE")
     print("=" * 70)
-
 
 if __name__ == "__main__":
     main()

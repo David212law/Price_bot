@@ -8,7 +8,6 @@ from pathlib import Path
 from datetime import datetime, timezone
 from collections import defaultdict
 
-
 def corr(a, b):
     dates = sorted(set(a.keys()) & set(b.keys()))
     if len(dates) < 30: return 0.0
@@ -20,13 +19,11 @@ def corr(a, b):
     sb = sum((x - mb) ** 2 for x in vb) ** 0.5
     return round(cov / (sa * sb), 3) if sa * sb > 0 else 0.0
 
-
 def load_returns(exchange, strategy, hash_val, symbol):
     p = Path(f"research_lab/logs/profiles/returns_matrices/{exchange}/{strategy}_{hash_val}_{symbol}.json")
     if not p.exists(): return {}
     try: return json.loads(p.read_text())
-    except: return {}
-
+    except Exception: return {}
 
 def dedup_group(items, corr_threshold=0.70):
     """Greedy: sort by SR desc, keep item if corr < threshold with all kept."""
@@ -50,7 +47,6 @@ def dedup_group(items, corr_threshold=0.70):
             item["_max_corr_with_kept"] = round(max_corr, 3)
             kept.append(item)
     return kept
-
 
 def main():
     print("=" * 78)
@@ -129,7 +125,6 @@ def main():
     print(f" TOTAL REPRESENTATIVES: {sum(len(v) for v in final.values())}")
     print(f" (was {len(data['results'])} raw)")
     print(f"{'='*78}")
-
 
 if __name__ == "__main__":
     main()

@@ -23,7 +23,6 @@ STATE_FILE = "exchanges/hyperliquid/state/m11_hl_shadow_mom_portfolio.json"
 SYMBOLS = ["BTC", "ETH", "SOL", "BNB", "XRP", "AVAX"]
 LOOKBACK = 6  # periods for momentum (6 * 8h = 48h)
 
-
 def fetch_funding_history(symbol, n_periods=12):
     """Fetch last N funding periods for momentum calc."""
     now_ms = int(time.time() * 1000)
@@ -39,7 +38,6 @@ def fetch_funding_history(symbol, n_periods=12):
         print(f"[FETCH] {symbol}: {e}")
     return []
 
-
 def compute_momentum(history, lookback=LOOKBACK):
     """Return (recent_avg, older_avg, latest_rate) or None if not enough data."""
     if len(history) < lookback * 2:
@@ -47,7 +45,6 @@ def compute_momentum(history, lookback=LOOKBACK):
     recent = [r["rate"] for r in history[-lookback:]]
     older = [r["rate"] for r in history[:lookback]]
     return sum(recent)/len(recent), sum(older)/len(older), history[-1]["rate"]
-
 
 def load_active_weights(exchange, regime=None):
     path = "exchanges/active_weights_shadow_hl_mom.json"
@@ -72,7 +69,6 @@ def load_active_weights(exchange, regime=None):
         print(f"[SHADOW-HL-MOM-W] load error: {_e}")
         return None
 
-
 def load_state():
     if os.path.exists(STATE_FILE):
         try:
@@ -88,12 +84,10 @@ def load_state():
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
 
-
 def save_state(state):
     os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
     with open(STATE_FILE, "w") as f:
         json.dump(state, f, indent=2)
-
 
 def main():
     # Regime detection
@@ -177,7 +171,6 @@ def main():
 
     save_state(state)
     print(f"[SAVE] {STATE_FILE}")
-
 
 if __name__ == "__main__":
     main()

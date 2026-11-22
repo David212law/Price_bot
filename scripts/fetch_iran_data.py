@@ -11,7 +11,6 @@ WALLEX_ASSETS = [
     "SOLTMN", "DOGETMN", "ADATMN", "LINKTMN", "AVAXTMN", "DOTTMN",
 ]
 
-
 def fetch_tgju_usd_irr():
     """Fetch all USD/IRR records from TGJU (~4000 records, 10+ years)."""
     all_data = {}
@@ -37,7 +36,6 @@ def fetch_tgju_usd_irr():
             break
     return all_data
 
-
 def fetch_wallex_symbol(symbol, days=1100):
     """Fetch daily history for one Wallex symbol."""
     now = int(datetime.now().timestamp())
@@ -57,7 +55,6 @@ def fetch_wallex_symbol(symbol, days=1100):
     except Exception as e:
         print(f"  {symbol}: {e}")
         return None
-
 
 def main():
     os.makedirs("data", exist_ok=True)
@@ -94,7 +91,6 @@ def main():
     print("\n" + "=" * 60)
     print(" Done")
     print("=" * 60)
-
 
 if __name__ == "__main__":
     main()

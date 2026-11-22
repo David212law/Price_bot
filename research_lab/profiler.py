@@ -53,12 +53,12 @@ def compute_regime_series(candles):
 def run_candle(func, params, candles):
     if not candles or len(candles) < 200: return []
     try: return func(candles, **params) or []
-    except: return []
+    except Exception: return []
 
 def run_funding(func, params, records):
     if not records or len(records) < 100: return {}
     try: return func(records, **params) or {}
-    except: return {}
+    except Exception: return {}
 
 def tag_candle_trades(trades, candles, regime_series):
     ts_idx = {c["t"]: i for i, c in enumerate(candles)}
@@ -78,7 +78,7 @@ def tag_funding_daily(daily, btc_candles, btc_regime):
         try:
             dt = datetime.strptime(day_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
             ts = int(dt.timestamp() * 1000)
-        except: continue
+        except Exception: continue
         nearest = None
         for t in sorted_ts:
             if t <= ts: nearest = t
@@ -114,7 +114,7 @@ def to_daily_returns(tagged):
         try:
             day = datetime.fromtimestamp(t["t"]/1000, tz=timezone.utc).strftime("%Y-%m-%d")
             by_day[day].append(t["ret"])
-        except: continue
+        except Exception: continue
     return {d: round(sum(v)/len(v), 6) for d, v in sorted(by_day.items())}
 
 def validate_test(func, params, kind, candles_full, funding_full):
@@ -329,7 +329,6 @@ def main():
             shown += 1
             if shown >= 8: break
         if not cands: print("  (none with sharpe>=0.15)")
-
 
 FAMILY = {}
 for _s in ["M31","M31_EMA","M31_QUANTILE","M31_MOMENTUM","M31_THRESHOLD","M31_SMA"]:

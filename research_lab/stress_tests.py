@@ -30,7 +30,7 @@ def _run_candle(func, params, candles, fee_mult=1.0):
     if not candles or len(candles) < 200: return []
     p = dict(params); p["fee_multiplier"] = fee_mult
     try: return func(candles, **p) or []
-    except: return []
+    except Exception: return []
 
 # ═══════ ۱. Fee Stress 2x ═══════
 def fee_stress(name, params, exchange, symbols, fee_mult=2.0):

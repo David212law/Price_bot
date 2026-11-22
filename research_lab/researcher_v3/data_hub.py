@@ -2,7 +2,6 @@
 import os, json, urllib.request
 from datetime import datetime, timezone, timedelta
 
-
 def _fetch(url, timeout=10):
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -10,7 +9,6 @@ def _fetch(url, timeout=10):
             return json.loads(r.read())
     except Exception:
         return None
-
 
 def fetch_hl(symbol="BTC"):
     """Fetch HL prices + funding. Returns dict {date: price} + current funding."""
@@ -35,7 +33,6 @@ def fetch_hl(symbol="BTC"):
     except Exception as e:
         return {"error": str(e)[:100], "exchange": "hyperliquid", "symbol": symbol}
 
-
 def fetch_aster(symbol="BTCUSDT"):
     """Fetch Aster prices."""
     url = f"https://fapi.asterdex.com/fapi/v1/klines?symbol={symbol}&interval=1d&limit=30"
@@ -50,7 +47,6 @@ def fetch_aster(symbol="BTCUSDT"):
         return {"prices": prices, "exchange": "aster", "symbol": symbol}
     except Exception as e:
         return {"error": str(e)[:100], "exchange": "aster", "symbol": symbol}
-
 
 def fetch_kucoin(symbol="XBTUSDTM"):
     """Fetch KuCoin prices."""
@@ -67,7 +63,6 @@ def fetch_kucoin(symbol="XBTUSDTM"):
         return {"prices": prices, "exchange": "kucoin", "symbol": symbol}
     except Exception as e:
         return {"error": str(e)[:100], "exchange": "kucoin", "symbol": symbol}
-
 
 def fetch_wallex(symbol="USDTTMN"):
     """Fetch Wallex prices."""
@@ -87,7 +82,6 @@ def fetch_wallex(symbol="USDTTMN"):
     except Exception as e:
         return {"error": str(e)[:100], "exchange": "wallex", "symbol": symbol}
 
-
 def fetch_all():
     """Fetch live data from all exchanges."""
     results = {
@@ -97,7 +91,6 @@ def fetch_all():
         "wallex": fetch_wallex("USDTTMN"),
     }
     return results
-
 
 if __name__ == "__main__":
     data = fetch_all()

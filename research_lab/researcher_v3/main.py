@@ -14,7 +14,6 @@ from .bale_reporter import send_bale, format_report
 from .per_exchange import test_per_exchange
 from .generator import generate_strategies
 
-
 STATE_PATH = Path("research_lab/logs/profiles/state.json")
 RETURNS_DIR = Path("research_lab/logs/profiles/returns_matrices")
 
@@ -27,7 +26,6 @@ CRISIS_WINDOWS = {
 
 BLACKLIST = ["M31_THRESHOLD", "M31_SMA", "M31_MOMENTUM", "M31_EMA", "M31_QUANTILE",
              "FUNDING_MEAN_REV", "FUNDING_ZSCORE", "FUNDING_CARRY"]  # D-560: FUNDING_* = artifact
-
 
 def load_profiler_strategies():
     if not STATE_PATH.exists(): return {}
@@ -43,7 +41,7 @@ def load_profiler_strategies():
                 if len(rets) >= 60:
                     strategies[f"M31_HEDGED_{exch}"] = {"returns": rets, "exchange": exch}
                     break
-            except: pass
+            except Exception: pass
 
     # Load all valid from profiler
     for key, v in done.items():
@@ -64,9 +62,8 @@ def load_profiler_strategies():
                 name = f"{strat}_{sym}"
                 if name not in strategies:
                     strategies[name] = {"returns": rets, "exchange": exch, "symbol": sym}
-        except: pass
+        except Exception: pass
     return strategies
-
 
 def compute_all_metrics(strategies):
     metrics = {}
@@ -75,12 +72,10 @@ def compute_all_metrics(strategies):
         if m: metrics[name] = m
     return metrics
 
-
 def get_family(name):
     if name.startswith("M31"): return "M31"
     if name.startswith("KELTNER"): return "KELTNER"
     return name.split("_")[0]
-
 
 def main():
     print("=" * 72)
@@ -183,7 +178,6 @@ def main():
 
     return combos
 
-
 if __name__ == "__main__":
     try:
         main()
@@ -195,5 +189,5 @@ if __name__ == "__main__":
         try:
             from .bale_reporter import send_bale
             send_bale(f"❌ Researcher v3 failed: {str(e)[:200]}")
-        except: pass
+        except Exception: pass
         sys.exit(1)

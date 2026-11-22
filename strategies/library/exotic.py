@@ -1,11 +1,9 @@
 """D-442: Exotic low-vol strategies — different mechanisms."""
 from strategies.library.indicators import ema, atr
 
-
 def _trade(candle, side, entry, exit_p, fee):
     gross = (exit_p - entry) / entry if side == "LONG" else (entry - exit_p) / entry
     return {"t": candle["t"], "ret": gross - (fee * 2)}
-
 
 def strat_pairs_relative(candles, lookback=20, z_threshold=2.0, fee_multiplier=1.0):
     """Short-term return reversal. Low vol by design."""
@@ -19,7 +17,6 @@ def strat_pairs_relative(candles, lookback=20, z_threshold=2.0, fee_multiplier=1
         elif r < -0.02:
             trades.append(_trade(candles[i], "LONG", candles[i]["c"], candles[i+1]["c"], fee))
     return trades
-
 
 def strat_low_vol_carry(candles, atr_p=20, pct_window=100, vol_pct_threshold=0.30,
                          fee_multiplier=1.0):
@@ -56,7 +53,6 @@ def strat_low_vol_carry(candles, atr_p=20, pct_window=100, vol_pct_threshold=0.3
                 trades.append(_trade(candles[i], pos["side"], pos["entry"], ex, fee))
                 pos = None
     return trades
-
 
 def strat_mtf_confirmation(candles, fast=20, slow=50, mtf_mult=6, fee_multiplier=1.0):
     """4h EMA cross + 1d trend agreement."""
@@ -100,9 +96,6 @@ def strat_mtf_confirmation(candles, fast=20, slow=50, mtf_mult=6, fee_multiplier
                 trades.append(_trade(candles[i], pos["side"], pos["entry"], exit_p, fee))
                 pos = None
     return trades
-
-
-
 
 # ═══════════════════════════════════════════════════════════════
 # D-481: 3 new genuinely-different strategies
@@ -160,7 +153,6 @@ def strat_volume_profile(candles, period=50, va_width=0.7, fee_multiplier=1.0):
                 pos = None
     return trades
 
-
 def strat_weekly_pivot(candles, week_candles=42, fee_multiplier=1.0):
     """Weekly Pivot Breakout: trade breaks of previous week high/low."""
     if len(candles) < week_candles * 2 + 10: return []
@@ -196,7 +188,6 @@ def strat_weekly_pivot(candles, week_candles=42, fee_multiplier=1.0):
                 pos = None
         i = end
     return trades
-
 
 def strat_volatility_trend(candles, ema_p=20, atr_p=14, atr_mult=1.5, fee_multiplier=1.0):
     """Volatility-Adjusted Trend: trade only when ATR confirms expansion."""
