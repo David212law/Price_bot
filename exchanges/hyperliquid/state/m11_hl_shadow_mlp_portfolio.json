@@ -1,7 +1,7 @@
 {
   "components": {
     "M31_HL": {
-      "equity": 6241.70825793347,
+      "equity": 6241.727476066901,
       "weight": 0.6234,
       "positions": {}
     },
@@ -16,7 +16,7 @@
       }
     },
     "M31_ETH": {
-      "equity": 883.362666237555,
+      "equity": 883.3677663319086,
       "weight": 0.0881,
       "positions": {}
     },
@@ -27,7 +27,7 @@
     }
   },
   "cash": 254.0,
-  "baseline_m31_only_equity": 10012.36486675245,
+  "baseline_m31_only_equity": 10012.395694685449,
   "baseline_m31_positions": {
     "BTC": {
       "in_pos": false
@@ -49,6 +49,6 @@
     }
   },
   "created_at": "2026-11-04T22:43:58.753796+00:00",
-  "portfolio_equity": 10018.290955082139,
-  "last_run": "2026-11-22T06:51:26.045804+00:00"
+  "portfolio_equity": 10018.315273309923,
+  "last_run": "2026-11-22T16:17:25.943306+00:00"
 }
