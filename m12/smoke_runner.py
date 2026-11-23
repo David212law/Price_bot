@@ -6,54 +6,47 @@ import os
 from typing import Tuple, Optional
 
 
+def _find_repo_root_from_file(p: pathlib.Path) -> pathlib.Path:
+    p = p.resolve()
+    for parent in [p] + list(p.parents):
+        if (parent / "m12").exists():
+            return parent
+    return p.parent
+
+
 def smoke_import(
     path: str,
     timeout: int = 15,
     repo_root: Optional[str] = None,
 ) -> Tuple[bool, str]:
-    """
-    Runtime smoke: execute the module by file path in a subprocess.
-
-    Debug-friendly: if "m12" isn't importable inside the subprocess,
-    we return error details including sys.path head.
-    """
-    root = pathlib.Path(repo_root).resolve() if repo_root else pathlib.Path.cwd().resolve()
-
     p = pathlib.Path(path)
     if not p.is_absolute():
-        p = root / p
+        # fall back: try relative to cwd, but root will be recomputed below
+        p = pathlib.Path.cwd() / p
+
     if not p.exists():
         return False, f"missing:{path}"
+
+    # robust root detection: always derive from target file location
+    root = _find_repo_root_from_file(p)
+    if repo_root:
+        # if provided repo_root is valid and contains m12, prefer it
+        rr = pathlib.Path(repo_root).resolve()
+        if (rr / "m12").exists():
+            root = rr
 
     code = r"""
 import importlib.util, sys, os, traceback
 root = os.environ.get("SMOKE_ROOT", "")
-if root:
-    # Force repo_root at sys.path[0]
-    if not sys.path or sys.path[0] != root:
-        sys.path.insert(0, root)
+if root and root not in sys.path:
+    sys.path.insert(0, root)
 
 p = sys.argv[1]
-
-# pre-check
-try:
-    __import__("m12")
-except Exception as e:
-    raise RuntimeError(f"preimport m12 failed: {e} | root={root} | sys.path_head={sys.path[:8]}")
-
 spec = importlib.util.spec_from_file_location("m12_smoke_mod", p)
 assert spec and spec.loader
 mod = importlib.util.module_from_spec(spec)
-try:
-    spec.loader.exec_module(mod)
-except ImportError as e:
-    raise RuntimeError(f"importerr: {e} | root={root} | sys.path_head={sys.path[:8]}")
-except Exception as e:
-    # show tail traceback to avoid huge logs
-    tb = traceback.format_exc()
-    raise RuntimeError(f"exc: {e} | root={root} | sys.path_head={sys.path[:8]} | tb_tail={tb[-600:]}")
+spec.loader.exec_module(mod)
 """
-
     env = dict(os.environ)
     env["PYTHONPATH"] = str(root)
     env["SMOKE_ROOT"] = str(root)
@@ -70,9 +63,9 @@ except Exception as e:
         if r.returncode == 0:
             return True, "ok"
 
-        msg = (r.stderr.strip()[-800:] or r.stdout.strip()[-800:] or f"rc={r.returncode}")
-        return False, msg
+        msg_tail = (r.stderr.strip()[-800:] or r.stdout.strip()[-800:] or f"rc={r.returncode}")
+        return False, f"smoke_exc:{msg_tail} | root={root}"
     except subprocess.TimeoutExpired:
-        return False, f"timeout>{timeout}s"
+        return False, f"timeout>{timeout}s | root={root}"
     except Exception as e:
-        return False, f"exc_outer:{e}"
+        return False, f"exc_outer:{e} | root={root}"
