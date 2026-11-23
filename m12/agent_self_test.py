@@ -56,6 +56,26 @@ def foo():
 un = agent.undefined_names(str(f))
 check("undefined detected", len(un) > 0 and "undefined_var" in [u[1] for u in un])
 
+
+# Test 5: while 1
+f = w("_t5.py", "def go():\n    while 1:\n        pass\n")
+agent.fix_while_1(f)
+check("while 1 -> while True", "while True:" in f.read_text())
+
+# Test 6: len truthiness
+f = w("_t6.py", "if len(x) > 0:\n    pass\nif len(y) == 0:\n    pass\n")
+agent.fix_len_truthiness(f)
+r = f.read_text()
+check("len(x)>0 -> x", "if x:" in r)
+check("len(y)==0 -> not y", "if not y:" in r)
+
+# Test 7: verbose True/False
+f = w("_t7.py", "if a == True:\n    pass\nif b == False:\n    pass\n")
+agent.fix_verbose_true(f)
+r = f.read_text()
+check("x==True -> x", "if a:" in r)
+check("x==False -> not x", "if not b:" in r)
+
 print("\n" + "="*50)
 print(f"PASS: {PASS}, FAIL: {FAIL}")
 print("="*50)

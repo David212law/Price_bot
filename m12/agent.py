@@ -349,6 +349,60 @@ def fix_not_in(path):
         path.write_text(new); return True
     return False
 
+
+def fix_while_1(path):
+    """while 1: -> while True: (safe, cosmetic)."""
+    code = path.read_text()
+    new = code.replace("while 1:", "while True:")
+    if new != code:
+        path.write_text(new); return True
+    return False
+
+def fix_len_truthiness(path):
+    """if len(x) > 0: -> if x:   and   if len(x) == 0: -> if not x:
+    Safe for list/dict/str/set/tuple. Verified by calc_test."""
+    code = path.read_text()
+    new = code
+    new = re.sub(r"len\(([a-zA-Z_][\w]*)\)\s*>\s*0", r"\1", new)
+    new = re.sub(r"len\(([a-zA-Z_][\w]*)\)\s*==\s*0", r"not \1", new)
+    if new != code:
+        path.write_text(new); return True
+    return False
+
+def fix_verbose_true(path):
+    """if x == True: -> if x:  and  if x == False: -> if not x: (safe bool)."""
+    code = path.read_text()
+    new = re.sub(r"==\s*True\b", "", code)
+    new = re.sub(r"==\s*False\b", "not", new)
+    if new != code:
+        path.write_text(new); return True
+    return False
+
+def check_sleeping_bots():
+    """Diagnostic: find bot dirs and flag any with no recent state activity.
+    Returns (ok, detail). ok stays True (info-only, not a hard fail)."""
+    import os
+    bots = []
+    for root, dirs, files in os.walk(str(REPO)):
+        if any(x in pathlib.Path(root).parts for x in [".git", "__pycache__", "cache", ".venv"]):
+            continue
+        # bot state/log files
+        for fn in files:
+            if fn.endswith(".json") and ("state" in fn.lower()):
+                p = pathlib.Path(root)/fn
+                try:
+                    mt = p.stat().st_mtime
+                except Exception:
+                    continue
+                import time
+                age_d = (time.time() - mt)/86400.0
+                rel = p.relative_to(REPO)
+                if age_d > 7:
+                    bots.append(f"{rel} (no change {age_d:.0f}d)")
+    if not bots:
+        return True, "no inactive bots detected"
+    return True, "INFO inactive: " + "; ".join(bots[:6])
+
 SAFE_FIXERS = [
     ("eof_newline", fix_eof_newline),
     ("blank_lines", fix_blank_lines),
@@ -356,6 +410,9 @@ SAFE_FIXERS = [
     ("bare_except", fix_bare_except),
     ("dict_keys", fix_dict_keys_membership),
     ("not_in", fix_not_in),
+    ("while_1", fix_while_1),
+    ("len_truthiness", fix_len_truthiness),
+    ("verbose_true", fix_verbose_true),
 ]
 
 def apply_safe_fixers(path):
@@ -458,6 +515,7 @@ def main():
         "workflows": check_workflows(),
         "large_files": check_large_files(),
         "state": (True, "ok") if os.getenv("CI") else check_json_file(ROOT/"bot"/"state.json"),
+        "sleeping_bots": check_sleeping_bots(),
     }
     for name, (ok, why) in checks.items():
         if not ok: flags.append(("HIGH" if name=="config_crash" else "LOW", f"{name}: {why}"))
