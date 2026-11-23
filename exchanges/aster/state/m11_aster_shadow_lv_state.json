@@ -1,17 +1,17 @@
 {
-  "total_equity": 10033.011821610306,
-  "m31_capital": 9733.011821610306,
+  "total_equity": 10033.154480797828,
+  "m31_capital": 9733.154480797828,
   "a8_capital": 0.0,
   "a20_capital": 0.0,
   "keltner_capital": 0.0,
   "keltner_pos": {},
   "cash_capital": 2.8421709430404007e-13,
   "m31_last_funding_time": {
-    "BTCUSDT": 1795392000001,
+    "BTCUSDT": 1795420800000,
     "ETHUSDT": 1795392000001,
-    "SOLUSDT": 1795392000001,
+    "SOLUSDT": 1795420800000,
     "BNBUSDT": 1795132800001,
-    "XRPUSDT": 1795392000001,
+    "XRPUSDT": 1795420800000,
     "AVAXUSDT": 1795132800001
   },
   "a8_positions": {},
@@ -19,6 +19,6 @@
   "history": [],
   "low_vol_capital": 300.0,
   "low_vol_pos": {},
-  "peak_equity": 10033.011821610306,
-  "last_run": "2026-11-23T00:55:22.753817+00:00"
+  "peak_equity": 10033.154480797828,
+  "last_run": "2026-11-23T14:41:35.031332+00:00"
 }

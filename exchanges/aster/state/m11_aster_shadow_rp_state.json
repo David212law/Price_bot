@@ -1,25 +1,32 @@
 {
-  "total_equity": 10033.756857265176,
-  "m31_capital": 9833.35214966815,
+  "total_equity": 10034.94766848327,
+  "m31_capital": 9833.496279568944,
   "a8_capital": 0.0,
   "a20_capital": 0.0,
-  "keltner_capital": 169.71981985323185,
+  "keltner_capital": 154.3541389050538,
   "keltner_pos": {
-    "AVAXUSDT": {
-      "side": "LONG",
-      "entry": 6.485,
-      "invested": 29.950556444687972,
-      "sl": 6.306910104746398,
-      "tp": 6.87517062637729
+    "SOLUSDT": {
+      "side": "SHORT",
+      "entry": 76.96,
+      "invested": 25.457972977984777,
+      "sl": 77.31204414302397,
+      "tp": 71.47347506364306
+    },
+    "XRPUSDT": {
+      "side": "SHORT",
+      "entry": 0.9972,
+      "invested": 21.63927703128706,
+      "sl": 1.0132952398535255,
+      "tp": 0.9384491722237794
     }
   },
   "cash_capital": 1.734723475976807e-13,
   "m31_last_funding_time": {
-    "BTCUSDT": 1795392000001,
+    "BTCUSDT": 1795420800000,
     "ETHUSDT": 1795392000001,
-    "SOLUSDT": 1795392000001,
+    "SOLUSDT": 1795420800000,
     "BNBUSDT": 1795132800001,
-    "XRPUSDT": 1795392000001,
+    "XRPUSDT": 1795420800000,
     "AVAXUSDT": 1795132800001
   },
   "a8_positions": {},
@@ -66,8 +73,14 @@
       "strat": "KELTNER_COMBO",
       "sym": "BNBUSDT",
       "pnl": 0.0328
+    },
+    {
+      "time": 1795435200000,
+      "strat": "KELTNER_COMBO",
+      "sym": "AVAXUSDT",
+      "pnl": 1.781
     }
   ],
-  "peak_equity": 10033.961047619652,
-  "last_run": "2026-11-23T00:55:31.673181+00:00"
+  "peak_equity": 10034.94766848327,
+  "last_run": "2026-11-23T14:41:43.592974+00:00"
 }
