@@ -53,3 +53,8 @@ m12/agent_report.txt
 m12/agent_state.json
 m12/researcher/prefilter_keep.json
 m12/researcher/prefilter_scores.json
+
+# agent test/backup/report artifacts
+m12/_st*.py
+m12/agent_backup/
+m12/agent_reports/
