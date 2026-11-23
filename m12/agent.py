@@ -505,7 +505,7 @@ def main():
                     if 'scripts' in parts or 'exchanges' in parts:
                         try:
                             from m12.smoke_runner import smoke_import
-                            ok, why = smoke_import(str(pp), timeout=15)
+                            ok, why = smoke_import(str(pp), timeout=15, repo_root=str(REPO))
                         except Exception as e:
                             ok, why = False, f"smoke_exc:{e}"
                         if not ok:
