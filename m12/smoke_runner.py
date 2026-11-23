@@ -11,6 +11,11 @@ def smoke_import(
     timeout: int = 15,
     repo_root: Optional[str] = None,
 ) -> Tuple[bool, str]:
+    """
+    Tool-based runtime smoke: execute the module by file path in a subprocess.
+
+    We also pre-import `m12` to diagnose CI import-path issues.
+    """
     root = pathlib.Path(repo_root).resolve() if repo_root else pathlib.Path.cwd().resolve()
 
     p = pathlib.Path(path)
@@ -19,12 +24,19 @@ def smoke_import(
     if not p.exists():
         return False, f"missing:{path}"
 
-    # IMPORTANT: insert repo root into sys.path INSIDE the subprocess code
     code = r"""
-import importlib.util, sys, os
+import importlib.util, sys, os, importlib
 root = os.environ.get("SMOKE_ROOT", "")
 if root and root not in sys.path:
     sys.path.insert(0, root)
+
+# pre-check: ensure `m12` is importable
+try:
+    importlib.import_module("m12")
+except Exception as e:
+    raise RuntimeError(
+        f"preimport m12 failed: {e}; sys.path_head={sys.path[:8]}"
+    )
 
 p = sys.argv[1]
 spec = importlib.util.spec_from_file_location("m12_smoke_mod", p)
@@ -48,7 +60,7 @@ spec.loader.exec_module(mod)
         )
         if r.returncode == 0:
             return True, "ok"
-        msg = (r.stderr.strip()[-400:] or r.stdout.strip()[-400:] or f"rc={r.returncode}")
+        msg = (r.stderr.strip()[-800:] or r.stdout.strip()[-800:] or f"rc={r.returncode}")
         return False, msg
     except subprocess.TimeoutExpired:
         return False, f"timeout>{timeout}s"
