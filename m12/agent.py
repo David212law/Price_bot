@@ -458,6 +458,7 @@ def main():
     ap.add_argument("--health", action="store_true", help="Full project health (GitHub)")
     ap.add_argument("--next", action="store_true")
     ap.add_argument("--safe-fix", action="store_true")
+    ap.add_argument("--smoke", action="store_true", help="Run runtime smoke on scripts/exchanges after safe-fix")
     ap.add_argument("--rollback", action="store_true")
     ap.add_argument("--dry-run", action="store_true", help="No writes, preview only")
     ap.add_argument("--staged", action="store_true", help="Check only git-staged .py + m12 core")
@@ -494,6 +495,23 @@ def main():
             if ap_:
                 total += 1
                 print(f"  OK {pp.relative_to(REPO)}: {', '.join(ap_)}")
+                # Runtime smoke (tool-based) to avoid shipping broken fixes
+                if args.smoke:
+                    try:
+                        rel = pp.relative_to(REPO)
+                        parts = set(rel.parts)
+                    except Exception:
+                        parts = set()
+                    if 'scripts' in parts or 'exchanges' in parts:
+                        try:
+                            from m12.smoke_runner import smoke_import
+                            ok, why = smoke_import(str(pp), timeout=15)
+                        except Exception as e:
+                            ok, why = False, f"smoke_exc:{e}"
+                        if not ok:
+                            print(f"  smoke FAIL {rel}: {why} restore")
+                            _rollback_all()
+                            return 1
         if total:
             ct = sh([sys.executable, str(ROOT/"calc_test.py")])
             if ct["rc"] != 0:
