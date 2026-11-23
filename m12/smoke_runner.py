@@ -11,11 +11,6 @@ def smoke_import(
     timeout: int = 15,
     repo_root: Optional[str] = None,
 ) -> Tuple[bool, str]:
-    """
-    Runtime smoke: execute the module by file path in a subprocess.
-    We force sys.path to include repo_root so imports like `import m12...`
-    work reliably on CI and local.
-    """
     root = pathlib.Path(repo_root).resolve() if repo_root else pathlib.Path.cwd().resolve()
 
     p = pathlib.Path(path)
@@ -24,6 +19,7 @@ def smoke_import(
     if not p.exists():
         return False, f"missing:{path}"
 
+    # IMPORTANT: insert repo root into sys.path INSIDE the subprocess code
     code = r"""
 import importlib.util, sys, os
 root = os.environ.get("SMOKE_ROOT", "")
