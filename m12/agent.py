@@ -370,12 +370,20 @@ def fix_len_truthiness(path):
     return False
 
 def fix_verbose_true(path):
-    """if x == True: -> if x:  and  if x == False: -> if not x: (safe bool)."""
+    """if x == True:  -> if x:
+    if x == False: -> if not x:
+    Works via simple safe regex rewrites."""
     code = path.read_text()
-    new = re.sub(r"==\s*True\b", "", code)
-    new = re.sub(r"==\s*False\b", "not", new)
-    if new != code:
-        path.write_text(new); return True
+
+    # x == True  -> x
+    code2 = re.sub(r"\b(\w+)\s*==\s*True\b", r"\1", code)
+
+    # x == False -> not x
+    code3 = re.sub(r"\b(\w+)\s*==\s*False\b", r"not \1", code2)
+
+    if code3 != code:
+        path.write_text(code3)
+        return True
     return False
 
 def check_sleeping_bots():
