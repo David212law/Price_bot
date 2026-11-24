@@ -1,9 +1,3 @@
 {
-  "signals": [
-    {
-      "symbol": "BTC",
-      "action": "OPEN",
-      "time": 1795424400024
-    }
-  ]
+  "signals": []
 }
