@@ -1,7 +1,6 @@
 import subprocess
 import sys
 import pathlib
-import os
 from typing import Tuple, Optional
 
 
@@ -21,7 +20,6 @@ def smoke_import(
     p = pathlib.Path(path)
     if not p.is_absolute():
         p = pathlib.Path.cwd() / p
-
     if not p.exists():
         return False, f"missing:{path}"
 
@@ -31,50 +29,41 @@ def smoke_import(
         if (rr / "m12").exists():
             root = rr
 
-    code = r"""
-import importlib, importlib.util, sys, os, traceback
+    root_s = str(root)
 
-root = os.environ.get("SMOKE_ROOT", "")
-if root and (not sys.path or sys.path[0] != root):
+    # IMPORTANT: root is injected as a literal into the subprocess code
+    code = f"""
+import importlib, sys
+root = {root_s!r}
+if root not in sys.path:
     sys.path.insert(0, root)
 
-sys_path_head = sys.path[:8]
+# hard pre-check
+importlib.import_module("m12")
 
-# HARD pre-check: ensure `m12` is importable
-try:
-    importlib.import_module("m12")
-except Exception as e:
-    raise RuntimeError(
-        f"preimport m12 failed: {e} | root={root} | has_m12={os.path.isdir(os.path.join(root,'m12'))} | sys_path_head={sys_path_head}"
-    )
-
-p = sys.argv[1]
+import importlib.util
+p = {str(p)!r}
 spec = importlib.util.spec_from_file_location("m12_smoke_mod", p)
 assert spec and spec.loader
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 """
 
-    env = dict(os.environ)
-    env["SMOKE_ROOT"] = str(root)
-    env["PYTHONPATH"] = str(root)
-
     try:
         r = subprocess.run(
-            [sys.executable, "-c", code, str(p)],
-            cwd=str(root),
+            [sys.executable, "-c", code],
+            cwd=root_s,
             capture_output=True,
             text=True,
             timeout=timeout,
-            env=env,
         )
         if r.returncode == 0:
             return True, "ok"
 
-        msg = (r.stderr.strip() or r.stdout.strip() or f"rc={r.returncode}")
-        # Keep full message (not just tail) to avoid losing debug info
-        return False, f"smoke_exec_failed:{msg}"
+        msg = (r.stderr.strip()[-800:] or r.stdout.strip()[-800:] or f"rc={r.returncode}")
+        # include minimal diagnostics
+        return False, f"{msg} | root={root_s}"
     except subprocess.TimeoutExpired:
-        return False, f"timeout>{timeout}s | root={root}"
+        return False, f"timeout>{timeout}s | root={root_s}"
     except Exception as e:
-        return False, f"exc_outer:{e} | root={root}"
+        return False, f"exc:{e} | root={root_s}"
