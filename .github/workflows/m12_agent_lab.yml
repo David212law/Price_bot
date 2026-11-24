@@ -1,0 +1,30 @@
+name: M12 Agent Lab (manual)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run lab (import-only)
+        run: |
+          python -u m12/agent_lab.py \
+            --target exchanges/aster/m11_aster_allocator.py \
+            --strategies all \
+            --timeout 12
+
+      - name: Upload lab report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-lab-report
+          path: m12/agent_lab_report.txt
