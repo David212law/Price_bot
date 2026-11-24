@@ -1,28 +1,13 @@
 {
-  "total_equity": 10034.94766848327,
-  "m31_capital": 9833.496279568944,
+  "total_equity": 10038.047831308184,
+  "m31_capital": 9833.539601036804,
   "a8_capital": 0.0,
   "a20_capital": 0.0,
-  "keltner_capital": 154.3541389050538,
-  "keltner_pos": {
-    "SOLUSDT": {
-      "side": "SHORT",
-      "entry": 76.96,
-      "invested": 25.457972977984777,
-      "sl": 77.31204414302397,
-      "tp": 71.47347506364306
-    },
-    "XRPUSDT": {
-      "side": "SHORT",
-      "entry": 0.9972,
-      "invested": 21.63927703128706,
-      "sl": 1.0132952398535255,
-      "tp": 0.9384491722237794
-    }
-  },
+  "keltner_capital": 204.50823027137926,
+  "keltner_pos": {},
   "cash_capital": 1.734723475976807e-13,
   "m31_last_funding_time": {
-    "BTCUSDT": 1795420800000,
+    "BTCUSDT": 1795478400000,
     "ETHUSDT": 1795392000001,
     "SOLUSDT": 1795420800000,
     "BNBUSDT": 1795132800001,
@@ -79,8 +64,20 @@
       "strat": "KELTNER_COMBO",
       "sym": "AVAXUSDT",
       "pnl": 1.781
+    },
+    {
+      "time": 1795478400000,
+      "strat": "KELTNER_COMBO",
+      "sym": "SOLUSDT",
+      "pnl": 1.7971
+    },
+    {
+      "time": 1795478400000,
+      "strat": "KELTNER_COMBO",
+      "sym": "XRPUSDT",
+      "pnl": 1.2597
     }
   ],
-  "peak_equity": 10034.94766848327,
-  "last_run": "2026-11-23T14:41:43.592974+00:00"
+  "peak_equity": 10038.047831308184,
+  "last_run": "2026-11-24T02:54:57.662181+00:00"
 }
