@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 import pathlib
@@ -17,6 +18,12 @@ def smoke_import(
     timeout: int = 15,
     repo_root: Optional[str] = None,
 ) -> Tuple[bool, str]:
+    """
+    Tool-based runtime smoke:
+    - compute repo_root from target file location (robust on CI)
+    - inject repo_root into sys.path
+    - execute target via runpy.run_path
+    """
     p = pathlib.Path(path)
     if not p.is_absolute():
         p = pathlib.Path.cwd() / p
@@ -30,29 +37,29 @@ def smoke_import(
             root = rr
 
     root_s = str(root)
+    target_s = str(p)
 
-    # IMPORTANT: root is injected as a literal into the subprocess code
-    code = f"""
-import importlib, sys
-root = {root_s!r}
+    code = r"""
+import runpy, sys, os
+root = os.environ["SMOKE_ROOT"]
+target = os.environ["SMOKE_TARGET"]
+
 if root not in sys.path:
     sys.path.insert(0, root)
 
-# hard pre-check
-importlib.import_module("m12")
-
-import importlib.util
-p = {str(p)!r}
-spec = importlib.util.spec_from_file_location("m12_smoke_mod", p)
-assert spec and spec.loader
-mod = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(mod)
+print(f"SMOKE_DEBUG root={root} has_m12={os.path.isdir(os.path.join(root,'m12'))} sys_path_head={sys.path[:6]}")
+runpy.run_path(target, run_name="__main__")
 """
+
+    env = dict(os.environ)
+    env["SMOKE_ROOT"] = root_s
+    env["SMOKE_TARGET"] = target_s
 
     try:
         r = subprocess.run(
             [sys.executable, "-c", code],
             cwd=root_s,
+            env=env,
             capture_output=True,
             text=True,
             timeout=timeout,
@@ -60,10 +67,10 @@ spec.loader.exec_module(mod)
         if r.returncode == 0:
             return True, "ok"
 
-        msg = (r.stderr.strip()[-800:] or r.stdout.strip()[-800:] or f"rc={r.returncode}")
-        # include minimal diagnostics
-        return False, f"{msg} | root={root_s}"
+        out = (r.stdout or "").strip()
+        err = (r.stderr or "").strip()
+        return False, (out + "\n" + err)[-2000:] or f"rc={r.returncode}"
     except subprocess.TimeoutExpired:
         return False, f"timeout>{timeout}s | root={root_s}"
     except Exception as e:
-        return False, f"exc:{e} | root={root_s}"
+        return False, f"exc_outer:{e} | root={root_s}"
