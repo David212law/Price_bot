@@ -1,0 +1,356 @@
+# PROJECT-ROOT-INJECT (D-356 fix)
+import os as _os, sys as _sys
+_project_root = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+if _project_root not in _sys.path: _sys.path.insert(0, _project_root)
+
+import os
+import json
+import base64
+import requests
+import time
+from datetime import datetime, timezone
+
+GH_TOKEN = os.environ.get("GH_TOKEN", "")
+GH_REPO = os.environ.get("GH_REPO", "David212law/Price_bot")
+BALE_TOKEN = os.environ.get("BALE_BOT_TOKEN", "")
+BALE_CHAT = os.environ.get("BALE_CHAT_ID", "")
+
+STATE_FILE = "exchanges/kucoin/state/m11_kucoin_paper_state.json"
+INITIAL_CAPITAL = 10000.0
+
+M31_ALLOC = 0.70  # FORCED
+A20_ALLOC = 0.0  # D-306  # D-282: Revoked due to Embargo-WF
+M40_ALLOC = 0.0  # D-306  # D-282: Reallocate from A20
+M31_LEVERAGE = 0.45  # D-557: hedged (45% spot + 45% perp + 10% cash) migrated_D557  # D-310
+SMA_PERIODS = 12
+ENTRY_THRESHOLD = 0.00001   # D-390: reduced from 5 bps to 1 bps for Paper (KuCoin 8h funding)
+EXIT_THRESHOLD = 0.000005   # D-390: reduced from 1 bps to 0.5 bps
+COOLDOWN_HOURS = 24
+TAKER_FEE = 0.0006
+MAKER_FEE = 0.0002
+
+SYMBOLS = ["XBTUSDTM", "ETHUSDTM", "SOLUSDTM", "BNBUSDTM", "XRPUSDTM", "AVAXUSDTM"]
+HEADERS = {"User-Agent": "Mozilla/5.0"}
+
+def send_bale(msg):
+    if not BALE_TOKEN or not BALE_CHAT:
+        print(f"[BALE] {msg[:80]}")
+        return
+    try: requests.post(f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage", json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
+    except Exception as _e: print(f"caught: {_e}")
+
+def load_from_github(filename):
+    """D-503: local disk read (migrated from GitHub API to avoid 422/rate-limit)"""
+    import os
+    if os.path.exists(filename):
+        try:
+            with open(filename, 'r') as f:
+                return json.load(f), None
+        except Exception as e:
+            print(f"[LOAD] {filename}: {e}")
+            return {}, None
+    return {}, None
+
+def save_to_github(filename, data, sha=None):
+    """D-503: local disk write (migrated from GitHub API; sha ignored)"""
+    import os
+    try:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, 'w') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return True
+    except Exception as e:
+        print(f"[SAVE] {filename}: {e}")
+        return False
+
+def fetch_funding_rate(symbol):
+    try:
+        r = requests.get(f"https://api-futures.kucoin.com/api/v1/funding-rate/{symbol}/current", headers=HEADERS, timeout=15)
+        if r.status_code == 200:
+            d = r.json().get("data", {})
+            return float(d.get("value", 0)), d.get("timePoint", d.get("fundingTime", 0))
+    except Exception as _e: print(f"caught: {_e}")
+    return 0.0, 0
+
+def fetch_klines(symbol, limit=300):
+    now = int(time.time() * 1000)
+    start = now - (limit * 4 * 3600 * 1000)
+    try:
+        r = requests.get(f"https://api-futures.kucoin.com/api/v1/kline/query?symbol={symbol}&granularity=240&from={start}&to={now}", headers=HEADERS, timeout=15)
+        if r.status_code == 200:
+            return [{"t": int(c[0]), "o": float(c[1]), "h": float(c[2]), "l": float(c[3]), "c": float(c[4]), "v": float(c[5])} for c in r.json().get("data", [])]
+    except Exception as _e: print(f"caught: {_e}")
+    return []
+
+def calc_atr(candles, period=14):
+    atr = [None]*len(candles)
+    if len(candles) < period+1: return atr
+    trs = [0]*len(candles)
+    for i in range(1, len(candles)):
+        trs[i] = max(candles[i]["h"]-candles[i]["l"], abs(candles[i]["h"]-candles[i-1]["c"]), abs(candles[i]["l"]-candles[i-1]["c"]))
+    atr[period] = sum(trs[1:period+1])/period
+    for i in range(period+1, len(candles)):
+        atr[i] = (atr[i-1]*(period-1)+trs[i])/period
+    return atr
+
+def calc_supertrend(candles, period=10, mult=3.0):
+    atr = calc_atr(candles, period)
+    st, dirs = [None]*len(candles), [1]*len(candles)
+    for i in range(period, len(candles)):
+        if atr[i] is None: continue
+        hl2 = (candles[i]["h"]+candles[i]["l"])/2
+        ub, lb = hl2+mult*atr[i], hl2-mult*atr[i]
+        if i == period: st[i], dirs[i] = ub, 1; continue
+        if candles[i]["c"] > st[i-1]:
+            dirs[i] = 1; st[i] = max(lb, st[i-1]) if dirs[i-1]==1 else lb
+        else:
+            dirs[i] = -1; st[i] = min(ub, st[i-1]) if dirs[i-1]==-1 else ub
+    return st, dirs
+
+def calc_ema(closes, period):
+    ema = [None]*len(closes)
+    if len(closes) < period: return ema
+    k = 2/(period+1); e = sum(closes[:period])/period; ema[period-1] = e
+    for i in range(period, len(closes)):
+        e = closes[i]*k + e*(1-k); ema[i] = e
+    return ema
+
+def calc_rsi(closes, period=14):
+    rsi = [None]*len(closes)
+    if len(closes) < period+1: return rsi
+    gains = losses = 0
+    for i in range(1, period+1):
+        ch = closes[i]-closes[i-1]
+        if ch > 0: gains += ch
+        else: losses += abs(ch)
+    ag, al = gains/period, losses/period
+    rsi[period] = 100 - 100/(1+ag/al) if al else 100
+    for i in range(period+1, len(closes)):
+        ch = closes[i]-closes[i-1]
+        ag = (ag*(period-1)+max(ch,0))/period; al = (al*(period-1)+max(-ch,0))/period
+        rsi[i] = 100 - 100/(1+ag/al) if al else 100
+    return rsi
+
+def _log_close(state, sym, strat, pnl_val):
+    if "history" not in state: state["history"] = []
+
+    # D-390d: warmup hist from data if empty (all symbols)
+    if not isinstance(state.get("m31_pos"), dict):
+        state["m31_pos"] = {}
+    for _sym in SYMBOLS:
+        _warmup_hist_from_data(_sym, state)
+    state["history"].append({"time": int(time.time() * 1000), "strat": strat, "symbol": sym, "pnl": round(pnl_val, 4)})
+
+def load_active_weights(exchange, regime=None):
+    """D-401b: regime-aware. Backward-compatible."""
+    import json, os
+    path = "exchanges/active_weights.json"
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path) as f:
+            data = json.load(f)
+        ex_data = data.get(exchange, {})
+        if not ex_data:
+            return None
+        regime_keys = {"TREND","RANGE","NEUTRAL","UNKNOWN"}
+        if any(k in regime_keys for k in ex_data):
+            if regime and regime in ex_data:
+                return ex_data[regime]
+            for fb in ("UNKNOWN","TREND"):
+                if fb in ex_data:
+                    return ex_data[fb]
+            return None
+        return ex_data
+    except Exception as _e:
+        print(f"[WEIGHTS] load error: {_e}")
+        return None
+
+def check_config_drift(state):
+    """اگر total capital از INITIAL_CAPITAL منحرف شد، state را بازسازی کن"""
+    if not state or "m31_capital" not in state:
+        return state
+
+    current_total = (state.get("m31_capital", 0) + state.get("a20_capital", 0) +
+                     state.get("m40_capital", 0) + state.get("cash_capital", 0))
+
+    # اگر total خیلی از INITIAL_CAPITAL فاصله دارد، state قدیمی/ناسازگار است
+    if current_total < 100 or abs(current_total - INITIAL_CAPITAL) > 500:
+        print(f"[RESET] State inconsistent (total=${current_total:.0f}, expected=${INITIAL_CAPITAL:.0f}). Re-initializing.")
+        return {}  # force re-init
+
+    # بررسی drift نسبی (اگر total درست است، ولی توزیع اشتباه)
+    desired_m31 = current_total * M31_ALLOC
+    drift = abs(state.get("m31_capital", 0) - desired_m31)
+
+    if drift > 500:
+        print(f"[DRIFT] M31 rebalance: {state['m31_capital']:.0f} → {desired_m31:.0f}")
+        state["m31_capital"] = desired_m31
+        state["a20_capital"] = current_total * A20_ALLOC
+        state["m40_capital"] = current_total * M40_ALLOC
+        state["cash_capital"] = current_total * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC)
+
+    return state
+
+def _warmup_hist_from_data(sym, state):
+    """D-390d: Load historical funding to warm up SMA (first run only)."""
+    try:
+        import json as _j
+        p = f"exchanges/kucoin/data/{sym}_funding.json"
+        import os as _o
+        if not _o.path.exists(p): return
+        d = _j.load(open(p))
+        if not isinstance(d, list) or not d: return
+        # آخرین 12 رکورد
+        recent = d[:12] if len(d) >= 12 else d
+        st = state["m31_pos"].get(sym, {"in_pos": False, "hist": [], "last_exit": 0, "last_processed": 0})
+        if len(st.get("hist", [])) < 12:
+            st["hist"] = [float(r["fundingRate"]) for r in recent if "fundingRate" in r]
+            state["m31_pos"][sym] = st
+            print(f"[WARMUP] {sym}: hist={len(st['hist'])} rec from data")
+    except Exception as e:
+        print(f"[WARMUP] {sym} err: {e}")
+
+def main():
+    # RUNTIME-REGIME-CHECK (D-356)
+    try:
+        from research_lab.regime_detector import get_current_regime, should_activate_strategy
+        _regime, _adx = get_current_regime()
+        print(f"[REGIME] {_regime} (ADX={_adx:.2f})")
+        globals()['_CURRENT_REGIME'] = _regime
+    except Exception as _e:
+        print(f"[REGIME] detection failed: {_e}")
+        globals()['_CURRENT_REGIME'] = 'UNKNOWN'
+
+    print(f"=== M11-KuCoin Engine ({datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}) ===")
+
+    # LOAD ACTIVE WEIGHTS (D-389: before state init)
+    _current_regime = globals().get('_CURRENT_REGIME', 'UNKNOWN')
+    _w = load_active_weights("kucoin", regime=_current_regime)
+    if _w:
+        globals()["M31_ALLOC"] = _w.get("M31", globals()["M31_ALLOC"])
+        globals()["A20_ALLOC"] = _w.get("A20", globals()["A20_ALLOC"])
+        globals()["M40_ALLOC"] = _w.get("M40", globals()["M40_ALLOC"])
+        print(f"[CONFIG] KuCoin: M31={globals()['M31_ALLOC']*100:.0f}%, A20={globals()['A20_ALLOC']*100:.0f}%, M40={globals()['M40_ALLOC']*100:.0f}%")
+
+    state, sha = load_from_github(STATE_FILE)
+    state = check_config_drift(state)
+    if not isinstance(state, dict) or "m31_capital" not in state:
+        state = {
+            "total_equity": INITIAL_CAPITAL,
+            "m31_capital": INITIAL_CAPITAL * M31_ALLOC,
+            "a20_capital": INITIAL_CAPITAL * A20_ALLOC,
+            "m40_capital": INITIAL_CAPITAL * M40_ALLOC,
+            "cash_capital": INITIAL_CAPITAL * (1.0 - M31_ALLOC - A20_ALLOC - M40_ALLOC),
+            "m31_pos": {}, "a20_pos": {}, "m40_pos": {},
+            "history": []
+        }
+    if "history" not in state: state["history"] = []
+
+    # ── M31 Funding ──
+    for sym in SYMBOLS:
+        rate, tp = fetch_funding_rate(sym)
+        st = state["m31_pos"].get(sym, {"in_pos": False, "hist": [], "last_exit": 0, "last_processed": 0})
+        if tp == 0:
+            state["m31_pos"][sym] = st
+            continue
+
+        st["hist"].append(rate)
+        if len(st["hist"]) > SMA_PERIODS: st["hist"].pop(0)
+        avg = sum(st["hist"]) / len(st["hist"])
+
+        if tp > st.get("last_processed", 0):
+            st["last_processed"] = tp
+            if st["in_pos"]:
+                income = (state["m31_capital"] / len(SYMBOLS)) * M31_LEVERAGE * rate
+                state["m31_capital"] += income
+                if avg < EXIT_THRESHOLD:
+                    cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
+                    state["m31_capital"] -= cost
+                    st["in_pos"] = False
+                    st["last_exit"] = tp
+                    _log_close(state, sym, "M31", income - cost)
+                    send_bale(f"🔴 M31 CLOSED | {sym} | PnL: {income-cost:+.4f}")
+            elif avg > ENTRY_THRESHOLD and rate > 0 and (tp - st["last_exit"])/(3600*1000) >= COOLDOWN_HOURS:
+                cost = (state["m31_capital"] / len(SYMBOLS)) * MAKER_FEE * 2 * M31_LEVERAGE
+                state["m31_capital"] -= cost
+                st["in_pos"] = True
+                send_bale(f"🟢 M31 OPENED | {sym}")
+        state["m31_pos"][sym] = st
+
+    # ── A20 (SuperTrend) ──
+    for sym in SYMBOLS:
+        k = fetch_klines(sym, 300)
+        if len(k) < 20: continue
+        st, dirs = calc_supertrend(k)
+        if st[-1] is None: continue
+
+        pos = state["a20_pos"].get(sym)
+        if pos:
+            exit_ = (pos["side"]=="LONG" and (k[-1]["c"] < st[-1] or dirs[-1]==-1)) or \
+                    (pos["side"]=="SHORT" and (k[-1]["c"] > st[-1] or dirs[-1]==1))
+            if exit_:
+                pnl = pos["invested"] * ((k[-1]["c"]-pos["entry"])/pos["entry"] if pos["side"]=="LONG" else (pos["entry"]-k[-1]["c"])/pos["entry"])
+                state["a20_capital"] += pos["invested"] + pnl
+                _log_close(state, sym, "A20", pnl)
+                del state["a20_pos"][sym]
+                send_bale(f"🔵 A20 CLOSED | {sym} | PnL: {pnl:+.2f}")
+        elif len(state["a20_pos"]) < 3:
+            side = "LONG" if (dirs[-1]==1 and dirs[-2]==-1) else "SHORT" if (dirs[-1]==-1 and dirs[-2]==1) else None
+            if side:
+                alloc = state["a20_capital"] * 0.10
+                if alloc > 10 and state["a20_capital"] >= alloc:
+                    state["a20_capital"] -= alloc
+                    state["a20_pos"][sym] = {"side": side, "entry": k[-1]["c"], "invested": alloc}
+                    send_bale(f"🟢 A20 OPENED {side} | {sym} @ {k[-1]['c']}")
+
+    # ── M40 (Pullback) ──
+    for sym in SYMBOLS:
+        k = fetch_klines(sym, 300)
+        if len(k) < 200: continue
+        closes = [c["c"] for c in k]
+        ema200 = calc_ema(closes, 200)
+        rsi = calc_rsi(closes, 14)
+        atr = calc_atr(k, 14)
+        if None in [ema200[-1], rsi[-1], atr[-2]]: continue
+
+        pos = state["m40_pos"].get(sym)
+        if pos:
+            exit_ = (pos["side"]=="LONG" and (k[-1]["l"] <= pos["sl"] or k[-1]["h"] >= pos["tp"])) or \
+                    (pos["side"]=="SHORT" and (k[-1]["h"] >= pos["sl"] or k[-1]["l"] <= pos["tp"]))
+            if exit_:
+                exit_p = pos["sl"] if (pos["side"]=="LONG" and k[-1]["l"]<=pos["sl"]) or (pos["side"]=="SHORT" and k[-1]["h"]>=pos["sl"]) else pos["tp"]
+                pnl = pos["invested"] * ((exit_p-pos["entry"])/pos["entry"] if pos["side"]=="LONG" else (pos["entry"]-exit_p)/pos["entry"])
+                state["m40_capital"] += pos["invested"] + pnl
+                _log_close(state, sym, "M40", pnl)
+                del state["m40_pos"][sym]
+                send_bale(f"🔵 M40 CLOSED | {sym} | PnL: {pnl:+.2f}")
+        elif len(state["m40_pos"]) < 3:
+            side = None
+            if closes[-1] > ema200[-1] and rsi[-1] < 40 and k[-1]["c"] > k[-1]["o"]: side = "LONG"
+            elif closes[-1] < ema200[-1] and rsi[-1] > 60 and k[-1]["c"] < k[-1]["o"]: side = "SHORT"
+            if side:
+                alloc = state["m40_capital"] * 0.10
+                if alloc > 10 and state["m40_capital"] >= alloc:
+                    sl = k[-1]["c"] - 1.5*atr[-2] if side=="LONG" else k[-1]["c"] + 1.5*atr[-2]
+                    tp = k[-1]["c"] + 3*atr[-2] if side=="LONG" else k[-1]["c"] - 3*atr[-2]
+                    state["m40_capital"] -= alloc
+                    state["m40_pos"][sym] = {"side": side, "entry": k[-1]["c"], "invested": alloc, "sl": sl, "tp": tp}
+                    send_bale(f"🟢 M40 OPENED {side} | {sym} @ {k[-1]['c']}")
+
+    # ── Equity ──
+    state["total_equity"] = state["m31_capital"] + state["a20_capital"] + state["m40_capital"] + state.get("cash_capital", 0)
+    # D-392: track peak equity for Kill Switch
+    _cur = state["total_equity"]
+    state["peak_equity"] = max(state.get("peak_equity", _cur), _cur)
+
+    state["last_run"] = datetime.now(timezone.utc).isoformat()
+
+    if save_to_github(STATE_FILE, state, sha):
+        roi = ((state["total_equity"] - INITIAL_CAPITAL) / INITIAL_CAPITAL) * 100
+        print(f"✅ Equity: {state['total_equity']:.2f} USDT | ROI: {roi:+.2f}%")
+        print(f"   M31: ${state['m31_capital']:.2f} | A20: ${state['a20_capital']:.2f} | M40: ${state['m40_capital']:.2f}")
+
+    # (active_weights loaded at start of main - D-389)
+if __name__ == "__main__":
+    main()
