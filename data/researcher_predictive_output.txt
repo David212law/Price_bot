@@ -5,34 +5,35 @@
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 TMN: 614 candidates (306 + 258 unified)
   ✅ Fixed test set: 2026-08-01 → 2026-11-15 (107 days)
-  🧬 BULL: 5 uncorrelated (from 317 final)
-      wallex::bb10_1.5::ALL: 0.438
+  🧬 BULL: 5 uncorrelated (from 318 final)
+      wallex::bb10_1.5::ALL: 0.439
       wallex::bb30_1.5::ALL: 0.281
       rsi_fast_5_30: 0.134
       btfd5_h5: 0.086
       bh_BNB: 0.060
-  🧬 BULL_STRONG: 4 uncorrelated (from 210 final)
-      bb30_1.5: 0.593
-      wallex::bb20_2.5::ALL: 0.352
-      wallex::bh_AVAX::ALL: 0.035
-      wallex::bh_BNB::ALL: 0.020
-  🧬 FLAT: 4 uncorrelated (from 93 final)
-      bb15_1.5: 0.458
-      bb20_2: 0.359
-      zscore_10_1.5: 0.142
-      rsi7_40: 0.041
-  🧬 BULL_STRONG: 5 uncorrelated (from 166 final)
-      bb10_1.5: 0.608
-      rsi7_40: 0.364
-      rsi_fast_10_25: 0.019
-      rsi21_30: 0.006
-      wallex::rsi14_20::ALL: 0.003
-  🧬 FLAT: 5 uncorrelated (from 79 final)
-      bh_TRX: 0.343
-      wallex::bb20_2::ALL: 0.332
-      bb30_2.5: 0.146
-      ma20_50_t1: 0.112
-      btfd20_h5: 0.067
+  🧬 BULL_STRONG: 5 uncorrelated (from 214 final)
+      bb30_1.5: 0.560
+      wallex::bb20_2.5::ALL: 0.332
+      eq5: 0.046
+      wallex::bh_AVAX::ALL: 0.038
+      wallex::bh_BNB::ALL: 0.023
+  🧬 FLAT: 4 uncorrelated (from 100 final)
+      bb15_1.5: 0.504
+      bb20_1.5: 0.295
+      zscore_10_1.5: 0.156
+      rsi7_40: 0.045
+  🧬 BULL_STRONG: 5 uncorrelated (from 164 final)
+      bb10_1.5: 0.571
+      rsi7_40: 0.338
+      rsi14_40: 0.071
+      rsi_fast_10_25: 0.015
+      rsi21_30: 0.005
+  🧬 FLAT: 5 uncorrelated (from 80 final)
+      wallex::bb20_2::ALL: 0.353
+      bh_TRX: 0.274
+      bb30_2.5: 0.191
+      ma20_50_t1: 0.114
+      btfd20_h5: 0.068
   🧬 BULL_NORMAL: 15 uncorrelated (from 174 final)
       bb15_1.5: 0.300
       rsi7_40: 0.200
@@ -45,10 +46,10 @@
       bh_ETH: 0.015
       rsi28_40: 0.015
       mom250_t4_no: 0.015
+      eq5: 0.015
       wallex::ma100_200_t5::ALL: 0.015
       wallex::bb10_2.5::ALL: 0.015
       wallex::brk200_t3::ALL: 0.015
-      eq8: 0.015
   🧬 BULL_PARABOLIC: 9 uncorrelated (from 46 final)
       wallex::bb15_1.5::ALL: 0.300
       wallex::bb20_1.5::ALL: 0.200
@@ -57,10 +58,10 @@
       rsi14_40: 0.100
       grid_BTC_95: 0.037
       wallex::ma20_50_t3::ALL: 0.037
-      ma20_50_t1: 0.037
       rsi14_35: 0.037
-  🧬 BULL_STRONG: 18 uncorrelated (from 121 final)
-      wallex::bb10_1.5::ALL: 0.300
+      ma20_50_t1: 0.037
+  🧬 BULL_STRONG: 19 uncorrelated (from 126 final)
+      wallex::bb10_2::ALL: 0.300
       bb15_1.5: 0.200
       bb10_2: 0.150
       zscore_20_2.0: 0.100
@@ -71,95 +72,95 @@
       bh_BNB: 0.011
       rsi14_40: 0.011
       wallex::rsi14_35::ALL: 0.011
-      rsi14_20: 0.011
       ma30_90_t3: 0.011
+      rsi14_20: 0.011
       bh_TRX: 0.011
       eq2: 0.011
       combo_AND_mom5_t2_ma_mom5_t3_ma: 0.011
       combo_AND_mom5_t2_no_mom5_t4_no: 0.011
+      bh_AVAX: 0.011
       vwap_rev_20: 0.011
-  🧬 FLAT_NORMAL: 15 uncorrelated (from 397 final)
+  🧬 FLAT_NORMAL: 15 uncorrelated (from 389 final)
       bh_BTC: 0.300
       wallex::bb30_1.5::ALL: 0.200
       bh_TRX: 0.150
       bh_BNB: 0.100
       ma100_200_t3: 0.100
       bb40_1.5: 0.015
-      wallex::bb10_2::ALL: 0.015
       mom250_t4_no: 0.015
-      eq5: 0.015
+      wallex::bb10_2::ALL: 0.015
+      eq10: 0.015
       rsi_fast_5_30: 0.015
       mom180_t2_no: 0.015
       zscore_20_1.5: 0.015
-      brk150_t5: 0.015
       wallex::eq8::ALL: 0.015
+      brk150_t5: 0.015
       eq2: 0.015
 ✅ TMN: 185 assets
   🧬 Added 56 combo strategies
   ✅ Unified DB: 1658 strategies with returns (out of 3589 total)
   📊 USDT: 614 candidates (306 + 258 unified)
   ✅ Fixed test set: 2026-08-01 → 2026-11-15 (107 days)
-  🧬 BULL: 15 uncorrelated (from 258 final)
+  🧬 BULL: 15 uncorrelated (from 261 final)
       wallex::bb15_1.5::ALL: 0.300
       bb30_1.5: 0.200
       bb40_1.5: 0.150
       bb30_2: 0.100
       wallex::bb20_2.5::ALL: 0.100
       btfd5_h5: 0.015
-      wallex::bh_TRX::ALL: 0.015
       zscore_10_1.5: 0.015
       btfd20_h5: 0.015
+      wallex::bh_TRX::ALL: 0.015
       zscore_20_2.0: 0.015
       zscore_10_2.0: 0.015
-      btfd15_h5: 0.015
       rsi_fast_5_30: 0.015
+      btfd15_h5: 0.015
       btfd30_h5: 0.015
       wallex::brk200_t2::ALL: 0.015
-  🧬 BULL_STRONG: 14 uncorrelated (from 74 final)
+  🧬 BULL_STRONG: 15 uncorrelated (from 75 final)
       bb40_1.5: 0.300
-      bb40_2: 0.200
-      bb30_2: 0.150
-      bb30_1.5: 0.100
+      bb30_2: 0.200
+      bb40_2: 0.150
+      bb15_1.5: 0.100
       bb40_2.5: 0.100
-      zscore_20_2.0: 0.017
-      rsi_fast_5_30: 0.017
-      bh_DOGE: 0.017
-      zscore_10_2.0: 0.017
-      rsi7_40: 0.017
-      bh_SOL: 0.017
-      bh_AVAX: 0.017
-      bh_BNB: 0.017
-      bh_BTC: 0.017
-  🧬 FLAT: 17 uncorrelated (from 160 final)
+      zscore_20_2.0: 0.015
+      rsi_fast_5_30: 0.015
+      bh_DOGE: 0.015
+      zscore_10_2.0: 0.015
+      bh_SOL: 0.015
+      bh_BNB: 0.015
+      rsi7_40: 0.015
+      bh_AVAX: 0.015
+      bh_BTC: 0.015
+      wallex::rsi14_40::ALL: 0.015
+  🧬 FLAT: 15 uncorrelated (from 178 final)
       bb15_1.5: 0.300
       bb15_2.5: 0.200
       rsi7_30: 0.150
       bb15_3: 0.100
       btfd15_h5: 0.100
-      bb10_2.5: 0.013
-      bb40_3.5: 0.013
-      rsi7_40: 0.013
-      zscore_10_2.0: 0.013
-      rsi7_20: 0.013
-      rsi_fast_10_30: 0.013
-      wallex::mom250_t5_no::ALL: 0.013
-      wallex::ma20_100_t3::ALL: 0.013
-      wallex::rsi14_40::ALL: 0.013
-      rsi_fast_10_25: 0.013
-      rsi14_30: 0.013
-      ma100_200_t3: 0.013
-  🧬 BULL_STRONG: 5 uncorrelated (from 159 final)
-      wallex::bb20_2::ALL: 0.315
-      rsi_fast_7_30: 0.242
-      wallex::rsi14_40::ALL: 0.162
-      wallex::rsi14_30::ALL: 0.158
-      wallex::rsi14_20::ALL: 0.124
+      bb40_3.5: 0.015
+      rsi7_40: 0.015
+      zscore_10_2.0: 0.015
+      bb40_3: 0.015
+      wallex::ma20_100_t5::ALL: 0.015
+      rsi_fast_10_30: 0.015
+      rsi7_20: 0.015
+      wallex::mom250_t5_no::ALL: 0.015
+      wallex::rsi14_40::ALL: 0.015
+      rsi_fast_10_25: 0.015
+  🧬 BULL_STRONG: 5 uncorrelated (from 156 final)
+      wallex::bb20_2::ALL: 0.341
+      wallex::rsi14_40::ALL: 0.192
+      wallex::rsi14_30::ALL: 0.191
+      rsi_fast_7_25: 0.147
+      wallex::rsi14_20::ALL: 0.130
   🧬 FLAT: 5 uncorrelated (from 26 final)
-      bb20_1.5: 0.365
-      bb15_3: 0.255
-      bb15_2.5: 0.225
-      zscore_20_2.0: 0.134
-      wallex::bh_BNB::ALL: 0.020
+      bb20_1.5: 0.342
+      bb15_3: 0.264
+      bb15_2.5: 0.258
+      zscore_20_2.0: 0.116
+      wallex::bh_BNB::ALL: 0.021
   🧬 BULL_CALM: 8 uncorrelated (from 163 final)
       bb15_1.5: 0.300
       brk20_t1: 0.200
@@ -182,13 +183,13 @@
       rsi14_35: 0.021
       rsi28_25: 0.021
       zscore_20_1.5: 0.021
-  🧬 FLAT_NORMAL: 9 uncorrelated (from 297 final)
+  🧬 FLAT_NORMAL: 9 uncorrelated (from 296 final)
       bb10_1.5: 0.300
       wallex::bb20_1.5::ALL: 0.200
-      wallex::bb30_2::ALL: 0.150
+      bb15_2: 0.150
       zscore_10_1.5: 0.100
-      zscore_20_2.0: 0.100
-      zscore_10_2.0: 0.037
+      zscore_10_2.0: 0.100
+      zscore_20_2.0: 0.037
       rsi_fast_5_30: 0.037
       wallex::rsi7_20::ALL: 0.037
       btfd15_h5: 0.037
