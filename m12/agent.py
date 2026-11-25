@@ -20,6 +20,7 @@ def find_py_files():
     out = []
     for p in REPO.rglob("*.py"):
         if any(s in p.parts for s in SKIP_DIRS): continue
+        if "agent_backup" in p.parts or ".bak" in p.name: continue
         if p.name.startswith("agent"): continue
         out.append(p)
     return sorted(out)
