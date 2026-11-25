@@ -258,14 +258,18 @@ def _backup(path):
 
 def _restore(path):
     src = BACKUP_DIR / path.relative_to(REPO)
-    if src.exists(): shutil.copy2(src, path)
+    if src.exists() and path.exists():
+        try: shutil.copy2(src, path)
+        except: pass
 
 def _rollback_all():
     if not BACKUP_DIR.exists(): return 0
     n = 0
     for f in BACKUP_DIR.rglob("*.py"):
         target = REPO / f.relative_to(BACKUP_DIR)
-        if target.exists(): shutil.copy2(f, target); n += 1
+        if target.exists() and f.exists():
+            try: shutil.copy2(f, target); n += 1
+            except: pass
     return n
 
 def fix_eof_newline(path):
@@ -411,6 +415,29 @@ def check_sleeping_bots():
         return True, "no inactive bots detected"
     return True, "INFO inactive: " + "; ".join(bots[:6])
 
+
+def fix_silent_fail(path):
+    original = path.read_text()
+    new = re.sub(r'except[^:\n]*:\s*\n?\s*pass\b',
+        'except Exception as _e: print(f"caught: {_e}")', original)
+    if new != original:
+        try: ast.parse(new)
+        except: return False
+        path.write_text(new); return True
+    return False
+
+def fix_requests_timeout(path):
+    original = path.read_text()
+    if 'requests' not in original: return False
+    new = re.sub(r'(requests\.(?:get|post)\([^)]*?)\)(\s*(?:\n|$|#))',
+        lambda m: m.group(1) + ', timeout=15)' + m.group(2) if 'timeout' not in m.group(1) else m.group(0),
+        original, flags=re.M)
+    if new != original:
+        try: ast.parse(new)
+        except: return False
+        path.write_text(new); return True
+    return False
+
 SAFE_FIXERS = [
     ("eof_newline", fix_eof_newline),
     ("blank_lines", fix_blank_lines),
@@ -418,6 +445,8 @@ SAFE_FIXERS = [
     ("bare_except", fix_bare_except),
     ("dict_keys", fix_dict_keys_membership),
     ("not_in", fix_not_in),
+    ("silent_fail", fix_silent_fail),
+    ("requests_timeout", fix_requests_timeout),
     ("while_1", fix_while_1),
     ("len_truthiness", fix_len_truthiness),
     ("verbose_true", fix_verbose_true),
@@ -447,6 +476,116 @@ def _make_dry_run_noop():
     pathlib.Path.write_text = noop
 
 
+
+def check_bot_activity():
+    """Scan all state*.json — trades in last 30 days."""
+    import time
+    now = time.time()
+    results = []
+    for st in REPO.rglob("state*.json"):
+        if "archive" in str(st) or ".git" in str(st): continue
+        try:
+            d = json.loads(st.read_text())
+            hist = d.get("history", [])
+            recent = [h for h in hist if isinstance(h.get("time"), (int,float)) and (now - h["time"]/1000) < 30*86400]
+            last_t = max([h["time"] for h in hist if isinstance(h.get("time"),(int,float))], default=0)
+            days = (now - last_t/1000)/86400 if last_t else None
+            results.append({"file": str(st.relative_to(REPO)),
+                "trades_30d": len(recent), "total": len(hist),
+                "last_days": round(days,1) if days else None,
+                "equity": d.get("equity", 0)})
+        except: pass
+    return results
+
+def check_calc_violations():
+    """Inline math in m12/bot/ (should be in calc.py)."""
+    violations = []
+    pats = [
+        (r'\bqty\s*\*\s*price', 'qty*price (use cost_basis)'),
+        (r'\bprice\s*\*\s*qty', 'price*qty (use cost_basis)'),
+        (r'entry\s*\*\s*\(1\s*[+\-]', 'entry*(1+/-) (use sl_tp)'),
+        (r'capital\s*\*\s*\w+_pct', 'capital*pct (use position_qty)'),
+    ]
+    for pyf in (ROOT/"bot").rglob("*.py"):
+        try: c = pyf.read_text()
+        except: continue
+        for pat, msg in pats:
+            for m in re.finditer(pat, c):
+                ln = c[:m.start()].count('\n')+1
+                violations.append(f"{pyf.name}:{ln} {msg}")
+    return violations[:10]
+
+def check_data_freshness():
+    """data/*.json older than 7 days."""
+    import time
+    now = time.time()
+    stale = []
+    for f in (REPO/"data").glob("*.json"):
+        try:
+            days = (now - f.stat().st_mtime)/86400
+            if days > 7: stale.append(f"{f.name}: {days:.0f}d")
+        except: pass
+    return stale[:5]
+
+def check_silent_fails():
+    """except: pass or except Exception: pass."""
+    silent = []
+    for pyf in REPO.rglob("*.py"):
+        if "agent" in pyf.name or "archive" in str(pyf): continue
+        try: c = pyf.read_text()
+        except: continue
+        for m in re.finditer(r'except[^:\n]*:\s*\n?\s*pass\b', c):
+            ln = c[:m.start()].count('\n')+1
+            silent.append(f"{pyf.relative_to(REPO)}:{ln}")
+    return silent[:10]
+
+def check_dead_functions():
+    """Functions defined but never called ANYWHERE in project."""
+    # Collect all .py content once
+    all_content = ""
+    for pyf in REPO.rglob("*.py"):
+        if "archive" in str(pyf) or ".git" in str(pyf): continue
+        try: all_content += pyf.read_text() + "\n"
+        except: pass
+    dead = []
+    for pyf in ROOT.rglob("*.py"):
+        if any(x in pyf.name for x in ("agent","test")): continue
+        try: tree = ast.parse(pyf.read_text())
+        except: continue
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                n = node.name
+                if n.startswith("_") or n in ("main","__init__"): continue
+                # Count calls project-wide (not definition)
+                if all_content.count(f"{n}(") <= 1:
+                    dead.append(f"{pyf.name}::{n}")
+    return dead[:10]
+
+def run_project_audit():
+    """Per-bot scorecard — what's broken and why."""
+    print("=" * 72)
+    print(" PROJECT AUDIT")
+    print("=" * 72)
+    print("\n[1] BOT ACTIVITY (30d):")
+    for b in check_bot_activity():
+        s = "OK " if b["trades_30d"] > 0 else "DEAD"
+        ld = f"last={b['last_days']}d" if b["last_days"] else "never traded"
+        print(f"  {s} {b['file']:45s} 30d={b['trades_30d']:2d} {ld:15s} eq=${b['equity']:.0f}")
+    print("\n[2] CALC VIOLATIONS (inline math in bot/):")
+    v = check_calc_violations()
+    for vv in (v or ["none"]): print(f"  {'x' if v else 'OK'} {vv}")
+    print("\n[3] DATA FRESHNESS:")
+    for s in (check_data_freshness() or ["all fresh"]): print(f"  {s}")
+    print("\n[4] SILENT FAILS:")
+    sf = check_silent_fails()
+    for s in (sf or ["none"]): print(f"  {'x' if sf else 'OK'} {s}")
+    print("\n[5] DEAD FUNCTIONS:")
+    d = check_dead_functions()
+    for dd in (d or ["none"])[:5]: print(f"  ! {dd}")
+    if len(d) > 5: print(f"  ... +{len(d)-5} more")
+    print("\n" + "=" * 72)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--allow-dirty", action="store_true")
@@ -461,11 +600,15 @@ def main():
     ap.add_argument("--smoke", action="store_true", help="Run runtime smoke on scripts/exchanges after safe-fix")
     ap.add_argument("--rollback", action="store_true")
     ap.add_argument("--dry-run", action="store_true", help="No writes, preview only")
-    ap.add_argument("--staged", action="store_true", help="Check only git-staged .py + m12 core")
+    ap.add_argument("--staged", action="store_true")
+    ap.add_argument("--audit-project", action="store_true", help="Full per-bot audit")
     args = ap.parse_args()
     if args.dry_run:
         print("[DRY-RUN] no writes will happen")
         _make_dry_run_noop()
+    if args.audit_project:
+        run_project_audit()
+        return 0
     if args.rollback:
         n = _rollback_all()
         print(f"Restored {n} files")
