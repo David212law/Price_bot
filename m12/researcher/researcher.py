@@ -13,6 +13,7 @@ CSV_DIR = os.path.join(_HERE, "research")
 CONFIG_FILE = os.path.join(_CORE, "config.json")
 DATA_DIR = os.path.join(_ROOT, "data")
 
+SPLIT_PCT = 0.7  # 70% train / 30% OOS
 FEE = {"TMN": 0.006, "USDT": 0.0026, "GLOBAL": 0.001}
 MAX_SYMBOLS = 185
 SPREAD = 0.005
@@ -68,6 +69,7 @@ def evaluate(symbols, btc_regimes, fee, n_btc, oos_start_idx=None):
                 if entry is None: continue
                 idx = int((entry - START_MS) / DAY_MS)
                 if idx < 0 or idx >= n_btc: continue
+                if oos_start_idx is not None and idx >= oos_start_idx: continue
                 r = btc_regimes[idx]
                 if r is None: continue
                 net = t["ret"] - fee
@@ -119,6 +121,8 @@ def main():
     tmn = _load(os.path.join(DATA_DIR, "wallex_tmn_all.json"), "TMN")
     if "BTC" not in tmn: print("BTC missing"); return
     btc = tmn["BTC"]; btc_r = label_regimes(btc); n = len(btc)
+    split_idx = int(n * SPLIT_PCT)
+    print(f'TRAIN=0..{split_idx} OOS={split_idx}..{n}')
     print(f"BTC: {n} days | BULL={btc_r.count('BULL')} FLAT={btc_r.count('FLAT')} BEAR={btc_r.count('BEAR')} CRASH={btc_r.count('CRASH')}\n")
     markets = {
         "TMN": dict(sorted(tmn.items(), key=lambda x: -len(x[1]))[:MAX_SYMBOLS]),
@@ -129,7 +133,7 @@ def main():
     for mname, syms in markets.items():
         if not syms: all_config[mname] = {}; print(f"[{mname}] no data"); continue
         print(f"[{mname}] {len(syms)} symbols...")
-        agg, n_ok = evaluate(syms, btc_r, FEE[mname], n)
+        agg, n_ok = evaluate(syms, btc_r, FEE[mname], n, oos_start_idx=split_idx)
         print(f"  aligned: {n_ok}/{len(syms)}")
         for regime in ["BULL","FLAT","BEAR","CRASH"]:
             cnt, best = 0, None
