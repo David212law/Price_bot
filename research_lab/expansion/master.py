@@ -524,7 +524,7 @@ STATES = ["candidate", "confirmed", "paper_ready", "paper_active"]
 def load_lifecycle():
     if LIFECYCLE_FILE.exists():
         try: return json.loads(LIFECYCLE_FILE.read_text())
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
     return {"strategies": {}}
 
 def save_lifecycle(data):

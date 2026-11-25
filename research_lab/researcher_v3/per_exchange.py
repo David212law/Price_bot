@@ -16,7 +16,7 @@ def load_returns_for_exchange(exchange):
             if len(rets) >= 60:
                 name = f.stem
                 result[name] = rets
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     return result
 
 def sharpe(vals, tpy=365):

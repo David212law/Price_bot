@@ -76,8 +76,7 @@ def load_state():
         try:
             with open(STATE_FILE) as f:
                 return json.load(f)
-        except Exception:
-            pass
+        except Exception as _e: print(f"caught: {_e}")
     return {
         "components": {
             c["name"]: {

@@ -286,7 +286,7 @@ def build_target_portfolio_v2(config, df, prices):
             liquid_sig = signals[[c for c in signals.index if c in LIQUID_ASSETS]]
             # top 3 assets با signal=1
             active = liquid_sig[liquid_sig == 1].head(3)
-            if len(active) == 0:
+            if not active:
                 continue
             per_asset = weight / len(active)
             for asset in active.index:

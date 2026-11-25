@@ -66,8 +66,7 @@ def load_registry():
     if REGISTRY_PATH.exists():
         try:
             return json.loads(REGISTRY_PATH.read_text())
-        except Exception:
-            pass
+        except Exception as _e: print(f"caught: {_e}")
     return DEFAULT_REGISTRY
 
 def save_registry(registry):

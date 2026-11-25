@@ -102,7 +102,7 @@ def load_state(bot_name):
     f = STATE_DIR / f"{bot_name}.json"
     if f.exists():
         try: return json.loads(f.read_text())
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     return {
         "bot_name": bot_name,
         "initial_capital": CONFIGS[bot_name]["capital"],

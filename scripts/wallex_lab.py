@@ -24,7 +24,7 @@ def is_price_fresh(df, asset, max_age_days=7):
     if asset not in df.columns:
         return False
     series = df[asset].dropna()
-    if len(series) == 0:
+    if not series:
         return False
     last_date = series.index[-1]
     age = (df.index[-1] - last_date).days
@@ -264,7 +264,7 @@ def main():
     print(f"Date: {today}")
 
     regime_series = detect_regime_15(df)
-    regime = regime_series.iloc[-1] if len(regime_series) > 0 else "FLAT_NORMAL"
+    regime = regime_series.iloc[-1] if regime_series else "FLAT_NORMAL"
     print(f"Detected Regime: {regime}")
 
     # ── IRAN CURRENCY CRISIS DETECTION (Survival Mode 2D) ──

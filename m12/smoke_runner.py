@@ -6,14 +6,12 @@ import pathlib
 import os
 from typing import Tuple, Optional
 
-
 def _find_repo_root_from_target(p: pathlib.Path) -> pathlib.Path:
     p = p.resolve()
     for parent in [p] + list(p.parents):
         if (parent / "m12").exists():
             return parent
     return p.parent
-
 
 def smoke_import(
     path: str,

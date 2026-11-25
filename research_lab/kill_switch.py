@@ -33,18 +33,18 @@ def send_bale(msg):
     if not BALE_TOKEN or not BALE_CHAT:
         print(f"[BALE] {msg[:80]}"); return
     try: requests.post(f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage", json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
 
 def load_state(path):
     if os.path.exists(path):
         try:
             with open(path) as f: return json.load(f)
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     try:
         r = requests.get(f"https://api.github.com/repos/{GH_REPO}/contents/{path}", headers={"Authorization": f"token {GH_TOKEN}"}, timeout=15)
         if r.status_code == 200:
             return json.loads(base64.b64decode(r.json()["content"]).decode("utf-8"))
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return None
 
 def check_leg_dd(st):
@@ -82,7 +82,7 @@ def check_data_freshness(st, path=None):
             t = datetime.fromisoformat(last_run.replace("Z", "+00:00"))
             hours_old = (datetime.now(timezone.utc) - t).total_seconds() / 3600
             return hours_old > DATA_STALE_HOURS
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     # Fallback: file mtime
     if path and os.path.exists(path):
         mtime = datetime.fromtimestamp(os.path.getmtime(path), tz=timezone.utc)

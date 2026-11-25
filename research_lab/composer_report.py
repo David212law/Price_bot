@@ -47,7 +47,7 @@ def _audit(v, regime, exchange, state):
         "n_regime": m.get("n") if m else 0,
         "pooled_n": len(_pooled_get(exchange, st, state)),
     }
-    return len(fails) == 0, fails, detail
+    return not fails, fails, detail
 
 def generate():
     state = json.load(open(os.path.join(PROFILE_DIR, "state.json")))

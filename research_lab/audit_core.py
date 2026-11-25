@@ -24,7 +24,7 @@ def extract_rates(data):
         for key in ["fundingRate","rate","funding_rate","value","funding"]:
             if key in r:
                 try: rate = float(r[key]); break
-                except Exception: pass
+                except Exception as _e: print(f"caught: {_e}")
         t = 0
         for key in ["time","t","fundingTime","timestamp","created_at","timepoint"]:
             if key in r:
@@ -372,7 +372,7 @@ def no_lookahead_check():
             # Also catch any [i+N] where N>=2 (unambiguous future)
             for m in re.finditer(r'candles\[i\s*\+\s*[2-9]', content):
                 issues.append((fp, m.group()))
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     return {"files_checked": len(glob.glob("strategies/library/*.py")),
             "issues": issues, "verdict": "PASS" if not issues else "FAIL"}
 

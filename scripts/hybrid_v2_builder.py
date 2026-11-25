@@ -96,8 +96,7 @@ def main():
             if daily.abs().sum() > 0:
                 daily_rets[name] = daily
                 raw_trades[name] = trades
-        except Exception:
-            pass
+        except Exception as _e: print(f"caught: {_e}")
 
     print(f"✅ {len(daily_rets)} استراتژی با returns")
 

@@ -27,7 +27,7 @@ def fetch_funding(symbol):
         r = requests.post(url, json=payload, timeout=15)
         if r.status_code == 200:
             return sum(float(rec["fundingRate"]) for rec in r.json())
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return 0.0
 
 def load_json(path):
@@ -52,7 +52,7 @@ def load_active_weights(exchange, regime=None):
         if not ex_data:
             return None
         regime_keys = {"TREND","RANGE","NEUTRAL","UNKNOWN"}
-        if any(k in regime_keys for k in ex_data.keys()):
+        if any(k in regime_keys for k in ex_data):
             if regime and regime in ex_data:
                 return ex_data[regime]
             for fb in ("UNKNOWN","TREND"):

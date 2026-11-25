@@ -41,7 +41,7 @@ def load_profiler_strategies():
                 if len(rets) >= 60:
                     strategies[f"M31_HEDGED_{exch}"] = {"returns": rets, "exchange": exch}
                     break
-            except Exception: pass
+            except Exception as _e: print(f"caught: {_e}")
 
     # Load all valid from profiler
     for key, v in done.items():
@@ -62,7 +62,7 @@ def load_profiler_strategies():
                 name = f"{strat}_{sym}"
                 if name not in strategies:
                     strategies[name] = {"returns": rets, "exchange": exch, "symbol": sym}
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     return strategies
 
 def compute_all_metrics(strategies):
@@ -189,5 +189,5 @@ if __name__ == "__main__":
         try:
             from .bale_reporter import send_bale
             send_bale(f"❌ Researcher v3 failed: {str(e)[:200]}")
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
         sys.exit(1)

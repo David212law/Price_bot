@@ -112,7 +112,7 @@ def load_all_strategies():
                 if len(rets) >= 60:
                     strategies[f"M31_{exch}"] = {"returns": rets, "exchange": exch}
                     break
-            except Exception: pass
+            except Exception as _e: print(f"caught: {_e}")
 
     # From profiler
     if STATE_PATH.exists():
@@ -136,7 +136,7 @@ def load_all_strategies():
                     name = f"{s}_{sym}"
                     if name not in strategies:
                         strategies[name] = {"returns": rets, "exchange": exch, "symbol": sym}
-            except Exception: pass
+            except Exception as _e: print(f"caught: {_e}")
     return strategies
 
 def load_prices_from_cache():

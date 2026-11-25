@@ -11,7 +11,7 @@ def fetch_sym(sym, start, end):
         if d.get("s") == "ok" and d.get("t"):
             data = {datetime.fromtimestamp(d["t"][j], tz=timezone.utc).strftime("%Y-%m-%d"): float(d["c"][j]) for j in range(len(d["t"]))}
             return sym, data
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return sym, None
 
 def main():

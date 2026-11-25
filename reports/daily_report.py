@@ -43,7 +43,7 @@ def main():
             name = f.split("/")[-1].replace(".json", "")
             m31_total += eq
             print(f"  {name:<45} ${eq:>10.2f}")
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     print(f"  {'M31 Total':<45} ${m31_total:>10.2f}")
 
     # 2. Predictive Bots

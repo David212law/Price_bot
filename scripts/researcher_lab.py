@@ -260,7 +260,7 @@ def benjamini_hochberg(p_values, q=0.10):
     return set(sorted_idx[:max_k + 1])
 
 def stats(daily):
-    if len(daily) == 0: return 0, 0, 0
+    if not daily: return 0, 0, 0
     # Clip extreme daily returns (Wallex Iran can have >100% daily moves)
     daily = daily.clip(lower=-0.1, upper=0.1)
     eq = (1 + daily).cumprod()
@@ -655,7 +655,7 @@ def load_profiler_returns_as_df(market, dates_index):
                 s = s.reindex(dates_index).fillna(0.0)
                 if s.abs().sum() > 0:
                     cols[fname] = s
-            except Exception: pass
+            except Exception as _e: print(f"caught: {_e}")
 
     if cols:
         df = pd.DataFrame(cols)
@@ -717,7 +717,7 @@ def process_market(name, df, fee, max_strat_override=None):
                 series = series.reindex(df.index).fillna(0.0)
                 if series.abs().sum() > 0:
                     rows.append((sid, series))
-            except Exception: pass
+            except Exception as _e: print(f"caught: {_e}")
 
         if rows:
             profiler_df = pd.DataFrame(dict(rows))
@@ -831,7 +831,7 @@ def load_all_profiler_strategies():
                 continue
             name = f"P_{strat}_{sym}"
             loaded[name] = {"returns": rets, "sharpe_historical": sr}
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
 
     print(f"  ✅ Loaded {len(loaded)} profiler strategies (NO filter)")
     print(f"     Skipped: {skipped_no_file} (no file), {skipped_short} (too short)")

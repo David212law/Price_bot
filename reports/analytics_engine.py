@@ -13,7 +13,7 @@ def load_data(filename):
     if os.path.exists(filename):
         try:
             with open(filename, 'r') as f: return json.load(f)
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     try:
         url = f"https://api.github.com/repos/{GH_REPO}/contents/{filename}"
         headers = {"Authorization": f"token {GH_TOKEN}"} if GH_TOKEN else {}
@@ -21,7 +21,7 @@ def load_data(filename):
         if r.status_code == 200:
             data = r.json()
             return json.loads(base64.b64decode(data["content"]).decode("utf-8"))
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return {}
 
 def analyze_m11_hl_hyperliquid():

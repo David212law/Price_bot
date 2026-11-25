@@ -37,7 +37,7 @@ def send_bale(msg):
         print(f"[BALE] {msg[:80]}")
         return
     try: requests.post(f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage", json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
 
 def load_from_github(filename):
     """D-503: local disk read (migrated from GitHub API to avoid 422/rate-limit)"""
@@ -69,7 +69,7 @@ def fetch_funding_rate(symbol):
         if r.status_code == 200:
             d = r.json().get("data", {})
             return float(d.get("value", 0)), d.get("timePoint", d.get("fundingTime", 0))
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return 0.0, 0
 
 def fetch_klines(symbol, limit=300):
@@ -79,7 +79,7 @@ def fetch_klines(symbol, limit=300):
         r = requests.get(f"https://api-futures.kucoin.com/api/v1/kline/query?symbol={symbol}&granularity=240&from={start}&to={now}", headers=HEADERS, timeout=15)
         if r.status_code == 200:
             return [{"t": int(c[0]), "o": float(c[1]), "h": float(c[2]), "l": float(c[3]), "c": float(c[4]), "v": float(c[5])} for c in r.json().get("data", [])]
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return []
 
 def calc_atr(candles, period=14):
@@ -154,7 +154,7 @@ def load_active_weights(exchange, regime=None):
         if not ex_data:
             return None
         regime_keys = {"TREND","RANGE","NEUTRAL","UNKNOWN"}
-        if any(k in regime_keys for k in ex_data.keys()):
+        if any(k in regime_keys for k in ex_data):
             if regime and regime in ex_data:
                 return ex_data[regime]
             for fb in ("UNKNOWN","TREND"):

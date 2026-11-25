@@ -79,7 +79,7 @@ def fetch_klines(symbol, interval="4h", limit=300):
         r = requests.get(url, timeout=15)
         if r.status_code == 200:
             return [{"t": int(k[0]), "o": float(k[1]), "h": float(k[2]), "l": float(k[3]), "c": float(k[4]), "v": float(k[5])} for k in r.json()]
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return []
 
 def fetch_latest_funding(symbol):
@@ -89,7 +89,7 @@ def fetch_latest_funding(symbol):
         if r.status_code == 200:
             data = r.json()
             if data: return data[0]["fundingTime"], float(data[0]["fundingRate"])
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return 0, 0.0
 
 def calc_ema(closes, period):
@@ -172,7 +172,7 @@ def fetch_funding_interval(symbol):
             data = r.json()
             if data:
                 return int(data[0].get("fundingIntervalHours", 8))
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
     return 8 # پیش‌فرض
 
 def load_active_weights(exchange, regime=None):
@@ -188,7 +188,7 @@ def load_active_weights(exchange, regime=None):
         if not ex_data:
             return None
         regime_keys = {"TREND","RANGE","NEUTRAL","UNKNOWN"}
-        if any(k in regime_keys for k in ex_data.keys()):
+        if any(k in regime_keys for k in ex_data):
             if regime and regime in ex_data:
                 return ex_data[regime]
             for fb in ("UNKNOWN","TREND"):
@@ -421,12 +421,10 @@ def main():
 if __name__ == "__main__":
     main()
 
-
 def __agent_probe_2026():
     x = None
-    if x == None:
+    if x is None:
         return 1
     try:
         pass
-    except:
-        pass
+    except Exception as _e: print(f"caught: {_e}")

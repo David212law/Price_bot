@@ -98,10 +98,8 @@ def update_signature_cache(state):
                 try:
                     mtime = os.path.getmtime(fp)
                     data_hash.update(f"{fp}:{mtime}".encode())
-                except Exception:
-                    pass
-    except Exception:
-        pass
+                except Exception as _e: print(f"caught: {_e}")
+    except Exception as _e: print(f"caught: {_e}")
     current_hash = data_hash.hexdigest()[:16]
 
     cache = {}

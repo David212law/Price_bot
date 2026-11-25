@@ -317,13 +317,13 @@ def combo_tests(port, m31_rets, keltner_rets):
             regime_issues.append(f"{regime}:port={port_sr_r:.1f}<m31={m31_sr_r:.1f}")
 
     return {
-        "dropout": {"pass": len(dropout_issues) == 0, "issues": dropout_issues},
+        "dropout": {"pass": not dropout_issues, "issues": dropout_issues},
         "weight_robustness": {"pass": worst_ratio >= 0.7, "worst_ratio": round(worst_ratio, 3)},
         "oos_vs_best": {"pass": port_test_sr >= best_comp_sr,
                         "port_test": round(port_test_sr, 2),
                         "best_comp": round(best_comp_sr, 2)},
         "diversification": {"pass": dr >= 1.05, "dr": round(dr, 3)},
-        "regime_conditional": {"pass": len(regime_issues) == 0, "issues": regime_issues},
+        "regime_conditional": {"pass": not regime_issues, "issues": regime_issues},
     }
 
 def main():

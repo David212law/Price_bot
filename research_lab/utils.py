@@ -75,5 +75,5 @@ def pooled_returns(exchange, strategy, state):
             r = json.load(open(fp))
             for d, val in r.items():
                 sums[d] += val; cnts[d] += 1
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     return {d: sums[d]/cnts[d] for d in sums if cnts[d] > 0}

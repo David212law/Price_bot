@@ -169,8 +169,7 @@ def fetch_funding_live(exchange, symbol, days=90):
                 if out:
                     _save_cache(exchange, symbol, "funding", out)
                     return out
-        except Exception as e:
-            pass
+        except Exception as _e: print(f"caught: {_e}")
         # Fallback: use local funding file
         local_path = ROOT / "exchanges" / "kucoin" / "data" / f"{symbol}_funding.json"
         if local_path.exists():
@@ -405,8 +404,7 @@ def main():
                 msg = "🚨 Live Analyzer Alert:\n" + "\n".join(alerts)
                 requests.post(f"https://tapi.bale.ai/bot{BALE_TOKEN}/sendMessage",
                               json={"chat_id": BALE_CHAT, "text": msg}, timeout=10)
-            except Exception:
-                pass
+            except Exception as _e: print(f"caught: {_e}")
 
     print()
     print("=" * 70)

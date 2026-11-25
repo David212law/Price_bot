@@ -112,7 +112,7 @@ def filter_momentum(returns, lookback=20):
     out = {}
     for i, d in enumerate(dates):
         past = [returns[dates[j]] for j in range(max(0, i - lookback), i)]
-        if not past or sum(past) / len(past) > 0:
+        if not past or sum(past) / past:
             out[d] = returns[d]
         else:
             out[d] = 0.0

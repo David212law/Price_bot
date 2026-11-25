@@ -134,8 +134,8 @@ def main():
     for name, r in good.items():
         if "trades" not in r: continue
         tr = pd.Series({pd.to_datetime(t, unit="ms"): ret for t, ret in r["trades"]})
-        daily = tr.resample("D").sum().fillna(0) if len(tr) > 0 else pd.Series(dtype=float)
-        if len(daily) > 0: daily_rets[name] = daily
+        daily = tr.resample("D").sum().fillna(0) if tr else pd.Series(dtype=float)
+        if daily: daily_rets[name] = daily
 
     selected = []
     if daily_rets:

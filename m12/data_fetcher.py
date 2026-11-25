@@ -17,7 +17,7 @@ def _read_cache(key, ttl=3600):
     except Exception: return None
 def _write_cache(key, data):
     try: json.dump(data, open(_cache_path(key), "w"))
-    except Exception: pass
+    except Exception as _e: print(f"caught: {_e}")
 
 def _to_candles(raw):
     """raw: list of {t, o, h, l, c} → normalized"""

@@ -104,7 +104,7 @@ def load_strategies():
                 if len(rets) >= 60:
                     strategies[f"M31_{exch}"] = rets
                     break
-            except Exception: pass
+            except Exception as _e: print(f"caught: {_e}")
     if STATE_PATH.exists():
         state = json.loads(STATE_PATH.read_text())
         for key, v in state.get("done", {}).items():
@@ -127,7 +127,7 @@ def load_strategies():
                     name = f"{s}_{sym}"
                     if name not in strategies:
                         strategies[name] = rets
-            except Exception: pass
+            except Exception as _e: print(f"caught: {_e}")
     return strategies
 
 def load_btc_prices():

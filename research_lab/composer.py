@@ -136,7 +136,7 @@ def notify_strict_approval(combo, exchange, regime):
         try:
             _req.post(f"https://tapi.bale.ai/bot{tok}/sendMessage",
                      json={"chat_id": chat, "text": msg}, timeout=20)
-        except Exception: pass
+        except Exception as _e: print(f"caught: {_e}")
     return True
 
 def apply_m31_fees(daily_rets, avg_hold_days=30, taker_fee=0.0005, slip=0.0005):
@@ -198,7 +198,7 @@ def test_component_dropout(components_data, weights, base_sharpe):
             issues.append(f"comp{i}: over-reliant (without SR={sr_without:.2f})")
     # D-482b: fail if any component is HARMFUL or over-reliant
     _fails = [x for x in issues if 'over-reliant' in x or 'HARMFUL' in x]
-    return {"pass": len(_fails) == 0,
+    return {"pass": not _fails,
             "issues": issues, "n_components": n}
 
 def test_weight_robustness(components_data, base_weights, base_sharpe, delta=0.20):
