@@ -165,7 +165,7 @@ HEALTH_FILE = ROOT / "agent_health.json"
 def _health_load():
     if HEALTH_FILE.exists():
         try: return json.loads(HEALTH_FILE.read_text())
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
     return {"config_history": [], "last_check": None, "known_issues": []}
 
 def _health_save(d): HEALTH_FILE.write_text(json.dumps(d, indent=2))
@@ -214,18 +214,18 @@ def check_project_health():
             recent = [h for h in hist if _within_hours(
                 datetime.datetime.fromtimestamp(h["time"]/1000).isoformat() if isinstance(h.get("time"), (int,float))
                 else str(h.get("time","")), 48)]
-            if len(hist) > 0 and len(recent) == 0:
+            if hist and not recent:
                 warns.append("no trades in 48h (regime=BEAR?)")
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
 
     # 4. M31 silent check
     m31_file = REPO/"exchanges"/"aster"/"state"/"m11_aster_paper_state.json"
     if m31_file.exists():
         try:
             d = json.loads(m31_file.read_text())
-            if len(d.get("history", [])) == 0:
+            if not d.get("history"):
                 warns.append("M31 never traded (legacy dead)")
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
 
     return issues, warns
 
@@ -261,7 +261,7 @@ def _restore(path):
     src = BACKUP_DIR / path.relative_to(REPO)
     if src.exists() and path.exists():
         try: shutil.copy2(src, path)
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
 
 def _rollback_all():
     if not BACKUP_DIR.exists(): return 0
@@ -270,7 +270,7 @@ def _rollback_all():
         target = REPO / f.relative_to(BACKUP_DIR)
         if target.exists() and f.exists():
             try: shutil.copy2(f, target); n += 1
-            except: pass
+            except Exception as _e: print(f"caught: {_e}")
     return n
 
 def fix_eof_newline(path):
@@ -495,7 +495,7 @@ def check_bot_activity():
                 "trades_30d": len(recent), "total": len(hist),
                 "last_days": round(days,1) if days else None,
                 "equity": d.get("equity", 0)})
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
     return results
 
 def check_calc_violations():
@@ -525,7 +525,7 @@ def check_data_freshness():
         try:
             days = (now - f.stat().st_mtime)/86400
             if days > 7: stale.append(f"{f.name}: {days:.0f}d")
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
     return stale[:5]
 
 def check_silent_fails():
@@ -547,7 +547,7 @@ def check_dead_functions():
     for pyf in REPO.rglob("*.py"):
         if "archive" in str(pyf) or ".git" in str(pyf): continue
         try: all_content += pyf.read_text() + "\n"
-        except: pass
+        except Exception as _e: print(f"caught: {_e}")
     dead = []
     for pyf in ROOT.rglob("*.py"):
         if any(x in pyf.name for x in ("agent","test")): continue

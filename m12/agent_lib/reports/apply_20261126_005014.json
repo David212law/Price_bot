@@ -1,0 +1,230 @@
+{
+  "run_id": "20261125T212014",
+  "started_at": "2026-11-25T21:20:14+00:00",
+  "finished_at": "2026-11-25T21:20:19+00:00",
+  "detectors": [
+    {
+      "name": "silent_fail",
+      "files_scanned": 30,
+      "violations": 8,
+      "errors": 0,
+      "duration_ms": 790.6
+    },
+    {
+      "name": "none_comparison",
+      "files_scanned": 30,
+      "violations": 0,
+      "errors": 0,
+      "duration_ms": 708.98
+    },
+    {
+      "name": "len_truthiness",
+      "files_scanned": 30,
+      "violations": 5,
+      "errors": 0,
+      "duration_ms": 711.31
+    },
+    {
+      "name": "while_one",
+      "files_scanned": 30,
+      "violations": 0,
+      "errors": 0,
+      "duration_ms": 708.85
+    }
+  ],
+  "violations": [
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 168,
+      "col": 8,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 219,
+      "col": 8,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 228,
+      "col": 8,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 264,
+      "col": 8,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 498,
+      "col": 8,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 528,
+      "col": 8,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 550,
+      "col": 8,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 273,
+      "col": 12,
+      "rule": "silent_fail",
+      "severity": "warning",
+      "message": "`except: pass` — خطا بی‌صدا نادیده گرفته می‌شه",
+      "auto_fixable": true,
+      "context": "except: pass",
+      "detector": "silent_fail"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 226,
+      "col": 15,
+      "rule": "len_truthiness",
+      "severity": "info",
+      "message": "`len(x) > 0` — می‌شه فقط `x`",
+      "auto_fixable": true,
+      "context": "if len(d.get(\"history\", [])) == 0:",
+      "detector": "len_truthiness"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 217,
+      "col": 15,
+      "rule": "len_truthiness",
+      "severity": "info",
+      "message": "`len(x) > 0` — می‌شه فقط `x`",
+      "auto_fixable": true,
+      "context": "if len(hist) > 0 and len(recent) == 0:",
+      "detector": "len_truthiness"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "lineno": 217,
+      "col": 33,
+      "rule": "len_truthiness",
+      "severity": "info",
+      "message": "`len(x) > 0` — می‌شه فقط `x`",
+      "auto_fixable": true,
+      "context": "if len(hist) > 0 and len(recent) == 0:",
+      "detector": "len_truthiness"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent_self_test.py",
+      "lineno": 57,
+      "col": 28,
+      "rule": "len_truthiness",
+      "severity": "info",
+      "message": "`len(x) > 0` — می‌شه فقط `x`",
+      "auto_fixable": true,
+      "context": "check(\"undefined detected\", len(un) > 0 and \"undefined_var\" in [u[1] for u in un])",
+      "detector": "len_truthiness"
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent/detectors/ast_detector.py",
+      "lineno": 230,
+      "col": 24,
+      "rule": "len_truthiness",
+      "severity": "info",
+      "message": "`len(x) > 0` — می‌شه فقط `x`",
+      "auto_fixable": true,
+      "context": "and len(right.args) == 0):",
+      "detector": "len_truthiness"
+    }
+  ],
+  "fixes": [
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "rule": "len_truthiness",
+      "applied": true,
+      "reason": "ok",
+      "verifier_passed": true,
+      "diff_lines": 1,
+      "duration_ms": 0.0
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent_self_test.py",
+      "rule": "len_truthiness",
+      "applied": true,
+      "reason": "ok",
+      "verifier_passed": true,
+      "diff_lines": 1,
+      "duration_ms": 0.0
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent/detectors/ast_detector.py",
+      "rule": "len_truthiness",
+      "applied": true,
+      "reason": "ok",
+      "verifier_passed": true,
+      "diff_lines": 1,
+      "duration_ms": 0.0
+    },
+    {
+      "file": "/data/data/com.termux/files/home/Price_bot/m12/agent.py",
+      "rule": "silent_fail",
+      "applied": true,
+      "reason": "ok",
+      "verifier_passed": true,
+      "diff_lines": 8,
+      "duration_ms": 0.0
+    }
+  ],
+  "decisions": {
+    "total_violations": 13,
+    "auto_fixable": 13,
+    "needs_human": 0,
+    "fixes_applied": 4,
+    "fixes_would_apply": 0,
+    "fixes_rejected": 0,
+    "fixes_skipped": 0
+  },
+  "git_dirty_files": 342,
+  "python_version": "3.14.10",
+  "platform": "android"
+}
