@@ -1,0 +1,45 @@
+name: Run Researcher v2
+
+on:
+  workflow_dispatch:
+    inputs:
+      script_to_run:
+        description: 'اسکریپت پایتون برای اجرا'
+        required: true
+        default: 'm12/researcher_v2/metrics.py'
+        type: string
+
+jobs:
+  run-researcher:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy
+
+      - name: Run script
+        run: |
+          echo "Running: ${{ github.event.inputs.script_to_run }}"
+          python ${{ github.event.inputs.script_to_run }}
+
+      - name: Upload results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: researcher-results
+          path: |
+            results/
+            *.csv
+            *.xlsx
+            *.json
