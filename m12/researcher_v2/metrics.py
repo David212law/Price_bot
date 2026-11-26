@@ -1,203 +1,163 @@
-"""M12 Researcher v2 — metrics (pandas-based، استاندارد).
+"""M12 Researcher v2 — metrics (با fallback بدون pandas).
 
-ابزار استاندارد برای محاسبه:
-  - Sharpe ratio
-  - Win rate
-  - Max drawdown
-  - Total return
-  - Expectancy
-
-خروجی: DataFrame — قابل ذخیره در CSV/Excel.
+اگه pandas نصب باشه → از pandas استفاده می‌کنه.
+اگه نباشه → fallback ساده با stdlib.
 """
 from __future__ import annotations
 
-import numpy as np
-import pandas as pd
+# ─── تلاش برای import pandas ───
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except ImportError:
+    pd = None
+    HAS_PANDAS = False
+
+import math
 
 
 # ─────────────────────────────────────────────
-# تک‌متریک‌ها (همه با pandas/numpy)
+# Helpers (کار با list و pandas)
 # ─────────────────────────────────────────────
-def sharpe(returns: pd.Series, tpy: int = 365) -> float:
-    """Sharpe ratio سالانه — استاندارد."""
-    if len(returns) < 20 or returns.std() == 0:
+def _to_list(returns):
+    """تبدیل ورودی به list (چه pandas باشه چه list)."""
+    if HAS_PANDAS and isinstance(returns, pd.Series):
+        return returns.tolist()
+    return list(returns)
+
+
+def _mean(values):
+    return sum(values) / len(values) if values else 0.0
+
+
+def _std(values):
+    if len(values) < 2:
         return 0.0
-    return float((returns.mean() / returns.std()) * np.sqrt(tpy))
+    m = _mean(values)
+    var = sum((x - m) ** 2 for x in values) / len(values)
+    return math.sqrt(var)
 
 
-def win_rate(returns: pd.Series) -> float:
+# ─────────────────────────────────────────────
+# تک‌متریک‌ها
+# ─────────────────────────────────────────────
+def sharpe(returns, tpy=365):
+    """Sharpe ratio سالانه."""
+    values = _to_list(returns)
+    if len(values) < 20:
+        return 0.0
+    sd = _std(values)
+    if sd == 0:
+        return 0.0
+    return (_mean(values) / sd) * math.sqrt(tpy)
+
+
+def win_rate(returns):
     """Win rate = درصد trades برنده."""
-    if len(returns) == 0:
+    values = _to_list(returns)
+    if not values:
         return 0.0
-    return float((returns > 0).mean())
+    return sum(1 for x in values if x > 0) / len(values)
 
 
-def max_drawdown(returns: pd.Series) -> float:
-    """Max drawdown با equity curve از returns."""
-    if len(returns) == 0:
+def max_drawdown(returns):
+    """Max drawdown."""
+    values = _to_list(returns)
+    if not values:
         return 0.0
-    equity = (1 + returns).cumprod()
-    peak = equity.cummax()
-    dd = (equity - peak) / peak
-    return float(dd.min())
+    equity = 1.0
+    peak = 1.0
+    max_dd = 0.0
+    for r in values:
+        equity *= (1 + r)
+        peak = max(peak, equity)
+        dd = (equity - peak) / peak
+        max_dd = min(max_dd, dd)
+    return max_dd
 
 
-def total_return(returns: pd.Series) -> float:
-    """بازده کل (compound)."""
-    if len(returns) == 0:
+def total_return(returns):
+    """بازده کل."""
+    values = _to_list(returns)
+    if not values:
         return 0.0
-    return float((1 + returns).prod() - 1)
+    eq = 1.0
+    for r in values:
+        eq *= (1 + r)
+    return eq - 1
 
 
-def expectancy(returns: pd.Series) -> float:
-    """Expectancy = mean(returns) — متوسط بازده هر trade."""
-    if len(returns) == 0:
-        return 0.0
-    return float(returns.mean())
+def expectancy(returns):
+    """Expectancy = mean."""
+    return _mean(_to_list(returns))
 
 
 # ─────────────────────────────────────────────
-# محاسبه همه metrics برای یک Series
+# compute_metrics
 # ─────────────────────────────────────────────
-def compute_metrics(returns: pd.Series, tpy: int = 365) -> dict:
-    """همه metrics برای یک Series از returns."""
+def compute_metrics(returns, tpy=365):
+    """همه metrics برای یک Series/list."""
+    values = _to_list(returns)
     return {
-        "n": int(len(returns)),
-        "sharpe": sharpe(returns, tpy),
-        "win_rate": win_rate(returns),
-        "max_dd": max_drawdown(returns),
-        "total_return": total_return(returns),
-        "expectancy": expectancy(returns),
+        "n": int(len(values)),
+        "sharpe": sharpe(values, tpy),
+        "win_rate": win_rate(values),
+        "max_dd": max_drawdown(values),
+        "total_return": total_return(values),
+        "expectancy": expectancy(values),
     }
 
 
 # ─────────────────────────────────────────────
-# محاسبه metrics برای همه استراتژی×regime
+# compute_all_metrics
 # ─────────────────────────────────────────────
-def compute_all_metrics(
-    backtest_results: dict,
-    tpy: int = 365,
-) -> pd.DataFrame:
+def compute_all_metrics(backtest_results, tpy=365):
     """
     محاسبه metrics برای همه (strategy × regime).
     
-    Args:
-        backtest_results: {strategy: {regime: {"won": [...], "ret": [...]}}}
-        tpy: trades per year (365 برای روزانه)
-    
-    Returns:
-        DataFrame با ستون‌های: strategy, regime, n, sharpe, win_rate, max_dd, total_return, expectancy
+    اگه pandas باشه → DataFrame
+    اگه نباشه → list of dicts
     """
     rows = []
     for strategy, regimes in backtest_results.items():
         for regime, data in regimes.items():
             ret_list = data.get("ret", [])
-            if len(ret_list) == 0:
+            if not ret_list:
                 continue
-            rets = pd.Series(ret_list, dtype=float)
-            metrics = compute_metrics(rets, tpy)
+            metrics = compute_metrics(ret_list, tpy)
             rows.append({
                 "strategy": strategy,
                 "regime": regime,
                 **metrics,
             })
-    return pd.DataFrame(rows)
+
+    if HAS_PANDAS:
+        return pd.DataFrame(rows)
+    return rows
 
 
 # ─────────────────────────────────────────────
-# فیلترها (استاندارد)
+# فیلترها
 # ─────────────────────────────────────────────
-def filter_by_threshold(
-    df: pd.DataFrame,
-    min_trades: int = 20,
-    min_win_rate: float = 0.52,
-    min_sharpe: float = 0.0,
-) -> pd.DataFrame:
-    """فیلتر استراتژی‌ها بر اساس آستانه‌ها."""
-    return df[
-        (df["n"] >= min_trades)
-        & (df["win_rate"] >= min_win_rate)
-        & (df["sharpe"] > min_sharpe)
-    ].copy()
-
-
-def filter_correlation(
-    selected: list[str],
-    returns_by_strategy: dict[str, pd.Series],
-    max_corr: float = 0.5,
-) -> list[str]:
-    """
-    حذف استراتژی‌های correlated.
-    
-    Args:
-        selected: لیست استراتژی‌های کاندید
-        returns_by_strategy: {name: pd.Series of returns}
-        max_corr: حداکثر correlation مجاز
-    
-    Returns:
-        لیست نهایی استراتژی‌ها
-    """
-    picked: list[str] = []
-    picked_returns: list[pd.Series] = []
-
-    for name in selected:
-        if name not in returns_by_strategy:
-            continue
-        rets = returns_by_strategy[name]
-
-        if not picked:
-            picked.append(name)
-            picked_returns.append(rets)
-            continue
-
-        max_c = 0.0
-        for existing in picked_returns:
-            # align indexes
-            common = rets.index.intersection(existing.index)
-            if len(common) < 10:
-                continue
-            corr = rets.loc[common].corr(existing.loc[common])
-            if not pd.isna(corr):
-                max_c = max(max_c, abs(corr))
-
-        if max_c < max_corr:
-            picked.append(name)
-            picked_returns.append(rets)
-
-    return picked
+def filter_by_threshold(df, min_trades=20, min_win_rate=0.52, min_sharpe=0.0):
+    """فیلتر استراتژی‌ها."""
+    if HAS_PANDAS and isinstance(df, pd.DataFrame):
+        return df[
+            (df["n"] >= min_trades)
+            & (df["win_rate"] >= min_win_rate)
+            & (df["sharpe"] > min_sharpe)
+        ].copy()
+    # fallback list
+    return [
+        r for r in df
+        if r["n"] >= min_trades
+        and r["win_rate"] >= min_win_rate
+        and r["sharpe"] > min_sharpe
+    ]
 
 
 __all__ = [
-    "sharpe",
-    "win_rate",
-    "max_drawdown",
-    "total_return",
-    "expectancy",
-    "compute_metrics",
-    "compute_all_metrics",
-    "filter_by_threshold",
-    "filter_correlation",
+    "sharpe", "win_rate", "max_drawdown", "total_return", "expectancy",
+    "compute_metrics", "compute_all_metrics", "filter_by_threshold",
+    "HAS_PANDAS",
 ]
-
-
-# ─────────────────────────────────────────────
-# CLI entry point (برای تست / GitHub Actions)
-# ─────────────────────────────────────────────
-if __name__ == "__main__":
-    import os
-
-    print("═══ M12 researcher_v2 — metrics test ═══")
-
-    # داده نمونه
-    dummy_returns = pd.Series([0.01, -0.005, 0.02, -0.01, 0.015] * 10)
-    results = compute_metrics(dummy_returns)
-
-    print("\nنتایج:")
-    for k, v in results.items():
-        print(f"  {k:15s}: {v}")
-
-    # ذخیره در results/
-    os.makedirs("results", exist_ok=True)
-    df = pd.DataFrame([results])
-    df.to_csv("results/metrics_summary.csv", index=False)
-    print(f"\n✅ ذخیره شد: results/metrics_summary.csv")
