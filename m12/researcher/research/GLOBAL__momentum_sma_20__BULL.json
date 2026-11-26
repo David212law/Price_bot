@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "momentum_sma_20",
-  "regime": "BULL",
-  "n": 338,
-  "win_rate": 0.4231,
-  "avg_ret": 0.012703
-}

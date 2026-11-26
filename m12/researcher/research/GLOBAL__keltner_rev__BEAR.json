@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "keltner_rev",
-  "regime": "BEAR",
-  "n": 282,
-  "win_rate": 0.6099,
-  "avg_ret": 0.023319
-}

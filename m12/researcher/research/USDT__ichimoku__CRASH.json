@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "ichimoku",
-  "regime": "CRASH",
-  "n": 16,
-  "win_rate": 0.1875,
-  "avg_ret": -0.087572
-}

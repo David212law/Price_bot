@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "momentum_ema",
-  "regime": "BEAR",
-  "n": 275,
-  "win_rate": 0.4509,
-  "avg_ret": 0.03703
-}

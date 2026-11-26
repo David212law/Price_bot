@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "rsi_21_25_75",
-  "regime": "BULL",
-  "n": 455,
-  "win_rate": 0.3692,
-  "avg_ret": -0.004215
-}

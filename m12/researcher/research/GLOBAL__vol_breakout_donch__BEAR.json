@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "vol_breakout_donch",
-  "regime": "BEAR",
-  "n": 56,
-  "win_rate": 0.8036,
-  "avg_ret": 0.031647
-}

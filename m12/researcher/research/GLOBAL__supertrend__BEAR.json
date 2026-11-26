@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "supertrend",
-  "regime": "BEAR",
-  "n": 49,
-  "win_rate": 0.2653,
-  "avg_ret": 0.018185
-}

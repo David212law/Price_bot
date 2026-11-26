@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "price_sma_50",
-  "regime": "CRASH",
-  "n": 20,
-  "win_rate": 0.15,
-  "avg_ret": -0.036687
-}

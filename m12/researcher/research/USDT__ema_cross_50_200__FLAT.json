@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "ema_cross_50_200",
-  "regime": "FLAT",
-  "n": 57,
-  "win_rate": 0.0702,
-  "avg_ret": -0.095594
-}

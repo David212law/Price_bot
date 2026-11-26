@@ -1,7 +1,0 @@
-{
-  "strategy": "mr_keltner",
-  "regime": "BULL",
-  "n": 224,
-  "win_rate": 0.3661,
-  "avg_ret": -0.007664
-}

@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "obv",
-  "regime": "FLAT",
-  "n": 1051,
-  "win_rate": 0.3825,
-  "avg_ret": 0.007706
-}

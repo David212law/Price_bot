@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "momentum_sma_20",
-  "regime": "BULL",
-  "n": 3597,
-  "win_rate": 0.4034,
-  "avg_ret": 0.000402
-}

@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "obv",
-  "regime": "FLAT",
-  "n": 94,
-  "win_rate": 0.2872,
-  "avg_ret": -0.018478
-}

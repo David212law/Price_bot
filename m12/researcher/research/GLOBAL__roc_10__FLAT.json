@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "roc_10",
-  "regime": "FLAT",
-  "n": 122,
-  "win_rate": 0.2541,
-  "avg_ret": -0.024686
-}

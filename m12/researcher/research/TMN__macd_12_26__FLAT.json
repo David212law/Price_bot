@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "macd_12_26",
-  "regime": "FLAT",
-  "n": 1704,
-  "win_rate": 0.2811,
-  "avg_ret": -0.012308
-}

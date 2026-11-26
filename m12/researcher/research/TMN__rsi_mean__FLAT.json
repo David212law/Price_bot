@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "rsi_mean",
-  "regime": "FLAT",
-  "n": 108,
-  "win_rate": 0.3704,
-  "avg_ret": -0.004978
-}

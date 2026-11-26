@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "elder_impulse",
-  "regime": "CRASH",
-  "n": 18,
-  "win_rate": 0.6111,
-  "avg_ret": 0.054722
-}

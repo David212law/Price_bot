@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "mfi",
-  "regime": "FLAT",
-  "n": 314,
-  "win_rate": 0.4268,
-  "avg_ret": -0.002236
-}

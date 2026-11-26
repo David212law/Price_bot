@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "rsi_21_25_75",
-  "regime": "FLAT",
-  "n": 18,
-  "win_rate": 0.5,
-  "avg_ret": 0.004093
-}

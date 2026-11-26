@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "bb_30_2.5",
-  "regime": "BULL",
-  "n": 109,
-  "win_rate": 0.211,
-  "avg_ret": 0.002834
-}

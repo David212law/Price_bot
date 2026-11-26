@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "connors_rsi",
-  "regime": "BULL",
-  "n": 10,
-  "win_rate": 0.6,
-  "avg_ret": 0.022768
-}

@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "connors_rsi",
-  "regime": "CRASH",
-  "n": 6,
-  "win_rate": 0.3333,
-  "avg_ret": -0.025866
-}

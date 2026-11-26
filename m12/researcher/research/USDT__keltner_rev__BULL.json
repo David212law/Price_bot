@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "keltner_rev",
-  "regime": "BULL",
-  "n": 3519,
-  "win_rate": 0.5942,
-  "avg_ret": 0.040736
-}

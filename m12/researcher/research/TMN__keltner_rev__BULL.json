@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "keltner_rev",
-  "regime": "BULL",
-  "n": 2237,
-  "win_rate": 0.5105,
-  "avg_ret": 0.040663
-}

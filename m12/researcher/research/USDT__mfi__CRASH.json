@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "mfi",
-  "regime": "CRASH",
-  "n": 12,
-  "win_rate": 0.25,
-  "avg_ret": -0.027684
-}

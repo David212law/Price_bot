@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "ema_cross_20_50",
-  "regime": "BEAR",
-  "n": 97,
-  "win_rate": 0.3196,
-  "avg_ret": -159.281852
-}

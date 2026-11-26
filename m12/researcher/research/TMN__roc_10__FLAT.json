@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "roc_10",
-  "regime": "FLAT",
-  "n": 1225,
-  "win_rate": 0.3551,
-  "avg_ret": -0.001579
-}

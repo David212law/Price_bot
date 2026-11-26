@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "nr_breakout",
-  "regime": "CRASH",
-  "n": 9,
-  "win_rate": 0.5556,
-  "avg_ret": -0.001168
-}

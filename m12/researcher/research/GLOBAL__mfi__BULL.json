@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "mfi",
-  "regime": "BULL",
-  "n": 19,
-  "win_rate": 0.4737,
-  "avg_ret": 0.001608
-}

@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "donchian_20",
-  "regime": "BULL",
-  "n": 1014,
-  "win_rate": 0.3402,
-  "avg_ret": -0.016637
-}

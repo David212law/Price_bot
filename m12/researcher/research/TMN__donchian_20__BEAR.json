@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "donchian_20",
-  "regime": "BEAR",
-  "n": 220,
-  "win_rate": 0.4273,
-  "avg_ret": 0.044996
-}

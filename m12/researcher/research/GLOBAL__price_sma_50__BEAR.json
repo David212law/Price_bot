@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "price_sma_50",
-  "regime": "BEAR",
-  "n": 29,
-  "win_rate": 0.1379,
-  "avg_ret": -0.02641
-}

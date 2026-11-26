@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "parabolic_sar",
-  "regime": "FLAT",
-  "n": 2851,
-  "win_rate": 0.3153,
-  "avg_ret": -0.031934
-}

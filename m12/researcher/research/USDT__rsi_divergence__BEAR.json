@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "rsi_divergence",
-  "regime": "BEAR",
-  "n": 147,
-  "win_rate": 0.2517,
-  "avg_ret": -0.045049
-}

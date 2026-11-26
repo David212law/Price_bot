@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "mean_rev_sma_50",
-  "regime": "BULL",
-  "n": 2994,
-  "win_rate": 0.3353,
-  "avg_ret": -0.00287
-}

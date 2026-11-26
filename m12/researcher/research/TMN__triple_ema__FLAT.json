@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "triple_ema",
-  "regime": "FLAT",
-  "n": 1956,
-  "win_rate": 0.3129,
-  "avg_ret": -70.934701
-}

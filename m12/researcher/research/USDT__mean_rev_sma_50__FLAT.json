@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "mean_rev_sma_50",
-  "regime": "FLAT",
-  "n": 2287,
-  "win_rate": 0.4049,
-  "avg_ret": 0.012837
-}

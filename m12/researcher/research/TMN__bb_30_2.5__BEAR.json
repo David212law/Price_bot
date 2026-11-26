@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "bb_30_2.5",
-  "regime": "BEAR",
-  "n": 235,
-  "win_rate": 0.3234,
-  "avg_ret": 0.028931
-}

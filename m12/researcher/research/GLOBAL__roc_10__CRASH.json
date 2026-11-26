@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "roc_10",
-  "regime": "CRASH",
-  "n": 5,
-  "win_rate": 1.0,
-  "avg_ret": 0.195747
-}

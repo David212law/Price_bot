@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "rsi_momentum_14",
-  "regime": "BEAR",
-  "n": 408,
-  "win_rate": 0.4755,
-  "avg_ret": 0.038245
-}

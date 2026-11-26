@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "vol_breakout_donch",
-  "regime": "CRASH",
-  "n": 18,
-  "win_rate": 0.7778,
-  "avg_ret": 0.027168
-}

@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "zscore_20",
-  "regime": "FLAT",
-  "n": 1878,
-  "win_rate": 0.3743,
-  "avg_ret": 0.008478
-}

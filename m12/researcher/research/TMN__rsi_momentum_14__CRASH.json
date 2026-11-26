@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "rsi_momentum_14",
-  "regime": "CRASH",
-  "n": 27,
-  "win_rate": 0.7407,
-  "avg_ret": 0.085215
-}

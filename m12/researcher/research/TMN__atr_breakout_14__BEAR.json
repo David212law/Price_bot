@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "atr_breakout_14",
-  "regime": "BEAR",
-  "n": 622,
-  "win_rate": 0.3987,
-  "avg_ret": 0.00794
-}

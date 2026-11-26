@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "vwap",
-  "regime": "BULL",
-  "n": 3747,
-  "win_rate": 0.4606,
-  "avg_ret": -0.001713
-}

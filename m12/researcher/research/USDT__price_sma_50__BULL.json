@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "price_sma_50",
-  "regime": "BULL",
-  "n": 1259,
-  "win_rate": 0.1597,
-  "avg_ret": -0.017212
-}

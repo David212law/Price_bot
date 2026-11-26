@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "macd_12_26",
-  "regime": "BEAR",
-  "n": 545,
-  "win_rate": 0.3835,
-  "avg_ret": 0.004283
-}

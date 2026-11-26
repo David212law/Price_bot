@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "elder_impulse",
-  "regime": "FLAT",
-  "n": 2223,
-  "win_rate": 0.3761,
-  "avg_ret": 0.011856
-}

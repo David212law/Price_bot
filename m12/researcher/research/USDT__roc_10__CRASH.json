@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "roc_10",
-  "regime": "CRASH",
-  "n": 32,
-  "win_rate": 0.5938,
-  "avg_ret": 0.123589
-}

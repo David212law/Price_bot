@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "momentum_ema",
-  "regime": "BEAR",
-  "n": 43,
-  "win_rate": 0.5814,
-  "avg_ret": 0.094569
-}

@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "macd_12_26",
-  "regime": "BEAR",
-  "n": 62,
-  "win_rate": 0.3387,
-  "avg_ret": 0.008295
-}

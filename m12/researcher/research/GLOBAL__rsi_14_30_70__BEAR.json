@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "rsi_14_30_70",
-  "regime": "BEAR",
-  "n": 30,
-  "win_rate": 0.1667,
-  "avg_ret": -0.056873
-}

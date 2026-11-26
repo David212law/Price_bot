@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "price_sma_50",
-  "regime": "CRASH",
-  "n": 9,
-  "win_rate": 0.1111,
-  "avg_ret": -0.064501
-}

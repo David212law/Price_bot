@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "rsi_divergence",
-  "regime": "BULL",
-  "n": 375,
-  "win_rate": 0.368,
-  "avg_ret": -0.011767
-}

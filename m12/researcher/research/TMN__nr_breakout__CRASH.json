@@ -1,8 +1,0 @@
-{
-  "market": "TMN",
-  "strategy": "nr_breakout",
-  "regime": "CRASH",
-  "n": 10,
-  "win_rate": 0.7,
-  "avg_ret": 0.019483
-}

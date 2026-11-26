@@ -1,7 +1,0 @@
-{
-  "strategy": "trend_ema",
-  "regime": "BEAR",
-  "n": 20,
-  "win_rate": 0.25,
-  "avg_ret": -0.009135
-}

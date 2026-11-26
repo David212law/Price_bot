@@ -1,8 +1,0 @@
-{
-  "market": "GLOBAL",
-  "strategy": "keltner_rev",
-  "regime": "FLAT",
-  "n": 311,
-  "win_rate": 0.508,
-  "avg_ret": 0.016574
-}

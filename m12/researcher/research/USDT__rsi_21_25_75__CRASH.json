@@ -1,8 +1,0 @@
-{
-  "market": "USDT",
-  "strategy": "rsi_21_25_75",
-  "regime": "CRASH",
-  "n": 8,
-  "win_rate": 0.5,
-  "avg_ret": 0.026442
-}
