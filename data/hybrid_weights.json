@@ -17,18 +17,18 @@
   "cash_weight": 1.0,
   "active_signals": {
     "ema_cross_20_50": 16,
-    "macd_12_26": 137,
+    "macd_12_26": 133,
     "donchian_20": 5,
-    "bb_20_2": 0,
-    "rsi_14": 20,
-    "zscore_20": 0,
-    "roc_10": 61,
-    "momentum_sma_20": 11,
+    "bb_20_2": 1,
+    "rsi_14": 24,
+    "zscore_20": 1,
+    "roc_10": 56,
+    "momentum_sma_20": 10,
     "rsi_momentum_14": 11,
     "atr_breakout_14": 1,
-    "bb_squeeze_20": 21,
+    "bb_squeeze_20": 20,
     "donchian_break_20": 6
   },
   "total_cash_target": 1.0,
-  "last_update": "2026-11-25T14:33:03.311151"
+  "last_update": "2026-11-26T00:30:12.969466"
 }
